@@ -1,0 +1,2 @@
+module BillHelper
+end

@@ -13,7 +13,6 @@ gem 'devise'
 group :development, :test do
 	gem 'rspec-rails', '2.11.0'
 	gem 'sqlite3'
-	gem 
 end
 
 

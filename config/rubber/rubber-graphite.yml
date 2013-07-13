@@ -1,0 +1,24 @@
+graphite_dir: "/opt/graphite"
+graphite_server_pid_file: /var/run/graphite-server.pid
+graphite_server_port: 2003
+graphite_web_port: 2080
+graphite_carbon_port: 8002
+graphite_storage_dir: /mnt/graphite_storage
+
+# uncomment out the repo version to install from given repo version
+# graphite_repo_version: 426
+graphite_whisper_package_url: https://github.com/downloads/graphite-project/whisper/whisper-0.9.10.tar.gz
+graphite_carbon_package_url: https://github.com/downloads/graphite-project/carbon/carbon-0.9.10.tar.gz
+graphite_web_package_url: https://github.com/downloads/graphite-project/graphite-web/graphite-web-0.9.10.tar.gz
+
+web_tools_proxies:
+  graphite:
+    role: graphite_web
+    port: "#{graphite_web_port}"
+    path: /
+
+roles:
+  graphite_web:
+    packages: [python-django, python-django-tagging, python-cairo, python-memcache, memcached, uwsgi, uwsgi-plugin-python, uwsgi-plugin-http, sqlite3, bzr, zip]
+  collectd:
+    packages: [libperl-dev]

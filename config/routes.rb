@@ -8,5 +8,11 @@ PolianaApp::Application.routes.draw do
 
   get "static_pages/terms"
 
+  get "bills/scrape", to: 'bills#scrape_congress'
+  get "bills/:id", to: 'bills#metadata'
+  get "bills/cache/:id", to: 'bills#cache'
+
+
+
   root :to => "static_pages#about"
 end

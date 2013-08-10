@@ -45,8 +45,21 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    chunky_png (1.2.8)
     clamp (0.6.1)
     coderay (1.0.9)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
+    congress (0.1.1)
+      faraday (~> 0.8.7)
+      faraday_middleware (~> 0.9.0)
+      hashie (~> 2.0)
+      json (~> 1.8)
+      rash (~> 0.4)
     devise (2.2.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -57,6 +70,10 @@ GEM
     excon (0.23.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -71,11 +88,13 @@ GEM
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.4)
+    fssm (0.2.10)
     gelf (1.4.0)
       json
     graylog2-resque (0.5.1)
       gelf
       resque
+    hashie (2.0.5)
     highline (1.6.19)
     hike (1.2.3)
     i18n (0.6.1)
@@ -94,6 +113,7 @@ GEM
       bson (~> 1.9.1)
     mono_logger (1.1.0)
     multi_json (1.7.7)
+    multipart-post (1.2.0)
     mysql2 (0.3.11)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -135,6 +155,8 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.1.0)
+    rash (0.4.0)
+      hashie (~> 2.0.0)
     rdoc (3.12.2)
       json (~> 1.4)
     redis (3.0.4)
@@ -201,11 +223,15 @@ GEM
       rack (>= 1.0.0)
     warden (1.2.1)
       rack (>= 1.0)
+    zurb-foundation (4.3.1)
+      sass (>= 3.2.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  compass-rails
+  congress
   devise
   figaro
   gelf
@@ -223,3 +249,4 @@ DEPENDENCIES
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)
+  zurb-foundation

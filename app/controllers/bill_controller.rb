@@ -1,5 +1,9 @@
 class BillController < ApplicationController
-  def show
-  	
-  end
+    def metadata
+
+    end 
+
+    def cache
+
+    end
 end

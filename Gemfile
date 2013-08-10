@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'pry'
 gem 'figaro'
+gem 'mongo'
 
 gem 'devise'
 

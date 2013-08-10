@@ -37,6 +37,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (3.1.0)
+    bson (1.9.1)
     builder (3.0.4)
     capistrano (2.15.5)
       highline
@@ -89,6 +90,8 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.1)
     mime-types (1.23)
+    mongo (1.9.1)
+      bson (~> 1.9.1)
     mono_logger (1.1.0)
     multi_json (1.7.7)
     mysql2 (0.3.11)
@@ -209,6 +212,7 @@ DEPENDENCIES
   graylog2-resque
   graylog2_exceptions!
   jquery-rails
+  mongo
   mysql2
   open4
   pry

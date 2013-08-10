@@ -1,7 +1,5 @@
 PolianaApp::Application.routes.draw do
 
-  match "/bill/:id", :to => "bill#show"
-
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}
 
   get "static_pages/about"

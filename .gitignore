@@ -15,7 +15,9 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
-/app/helpers/congress_helper.rb
+.DS_Store
+
+/lib/congress_scraper.rb
 
 /config/database.yml
 

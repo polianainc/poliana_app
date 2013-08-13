@@ -1,7 +1,8 @@
 require 'mongo'
 include Mongo
-module MongoHelper
-    def collection
+
+class MongoWrapper
+    def self.collection
         if(@collection)
             return @collection;
         else

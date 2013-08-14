@@ -60,6 +60,8 @@ GEM
       hashie (~> 2.0)
       json (~> 1.8)
       rash (~> 0.4)
+    d3js-rails (3.1.6)
+      railties (>= 3.0, < 5.0)
     devise (2.2.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -232,6 +234,7 @@ PLATFORMS
 DEPENDENCIES
   compass-rails
   congress
+  d3js-rails
   devise
   figaro
   gelf

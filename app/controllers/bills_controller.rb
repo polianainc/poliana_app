@@ -1,11 +1,14 @@
 class BillsController < ApplicationController
+    respond_to :json
+
     def metadata
-        @bill = Bill.find(params[:id])
+        respond_with @bill = Bill.find(params[:id])
     end 
 
     def cache
-        # @data = collection.find("_id" => params[:id])
+        @data = MongoWrapper.collection.find("_id" => BSON::ObjectId(params[:id])).to_a.first
         binding.pry
+        respond_with @data
     end
 
     def index

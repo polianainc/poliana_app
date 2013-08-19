@@ -1,0 +1,259 @@
+.white {
+  background: #fafafa;
+  fill: #fafafa;
+  color: #333333; }
+
+.black {
+  background: #333333;
+  fill: #333333;
+  color: #fafafa; }
+
+.red {
+  background: #ea3556;
+  fill: #ea3556;
+  color: #fafafa; }
+
+.yellow {
+  background: #ffdb18;
+  fill: #ffdb18;
+  color: #fafafa; }
+
+.blue {
+  background: #61d2d6;
+  fill: #61d2d6;
+  color: #fafafa; }
+
+.green {
+  background: #c4d117;
+  fill: #c4d117;
+  color: #fafafa; }
+
+.seagreen {
+  background: #e5ede2;
+  fill: #e5ede2;
+  color: #fafafa; }
+
+.gray {
+  background: #cccccc;
+  fill: #cccccc;
+  color: #fafafa; }
+
+.purple {
+  background: #811a96;
+  fill: #811a96;
+  color: #fafafa; }
+
+body {
+  -webkit-animation: fadein 0.6s;
+  -moz-animation: fadein 0.6s;
+  animation: fadein 0.6s; }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+@-moz-keyframes fadein {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+section {
+  padding: 40px 0px; }
+  section.gray {
+    background: #fafafa;
+    border-bottom: 4px solid #e1e1e1;
+    color: #333333; }
+  section.blue {
+    background: #61d2d6;
+    border-bottom: 4px solid #39c6cb;
+    color: white; }
+    section.blue h2 {
+      color: white; }
+  section.black {
+    background: #333333;
+    border-bottom: 4px solid #1a1a1a;
+    color: white; }
+    section.black h2 {
+      color: white; }
+    section.black h3 {
+      text-align: left; }
+    section.black input[type=text], section.black input[type=email] {
+      padding: 20px 10px; }
+      section.black input[type=text]:focus, section.black input[type=email]:focus {
+        border: 3px solid #61d2d6; }
+    section.black input[type=submit] {
+      background: #61d2d6;
+      -webkit-box-shadow: 0px 4px 0px #2ba2a6;
+      -moz-box-shadow: 0px 4px 0px #2ba2a6;
+      box-shadow: 0px 4px 0px #2ba2a6; }
+      section.black input[type=submit]:hover, section.black input[type=submit]:focus {
+        -webkit-box-shadow: 0px 1px 0px #2ba2a6;
+        -moz-box-shadow: 0px 1px 0px #2ba2a6;
+        box-shadow: 0px 1px 0px #2ba2a6; }
+
+h2 {
+  font-weight: 300;
+  font-size: 2em;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 20px; }
+  @media screen and (max-width: 767px) {
+    h2 {
+      font-size: 1.5em; } }
+
+h3 {
+  text-align: center; }
+
+p {
+  line-height: 1.75em; }
+
+a {
+  color: white;
+  text-decoration: none;
+  -webkit-transition: color 0.1s linear;
+  -moz-transition: color 0.1s linear;
+  transition: color 0.1s linear; }
+  a:hover {
+    color: #61d2d6; }
+
+.center {
+  text-align: center; }
+
+#logo {
+  width: 140px;
+  height: auto;
+  margin: 20px auto 20px auto;
+  display: block; }
+
+form {
+  margin-top: 20px;
+  margin-bottom: 40px; }
+  form .submitHold {
+    position: relative;
+    padding-bottom: 80px; }
+  form input {
+    width: 100%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    font-weight: 300; }
+    form input[type=text], form input[type=email] {
+      background: white;
+      border: 3px solid #e6e6e6;
+      margin-bottom: 20px;
+      padding: 20px 10px; }
+      form input[type=text].blue:focus, form input[type=email].blue:focus {
+        border: 3px solid #61d2d6; }
+      form input[type=text].red:focus, form input[type=email].red:focus {
+        border: 3px solid #ea3556; }
+      form input[type=text]:hover, form input[type=email]:hover {
+        border: 3px solid #cccccc; }
+      form input[type=text]:focus, form input[type=email]:focus {
+        border: 3px solid #c4d117; }
+    form input[type=submit] {
+      position: absolute;
+      top: 0px;
+      background: #c4d117;
+      border: none;
+      padding: 25px;
+      font-weight: bold;
+      color: white;
+      font-size: 1.35em;
+      -webkit-box-shadow: 0px 4px 0px #99a312;
+      -moz-box-shadow: 0px 4px 0px #99a312;
+      box-shadow: 0px 4px 0px #99a312; }
+      form input[type=submit].blue {
+        background: #61d2d6;
+        -webkit-box-shadow: 0px 4px 0px #39c6cb;
+        -moz-box-shadow: 0px 4px 0px #39c6cb;
+        box-shadow: 0px 4px 0px #39c6cb; }
+        form input[type=submit].blue:hover, form input[type=submit].blue:focus {
+          -webkit-box-shadow: 0px 1px 0px #39c6cb;
+          -moz-box-shadow: 0px 1px 0px #39c6cb;
+          box-shadow: 0px 1px 0px #39c6cb; }
+      form input[type=submit].red {
+        background: #ea3556;
+        -webkit-box-shadow: 0px 4px 0px #d61639;
+        -moz-box-shadow: 0px 4px 0px #d61639;
+        box-shadow: 0px 4px 0px #d61639; }
+        form input[type=submit].red:hover, form input[type=submit].red:focus {
+          -webkit-box-shadow: 0px 1px 0px #d61639;
+          -moz-box-shadow: 0px 1px 0px #d61639;
+          box-shadow: 0px 1px 0px #d61639; }
+      form input[type=submit]:hover, form input[type=submit]:focus {
+        -webkit-box-shadow: 0px 1px 0px #99a312;
+        -moz-box-shadow: 0px 1px 0px #99a312;
+        box-shadow: 0px 1px 0px #99a312;
+        top: 3px;
+        cursor: pointer; }
+    form input:focus {
+      outline: none; }
+
+#arrows {
+  width: 64px;
+  height: auto;
+  display: block;
+  margin: 20px auto; }
+
+.teamMember {
+  text-align: center; }
+  @media screen and (max-width: 767px) {
+    .teamMember {
+      min-height: 240px; } }
+  .teamMember h4 {
+    font-weight: 300;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 1.25em; }
+    .teamMember h4 b {
+      display: block; }
+  .teamMember p {
+    font-size: 0.85em; }
+    @media screen and (max-width: 767px) {
+      .teamMember p {
+        font-size: 0.75em;
+        margin-bottom: 20px; } }
+
+ul {
+  list-style-type: none;
+  padding-left: 0px; }
+  ul li {
+    margin-bottom: 15px;
+    overflow: hidden; }
+    ul li span {
+      font-size: 2em;
+      float: left; }
+      ul li span.iconText {
+        padding-left: 15px;
+        padding-top: 5px;
+        font-size: 1em; }
+  ul.dark {
+    width: 235px;
+    display: block;
+    margin: 0 auto; }
+    ul.dark a {
+      color: #333333; }
+      ul.dark a:hover {
+        color: #c4d117; }

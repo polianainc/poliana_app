@@ -1,0 +1,59 @@
+// This is the master list of sitewide variables and classes
+
+$abs_white: #fff;
+$abs_black: #000;
+$white: #fafafa;
+$black: #333;
+$gray: #ccc;
+$red: #ea3556;
+$yellow: #ffdb18;
+$blue: #61d2d6;
+$green: #c4d117;
+$seagreen: #e5ede2;
+$purple: #811a96;
+
+.white {
+    background: $white;
+    fill: $white;
+    color: $black;
+}
+.black {
+    background: $black;
+    fill: $black;
+    color: $white;
+}
+.red {
+    background: $red;
+    fill: $red;
+    color: $white;
+}
+.yellow {
+    background: $yellow;
+    fill: $yellow;
+    color: $white;    
+}
+.blue {
+    background: $blue;
+    fill: $blue;
+    color: $white;    
+}
+.green {
+    background: $green;
+    fill: $green;
+    color: $white;
+}
+.seagreen {
+    background: $seagreen;
+    fill: $seagreen;
+    color: $white;
+}
+.gray {
+    background: $gray;
+    fill: $gray;
+    color: $white;
+}
+.purple {
+    background: $purple;
+    fill: $purple;
+    color: $white;
+}

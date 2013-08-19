@@ -1,0 +1,88 @@
+.white {
+  background: #fafafa;
+  fill: #fafafa;
+  color: #333333; }
+
+.black {
+  background: #333333;
+  fill: #333333;
+  color: #fafafa; }
+
+.red {
+  background: #ea3556;
+  fill: #ea3556;
+  color: #fafafa; }
+
+.yellow {
+  background: #ffdb18;
+  fill: #ffdb18;
+  color: #fafafa; }
+
+.blue {
+  background: #61d2d6;
+  fill: #61d2d6;
+  color: #fafafa; }
+
+.green {
+  background: #c4d117;
+  fill: #c4d117;
+  color: #fafafa; }
+
+.seagreen {
+  background: #e5ede2;
+  fill: #e5ede2;
+  color: #fafafa; }
+
+.gray {
+  background: #cccccc;
+  fill: #cccccc;
+  color: #fafafa; }
+
+.purple {
+  background: #811a96;
+  fill: #811a96;
+  color: #fafafa; }
+
+#billIndustry {
+  position: relative; }
+  #billIndustry .social {
+    list-style-type: none;
+    position: absolute;
+    left: -20px;
+    top: 50px; }
+    #billIndustry .social li {
+      font-size: 1.5em; }
+      #billIndustry .social li a {
+        color: #DDD; }
+        #billIndustry .social li a:hover {
+          color: #CCC; }
+  #billIndustry svg {
+    width: 100%;
+    height: 100%; }
+    #billIndustry svg .midLine {
+      stroke: #333333;
+      stroke-width: 3px; }
+    #billIndustry svg .summaryText {
+      font-size: 1.5em; }
+    #billIndustry svg .summaryTitle {
+      font-weight: bold; }
+    #billIndustry svg .check-mark {
+      stroke: #333333; }
+    #billIndustry svg .grid path {
+      stroke: 0; }
+    #billIndustry svg .grid .tick {
+      stroke: #ddd; }
+      #billIndustry svg .grid .tick:first-child {
+        stroke: #333333; }
+    #billIndustry svg .x-axis {
+      font-size: 1.0em; }
+      #billIndustry svg .x-axis .domain {
+        display: none; }
+    #billIndustry svg .y-axis {
+      font-size: 1.0em; }
+      #billIndustry svg .y-axis path {
+        display: none; }
+      #billIndustry svg .y-axis g:first-child {
+        display: none; }
+    #billIndustry svg .bar {
+      cursor: pointer; }

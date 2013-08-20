@@ -4,18 +4,47 @@
 
 @import "variables";
 
+.social {
+	margin-top: 10px;
+	float: right;
+	li {
+		float: left;
+		margin-left: 10px;
+		a {
+			color: #DDD;
+			&:hover { color: #CCC; }
+		}
+	}
+}
+
+.aligncenter { text-align: center; }
+
 #billIndustry {
 	position: relative;
 	.social {
 		list-style-type: none;
 		position: absolute;
 		left: -20px;
-		top: 50px;
+		top: 80px;
 		li {
 			font-size: 1.5em;
 			a {
 				color: #DDD;
 				&:hover { color: #CCC; }
+			}
+		}
+	}
+	.industryBreadcrumbs {
+		list-style-type: none;
+		overflow: hidden;
+		margin-top: -15px;
+		li {
+			float: left;
+			cursor: pointer;
+			&:after { content: '\00A0\00BB\00A0'; }
+			&:last-child {
+				font-weight: bold;
+				&:after { content: ''; }
 			}
 		}
 	}

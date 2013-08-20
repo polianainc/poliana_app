@@ -43,19 +43,46 @@
   fill: #811a96;
   color: #fafafa; }
 
+.social {
+  margin-top: 10px;
+  float: right; }
+  .social li {
+    float: left;
+    margin-left: 10px; }
+    .social li a {
+      color: #DDD; }
+      .social li a:hover {
+        color: #CCC; }
+
+.aligncenter {
+  text-align: center; }
+
 #billIndustry {
   position: relative; }
   #billIndustry .social {
     list-style-type: none;
     position: absolute;
     left: -20px;
-    top: 50px; }
+    top: 80px; }
     #billIndustry .social li {
       font-size: 1.5em; }
       #billIndustry .social li a {
         color: #DDD; }
         #billIndustry .social li a:hover {
           color: #CCC; }
+  #billIndustry .industryBreadcrumbs {
+    list-style-type: none;
+    overflow: hidden;
+    margin-top: -15px; }
+    #billIndustry .industryBreadcrumbs li {
+      float: left;
+      cursor: pointer; }
+      #billIndustry .industryBreadcrumbs li:after {
+        content: '\00A0\00BB\00A0'; }
+      #billIndustry .industryBreadcrumbs li:last-child {
+        font-weight: bold; }
+        #billIndustry .industryBreadcrumbs li:last-child:after {
+          content: ''; }
   #billIndustry svg {
     width: 100%;
     height: 100%; }

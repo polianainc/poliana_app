@@ -257,3 +257,11 @@ ul {
       color: #333333; }
       ul.dark a:hover {
         color: #c4d117; }
+
+.investors {
+  margin-top: 100px;
+  text-align: center; }
+  .investors h3 a, .investors h4 a {
+    color: #333333; }
+    .investors h3 a:hover, .investors h4 a:hover {
+      color: #c4d117; }

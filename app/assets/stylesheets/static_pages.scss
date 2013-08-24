@@ -225,3 +225,14 @@ ul {
 		}
 	}
 }
+
+.investors {
+	margin-top: 100px;
+	text-align: center;
+	h3, h4 {
+		a {
+			color: $black;
+			&:hover { color: $green; }
+		}
+	}
+}

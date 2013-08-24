@@ -9,7 +9,8 @@ PolianaApp::Application.routes.draw do
   get "mailchimpSignup", to: "static_pages#mailchimpSignup"
 
   get "bills/scrape", to: 'bills#scrape_congress'
-  get "investors", to: 'bills#index'
+  get "investors", to: 'static_pages#investors'
+  get "demo", to: 'bills#index'
   get "bills/:id", to: 'bills#metadata'
   get "bills/cache/:id", to: 'bills#cache'
 

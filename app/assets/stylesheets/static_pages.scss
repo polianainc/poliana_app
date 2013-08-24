@@ -1,0 +1,238 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables";
+
+body {
+	-webkit-animation: fadein 0.6s;
+	-moz-animation: fadein 0.6s;
+	animation: fadein 0.6s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+section {
+	padding: 40px 0px;
+	&.gray {
+		background: $white;
+		border-bottom: 4px solid darken($white, 10%);
+		color: $black;
+	}
+	&.blue {
+		background: $blue;
+		border-bottom: 4px solid darken($blue, 10%);
+		color: $abs_white;
+		h2 { color: $abs_white; }
+	}
+	&.black {
+		background: $black;
+		border-bottom: 4px solid darken($black, 10%);
+		color: $abs_white;
+		h2 { color: $abs_white; }
+		h3 { text-align: left; }
+		input {
+			&[type=text], &[type=email] {
+				padding: 20px 10px;
+				&:focus { border: 3px solid $blue; }
+			}
+			&[type=submit] {
+				background: $blue;
+				-webkit-box-shadow: 0px 4px 0px darken($blue, 20%);
+				-moz-box-shadow: 0px 4px 0px darken($blue, 20%);
+				box-shadow: 0px 4px 0px darken($blue, 20%);
+				&:hover, &:focus {
+					-webkit-box-shadow: 0px 1px 0px darken($blue, 20%);
+					-moz-box-shadow: 0px 1px 0px darken($blue, 20%);
+					box-shadow: 0px 1px 0px darken($blue, 20%);
+				}
+			}
+		}
+	}
+}
+
+h2 {
+	font-weight: 300;
+	font-size: 2em;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	@media screen and (max-width: 767px) { font-size: 1.5em; }
+}
+
+h3 { text-align: center; }
+
+p { line-height: 1.75em; }
+
+a {
+	color: $abs_white;
+	text-decoration: none;
+	-webkit-transition: color 0.1s linear;
+	-moz-transition: color 0.1s linear;
+	transition: color 0.1s linear;
+	&:hover { color: $blue; }
+}
+
+.center { text-align: center; }
+
+#logo {
+	width: 140px;
+	height: auto;
+	margin: 20px auto 20px auto;
+	display: block;
+}
+
+form {
+	margin-top: 20px;
+	margin-bottom: 40px;
+	.submitHold {
+		position: relative;
+		padding-bottom: 80px;
+	}
+	input {
+		width: 100%;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		-webkit-transition: all 0.1s linear;
+		-moz-transition: all 0.1s linear;
+		transition: all 0.1s linear;
+		font-weight: 300;
+		&[type=text], &[type=email] {
+			background: $abs_white;
+			border: 3px solid darken($abs_white, 10%);
+			margin-bottom: 20px;
+			padding: 20px 10px;
+			&.blue:focus { border: 3px solid $blue; }
+			&.red:focus { border: 3px solid $red; }
+			&:hover { border: 3px solid $gray; }
+			&:focus { border: 3px solid $green; }
+		}
+		&[type=submit] {
+			position: absolute;
+			top: 0px;
+			background: $green;
+			border: none;
+			padding: 25px;
+			font-weight: bold;
+			color: $abs_white;
+			font-size: 1.35em;
+			-webkit-box-shadow: 0px 4px 0px darken($green, 10%);
+			-moz-box-shadow: 0px 4px 0px darken($green, 10%);
+			box-shadow: 0px 4px 0px darken($green, 10%);
+			&.blue {
+				background: $blue;
+				-webkit-box-shadow: 0px 4px 0px darken($blue, 10%);
+				-moz-box-shadow: 0px 4px 0px darken($blue, 10%);
+				box-shadow: 0px 4px 0px darken($blue, 10%);
+				&:hover, &:focus {
+					-webkit-box-shadow: 0px 1px 0px darken($blue, 10%);
+					-moz-box-shadow: 0px 1px 0px darken($blue, 10%);
+					box-shadow: 0px 1px 0px darken($blue, 10%);
+				}
+			}
+			&.red {
+				background: $red;
+				-webkit-box-shadow: 0px 4px 0px darken($red, 10%);
+				-moz-box-shadow: 0px 4px 0px darken($red, 10%);
+				box-shadow: 0px 4px 0px darken($red, 10%);
+				&:hover, &:focus {
+					-webkit-box-shadow: 0px 1px 0px darken($red, 10%);
+					-moz-box-shadow: 0px 1px 0px darken($red, 10%);
+					box-shadow: 0px 1px 0px darken($red, 10%);
+				}
+			}
+			&:hover, &:focus {
+				-webkit-box-shadow: 0px 1px 0px darken($green, 10%);
+				-moz-box-shadow: 0px 1px 0px darken($green, 10%);
+				box-shadow: 0px 1px 0px darken($green, 10%);
+				top: 3px;
+				cursor: pointer;
+			}
+		}
+		&:focus { outline: none; }
+	}
+}
+
+#arrows {
+	width: 64px;
+	height: auto;
+	display: block;
+	margin: 20px auto;
+}
+
+.teamMember {
+	text-align: center;
+	@media screen and (max-width: 767px) { min-height: 240px; }
+	h4 {
+		font-weight: 300;
+		margin-top: 5px;
+		margin-bottom: 10px;
+		font-size: 1.25em;
+		b { display: block; }
+	}
+	p {
+		font-size: 0.85em;
+		@media screen and (max-width: 767px) {
+			font-size: 0.75em;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 0px;
+	li {
+		margin-bottom: 15px;
+		overflow: hidden;
+		span {
+			font-size: 2em;
+			float: left;
+			&.iconText {
+				padding-left: 15px;
+				padding-top: 5px;
+				font-size: 1em;
+			}
+		}
+	}
+	&.dark {
+		width: 235px;
+		display: block;
+		margin: 0 auto;
+		a {
+			color: $black;
+			&:hover { color: $green; }
+		}
+	}
+}
+
+.investors {
+	margin-top: 100px;
+	text-align: center;
+	h3, h4 {
+		a {
+			color: $black;
+			&:hover { color: $green; }
+		}
+	}
+}

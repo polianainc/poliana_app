@@ -1,5 +1,3 @@
-$(document).foundation();
-
 var barGraphHeight = 300;
 var barGraphWidth = 380;
 
@@ -8,11 +6,38 @@ var summaryHeight = 80;
 
 var $graph = $("#billIndustry");
 
-// Yikes, this is terrible practice... we'll refactor this shit later, but for now...
+var initialHTML = '<div class="row">';
 
-$graph.append('<div class="row"><div class="large-12 columns topGraph"></div></div>');
+initialHTML += '<div class="large-12 columns"><h3>Industry Influence</h3>';
+initialHTML += '<ul class="breadcrumbs">'
+initialHTML += '<li id="overview"> Overview </li>'
+initialHTML += "</ul>"
+initialHTML += '<ul class="social">';
+initialHTML += '<li><a href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href) + '" target="_blank"><span aria-hidden="true" class="icon-facebook"></span></a></li>';
+initialHTML += '<li><a href="https://twitter.com/share?url=' + encodeURIComponent(location.href) + '&text=' + encodeURIComponent(location.href) + '" target="_blank"><span aria-hidden="true" class="icon-twitter"></span></a></li>';
+initialHTML += '<li><a href="http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(location.href) + '&media=' + encodeURIComponent(location.href) + '" target="_blank"><span aria-hidden="true" class="icon-pinterest"></span></a></li>';
+initialHTML += '<li><a href="#" target="_blank"><span aria-hidden="true" class="icon-download"></span></a></li>';
+initialHTML += '</ul>';
+initialHTML += '</div>';
+
+initialHTML += '</div>';
+
+$graph.append(initialHTML);
 
 $graph.append('<div class="row"><div class="large-12 columns graph"></div></div>');
+
+
+$("#overview").click(function() {
+    transition(data);
+    removeBreadcrumb();
+});
+
+function removeBreadcrumb() {
+    $("#2").remove();
+}
+function addBreadcrumb(data) {
+    $(".breadcrumbs").append('<li id="2">' + data.name + '</li>');
+}
 
 function drawSummaryText(x, y, text, textAnchor,classString, graph) {
     graph.append("text")
@@ -120,8 +145,12 @@ function genGridLines(scale, width, margin) {
     return yGrid;
 }
 
+function genLegend() {
+
+}
+
 //Transition to the next layer down (Industries -> Organizations -> Politicians)
-function drillDown(data) {
+function transition(data) {
 
     if(data.winner == true) {
         var lData = data.mainChildren.sort(mostLeastSort),
@@ -242,7 +271,7 @@ function drillDown(data) {
     $(".graph-title").text(data.name);
 }
 
-function influenceSummary(container, yeaData, nayData, winner) {
+function influenceSummary(container, data, winner) {
     var width = 960,
         height = 80;
 
@@ -251,14 +280,13 @@ function influenceSummary(container, yeaData, nayData, winner) {
         winTitle,
         loseTitle;
 
+        winData = data.mainChildren;
+        loseData = data.offChildren;
+
     if(winner == "yea") {
-        winData = yeaData;
-        loseData = nayData;
         winTitle = "Yeas";
         loseTitle = "Nays";
     } else if (winner == "nay") {
-        winData = nayData;
-        loseData = yeaData;
         winTitle = "Nays";
         loseTitle = "Yeas";
     } else {
@@ -277,8 +305,8 @@ function influenceSummary(container, yeaData, nayData, winner) {
     var textMargin = 20;
     var rectHeight = height/1.2;
 
-    var winLength =  genWinLength(width, loseData.mainTotal, winData.mainTotal),
-        loseLength =  genLoseLength(width, loseData.mainTotal, winData.mainTotal),
+    var winLength =  genWinLength(width, data.offTotal, data.mainTotal),
+        loseLength =  genLoseLength(width, data.offTotal, data.mainTotal),
         winX = genWinX(width, winLength),
         loseX = genLoseX(width);
 
@@ -286,14 +314,14 @@ function influenceSummary(container, yeaData, nayData, winner) {
     drawSummaryBar(loseX, rectHeight, loseLength, graph, "gray loseSummary");
 
     //winAmnt
-    drawSummaryText(20, height/2, amountFormat(winData.mainTotal), "begin", "summaryText black winAmount", graph);
+    drawSummaryText(20, height/2, amountFormat(data.mainTotal), "begin", "summaryText black winAmount", graph);
     //winTitle
     drawSummaryText(width/2 - textMargin, height/2, winTitle, "end", "summaryText summaryTitle black", graph);
 
     drawCheckMark((width/2 - width/10), height/2, graph);
 
     //loseAmnt
-    drawSummaryText(width - textMargin, height/2, amountFormat(loseData.mainTotal), "end", "summaryText black loseAmount", graph);
+    drawSummaryText(width - textMargin, height/2, amountFormat(data.offTotal), "end", "summaryText black loseAmount", graph);
     //loseTitle
     drawSummaryText(width/2 + textMargin, height/2, loseTitle, "begin", "summaryText summaryTitle black", graph);
 
@@ -306,7 +334,7 @@ function influenceSummary(container, yeaData, nayData, winner) {
         .attr("y2", 400);
 }
 
-function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset) {
+function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset, startIndex) {
 
     //Layout information
 
@@ -345,7 +373,7 @@ function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset) {
 
     var colors = d3.scale.ordinal()
         .domain([0,1,2,3,4,5,6,7,8,9])
-        .range(["red", "yellow", "blue", "green", "seagreen", "gray", "purple", "black"]);
+        .range(["red", "yellow", "blue", "green", "seagreen", "gray", "purple", "black", "brown"]);
 
     var totalWidth = width + margin.left + margin.right,
         totalHeight = height + margin.top + margin.bottom;
@@ -376,11 +404,10 @@ function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset) {
     graph.append("g")
         .attr("class", "y-axis")
         .attr("transform", "translate(" + yAxisTranslation + ", 0)")
-        .call(yAxis)
-        .selectAll("text");
+        .call(yAxis);
 
     //Grid lines
-    var yGrid = genGridLines(y, width, 0);
+	var yGrid = genGridLines(y, width, 0);
 
     graph.append("g")
         .attr("class", "grid")
@@ -390,9 +417,9 @@ function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset) {
     var bars = graph.selectAll(".bar")
         .data(data)
         .enter().append("g")
-        .attr("class", function(d,i){ return "bar " + colors(i); })
+        .attr("class", function(d,i){ return "bar" })
         .attr("transform", function(d, i) {
-            return "translate(" + x(i) + ",0)"
+            return "translate(" + x(i) + ",0)";
         });
 
     bars.append("rect")
@@ -404,11 +431,12 @@ function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset) {
             return height - y(d.mainTotal);
         })
         .attr("class", function(d,i) {
-            return colors(i);
+            return colors(i + startIndex);
         })
         .on("click", function(d) {
             if(d.mainChildren) {
-                drillDown(d);
+                addBreadcrumb(d)
+                transition(d);
             }
         });
 }
@@ -420,20 +448,26 @@ var svg = d3.select(".graph").append("svg")
     .attr("width", width)
     .attr("height", height);
 
+var data;
 
-$.get('/bills/1.json', function(bill) {
-    $.get(('/bills/cache/' + bill.data_id), function(data) {
-        drawGraph(data);
-    })
+
+d3.json("corrected_bill_data.json", function(error, root) {
+    data = root.data;
+    var winIndustries = root.data.mainChildren;
+    var loseIndustries = root.data.offChildren;
+
+    var max = d3.max(winIndustries.concat(loseIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
+
+    influenceBar(svg, mostLeastSort, winIndustries, "left", max, 0, 80, 0);
+    influenceBar(svg, leastMostSort, loseIndustries, "right", max, 520, 80, 5);
+    influenceSummary(svg, root.data, root.winner);
+
+    var legend = svg.append("g")
+        .attr("class", "legend")
+        .attr("x", 0)
+        .attr("y", barGraphHeight + summaryHeight)
+        .attr("height", 120)
+        .attr("width", summaryWidth);
+
+
 });
-
-function drawGraph(root) {
-    var yeaIndustries = root.yea.children;
-    var nayIndustries = root.nay.children;
-
-    var max = d3.max(yeaIndustries.concat(nayIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
-
-    influenceBar(svg, mostLeastSort, yeaIndustries, "left", max, 0, 80);
-    influenceBar(svg, leastMostSort, nayIndustries, "right", max, 520, 80);
-    influenceSummary(svg, root.yea, root.nay, root.winner);
-}

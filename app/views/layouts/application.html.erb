@@ -5,41 +5,63 @@
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> 
 <html lang="en"> <!--<![endif]-->
-  <head>
+<head>
   	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 
-  	<!-- Uncomment to make IE8 render like IE7 -->
-  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+	<meta property="og:title" content="Poliana | See Through Government"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="https://www.poliana.com"/>
+	<meta property="og:image" content="https://www.poliana.com/images/large.png"/>
+	<meta property="og:site_name" content="Poliana"/>
+	<meta property="og:locale" content="EN_US"/>
+	<meta property="og:description" content="Poliana is a web application that simpliﬁes the legislative system by analyzing and visualizing money’s inﬂuence in politics."/>
 
-  	<!-- Set the viewport width to device width for mobile -->
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  	<title><%= content_for?(:title) ? yield(:title) : "Poliana | See Through Government" %></title>
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+	<%= favicon_link_tag "favicon.png" %>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet" type="text/css">
 
-  	<%= stylesheet_link_tag    "application" %>
+  	<%= stylesheet_link_tag "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
-    </head>
 
-  <body>
+	<!--[if lt IE 9]>
+		<script src="https://solarcdn.googlecode.com/files/html5shiv.min.js"></script>
+	<![endif]-->
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    <div id="user_nav">
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
-          <%= link_to 'Edit profile', edit_user_registration_path %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> |
-          <%= link_to "Login", new_user_session_path %>
-        <% end %>
-    </div>
+		ga('create', 'UA-42980806-1', 'poliana.com');
+		ga('send', 'pageview');
+	</script>
 
-    <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
+	<% landing_page = true %>
+</head>
+<body>
+	<% if landing_page === false %>
+	    <div id="user_nav">
+	        <% if user_signed_in? %>
+	          Logged in as <strong><%= current_user.email %></strong>.
+	          <%= link_to 'Edit profile', edit_user_registration_path %> |
+	          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+	        <% else %>
+	          <%= link_to "Sign up", new_user_registration_path %> |
+	          <%= link_to "Login", new_user_session_path %>
+	        <% end %>
+	    </div>
+
+	    <% flash.each do |name, msg| %>
+	        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	    <% end %>
+	<% end %>
 
     <%= yield %>
 
     <%= javascript_include_tag "application" %>
-    </body>
+</body>
 </html>

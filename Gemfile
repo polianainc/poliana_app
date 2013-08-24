@@ -12,6 +12,9 @@ gem 'compass-rails'
 gem 'zurb-foundation'
 gem 'd3js-rails'
 
+#Mailchimp
+gem 'gibbon'
+
 gem 'devise'
 
 group :development, :test do
@@ -24,9 +27,6 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby, :group => :production
   gem 'uglifier', '>= 1.0.3'
 end
-
-
-
 
 group :development do
 

@@ -7,7 +7,6 @@ class BillsController < ApplicationController
 
     def cache
         @data = MongoWrapper.collection.find("_id" => BSON::ObjectId(params[:id])).to_a.first
-        binding.pry
         respond_with @data
     end
 

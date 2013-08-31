@@ -1,22 +1,21 @@
-var barGraphHeight = 300;
-var barGraphWidth = 380;
-
-var summaryWidth = 960;
-var summaryHeight = 80;
+var barGraphHeight = 300,
+    barGraphWidth = 380,
+    summaryHeight = 80,
+    summaryWidth = 960,
+    legendY = barGraphHeight + summaryHeight + 20,
+    legendHeight = 120,
+    legendWidth = summaryWidth;
 
 var $graph = $("#billIndustry");
+var colors = d3.scale.ordinal()
+        .domain([0,1,2,3,4,5,6,7,8,9])
+        .range(["red", "yellow", "blue", "green", "seagreen", "gray", "purple", "black", "brown", "orange"]);
 
 var initialHTML = '<div class="row">';
 
 initialHTML += '<div class="large-12 columns"><h3>Industry Influence</h3>';
-initialHTML += '<ul class="breadcrumbs">'
-initialHTML += '<li id="overview"> Overview </li>'
-initialHTML += "</ul>"
-initialHTML += '<ul class="social">';
-initialHTML += '<li><a href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href) + '" target="_blank"><span aria-hidden="true" class="icon-facebook"></span></a></li>';
-initialHTML += '<li><a href="https://twitter.com/share?url=' + encodeURIComponent(location.href) + '&text=' + encodeURIComponent(location.href) + '" target="_blank"><span aria-hidden="true" class="icon-twitter"></span></a></li>';
-initialHTML += '<li><a href="http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(location.href) + '&media=' + encodeURIComponent(location.href) + '" target="_blank"><span aria-hidden="true" class="icon-pinterest"></span></a></li>';
-initialHTML += '<li><a href="#" target="_blank"><span aria-hidden="true" class="icon-download"></span></a></li>';
+initialHTML += '<ul class="industryBreadcrumbs">';
+initialHTML += '<li class="overview">Overview</li>';
 initialHTML += '</ul>';
 initialHTML += '</div>';
 
@@ -26,17 +25,20 @@ $graph.append(initialHTML);
 
 $graph.append('<div class="row"><div class="large-12 columns graph"></div></div>');
 
+$(".overview").click(function() {
+    var $lastElem = $(".industryBreadcrumbs li:last-child");
 
-$("#overview").click(function() {
-    transition(data);
-    removeBreadcrumb();
+    if(!$lastElem.hasClass('overview')) {
+        transition(data);
+        removeBreadcrumb($lastElem);
+    }
 });
 
-function removeBreadcrumb() {
-    $("#2").remove();
+function removeBreadcrumb($breadcrumb) {
+    $breadcrumb.remove();
 }
 function addBreadcrumb(data) {
-    $(".breadcrumbs").append('<li id="2">' + data.name + '</li>');
+    $(".industryBreadcrumbs").append('<li>' + data.name + '</li>');
 }
 
 function drawSummaryText(x, y, text, textAnchor,classString, graph) {
@@ -122,7 +124,10 @@ function genYaxis(scale, yAxisLoc) {
     return d3.svg.axis()
             .scale(scale)
             .orient(yAxisLoc)
-            .tickFormat(d3.format("$.2s"));
+            .tickFormat( function(d) { 
+                var f = d3.format('.2s');
+                return '$' + f(d);
+            });
 }
 
 function genX(width) {
@@ -145,8 +150,63 @@ function genGridLines(scale, width, margin) {
     return yGrid;
 }
 
-function genLegend() {
+function genLegend(wrapper, lData, rData, width, height, y) {
 
+    var legend = wrapper.append("g")
+        .attr("class", "legend")
+        .attr("x", 0)
+        .attr("y", y)
+        .attr("height", height)
+        .attr("width", width);
+
+    var legendData = lData.concat(rData)
+    legendData.forEach(function(d, i) {
+        console.log(d.name + " " + i);
+
+        var ly = Math.floor(i/3)*(height/3) + y,
+            x = (i%3)*(width/3);
+        var wrap = legend.append('g')
+            .attr('class', 'key');
+            
+        wrap.append('rect')
+            .attr('y', ly)
+            .attr('x', x)
+            .attr('width', 20)
+            .attr('height', 20)
+            .attr('class', colors(i));
+
+        wrap.append('text')
+            .text(d.name)
+            .attr('y', ly + 18)
+            .attr('x', x + 30);
+    });
+}
+//Adds a clear clickable rectangle for bars which are too small to easily click
+// addClearRect(bars, y(d.mainTotal), x.rangeBand(), rh+30);
+function addClearRect(bars, y, width, height, data) {
+    bars.append("rect")
+        .attr("y", y)
+        .attr("width", width)
+        .attr("height", height)
+        .attr("class", 'clear')
+        .on("click", function(d) {
+            barClick(d);
+        });
+}
+
+function barClick(data) {
+    
+    if(data.mainChildren) {
+        addBreadcrumb(data)
+        transition(data);
+    }
+}
+
+function transitionLegendText(wrapper, lData, rData) {
+    d3.select(".legend")
+        .remove();
+
+    genLegend(svg, lData, rData, legendWidth, legendHeight, legendY);
 }
 
 //Transition to the next layer down (Industries -> Organizations -> Politicians)
@@ -173,16 +233,17 @@ function transition(data) {
     var lSumX = genWinX(width, lSumLength),
         rSumX = genLoseX(width);
 
-    var amountFormat = d3.format("$,");
+    var amountFormat = d3.format(",");
 
-    var winText = amountFormat(lAmount),
-        loseText = amountFormat(rAmount);
+    var winText = "$" + amountFormat(lAmount),
+        loseText = "$" + amountFormat(rAmount);
 
     leftSummaryGraph
         .transition()
         .duration(500)
         .attr("width", lSumLength)
         .attr("x", lSumX);
+
     rightSummaryGraph
         .transition()
         .duration(500)
@@ -192,11 +253,12 @@ function transition(data) {
     d3.select(".winAmount")
         .transition()
         .duration(500)
-        .text(winText)
+        .text(winText);
+
     d3.select(".loseAmount")
         .transition()
         .duration(500)
-        .text(loseText)
+        .text(loseText);
 
     var leftGraph = d3.select(".winGraph").select("g"),
         rightGraph = d3.select(".loseGraph").select("g");
@@ -207,29 +269,45 @@ function transition(data) {
 
     var max = d3.max(lData.concat(rData), function(d) { return d.mainTotal + d.mainTotal/10; });
 
-    lx.domain(lData.map(function(d) { return d.name; }))
-    rx.domain(rData.map(function(d) { return d.name; }))
+    lx.domain(lData.map(function(d) { return d.name; }));
+    rx.domain(rData.map(function(d) { return d.name; }));
     y.domain([0, max]);
 
     var yAxis = genYaxis(y, "left");
     var lxAxis = genXaxis(lx),
         rxAxis = genXaxis(rx);
 
-    leftGraph.select(".y-axis")
+    var lyAxis = leftGraph.select(".y-axis")
         .transition()
-        .duration(500)
+        .attr('opacity', 0)
+        .duration(250);
+
+    lyAxis.transition()
+        .duration(0)
         .call(yAxis);
+
+    lyAxis.transition()
+        .attr('opacity', 1)
+        .duration(250);
 
     leftGraph.select(".x-axis")
         .transition()
         .duration(500)
         .call(lxAxis);
 
-    rightGraph.select(".y-axis")
+    var ryAxis = rightGraph.select(".y-axis")
         .transition()
-        .duration(500)
-        .call(yAxis)
-        .attr("transform", "translate(" + 430 + ",0)");
+        .attr('opacity', 0)
+        .duration(250);
+
+    ryAxis.transition()
+        .duration(0)
+        .call(yAxis);
+
+    ryAxis.transition()
+        .attr("transform", "translate(" + 430 + ",0)")
+        .attr('opacity', 1)
+        .duration(250);
 
     rightGraph.select(".x-axis")
         .transition()
@@ -237,7 +315,7 @@ function transition(data) {
         .call(rxAxis);
 
     //Transition leftGraph data
-    var lRects = leftGraph.selectAll("rect")
+    var lRects = leftGraph.selectAll(".mainBar")
         .data(lData)
         .transition()
         .duration(500)
@@ -249,7 +327,7 @@ function transition(data) {
         });
 
     //transition rightGraph data
-    var rRects = rightGraph.selectAll("rect")
+    var rRects = rightGraph.selectAll(".mainBar")
         .data(rData)
         .transition()
         .duration(500)
@@ -265,10 +343,7 @@ function transition(data) {
     var grid = d3.selectAll(".grid")
         .call(yGrid);
 
-
-    //swap title
-
-    $(".graph-title").text(data.name);
+    transitionLegendText(svg, lData, rData);
 }
 
 function influenceSummary(container, data, winner) {
@@ -300,7 +375,7 @@ function influenceSummary(container, data, winner) {
         .attr("height", height);
 
     //Format for the dollar amount
-    var amountFormat = d3.format("$,");
+    var amountFormat = d3.format(",");
 
     var textMargin = 20;
     var rectHeight = height/1.2;
@@ -314,14 +389,14 @@ function influenceSummary(container, data, winner) {
     drawSummaryBar(loseX, rectHeight, loseLength, graph, "gray loseSummary");
 
     //winAmnt
-    drawSummaryText(20, height/2, amountFormat(data.mainTotal), "begin", "summaryText black winAmount", graph);
+    drawSummaryText(20, height/2, "$" + amountFormat(data.mainTotal), "begin", "summaryText black winAmount", graph);
     //winTitle
     drawSummaryText(width/2 - textMargin, height/2, winTitle, "end", "summaryText summaryTitle black", graph);
 
     drawCheckMark((width/2 - width/10), height/2, graph);
 
     //loseAmnt
-    drawSummaryText(width - textMargin, height/2, amountFormat(data.offTotal), "end", "summaryText black loseAmount", graph);
+    drawSummaryText(width - textMargin, height/2, "$" + amountFormat(data.offTotal), "end", "summaryText black loseAmount", graph);
     //loseTitle
     drawSummaryText(width/2 + textMargin, height/2, loseTitle, "begin", "summaryText summaryTitle black", graph);
 
@@ -371,10 +446,6 @@ function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset, st
         var yAxisTranslation = width;
     }
 
-    var colors = d3.scale.ordinal()
-        .domain([0,1,2,3,4,5,6,7,8,9])
-        .range(["red", "yellow", "blue", "green", "seagreen", "gray", "purple", "black", "brown"]);
-
     var totalWidth = width + margin.left + margin.right,
         totalHeight = height + margin.top + margin.bottom;
 
@@ -404,10 +475,11 @@ function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset, st
     graph.append("g")
         .attr("class", "y-axis")
         .attr("transform", "translate(" + yAxisTranslation + ", 0)")
+        .attr('opacity', 1)
         .call(yAxis);
 
     //Grid lines
-	var yGrid = genGridLines(y, width, 0);
+    var yGrid = genGridLines(y, width, 0);
 
     graph.append("g")
         .attr("class", "grid")
@@ -420,6 +492,9 @@ function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset, st
         .attr("class", function(d,i){ return "bar" })
         .attr("transform", function(d, i) {
             return "translate(" + x(i) + ",0)";
+        })
+        .attr("height", function(d) {
+            return height - y(d.mainTotal);
         });
 
     bars.append("rect")
@@ -428,16 +503,17 @@ function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset, st
         })
         .attr("width", x.rangeBand())
         .attr("height", function(d) {
-            return height - y(d.mainTotal);
+            var rh = height - y(d.mainTotal);
+            if(rh < 20) {
+                addClearRect(bars, y(d.mainTotal)-30, x.rangeBand(), rh+30, d);
+            }
+            return rh;
         })
         .attr("class", function(d,i) {
-            return colors(i + startIndex);
+            return "mainBar " + colors(i + startIndex);
         })
         .on("click", function(d) {
-            if(d.mainChildren) {
-                addBreadcrumb(d)
-                transition(d);
-            }
+            barClick(d);
         });
 }
 
@@ -450,24 +526,25 @@ var svg = d3.select(".graph").append("svg")
 
 var data;
 
+$.getJSON(
+    "/bills/1",
+    null,
+    function(json) {
+        var billMetadata = json;
+        $.getJSON(
+            "/bills/cache/"+ billMetadata.data_id,
+            null,
+            function(bill) {
+                data = bill.data;
+                var winIndustries = bill.data.mainChildren;
+                var loseIndustries = bill.data.offChildren;
 
-d3.json("corrected_bill_data.json", function(error, root) {
-    data = root.data;
-    var winIndustries = root.data.mainChildren;
-    var loseIndustries = root.data.offChildren;
+                var max = d3.max(winIndustries.concat(loseIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
 
-    var max = d3.max(winIndustries.concat(loseIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
+                influenceBar(svg, mostLeastSort, winIndustries, "left", max, 0, 80, 0);
+                influenceBar(svg, leastMostSort, loseIndustries, "right", max, 520, 80, 5);
+                influenceSummary(svg, bill.data, bill.winner);
 
-    influenceBar(svg, mostLeastSort, winIndustries, "left", max, 0, 80, 0);
-    influenceBar(svg, leastMostSort, loseIndustries, "right", max, 520, 80, 5);
-    influenceSummary(svg, root.data, root.winner);
-
-    var legend = svg.append("g")
-        .attr("class", "legend")
-        .attr("x", 0)
-        .attr("y", barGraphHeight + summaryHeight)
-        .attr("height", 120)
-        .attr("width", summaryWidth);
-
-
+                var legend = genLegend(svg, data.mainChildren, data.offChildren, legendWidth, legendHeight, legendY);
+    });
 });

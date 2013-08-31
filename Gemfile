@@ -10,7 +10,6 @@ gem 'congress'
 gem 'jquery-rails'
 gem 'compass-rails'
 gem 'zurb-foundation'
-gem 'd3js-rails'
 
 #Mailchimp
 gem 'gibbon'

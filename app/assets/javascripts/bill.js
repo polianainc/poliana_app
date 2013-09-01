@@ -188,9 +188,9 @@ function addClearRect(bars, y, width, height, data) {
         .attr("y", y)
         .attr("width", width)
         .attr("height", height)
-        .attr("class", 'clear')
+        .attr("class", 'clear hiddenRect')
         .on("click", function(d) {
-            barClick(d);
+            barClick(data);
         });
 }
 
@@ -211,6 +211,8 @@ function transitionLegendText(wrapper, lData, rData) {
 
 //Transition to the next layer down (Industries -> Organizations -> Politicians)
 function transition(data) {
+
+    d3.selectAll(".hiddenRect").remove();
 
     if(data.winner == true) {
         var lData = data.mainChildren.sort(mostLeastSort),
@@ -314,6 +316,7 @@ function transition(data) {
         .duration(500)
         .call(rxAxis);
 
+
     //Transition leftGraph data
     var lRects = leftGraph.selectAll(".mainBar")
         .data(lData)
@@ -324,6 +327,13 @@ function transition(data) {
         })
         .attr("height", function(d) {
             return barGraphHeight - y(d.mainTotal);    
+        })
+        .each("end", function(d){
+            var rect = d3.select(this);
+
+            if(parseFloat(rect.attr('height')) < 30) {
+                addClearRect(d3.select(this.parentNode), y(d.mainTotal)-30, 67, barGraphHeight - y(d.mainTotal)+30, d);
+            }
         });
 
     //transition rightGraph data
@@ -336,6 +346,13 @@ function transition(data) {
         })
         .attr("height", function(d) {
             return barGraphHeight - y(d.mainTotal);    
+        })
+        .each("end", function(d){
+            var rect = d3.select(this);
+
+            if(parseFloat(rect.attr('height')) < 30) {
+                addClearRect(d3.select(this.parentNode), y(d.mainTotal)-30, 67, barGraphHeight - y(d.mainTotal)+30, d);
+            }
         });
 
     //Grid lines
@@ -526,25 +543,29 @@ var svg = d3.select(".graph").append("svg")
 
 var data;
 
-$.getJSON(
-    "/bills/1",
-    null,
-    function(json) {
-        var billMetadata = json;
-        $.getJSON(
-            "/bills/cache/"+ billMetadata.data_id,
-            null,
-            function(bill) {
-                data = bill.data;
-                var winIndustries = bill.data.mainChildren;
-                var loseIndustries = bill.data.offChildren;
+grabBill(1);
 
-                var max = d3.max(winIndustries.concat(loseIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
+function grabBill(id) {
+    $.getJSON(
+        "/bills/1",
+        null,
+        function(json) {
+            var billMetadata = json;
+            $.getJSON(
+                "/bills/cache/"+ billMetadata.data_id,
+                null,
+                function(bill) {
+                    data = bill.data;
+                    var winIndustries = bill.data.mainChildren;
+                    var loseIndustries = bill.data.offChildren;
 
-                influenceBar(svg, mostLeastSort, winIndustries, "left", max, 0, 80, 0);
-                influenceBar(svg, leastMostSort, loseIndustries, "right", max, 520, 80, 5);
-                influenceSummary(svg, bill.data, bill.winner);
+                    var max = d3.max(winIndustries.concat(loseIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
 
-                var legend = genLegend(svg, data.mainChildren, data.offChildren, legendWidth, legendHeight, legendY);
+                    influenceBar(svg, mostLeastSort, winIndustries, "left", max, 0, 80, 0);
+                    influenceBar(svg, leastMostSort, loseIndustries, "right", max, 520, 80, 5);
+                    influenceSummary(svg, bill.data, bill.winner);
+
+                    var legend = genLegend(svg, data.mainChildren, data.offChildren, legendWidth, legendHeight, legendY);
+        });
     });
-});
+}

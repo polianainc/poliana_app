@@ -15,6 +15,7 @@ class BillsController < ApplicationController
     end
 
     def scrape_congress
+
     end
 
 end

@@ -7,7 +7,7 @@ class MongoWrapper
             return @collection;
         else
             client = MongoClient.new(MONGO_CONFIG['host'], MONGO_CONFIG['port'])
-            db = client.db("analytics")
+            db = client.db(MONGO_CONFIG['db'])
             if MONGO_CONFIG['username']
                 db.authenticate(MONGO_CONFIG['username'], MONGO_CONFIG['password'])
             end

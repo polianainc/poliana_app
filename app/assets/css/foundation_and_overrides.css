@@ -44,6 +44,16 @@
   fill: #811a96;
   color: #fafafa; }
 
+.brown {
+  background: #663300;
+  fill: #663300;
+  color: #663300; }
+
+.orange {
+  background: #e89900;
+  fill: #e89900;
+  color: #e89900; }
+
 *,
 *:before,
 *:after {

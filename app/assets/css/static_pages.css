@@ -43,6 +43,16 @@
   fill: #811a96;
   color: #fafafa; }
 
+.brown {
+  background: #663300;
+  fill: #663300;
+  color: #663300; }
+
+.orange {
+  background: #e89900;
+  fill: #e89900;
+  color: #e89900; }
+
 body {
   -webkit-animation: fadein 0.6s;
   -moz-animation: fadein 0.6s;
@@ -229,12 +239,9 @@ form {
     font-size: 1.25em; }
     .teamMember h4 b {
       display: block; }
-  .teamMember p {
-    font-size: 0.85em; }
-    @media screen and (max-width: 767px) {
-      .teamMember p {
-        font-size: 0.75em;
-        margin-bottom: 20px; } }
+  @media screen and (max-width: 767px) {
+    .teamMember p {
+      margin-bottom: 20px; } }
 
 ul {
   list-style-type: none;

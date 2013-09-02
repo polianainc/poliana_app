@@ -2,8 +2,8 @@ var barGraphHeight = 300,
     barGraphWidth = 380,
     summaryHeight = 80,
     summaryWidth = 960,
-    legendY = barGraphHeight + summaryHeight + 20,
-    legendHeight = 120,
+    legendY = barGraphHeight + summaryHeight + 40,
+    legendHeight = 160,
     legendWidth = summaryWidth;
 
 var $graph = $("#billIndustry");
@@ -163,8 +163,8 @@ function genLegend(wrapper, lData, rData, width, height, y) {
     legendData.forEach(function(d, i) {
         console.log(d.name + " " + i);
 
-        var ly = Math.floor(i/3)*(height/3) + y,
-            x = (i%3)*(width/3);
+        var ly = Math.floor(i%5)*(height/5) + y,
+            x = Math.floor(i/5)*(width/2) + 30;
         var wrap = legend.append('g')
             .attr('class', 'key');
             

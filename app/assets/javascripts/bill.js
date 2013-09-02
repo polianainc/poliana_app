@@ -2,7 +2,7 @@ var barGraphHeight = 300,
     barGraphWidth = 380,
     summaryHeight = 80,
     summaryWidth = 960,
-    legendY = barGraphHeight + summaryHeight + 40,
+    legendY = barGraphHeight + summaryHeight + 50,
     legendHeight = 160,
     legendWidth = summaryWidth;
 
@@ -21,6 +21,8 @@ initialHTML += '</div>';
 
 initialHTML += '</div>';
 
+
+
 $graph.append(initialHTML);
 
 $graph.append('<div class="row"><div class="large-12 columns graph"></div></div>');
@@ -32,6 +34,10 @@ $(".overview").click(function() {
         transition(data);
         removeBreadcrumb($lastElem);
     }
+});
+
+$("form").on('change', function(f) {
+    $("form > div > .current")
 });
 
 function removeBreadcrumb($breadcrumb) {
@@ -150,7 +156,9 @@ function genGridLines(scale, width, margin) {
     return yGrid;
 }
 
-function genLegend(wrapper, lData, rData, width, height, y) {
+function genLegend(lData, rData, width, height, y) {
+
+    var wrapper = d3.select('svg');
 
     var legend = wrapper.append("g")
         .attr("class", "legend")
@@ -202,11 +210,10 @@ function barClick(data) {
     }
 }
 
-function transitionLegendText(wrapper, lData, rData) {
+function transitionLegendText(lData, rData) {
     d3.select(".legend")
         .remove();
-
-    genLegend(svg, lData, rData, legendWidth, legendHeight, legendY);
+    genLegend(lData, rData, legendWidth, legendHeight, legendY);
 }
 
 //Transition to the next layer down (Industries -> Organizations -> Politicians)
@@ -360,12 +367,14 @@ function transition(data) {
     var grid = d3.selectAll(".grid")
         .call(yGrid);
 
-    transitionLegendText(svg, lData, rData);
+    transitionLegendText(lData, rData);
 }
 
-function influenceSummary(container, data, winner) {
+function influenceSummary(data, winner) {
     var width = 960,
         height = 80;
+
+    var container = d3.select('svg');
 
     var winData,
         loseData,
@@ -426,9 +435,11 @@ function influenceSummary(container, data, winner) {
         .attr("y2", 400);
 }
 
-function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset, startIndex) {
+function influenceBar(sort, data, yAxisLoc, max, xOffset, yOffset, startIndex) {
 
     //Layout information
+
+    var container = d3.select('svg');
 
     var width = barGraphWidth,
         height = barGraphHeight;
@@ -537,35 +548,35 @@ function influenceBar(container, sort, data, yAxisLoc, max, xOffset, yOffset, st
 var width = 960,
     height = 600;
 
-var svg = d3.select(".graph").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-
 var data;
 
 grabBill(1);
 
 function grabBill(id) {
     $.getJSON(
-        "/bills/1",
+        "/bills/"+ id + ".json",
         null,
-        function(json) {
-            var billMetadata = json;
+        function(billMetadata) {
             $.getJSON(
-                "/bills/cache/"+ billMetadata.data_id,
+                "/bills/cache/"+ billMetadata.data_id + ".json",
                 null,
                 function(bill) {
+                    d3.select("svg").remove();
+                    d3.select(".graph").append("svg")
+                        .attr("width", width)
+                        .attr("height", height);
+
                     data = bill.data;
                     var winIndustries = bill.data.mainChildren;
                     var loseIndustries = bill.data.offChildren;
 
                     var max = d3.max(winIndustries.concat(loseIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
 
-                    influenceBar(svg, mostLeastSort, winIndustries, "left", max, 0, 80, 0);
-                    influenceBar(svg, leastMostSort, loseIndustries, "right", max, 520, 80, 5);
-                    influenceSummary(svg, bill.data, bill.winner);
+                    influenceBar(mostLeastSort, winIndustries, "left", max, 0, 80, 0);
+                    influenceBar(leastMostSort, loseIndustries, "right", max, 520, 80, 5);
+                    influenceSummary(bill.data, bill.winner);
 
-                    var legend = genLegend(svg, data.mainChildren, data.offChildren, legendWidth, legendHeight, legendY);
+                    var legend = genLegend(data.mainChildren, data.offChildren, legendWidth, legendHeight, legendY);
         });
     });
 }

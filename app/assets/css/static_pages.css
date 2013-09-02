@@ -104,7 +104,8 @@ section {
     section.black h3 {
       text-align: left; }
     section.black input[type=text], section.black input[type=email] {
-      padding: 20px 10px; }
+      height: 50px;
+      text-indent: 5px; }
       section.black input[type=text]:focus, section.black input[type=email]:focus {
         border: 3px solid #61d2d6; }
     section.black input[type=submit] {
@@ -173,7 +174,8 @@ form {
       background: white;
       border: 3px solid #e6e6e6;
       margin-bottom: 20px;
-      padding: 20px 10px; }
+      height: 50px;
+      text-indent: 5px; }
       form input[type=text].blue:focus, form input[type=email].blue:focus {
         border: 3px solid #61d2d6; }
       form input[type=text].red:focus, form input[type=email].red:focus {

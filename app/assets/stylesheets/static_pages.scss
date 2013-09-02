@@ -49,7 +49,8 @@ section {
 		h3 { text-align: left; }
 		input {
 			&[type=text], &[type=email] {
-				padding: 20px 10px;
+				height: 50px;
+				text-indent: 5px;
 				&:focus { border: 3px solid $blue; }
 			}
 			&[type=submit] {
@@ -121,7 +122,8 @@ form {
 			background: $abs_white;
 			border: 3px solid darken($abs_white, 10%);
 			margin-bottom: 20px;
-			padding: 20px 10px;
+			height: 50px;
+			text-indent: 5px;
 			&.blue:focus { border: 3px solid $blue; }
 			&.red:focus { border: 3px solid $red; }
 			&:hover { border: 3px solid $gray; }

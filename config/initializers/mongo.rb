@@ -1,0 +1,1 @@
+MONGO_CONFIG = YAML.load_file("#{::Rails.root}/config/mongo.yml")[::Rails.env]

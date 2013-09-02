@@ -1,0 +1,9 @@
+development:
+    host: localhost
+    port: 27017
+
+production:
+    host: ds035428.mongolab.com
+    port: 354
+    username: rails
+    password: N0amCh0mksy1!

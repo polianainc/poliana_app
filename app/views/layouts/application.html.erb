@@ -11,8 +11,8 @@
 
 	<meta property="og:title" content="Poliana | See Through Government"/>
 	<meta property="og:type" content="website"/>
-	<meta property="og:url" content="https://www.poliana.com"/>
-	<meta property="og:image" content="https://www.poliana.com/images/large.png"/>
+	<meta property="og:url" content="<%= request.original_url %>"/>
+	<meta property="og:image" content="https://www.poliana.com/assets/landing/large.png"/>
 	<meta property="og:site_name" content="Poliana"/>
 	<meta property="og:locale" content="EN_US"/>
 	<meta property="og:description" content="Poliana is a web application that simpliﬁes the legislative system by analyzing and visualizing money’s inﬂuence in politics."/>
@@ -24,6 +24,7 @@
 
   	<%= stylesheet_link_tag "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
+	<%= javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js" %>
     <%= csrf_meta_tags %>
 
 	<!--[if lt IE 9]>

@@ -7,37 +7,20 @@ var barGraphHeight = 300,
     legendWidth = summaryWidth;
 
 var $graph = $("#billIndustry");
+
 var colors = d3.scale.ordinal()
         .domain([0,1,2,3,4,5,6,7,8,9])
         .range(["red", "yellow", "blue", "green", "seagreen", "gray", "purple", "black", "brown", "orange"]);
 
-var initialHTML = '<div class="row">';
-
-initialHTML += '<div class="large-12 columns"><h3>Industry Influence</h3>';
-initialHTML += '<ul class="industryBreadcrumbs">';
-initialHTML += '<li class="overview">Overview</li>';
-initialHTML += '</ul>';
-initialHTML += '</div>';
-
-initialHTML += '</div>';
-
-
-
-$graph.append(initialHTML);
-
 $graph.append('<div class="row"><div class="large-12 columns graph"></div></div>');
 
-$(".overview").click(function() {
+$(document).on('click', '.overview', function() {
     var $lastElem = $(".industryBreadcrumbs li:last-child");
 
     if(!$lastElem.hasClass('overview')) {
         transition(data);
         removeBreadcrumb($lastElem);
     }
-});
-
-$("form").on('change', function(f) {
-    $("form > div > .current")
 });
 
 function removeBreadcrumb($breadcrumb) {
@@ -169,7 +152,7 @@ function genLegend(lData, rData, width, height, y) {
 
     var legendData = lData.concat(rData)
     legendData.forEach(function(d, i) {
-        console.log(d.name + " " + i);
+        // console.log(d.name + " " + i);
 
         var ly = Math.floor(i%5)*(height/5) + y,
             x = Math.floor(i/5)*(width/2) + 30;
@@ -196,7 +179,7 @@ function addClearRect(bars, y, width, height, data) {
         .attr("y", y)
         .attr("width", width)
         .attr("height", height)
-        .attr("class", 'clear hiddenRect')
+        .attr("class", 'transparent hiddenRect')
         .on("click", function(d) {
             barClick(data);
         });
@@ -550,21 +533,39 @@ var width = 960,
 
 var data;
 
-grabBill(1);
+// grabBill(1);
 
 function grabBill(id) {
     $.getJSON(
         "/bills/"+ id + ".json",
-        null,
         function(billMetadata) {
             $.getJSON(
                 "/bills/cache/"+ billMetadata.data_id + ".json",
-                null,
                 function(bill) {
+					$('.mainInfo').remove();
+					
+					var initialHTML = '<div class="row mainInfo">';
+
+					initialHTML += '<div class="large-12 columns"><h2 class="aligncenter">' + billMetadata.title + '</h2>';
+					initialHTML += '<p><b>Sponsored by:</b> <i>' + billMetadata.sponsor_name + '</i><br><b>Result:</b> <i>' + billMetadata.result + '</i><br>' + billMetadata.summary + '</p></div>';
+					initialHTML += '<div class="large-12 columns"><h3 class="alignleft">Industry Influence</h3>';
+					initialHTML += '<ul class="industryBreadcrumbs">';
+					initialHTML += '<li class="overview">Overview</li>';
+					initialHTML += '</ul>';
+					initialHTML += '</div>';
+
+					initialHTML += '</div>';
+
+					$graph.prepend(initialHTML);
+					
                     d3.select("svg").remove();
                     d3.select(".graph").append("svg")
                         .attr("width", width)
-                        .attr("height", height);
+                        .attr("height", height)
+						.attr("viewBox", "0 0 " + width + " " + height)
+						.attr("preserveAspectRatio", "xMidYMid");
+						
+					$graph.hide();
 
                     data = bill.data;
                     var winIndustries = bill.data.mainChildren;
@@ -577,6 +578,22 @@ function grabBill(id) {
                     influenceSummary(bill.data, bill.winner);
 
                     var legend = genLegend(data.mainChildren, data.offChildren, legendWidth, legendHeight, legendY);
+
+					$graph.fadeIn(250);
         });
     });
 }
+
+$('#billSelector').on('change', function() {
+	$graph.fadeOut(250);
+	
+	grabBill($(this).val());
+});
+
+$(window).on("resize", function() {
+    var targetWidth = $('.graph').width();
+	var aspect = targetWidth / $('.graph').height();
+	
+    $('.graph').attr("width", targetWidth);
+    $('.graph').attr("height", targetWidth / aspect);
+});

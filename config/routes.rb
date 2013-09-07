@@ -6,7 +6,7 @@ PolianaApp::Application.routes.draw do
   get "static_pages/policy"
   get "static_pages/terms"
   get "static_pages/landing"
-  get "mailchimpSignup", to: "static_pages#mailchimpSignup"
+  get "mailchimp_signup", to: "static_pages#mailchimp_signup"
 
   get "bills/scrape", to: 'bills#scrape_congress'
   get "investors", to: 'static_pages#investors'

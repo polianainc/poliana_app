@@ -10,6 +10,11 @@ gem 'congress'
 gem 'jquery-rails'
 gem 'compass-rails'
 gem 'zurb-foundation'
+gem 'rack-mini-profiler'
+gem 'omniauth'
+gem 'omniauth-twitter'
+
+gem 'figaro'
 
 #Mailchimp
 gem 'gibbon'
@@ -18,6 +23,11 @@ gem 'devise'
 
 group :development, :test do
 	gem 'rspec-rails', '2.11.0'
+    gem 'spork-rails', github: 'sporkrb/spork-rails'
+    gem 'guard-spork', '1.5.0'
+    gem 'childprocess', '0.3.6'
+    gem 'guard-rspec'
+    gem 'growl'
 	gem 'sqlite3'
 end
 

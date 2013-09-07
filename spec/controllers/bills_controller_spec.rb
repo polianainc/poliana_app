@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe BillController do
+describe BillsController do
 
-  describe "GET 'show'" do
+  describe "GET 'index'" do
     it "returns http success" do
-      get 'show'
+      get 'index'
       response.should be_success
     end
   end

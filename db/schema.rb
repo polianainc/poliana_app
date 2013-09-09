@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130810191442) do
+ActiveRecord::Schema.define(:version => 20130909204706) do
 
   create_table "bills", :force => true do |t|
     t.text     "summary"
@@ -36,9 +36,15 @@ ActiveRecord::Schema.define(:version => 20130810191442) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.boolean  "has_facebook"
+    t.boolean  "has_twitter"
+    t.string   "facebook_id"
+    t.string   "twitter_id"
+    t.string   "token"
+    t.string   "token_secret"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["email", "has_facebook", "has_twitter", "facebook_id", "twitter_id"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

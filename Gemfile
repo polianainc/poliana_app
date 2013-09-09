@@ -13,6 +13,7 @@ gem 'zurb-foundation'
 gem 'rack-mini-profiler'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 gem 'figaro'
 

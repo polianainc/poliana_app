@@ -3,12 +3,17 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    attr_accessible :email, :password, :password_confirmation, :remember_me
+    attr_accessible :email, :password, :password_confirmation, :remember_me, :invitation_id
 
     after_initialize :setup_user
 
     validate :token_must_be_present_for_social_sign_ins
 
+    has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
+    belongs_to :invitation
+
+    #creates a user from the auth information
+    
     def self.from_omniauth(auth)
         where("#{auth.provider}_id".to_sym => auth.uid).first_or_create do |user|
             user["has_#{auth.provider}"] = true
@@ -18,6 +23,8 @@ class User < ActiveRecord::Base
             user.token_secret = auth.credentials.token_secret
         end
     end
+
+    #allows devise to create a new user from a session so that it can refresh the signup page in the event of an error
 
     def self.new_with_session(params, session)
         if session["devise.user_attributes"]
@@ -29,6 +36,8 @@ class User < ActiveRecord::Base
             super
         end
     end
+
+    #devise overrides for social sign on
 
     def has_social_account?
         has_facebook || has_twitter
@@ -42,6 +51,8 @@ class User < ActiveRecord::Base
         super if !has_social_account?
     end
 
+    #allows users with social sign on to be edited without a password
+
     def update_with_password(params, *options)
         if encrypted_password.blank?
             update_attributes(params, *options)
@@ -50,9 +61,24 @@ class User < ActiveRecord::Base
         end
     end
 
+    #beta methods
+
+    def invitation_key
+        invitation.beta_key if invitation
+    end
+
+    def invitation_key=(key)
+        self.invitation = Invitation.find_by_beta_key(key)
+    end
+
+    private
+
     def setup_user
+        #upon creation, user cannot have social sign on
         has_facebook = false
         has_twitter = false
+        #upon creation, user gets 5 beta invites
+        invitations_left = 5
     end
 
     def token_must_be_present_for_social_sign_ins

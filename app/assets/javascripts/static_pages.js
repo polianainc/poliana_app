@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('form').on('submit', function(event) {
+	$('.mailchimp-form').on('submit', function(event) {
 		event.preventDefault();
 		
 		var $form = $(this);

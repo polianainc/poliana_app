@@ -20,6 +20,14 @@ describe User do
     it { should respond_to(:email) }
     it { should be_valid }
 
+    describe "after saving" do
+        before { @user.save }
+
+        it "should have invitation id" do
+            @user.invitation_id.should_not be_nil
+        end
+    end
+
     describe "when email is not present and they don't have social accounts" do
         before { @user.email = "" }
         it { should_not be_valid }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130909204706) do
+ActiveRecord::Schema.define(:version => 20130910163346) do
 
   create_table "bills", :force => true do |t|
     t.text     "summary"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20130909204706) do
     t.string   "result"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "sender_id"
+    t.string   "recipient_email"
+    t.string   "beta_key"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -42,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20130909204706) do
     t.string   "twitter_id"
     t.string   "token"
     t.string   "token_secret"
+    t.integer  "invitation_key"
+    t.integer  "invitations_left"
   end
 
   add_index "users", ["email", "has_facebook", "has_twitter", "facebook_id", "twitter_id"], :name => "index_users_on_email", :unique => true

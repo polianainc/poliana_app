@@ -21,6 +21,8 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.attr_accessible_role { :admin }
+
   # If you want to track changes on your models:
   # config.audit_with :history, 'User'
 

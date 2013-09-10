@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    attr_accessible :email, :password, :password_confirmation, :remember_me, :invitation_id
+    attr_accessible :email, :password, :password_confirmation, :remember_me, :invitation_id, :as => [:default, :admin]
+    attr_accessible :invitations_left, :as => :admin
 
     after_initialize :setup_user
 

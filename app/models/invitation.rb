@@ -20,7 +20,7 @@ class Invitation < ActiveRecord::Base
 
     def sender_has_invitations
         unless sender.invitations_left > 0
-            errors.add_to_base "You have ran out of invitations, email us for more!"
+            errors.add(:base, "You have ran out of invitations, email us for more!")
         end
     end
 

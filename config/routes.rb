@@ -1,5 +1,10 @@
 PolianaApp::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  resources :invitations
+
+
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"},
               :controllers => { omniauth_callbacks: "auth_callbacks" }
 

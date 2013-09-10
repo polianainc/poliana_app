@@ -1,21 +1,19 @@
 class User < ActiveRecord::Base
-    # Include default devise modules. Others available are:
-    # :token_authenticatable, :confirmable,
-    # :lockable, :timeoutable and :omniauthable
+
     devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    # Setup accessible (or protected) attributes for your model
     attr_accessible :email, :password, :password_confirmation, :remember_me
 
-    # attr_accessible :title, :body
+    after_initialize :setup_user
+
+    validate :token_must_be_present_for_social_sign_ins
 
     def self.from_omniauth(auth)
-        binding.pry
         where("#{auth.provider}_id".to_sym => auth.uid).first_or_create do |user|
             user["has_#{auth.provider}"] = true
             user["#{auth.provider}_id"] = auth.uid
-            user.email = auth.info.email
+            user.email = auth.info.email if auth.info.email
             user.token = auth.credentials.token
             user.token_secret = auth.credentials.token_secret
         end
@@ -49,6 +47,17 @@ class User < ActiveRecord::Base
             update_attributes(params, *options)
         else
             super
+        end
+    end
+
+    def setup_user
+        has_facebook = false
+        has_twitter = false
+    end
+
+    def token_must_be_present_for_social_sign_ins
+        if(has_social_account? && token.blank?)
+            errors.add(:token, "Cannot be blank if you have a social account")
         end
     end
 end

@@ -15,10 +15,13 @@ RailsAdmin.config do |config|
   config.current_user_method { current_user } # auto-generated
   config.authenticate_with {}
   config.authorize_with do
-    is_admin = ADMIN_EMAILS.include?(current_user.email)
     if current_user
-      redirect_to main_app.new_user_session_url unless is_admin 
+      is_admin = ADMIN_EMAILS.include?(current_user.email)
+      redirect_to main_app.new_user_session_url unless is_admin
+    else
+      redirect_to main_app.new_user_session_url unless is_admin
     end
+
   end
 
   config.attr_accessible_role { :admin }

@@ -4,7 +4,6 @@ PolianaApp::Application.routes.draw do
 
   resources :invitations
 
-
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"},
               :controllers => { omniauth_callbacks: "auth_callbacks" }
 
@@ -19,6 +18,8 @@ PolianaApp::Application.routes.draw do
   get "demo", to: 'bills#index'
   get "bills/:id", to: 'bills#metadata'
   get "bills/cache/:id", to: 'bills#cache'
+
+  get "invitations/new", to: "invitations#new"
 
   root :to => "static_pages#landing"
 end

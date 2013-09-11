@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    attr_accessible :email, :password, :password_confirmation, :remember_me, :invitation_id, :as => [:default, :admin]
+    attr_accessible :email, :password, :password_confirmation, :remember_me, :invitation_key, :as => [:default, :admin]
     attr_accessible :invitations_left, :as => :admin
 
-    after_initialize :setup_user
+    before_create :setup_user
 
     validate :token_must_be_present_for_social_sign_ins
 
@@ -78,10 +78,10 @@ class User < ActiveRecord::Base
 
     def setup_user
         #upon creation, user cannot have social sign on
-        has_facebook = false
-        has_twitter = false
+        self.has_facebook = false
+        self.has_twitter = false
         #upon creation, user gets 5 beta invites
-        invitations_left = 5
+        self.invitations_left = 5
     end
 
     def token_must_be_present_for_social_sign_ins

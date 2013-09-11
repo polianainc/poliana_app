@@ -1,7 +1,9 @@
 development:
-    host: localhost
-    port: 27017
-    db: analytics
+    host: ds035428.mongolab.com
+    port: 35428
+    db: processing_cache
+    username: rails
+    password: N0amCh0msky1!
 
 production:
     host: ds035428.mongolab.com

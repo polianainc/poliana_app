@@ -204,7 +204,7 @@ function transition(data) {
 
     d3.selectAll(".hiddenRect").remove();
 
-    if(data.winner == true) {
+    if(data.winner == true || data.winner == undefined) {
         var lData = data.mainChildren.sort(mostLeastSort),
             rData = data.offChildren.sort(leastMostSort),
             lAmount = data.mainTotal;

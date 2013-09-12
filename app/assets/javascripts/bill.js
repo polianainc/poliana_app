@@ -1,3 +1,17 @@
+function setCookie(e,t,n){var r=new Date;r.setDate(r.getDate()+n);var i=escape(t)+(n==null?"":"; expires="+r.toUTCString());document.cookie=e+"="+i}function getCookie(e){var t=document.cookie;var n=t.indexOf(" "+e+"=");if(n==-1){n=t.indexOf(e+"=")}if(n==-1){t=null}else{n=t.indexOf("=",n)+1;var r=t.indexOf(";",n);if(r==-1){r=t.length}t=unescape(t.substring(n,r))}return t}
+
+var tour = getCookie("tour");
+
+if(tour != "completed") {
+	$(document).foundation('joyride', 'start');
+	setCookie("tour", "completed", 365);
+}
+
+$('#joyride-2').on('click', function() {
+	$(document).foundation('joyride', 'end');
+	$('.joyride-tip-guide[data-index="1"] .joyride-next-tip').trigger('click');
+});
+
 var barGraphHeight = 300,
     barGraphWidth = 380,
     summaryHeight = 80,
@@ -31,12 +45,23 @@ function addBreadcrumb(data) {
 }
 
 function drawSummaryText(x, y, text, textAnchor, classString, graph) {
-    graph.append("text")
-        .attr("x", x)
-        .attr("y", y)
-        .attr("class", classString)
-        .attr("text-anchor", textAnchor)
-        .text(text);
+	if(classString.indexOf('summaryWinnerTitle') != -1) {
+	    graph.append("text")
+	        .attr("x", x)
+	        .attr("y", y)
+	        .attr("class", classString)
+	        .attr("text-anchor", textAnchor)
+			.attr("id", "joyride-5")
+	        .text(text);
+	}
+	else {
+	    graph.append("text")
+	        .attr("x", x)
+	        .attr("y", y)
+	        .attr("class", classString)
+	        .attr("text-anchor", textAnchor)
+	        .text(text);
+	}
 }
 
 function drawSummaryBar(begX, rectHeight, length, graph, color) {
@@ -215,7 +240,6 @@ function transitionLegendText(lData, rData) {
 
 //Transition to the next layer down (Industries -> Organizations -> Politicians)
 function transition(data) {
-
     d3.selectAll(".hiddenRect").remove();
 
     if(data.winner == true || data.winner == undefined) {
@@ -426,7 +450,7 @@ function influenceSummary(data, winner) {
     //winAmnt
     drawSummaryText(20, height/2, "$" + amountFormat(data.mainTotal), "begin", "summaryText black winAmount", graph);
     //winTitle
-    drawSummaryText(width/2 - textMargin, height/2, winTitle, "end", "summaryText summaryTitle black", graph);
+    drawSummaryText(width/2 - textMargin, height/2, winTitle, "end", "summaryText summaryTitle black summaryWinnerTitle", graph);
 
     drawCheckMark((width/2 - width/10), height/2, graph);
 
@@ -535,6 +559,7 @@ function influenceBar(sort, data, yAxisLoc, max, xOffset, yOffset, startIndex) {
         });
 
     bars.append("rect")
+		.attr("id", function(d, i) { if(i == 1) { return "joyride-6"; } })
         .attr("y", function(d) {
             return y(d.mainTotal);
         })
@@ -561,54 +586,59 @@ var data;
 
 // grabBill(1);
 
+var numInteractions = 0;
+
 function grabBill(id) {
-    $.getJSON(
-        "/bills/"+ id + ".json",
-        function(billMetadata) {
-            $.getJSON(
-                "/bills/cache/"+ billMetadata.data_id + ".json",
-                function(bill) {
-					$('.mainInfo').remove();
+    $.getJSON( "/bills/"+ id + ".json", function(billMetadata) {
+         $.getJSON("/bills/cache/"+ billMetadata.data_id + ".json",function(bill) {
+			$('.mainInfo').remove();
+	
+			var initialHTML = '<div class="row mainInfo"><hr>';
+
+			initialHTML += '<div class="large-12 columns" id="joyride-3"><h2 class="alignleft">' + billMetadata.title + '</h2>';
+			initialHTML += '<p><b>Sponsored by:</b> <i>' + billMetadata.sponsor_name + '</i><br><b>Result:</b> <i>' + billMetadata.result + '</i><br>' + billMetadata.summary + '</p></div>';
+			initialHTML += '<div class="large-6 small-12 columns"><h3 class="alignleft" id="joyride-4">Industry Influence</h3></div><div class="large-6 small-12 large-uncentered small-centered columns"><ul class="sponsors inline-list"><li><a href="http://www.opensecrets.org/" target="_blank"><img src="/assets/landing/crp.png" class="miniLogo" alt="Center for Responsive Politics"></a></li><li><a href="http://www.sunlightfoundation.com/" target="_blank"><img src="/assets/landing/sunlight.png" class="miniLogo" alt="Sunlight Foundation"></a></li></ul></div>';
+			initialHTML += '<div class="large-12 columns"><ul class="industryBreadcrumbs" id="joyride-7">';
+			initialHTML += '<li class="overview">Overview</li>';
+			initialHTML += '</ul>';
+			initialHTML += '</div>';
+
+			initialHTML += '</div>';
+
+			$graph.prepend(initialHTML);
+	
+			d3.select("svg").remove();
+			d3.select(".graph").append("svg")
+			    .attr("width", width)
+			    .attr("height", height)
+				.attr("viewBox", "0 0 " + width + " " + height)
+				.attr("preserveAspectRatio", "xMidYMid");
+		
+			$graph.hide();
+
+            data = bill.data;
+            var winIndustries = bill.data.mainChildren;
+            var loseIndustries = bill.data.offChildren;
+
+            var max = d3.max(winIndustries.concat(loseIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
+
+            influenceBar(mostLeastSort, winIndustries, "left", max, 0, 80, 0);
+            influenceBar(leastMostSort, loseIndustries, "right", max, 520, 80, 5);
+            influenceSummary(bill.data, bill.winner);
+
+            var legend = genLegend(data.mainChildren, data.offChildren, legendWidth, legendHeight, legendY);
+
+			$graph.fadeIn(250, function() {
+				if(numInteractions == 0) {
+					if(tour != "completed") {
+						$(document).foundation('joyride', 'start', { startOffset: 2 });
+						setCookie("tour", "completed", 365);
+					}
+				}
 					
-					var initialHTML = '<div class="row mainInfo"><hr>';
-
-					initialHTML += '<div class="large-12 columns"><h2 class="alignleft">' + billMetadata.title + '</h2>';
-					initialHTML += '<p><b>Sponsored by:</b> <i>' + billMetadata.sponsor_name + '</i><br><b>Result:</b> <i>' + billMetadata.result + '</i><br>' + billMetadata.summary + '</p></div>';
-					initialHTML += '<div class="large-6 small-12 columns"><h3 class="alignleft">Industry Influence</h3></div><div class="large-6 small-12 large-uncentered small-centered columns"><ul class="sponsors inline-list"><li><a href="https://poliana.com" target="_blank"><img src="/assets/landing/large.png" class="miniLogo" alt="Poliana"></a></li><li><a href="http://www.opensecrets.org/" target="_blank"><img src="/assets/landing/crp.png" class="miniLogo" alt="Center for Responsive Politics"></a></li><li><a href="http://www.sunlightfoundation.com/" target="_blank"><img src="/assets/landing/sunlight.png" class="miniLogo" alt="Sunlight Foundation"></a></li></ul></div>';
-					initialHTML += '<div class="large-12 columns"><ul class="industryBreadcrumbs">';
-					initialHTML += '<li class="overview">Overview</li>';
-					initialHTML += '</ul>';
-					initialHTML += '</div>';
-
-					initialHTML += '</div>';
-
-					$graph.prepend(initialHTML);
-					
-                    d3.select("svg").remove();
-                    d3.select(".graph").append("svg")
-                        .attr("width", width)
-                        .attr("height", height)
-						.attr("viewBox", "0 0 " + width + " " + height)
-						.attr("preserveAspectRatio", "xMidYMid");
-						
-					$graph.hide();
-
-                    data = bill.data;
-                    var winIndustries = bill.data.mainChildren;
-                    var loseIndustries = bill.data.offChildren;
-
-                    var max = d3.max(winIndustries.concat(loseIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
-
-                    influenceBar(mostLeastSort, winIndustries, "left", max, 0, 80, 0);
-                    influenceBar(leastMostSort, loseIndustries, "right", max, 520, 80, 5);
-                    influenceSummary(bill.data, bill.winner);
-
-                    var legend = genLegend(data.mainChildren, data.offChildren, legendWidth, legendHeight, legendY);
-
-					
-
-					$graph.fadeIn(250);
-        });
+				numInteractions++;
+			});
+ 		});
     });
 }
 

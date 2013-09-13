@@ -141,7 +141,7 @@ rect[data-level="2"] {
 
 .sponsors {
   float: right;
-  width: 185px;
+  width: 230px;
   display: block; }
   @media screen and (max-width: 767px) {
     .sponsors {
@@ -149,20 +149,26 @@ rect[data-level="2"] {
       margin: 0px auto 10px auto; } }
   .sponsors li {
     margin-left: 10px; }
-    .sponsors li .miniLogo {
-      float: right;
-      max-width: 100px;
-      max-height: 100px;
-      margin-top: 10px;
-      -webkit-filter: grayscale(1);
-      filter: grayscale(1); }
-      @media screen and (max-width: 767px) {
-        .sponsors li .miniLogo {
-          max-width: 36px;
-          max-height: 36px; } }
-      .sponsors li .miniLogo:hover {
-        -webkit-filter: grayscale(0);
-        filter: grayscale(0); }
+    .sponsors li a {
+      display: block;
+      width: 100%;
+      height: 100%; }
+      .sponsors li a .miniLogo {
+        float: right;
+        max-width: 100px;
+        max-height: 40px;
+        margin-top: 10px;
+        -webkit-filter: grayscale(1);
+        filter: grayscale(1); }
+        .sponsors li a .miniLogo:hover {
+          -webkit-filter: grayscale(0);
+          filter: grayscale(0); }
+    .sponsors li:first-child {
+      padding-top: 20px;
+      text-transform: uppercase;
+      font-size: 0.75em;
+      font-weight: bold;
+      color: #dddddd; }
 
 #billIndustry {
   position: relative; }
@@ -180,7 +186,7 @@ rect[data-level="2"] {
   #billIndustry .industryBreadcrumbs {
     list-style-type: none;
     overflow: hidden;
-    margin-top: -55px; }
+    margin-top: -25px; }
     @media screen and (max-width: 767px) {
       #billIndustry .industryBreadcrumbs {
         margin-top: -15px; } }

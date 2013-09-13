@@ -597,7 +597,7 @@ function grabBill(id) {
 
 			initialHTML += '<div class="large-12 columns" id="joyride-3"><h2 class="alignleft">' + billMetadata.title + '</h2>';
 			initialHTML += '<p><b>Sponsored by:</b> <i>' + billMetadata.sponsor_name + '</i><br><b>Result:</b> <i>' + billMetadata.result + '</i><br>' + billMetadata.summary + '</p></div>';
-			initialHTML += '<div class="large-6 small-12 columns"><h3 class="alignleft" id="joyride-4">Industry Influence</h3></div><div class="large-6 small-12 large-uncentered small-centered columns"><ul class="sponsors inline-list"><li><a href="http://www.opensecrets.org/" target="_blank"><img src="/assets/landing/crp.png" class="miniLogo" alt="Center for Responsive Politics"></a></li><li><a href="http://www.sunlightfoundation.com/" target="_blank"><img src="/assets/landing/sunlight.png" class="miniLogo" alt="Sunlight Foundation"></a></li></ul></div>';
+			initialHTML += '<div class="large-6 small-12 columns"><h3 class="alignleft" id="joyride-4">Industry Influence</h3></div><div class="large-6 small-12 large-uncentered small-centered columns"><ul class="sponsors inline-list"><li>Sources:</li><li><a href="http://www.opensecrets.org/" target="_blank"><img src="/assets/landing/crp.png" class="miniLogo" alt="Center for Responsive Politics"></a></li><li><a href="http://www.sunlightfoundation.com/" target="_blank"><img src="/assets/landing/sunlight.png" class="miniLogo" alt="Sunlight Foundation"></a></li></ul></div>';
 			initialHTML += '<div class="large-12 columns"><ul class="industryBreadcrumbs" id="joyride-7">';
 			initialHTML += '<li class="overview">Overview</li>';
 			initialHTML += '</ul>';

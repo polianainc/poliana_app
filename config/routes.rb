@@ -1,7 +1,5 @@
 PolianaApp::Application.routes.draw do
 
-  get "beta/new"
-
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :invitations

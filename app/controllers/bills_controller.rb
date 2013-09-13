@@ -11,7 +11,6 @@ class BillsController < ApplicationController
     end
 
     def index
-        binding.pry
         @bills = Bill.all
     end
 

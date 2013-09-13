@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
     attr_accessible :email, :password, :password_confirmation, :remember_me, :invitation_key, :as => [:default, :admin]
     attr_accessible :invitations_left, :as => :admin
 
-    before_create :setup_user
+    after_initialize :setup_user
+
+    before_create :add_invites
 
     validate :token_must_be_present_for_social_sign_ins
 
@@ -21,7 +23,7 @@ class User < ActiveRecord::Base
             user["#{auth.provider}_id"] = auth.uid
             user.email = auth.info.email if auth.info.email
             user.token = auth.credentials.token
-            user.token_secret = auth.credentials.token_secret
+            user.token_secret = auth.credentials.secret if auth.credentials.secret
         end
     end
 
@@ -76,8 +78,11 @@ class User < ActiveRecord::Base
 
     def setup_user
         #upon creation, user cannot have social sign on
-        self.has_facebook = false
-        self.has_twitter = false
+        self.has_facebook = false unless self.has_facebook
+        self.has_twitter = false unless self.has_twitter
+    end
+
+    def add_invites
         #upon creation, user gets 5 beta invites
         self.invitations_left = 5
     end

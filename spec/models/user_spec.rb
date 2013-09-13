@@ -21,7 +21,9 @@ describe User do
     it { should be_valid }
 
     describe "after saving" do
-        before { @user.save }
+        before do
+            @user.save
+        end
 
         it "should have invitation id" do
             @user.invitation_id.should_not be_nil
@@ -47,7 +49,6 @@ describe User do
             @user.email = ""
             @user.password = ""
             @user.password_confirmation = ""
-
             @user.should be_valid
         end
 

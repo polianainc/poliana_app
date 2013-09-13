@@ -28,30 +28,60 @@
   fill: #c4d117;
   color: #fafafa; }
 
-.seagreen {
-  background: #e5ede2;
-  fill: #e5ede2;
+.green1 {
+  background: #A82221;
+  fill: #A82221;
+  color: #fafafa; }
+
+.green2 {
+  background: #DB5E31;
+  fill: #DB5E31;
+  color: #fafafa; }
+
+.green3 {
+  background: #EDA23E;
+  fill: #EDA23E;
+  color: #fafafa; }
+
+.green4 {
+  background: #F2CB67;
+  fill: #F2CB67;
+  color: #fafafa; }
+
+.green5 {
+  background: #D6BF59;
+  fill: #D6BF59;
   color: #fafafa; }
 
 .gray {
-  background: #cccccc;
-  fill: #cccccc;
+  background: #dddddd;
+  fill: #dddddd;
   color: #fafafa; }
 
-.purple {
-  background: #811a96;
-  fill: #811a96;
+.gray1 {
+  background: #0B486B;
+  fill: #0B486B;
   color: #fafafa; }
 
-.brown {
-  background: #663300;
-  fill: #663300;
-  color: #663300; }
+.gray2 {
+  background: #3B8686;
+  fill: #3B8686;
+  color: #fafafa; }
 
-.orange {
-  background: #e89900;
-  fill: #e89900;
-  color: #e89900; }
+.gray3 {
+  background: #79BD9A;
+  fill: #79BD9A;
+  color: #fafafa; }
+
+.gray4 {
+  background: #A8DBA8;
+  fill: #A8DBA8;
+  color: #fafafa; }
+
+.gray5 {
+  background: #CEF0B7;
+  fill: #CEF0B7;
+  color: #fafafa; }
 
 .social {
   margin-top: 20px;
@@ -60,15 +90,79 @@
     float: left;
     margin-left: 10px; }
     .social li a {
-      color: #DDD; }
+      color: #dddddd; }
       .social li a:hover {
-        color: #CCC; }
+        color: #61d2d6; }
 
 .transparent {
   opacity: 0; }
 
+select, .custom.dropdown.large {
+  margin: 0 auto; }
+
 .selectorHolder {
   z-index: 5000; }
+
+rect[data-level="2"] {
+  cursor: default; }
+
+.joyride-tip-guide {
+  z-index: 9999; }
+  .joyride-tip-guide .joyride-content-wrapper {
+    overflow: hidden; }
+    .joyride-tip-guide .joyride-content-wrapper h3 {
+      font-weight: 300;
+      margin: 20px auto;
+      text-align: left; }
+    .joyride-tip-guide .joyride-content-wrapper .joyride-next-tip {
+      float: right;
+      background: #61d2d6;
+      -webkit-transition: all 0.1s linear;
+      -moz-transition: all 0.1s linear;
+      transition: all 0.1s linear;
+      -webkit-box-shadow: 0px 2px 0px #2ba2a6;
+      -moz-box-shadow: 0px 2px 0px #2ba2a6;
+      box-shadow: 0px 2px 0px #2ba2a6;
+      border: none; }
+      .joyride-tip-guide .joyride-content-wrapper .joyride-next-tip:hover {
+        background: #dddddd;
+        -webkit-box-shadow: 0px 2px 0px #aaaaaa;
+        -moz-box-shadow: 0px 2px 0px #aaaaaa;
+        box-shadow: 0px 2px 0px #aaaaaa; }
+  .joyride-tip-guide[data-index="1"] .joyride-next-tip {
+    display: none; }
+  .joyride-tip-guide[data-index="1"], .joyride-tip-guide[data-index="3"], .joyride-tip-guide[data-index="4"] {
+    margin-top: 20px; }
+  .joyride-tip-guide[data-index="5"] {
+    margin-top: 140px; }
+
+.joyride-modal-bg {
+  z-index: 9998; }
+
+.sponsors {
+  float: right;
+  width: 185px;
+  display: block; }
+  @media screen and (max-width: 767px) {
+    .sponsors {
+      float: none;
+      margin: 0px auto 10px auto; } }
+  .sponsors li {
+    margin-left: 10px; }
+    .sponsors li .miniLogo {
+      float: right;
+      max-width: 100px;
+      max-height: 100px;
+      margin-top: 10px;
+      -webkit-filter: grayscale(1);
+      filter: grayscale(1); }
+      @media screen and (max-width: 767px) {
+        .sponsors li .miniLogo {
+          max-width: 36px;
+          max-height: 36px; } }
+      .sponsors li .miniLogo:hover {
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0); }
 
 #billIndustry {
   position: relative; }
@@ -86,7 +180,10 @@
   #billIndustry .industryBreadcrumbs {
     list-style-type: none;
     overflow: hidden;
-    margin-top: -15px; }
+    margin-top: -55px; }
+    @media screen and (max-width: 767px) {
+      #billIndustry .industryBreadcrumbs {
+        margin-top: -15px; } }
     #billIndustry .industryBreadcrumbs li {
       float: left;
       cursor: pointer; }
@@ -98,7 +195,8 @@
           content: ''; }
   #billIndustry svg {
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    padding-bottom: 40px; }
     #billIndustry svg .midLine {
       stroke: #333333;
       stroke-width: 3px; }

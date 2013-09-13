@@ -1,3 +1,17 @@
+function setCookie(e,t,n){var r=new Date;r.setDate(r.getDate()+n);var i=escape(t)+(n==null?"":"; expires="+r.toUTCString());document.cookie=e+"="+i}function getCookie(e){var t=document.cookie;var n=t.indexOf(" "+e+"=");if(n==-1){n=t.indexOf(e+"=")}if(n==-1){t=null}else{n=t.indexOf("=",n)+1;var r=t.indexOf(";",n);if(r==-1){r=t.length}t=unescape(t.substring(n,r))}return t}
+
+var tour = getCookie("tour");
+
+if(tour != "completed") {
+	$(document).foundation('joyride', 'start');
+	setCookie("tour", "completed", 365);
+}
+
+$('#joyride-2').on('click', function() {
+	$(document).foundation('joyride', 'end');
+	$('.joyride-tip-guide[data-index="1"] .joyride-next-tip').trigger('click');
+});
+
 var barGraphHeight = 300,
     barGraphWidth = 380,
     summaryHeight = 80,
@@ -10,7 +24,7 @@ var $graph = $("#billIndustry");
 
 var colors = d3.scale.ordinal()
         .domain([0,1,2,3,4,5,6,7,8,9])
-        .range(["red", "yellow", "blue", "green", "seagreen", "gray", "purple", "black", "brown", "orange"]);
+        .range(["green1", "green2", "green3", "green4", "green5", "gray5", "gray4", "gray3", "gray2", "gray1"]);
 
 $graph.append('<div class="row"><div class="large-12 columns graph"></div></div>');
 
@@ -30,13 +44,24 @@ function addBreadcrumb(data) {
     $(".industryBreadcrumbs").append('<li>' + data.name + '</li>');
 }
 
-function drawSummaryText(x, y, text, textAnchor,classString, graph) {
-    graph.append("text")
-        .attr("x", x)
-        .attr("y", y)
-        .attr("class", classString)
-        .attr("text-anchor", textAnchor)
-        .text(text);
+function drawSummaryText(x, y, text, textAnchor, classString, graph) {
+	if(classString.indexOf('summaryWinnerTitle') != -1) {
+	    graph.append("text")
+	        .attr("x", x)
+	        .attr("y", y)
+	        .attr("class", classString)
+	        .attr("text-anchor", textAnchor)
+			.attr("id", "joyride-5")
+	        .text(text);
+	}
+	else {
+	    graph.append("text")
+	        .attr("x", x)
+	        .attr("y", y)
+	        .attr("class", classString)
+	        .attr("text-anchor", textAnchor)
+	        .text(text);
+	}
 }
 
 function drawSummaryBar(begX, rectHeight, length, graph, color) {
@@ -152,24 +177,38 @@ function genLegend(lData, rData, width, height, y) {
 
     var legendData = lData.concat(rData)
     legendData.forEach(function(d, i) {
-        // console.log(d.name + " " + i);
+		if(d.name != "") {
+	        // console.log(d.name + " " + i);
 
-        var ly = Math.floor(i%5)*(height/5) + y,
-            x = Math.floor(i/5)*(width/2) + 30;
-        var wrap = legend.append('g')
-            .attr('class', 'key');
+	        var ly = Math.floor(i%5)*(height/5) + y,
+	            x = Math.floor(i/5)*(width/2) + 30;
+	        var wrap = legend.append('g')
+	            .attr('class', 'key');
             
-        wrap.append('rect')
-            .attr('y', ly)
-            .attr('x', x)
-            .attr('width', 20)
-            .attr('height', 20)
-            .attr('class', colors(i));
+	        wrap.append('rect')
+	            .attr('y', ly)
+	            .attr('x', x)
+	            .attr('width', 20)
+	            .attr('height', 20)
+	            .attr('class', colors(i));
 
-        wrap.append('text')
-            .text(d.name)
-            .attr('y', ly + 18)
-            .attr('x', x + 30);
+			// If this is a politician...
+			if(d.bioguideId != undefined) {
+		        wrap.append('a')
+					.attr('xlink:href', "http://bioguide.congress.gov/scripts/biodisplay.pl?index=" + d.bioguideId)
+					.attr('target', '_blank')
+					.append('text')
+		            .text(d.name + " (" + d.party + ")")
+		            .attr('y', ly + 18)
+		            .attr('x', x + 30);
+			}
+			else {
+				wrap.append('text')
+		            .text(d.name)
+		            .attr('y', ly + 18)
+		            .attr('x', x + 30);
+			}
+		}
     });
 }
 //Adds a clear clickable rectangle for bars which are too small to easily click
@@ -201,10 +240,9 @@ function transitionLegendText(lData, rData) {
 
 //Transition to the next layer down (Industries -> Organizations -> Politicians)
 function transition(data) {
-
     d3.selectAll(".hiddenRect").remove();
 
-    if(data.winner == true) {
+    if(data.winner == true || data.winner == undefined) {
         var lData = data.mainChildren.sort(mostLeastSort),
             rData = data.offChildren.sort(leastMostSort),
             lAmount = data.mainTotal;
@@ -316,14 +354,20 @@ function transition(data) {
             return y(d.mainTotal);
         })
         .attr("height", function(d) {
-            return barGraphHeight - y(d.mainTotal);    
+			return barGraphHeight - y(d.mainTotal);    
         })
         .each("end", function(d){
             var rect = d3.select(this);
-
+			
             if(parseFloat(rect.attr('height')) < 30) {
                 addClearRect(d3.select(this.parentNode), y(d.mainTotal)-30, 67, barGraphHeight - y(d.mainTotal)+30, d);
             }
+
+			// Cursor change
+			if(d.bioguideId != undefined)
+				rect.attr('data-level', '2');
+			else
+				rect.attr('data-level', '1');
         });
 
     //transition rightGraph data
@@ -337,12 +381,18 @@ function transition(data) {
         .attr("height", function(d) {
             return barGraphHeight - y(d.mainTotal);    
         })
-        .each("end", function(d){
+        .each("end", function(d, i){
             var rect = d3.select(this);
 
             if(parseFloat(rect.attr('height')) < 30) {
                 addClearRect(d3.select(this.parentNode), y(d.mainTotal)-30, 67, barGraphHeight - y(d.mainTotal)+30, d);
             }
+
+			// Cursor change
+			if(d.bioguideId != undefined)
+				rect.attr('data-level', '2');
+			else
+				rect.attr('data-level', '1');
         });
 
     //Grid lines
@@ -394,13 +444,13 @@ function influenceSummary(data, winner) {
         winX = genWinX(width, winLength),
         loseX = genLoseX(width);
 
-    drawSummaryBar(winX, rectHeight, winLength, graph, "green winSummary");
+    drawSummaryBar(winX, rectHeight, winLength, graph, "gray winSummary");
     drawSummaryBar(loseX, rectHeight, loseLength, graph, "gray loseSummary");
 
     //winAmnt
     drawSummaryText(20, height/2, "$" + amountFormat(data.mainTotal), "begin", "summaryText black winAmount", graph);
     //winTitle
-    drawSummaryText(width/2 - textMargin, height/2, winTitle, "end", "summaryText summaryTitle black", graph);
+    drawSummaryText(width/2 - textMargin, height/2, winTitle, "end", "summaryText summaryTitle black summaryWinnerTitle", graph);
 
     drawCheckMark((width/2 - width/10), height/2, graph);
 
@@ -509,6 +559,7 @@ function influenceBar(sort, data, yAxisLoc, max, xOffset, yOffset, startIndex) {
         });
 
     bars.append("rect")
+		.attr("id", function(d, i) { if(i == 1) { return "joyride-6"; } })
         .attr("y", function(d) {
             return y(d.mainTotal);
         })
@@ -535,52 +586,59 @@ var data;
 
 // grabBill(1);
 
+var numInteractions = 0;
+
 function grabBill(id) {
-    $.getJSON(
-        "/bills/"+ id + ".json",
-        function(billMetadata) {
-            $.getJSON(
-                "/bills/cache/"+ billMetadata.data_id + ".json",
-                function(bill) {
-					$('.mainInfo').remove();
+    $.getJSON( "/bills/"+ id + ".json", function(billMetadata) {
+         $.getJSON("/bills/cache/"+ billMetadata.data_id + ".json",function(bill) {
+			$('.mainInfo').remove();
+	
+			var initialHTML = '<div class="row mainInfo"><hr>';
+
+			initialHTML += '<div class="large-12 columns" id="joyride-3"><h2 class="alignleft">' + billMetadata.title + '</h2>';
+			initialHTML += '<p><b>Sponsored by:</b> <i>' + billMetadata.sponsor_name + '</i><br><b>Result:</b> <i>' + billMetadata.result + '</i><br>' + billMetadata.summary + '</p></div>';
+			initialHTML += '<div class="large-6 small-12 columns"><h3 class="alignleft" id="joyride-4">Industry Influence</h3></div><div class="large-6 small-12 large-uncentered small-centered columns"><ul class="sponsors inline-list"><li><a href="http://www.opensecrets.org/" target="_blank"><img src="/assets/landing/crp.png" class="miniLogo" alt="Center for Responsive Politics"></a></li><li><a href="http://www.sunlightfoundation.com/" target="_blank"><img src="/assets/landing/sunlight.png" class="miniLogo" alt="Sunlight Foundation"></a></li></ul></div>';
+			initialHTML += '<div class="large-12 columns"><ul class="industryBreadcrumbs" id="joyride-7">';
+			initialHTML += '<li class="overview">Overview</li>';
+			initialHTML += '</ul>';
+			initialHTML += '</div>';
+
+			initialHTML += '</div>';
+
+			$graph.prepend(initialHTML);
+	
+			d3.select("svg").remove();
+			d3.select(".graph").append("svg")
+			    .attr("width", width)
+			    .attr("height", height)
+				.attr("viewBox", "0 0 " + width + " " + height)
+				.attr("preserveAspectRatio", "xMidYMid");
+		
+			$graph.hide();
+
+            data = bill.data;
+            var winIndustries = bill.data.mainChildren;
+            var loseIndustries = bill.data.offChildren;
+
+            var max = d3.max(winIndustries.concat(loseIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
+
+            influenceBar(mostLeastSort, winIndustries, "left", max, 0, 80, 0);
+            influenceBar(leastMostSort, loseIndustries, "right", max, 520, 80, 5);
+            influenceSummary(bill.data, bill.winner);
+
+            var legend = genLegend(data.mainChildren, data.offChildren, legendWidth, legendHeight, legendY);
+
+			$graph.fadeIn(250, function() {
+				if(numInteractions == 0) {
+					if(tour != "completed") {
+						$(document).foundation('joyride', 'start', { startOffset: 2 });
+						setCookie("tour", "completed", 365);
+					}
+				}
 					
-					var initialHTML = '<div class="row mainInfo">';
-
-					initialHTML += '<div class="large-12 columns"><h2 class="aligncenter">' + billMetadata.title + '</h2>';
-					initialHTML += '<p><b>Sponsored by:</b> <i>' + billMetadata.sponsor_name + '</i><br><b>Result:</b> <i>' + billMetadata.result + '</i><br>' + billMetadata.summary + '</p></div>';
-					initialHTML += '<div class="large-12 columns"><h3 class="alignleft">Industry Influence</h3>';
-					initialHTML += '<ul class="industryBreadcrumbs">';
-					initialHTML += '<li class="overview">Overview</li>';
-					initialHTML += '</ul>';
-					initialHTML += '</div>';
-
-					initialHTML += '</div>';
-
-					$graph.prepend(initialHTML);
-					
-                    d3.select("svg").remove();
-                    d3.select(".graph").append("svg")
-                        .attr("width", width)
-                        .attr("height", height)
-						.attr("viewBox", "0 0 " + width + " " + height)
-						.attr("preserveAspectRatio", "xMidYMid");
-						
-					$graph.hide();
-
-                    data = bill.data;
-                    var winIndustries = bill.data.mainChildren;
-                    var loseIndustries = bill.data.offChildren;
-
-                    var max = d3.max(winIndustries.concat(loseIndustries), function(d) { return d.mainTotal + d.mainTotal/10; });
-
-                    influenceBar(mostLeastSort, winIndustries, "left", max, 0, 80, 0);
-                    influenceBar(leastMostSort, loseIndustries, "right", max, 520, 80, 5);
-                    influenceSummary(bill.data, bill.winner);
-
-                    var legend = genLegend(data.mainChildren, data.offChildren, legendWidth, legendHeight, legendY);
-
-					$graph.fadeIn(250);
-        });
+				numInteractions++;
+			});
+ 		});
     });
 }
 

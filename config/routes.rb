@@ -1,5 +1,6 @@
 PolianaApp::Application.routes.draw do
 
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :invitations
@@ -13,7 +14,6 @@ PolianaApp::Application.routes.draw do
   get "static_pages/landing"
   get "mailchimp_signup", to: "static_pages#mailchimp_signup"
 
-  get "bills/scrape", to: 'bills#scrape_congress'
   get "investors", to: 'static_pages#investors'
   get "demo", to: 'bills#index'
   get "bills/:id", to: 'bills#metadata'

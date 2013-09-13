@@ -3612,7 +3612,7 @@ label.error {
 /* Styles for screens that are atleast 768px; */
 @media only screen and (min-width: 768px) {
   .joyride-tip-guide {
-    width: 300px;
+    width: 500px;
     left: inherit; }
     .joyride-tip-guide .joyride-nub.bottom {
       border-color: black !important;

@@ -106,9 +106,42 @@ select, .custom.dropdown.large {
 rect[data-level="2"] {
   cursor: default; }
 
+.joyride-tip-guide {
+  z-index: 9999; }
+  .joyride-tip-guide .joyride-content-wrapper {
+    overflow: hidden; }
+    .joyride-tip-guide .joyride-content-wrapper h3 {
+      font-weight: 300;
+      margin: 20px auto;
+      text-align: left; }
+    .joyride-tip-guide .joyride-content-wrapper .joyride-next-tip {
+      float: right;
+      background: #61d2d6;
+      -webkit-transition: all 0.1s linear;
+      -moz-transition: all 0.1s linear;
+      transition: all 0.1s linear;
+      -webkit-box-shadow: 0px 2px 0px #2ba2a6;
+      -moz-box-shadow: 0px 2px 0px #2ba2a6;
+      box-shadow: 0px 2px 0px #2ba2a6;
+      border: none; }
+      .joyride-tip-guide .joyride-content-wrapper .joyride-next-tip:hover {
+        background: #dddddd;
+        -webkit-box-shadow: 0px 2px 0px #aaaaaa;
+        -moz-box-shadow: 0px 2px 0px #aaaaaa;
+        box-shadow: 0px 2px 0px #aaaaaa; }
+  .joyride-tip-guide[data-index="1"] .joyride-next-tip {
+    display: none; }
+  .joyride-tip-guide[data-index="1"], .joyride-tip-guide[data-index="3"], .joyride-tip-guide[data-index="4"] {
+    margin-top: 20px; }
+  .joyride-tip-guide[data-index="5"] {
+    margin-top: 140px; }
+
+.joyride-modal-bg {
+  z-index: 9998; }
+
 .sponsors {
   float: right;
-  width: 140px;
+  width: 185px;
   display: block; }
   @media screen and (max-width: 767px) {
     .sponsors {
@@ -118,11 +151,15 @@ rect[data-level="2"] {
     margin-left: 10px; }
     .sponsors li .miniLogo {
       float: right;
-      max-width: 36px;
-      max-height: 36px;
+      max-width: 100px;
+      max-height: 100px;
       margin-top: 10px;
       -webkit-filter: grayscale(1);
       filter: grayscale(1); }
+      @media screen and (max-width: 767px) {
+        .sponsors li .miniLogo {
+          max-width: 36px;
+          max-height: 36px; } }
       .sponsors li .miniLogo:hover {
         -webkit-filter: grayscale(0);
         filter: grayscale(0); }
@@ -143,7 +180,10 @@ rect[data-level="2"] {
   #billIndustry .industryBreadcrumbs {
     list-style-type: none;
     overflow: hidden;
-    margin-top: -15px; }
+    margin-top: -55px; }
+    @media screen and (max-width: 767px) {
+      #billIndustry .industryBreadcrumbs {
+        margin-top: -15px; } }
     #billIndustry .industryBreadcrumbs li {
       float: left;
       cursor: pointer; }

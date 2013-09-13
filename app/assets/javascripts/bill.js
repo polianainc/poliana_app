@@ -2,7 +2,7 @@ function setCookie(e,t,n){var r=new Date;r.setDate(r.getDate()+n);var i=escape(t
 
 var tour = getCookie("tour");
 
-if(tour != "completed") {
+if(tour != "completed" && $("#demoTitle").text() == "Poliana Data Demo") {
 	$(document).foundation('joyride', 'start');
 	setCookie("tour", "completed", 365);
 }

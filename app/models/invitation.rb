@@ -7,10 +7,10 @@ class Invitation < ActiveRecord::Base
 
     validates_presence_of :recipient_email
 
-    validate :recipient_not_signed_up
+    before_create :recipient_not_signed_up
     validate :sender_has_invitations, :if => :sender
 
-    attr_accessible :beta_key, :recipient_email, :sender_id
+    attr_accessible :beta_key, :recipient_email, :sender_id, :as => [:default, :admin]
 
     private
 

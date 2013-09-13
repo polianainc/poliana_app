@@ -1,12 +1,16 @@
 PolianaApp::Application.routes.draw do
 
+  get "beta/new"
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :invitations
 
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"},
-              :controllers => { omniauth_callbacks: "auth_callbacks" }
+              :controllers => { omniauth_callbacks: "auth_callbacks" } do
+      get "users/sign_up/:key" => "beta#new", :as => :beta_signup
+      post "beta/" => "beta#create", :as => :beta_registration
+  end
 
   get "static_pages/about"
   get "static_pages/policy"

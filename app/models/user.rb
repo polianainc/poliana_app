@@ -74,8 +74,6 @@ class User < ActiveRecord::Base
 
     private
 
-    #callback for User.new
-
     def setup_user
         #upon creation, user cannot have social sign on
         self.has_facebook = false

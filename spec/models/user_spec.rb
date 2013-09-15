@@ -12,6 +12,8 @@ describe User do
                     "secret"=>"EyaPXjTA07rjHh58BgjmREOHKGeEUbPiMFgLmglMc"
             })
         }
+
+        invitation = FactoryGirl.build(:invitation)
         @auth = OpenStruct.new(auth)
     end
 
@@ -25,8 +27,8 @@ describe User do
             @user.save
         end
 
-        it "should have invitation id" do
-            @user.invitation_id.should_not be_nil
+        it "should have invitations" do
+            @user.invitations_left.should_not be_nil
         end
     end
 

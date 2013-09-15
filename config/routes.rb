@@ -17,9 +17,6 @@ PolianaApp::Application.routes.draw do
   get "mailchimp_signup", to: "static_pages#mailchimp_signup"
 
   get "investors", to: 'static_pages#investors'
-  get "demo", to: 'bills#index'
-  get "bills/:id", to: 'bills#metadata'
-  get "bills/cache/:id", to: 'bills#cache'
 
   get "invitations/new", to: "invitations#new"
 

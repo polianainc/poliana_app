@@ -6,7 +6,7 @@ PolianaApp::Application.routes.draw do
 
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"},
               :controllers => { omniauth_callbacks: "auth_callbacks" } do
-      get "users/sign_up/:key" => "beta#new", :as => :beta_signup
+      get "/signup/:key" => "beta#new", :as => :beta_signup
       post "beta/" => "beta#create", :as => :beta_registration
   end
 

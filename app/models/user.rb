@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
     before_create :add_invites
 
+    validates_presence_of :invitation
+
     validate :token_must_be_present_for_social_sign_ins
 
     has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'

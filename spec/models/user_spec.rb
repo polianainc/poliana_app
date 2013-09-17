@@ -12,8 +12,8 @@ describe User do
                     "secret"=>"EyaPXjTA07rjHh58BgjmREOHKGeEUbPiMFgLmglMc"
             })
         }
-
-        invitation = FactoryGirl.build(:invitation)
+        @invitation = FactoryGirl.build(:invitation)
+        @user.invitation = @invitation
         @auth = OpenStruct.new(auth)
     end
 
@@ -45,6 +45,7 @@ describe User do
     describe "when a social account" do
         before do
             @user = User.from_omniauth(@auth)
+            @user.invitation = @invitation
         end
 
         it "should not require email or password to be valid" do

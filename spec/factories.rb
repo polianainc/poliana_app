@@ -5,10 +5,11 @@ FactoryGirl.define do
         password "test1234"
         password_confirmation "test1234"
         remember_me false
+        invitation { Invitation.create!(recipient_email:"test200@example.com") }
     end
 
     factory :invitation do
         recipient_email "test2@example.com"
-        association :sender, factory: :user
+        beta_key "123123"
     end
 end

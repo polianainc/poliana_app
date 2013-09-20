@@ -66,6 +66,10 @@ class User < ActiveRecord::Base
         end
     end
 
+     def remove_invite
+        self.invitations_left -= 1
+    end
+
     #beta methods
 
     def invitation_key
@@ -79,7 +83,7 @@ class User < ActiveRecord::Base
     private
 
     def setup_user
-        #upon creation, user cannot have social sign on
+        #upon creation, users social sign ons should be set to false if they don't exist
         self.has_facebook = false unless self.has_facebook
         self.has_twitter = false unless self.has_twitter
     end

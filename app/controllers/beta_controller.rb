@@ -8,7 +8,7 @@ class BetaController < Devise::RegistrationsController
 
     def create
         build_resource(params[:user])
-        resource.invitation.save
+        resource.invitation.save if resource.invitation
         if resource.save
             set_flash_message :notice, :signed_up if is_navigational_format?
             sign_up(resource_name, resource)

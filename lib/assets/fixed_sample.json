@@ -1,7 +1,7 @@
 //Changes:
 //removed commas
 //changed contributions to mainTotal at politician level
-//swapped maintotal and offTotal in off children
+//swapped maintotal and offTotal, mainchildren and offchildren in off children
 {
     "_id": {
         "$oid": "5230d2c3e4b0347f61bdcd5f"
@@ -17,7 +17,7 @@
                 "offTouched": 39,
                 "mainTouched": 16,
                 "name": "Education",
-                "offChildren": [
+                "mainChildren": [
                     {
                         "bioguideId": "M001191",
                         "name": "Patrick Murphy",
@@ -55,7 +55,7 @@
                     }
                 ],
                 "offTotal": 24300,
-                "mainChildren": [
+                "offChildren": [
                     {
                         "bioguideId": "F000372",
                         "name": "Rodney Frelinghuysen",
@@ -100,7 +100,7 @@
                 "offTouched": 31,
                 "mainTouched": 11,
                 "name": "Pro-Israel",
-                "offChildren": [
+                "mainChildren": [
                     {
                         "bioguideId": "C001038",
                         "name": "Joseph Crowley",
@@ -138,7 +138,7 @@
                     }
                 ],
                 "offTotal": 46600,
-                "mainChildren": [
+                "offChildren": [
                     {
                         "bioguideId": "B001255",
                         "name": "Charles Boustany",
@@ -183,7 +183,7 @@
                 "offTouched": 101,
                 "mainTouched": 81,
                 "name": "Lawyers/Law Firms",
-                "offChildren": [
+                "mainChildren": [
                     {
                         "bioguideId": "C001090",
                         "name": "Matthew Cartwright",
@@ -221,7 +221,7 @@
                     }
                 ],
                 "offTotal": 232392,
-                "mainChildren": [
+                "offChildren": [
                     {
                         "bioguideId": "B001255",
                         "name": "Charles Boustany",
@@ -266,7 +266,7 @@
                 "offTouched": 51,
                 "mainTouched": 43,
                 "name": "Lobbyists",
-                "offChildren": [
+                "mainChildren": [
                     {
                         "bioguideId": "D000620",
                         "name": "John Delaney",
@@ -304,7 +304,7 @@
                     }
                 ],
                 "offTotal": 180800,
-                "mainChildren": [
+                "offChildren": [
                     {
                         "bioguideId": "B001255",
                         "name": "Charles Boustany",
@@ -349,7 +349,7 @@
                 "offTouched": 14,
                 "mainTouched": 7,
                 "name": "Computers/Internet",
-                "offChildren": [
+                "mainChildren": [
                     {
                         "bioguideId": "K000188",
                         "name": "Ron Kind",
@@ -387,7 +387,7 @@
                     }
                 ],
                 "offTotal": 17500,
-                "mainChildren": [
+                "offChildren": [
                     {
                         "bioguideId": "B001255",
                         "name": "Charles Boustany",

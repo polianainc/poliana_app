@@ -1,10 +1,19 @@
 <div class="investors">
 	<h1>So <span aria-hidden="true" class="icon-user"></span>, did we pique your interest?</h1>
 	<br>
-	<h4><%= link_to "Poliana Data Demo", demo_path %></h4>
 	<h4><%= link_to "Executive Summary", "/executive-summary.pdf" %></h4>
 	<h4><%= link_to "Sample Graph Explorer Design", "/graph-explorer.pdf" %></h4>
 	<h4><%= link_to "Poliana Brand Manual", "brand-manual.pdf" %></h4>
 	<br><br>
 	<%= link_to "Send us an email, let's talk!", "mailto:investors@poliana.com", :class => "button radius large" %>
 </div>
+
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to 'Login', new_user_session_path, :class => 'black'  %>  
+  </li>
+<% end %>

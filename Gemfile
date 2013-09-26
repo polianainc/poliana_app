@@ -3,13 +3,24 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.13'
 
 gem 'pry'
+
 gem 'figaro'
+
 gem 'mongo'
-gem 'congress'
+
+gem 'bcrypt-ruby'
 
 gem 'jquery-rails'
 gem 'compass-rails'
 gem 'zurb-foundation'
+
+gem 'rack-mini-profiler'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
+gem 'rails_admin'
 
 #Mailchimp
 gem 'gibbon'
@@ -17,8 +28,20 @@ gem 'gibbon'
 gem 'devise'
 
 group :development, :test do
+  gem 'letter_opener'
+
 	gem 'rspec-rails', '2.11.0'
+  gem 'spork-rails', github: 'sporkrb/spork-rails'
+  gem 'guard-spork', '1.5.0'
+  gem 'childprocess', '0.3.6'
+  gem 'guard-rspec'
+  gem 'growl'
 	gem 'sqlite3'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 group :assets do

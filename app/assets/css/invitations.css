@@ -1,0 +1,5 @@
+.new_invitation input[type="submit"] {
+  clear: both;
+  position: relative;
+  display: block;
+}

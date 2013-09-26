@@ -3,7 +3,7 @@ class BillsController < ApplicationController
 
     def metadata
         respond_with @bill = Bill.find(params[:id])
-    end 
+    end
 
     def cache
         @data = MongoWrapper.collection.find("_id" => BSON::ObjectId(params[:id])).to_a.first

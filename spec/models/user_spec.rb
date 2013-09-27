@@ -2,24 +2,25 @@ require 'spec_helper'
 
 describe User do
 	before do
-		@user = User.new( email: "test@example.com", password: "test1234", password_confirmation: "test1234", remember_me: false)
+		@user = User.new(username: "testuser", email: "test@example.com", password: "test1234", password_confirmation: "test1234", remember_me: false)
 		auth = {
 			"provider"=>"twitter",
 			"uid"=>"1455771446",
-			"info"=> OpenStruct.new({ "email" => "test@example.com" }),
+			"info"=> OpenStruct.new({ "email" => "test@example.com", "nickname" => "testuser" }),
 			 "credentials"=>  OpenStruct.new({
 					"token"=>"1455771446-0ZelUpnCqM2qvoBZpN8x4rgLjWttGWsP9q33mXk",
 					"secret"=>"EyaPXjTA07rjHh58BgjmREOHKGeEUbPiMFgLmglMc"
 			})
 		}
-		@invitation = FactoryGirl.build(:invitation)
-		@user.invitation = @invitation
+		@invitation = FactoryGirl.create(:invitation)
+		@user.invitation_id = @invitation.id
 		@auth = OpenStruct.new(auth)
 	end
 
 	subject { @user }
 
 	it { should respond_to(:email) }
+	it { should respond_to(:username) }
 	it { should be_valid }
 
 	describe "after saving" do
@@ -27,9 +28,15 @@ describe User do
 			@user.save
 		end
 
-		it "should have invitations" do
+		it "should have invitations left" do
 			@user.invitations_left.should_not be_nil
 		end
+	end
+
+	describe "if they have spaces in the username" do
+		before { @user.username = "blah blah blah" }
+
+		it { should_not be_valid }
 	end
 
 	describe "when email is not present and they don't have social accounts" do
@@ -60,5 +67,14 @@ describe User do
 			@user.token_secret = ""
 			@user.should_not be_valid
 		end
+
+		it "should have a social account" do 
+			@user.has_social_account?.should be_true
+		end
+	end
+
+	describe "when a user doesn't have an invitation" do
+		before { @user.invitation = nil; @user.invitation_id = nil }
+		it { should_not be_valid }
 	end
 end

@@ -15,7 +15,7 @@ describe BetaController do
       invitation = FactoryGirl.create(:invitation)
       user = User.new(email: "test200@example.com", invitation_key: invitation.beta_key)
       get :new, :key => invitation.beta_key
-
+      
       response.should be_success
       assigns(:user).attributes.should eq(user.attributes)
     end  

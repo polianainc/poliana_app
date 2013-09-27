@@ -7,7 +7,8 @@ FactoryGirl.define do
         password_confirmation "test1234"
         remember_me false
     end
-    factory :user_with_invitation do
+    factory :user_with_invitation, class: User do
+        username "testuser"
         email "test100@example.com"
         password "test1234"
         password_confirmation "test1234"

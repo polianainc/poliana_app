@@ -357,6 +357,7 @@ DEPENDENCIES
   bcrypt-ruby
   capybara
   childprocess (= 0.3.6)
+  coffee-rails
   compass-rails
   devise
   factory_girl_rails

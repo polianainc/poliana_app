@@ -11,7 +11,7 @@ class InvitationsController < ApplicationController
 				BetaMailer.invitation(@invitation, beta_signup_url(@invitation.beta_key)).deliver
 				flash[:notice] = "Thanks for sharing! The invitation just went out."
 				current_user.remove_invite
-				redirect_to policy_url
+				redirect_to root_url
 			end
 		else
 			render :action => 'new'

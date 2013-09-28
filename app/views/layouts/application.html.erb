@@ -7,9 +7,9 @@
 <html lang="en"> <!--<![endif]-->
 <head>
   	<meta charset="utf-8" />
-  	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<meta property="og:title" content="Poliana | See Through Government"/>
+	<meta property="og:title" content="<%= content_for?(:title) ? yield(:title) + " | Poliana" : "Poliana | See Through Government" %>"/>
 	<meta property="og:type" content="website"/>
 	<meta property="og:url" content="<%= request.original_url %>"/>
 	<meta property="og:image" content="https://www.poliana.com/assets/landing/large.png"/>
@@ -17,13 +17,12 @@
 	<meta property="og:locale" content="EN_US"/>
 	<meta property="og:description" content="Poliana is a web application that simpliﬁes the legislative system by analyzing and visualizing money’s inﬂuence in politics."/>
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Poliana | See Through Government" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) + " | Poliana" : "Poliana | See Through Government" %></title>
   	
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet" type="text/css">
 
   	<%= stylesheet_link_tag "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
-	<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js" %>
     <%= csrf_meta_tags %>
 
 	<!--[if lt IE 9]>
@@ -39,27 +38,8 @@
 		ga('create', 'UA-42980806-1', 'poliana.com');
 		ga('send', 'pageview');
 	</script>
-
-	<% landing_page = true %>
 </head>
 <body>
-	<% if landing_page === false %>
-	    <div id="user_nav">
-	        <% if user_signed_in? %>
-	          Logged in as <strong><%= current_user.email %></strong>.
-	          <%= link_to 'Edit profile', edit_user_registration_path %> |
-	          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-	        <% else %>
-	          <%= link_to "Sign up", new_user_registration_path %> |
-	          <%= link_to "Login", new_user_session_path %>
-	        <% end %>
-	    </div>
-
-	    <% flash.each do |name, msg| %>
-	        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-	    <% end %>
-	<% end %>
-
     <%= yield %>
 
     <%= javascript_include_tag "application" %>

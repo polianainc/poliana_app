@@ -23,4 +23,7 @@ class StaticPagesController < ApplicationController
       render :inline => "Nope"
     end
   end
+  
+  def kitchen
+  end
 end

@@ -13,6 +13,7 @@ gem 'bcrypt-ruby'
 gem 'jquery-rails'
 gem 'compass-rails'
 gem 'zurb-foundation'
+gem 'coffee-rails'
 
 gem 'rack-mini-profiler'
 

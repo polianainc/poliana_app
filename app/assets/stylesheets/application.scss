@@ -9,25 +9,26 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require foundation
  *= require foundation_and_overrides
  *= require_tree .
  */
 
-@import "variables";
+@import "foundation_and_overrides";
 
 @font-face {
-	font-family: 'social';
-	src:url('social.eot');
-	src:url('social.eot?#iefix') format('embedded-opentype'),
-		url('social.woff') format('woff'),
-		url('social.ttf') format('truetype'),
-		url('social.svg#social') format('svg');
+	font-family: 'icons';
+	src:url('icons.eot');
+	src:url('icons.eot?#iefix') format('embedded-opentype'),
+		url('icons.woff') format('woff'),
+		url('icons.ttf') format('truetype'),
+		url('icons.svg#icons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
-.icon-download, .icon-mail, .icon-google-plus, .icon-facebook, .icon-instagram, .icon-twitter, .icon-feed, .icon-vimeo2, .icon-picassa, .icon-tumblr, .icon-linkedin, .icon-stumbleupon, .icon-pinterest, .icon-briefcase, .icon-user, .icon-earth {
-	font-family: 'social';
+.icon-download, .icon-briefcase, .icon-user, .icon-earth, .icon-library, .icon-office, .icon-file, .icon-cog, .icon-lock, .icon-unlocked, .icon-spinner, .icon-thumbs-up, .icon-thumbs-up-2, .icon-alarm, .icon-trophy, .icon-upload, .icon-link, .icon-flag, .icon-attachment, .icon-bookmark, .icon-star, .icon-heart, .icon-info, .icon-checkmark-circle, .icon-cancel-circle, .icon-spam, .icon-enter, .icon-exit, .icon-loop, .icon-envelop, .icon-google-plus, .icon-facebook, .icon-twitter, .icon-youtube, .icon-vimeo, .icon-flickr, .icon-picassa, .icon-dribbble, .icon-github, .icon-tumblr, .icon-reddit, .icon-stumbleupon, .icon-pinterest, .icon-hammer, .icon-user-2, .icon-list, .icon-drawer, .icon-bubbles, .icon-bullhorn, .icon-home, .icon-signup, .icon-eye, .icon-eye-blocked, .icon-filter {
+	font-family: 'icons';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -39,42 +40,6 @@
 .icon-download:before {
 	content: "\e000";
 }
-.icon-mail:before {
-	content: "\e001";
-}
-.icon-google-plus:before {
-	content: "\e002";
-}
-.icon-facebook:before {
-	content: "\e003";
-}
-.icon-instagram:before {
-	content: "\e004";
-}
-.icon-twitter:before {
-	content: "\e005";
-}
-.icon-feed:before {
-	content: "\e006";
-}
-.icon-vimeo2:before {
-	content: "\e007";
-}
-.icon-picassa:before {
-	content: "\e008";
-}
-.icon-tumblr:before {
-	content: "\e009";
-}
-.icon-linkedin:before {
-	content: "\e00a";
-}
-.icon-stumbleupon:before {
-	content: "\e00b";
-}
-.icon-pinterest:before {
-	content: "\e00c";
-}
 .icon-briefcase:before {
 	content: "\e00d";
 }
@@ -84,10 +49,153 @@
 .icon-earth:before {
 	content: "\e00f";
 }
-
-::selection { background: rgba($blue, 0.75); color: $abs_white; }
-::-moz-selection { background: rgba($blue, 0.75); color: $abs_white; }
-
-.alignleft { text-align: left; }
-.aligncenter { text-align: center; }
-.alignright { text-align: right; }
+.icon-library:before {
+	content: "\e010";
+}
+.icon-office:before {
+	content: "\e011";
+}
+.icon-file:before {
+	content: "\e012";
+}
+.icon-cog:before {
+	content: "\e013";
+}
+.icon-lock:before {
+	content: "\e014";
+}
+.icon-unlocked:before {
+	content: "\e015";
+}
+.icon-spinner:before {
+	content: "\e016";
+}
+.icon-thumbs-up:before {
+	content: "\e017";
+}
+.icon-thumbs-up-2:before {
+	content: "\e018";
+}
+.icon-alarm:before {
+	content: "\e001";
+}
+.icon-trophy:before {
+	content: "\e004";
+}
+.icon-upload:before {
+	content: "\e005";
+}
+.icon-link:before {
+	content: "\e002";
+}
+.icon-flag:before {
+	content: "\e003";
+}
+.icon-attachment:before {
+	content: "\e006";
+}
+.icon-bookmark:before {
+	content: "\e007";
+}
+.icon-star:before {
+	content: "\e008";
+}
+.icon-heart:before {
+	content: "\e009";
+}
+.icon-info:before {
+	content: "\e00a";
+}
+.icon-checkmark-circle:before {
+	content: "\e00b";
+}
+.icon-cancel-circle:before {
+	content: "\e00c";
+}
+.icon-spam:before {
+	content: "\e019";
+}
+.icon-enter:before {
+	content: "\e01a";
+}
+.icon-exit:before {
+	content: "\e01b";
+}
+.icon-loop:before {
+	content: "\e01c";
+}
+.icon-envelop:before {
+	content: "\e01d";
+}
+.icon-google-plus:before {
+	content: "\e01e";
+}
+.icon-facebook:before {
+	content: "\e01f";
+}
+.icon-twitter:before {
+	content: "\e020";
+}
+.icon-youtube:before {
+	content: "\e021";
+}
+.icon-vimeo:before {
+	content: "\e022";
+}
+.icon-flickr:before {
+	content: "\e023";
+}
+.icon-picassa:before {
+	content: "\e024";
+}
+.icon-dribbble:before {
+	content: "\e025";
+}
+.icon-github:before {
+	content: "\e026";
+}
+.icon-tumblr:before {
+	content: "\e027";
+}
+.icon-reddit:before {
+	content: "\e028";
+}
+.icon-stumbleupon:before {
+	content: "\e029";
+}
+.icon-pinterest:before {
+	content: "\e02a";
+}
+.icon-hammer:before {
+	content: "\e02b";
+}
+.icon-user-2:before {
+	content: "\e02c";
+}
+.icon-list:before {
+	content: "\e02d";
+}
+.icon-drawer:before {
+	content: "\e02f";
+}
+.icon-bubbles:before {
+	content: "\e030";
+}
+.icon-bullhorn:before {
+	content: "\e02e";
+}
+.icon-home:before {
+	content: "\e031";
+}
+.icon-signup:before {
+	content: "\e032";
+}
+.icon-eye:before {
+	content: "\e033";
+}
+.icon-eye-blocked:before {
+	content: "\e034";
+}
+.icon-filter:before {
+	content: "\e035";
+}

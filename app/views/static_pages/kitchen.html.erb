@@ -1,3 +1,5 @@
+<% content_for :title, "Kitchen Sink" %>
+
 <div id="kitchen-sink" class="row">
   <div class="large-12 columns">
     <div class="row">
@@ -321,8 +323,9 @@
                 <input type="text" placeholder="large-4.columns">
               </div>
               <div class="large-4 columns">
-                <label>Input Label</label>
-                <input type="text" placeholder="large-4.columns">
+                <label class="error">Input Label</label>
+                <input type="text" class="error" placeholder="large-4.columns">
+				<small class="error">Invalid Entry</small>
               </div>
               <div class="large-4 columns">
                 <div class="row collapse">
@@ -338,7 +341,18 @@
             </div>
 
             <div class="row">
-              <div class="large-12 columns">
+				<div class="large-4 columns">
+	                <div class="row collapse">
+	                  <label>Input Label</label>
+	                  <div class="small-3 columns">
+	                    <span class="prefix">.com</span>
+	                  </div>
+	                  <div class="small-9 columns">
+	                    <input type="text" placeholder="small-9.columns">
+	                  </div>
+	                </div>
+	              </div>
+              <div class="large-8 columns">
                 <label>Textarea Label</label>
                 <textarea placeholder="small-12.columns"></textarea>
               </div>
@@ -554,6 +568,13 @@
         <a href="#" data-reveal-id="firstModal" class="radius button">Example Modal&hellip;</a>
         <a href="#" data-reveal-id="videoModal" class="radius button">Example Modal w/Video&hellip;</a>
 
+		<div id="firstModal" class="reveal-modal">
+			<h2>Awesome. I have it.</h2>
+			<p class="lead">Your couch.  It is mine.</p>
+			<p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+
         <hr>
 
         <h4>Section</h4>
@@ -703,7 +724,7 @@
 
         <div class="row">
           <div class="large-4 columns end">
-            <ul class="side-nav">
+            <ul class="side-nav blocky">
               <li class="active"><a href="#">Link 1</a></li>
               <li><a href="#">Link 2</a></li>
               <li class="divider"></li>
@@ -773,7 +794,7 @@
 
         <h4>Tables</h4>
 
-        <table>
+        <table cellspacing="0">
           <thead>
             <tr>
               <th width="200">Table Header</th>
@@ -934,6 +955,10 @@
         <br>
 
         <blockquote>I do not fear computers. I fear the lack of them. Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur.<cite>Isaac Asimov</cite></blockquote>
+
+		<br>
+		
+		<pre><code>var someCode = 'Awesome';</code></pre>
 
         <br>
 

@@ -7,12 +7,13 @@
 <html lang="en"> <!--<![endif]-->
 <head>
   	<meta charset="utf-8" />
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	<meta property="og:title" content="<%= content_for?(:title) ? yield(:title) + " | Poliana" : "Poliana | See Through Government" %>"/>
 	<meta property="og:type" content="website"/>
 	<meta property="og:url" content="<%= request.original_url %>"/>
-	<meta property="og:image" content="https://www.poliana.com/assets/landing/large.png"/>
+	<meta property="og:image" content="https://www.poliana.com/assets/logo-square-large.png"/>
 	<meta property="og:site_name" content="Poliana"/>
 	<meta property="og:locale" content="EN_US"/>
 	<meta property="og:description" content="Poliana is a web application that simpliﬁes the legislative system by analyzing and visualizing money’s inﬂuence in politics."/>
@@ -40,7 +41,18 @@
 	</script>
 </head>
 <body>
-    <%= yield %>
+	<header id="header">
+		<div class="row">
+			<div class="grid-1 columns">
+				<%= link_to image_tag('logo-mark.png'), root_url, :id => 'logo' %>
+			</div>
+		</div>
+	</header>
+	<section id="main">
+		<div class="row">
+    		<%= yield %>
+		</div>
+	</section>
 
     <%= javascript_include_tag "application" %>
 </body>

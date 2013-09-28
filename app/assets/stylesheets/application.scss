@@ -16,6 +16,8 @@
 
 @import "foundation_and_overrides";
 
+/* ----- ICON FONT ----- */
+
 @font-face {
 	font-family: 'icons';
 	src:url('icons.eot');
@@ -198,4 +200,32 @@
 }
 .icon-filter:before {
 	content: "\e035";
+}
+
+
+
+/* ----- HEADER ----- */
+
+$header-height: 80px;
+
+#header {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 5;
+	background: $body-bg;
+	width: 100%;
+	height: $header-height;
+	#logo {
+		img {
+			width: 40px;
+			height: auto;
+			margin-top: 20px;
+		}
+	}
+}
+
+#main {
+	position: relative;
+	margin-top: $header-height;
 }

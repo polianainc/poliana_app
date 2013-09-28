@@ -5716,7 +5716,7 @@ ul.pagination {
 table {
   background: white;
   margin-bottom: 1.25em;
-  border: solid 1px #e8e8e8; }
+  border: solid 1px #c2c2c2; }
   /* line 42, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_tables.scss */
   table thead,
   table tfoot {
@@ -5962,6 +5962,7 @@ a.th {
   .f-dropdown.large {
     max-width: 800px; }
 
+/* ----- ICON FONT ----- */
 @font-face {
   font-family: 'icons';
   src: url("icons.eot");
@@ -5969,7 +5970,7 @@ a.th {
   font-weight: normal;
   font-style: normal; }
 
-/* line 30, ../stylesheets/application.scss */
+/* line 32, ../stylesheets/application.scss */
 .icon-download, .icon-briefcase, .icon-user, .icon-earth, .icon-library, .icon-office, .icon-file, .icon-cog, .icon-lock, .icon-unlocked, .icon-spinner, .icon-thumbs-up, .icon-thumbs-up-2, .icon-alarm, .icon-trophy, .icon-upload, .icon-link, .icon-flag, .icon-attachment, .icon-bookmark, .icon-star, .icon-heart, .icon-info, .icon-checkmark-circle, .icon-cancel-circle, .icon-spam, .icon-enter, .icon-exit, .icon-loop, .icon-envelop, .icon-google-plus, .icon-facebook, .icon-twitter, .icon-youtube, .icon-vimeo, .icon-flickr, .icon-picassa, .icon-dribbble, .icon-github, .icon-tumblr, .icon-reddit, .icon-stumbleupon, .icon-pinterest, .icon-hammer, .icon-user-2, .icon-list, .icon-drawer, .icon-bubbles, .icon-bullhorn, .icon-home, .icon-signup, .icon-eye, .icon-eye-blocked, .icon-filter {
   font-family: 'icons';
   speak: none;
@@ -5980,218 +5981,239 @@ a.th {
   line-height: 1;
   -webkit-font-smoothing: antialiased; }
 
-/* line 40, ../stylesheets/application.scss */
+/* line 42, ../stylesheets/application.scss */
 .icon-download:before {
   content: "\e000"; }
 
-/* line 43, ../stylesheets/application.scss */
+/* line 45, ../stylesheets/application.scss */
 .icon-briefcase:before {
   content: "\e00d"; }
 
-/* line 46, ../stylesheets/application.scss */
+/* line 48, ../stylesheets/application.scss */
 .icon-user:before {
   content: "\e00e"; }
 
-/* line 49, ../stylesheets/application.scss */
+/* line 51, ../stylesheets/application.scss */
 .icon-earth:before {
   content: "\e00f"; }
 
-/* line 52, ../stylesheets/application.scss */
+/* line 54, ../stylesheets/application.scss */
 .icon-library:before {
   content: "\e010"; }
 
-/* line 55, ../stylesheets/application.scss */
+/* line 57, ../stylesheets/application.scss */
 .icon-office:before {
   content: "\e011"; }
 
-/* line 58, ../stylesheets/application.scss */
+/* line 60, ../stylesheets/application.scss */
 .icon-file:before {
   content: "\e012"; }
 
-/* line 61, ../stylesheets/application.scss */
+/* line 63, ../stylesheets/application.scss */
 .icon-cog:before {
   content: "\e013"; }
 
-/* line 64, ../stylesheets/application.scss */
+/* line 66, ../stylesheets/application.scss */
 .icon-lock:before {
   content: "\e014"; }
 
-/* line 67, ../stylesheets/application.scss */
+/* line 69, ../stylesheets/application.scss */
 .icon-unlocked:before {
   content: "\e015"; }
 
-/* line 70, ../stylesheets/application.scss */
+/* line 72, ../stylesheets/application.scss */
 .icon-spinner:before {
   content: "\e016"; }
 
-/* line 73, ../stylesheets/application.scss */
+/* line 75, ../stylesheets/application.scss */
 .icon-thumbs-up:before {
   content: "\e017"; }
 
-/* line 76, ../stylesheets/application.scss */
+/* line 78, ../stylesheets/application.scss */
 .icon-thumbs-up-2:before {
   content: "\e018"; }
 
-/* line 79, ../stylesheets/application.scss */
+/* line 81, ../stylesheets/application.scss */
 .icon-alarm:before {
   content: "\e001"; }
 
-/* line 82, ../stylesheets/application.scss */
+/* line 84, ../stylesheets/application.scss */
 .icon-trophy:before {
   content: "\e004"; }
 
-/* line 85, ../stylesheets/application.scss */
+/* line 87, ../stylesheets/application.scss */
 .icon-upload:before {
   content: "\e005"; }
 
-/* line 88, ../stylesheets/application.scss */
+/* line 90, ../stylesheets/application.scss */
 .icon-link:before {
   content: "\e002"; }
 
-/* line 91, ../stylesheets/application.scss */
+/* line 93, ../stylesheets/application.scss */
 .icon-flag:before {
   content: "\e003"; }
 
-/* line 94, ../stylesheets/application.scss */
+/* line 96, ../stylesheets/application.scss */
 .icon-attachment:before {
   content: "\e006"; }
 
-/* line 97, ../stylesheets/application.scss */
+/* line 99, ../stylesheets/application.scss */
 .icon-bookmark:before {
   content: "\e007"; }
 
-/* line 100, ../stylesheets/application.scss */
+/* line 102, ../stylesheets/application.scss */
 .icon-star:before {
   content: "\e008"; }
 
-/* line 103, ../stylesheets/application.scss */
+/* line 105, ../stylesheets/application.scss */
 .icon-heart:before {
   content: "\e009"; }
 
-/* line 106, ../stylesheets/application.scss */
+/* line 108, ../stylesheets/application.scss */
 .icon-info:before {
   content: "\e00a"; }
 
-/* line 109, ../stylesheets/application.scss */
+/* line 111, ../stylesheets/application.scss */
 .icon-checkmark-circle:before {
   content: "\e00b"; }
 
-/* line 112, ../stylesheets/application.scss */
+/* line 114, ../stylesheets/application.scss */
 .icon-cancel-circle:before {
   content: "\e00c"; }
 
-/* line 115, ../stylesheets/application.scss */
+/* line 117, ../stylesheets/application.scss */
 .icon-spam:before {
   content: "\e019"; }
 
-/* line 118, ../stylesheets/application.scss */
+/* line 120, ../stylesheets/application.scss */
 .icon-enter:before {
   content: "\e01a"; }
 
-/* line 121, ../stylesheets/application.scss */
+/* line 123, ../stylesheets/application.scss */
 .icon-exit:before {
   content: "\e01b"; }
 
-/* line 124, ../stylesheets/application.scss */
+/* line 126, ../stylesheets/application.scss */
 .icon-loop:before {
   content: "\e01c"; }
 
-/* line 127, ../stylesheets/application.scss */
+/* line 129, ../stylesheets/application.scss */
 .icon-envelop:before {
   content: "\e01d"; }
 
-/* line 130, ../stylesheets/application.scss */
+/* line 132, ../stylesheets/application.scss */
 .icon-google-plus:before {
   content: "\e01e"; }
 
-/* line 133, ../stylesheets/application.scss */
+/* line 135, ../stylesheets/application.scss */
 .icon-facebook:before {
   content: "\e01f"; }
 
-/* line 136, ../stylesheets/application.scss */
+/* line 138, ../stylesheets/application.scss */
 .icon-twitter:before {
   content: "\e020"; }
 
-/* line 139, ../stylesheets/application.scss */
+/* line 141, ../stylesheets/application.scss */
 .icon-youtube:before {
   content: "\e021"; }
 
-/* line 142, ../stylesheets/application.scss */
+/* line 144, ../stylesheets/application.scss */
 .icon-vimeo:before {
   content: "\e022"; }
 
-/* line 145, ../stylesheets/application.scss */
+/* line 147, ../stylesheets/application.scss */
 .icon-flickr:before {
   content: "\e023"; }
 
-/* line 148, ../stylesheets/application.scss */
+/* line 150, ../stylesheets/application.scss */
 .icon-picassa:before {
   content: "\e024"; }
 
-/* line 151, ../stylesheets/application.scss */
+/* line 153, ../stylesheets/application.scss */
 .icon-dribbble:before {
   content: "\e025"; }
 
-/* line 154, ../stylesheets/application.scss */
+/* line 156, ../stylesheets/application.scss */
 .icon-github:before {
   content: "\e026"; }
 
-/* line 157, ../stylesheets/application.scss */
+/* line 159, ../stylesheets/application.scss */
 .icon-tumblr:before {
   content: "\e027"; }
 
-/* line 160, ../stylesheets/application.scss */
+/* line 162, ../stylesheets/application.scss */
 .icon-reddit:before {
   content: "\e028"; }
 
-/* line 163, ../stylesheets/application.scss */
+/* line 165, ../stylesheets/application.scss */
 .icon-stumbleupon:before {
   content: "\e029"; }
 
-/* line 166, ../stylesheets/application.scss */
+/* line 168, ../stylesheets/application.scss */
 .icon-pinterest:before {
   content: "\e02a"; }
 
-/* line 169, ../stylesheets/application.scss */
+/* line 171, ../stylesheets/application.scss */
 .icon-hammer:before {
   content: "\e02b"; }
 
-/* line 172, ../stylesheets/application.scss */
+/* line 174, ../stylesheets/application.scss */
 .icon-user-2:before {
   content: "\e02c"; }
 
-/* line 175, ../stylesheets/application.scss */
+/* line 177, ../stylesheets/application.scss */
 .icon-list:before {
   content: "\e02d"; }
 
-/* line 178, ../stylesheets/application.scss */
+/* line 180, ../stylesheets/application.scss */
 .icon-drawer:before {
   content: "\e02f"; }
 
-/* line 181, ../stylesheets/application.scss */
+/* line 183, ../stylesheets/application.scss */
 .icon-bubbles:before {
   content: "\e030"; }
 
-/* line 184, ../stylesheets/application.scss */
+/* line 186, ../stylesheets/application.scss */
 .icon-bullhorn:before {
   content: "\e02e"; }
 
-/* line 187, ../stylesheets/application.scss */
+/* line 189, ../stylesheets/application.scss */
 .icon-home:before {
   content: "\e031"; }
 
-/* line 190, ../stylesheets/application.scss */
+/* line 192, ../stylesheets/application.scss */
 .icon-signup:before {
   content: "\e032"; }
 
-/* line 193, ../stylesheets/application.scss */
+/* line 195, ../stylesheets/application.scss */
 .icon-eye:before {
   content: "\e033"; }
 
-/* line 196, ../stylesheets/application.scss */
+/* line 198, ../stylesheets/application.scss */
 .icon-eye-blocked:before {
   content: "\e034"; }
 
-/* line 199, ../stylesheets/application.scss */
+/* line 201, ../stylesheets/application.scss */
 .icon-filter:before {
   content: "\e035"; }
+
+/* ----- HEADER ----- */
+/* line 211, ../stylesheets/application.scss */
+#header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+  background: #fafafa;
+  width: 100%;
+  height: 80px; }
+  /* line 220, ../stylesheets/application.scss */
+  #header #logo img {
+    width: 40px;
+    height: auto;
+    margin-top: 20px; }
+
+/* line 228, ../stylesheets/application.scss */
+#main {
+  position: relative;
+  margin-top: 80px; }

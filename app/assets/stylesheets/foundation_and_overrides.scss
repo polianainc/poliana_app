@@ -1344,7 +1344,7 @@ $table-even-row-bg: $body-bg;
 
 // $table-border-style: solid;
 // $table-border-size: 1px;
-$table-border-color: $secondary-color;
+$table-border-color: darken($secondary-color, 15%);
 
 // These control the table head styles
 

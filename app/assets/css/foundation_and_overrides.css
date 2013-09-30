@@ -229,16 +229,34 @@ kbd {
 table thead th {
   font-weight: 300; }
 
-/* line 1496, ../stylesheets/foundation_and_overrides.scss */
-.top-bar .dropdown li a {
-  -webkit-transition: all 0.1s linear;
-  -moz-transition: all 0.1s linear;
-  -o-transition: all 0.1s linear;
-  transition: all 0.1s linear;
-  font-weight: 300 !important; }
-  /* line 1499, ../stylesheets/foundation_and_overrides.scss */
-  .top-bar .dropdown li a:hover {
-    background: #61d2d6; }
+/* line 1495, ../stylesheets/foundation_and_overrides.scss */
+.top-bar a:hover {
+  color: #61d2d6; }
+/* line 1497, ../stylesheets/foundation_and_overrides.scss */
+.top-bar label {
+  background: #e8e8e8;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.75em; }
+/* line 1504, ../stylesheets/foundation_and_overrides.scss */
+.top-bar .dropdown {
+  top: 60px !important; }
+  /* line 1507, ../stylesheets/foundation_and_overrides.scss */
+  .top-bar .dropdown li.has-dropdown > a:after {
+    margin-top: -34px !important; }
+  /* line 1510, ../stylesheets/foundation_and_overrides.scss */
+  .top-bar .dropdown li a {
+    padding: 10px !important;
+    border-left: 3px solid #e8e8e8;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    font-weight: 300 !important; }
+    /* line 1515, ../stylesheets/foundation_and_overrides.scss */
+    .top-bar .dropdown li a:hover {
+      border-left: 3px solid #c2c2c2; }
 
 /* line 264, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_global.scss */
 *,
@@ -3675,7 +3693,7 @@ label.error {
 /* line 67, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
 .contain-to-grid {
   width: 100%;
-  background: #3f3f3f; }
+  background: #fafafa; }
   /* line 71, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .contain-to-grid .top-bar {
     margin-bottom: 1.875em; }
@@ -3691,10 +3709,10 @@ label.error {
 /* line 83, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar {
   overflow: hidden;
-  height: 40px;
-  line-height: 40px;
+  height: 80px;
+  line-height: 80px;
   position: relative;
-  background: #3f3f3f;
+  background: #fafafa;
   margin-bottom: 1.875em; }
   /* line 92, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar ul {
@@ -3721,21 +3739,21 @@ label.error {
     margin: 0; }
   /* line 112, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar .name {
-    height: 40px;
+    height: 80px;
     margin: 0;
     font-size: 16px; }
     /* line 117, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar .name h1 {
-      line-height: 40px;
+      line-height: 80px;
       font-size: 1em;
       margin: 0; }
       /* line 121, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
       .top-bar .name h1 a {
         font-weight: 300;
-        color: white;
+        color: #3f3f3f;
         width: 50%;
         display: block;
-        padding: 0 13.33333px; }
+        padding: 0 26.66667px; }
   /* line 132, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar .toggle-topbar {
     position: absolute;
@@ -3743,18 +3761,18 @@ label.error {
     top: 0; }
     /* line 137, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar .toggle-topbar a {
-      color: white;
+      color: #3f3f3f;
       text-transform: uppercase;
       font-size: 0.8125em;
       font-weight: 300;
       position: relative;
       display: block;
-      padding: 0 13.33333px;
-      height: 40px;
-      line-height: 40px; }
+      padding: 0 26.66667px;
+      height: 80px;
+      line-height: 80px; }
     /* line 150, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar .toggle-topbar.menu-icon {
-      right: 13.33333px;
+      right: 26.66667px;
       top: 50%;
       margin-top: -16px;
       padding-left: 40px; }
@@ -3765,7 +3783,7 @@ label.error {
         height: 34px;
         line-height: 33px;
         padding: 0;
-        color: white; }
+        color: #3f3f3f; }
         /* line 164, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
         .top-bar .toggle-topbar.menu-icon a span {
           position: absolute;
@@ -3773,22 +3791,22 @@ label.error {
           display: block;
           width: 16px;
           height: 0;
-          -webkit-box-shadow: 0 10px 0 1px white, 0 16px 0 1px white, 0 22px 0 1px white;
-          box-shadow: 0 10px 0 1px white, 0 16px 0 1px white, 0 22px 0 1px white; }
+          -webkit-box-shadow: 0 10px 0 1px #3f3f3f, 0 16px 0 1px #3f3f3f, 0 22px 0 1px #3f3f3f;
+          box-shadow: 0 10px 0 1px #3f3f3f, 0 16px 0 1px #3f3f3f, 0 22px 0 1px #3f3f3f; }
   /* line 185, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar.expanded {
     height: auto;
     background: transparent; }
     /* line 189, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar.expanded .title-area {
-      background: #3f3f3f; }
+      background: #fafafa; }
     /* line 192, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar.expanded .toggle-topbar a {
-      color: #888888; }
+      color: #61d2d6; }
       /* line 193, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
       .top-bar.expanded .toggle-topbar a span {
-        -webkit-box-shadow: 0 10px 0 1px #888888, 0 16px 0 1px #888888, 0 22px 0 1px #888888;
-        box-shadow: 0 10px 0 1px #888888, 0 16px 0 1px #888888, 0 22px 0 1px #888888; }
+        -webkit-box-shadow: 0 10px 0 1px #61d2d6, 0 16px 0 1px #61d2d6, 0 22px 0 1px #61d2d6;
+        box-shadow: 0 10px 0 1px #61d2d6, 0 16px 0 1px #61d2d6, 0 22px 0 1px #61d2d6; }
 
 /* line 211, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
 .top-bar-section {
@@ -3803,14 +3821,14 @@ label.error {
     width: 100%;
     height: auto;
     display: block;
-    background: #3f3f3f;
+    background: white;
     font-size: 16px;
     margin: 0; }
   /* line 227, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .divider,
   .top-bar-section [role="separator"] {
     border-bottom: none;
-    border-top: 1px solid #656565;
+    border-top: 1px solid #e8e8e8;
     clear: both;
     height: 1px;
     width: 100%; }
@@ -3818,12 +3836,12 @@ label.error {
   .top-bar-section ul li > a {
     display: block;
     width: 100%;
-    color: white;
+    color: #3f3f3f;
     padding: 12px 0 12px 0;
-    padding-left: 13.33333px;
+    padding-left: 26.66667px;
     font-size: 0.875em;
     font-weight: 300;
-    background: #3f3f3f; }
+    background: white; }
     /* line 246, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section ul li > a.button {
       background: #61d2d6;
@@ -3856,10 +3874,10 @@ label.error {
   /* line 281, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section ul li.active > a {
     background: #61d2d6;
-    color: white; }
+    color: #3f3f3f; }
   /* line 288, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-form {
-    padding: 13.33333px; }
+    padding: 26.66667px; }
   /* line 291, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-dropdown {
     position: relative; }
@@ -3870,9 +3888,9 @@ label.error {
       width: 0;
       height: 0;
       border: inset 5px;
-      border-color: transparent transparent transparent white;
+      border-color: transparent transparent transparent #3f3f3f;
       border-left-style: solid;
-      margin-right: 13.33333px;
+      margin-right: 26.66667px;
       margin-top: -4.5px;
       position: absolute;
       top: 50%;
@@ -3897,7 +3915,7 @@ label.error {
       /* line 324, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .dropdown li a {
         font-weight: normal;
-        padding: 8px 13.33333px; }
+        padding: 8px 26.66667px; }
         /* line 327, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
         .top-bar-section .dropdown li a.parent-link {
           font-weight: 300; }
@@ -3906,12 +3924,12 @@ label.error {
         margin-bottom: 0; }
         /* line 333, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
         .top-bar-section .dropdown li.title h5 a {
-          color: white;
-          line-height: 20px;
+          color: #3f3f3f;
+          line-height: 40px;
           display: block; }
     /* line 341, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section .dropdown label {
-      padding: 8px 13.33333px 2px;
+      padding: 8px 26.66667px 2px;
       margin-bottom: 0;
       text-transform: uppercase;
       color: #e8e8e8;
@@ -3930,7 +3948,7 @@ label.error {
 @media only screen and (min-width: 58.75em) {
   /* line 362, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .top-bar {
-    background: #3f3f3f;
+    background: #fafafa;
     *zoom: 1;
     overflow: visible; }
     /* line 121, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_global.scss */
@@ -3960,7 +3978,7 @@ label.error {
       top: 8px; }
     /* line 382, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar.expanded {
-      background: #3f3f3f; }
+      background: #fafafa; }
 
   /* line 385, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .contain-to-grid .top-bar {
@@ -3987,15 +4005,15 @@ label.error {
           display: none; }
     /* line 407, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section li a:not(.button) {
-      padding: 0 13.33333px;
-      line-height: 40px;
-      background: #3f3f3f; }
+      padding: 0 26.66667px;
+      line-height: 80px;
+      background: #fafafa; }
       /* line 411, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section li a:not(.button).hover {
-        background: #3f3f3f; }
+        background: white; }
     /* line 416, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section .has-dropdown > a {
-      padding-right: 33.33333px !important; }
+      padding-right: 46.66667px !important; }
       /* line 419, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .has-dropdown > a:after {
         content: "";
@@ -4003,10 +4021,10 @@ label.error {
         width: 0;
         height: 0;
         border: inset 5px;
-        border-color: white transparent transparent transparent;
+        border-color: #3f3f3f transparent transparent transparent;
         border-top-style: solid;
         margin-top: -2.5px;
-        top: 20px; }
+        top: 40px; }
     /* line 426, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section .has-dropdown.moved {
       position: relative; }
@@ -4030,15 +4048,15 @@ label.error {
       min-width: 100%; }
       /* line 456, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .dropdown li a {
-        color: white;
+        color: #3f3f3f;
         line-height: 1;
         white-space: nowrap;
-        padding: 7px 13.33333px;
-        background: #3f3f3f; }
+        padding: 7px 26.66667px;
+        background: white; }
       /* line 464, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .dropdown li label {
         white-space: nowrap;
-        background: #4c4c4c; }
+        background: white; }
       /* line 470, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
       .top-bar-section .dropdown li .dropdown {
         left: 100%;
@@ -4048,15 +4066,15 @@ label.error {
       border-bottom: none;
       border-top: none;
       border-right: none;
-      border-left: 1px solid #656565;
+      border-left: 1px solid #e8e8e8;
       clear: none;
-      height: 40px;
+      height: 80px;
       width: 0px; }
     /* line 488, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section .has-form {
-      background: #3f3f3f;
-      padding: 0 13.33333px;
-      height: 40px; }
+      background: #fafafa;
+      padding: 0 26.66667px;
+      height: 80px; }
     /* line 496, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
     .top-bar-section ul.right li .dropdown {
       left: auto;
@@ -4072,7 +4090,7 @@ label.error {
   /* line 516, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .no-js .top-bar-section ul li:active > a {
     background: #61d2d6;
-    color: white; }
+    color: #3f3f3f; }
   /* line 524, ../../../../../../../../Users/cereallarceny/Web/foundation/scss/foundation/components/_top-bar.scss */
   .no-js .top-bar-section .has-dropdown:hover > .dropdown {
     visibility: visible; } }

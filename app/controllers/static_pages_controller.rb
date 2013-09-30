@@ -1,4 +1,7 @@
 class StaticPagesController < ApplicationController
+  def index
+  end
+
   def about
   end
 
@@ -8,10 +11,16 @@ class StaticPagesController < ApplicationController
   def terms
   end
   
-  def landing
+  def investors
   end
   
-  def investors
+  def team
+  end
+  
+  def contact
+  end
+  
+  def faq
   end
   
   def mailchimp_signup

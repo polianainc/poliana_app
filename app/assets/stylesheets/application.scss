@@ -29,7 +29,7 @@
 	font-style: normal;
 }
 
-.icon-download, .icon-briefcase, .icon-user, .icon-earth, .icon-library, .icon-office, .icon-file, .icon-cog, .icon-lock, .icon-unlocked, .icon-spinner, .icon-thumbs-up, .icon-thumbs-up-2, .icon-alarm, .icon-trophy, .icon-upload, .icon-link, .icon-flag, .icon-attachment, .icon-bookmark, .icon-star, .icon-heart, .icon-info, .icon-checkmark-circle, .icon-cancel-circle, .icon-spam, .icon-enter, .icon-exit, .icon-loop, .icon-envelop, .icon-google-plus, .icon-facebook, .icon-twitter, .icon-youtube, .icon-vimeo, .icon-flickr, .icon-picassa, .icon-dribbble, .icon-github, .icon-tumblr, .icon-reddit, .icon-stumbleupon, .icon-pinterest, .icon-hammer, .icon-user-2, .icon-list, .icon-drawer, .icon-bubbles, .icon-bullhorn, .icon-home, .icon-signup, .icon-eye, .icon-eye-blocked, .icon-filter {
+.icon-download, .icon-briefcase, .icon-user, .icon-earth, .icon-library, .icon-office, .icon-file, .icon-cog, .icon-lock, .icon-unlocked, .icon-spinner, .icon-thumbs-up, .icon-thumbs-up-2, .icon-alarm, .icon-trophy, .icon-upload, .icon-link, .icon-flag, .icon-attachment, .icon-bookmark, .icon-star, .icon-heart, .icon-info, .icon-checkmark-circle, .icon-cancel-circle, .icon-spam, .icon-enter, .icon-exit, .icon-loop, .icon-envelop, .icon-google-plus, .icon-facebook, .icon-twitter, .icon-youtube, .icon-vimeo, .icon-flickr, .icon-picassa, .icon-dribbble, .icon-github, .icon-tumblr, .icon-reddit, .icon-stumbleupon, .icon-pinterest, .icon-hammer, .icon-user-2, .icon-list, .icon-drawer, .icon-bubbles, .icon-bullhorn, .icon-home, .icon-signup, .icon-eye, .icon-eye-blocked, .icon-filter, .icon-search {
 	font-family: 'icons';
 	speak: none;
 	font-style: normal;
@@ -201,6 +201,9 @@
 .icon-filter:before {
 	content: "\e035";
 }
+.icon-search:before {
+	content: "\e036";
+}
 
 
 
@@ -218,9 +221,44 @@ $header-height: 80px;
 	height: $header-height;
 	#logo {
 		img {
-			width: 40px;
-			height: auto;
+			width: auto;
+			height: 40px;
 			margin-top: 20px;
+		}
+	}
+	#topNav {
+		#search {
+			position: relative;
+			input {
+				margin-top: 15px;
+				border: 1px solid $body-bg;
+				height: 35px;
+				padding-right: 35px;
+				@include border-radius($global-radius);
+				&:focus {
+					border: 1px solid $secondary-color;
+				}
+				@media only screen and (max-width: 939px) {
+					margin-top: 0px;
+				}
+			}
+			a {
+				color: $secondary-color;
+				background: none;
+				padding: 0px;
+				line-height: 0px;
+				&:hover { color: darken($secondary-color, 15%); }
+				span {
+					display: block;
+					position: absolute;
+					z-index: 5;
+					top: 32px;
+					right: 10px;
+					@media only screen and (max-width: 939px) {
+						top: 10px;
+					}
+				}
+			}
 		}
 	}
 }
@@ -228,4 +266,98 @@ $header-height: 80px;
 #main {
 	position: relative;
 	margin-top: $header-height;
+}
+
+#footer {
+	background: $body-font-color;
+	height: 160px;
+	margin-top: 20px;
+	@media only screen and (max-width: 939px) { height: auto; }
+	#bottomNav {
+		overflow: hidden;
+		@media only screen and (max-width: 767px) { padding-top: 20px; }
+		ul {
+			float: left;
+			padding-right: 60px;
+			list-style-type: none;
+			margin-left: 0px;
+			margin-top: 30px;
+			@media only screen and (max-width: 939px) {
+				padding-right: 40px;
+			}
+			@media only screen and (max-width: 767px) {
+				float: none;
+				margin-top: 0px;
+				padding-right: 0px;
+				li {
+					height: 30px;
+					line-height: 30px;
+					a {
+						display: block;
+						width: 100%;
+						height: 30px;
+						padding-left: 10px;
+						background: lighten($body-font-color, 5%);
+						@include single-transition(all, 0.1s, linear);
+						&:hover {
+							background: lighten($body-font-color, 15%);
+							color: #fff !important;
+						}
+					}
+				}
+				&:last-child {
+					li:first-child { display: none; }
+				}
+			}
+			li {
+				color: #fff;
+				font-size: 0.85em;
+				margin-bottom: 2px;
+				a {
+					color: #fff;
+					&:hover { color: darken($secondary-color, 15%); }
+				}
+				&:first-child { font-weight: bold; }
+			}
+		}
+	}
+	#copyright {
+		margin-top: 40px;
+		@media only screen and (max-width: 939px) { margin-top: 25px; }
+		p {
+			text-align: center;
+			color: #fff;
+			&:first-of-type {
+				font-size: 0.75em;
+				span {
+					color: $alert-color;
+					padding: 0px 2px;
+				}
+			}
+			&:last-of-type {
+				font-size: 0.65em;
+				span {
+					@media only screen and (max-width: 939px) { display: none; }
+				}
+				a {
+					@media only screen and (max-width: 939px) { display: block; }
+					&:last-of-type {
+						margin-top: 5px;
+						margin-bottom: 0px;
+					}
+					font-weight: bold;
+					color: #fff;
+					&:hover { color: darken($secondary-color, 15%); }
+				}
+			}
+		}
+	}
+}
+
+.show-at-breakpoint {
+	@media only screen and (min-width: 940px) { display: none; }
+}
+
+.hide-at-breakpoint {
+	@media only screen and (max-width: 939px) { display: none; }
 }

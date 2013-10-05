@@ -1,2 +1,38 @@
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<div class="row">
+	<div class="large-12 columns">
+		<h1 class="hero">So what's this Poliana thing?</h1>
+	</div>
+</div>
+<div class="row extraPad">
+	<div class="large-6 columns">
+		<h2>We're on a mission...</h2>
+		<p class="highLines">The right to know how your government is voting and the reasons behind it is an inalienable right. We want to clear up the political ecosystem and visualize it in a way that makes sense to everyone. <%= link_to "Click here", mission_path %> to read up more on our mission.</p>
+	</div>
+	<div class="large-6 small-8 small-centered large-uncentered columns">
+		<%= image_tag "pictures/shawn-wide.jpg", :alt => "We're on a mission..." %>
+	</div>
+</div>
+<div class="row extraPad">
+	<div class="large-6 columns">
+		<h2>How it works...</h2>
+		<p class="highLines">We take data... lots of data, from the <%= link_to "Center for Responsive Politics", "http://opensecrets.org", :target => "_blank" %>, <%= link_to "Sunlight Foundation", "http://sunlightfoundation.com", :target => "_blank" %>, <%= link_to "Maplight", "http://maplight.org", :target => "_blank" %>, and others. Once we’ve got it, we run some analysis and churn out interactive graphs to explain that information. Alas, politics can be beautiful.</p>
+	</div>
+	<div class="large-6 small-8 small-centered large-uncentered columns">
+		<%= image_tag "pictures/laptop.png", :alt => "How it works..." %>
+	</div>
+</div>
+<div class="row extraPad">
+	<div class="large-6 columns">
+		<h2>We have a rockstar team...</h2>
+		<p class="highLines">Big data is all the craze these days and at Poliana we just can’t get enough of it. Our team consists of data scientists, developers, designers, and dreamers. Learn more about who we are on our <%= link_to "team page", team_path %>.</p>
+	</div>
+	<div class="large-6 small-8 small-centered large-uncentered columns">
+		<%= image_tag "pictures/team.jpg", :alt => "We have a rockstar team..." %>
+	</div>
+</div>
+<div class="row hero">
+	<div class="large-12 columns">
+		<h2>Wanna know more?</h2>
+		<p><%= link_to "Go ahead and ask", contact_path %>, we’d love to hear what you think!</p>
+	</div>
+</div>

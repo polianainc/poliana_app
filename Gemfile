@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+# GRAYSON, CLEAN THIS GEMFILE UP!
 gem 'rails', '3.2.13'
 
 gem 'pry'
@@ -9,8 +10,6 @@ gem 'figaro'
 gem 'mongo'
 gem 'bcrypt-ruby'
 
-
-gem 'rack-mini-profiler'
 
 gem 'omniauth'
 gem 'omniauth-twitter'

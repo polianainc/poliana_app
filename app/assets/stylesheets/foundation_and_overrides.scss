@@ -127,12 +127,12 @@ $shiny-edge-size: 0px;
 
 // Media Queries
 
-// $small-screen: 768px;
+$small-screen: 768px;
 // $medium-screen: 1280px;
 // $large-screen: 1440px;
 
 // $screen: "only screen";
-// $small: "only screen and (min-width: #{$small-screen})";
+$small: "only screen and (min-width: #{$small-screen})";
 // $medium: "only screen and (min-width: #{$medium-screen})";
 // $large: "only screen and (min-width: #{$large-screen})";
 // $landscape: "only screen and (orientation: landscape)";
@@ -174,6 +174,7 @@ $shiny-edge-size: 0px;
 
 // Control header font styles
 
+$header-height: 80px;
 $header-font-family: $body-font-family;
 $header-font-weight: $body-font-weight;
 // $header-font-style: normal;
@@ -1127,8 +1128,6 @@ $reveal-border-width: 0px;
 
 // These style the titles
 
-// -------- PATRICK START HERE --------- //
-
 $section-title-color: $body-font-weight;
 $section-title-color-active: $body-font-weight;
 $section-title-bg: #fff;
@@ -1344,7 +1343,7 @@ $table-even-row-bg: $body-bg;
 
 // $table-border-style: solid;
 // $table-border-size: 1px;
-$table-border-color: $secondary-color;
+$table-border-color: darken($secondary-color, 15%);
 
 // These control the table head styles
 
@@ -1415,18 +1414,20 @@ $tooltip-close-font-color: darken($secondary-color, 15%);
 // $tooltip-radius: $global-radius;
 $tooltip-pip-size: 8px;
 
+.tooltip { margin-top: -$header-height; }
+
 //
 // Top Bar Variables
 //
 
 // Background color for the top bar
 
-$topbar-bg-color: $body-font-color;
+$topbar-bg-color: $body-bg;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin
 
-$topbar-height: 40px;
+$topbar-height: $header-height;
 // $topbar-margin-bottom: 0;
 
 // Control Input height for top bar
@@ -1440,18 +1441,18 @@ $topbar-title-font-size: em-calc(16);
 
 // Style the top bar dropdown elements
 
-$topbar-dropdown-bg: $body-font-color;
-$topbar-dropdown-link-color: #fff;
-$topbar-dropdown-link-bg: $body-font-color;
+$topbar-dropdown-bg: #fff;
+$topbar-dropdown-link-color: $body-font-color;
+$topbar-dropdown-link-bg: #fff;
 // $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: #fff;
+$topbar-dropdown-toggle-color: $body-font-color;
 $topbar-dropdown-toggle-alpha: 1;
 
 // Set the link colors and styles for top-level nav
 
-$topbar-link-color: #fff;
+$topbar-link-color: $body-font-color;
 $topbar-link-color-hover: $primary-color;
-$topbar-link-color-active: #fff;
+$topbar-link-color-active: $body-font-color;
 $topbar-link-weight: $body-font-weight;
 $topbar-link-font-size: em-calc(14);
 $topbar-link-hover-lightness: 0%;
@@ -1469,10 +1470,10 @@ $topbar-dropdown-label-bg: #fff;
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: em-calc(13);
 $topbar-menu-link-weight: $body-font-weight;
-// $topbar-menu-link-color: #fff;
-// $topbar-menu-icon-color: #fff;
-// $topbar-menu-link-color-toggled: #888;
-// $topbar-menu-icon-color-toggled: #888;
+$topbar-menu-link-color: $body-font-color;
+$topbar-menu-icon-color: $body-font-color;
+$topbar-menu-link-color-toggled: $primary-color;
+$topbar-menu-icon-color-toggled: $primary-color;
 
 // Transitions and breakpoint styles
 
@@ -1483,7 +1484,7 @@ $topbar-transition-speed: 200ms;
 // Divider Styles
 
 $topbar-divider-border-bottom: none;
-$topbar-divider-border-top: 1px solid lighten($body-font-color, 15%);
+$topbar-divider-border-top: 1px solid $secondary-color;
 
 // Sticky Class
 
@@ -1491,12 +1492,36 @@ $topbar-divider-border-top: 1px solid lighten($body-font-color, 15%);
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 
 .top-bar {
+	a {
+		&:hover { color: $primary-color; }
+	}
+	label {
+		background: $secondary-color;
+		padding: 5px 10px;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 0.75em;
+	}
+	.has-form {
+		padding: 0px 0px 0px 26.66667px;
+		@media #{$small} {
+			padding: 26.66667px;
+		}
+	}
 	.dropdown {
+		top: 60px !important;
 		li {
+			&.has-dropdown > a:after {
+				margin-top: -34px !important;
+			}
 			a {
+				padding: 10px !important;
+				border-left: 3px solid $secondary-color;
 				@include single-transition(all, 0.1s, linear);
 				font-weight: $body-font-weight !important;
-				&:hover { background: $primary-color; }
+				&:hover {
+					border-left: 3px solid darken($secondary-color, 15%);
+				}
 			}
 		}
 	}

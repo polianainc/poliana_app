@@ -9,12 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation
- *= require foundation_and_overrides
- *= require_tree .
  */
 
-@import "foundation_and_overrides";
+@import "foundation_and_overrides", "static_pages";
+
+/* ----- ICON FONT ----- */
 
 @font-face {
 	font-family: 'icons';
@@ -27,7 +26,7 @@
 	font-style: normal;
 }
 
-.icon-download, .icon-briefcase, .icon-user, .icon-earth, .icon-library, .icon-office, .icon-file, .icon-cog, .icon-lock, .icon-unlocked, .icon-spinner, .icon-thumbs-up, .icon-thumbs-up-2, .icon-alarm, .icon-trophy, .icon-upload, .icon-link, .icon-flag, .icon-attachment, .icon-bookmark, .icon-star, .icon-heart, .icon-info, .icon-checkmark-circle, .icon-cancel-circle, .icon-spam, .icon-enter, .icon-exit, .icon-loop, .icon-envelop, .icon-google-plus, .icon-facebook, .icon-twitter, .icon-youtube, .icon-vimeo, .icon-flickr, .icon-picassa, .icon-dribbble, .icon-github, .icon-tumblr, .icon-reddit, .icon-stumbleupon, .icon-pinterest, .icon-hammer, .icon-user-2, .icon-list, .icon-drawer, .icon-bubbles, .icon-bullhorn, .icon-home, .icon-signup, .icon-eye, .icon-eye-blocked, .icon-filter {
+.icon-download, .icon-briefcase, .icon-user, .icon-earth, .icon-library, .icon-office, .icon-file, .icon-cog, .icon-lock, .icon-unlocked, .icon-spinner, .icon-thumbs-up, .icon-thumbs-up-2, .icon-alarm, .icon-trophy, .icon-upload, .icon-link, .icon-flag, .icon-attachment, .icon-bookmark, .icon-star, .icon-heart, .icon-info, .icon-checkmark-circle, .icon-cancel-circle, .icon-spam, .icon-enter, .icon-exit, .icon-loop, .icon-envelop, .icon-google-plus, .icon-facebook, .icon-twitter, .icon-youtube, .icon-vimeo, .icon-flickr, .icon-picassa, .icon-dribbble, .icon-github, .icon-tumblr, .icon-reddit, .icon-stumbleupon, .icon-pinterest, .icon-hammer, .icon-user-2, .icon-list, .icon-drawer, .icon-bubbles, .icon-bullhorn, .icon-home, .icon-signup, .icon-eye, .icon-eye-blocked, .icon-filter, .icon-search, .icon-linkedin {
 	font-family: 'icons';
 	speak: none;
 	font-style: normal;
@@ -198,4 +197,228 @@
 }
 .icon-filter:before {
 	content: "\e035";
+}
+.icon-search:before {
+	content: "\e036";
+}
+.icon-linkedin:before {
+	content: "\e037";
+}
+
+
+
+/* ----- HEADER ----- */
+
+#header {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 5;
+	background: $body-bg;
+	width: 100%;
+	height: $header-height;
+	#logo {
+		img {
+			width: auto;
+			height: 40px;
+			margin-top: 20px;
+		}
+	}
+	#topNav {
+		#search {
+			position: relative;
+			input {
+				border: 1px solid $body-bg;
+				height: 35px;
+				padding-right: 35px;
+				margin-top: 0px;
+				@include border-radius($global-radius);
+				&:focus {
+					border: 1px solid $secondary-color;
+				}
+				@media #{$small} { margin-top: 15px; }
+			}
+			a {
+				color: $secondary-color;
+				background: none;
+				padding: 0px;
+				line-height: 0px;
+				&:hover { color: darken($secondary-color, 15%); }
+				span {
+					display: block;
+					position: absolute;
+					z-index: 5;
+					top: 10px;
+					right: 10px;
+					@media #{$small} { top: 24px; }
+					@media #{$topbar-media-query} { top: 32px; }
+				}
+			}
+		}
+	}
+}
+
+#main {
+	position: relative;
+	margin-top: $header-height;
+}
+
+#footer {
+	background: $body-font-color;
+	height: auto;
+	margin-top: 20px;
+	@media #{$small} { height: 160px; }
+	#bottomNav {
+		overflow: hidden;
+		padding-top: 20px;
+		@media #{$small} { padding-top: 0px; }
+		ul {
+			float: none;
+			margin-top: 0px;
+			margin-left: 0px;
+			padding-right: 0px;
+			list-style-type: none;
+			li {
+				height: 30px;
+				line-height: 30px;
+				color: #fff;
+				font-size: 0.85em;
+				margin-bottom: 2px;
+				a {
+					display: block;
+					width: 100%;
+					height: 30px;
+					padding-left: 10px;
+					color: #fff;
+					background: lighten($body-font-color, 5%);
+					@include single-transition(all, 0.1s, linear);
+					&:hover {
+						background: lighten($body-font-color, 15%);
+						color: #fff;
+					}
+				}
+				&:first-child { font-weight: bold; }
+			}
+			&:last-child {
+				li:first-child { display: none; }
+			}
+			@media #{$small} {
+				padding-right: 40px;
+				margin-left: 0px;
+				margin-top: 30px;
+				float: left;
+				li {
+					height: auto;
+					line-height: inherit;
+					a {
+						display: inline;
+						width: auto;
+						height: auto;
+						padding-left: 0px;
+						background: none;
+						&:hover {
+							background: none;
+							color: darken($secondary-color, 15%);
+						}
+					}
+				}
+				&:last-child {
+					li:first-child { display: inline; }
+				}
+			}
+		}
+	}
+	#copyright {
+		margin-top: 25px;
+		@media #{$topbar-media-query} { margin-top: 40px; }
+		p {
+			text-align: center;
+			color: #fff;
+			&:first-of-type {
+				font-size: 0.75em;
+				span {
+					color: $alert-color;
+					padding: 0px 2px;
+				}
+			}
+			&:last-of-type {
+				font-size: 0.65em;
+				span {
+					display: none;
+					@media #{$topbar-media-query} { display: inline; }
+				}
+				a {
+					display: block;
+					@media #{$topbar-media-query} { display: inline; }
+					&:last-of-type {
+						margin-top: 5px;
+						margin-bottom: 0px;
+					}
+					font-weight: bold;
+					color: #fff;
+					&:hover { color: darken($secondary-color, 15%); }
+				}
+			}
+		}
+	}
+}
+
+.show-for-breakpoint {
+	display: block;
+	@media #{$topbar-media-query} { display: none; }
+}
+
+.hide-for-breakpoint {
+	display: none;
+	@media #{$topbar-media-query} { display: block; }
+}
+
+*:focus { outline: none; }
+
+::selection { background: $primary-color; background: rgba($primary-color, 0.75); color: #FFF; }
+::-moz-selection { background: $primary-color; background: rgba($primary-color, 0.75); color: #FFF; }
+
+.alignleft { text-align: left; }
+.aligncenter { text-align: center; }
+.alignright { text-align: right; }
+img.alignleft, object.alignleft, embed.alignleft { float: left; }
+img.aligncenter, object.aligncenter, embed.aligncenter { margin: 0 auto; display: block; }
+img.alignright, object.alignright, embed.alignright { float: right; }
+
+.hero {
+	padding: 40px 0px;
+	text-align: center;
+}
+
+.extraPad {
+	padding: 20px 0px;
+	text-align: center;
+	@media #{$small} { text-align: inherit; }
+}
+
+.largerParagraph { font-size: 1.2em; }
+.highLines { line-height: 2em; }
+.inline { display: inline; }
+
+.fullRow {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: auto;
+	background-size: 100% auto !important;
+	margin-bottom: 20px;
+	background: none;
+	* { color: $body-font-color; }
+	@media #{$small} {
+		margin-bottom: 40px;
+		* { color: #fff; }
+		&.teamWideBlurred { background: url('pictures/team-wide-blurred.jpg') no-repeat; }
+		&.homeWideBlurred { background: url('pictures/home-wide-blurred.jpg') no-repeat; }
+	}
+	.hero {
+		padding: 0px;
+		padding-top: 30px;
+		@media #{$small} { padding: 30px 0px; }
+		@media #{$topbar-media-query} { padding: 100px 0px; }
+	}
 }

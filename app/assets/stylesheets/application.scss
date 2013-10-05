@@ -9,12 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation
- *= require foundation_and_overrides
- *= require_tree .
  */
 
-@import "foundation_and_overrides";
+@import "foundation_and_overrides", "static_pages";
 
 /* ----- ICON FONT ----- */
 
@@ -29,7 +26,7 @@
 	font-style: normal;
 }
 
-.icon-download, .icon-briefcase, .icon-user, .icon-earth, .icon-library, .icon-office, .icon-file, .icon-cog, .icon-lock, .icon-unlocked, .icon-spinner, .icon-thumbs-up, .icon-thumbs-up-2, .icon-alarm, .icon-trophy, .icon-upload, .icon-link, .icon-flag, .icon-attachment, .icon-bookmark, .icon-star, .icon-heart, .icon-info, .icon-checkmark-circle, .icon-cancel-circle, .icon-spam, .icon-enter, .icon-exit, .icon-loop, .icon-envelop, .icon-google-plus, .icon-facebook, .icon-twitter, .icon-youtube, .icon-vimeo, .icon-flickr, .icon-picassa, .icon-dribbble, .icon-github, .icon-tumblr, .icon-reddit, .icon-stumbleupon, .icon-pinterest, .icon-hammer, .icon-user-2, .icon-list, .icon-drawer, .icon-bubbles, .icon-bullhorn, .icon-home, .icon-signup, .icon-eye, .icon-eye-blocked, .icon-filter, .icon-search {
+.icon-download, .icon-briefcase, .icon-user, .icon-earth, .icon-library, .icon-office, .icon-file, .icon-cog, .icon-lock, .icon-unlocked, .icon-spinner, .icon-thumbs-up, .icon-thumbs-up-2, .icon-alarm, .icon-trophy, .icon-upload, .icon-link, .icon-flag, .icon-attachment, .icon-bookmark, .icon-star, .icon-heart, .icon-info, .icon-checkmark-circle, .icon-cancel-circle, .icon-spam, .icon-enter, .icon-exit, .icon-loop, .icon-envelop, .icon-google-plus, .icon-facebook, .icon-twitter, .icon-youtube, .icon-vimeo, .icon-flickr, .icon-picassa, .icon-dribbble, .icon-github, .icon-tumblr, .icon-reddit, .icon-stumbleupon, .icon-pinterest, .icon-hammer, .icon-user-2, .icon-list, .icon-drawer, .icon-bubbles, .icon-bullhorn, .icon-home, .icon-signup, .icon-eye, .icon-eye-blocked, .icon-filter, .icon-search, .icon-linkedin {
 	font-family: 'icons';
 	speak: none;
 	font-style: normal;
@@ -204,12 +201,13 @@
 .icon-search:before {
 	content: "\e036";
 }
+.icon-linkedin:before {
+	content: "\e037";
+}
 
 
 
 /* ----- HEADER ----- */
-
-$header-height: 80px;
 
 #header {
 	position: fixed;
@@ -230,17 +228,15 @@ $header-height: 80px;
 		#search {
 			position: relative;
 			input {
-				margin-top: 15px;
 				border: 1px solid $body-bg;
 				height: 35px;
 				padding-right: 35px;
+				margin-top: 0px;
 				@include border-radius($global-radius);
 				&:focus {
 					border: 1px solid $secondary-color;
 				}
-				@media only screen and (max-width: 939px) {
-					margin-top: 0px;
-				}
+				@media #{$small} { margin-top: 15px; }
 			}
 			a {
 				color: $secondary-color;
@@ -252,11 +248,10 @@ $header-height: 80px;
 					display: block;
 					position: absolute;
 					z-index: 5;
-					top: 32px;
+					top: 10px;
 					right: 10px;
-					@media only screen and (max-width: 939px) {
-						top: 10px;
-					}
+					@media #{$small} { top: 24px; }
+					@media #{$topbar-media-query} { top: 32px; }
 				}
 			}
 		}
@@ -270,60 +265,72 @@ $header-height: 80px;
 
 #footer {
 	background: $body-font-color;
-	height: 160px;
+	height: auto;
 	margin-top: 20px;
-	@media only screen and (max-width: 939px) { height: auto; }
+	@media #{$small} { height: 160px; }
 	#bottomNav {
 		overflow: hidden;
-		@media only screen and (max-width: 767px) { padding-top: 20px; }
+		padding-top: 20px;
+		@media #{$small} { padding-top: 0px; }
 		ul {
-			float: left;
-			padding-right: 60px;
-			list-style-type: none;
+			float: none;
+			margin-top: 0px;
 			margin-left: 0px;
-			margin-top: 30px;
-			@media only screen and (max-width: 939px) {
-				padding-right: 40px;
-			}
-			@media only screen and (max-width: 767px) {
-				float: none;
-				margin-top: 0px;
-				padding-right: 0px;
-				li {
-					height: 30px;
-					line-height: 30px;
-					a {
-						display: block;
-						width: 100%;
-						height: 30px;
-						padding-left: 10px;
-						background: lighten($body-font-color, 5%);
-						@include single-transition(all, 0.1s, linear);
-						&:hover {
-							background: lighten($body-font-color, 15%);
-							color: #fff !important;
-						}
-					}
-				}
-				&:last-child {
-					li:first-child { display: none; }
-				}
-			}
+			padding-right: 0px;
+			list-style-type: none;
 			li {
+				height: 30px;
+				line-height: 30px;
 				color: #fff;
 				font-size: 0.85em;
 				margin-bottom: 2px;
 				a {
+					display: block;
+					width: 100%;
+					height: 30px;
+					padding-left: 10px;
 					color: #fff;
-					&:hover { color: darken($secondary-color, 15%); }
+					background: lighten($body-font-color, 5%);
+					@include single-transition(all, 0.1s, linear);
+					&:hover {
+						background: lighten($body-font-color, 15%);
+						color: #fff;
+					}
 				}
 				&:first-child { font-weight: bold; }
+			}
+			&:last-child {
+				li:first-child { display: none; }
+			}
+			@media #{$small} {
+				padding-right: 40px;
+				margin-left: 0px;
+				margin-top: 30px;
+				float: left;
+				li {
+					height: auto;
+					line-height: inherit;
+					a {
+						display: inline;
+						width: auto;
+						height: auto;
+						padding-left: 0px;
+						background: none;
+						&:hover {
+							background: none;
+							color: darken($secondary-color, 15%);
+						}
+					}
+				}
+				&:last-child {
+					li:first-child { display: inline; }
+				}
 			}
 		}
 	}
 	#copyright {
-		margin-top: 40px;
-		@media only screen and (max-width: 939px) { margin-top: 25px; }
+		margin-top: 25px;
+		@media #{$topbar-media-query} { margin-top: 40px; }
 		p {
 			text-align: center;
 			color: #fff;
@@ -337,10 +344,12 @@ $header-height: 80px;
 			&:last-of-type {
 				font-size: 0.65em;
 				span {
-					@media only screen and (max-width: 939px) { display: none; }
+					display: none;
+					@media #{$topbar-media-query} { display: inline; }
 				}
 				a {
-					@media only screen and (max-width: 939px) { display: block; }
+					display: block;
+					@media #{$topbar-media-query} { display: inline; }
 					&:last-of-type {
 						margin-top: 5px;
 						margin-bottom: 0px;
@@ -354,10 +363,62 @@ $header-height: 80px;
 	}
 }
 
-.show-at-breakpoint {
-	@media only screen and (min-width: 940px) { display: none; }
+.show-for-breakpoint {
+	display: block;
+	@media #{$topbar-media-query} { display: none; }
 }
 
-.hide-at-breakpoint {
-	@media only screen and (max-width: 939px) { display: none; }
+.hide-for-breakpoint {
+	display: none;
+	@media #{$topbar-media-query} { display: block; }
+}
+
+*:focus { outline: none; }
+
+::selection { background: $primary-color; background: rgba($primary-color, 0.75); color: #FFF; }
+::-moz-selection { background: $primary-color; background: rgba($primary-color, 0.75); color: #FFF; }
+
+.alignleft { text-align: left; }
+.aligncenter { text-align: center; }
+.alignright { text-align: right; }
+img.alignleft, object.alignleft, embed.alignleft { float: left; }
+img.aligncenter, object.aligncenter, embed.aligncenter { margin: 0 auto; display: block; }
+img.alignright, object.alignright, embed.alignright { float: right; }
+
+.hero {
+	padding: 40px 0px;
+	text-align: center;
+}
+
+.extraPad {
+	padding: 20px 0px;
+	text-align: center;
+	@media #{$small} { text-align: inherit; }
+}
+
+.largerParagraph { font-size: 1.2em; }
+.highLines { line-height: 2em; }
+.inline { display: inline; }
+
+.fullRow {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: auto;
+	background-size: 100% auto !important;
+	margin-bottom: 20px;
+	background: none;
+	* { color: $body-font-color; }
+	@media #{$small} {
+		margin-bottom: 40px;
+		* { color: #fff; }
+		&.teamWideBlurred { background: url('pictures/team-wide-blurred.jpg') no-repeat; }
+		&.homeWideBlurred { background: url('pictures/home-wide-blurred.jpg') no-repeat; }
+	}
+	.hero {
+		padding: 0px;
+		padding-top: 30px;
+		@media #{$small} { padding: 30px 0px; }
+		@media #{$topbar-media-query} { padding: 100px 0px; }
+	}
 }

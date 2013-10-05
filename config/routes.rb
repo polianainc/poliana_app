@@ -18,7 +18,7 @@ PolianaApp::Application.routes.draw do
   get "team", :to => "static_pages#team"
   get "contact", :to => "static_pages#contact"
   get "faq", :to => "static_pages#faq"
-  get "investors", :to => 'static_pages#investors'
+  get "mission", :to => "static_pages#mission"
   get "kitchensink", :to => 'static_pages#kitchen'
 
   get "invite", :to => "invitations#new"

@@ -1,0 +1,26 @@
+.teamMember {
+	.inline-list {
+		margin-bottom: 0px;
+		li {
+			display: none;
+			@media #{$small} {
+				display: block;
+				text-align: left;
+				margin-left: 10px;
+				margin-top: emCalc(24px);
+				margin-left: 20px;
+			}
+			&:first-child {
+				margin-top: 10px;
+				display: block;
+				width: 100%;
+				text-align: center;
+				margin-left: 10px;
+				@media #{$small} {
+					width: auto;
+					margin-left: 20px;
+				}
+			}
+		}
+	}
+}

@@ -11,9 +11,6 @@ class StaticPagesController < ApplicationController
   def terms
   end
   
-  def investors
-  end
-  
   def team
   end
   
@@ -21,6 +18,9 @@ class StaticPagesController < ApplicationController
   end
   
   def faq
+  end
+  
+  def mission
   end
   
   def mailchimp_signup

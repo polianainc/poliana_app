@@ -47,23 +47,23 @@
 				<ul class="title-area">
 					<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 					<li class="name">
-						<%= link_to image_tag('logo-mark.png'), root_path, :id => 'logo' %>
+						<%= link_to image_tag('logo-mark.png'), root_path, :id => 'logo', :retina => false %>
 					</li>
 				</ul>
 				<section class="top-bar-section">
 					<ul class="right">
-						<li class="show-at-breakpoint"><label>Explore</label></li>
-				  		<li class="has-dropdown hide-at-breakpoint"><a href="#">Explore</a>
+						<li class="show-for-breakpoint"><label>Explore</label></li>
+				  		<li class="has-dropdown hide-for-breakpoint"><a href="#">Explore</a>
 							<ul class="dropdown">
 					  			<li><a href="#">Bills</a></li>
 								<li><a href="#">Industries</a></li>
 								<li><a href="#">Politicians</a></li>
 							</ul>
 				  		</li>
-						<li class="show-at-breakpoint"><a href="#">Bills</a></li>
-						<li class="show-at-breakpoint"><a href="#">Industries</a></li>
-						<li class="show-at-breakpoint"><a href="#">Politicians</a></li>
-						<li class="divider show-at-breakpoint"></li>
+						<li class="show-for-breakpoint"><a href="#">Bills</a></li>
+						<li class="show-for-breakpoint"><a href="#">Industries</a></li>
+						<li class="show-for-breakpoint"><a href="#">Politicians</a></li>
+						<li class="divider show-for-breakpoint"></li>
 						<li><%= link_to "About", about_path %></li>
 						<li><a href="#"><b>Sign In</b></a></li>
 				  		<li class="has-form">
@@ -82,9 +82,7 @@
 		</div>
 	</header>
 	<section id="main">
-		<div class="row">
-			<%= yield %>
-		</div>
+		<%= yield %>
 	</section>
 	<footer id="footer">
 		<div class="row">
@@ -94,6 +92,7 @@
 				</ul>
 				<ul>
 					<li><%= link_to "About", about_path %></li>
+					<li><%= link_to "Mission", mission_path %></li>
 					<li><%= link_to "Team", team_path %></li>
 				</ul>
 				<ul>
@@ -105,7 +104,6 @@
 				<ul>
 					<li><%= link_to "Contact Us", contact_path %></li>
 					<li><%= link_to "FAQ", faq_path %></li>
-					<li><%= link_to "Investors", investors_path %></li>
 				</ul>
 				<ul>
 					<li>Find Us On</li>

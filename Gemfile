@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+# GRAYSON, CLEAN THIS GEMFILE UP!
 gem 'rails', '3.2.13'
 
 gem 'pry'

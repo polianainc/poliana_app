@@ -10,7 +10,9 @@ PolianaApp::Application.routes.draw do
 	  get "/signup/:key" => "beta#new", :as => :beta_signup
 	  post "beta/" => "beta#create", :as => :beta_registration
   end
-  get "/signup" => "static_pages#index"
+  get "/login", :to => redirect('/signin')
+  get "/logout", :to => redirect('/signout')
+  get "/signup", :to => redirect('/')
   get "about", :to => "static_pages#about"
   get "policy", :to => "static_pages#policy"
   get "terms", :to => "static_pages#terms"

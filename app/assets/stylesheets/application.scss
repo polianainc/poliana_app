@@ -11,7 +11,7 @@
  *= require_self
  */
 
-@import "foundation_and_overrides", "static_pages";
+@import "foundation_and_overrides", "static_pages", "devise";
 
 /* ----- ICON FONT ----- */
 
@@ -237,10 +237,6 @@
 				height: 35px;
 				padding-right: 35px;
 				margin-top: 0px;
-				@include border-radius($global-radius);
-				&:focus {
-					border: 1px solid $secondary-color;
-				}
 				@media #{$small} { margin-top: 12px; }
 			}
 			a {

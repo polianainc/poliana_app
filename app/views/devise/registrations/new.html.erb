@@ -1,21 +1,35 @@
-<h2>Sign up</h2>
+<% content_for :title, "Sign Up" %>
+<div class="row extraPad">
+	<div class="large-12 columns">
+		<h1 class="aligncenter">Welcome to the beta!</h1>
+	</div>
+</div>
+<%- if devise_mapping.omniauthable? %>
+	<div class="row">
+		<div class="large-6 large-centered columns">
+	  	<%- resource_class.omniauth_providers.each do |provider| %>
+			<div class="large-6 columns">
+	    	<%= link_to "<span aria-hidden='true' class='icon-#{provider.to_s.titleize.downcase}'></span><span>Connect</span>".html_safe(), omniauth_authorize_path(resource_name, provider), :class => "button expand radius #{provider.to_s.titleize.downcase}" %>
+			</div>
+	  	<% end -%>
+		</div>
+	</div>
+<% end -%>
+<div class="row">
+	<div class="large-6 large-centered columns">
+		<%= form_for(resource, :html => { :class => "new_user custom", :autocomplete => "off" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+		  <%= devise_error_messages! %>
+		  <%= f.email_field :email, :autofocus => true, :autocomplete => "off" %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+		  <%= f.text_field :username, :autocomplete => "off" %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-  
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username %></div>
+		  <%= f.password_field :password, :autocomplete => "off" %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+		  <%= f.password_field :password_confirmation, :autocomplete => "off" %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+		  <%= f.hidden_field :invitation_key, :autocomplete => "off" %>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+		  <%= f.submit "We got fun and games." %>
+		<% end %>
+	</div>
+</div>

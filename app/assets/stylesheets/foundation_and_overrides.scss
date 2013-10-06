@@ -309,17 +309,45 @@ $input-font-color: $body-font-color;
 // $input-font-size: em-calc(14);
 $input-bg-color: #fff;
 $input-focus-bg-color: $input-bg-color;
-$input-border-color: darken($secondary-color, 15%);
-$input-focus-border-color: darken($secondary-color, 30%);
+// $input-border-color: darken($secondary-color, 15%);
+// $input-focus-border-color: darken($secondary-color, 30%);
 // $input-border-style: solid;
-// $input-border-width: 1px;
+$input-border-width: 0px;
 $input-disabled-bg: $secondary-color;
 $input-box-shadow: none;
 $input-include-glowing-effect: false;
 
-input {
-	height: 40px !important;
-	text-align: left !important;
+form {
+	input {
+		&:not([type="submit"]) {
+			height: 40px;
+			text-align: left;
+			@include border-radius($global-radius);
+			@include single-box-shadow($secondary-color, 0px, 2px, 0px);
+			&.error { @include border-radius($global-radius $global-radius 0px 0px); }
+			&:focus { @include single-box-shadow(darken($secondary-color, 15%), 0px, 2px, 0px); }
+		}
+	}
+	small {
+		&.error {
+			@include border-radius(0px 0px $global-radius $global-radius);
+			@include single-box-shadow(darken($alert-color, 15%), 0px, 2px, 0px);
+		}
+	}
+	textarea {
+		@include border-radius($global-radius);
+		@include single-box-shadow($secondary-color, 0px, 2px, 0px);
+		&.error { @include border-radius($global-radius $global-radius 0px 0px); }
+		&:focus { @include single-box-shadow(darken($secondary-color, 15%), 0px, 2px, 0px); }
+	}
+	.postfix { @include border-radius(0px $global-radius $global-radius 0px); }
+	.prefix { @include border-radius($global-radius 0px 0px $global-radius); }
+	.postfix, .prefix {
+		height: 39px;
+		line-height: 39px;
+		color: #fff !important;
+		font-size: 1.1em;
+	}
 }
 
 ::-webkit-input-placeholder { color: darken($secondary-color, 15%); font-weight: $body-font-weight; }
@@ -344,8 +372,8 @@ $legend-padding: em-calc(0 8 0 6);
 // We use these to style the prefix and postfix input elements
 
 $input-prefix-bg: $secondary-color;
-$input-prefix-border-color: darken($secondary-color, 15%);
-// $input-prefix-border-size: 1px;
+// $input-prefix-border-color: darken($secondary-color, 15%);
+$input-prefix-border-size: 0px;
 // $input-prefix-border-type: solid;
 // $input-prefix-overflow: hidden;
 $input-prefix-font-color: $body-font-color;
@@ -425,7 +453,7 @@ $button-border-width: 0px;
 	}
 	&.success {
 		@include single-box-shadow(darken($success-color, 10%), 0px, 3px, 0px);
-		&.tiny { @include single-box-shadow(darken($success-color, 15%), 0px, 2px, 0px); }
+		&.tiny { @include single-box-shadow(darken($success-color, 10%), 0px, 2px, 0px); }
 		&:active { @include single-box-shadow(darken($success-color, 10%), 0px, 1px, 0px); }
 	}
 	&.alert {
@@ -653,8 +681,8 @@ $clearing-carousel-bg: $body-font-color;
 
 // We use these to control the basic form styles input styles
 
-$custom-form-border-color: darken($secondary-color, 15%);
-// $custom-form-border-size: 1px;
+// $custom-form-border-color: darken($secondary-color, 15%);
+$custom-form-border-size: 0px;
 // $custom-form-bg: #fff;
 $custom-form-bg-disabled: $secondary-color;
 // $custom-form-input-size: 16px;
@@ -663,16 +691,23 @@ $custom-form-check-color: $body-font-color;
 // $custom-form-radio-size: 8px;
 $custom-form-checkbox-radius: $global-radius;
 
-.custom {
-	&.checkbox {
-		font-weight: bold;
-		&.checked:before {
-			font-size: 14px !important;
-			margin-top: 7px !important;
-			margin-left: -4px !important;
+.columns {
+	.custom {
+		&.radio, &.checkbox { @include single-box-shadow($secondary-color, 0px, 1px, 0px); }
+		&.dropdown.small, &.dropdown.medium, &.dropdown.large {
+			@include border-radius($global-radius);
+			@include single-box-shadow($secondary-color, 0px, 2px, 0px);
 		}
+		&.checkbox {
+			font-weight: bold;
+			&.checked:before {
+				font-size: 14px !important;
+				margin-top: 9px !important;
+				margin-left: -4px !important;
+			}
+		}
+		&.dropdown a { cursor: pointer !important; }
 	}
-	&.dropdown a { cursor: pointer !important; }
 }
 
 // We use these to style the custom select form element.

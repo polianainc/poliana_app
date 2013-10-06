@@ -1,17 +1,45 @@
-<h2>Login</h2>
+<% content_for :title, "Login" %>
+<div class="row extraPad">
+	<div class="large-12 columns">
+		<h1 class="aligncenter">Login to Poliana</h1>
+	</div>
+</div>
+<%- if devise_mapping.omniauthable? %>
+	<div class="row">
+		<div class="large-6 large-centered columns">
+	  	<%- resource_class.omniauth_providers.each do |provider| %>
+			<div class="large-6 columns">
+	    	<%= link_to "<span aria-hidden='true' class='icon-#{provider.to_s.titleize.downcase}'></span><span>Connect</span>".html_safe(), omniauth_authorize_path(resource_name, provider), :class => "button expand radius #{provider.to_s.titleize.downcase}" %>
+			</div>
+	  	<% end -%>
+		</div>
+	</div>
+<% end -%>
+<div class="row">
+	<div class="large-6 large-centered columns">
+		<%= form_for(resource, :html => { :class => "new_user custom", :autocomplete => "off" }, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			<div class="row collapse">
+				<div class="small-1 columns">
+		            <span aria-hidden="true" class="prefix icon-user-2"></span>
+		        </div>
+				<div class="small-11 columns">
+		  			<%= f.text_field :login, :autofocus => true, :autocomplete => "off", :placeholder => "Username or Email Address" %>
+				</div>
+			</div>
+			<div class="row collapse">
+				<div class="small-1 columns">
+		            <span aria-hidden="true" class="prefix icon-lock"></span>
+		        </div>
+				<div class="small-11 columns">
+		  			<%= f.password_field :password, :autocomplete => "off", :placeholder => "Password" %>
+				</div>
+			</div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :login %><br />
-  <%= f.text_field :login, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Login" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+			<% if devise_mapping.rememberable? -%>
+				<%= f.label :remember_me do |g| %><%= f.check_box :remember_me %> Remember Me?<% end %>
+			<% end -%>
+			<br>
+		  	<%= f.submit "Welcome back!", :class => "button expand large radius" %>
+		<% end %>
+	</div>
+</div>

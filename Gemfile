@@ -8,13 +8,8 @@ gem 'pry'
 gem 'figaro'
 
 gem 'mongo'
-
 gem 'bcrypt-ruby'
 
-gem 'jquery-rails'
-gem 'compass-rails'
-gem 'zurb-foundation'
-gem 'coffee-rails'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
@@ -45,14 +40,15 @@ group :test do
 end
 
 group :assets do
+
+  gem 'jquery-rails'
+  gem 'compass-rails'
+  gem 'zurb-foundation'
+
   gem 'sass-rails',   '~> 3.2.3'
   gem 'therubyracer', :platforms => :ruby, :group => :production
   gem 'uglifier', '>= 1.0.3'
   gem 'coffee-rails'
-end
-
-group :development do
-
 end
 
 group :production do

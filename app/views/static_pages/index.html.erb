@@ -1,9 +1,44 @@
 <div class="fullRow homeWideBlurred">
 	<div class="row">
-		<div class="large-12 columns">
-			<h1>Welcome to Poliana!</h1>
-			<p>We're using <em>data visualization</em> to drive political transparency</p>
-			
+		<div class="large-8 columns">
+			<h1>Welcome to Poliana</h1>
+			<p class="largerParagraph">We're using <em>data visualization</em> <br>to drive political transparency</p>
 		</div>
+	</div>
+	<div class="row">
+		<div class="large-4 small-10 small-centered large-uncentered columns">
+			<small>Get in line for an invite!</small>
+			<form action="http://poliana.us7.list-manage1.com/subscribe/post?u=92d5bd31807677bfb3c47261b&amp;id=f21dcc0b54" method="post" class="mailchimp-form">
+				<input type="email" class="email" name="EMAIL" placeholder="Email Address">
+				<button type="submit" aria-hidden="true" class="submit icon-heart"></button>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="row hero">
+	<h2>What's all the buzz about?</h2>
+	<p>Here goes the graph explorer</p>
+</div>
+<div class="row hero">
+	<div class="large-12 columns">
+		<h2>What else can I view?</h2>
+	</div>
+	<div class="large-4 small-10 small-centered large-uncentered columns">
+		<span aria-hidden="true" class="icon-file largeIcon"></span>
+		<h3>Bills</h3>
+		<p>A bill can be any kind of legislation moving through Congress. We also have historical data.</p>
+		<%= link_to "Explore &raquo;".html_safe(), "#", :class => "button radius" %>
+	</div>
+	<div class="large-4 small-10 small-centered large-uncentered columns">
+		<span aria-hidden="true" class="icon-office largeIcon"></span>
+		<h3>Industries</h3>
+		<p>An industry is a group of organizations. This also encompasses special interest groups.</p>
+		<%= link_to "Explore &raquo;".html_safe(), "#", :class => "button radius" %>
+	</div>
+	<div class="large-4 small-10 small-centered large-uncentered columns">
+		<span aria-hidden="true" class="icon-user largeIcon"></span>
+		<h3>Politicians</h3>
+		<p>A politician is any person currently or previously elected to the House of Representatives or Senate.</p>
+		<%= link_to "Explore &raquo;".html_safe(), "#", :class => "button radius" %>
 	</div>
 </div>

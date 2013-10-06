@@ -1,4 +1,4 @@
-@import "compass/css3/transition", "compass/css3/box-shadow", "compass/css3/border-radius";
+@import "compass/css3/transition", "compass/css3/box-shadow", "compass/css3/border-radius", "compass/css3/background-size", "compass/layout/sticky-footer";
 
 //
 // Foundation Variables
@@ -317,6 +317,11 @@ $input-disabled-bg: $secondary-color;
 $input-box-shadow: none;
 $input-include-glowing-effect: false;
 
+input {
+	height: 40px !important;
+	text-align: left !important;
+}
+
 ::-webkit-input-placeholder { color: darken($secondary-color, 15%); font-weight: $body-font-weight; }
 :-moz-placeholder { color: darken($secondary-color, 15%); font-weight: $body-font-weight; }
 ::-moz-placeholder { color: darken($secondary-color, 15%); font-weight: $body-font-weight; }
@@ -399,26 +404,12 @@ $button-border-width: 0px;
 
 .button {
 	@include single-transition(all, 0.1s, linear);
-	@include single-box-shadow(darken($primary-color, 15%), 0px, 2px, 0px);
-	&:hover {
-		top: 1px;
-		background: $primary-color !important;
+	@include single-box-shadow(darken($primary-color, 15%), 0px, 3px, 0px);
+	&.tiny { @include single-box-shadow(darken($primary-color, 15%), 0px, 2px, 0px); }
+	&:active {
+		top: 2px;
+		&.tiny { top: 1px; }
 		@include single-box-shadow(darken($primary-color, 15%), 0px, 1px, 0px);
-	}
-	&.secondary {
-		background: $secondary-color !important;
-		@include single-box-shadow(darken($secondary-color, 15%), 0px, 2px, 0px);
-		&:hover { @include single-box-shadow(darken($secondary-color, 15%), 0px, 1px, 0px); }
-	}
-	&.success {
-		background: $success-color !important;
-		@include single-box-shadow(darken($success-color, 10%), 0px, 2px, 0px);
-		&:hover { @include single-box-shadow(darken($success-color, 10%), 0px, 1px, 0px); }
-	}
-	&.alert {
-		background: $alert-color !important;
-		@include single-box-shadow(darken($alert-color, 15%), 0px, 2px, 0px);
-		&:hover { @include single-box-shadow(darken($alert-color, 15%), 0px, 1px, 0px); }
 	}
 	&.disabled {
 		@include single-box-shadow(none);
@@ -426,6 +417,21 @@ $button-border-width: 0px;
 			top: 0px;
 			@include single-box-shadow(none);
 		}
+	}
+	&.secondary {
+		@include single-box-shadow(darken($secondary-color, 15%), 0px, 3px, 0px);
+		&.tiny { @include single-box-shadow(darken($secondary-color, 15%), 0px, 2px, 0px); }
+		&:active { @include single-box-shadow(darken($secondary-color, 15%), 0px, 1px, 0px); }
+	}
+	&.success {
+		@include single-box-shadow(darken($success-color, 10%), 0px, 3px, 0px);
+		&.tiny { @include single-box-shadow(darken($success-color, 15%), 0px, 2px, 0px); }
+		&:active { @include single-box-shadow(darken($success-color, 10%), 0px, 1px, 0px); }
+	}
+	&.alert {
+		@include single-box-shadow(darken($alert-color, 15%), 0px, 3px, 0px);
+		&.tiny { @include single-box-shadow(darken($alert-color, 15%), 0px, 2px, 0px); }
+		&:active { @include single-box-shadow(darken($alert-color, 15%), 0px, 1px, 0px); }
 	}
 }
 

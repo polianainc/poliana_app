@@ -1,3 +1,18 @@
+.mailchimp-form {
+	position: relative;
+	.submit.icon-heart {
+		position: absolute;
+		top: 0px;
+		right: -10px;
+		background: none;
+		color: $alert-color !important;
+		@include single-transition(all, 0.1s, linear);
+		&:hover {
+			color: darken($alert-color, 15%) !important;
+		}
+	}
+}
+
 .teamMember {
 	.inline-list {
 		margin-bottom: 0px;

@@ -41,49 +41,53 @@
 	</script>
 </head>
 <body>
-	<header id="header">
-		<div class="row">
-			<nav id="topNav" class="top-bar large-12 columns">
-				<ul class="title-area">
-					<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-					<li class="name">
-						<%= link_to image_tag('logo-mark.png'), root_path, :id => 'logo', :retina => false %>
-					</li>
-				</ul>
-				<section class="top-bar-section">
-					<ul class="right">
-						<li class="show-for-breakpoint"><label>Explore</label></li>
-				  		<li class="has-dropdown hide-for-breakpoint"><a href="#">Explore</a>
-							<ul class="dropdown">
-					  			<li><a href="#">Bills</a></li>
-								<li><a href="#">Industries</a></li>
-								<li><a href="#">Politicians</a></li>
-							</ul>
-				  		</li>
-						<li class="show-for-breakpoint"><a href="#">Bills</a></li>
-						<li class="show-for-breakpoint"><a href="#">Industries</a></li>
-						<li class="show-for-breakpoint"><a href="#">Politicians</a></li>
-						<li class="divider show-for-breakpoint"></li>
-						<li><%= link_to "About", about_path %></li>
-						<li><a href="#"><b>Sign In</b></a></li>
-				  		<li class="has-form">
-							<form>
-					  			<div class="row collapse">
-									<div id="search" class="small-12 columns">
-						  				<input type="text" placeholder="Search">
-										<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
-									</div>
-					  			</div>
-							</form>
-				  		</li>
+	<div id="container">
+		<header id="header">
+			<div class="row">
+				<nav id="topNav" class="top-bar large-12 columns">
+					<ul class="title-area">
+						<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+						<li class="name">
+							<%= link_to image_tag('logo-primary.png'), root_path, :id => 'logo' %>
+						</li>
 					</ul>
-			  	</section>
-			</nav>
-		</div>
-	</header>
-	<section id="main">
-		<%= yield %>
-	</section>
+					<section class="top-bar-section">
+						<ul class="right">
+							<li class="show-for-breakpoint"><label>Explore</label></li>
+					  		<li class="has-dropdown hide-for-breakpoint">
+								<a href="#">Explore</a>
+								<ul class="dropdown">
+						  			<li><a href="#">Bills</a></li>
+									<li><a href="#">Industries</a></li>
+									<li><a href="#">Politicians</a></li>
+								</ul>
+					  		</li>
+							<li class="show-for-breakpoint"><a href="#">Bills</a></li>
+							<li class="show-for-breakpoint"><a href="#">Industries</a></li>
+							<li class="show-for-breakpoint"><a href="#">Politicians</a></li>
+							<li class="divider show-for-breakpoint"></li>
+							<li><%= link_to "About", about_path %></li>
+							<li><%= link_to "<b>Sign In</b>".html_safe(), new_user_session_path %></a></li>
+					  		<li class="has-form">
+								<form>
+						  			<div class="row collapse">
+										<div id="search" class="small-12 columns">
+							  				<input type="text" placeholder="Search">
+											<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
+										</div>
+						  			</div>
+								</form>
+					  		</li>
+						</ul>
+				  	</section>
+				</nav>
+			</div>
+		</header>
+		<section id="main">
+			<%= yield %>
+		</section>
+		<div id="containerFooter"></div>
+	</div>
 	<footer id="footer">
 		<div class="row">
 			<nav id="bottomNav" class="large-9 columns">

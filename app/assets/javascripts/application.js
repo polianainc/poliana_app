@@ -17,4 +17,38 @@
 
 $(document).ready(function() {
 	$(document).foundation();
+	
+	absoluteHero();
+	
+	$('.mailchimp-form').on('submit', function(event) {
+		event.preventDefault();
+
+		var $form = $(this);
+		
+		$.get('/mailchimp_signup', {
+			email: $form.find('.email').val(),
+			fname: $form.find('.fname').val(),
+			lname: $form.find('.lname').val(),
+			ajax: true
+		}, function(data) {
+			if(data == "Success") {
+				$form.find('.email').val('').attr('disabled', 'disabled');
+				$form.find('button').fadeOut(250);
+				$form.prev('small').text("You're awesome, thanks!");
+			}
+		});
+	});
 });
+
+$(window).resize(function() {
+	absoluteHero();
+});
+
+function absoluteHero() {
+	var $absHero = $('.absoluteHero');
+	
+	if($(window).width() >= 768)
+		$absHero.css('margin-top', -1 * ($absHero.height() / 2));
+	else
+		$absHero.css('margin-top', '0px');
+}

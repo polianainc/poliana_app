@@ -35,6 +35,11 @@
 	text-transform: none;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
+	&.largeIcon {
+		font-size: 6em;
+		display: block;
+		margin: 20px inherit;
+	}
 }
 .icon-download:before {
 	content: "\e000";
@@ -207,7 +212,7 @@
 
 
 
-/* ----- HEADER ----- */
+@include sticky-footer(160px, "#container", "#containerFooter", "#footer");
 
 #header {
 	position: fixed;
@@ -221,7 +226,7 @@
 		img {
 			width: auto;
 			height: 40px;
-			margin-top: 20px;
+			margin-top: 25px;
 		}
 	}
 	#topNav {
@@ -236,7 +241,7 @@
 				&:focus {
 					border: 1px solid $secondary-color;
 				}
-				@media #{$small} { margin-top: 15px; }
+				@media #{$small} { margin-top: 12px; }
 			}
 			a {
 				color: $secondary-color;
@@ -260,13 +265,12 @@
 
 #main {
 	position: relative;
-	margin-top: $header-height;
+	padding-top: $header-height;
 }
 
 #footer {
 	background: $body-font-color;
 	height: auto;
-	margin-top: 20px;
 	@media #{$small} { height: 160px; }
 	#bottomNav {
 		overflow: hidden;
@@ -385,6 +389,12 @@ img.alignleft, object.alignleft, embed.alignleft { float: left; }
 img.aligncenter, object.aligncenter, embed.aligncenter { margin: 0 auto; display: block; }
 img.alignright, object.alignright, embed.alignright { float: right; }
 
+small {
+	display: block;
+	font-size: 0.8em;
+	padding-bottom: 5px;
+}
+
 .hero {
 	padding: 40px 0px;
 	text-align: center;
@@ -404,21 +414,41 @@ img.alignright, object.alignright, embed.alignright { float: right; }
 	display: block;
 	position: relative;
 	width: 100%;
-	height: auto;
-	background-size: 100% auto !important;
 	margin-bottom: 20px;
+	padding-top: 20px;
 	background: none;
-	* { color: $body-font-color; }
-	@media #{$small} {
-		margin-bottom: 40px;
-		* { color: #fff; }
-		&.teamWideBlurred { background: url('pictures/team-wide-blurred.jpg') no-repeat; }
-		&.homeWideBlurred { background: url('pictures/home-wide-blurred.jpg') no-repeat; }
+	.absoluteHero {
+		width: 94%;
+		margin: 0 auto;
 	}
-	.hero {
-		padding: 0px;
-		padding-top: 30px;
-		@media #{$small} { padding: 30px 0px; }
-		@media #{$topbar-media-query} { padding: 100px 0px; }
+	.largerParagraph { font-size: 1em; }
+	* {
+		color: $body-font-color;
+		text-align: center;
+	}
+	@media #{$small} {
+		height: 400px;
+		margin-bottom: 40px;
+		@include background-size(cover !important);
+		* { color: #fff; }
+		.largerParagraph { font-size: 1.2em; }
+		.absoluteHero {
+			position: absolute;
+			width: 90%;
+			height: auto;
+			min-height: 140px;
+			left: 5%;
+			top: 50%;
+			margin-top: -70px;
+		}
+		&.teamWideBlurred { background: url('pictures/team-wide-blurred.jpg') no-repeat; }
+		&.homeWideBlurred {
+			background: url('pictures/home-wide-blurred.jpg') no-repeat;
+			padding-top: 70px;
+			* {
+				color: $body-font-color;
+				text-align: left;
+			}
+		}
 	}
 }

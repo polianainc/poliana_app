@@ -25,8 +25,8 @@ describe InvitationsController do
 
         it "should decrement the current users' invitation count" do
           expect {
-              post :create, :invitation => @invitation_attrs
-            }.to change(subject.current_user.invitations_left).by(-1)
+            post :create, :invitation => @invitation_attrs
+          }.to change(subject.current_user, :invitations_left).by(-1)
         end
 
       end

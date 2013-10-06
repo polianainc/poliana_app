@@ -1,8 +1,21 @@
-<%= form_for @invitation do |f| %>
-
-    <%= f.label :recipient_email, "Email to invite" %>
-    <%= f.text_field :recipient_email %>
-
-    <%= f.submit "Invite!" %>
-
-<% end %>
+<% content_for :title, "Invite" %>
+<div class="row extraPad">
+	<div class="large-12 columns">
+		<h1 class="aligncenter">Spread the love...</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="large-6 large-centered columns">
+		<%= form_for @invitation, :class => "custom" do |f| %>
+			<div class="row collapse">
+				<div class="small-1 columns">
+		            <span aria-hidden="true" class="prefix icon-envelop"></span>
+		        </div>
+				<div class="small-11 columns">
+					<%= f.text_field :recipient_email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>
+				</div>
+			</div>
+		  	<%= f.submit "Send an invitation!", :class => "button expand large radius" %>
+		<% end %>
+	</div>
+</div>

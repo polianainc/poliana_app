@@ -1,7 +1,7 @@
-<% content_for :title, "Login" %>
+<% content_for :title, "Sign In" %>
 <div class="row extraPad">
 	<div class="large-12 columns">
-		<h1 class="aligncenter">Login to Poliana</h1>
+		<h1 class="aligncenter">Sign In to Poliana</h1>
 	</div>
 </div>
 <%- if devise_mapping.omniauthable? %>
@@ -40,6 +40,8 @@
 			<% end -%>
 			<br>
 		  	<%= f.submit "Welcome back!", :class => "button expand large radius" %>
+			<small class="aligncenter"><%= link_to "Forgot your password?", new_user_password_path %></small>
+			<small class="aligncenter"><%= link_to "Want an invitation?", root_path %></small>
 		<% end %>
 	</div>
 </div>

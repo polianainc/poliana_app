@@ -18,18 +18,43 @@
 <div class="row">
 	<div class="large-6 large-centered columns">
 		<%= form_for(resource, :html => { :class => "new_user custom", :autocomplete => "off" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-		  <%= devise_error_messages! %>
-		  <%= f.email_field :email, :autofocus => true, :autocomplete => "off" %>
+			<%= devise_error_messages! %>
+			<div class="row collapse">
+				<div class="small-1 columns">
+		            <span aria-hidden="true" class="prefix icon-envelop"></span>
+		        </div>
+				<div class="small-11 columns">
+					<%= f.email_field :email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>
+				</div>
+			</div>
+			<div class="row collapse">
+				<div class="small-1 columns">
+		            <span aria-hidden="true" class="prefix icon-user-2"></span>
+		        </div>
+				<div class="small-11 columns">
+					<%= f.text_field :username, :autocomplete => "off", :placeholder => "Username" %>
+				</div>
+			</div>
+			<div class="row collapse">
+				<div class="small-1 columns">
+		            <span aria-hidden="true" class="prefix icon-lock"></span>
+		        </div>
+				<div class="small-11 columns">
+					<%= f.password_field :password, :autocomplete => "off", :placeholder => "Password" %>
+				</div>
+			</div>
+			<div class="row collapse">
+				<div class="small-1 columns">
+		            <span aria-hidden="true" class="prefix icon-lock"></span>
+		        </div>
+				<div class="small-11 columns">
+					<%= f.password_field :password_confirmation, :autocomplete => "off", :placeholder => "Confirm Password" %>
+				</div>
+			</div>
 
-		  <%= f.text_field :username, :autocomplete => "off" %>
-
-		  <%= f.password_field :password, :autocomplete => "off" %>
-
-		  <%= f.password_field :password_confirmation, :autocomplete => "off" %>
-
-		  <%= f.hidden_field :invitation_key, :autocomplete => "off" %>
-
-		  <%= f.submit "We got fun and games." %>
+			<%= f.submit "We got fun and games.", :class => "button expand large radius" %>
+			<small class="aligncenter"><%= link_to "Sign in?", new_user_session_path %></small>
+			<small class="aligncenter"><%= link_to "Forgot your password?", new_user_password_path %></small>
 		<% end %>
 	</div>
 </div>

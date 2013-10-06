@@ -343,8 +343,9 @@ form {
 	.postfix { @include border-radius(0px $global-radius $global-radius 0px); }
 	.prefix { @include border-radius($global-radius 0px 0px $global-radius); }
 	.postfix, .prefix {
-		height: 39px;
-		line-height: 39px;
+		margin-top: 4px;
+		height: 34px;
+		line-height: 34px;
 		color: #fff !important;
 		font-size: 1.1em;
 	}

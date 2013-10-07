@@ -23,6 +23,14 @@ class StaticPagesController < ApplicationController
   def mission
   end
   
+  # Delete upon creation of search controller
+  def search
+  end
+  
+  # Delete upon creation of various entity controllers
+  def entity
+  end
+  
   def mailchimp_signup
     gb = Gibbon::API.new("e30680ef84b786d6d9cbfc173529a8e3-us7")
     

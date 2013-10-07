@@ -694,18 +694,30 @@ $custom-form-checkbox-radius: $global-radius;
 
 .columns {
 	.custom {
-		&.radio, &.checkbox { @include single-box-shadow($secondary-color, 0px, 1px, 0px); }
+		&.radio, &.checkbox {
+			border: 1px solid $secondary-color;
+			@include single-box-shadow($secondary-color, 0px, 1px, 0px);
+		}
 		&.dropdown.small, &.dropdown.medium, &.dropdown.large {
+			height: 40px;
+			line-height: 40px;
 			@include border-radius($global-radius);
 			@include single-box-shadow($secondary-color, 0px, 2px, 0px);
+			& a {
+				line-height: 40px !important;
+				&.selector { top: 5px; }
+			}
 		}
 		&.checkbox {
 			font-weight: bold;
 			&.checked:before {
 				font-size: 14px !important;
-				margin-top: 9px !important;
+				margin-top: 7px !important;
 				margin-left: -4px !important;
 			}
+		}
+		&.radio {
+			padding: 3px !important;
 		}
 		&.dropdown a { cursor: pointer !important; }
 	}
@@ -1259,6 +1271,7 @@ $side-nav-divider-color: $secondary-color;
 		&:hover { color: $primary-color; }
 	}
 	&.blocky {
+		margin-bottom: 20px;
 		li {
 			padding: 15px;
 			background: $body-font-color;

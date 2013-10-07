@@ -11,7 +11,7 @@
  *= require_self
  */
 
-@import "foundation_and_overrides", "static_pages", "devise";
+@import "foundation_and_overrides", "static_pages", "devise", "entities";
 
 /* ----- ICON FONT ----- */
 
@@ -446,5 +446,34 @@ small {
 				text-align: left;
 			}
 		}
+	}
+}
+
+.searchArea {
+	h3 { border-bottom: 1px solid $secondary-color; }
+	.searchItem {
+		h4 {
+			& a {
+				font-weight: bold;
+				color: $body-font-color;
+				&:hover { color: $primary-color; }
+			}
+		}
+		p {
+			& a {
+				padding-left: 10px;
+				font-size: 0.8em;
+			}
+		}
+		img { margin-top: 10px; }
+	}
+}
+
+.readMore {
+	padding-top: 0px;
+	margin-top: -10px;
+	a {
+		font-size: 0.9em;
+		font-weight: bold;
 	}
 }

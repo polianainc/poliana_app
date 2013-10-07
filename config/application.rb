@@ -66,5 +66,8 @@ module PolianaApp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    # Configure 404 pages: http://wearestac.com/blog/dynamic-error-pages-in-rails
+    config.exceptions_app = self.routes
   end
 end

@@ -4,3 +4,56 @@
 	}
 	h1 { font-size: 2em; }
 }
+
+.graph {
+	position: relative;
+	@include user-select(none);
+	h4 { margin-bottom: 100px; }
+	.legend {
+		position: absolute;
+		top: 35px;
+		@media #{$small} { top: 50px; }
+		margin-left: 0px;
+		overflow: hidden;
+		list-style-type: none;
+		li {
+			margin-bottom: 10px;
+			min-height: 18px;
+			span {
+				display: block;
+				float: left;
+			}
+			.square {
+				width: 18px;
+				height: 18px;
+				margin-right: 10px;
+			}
+			.title {
+				text-transform: capitalize;
+				line-height: 18px;
+			}
+		}
+	}
+	.voteBD-center {
+		list-style-type: none;
+		margin-left: 0px;
+		margin-bottom: 0px;
+		width: 120px;
+		height: 80px;
+		position: absolute;
+		li {
+			text-align: center;
+			span {
+				display: block;
+				&.title {
+					text-transform: capitalize;
+					font-weight: bold;
+				}
+				&.amount {
+					font-size: 3em;
+					margin-top: -10px;
+				}
+			}
+		}
+	}
+}

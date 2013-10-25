@@ -117,7 +117,7 @@ var voteBD_JSON = {
 var voteBD = {};
 
 voteBD.width = 300;
-voteBD.height = 400;
+voteBD.height = 300;
 voteBD.radius = Math.min(voteBD.width, voteBD.height) / 2;
 voteBD.color = d3.scale.ordinal()
 	.range(["#C4D117", "#DDDDDD", "#61D2D6", "#EA3556", "#888888"])
@@ -138,7 +138,7 @@ voteBD.svg = d3.select("#voteBD")
 		.attr('viewBox','0 0 ' + Math.min(voteBD.width, voteBD.height) + ' ' + Math.min(voteBD.width, voteBD.height))
 		.attr('preserveAspectRatio','xMinYMin')
 		.append("g")
-		.attr("transform", "translate(" + voteBD.width / 2 + "," + voteBD.height / 2 + ")");
+		.attr("transform", "translate(" + voteBD.width / 2 + "," + voteBD.height / 2 + ") rotate(90)");
 		
 voteBD.partition = d3.layout.partition()
 	.sort(null)
@@ -161,37 +161,128 @@ voteBD.arc = d3.svg.arc()
 			return Math.sqrt(d.y + d.dy);
 	});
 
+voteBD.arc2 = d3.svg.arc()
+	.startAngle(function(d) { return d.x; })
+	.endAngle(function(d) { return d.x + d.dx; })
+	.innerRadius(function(d) { return Math.sqrt(d.y); })
+	.outerRadius(function(d) { return Math.sqrt(d.y + d.dy); });
+	
+var $vote = $('#voteBD');
+
 function voteBreakdown(theData) {
-	var $vote = $('#voteBD');
 	var root = JSON.parse(JSON.stringify(theData));
+	var depth = "";
 	
 	var yeasTotal = root.children[0].children[0].size + root.children[0].children[1].size + root.children[0].children[2].size;
 	var naysTotal = root.children[1].children[0].size + root.children[1].children[1].size + root.children[1].children[2].size;
 	
-	if(yeasTotal > naysTotal)
+	if(yeasTotal > naysTotal) {
 		var winner = "yeas";
-	else if(yeasTotal < naysTotal)
+		var loser = "nays";
+		var winPct = parseInt((yeasTotal / (yeasTotal + naysTotal)) * 100);
+		var losePct = 100 - winPct;
+	}
+	else if(yeasTotal < naysTotal) {
 		var winner = "nays";
-	else
+		var loser = "yeas";
+		var winPct = parseInt((naysTotal / (yeasTotal + naysTotal)) * 100);
+		var losePct = 100 - winPct;
+	}
+	else {
 		var winner = "draw";
+		var loser = "draw";
+		var winPct = 50;
+		var losePct = 50;
+	}
 		
-	$vote.append($('<ul>')
+	$vote.find('h4').after($('<ul>')
 		.attr('class', 'legend')
 		.append($('<li>')
+			.attr('data-depth', 1)
 			.append($('<span>')
 				.attr('class', 'square')
+				.css('background', voteBD.color(0))
 			)
 			.append($('<span>')
 				.attr('class', 'title')
+				.text(winner)
+			)
+		)
+		.append($('<li>')
+			.attr('data-depth', 1)
+			.append($('<span>')
+				.attr('class', 'square')
+				.css('background', voteBD.color(1))
+			)
+			.append($('<span>')
+				.attr('class', 'title')
+				.text(loser)
+			)
+		)
+		.append($('<li>')
+			.attr('data-depth', 2)
+			.append($('<span>')
+				.attr('class', 'square')
+				.css('background', voteBD.color(2))
+			)
+			.append($('<span>')
+				.attr('class', 'title')
+				.text("Democrat")
+			)
+		)
+		.append($('<li>')
+			.attr('data-depth', 2)
+			.append($('<span>')
+				.attr('class', 'square')
+				.css('background', voteBD.color(3))
+			)
+			.append($('<span>')
+				.attr('class', 'title')
+				.text("Republican")
+			)
+		)
+		.append($('<li>')
+			.attr('data-depth', 2)
+			.append($('<span>')
+				.attr('class', 'square')
+				.css('background', voteBD.color(4))
+			)
+			.append($('<span>')
+				.attr('class', 'title')
+				.text("Independent")
 			)
 		)
 	)
 	
+	$vote.find('.legend').after($('<ul>')
+		.attr('class', 'voteBD-center')
+		.append($('<li>')
+			.append($('<span>')
+				.attr('class', 'title')
+				.text(winner)
+			)
+			.append($('<span>')
+				.attr('class', 'amount')
+				.text(winPct + "%")
+			)
+		)
+		.append($('<li>')
+			.append($('<span>')
+				.attr('class', 'title')
+				.text(loser)
+			)
+			.append($('<span>')
+				.attr('class', 'amount')
+				.text(losePct + "%")
+			)
+		)
+	);
+	
 	var path = voteBD.svg.datum(root).selectAll("path")
 		.data(voteBD.partition.nodes)
 	.enter().append("path")
-		.attr("display", function(d) { return d.depth ? null : "none"; })
 		.attr("d", voteBD.arc)
+		.attr('data-depth', function(d) { return d.depth; })
 		.style("fill", function(d) {
 			if(d.depth == 0)
 				return "#fafafa";
@@ -213,40 +304,95 @@ function voteBreakdown(theData) {
 		.each(stash);
 		
 	// PATRICK
-	//	- Legends
-	//	- Rotate graph
-	//	- Center text & interaction
-	//	- Ring interaction
+	//  - Hovers
+	//  - Share
 	//	- Transitions
 		
 	$vote.fadeIn(500);
-
-	// d3.selectAll("input").on("change", function change() {
-	//		var value = this.value === "count"
-	//			? function() { return 1; }
-	//			: function(d) { return d.size; };
-	// 
-	//		path.data(partition.value(value).nodes)
-	//			.transition()
-	//			.duration(1500)
-	//			.attrTween("d", arcTween);
-	//	});
-}
-
-function stash(d) {
-	d.x0 = d.x;
-	d.dx0 = d.dx;
-}
-
-function arcTween(a) {
-	var i = d3.interpolate({x: a.x0, dx: a.dx0}, a);
+	setDepth(1);
+	setCenter(0);
+	centerCenter();
 	
-	return function(t) {
-		var b = i(t);
-		a.x0 = b.x;
-		a.dx0 = b.dx;
-		return arc(b);
-	};
+	$vote.find('path').on('click', function() {
+		if($(this).attr('data-depth') == 0) {
+			if(getCenter() == 1)
+				setCenter(0);
+			else
+				setCenter(1);
+		}
+		else {
+			if(getDepth() == 1)
+				setDepth(2);
+			else
+				setDepth(1);
+		}
+	});
+	
+	$vote.find('.voteBD-center').on('click', function() { $vote.find('path:first-of-type').trigger('click'); });
+
+	d3.select(self.frameElement).style("height", voteBD.height + "px");
+	
+	function setDepth(theDepth) {
+		$('#voteBD .legend li').each(function() {
+			if($(this).attr('data-depth') != theDepth)
+				$(this).hide().removeClass('currentDepth');
+			else
+				$(this).show().addClass('currentDepth');
+		});
+				// 
+				// if(theDepth == 1)
+				// 	path.transition().duration(500).attrTween("d", voteBD.arc);
+				// else
+				// 	path.transition().duration(500).attrTween("d", voteBD.arc2);
+			
+		if(theDepth == 1)
+			path.attr("d", voteBD.arc);
+		else
+			path.attr("d", voteBD.arc2);
+	}
+	
+	function getDepth() {
+		return parseInt($('#voteBD .legend li.currentDepth').attr('data-depth'));
+	}
+	
+	function setCenter(theNumber) {
+		$('#voteBD .voteBD-center li').removeClass('currentCenter').hide();
+		$('#voteBD .voteBD-center li:eq(' + theNumber + ')').addClass('currentCenter').show();
+	}
+	
+	function getCenter() {
+		return parseInt($('#voteBD .voteBD-center li.currentCenter').index());
+	}
+	
+	function stash(d) {
+		d.x0 = d.x;
+		d.dx0 = d.dx;
+	}
+
+	function arcTween(a) {
+		var i = d3.interpolate({x: a.x0, dx: a.dx0}, a);
+
+		return function(t) {
+			var b = i(t);
+			a.x0 = b.x;
+			a.dx0 = b.dx;
+			return voteBD.arc(b);
+		};
+	}
 }
 
-// d3.select(self.frameElement).style("height", voteBD.height + "px");
+function centerCenter() {
+	var $group = $vote.find('svg g:first-of-type');
+	var groupHeight = $group[0].getBoundingClientRect().height;
+	var groupWidth = $group[0].getBoundingClientRect().width;
+	
+	var $center = $vote.find('.voteBD-center');
+	var centerHeight = $center.height();
+	var centerWidth = $center.width();
+	
+	$center.css('margin-top', (groupHeight / 2) - (centerHeight / 2) - 12).css('margin-left', (groupWidth / 2) - (centerWidth / 2) - 3);
+}
+
+$(window).on('resize', function() {
+	centerCenter();
+});

@@ -1137,7 +1137,7 @@ $progress-bar-border-color: darken($secondary-color, 15%);
 
 // We use these to control the style of the reveal overlay.
 
-$reveal-overlay-bg: $secondary-color;
+$reveal-overlay-bg: rgba($secondary-color, 0.75);
 $reveal-overlay-bg-old: $secondary-color;
 
 // We use these to control the style of the modal itself.
@@ -1167,7 +1167,7 @@ $reveal-border-width: 0px;
 
 .reveal-modal {
 	@include border-radius($global-radius);
-	@include single-box-shadow(darken($secondary-color, 15%), 0px, 2px, 0px);
+	@include single-box-shadow(darken($secondary-color, 15%), 0px, 3px, 0px);
 }
 
 //

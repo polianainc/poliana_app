@@ -7,11 +7,13 @@
 <%- if devise_mapping.omniauthable? %>
 	<div class="row">
 		<div class="large-6 large-centered columns">
-	  	<%- resource_class.omniauth_providers.each do |provider| %>
-			<div class="large-6 columns">
-	    	<%= link_to "<span aria-hidden='true' class='icon-#{provider.to_s.titleize.downcase}'></span><span>Connect</span>".html_safe(), omniauth_authorize_path(resource_name, provider), :class => "button expand radius #{provider.to_s.titleize.downcase}" %>
+			<div class="row">
+		  	<%- resource_class.omniauth_providers.each do |provider| %>
+				<div class="large-6 columns">
+		    	<%= link_to "<span aria-hidden='true' class='icon-#{provider.to_s.titleize.downcase}'></span><span>Connect</span>".html_safe(), omniauth_authorize_path(resource_name, provider), :class => "button expand radius #{provider.to_s.titleize.downcase}" %>
+				</div>
+		  	<% end -%>
 			</div>
-	  	<% end -%>
 		</div>
 	</div>
 <% end -%>

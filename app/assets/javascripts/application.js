@@ -37,6 +37,10 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	$(document).on('click', '.sharable', function() {
+		$('#sharable').foundation('reveal', 'open');
+	});
 });
 
 $(window).resize(function() {
@@ -50,4 +54,29 @@ function absoluteHero() {
 		$absHero.css('margin-top', -1 * ($absHero.height() / 2));
 	else
 		$absHero.css('margin-top', '0px');
+}
+
+function throttle(fn, threshhold, scope) {
+	threshhold || (threshhold = 250);
+	
+	var last, deferTimer;
+	
+	return function() {
+		var context = scope || this;
+		
+		var now = +new Date,
+		args = arguments;
+		
+		if (last && now < last + threshhold) {
+			clearTimeout(deferTimer);
+			deferTimer = setTimeout(function() {
+				last = now;
+				fn.apply(context, args);
+			}, threshhold);
+		}
+		else {
+			last = now;
+			fn.apply(context, args);
+		}
+	};
 }

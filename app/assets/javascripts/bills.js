@@ -1,29 +1,4 @@
-/*
------ VOTE BREAKDOWN -----
-Author: Patrick Cason
-Notes: The most common sense way to order this data would perhaps be using politicians as the inner most children. D3 partitions create every DOM element in a structure and then (in this case) hide the center element. However, keeping a data structure of individual votes may not be the best of ideas because in the House, there would be 535 DOM elements created that would always be hidden. For performance reasons, we'll restructure the JSON strcture for this graph to to be as such:
-
-votes
-  - total
-	- yea
-	  - dem: value
-	  - rep: value
-	  - indep: value
-	- nay
-	  - dem: value
-	  - rep: value
-	  - indep: value
-  - alabama
-	- yea
-	  - dem: value
-	  - rep: value
-	  - indep: value
-	- nay
-	  - dem: value
-	  - rep: value
-	  - indep: value
-  - ...
-*/
+/* ----- VOTE BREAKDOWN ----- */
 
 $.get('assets/bill_test.json', function(data) {
 	$.each(data.votes.yeas, function(index, value) {
@@ -114,6 +89,24 @@ var voteBD_JSON = {
 	"WY": { "name": "WY", "children": [ { "name": "yeas", "children": [ { "name": "D", "size": 0 }, { "name": "R", "size": 0 }, { "name": "I", "size": 0 } ] }, { "name": "nays", "children": [ { "name": "D", "size": 0 }, { "name": "R", "size": 0 }, { "name": "I", "size": 0 } ] } ] },
 }
 
+$('#graphs').append($('<div>')
+	.attr('class', 'large-4 small-10 large-uncentered small-centered columns graph')
+	.attr('id', 'voteBD')
+	.append($('<h4>')
+		.text('Vote Breakdown')
+	)
+	.append($('<div>')
+		.attr('class', 'sharable')
+		.append($('<span>')
+			.attr('aria-hidden', true)
+			.attr('class', 'icon-earth')
+		)
+		.append($('<span>')
+			.text('Share')
+		)
+	)
+);
+
 var voteBD = {};
 
 voteBD.width = 300;
@@ -122,14 +115,6 @@ voteBD.radius = Math.min(voteBD.width, voteBD.height) / 2;
 voteBD.color = d3.scale.ordinal()
 	.range(["#C4D117", "#DDDDDD", "#61D2D6", "#EA3556", "#888888"])
 	.domain(d3.range(0,5));
-
-$('#graphs').append($('<div>')
-	.attr('class', 'large-4 small-10 large-uncentered small-centered columns graph')
-	.attr('id', 'voteBD')
-	.append($('<h4>')
-		.text('Vote Breakdown')
-	)
-);
 
 voteBD.svg = d3.select("#voteBD")
 	.append("svg")
@@ -152,11 +137,11 @@ voteBD.arc = d3.svg.arc()
 		if(d.depth != 2)
 			return Math.sqrt(d.y);
 		else
-			return Math.sqrt(d.y) + 20;
+			return Math.sqrt(d.y) + 22;
 	})
 	.outerRadius(function(d) {
 		if(d.depth != 2)
-			return Math.sqrt(d.y + d.dy) + 20;
+			return Math.sqrt(d.y + d.dy) + 22;
 		else
 			return Math.sqrt(d.y + d.dy);
 	});
@@ -171,7 +156,6 @@ var $vote = $('#voteBD');
 
 function voteBreakdown(theData) {
 	var root = JSON.parse(JSON.stringify(theData));
-	var depth = "";
 	
 	var yeasTotal = root.children[0].children[0].size + root.children[0].children[1].size + root.children[0].children[2].size;
 	var naysTotal = root.children[1].children[0].size + root.children[1].children[1].size + root.children[1].children[2].size;
@@ -181,22 +165,44 @@ function voteBreakdown(theData) {
 		var loser = "nays";
 		var winPct = parseInt((yeasTotal / (yeasTotal + naysTotal)) * 100);
 		var losePct = 100 - winPct;
+		var winAmt = yeasTotal;
+		var loseAmt = naysTotal;
+		var winD = parseInt((root.children[0].children[0].size / yeasTotal) * 100);
+		var winR = parseInt((root.children[0].children[1].size / yeasTotal) * 100);
+		var winI = parseInt((root.children[0].children[2].size / yeasTotal) * 100);
+		var loseD = parseInt((root.children[1].children[0].size / naysTotal) * 100);
+		var loseR = parseInt((root.children[1].children[1].size / naysTotal) * 100);
+		var loseI = parseInt((root.children[1].children[2].size / naysTotal) * 100);
 	}
 	else if(yeasTotal < naysTotal) {
 		var winner = "nays";
 		var loser = "yeas";
 		var winPct = parseInt((naysTotal / (yeasTotal + naysTotal)) * 100);
 		var losePct = 100 - winPct;
+		var winAmt = naysTotal;
+		var loseAmt = yeasTotal;
+		var winD = parseInt((root.children[1].children[0].size / naysTotal) * 100);
+		var winR = parseInt((root.children[1].children[1].size / naysTotal) * 100);
+		var winI = parseInt((root.children[1].children[2].size / naysTotal) * 100);
+		var loseD = parseInt((root.children[0].children[0].size / yeasTotal) * 100);
+		var loseR = parseInt((root.children[0].children[1].size / yeasTotal) * 100);
+		var loseI = parseInt((root.children[0].children[2].size / yeasTotal) * 100);
 	}
 	else {
 		var winner = "draw";
 		var loser = "draw";
-		var winPct = 50;
-		var losePct = 50;
+		var winPct, winAmt = 50;
+		var losePct, loseAmt = 50;
+		var winD = parseInt((root.children[0].children[0].size / yeasTotal) * 100);
+		var winR = parseInt((root.children[0].children[1].size / yeasTotal) * 100);
+		var winI = parseInt((root.children[0].children[2].size / yeasTotal) * 100);
+		var loseD = parseInt((root.children[1].children[0].size / naysTotal) * 100);
+		var loseR = parseInt((root.children[1].children[1].size / naysTotal) * 100);
+		var loseI = parseInt((root.children[1].children[2].size / naysTotal) * 100);
 	}
 		
 	$vote.find('h4').after($('<ul>')
-		.attr('class', 'legend')
+		.attr('class', 'legend top')
 		.append($('<li>')
 			.attr('data-depth', 1)
 			.append($('<span>')
@@ -255,7 +261,7 @@ function voteBreakdown(theData) {
 	)
 	
 	$vote.find('.legend').after($('<ul>')
-		.attr('class', 'voteBD-center')
+		.attr('class', 'voteBD-center interactive')
 		.append($('<li>')
 			.append($('<span>')
 				.attr('class', 'title')
@@ -278,40 +284,44 @@ function voteBreakdown(theData) {
 		)
 	);
 	
+	$vote.find('svg').before($('<div>')
+		.attr('class', 'd3Tooltip')
+	);
+	
 	var path = voteBD.svg.datum(root).selectAll("path")
 		.data(voteBD.partition.nodes)
-	.enter().append("path")
-		.attr("d", voteBD.arc)
-		.attr('data-depth', function(d) { return d.depth; })
-		.style("fill", function(d) {
-			if(d.depth == 0)
-				return "#fafafa";
-			else if(d.depth == 1) {
-				if(d.name == winner)
-					return voteBD.color(0);
-				else
-					return voteBD.color(1);
-			}
-			else {
-				if(d.name == "D")
-					return voteBD.color(2);
-				else if(d.name == "R")
-					return voteBD.color(3);
-				else
-					return voteBD.color(4);
-			}
-		})
-		.each(stash);
+		.enter().append("path")
+			.attr('d', voteBD.arc)
+			.attr('class', 'interactive')
+			.attr('data-depth', function(d) { return d.depth; })
+			.style("fill", function(d) {
+				if(d.depth == 0)
+					return "#fafafa";
+				else if(d.depth == 1) {
+					if(d.name == winner)
+						return voteBD.color(0);
+					else
+						return voteBD.color(1);
+				}
+				else {
+					if(d.name == "D")
+						return voteBD.color(2);
+					else if(d.name == "R")
+						return voteBD.color(3);
+					else
+						return voteBD.color(4);
+				}
+			})
+			.each(stash);
 		
 	// PATRICK
-	//  - Hovers
-	//  - Share
 	//	- Transitions
 		
 	$vote.fadeIn(500);
 	setDepth(1);
 	setCenter(0);
-	centerCenter();
+	centerVBDCenter();
+	setVBDHeight();
 	
 	$vote.find('path').on('click', function() {
 		if($(this).attr('data-depth') == 0) {
@@ -321,34 +331,51 @@ function voteBreakdown(theData) {
 				setCenter(1);
 		}
 		else {
-			if(getDepth() == 1)
+			if(getDepth() == 1) {
 				setDepth(2);
-			else
+				setTooltip(2);
+			}
+			else {
 				setDepth(1);
+				setTooltip(1);
+			}
 		}
-	});
+	}).on('mouseover', function() {
+		if($(this).attr('data-depth') != 0)
+			$vote.find('.d3Tooltip').show();
+	}).on('mouseout', function() {
+		$vote.find('.d3Tooltip').hide();
+	}).on('mousemove', throttle(function(event) {
+		setTooltip(getDepth());
+		
+		var x = event.pageX - $vote.offset().left;
+		var y = event.pageY - $vote.offset().top;
+
+		$vote.find('.d3Tooltip').css('left', x + 10).css('top', y + 10);
+	}, 10));
 	
 	$vote.find('.voteBD-center').on('click', function() { $vote.find('path:first-of-type').trigger('click'); });
-
-	d3.select(self.frameElement).style("height", voteBD.height + "px");
 	
 	function setDepth(theDepth) {
 		$('#voteBD .legend li').each(function() {
 			if($(this).attr('data-depth') != theDepth)
 				$(this).hide().removeClass('currentDepth');
 			else
-				$(this).show().addClass('currentDepth');
+				$(this).fadeIn(250).addClass('currentDepth');
 		});
-				// 
-				// if(theDepth == 1)
-				// 	path.transition().duration(500).attrTween("d", voteBD.arc);
-				// else
-				// 	path.transition().duration(500).attrTween("d", voteBD.arc2);
-			
-		if(theDepth == 1)
-			path.attr("d", voteBD.arc);
-		else
-			path.attr("d", voteBD.arc2);
+		
+		if(theDepth == 1) {
+			voteBD.svg.datum(root).selectAll("path")
+				.data(voteBD.partition.nodes)
+				.transition().duration(250)
+				.attr("d", voteBD.arc);
+		}
+		else {
+			voteBD.svg.datum(root).selectAll("path")
+				.data(voteBD.partition.nodes)
+				.transition().duration(250)
+				.attr("d", voteBD.arc2);
+		}
 	}
 	
 	function getDepth() {
@@ -357,11 +384,130 @@ function voteBreakdown(theData) {
 	
 	function setCenter(theNumber) {
 		$('#voteBD .voteBD-center li').removeClass('currentCenter').hide();
-		$('#voteBD .voteBD-center li:eq(' + theNumber + ')').addClass('currentCenter').show();
+		$('#voteBD .voteBD-center li:eq(' + theNumber + ')').addClass('currentCenter').fadeIn(250);
 	}
 	
 	function getCenter() {
 		return parseInt($('#voteBD .voteBD-center li.currentCenter').index());
+	}
+	
+	function setTooltip(theDepth) {
+		if(theDepth == 1) {
+			$vote.find('.d3Tooltip').html('').removeClass('taller').append($('<ul>')
+				.attr('class', 'tooltipSplit')
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'title')
+						.text(winner)
+					)
+					.append($('<span>')
+						.attr('class', 'amount')
+						.text(winPct + "%")
+					)
+					.append($('<span>')
+						.attr('class', 'subAmount')
+						.text(winAmt + " votes")
+					)
+				)
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'title')
+						.text(loser)
+					)
+					.append($('<span>')
+						.attr('class', 'amount')
+						.text(losePct + "%")
+					)
+					.append($('<span>')
+						.attr('class', 'subAmount')
+						.text(loseAmt + " votes")
+					)
+				)
+			);
+		}
+		else {
+			$vote.find('.d3Tooltip').html('').addClass('taller').append($('<ul>')
+				.attr('class', 'tooltipSplit')
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'title')
+						.text(winner)
+					)
+					.append($('<ul>')
+						.attr('class', 'legend')
+						.append($('<li>')
+							.append($('<span>')
+								.attr('class', 'square')
+								.css('background', voteBD.color(2))
+							)
+							.append($('<span>')
+								.attr('class', 'title')
+								.text(winD + "%")
+							)
+						)
+						.append($('<li>')
+							.append($('<span>')
+								.attr('class', 'square')
+								.css('background', voteBD.color(3))
+							)
+							.append($('<span>')
+								.attr('class', 'title')
+								.text(winR + "%")
+							)
+						)
+						.append($('<li>')
+							.append($('<span>')
+								.attr('class', 'square')
+								.css('background', voteBD.color(4))
+							)
+							.append($('<span>')
+								.attr('class', 'title')
+								.text(winI + "%")
+							)
+						)
+					)
+				)
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'title')
+						.text(loser)
+					)
+					.append($('<ul>')
+						.attr('class', 'legend')
+						.append($('<li>')
+							.append($('<span>')
+								.attr('class', 'square')
+								.css('background', voteBD.color(2))
+							)
+							.append($('<span>')
+								.attr('class', 'title')
+								.text(loseD + "%")
+							)
+						)
+						.append($('<li>')
+							.append($('<span>')
+								.attr('class', 'square')
+								.css('background', voteBD.color(3))
+							)
+							.append($('<span>')
+								.attr('class', 'title')
+								.text(loseR + "%")
+							)
+						)
+						.append($('<li>')
+							.append($('<span>')
+								.attr('class', 'square')
+								.css('background', voteBD.color(4))
+							)
+							.append($('<span>')
+								.attr('class', 'title')
+								.text(loseI + "%")
+							)
+						)
+					)
+				)
+			);
+		}
 	}
 	
 	function stash(d) {
@@ -371,17 +517,17 @@ function voteBreakdown(theData) {
 
 	function arcTween(a) {
 		var i = d3.interpolate({x: a.x0, dx: a.dx0}, a);
-
+		
 		return function(t) {
 			var b = i(t);
 			a.x0 = b.x;
 			a.dx0 = b.dx;
-			return voteBD.arc(b);
+			return arc(b);
 		};
 	}
 }
 
-function centerCenter() {
+function centerVBDCenter() {
 	var $group = $vote.find('svg g:first-of-type');
 	var groupHeight = $group[0].getBoundingClientRect().height;
 	var groupWidth = $group[0].getBoundingClientRect().width;
@@ -393,6 +539,14 @@ function centerCenter() {
 	$center.css('margin-top', (groupHeight / 2) - (centerHeight / 2) - 12).css('margin-left', (groupWidth / 2) - (centerWidth / 2) - 3);
 }
 
+function setVBDHeight() {
+	var $svg = $vote.find('svg');
+	var width = $svg.width();
+	
+	$svg.height(width + 20);
+}
+
 $(window).on('resize', function() {
-	centerCenter();
+	centerVBDCenter();
+	setVBDHeight();
 });

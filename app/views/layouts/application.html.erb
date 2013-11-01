@@ -65,8 +65,7 @@
 							<li class="show-for-breakpoint"><a href="#">Bills</a></li>
 							<li class="show-for-breakpoint"><a href="#">Industries</a></li>
 							<li class="show-for-breakpoint"><a href="#">Politicians</a></li>
-							<li class="divider show-for-breakpoint"></li>
-							<li><%= link_to "About", about_path %></li>
+							<li class="hide-for-breakpoint"><%= link_to "About", about_path %></li>
 							<li><%= link_to "<b>Sign In</b>".html_safe(), new_user_session_path %></a></li>
 					  		<li class="has-form">
 								<form>
@@ -130,7 +129,29 @@
 			</div>
 		</div>
 	</footer>
+	
+	<div id="sharable" class="reveal-modal">
+		<h2 class="aligncenter">Share this Visualization</h2>
+		<p class="aligncenter">Find something interesting? Send it out to your social networks and spread your findings...</p>
+		<div class="row">
+			<div class="large-6 large-centered columns">
+				<div class="row">
+					<div class="large-6 columns">
+						<a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="button expand radius facebook"><span aria-hidden="true" class="icon-facebook"></span><span>Share</span></a>
+					</div>
+					<div class="large-6 columns">
+						<a href="#" onclick="window.open('https://twitter.com/share?url='+encodeURIComponent(location.href), 'twitter-share-dialog', 'width=626,height=256'); return false;" class="button expand radius twitter"><span aria-hidden="true" class="icon-twitter"></span><span>Share</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
 
-	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "application.min" %>
+	<% if content_for?(:entity_type) %>
+		<%= javascript_include_tag "d3.min" %>
+		<%= javascript_include_tag yield(:entity_type) + ".min" %>
+	<% end %>
 </body>
 </html>

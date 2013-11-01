@@ -27,8 +27,8 @@ class StaticPagesController < ApplicationController
   def search
   end
   
-  # Delete upon creation of various entity controllers
-  def entity
+  # Delete upon creation of various bills controllers
+  def bills
   end
   
   def mailchimp_signup

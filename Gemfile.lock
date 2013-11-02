@@ -49,9 +49,6 @@ GEM
     bcrypt-ruby (3.1.2)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
-    bson (1.9.2)
-    bson_ext (1.9.2)
-      bson (~> 1.9.2)
     builder (3.0.4)
     capistrano (2.15.5)
       highline
@@ -336,8 +333,10 @@ GEM
     sunspot (2.0.0)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
-    sunspot_mongo (1.0.1)
-      sunspot_rails
+    sunspot_mongoid2 (0.5.1.7)
+      mongoid (>= 2)
+      sunspot (>= 2)
+      sunspot_rails (>= 2)
     sunspot_rails (2.0.0)
       nokogiri
       sunspot (= 2.0.0)
@@ -370,7 +369,6 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby
-  bson_ext
   capybara
   childprocess (= 0.3.6)
   coffee-rails
@@ -401,7 +399,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   spork-rails!
   sqlite3
-  sunspot_mongo
+  sunspot_mongoid2
   sunspot_rails
   sunspot_solr
   therubyracer

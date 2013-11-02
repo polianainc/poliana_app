@@ -10,11 +10,10 @@ gem 'pry'
 gem 'figaro'
 
 #Database
-gem 'bson_ext'
 gem 'mongoid'
 #Search
 gem 'sunspot_rails'
-gem 'sunspot_mongo'
+gem 'sunspot_mongoid2'
 
 #Administration
 gem 'rails_admin'

@@ -1,3 +1,4 @@
+require 'sunspot_mongoid2'
 class Bill
   include Mongoid::Document
   store_in collection: "bills"
@@ -8,7 +9,7 @@ class Bill
   field :subjects, :type => Array
   field :officialTitle, :type => String
 
-  include Sunspot::Mongo
+  include Sunspot::Mongoid2
   searchable do
     text :popularTitle
     text :shortTitle

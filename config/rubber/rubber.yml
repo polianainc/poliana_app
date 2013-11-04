@@ -7,6 +7,9 @@ app_user: app
 # OPTIONAL: If not set, you won't be able to access web_tools
 # server (graphite, graylog, monit status, haproxy status, etc)
 
+web_tools_user: admin
+web_tools_password: sekret
+
 # REQUIRED: The timezone the server should be in
 timezone: US/Eastern
 
@@ -356,9 +359,11 @@ stop_on_error_cmd: "function error_exit { exit 99; }; trap error_exit ERR"
 #     myconfig: someval
 
 # OPTIONAL: Environment specific overrides
-# environments:
-#   staging:
-#     myconfig: otherval
+environments:
+  stagingsmall:
+      cloud_providers:
+        aws:
+          image_type: m1.small
 #   production:
 #     myconfig: val
 

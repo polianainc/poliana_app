@@ -24,3 +24,5 @@ pickle-email-*.html
 /config/rubber/rubber-secret.yml
 # Ignore application configuration
 /config/application.yml
+
+/solr/data

@@ -193,6 +193,7 @@
 						span {
 							color: $secondary-color;
 							padding-left: 10px;
+							margin-top: 2px;
 						}
 					}
 				}
@@ -220,6 +221,7 @@
 								}
 							}
 							td {
+								font-size: 0.9em;
 								padding: 5px 10px;
 								span {
 									width: 18px;
@@ -243,8 +245,8 @@
 						margin-left: 0px;
 						li {
 							float: left;
-							width: 46px;
-							height: 46px;
+							width: 50px;
+							height: 50px;
 							display: block;
 							background-repeat: no-repeat;
 							background-position: 50%;

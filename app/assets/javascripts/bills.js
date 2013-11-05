@@ -58,13 +58,14 @@ var voteBD_JSON = {
 var geoBD_JSON = {};
 var poliView_JSON = {};
 
-$.get('assets/bill_test.json', function(data) {
+//$.get('/assets/bill_test_house.json', function(data) {
+$.get('/assets/bill_test_senate.json', function(data) {
 	$.each(data.votes.yeas, function(index, value) {
-		if(this.party == "D") {
+		if(this.party == "D" || this.party == "Democrat") {
 			voteBD_JSON[this.state].children[0].children[0].size++;
 			voteBD_JSON.total.children[0].children[0].size++;
 		}
-		else if(this.party == "R") {
+		else if(this.party == "R" || this.party == "Republican") {
 			voteBD_JSON[this.state].children[0].children[1].size++;
 			voteBD_JSON.total.children[0].children[1].size++;
 		}
@@ -75,11 +76,11 @@ $.get('assets/bill_test.json', function(data) {
 	});
 
 	$.each(data.votes.nays, function(index, value) {
-		if(this.party == "D") {
+		if(this.party == "D" || this.party == "Democrat") {
 			voteBD_JSON[this.state].children[1].children[0].size++;
 			voteBD_JSON.total.children[1].children[0].size++;
 		}
-		else if(this.party == "R") {
+		else if(this.party == "R" || this.party == "Republican") {
 			voteBD_JSON[this.state].children[1].children[1].size++;
 			voteBD_JSON.total.children[1].children[1].size++;
 		}
@@ -91,28 +92,27 @@ $.get('assets/bill_test.json', function(data) {
 	
 	var chamber = data.billType.charAt(0);
 	
-	if(chamber == "s" || chamber == "S") {
+	if(chamber == "s" || chamber == "S")
 		geoBD_JSON.chamber = "Senate";
-		geoBD_JSON.yeas = {};
-		geoBD_JSON.nays = {};
-		
-		$.each(data.votes.yeas, function(index, value) {
-			if(isNaN(geoBD_JSON.yeas[this.state]))
-				geoBD_JSON.yeas[this.state] = 1;
-			else
-				geoBD_JSON.yeas[this.state]++;
-		});
-		
-		$.each(data.votes.nays, function(index, value) {
-			if(isNaN(geoBD_JSON.nays[this.state]))
-				geoBD_JSON.nays[this.state] = 1;
-			else
-				geoBD_JSON.nays[this.state]++;
-		});
-	}
-	else {
+	else
 		geoBD_JSON.chamber = "House";
-	}
+		
+	geoBD_JSON.yeas = {};
+	geoBD_JSON.nays = {};
+	
+	$.each(data.votes.yeas, function(index, value) {
+		if(isNaN(geoBD_JSON.yeas[this.state]))
+			geoBD_JSON.yeas[this.state] = 1;
+		else
+			geoBD_JSON.yeas[this.state]++;
+	});
+	
+	$.each(data.votes.nays, function(index, value) {
+		if(isNaN(geoBD_JSON.nays[this.state]))
+			geoBD_JSON.nays[this.state] = 1;
+		else
+			geoBD_JSON.nays[this.state]++;
+	});
 		
 	geoBD_JSON.yeasTotal = data.votes.yeaTotal;
 	geoBD_JSON.naysTotal = data.votes.nayTotal;
@@ -337,6 +337,8 @@ function voteBreakdown(theData, selector, notVoting, absent) {
 			.attr('d', voteBD.arc)
 			.attr('class', 'interactive')
 			.attr('data-depth', function(d) { return d.depth; })
+			.style('stroke-width', '1px')
+			.style('stroke', '#fafafa')
 			.style("fill", function(d) {
 				if(d.depth == 0)
 					return "#fafafa";
@@ -567,14 +569,14 @@ function arcTween(a) {
 	};
 }
 
-function transData(root, selector) {
-	voteBD.svg.datum(root[selector]).selectAll("path")
-		.data(voteBD.partition.nodes)
-		.transition()
-		.duration(1500)
-		.attrTween("d", arcTween)
-		.each(stash);
-}
+// function transData(root, selector) {
+// 	voteBD.svg.datum(root[selector]).selectAll("path")
+// 		.data(voteBD.partition.nodes)
+// 		.transition()
+// 		.duration(1500)
+// 		.attrTween("d", arcTween)
+// 		.each(stash);
+// }
 
 function centerVBDCenter() {
 	var $group = $vote.find('svg g:first-of-type');
@@ -654,13 +656,13 @@ $(document).on('change', '#stateSelector', function() {
 	var theState = $(this).val();
 	
 	if(theState == "All states") {
-		voteBreakdown(voteBD_JSON, 'total', poliView_JSON.notVotingTotal, poliView_JSON.present);
+		//voteBreakdown(voteBD_JSON, 'total', poliView_JSON.notVotingTotal, poliView_JSON.present);
 		
 		$('input[name="filterPoliticians"]').val('');
 		searchPoli('');
 	}
 	else {
-		voteBreakdown(voteBD_JSON, convertState(theState, 'abbrev'), poliView_JSON.notVotingTotal, poliView_JSON.present);
+		//voteBreakdown(voteBD_JSON, convertState(theState, 'abbrev'), poliView_JSON.notVotingTotal, poliView_JSON.present);
 		
 		$('input[name="filterPoliticians"]').val(theState);
 		searchPoli(theState);
@@ -672,9 +674,14 @@ var geoBD = {};
 geoBD.width = 500;
 geoBD.height = 500;
 geoBD.centered = "";
-geoBD.color = d3.scale.ordinal()
+
+geoBD.colorSenate = d3.scale.ordinal()
 	.range(["#C4D117", "#DDDDDD", "#CFD671"])
 	.domain(d3.range(0,3));
+	
+geoBD.colorHouse = d3.scale.ordinal()
+	.range(["#C4D117", "#CAD449", "#D1D77A", "#D7DAAC", "#DDDDDD"])
+	.domain(d3.range(0,5));
 
 geoBD.svg = d3.select("#geoBD")
 	.append("svg")
@@ -696,57 +703,85 @@ geoBD.g = geoBD.svg.append("g")
 var $geo = $('#geoBD');
 
 function geographicBreakdown(theData) {
+	var winner, loser;
+	
 	if(theData.yeasTotal > theData.naysTotal) {
-		var winner = "yeas";
-		var loser = "nays";
+		winner = "yeas";
+		loser = "nays";
 	}
 	else if(theData.yeasTotal < theData.naysTotal) {
-		var winner = "nays";
-		var loser = "yeas";
+		winner = "nays";
+		loser = "yeas";
 	}
 	else {
-		var winner = "draw";
-		var loser = "draw";
+		winner = "draw";
+		loser = "draw";
 	}
 	
-	if(theData.chamber == "Senate") {
-		d3.json("assets/us.json", function(error, us) {
-			geoBD.g.append("g")
-				.selectAll("path")
-				.data(topojson.feature(us, us.objects.states).features)
-				.enter().append("path")
-				.attr("d", geoBD.path)
-				.attr("fill", function(d) {
+	d3.json("/assets/us.json", function(error, us) {
+		geoBD.g.append("g")
+			.selectAll("path")
+			.data(topojson.feature(us, us.objects.states).features)
+			.enter().append("path")
+			.attr("d", geoBD.path)
+			.attr("fill", function(d) {
+				if(theData.chamber == "Senate") {
 					if(theData[winner][d.id] == 0 || theData[winner][d.id] == undefined)
-						return geoBD.color(1);
+						return geoBD.colorSenate(1);
 					else if(theData[winner][d.id] == 1)
-						return geoBD.color(2);
+						return geoBD.colorSenate(2);
 					else
-						return geoBD.color(0);
-				})
-				.style("stroke-width", "1px")
-				.style("stroke", "#fafafa")
-				.attr("class", "interactive")
-				.on("mouseover", function(d) { setTooltip(d.id); })
-				.on("click", clicked);
-				
-			$geo.find('path').on('mouseover', function() {
-				$geo.find('.d3Tooltip').show();
-			}).on('mouseout', function() {
-				$geo.find('.d3Tooltip').hide();
-			}).on('mousemove', throttle(function(event) {
-				var x = event.pageX - $geo.offset().left;
-				var y = event.pageY - $geo.offset().top;
+						return geoBD.colorSenate(0);
+				}
+				else {
+					var percentile;
+					
+					if(theData[winner][d.id] != undefined && theData[loser][d.id] == undefined)
+						percentile = 100;
+					else if(theData[winner][d.id] == undefined && theData[loser][d.id] != undefined)
+						percentile = 0;
+					else
+						percentile = parseInt((theData[winner][d.id] / (theData[winner][d.id] + theData[loser][d.id])) * 100);
+					
+					if(isNaN(percentile))
+						return "#888888";
+						
+					if(percentile <= 100 && percentile > 80)
+						return geoBD.colorHouse(0);
+					else if(percentile <= 80 && percentile > 60)
+						return geoBD.colorHouse(1);
+					else if(percentile <= 60 && percentile > 40)
+						return geoBD.colorHouse(2);
+					else if(percentile <= 40 && percentile > 20)
+						return geoBD.colorHouse(3);
+					else
+						return geoBD.colorHouse(4);
+				}
+			})
+			.style("stroke-width", "1px")
+			.style("stroke", "#fafafa")
+			.attr("class", "interactive")
+			.on("mouseover", function(d) { setTooltip(d.id); })
+			.on("click", clicked);
+			
+		$geo.find('path').on('mouseover', function() {
+			$geo.find('.d3Tooltip').show();
+		}).on('mouseout', function() {
+			$geo.find('.d3Tooltip').hide();
+		}).on('mousemove', throttle(function(event) {
+			var x = event.pageX - $geo.offset().left;
+			var y = event.pageY - $geo.offset().top;
 
-				$geo.find('.d3Tooltip').css('left', x + 10).css('top', y + 10);
-			}, 10))
-				
+			$geo.find('.d3Tooltip').css('left', x + 10).css('top', y + 10);
+		}, 10))
+			
+		if(theData.chamber == "Senate") {
 			$geo.find('h4').after($('<ul>')
 				.attr('class', 'legend top')
 				.append($('<li>')
 					.append($('<span>')
 						.attr('class', 'square')
-						.css('background', geoBD.color(0))
+						.css('background', geoBD.colorSenate(0))
 					)
 					.append($('<span>')
 						.attr('class', 'title')
@@ -756,7 +791,7 @@ function geographicBreakdown(theData) {
 				.append($('<li>')
 					.append($('<span>')
 						.attr('class', 'square')
-						.css('background', geoBD.color(1))
+						.css('background', geoBD.colorSenate(1))
 					)
 					.append($('<span>')
 						.attr('class', 'title')
@@ -764,22 +799,52 @@ function geographicBreakdown(theData) {
 					)
 				)
 			);
-		});
-	}
-	else {
-		d3.json("assets/us-113.json", function(error, congress) {
-			geoBD.g.append("g")
-				.selectAll("path")
-				.data(topojson.feature(congress, congress.objects.districts).features)
-				.enter().append("path")
-				.attr("d", geoBD.path)
-				.attr("fill", function(d) { return geoBD.color(1); })
-				.style("stroke-width", "1px")
-				.style("stroke", "#fafafa")
-				.on("click", clicked);
-		});
-	}
-	
+		}
+		else {
+			$geo.find('h4').after($('<ul>')
+				.attr('class', 'legend top leftFloat')
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'title')
+						.text(winner)
+					)
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', geoBD.colorHouse(0))
+					)
+				)
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', geoBD.colorHouse(1))
+					)
+				)
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', geoBD.colorHouse(2))
+					)
+				)
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', geoBD.colorHouse(3))
+					)
+				)
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', geoBD.colorHouse(4))
+					)
+					.append($('<span>')
+						.attr('class', 'title')
+						.text(loser)
+					)
+				)
+			);
+		}
+	});
+
 	$geo.find('svg').before($('<div>')
 		.attr('class', 'd3Tooltip')
 	);
@@ -798,7 +863,7 @@ function geographicBreakdown(theData) {
 			k = 3;
 			geoBD.centered = d;
 			
-			transData(voteBD_JSON, d.id);
+			//transData(voteBD_JSON, d.id);
 			
 			var theState = convertState(d.id, "name");
 			$('input[name="filterPoliticians"]').val(theState);
@@ -810,7 +875,7 @@ function geographicBreakdown(theData) {
 			k = 1;
 			geoBD.centered = null;
 			
-			transData(voteBD_JSON, "total");
+			//transData(voteBD_JSON, "total");
 			
 			$('input[name="filterPoliticians"]').val('');
 			searchPoli('');
@@ -843,6 +908,12 @@ function geographicBreakdown(theData) {
 			
 		var winPct = parseInt((winAmt / (winAmt + loseAmt)) * 100)
 		var losePct = parseInt((loseAmt / (winAmt + loseAmt)) * 100)
+		
+		if(isNaN(winPct))
+			winPct = 0;
+		
+		if(isNaN(losePct))
+			losePct = 0;
 		
 		$geo.find('.d3Tooltip').html('').addClass('taller')
 			.append($('<h5>').text(theState))
@@ -1083,6 +1154,16 @@ function politicianViewer(theData, type) {
 				);
 
 				$.each(theData[location], function(index, value) {
+					if(this.party == "Democrat" || this.party == "D")
+						this.party = "D";
+					else if(this.party == "Republican" || this.party == "R")
+						this.party = "R";
+					else if(this.party == "Independent" || this.party == "I")
+						this.party = "I";
+						
+					if(this._id == null)
+						this._id = this.bioguideId;
+						
 					theString.find('tbody').append($('<tr>')
 						.attr('data-party', this.party)
 						.attr('data-partylong', getParty(this.party))
@@ -1111,6 +1192,16 @@ function politicianViewer(theData, type) {
 				theString.append($('<ul>'));
 				
 				$.each(theData[location], function(index, value) {
+					if(this.party == "Democrat" || this.party == "D")
+						this.party = "D";
+					else if(this.party == "Republican" || this.party == "R")
+						this.party = "R";
+					else if(this.party == "Independent" || this.party == "I")
+						this.party = "I";
+						
+					if(this._id == null)
+						this._id = this.bioguideId;
+						
 					theString.find('ul').append($('<li>')
 						.attr('data-party', this.party)
 						.attr('data-partylong', getParty(this.party))
@@ -1143,9 +1234,9 @@ function politicianViewer(theData, type) {
 	}
 	
 	function getColor(party) {
-		if(party == "D")
+		if(party == "D" || party == "Democrat")
 			return "#61D2D6";
-		else if(party == "R")
+		else if(party == "R" || party == "Republican")
 			return "#EA3556";
 		else
 			return "#888888";

@@ -78,6 +78,19 @@
 					line-height: 18px;
 				}
 			}
+			&.leftFloat {
+				li {
+					float: left;
+					.square {
+						width: 24px;
+						margin-right: 1px;
+					}
+					.title {
+						&:first-of-type { margin-right: 10px; }
+						&:last-of-type { margin-left: 10px; }
+					}
+				}
+			}
 		}
 		.sharable {
 			position: absolute;

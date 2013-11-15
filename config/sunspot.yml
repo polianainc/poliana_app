@@ -10,6 +10,7 @@ development:
   solr:
     hostname: localhost
     port: 8982
+    solr_home: solr
     log_level: INFO
 
 test:

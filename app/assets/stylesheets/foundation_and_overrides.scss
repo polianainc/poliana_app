@@ -1,5 +1,3 @@
-@import "compass/css3/transition", "compass/css3/box-shadow", "compass/css3/border-radius", "compass/css3/background-size", "compass/css3/user-interface", "compass/layout/sticky-footer";
-
 //
 // Foundation Variables
 //
@@ -707,6 +705,10 @@ $custom-form-checkbox-radius: $global-radius;
 				line-height: 40px !important;
 				&.selector { top: 5px; }
 			}
+			&.expand {
+				max-width: 100%;
+				ul { width: 100%; }
+			}
 		}
 		&.checkbox {
 			font-weight: bold;
@@ -1392,7 +1394,7 @@ $switch-label-outline: 1px dotted darken($secondary-color, 15%);
 // These control the background color for the table and even rows
 
 // $table-bg: #fff;
-$table-even-row-bg: $body-bg;
+$table-even-row-bg: #fff;
 
 // These control the table cell border style
 

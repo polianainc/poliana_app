@@ -1,20 +1,33 @@
 <% content_for :entity_type, "bills" %>
 <% content_for :title, "Bills" %>
-<div class="row entityInfo">
-	<div class="large-3 small-8 small-centered large-uncentered columns">
-		<img src="http://www.biography.com/imported/images/Biography/Images/Profiles/C/Hillary-Clinton-9251306-2-402.jpg" alt="Hillary Clinton">
+<div id="bill">
+	<div class="row entityInfo">
+		<div class="large-3 small-8 small-centered large-uncentered columns">
+			<img src="http://www.biography.com/imported/images/Biography/Images/Profiles/C/Hillary-Clinton-9251306-2-402.jpg" alt="Hillary Clinton">
+		</div>
+		<div class="large-9 columns">
+			<h1>S. 743: Marketplace Fairness Act of 2013</h1>
+			<p>Authorizes each member state under the Streamlined Sales and Use Tax Agreement (the multistate agreement for the administration and collection of sales and use taxes adopted on November 12, 2002) to require all sellers not qualifying for a small-seller exception (applicable to sellers with annual gross receipts in total U.S. remote sales not exceeding $1 million) to collect and remit sales and use taxes with respect to remote sales under provisions of the Agreement, but only if such Agreement includes minimum simplification requirements relating to the administration of the tax, audits, and streamlined filing.</p>
+			<p class="alignright readMore"><a href="#">Read Full Text &raquo;</a></p>
+		</div>
 	</div>
-	<div class="large-9 columns">
-		<h1>S. 743: Marketplace Fairness Act of 2013</h1>
-		<p>Authorizes each member state under the Streamlined Sales and Use Tax Agreement (the multistate agreement for the administration and collection of sales and use taxes adopted on November 12, 2002) to require all sellers not qualifying for a small-seller exception (applicable to sellers with annual gross receipts in total U.S. remote sales not exceeding $1 million) to collect and remit sales and use taxes with respect to remote sales under provisions of the Agreement, but only if such Agreement includes minimum simplification requirements relating to the administration of the tax, audits, and streamlined filing.</p>
-		<p class="alignright readMore"><a href="#">Read Full Text &raquo;</a></p>
+	<div class="row" id="graphs">
+		<noscript>You need to turn on Javascript!</noscript>
 	</div>
-</div>
-<div class="row" id="graphs">
-	<noscript>You need to turn on Javascript!</noscript>
-</div>
-<div class="row">
-	<div class="large-12 columns">
-		<p class="aligncenter">Comments go here!</p>
+	<div class="row">
+		<div class="large-12 columns">
+			<h4>Discussion</h4>
+			<div id="disqus_thread"></div>
+		    <script type="text/javascript">
+		        var disqus_shortname = 'polianainc';
+		
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		    </script>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		</div>
 	</div>
 </div>

@@ -57,12 +57,12 @@
 					  		<li class="has-dropdown hide-for-breakpoint">
 								<a href="#">Explore</a>
 								<ul class="dropdown">
-						  			<li><a href="#">Bills</a></li>
+						  			<li><%= link_to "Bills", bills_path %></li>
 									<li><a href="#">Industries</a></li>
 									<li><a href="#">Politicians</a></li>
 								</ul>
 					  		</li>
-							<li class="show-for-breakpoint"><a href="#">Bills</a></li>
+							<li class="show-for-breakpoint"><%= link_to "Bills", bills_path %></li>
 							<li class="show-for-breakpoint"><a href="#">Industries</a></li>
 							<li class="show-for-breakpoint"><a href="#">Politicians</a></li>
 							<li class="hide-for-breakpoint"><%= link_to "About", about_path %></li>
@@ -149,8 +149,11 @@
 	</div>
 
 	<%= javascript_include_tag "application.min" %>
+	
 	<% if content_for?(:entity_type) %>
 		<%= javascript_include_tag "d3.min" %>
+		<%= javascript_include_tag "topojson.min" %>
+		<%= javascript_include_tag "stupidtable.min" %>
 		<%= javascript_include_tag yield(:entity_type) + ".min" %>
 	<% end %>
 </body>

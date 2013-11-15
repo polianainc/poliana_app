@@ -27,6 +27,7 @@ PolianaApp::Application.routes.draw do
   get "faq", :to => "static_pages#faq"
   get "mission", :to => "static_pages#mission"
   get "kitchensink", :to => "static_pages#kitchen"
+
   get "search", :to => "search#search"
   get "bills", :to => "static_pages#bills"
 

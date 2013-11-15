@@ -30,6 +30,9 @@ module PolianaApp
 
     config.force_ssl = false
 
+    config.assets.initialize_on_precompile = false
+
+    
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 

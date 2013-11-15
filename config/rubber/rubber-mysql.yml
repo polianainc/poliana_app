@@ -1,7 +1,7 @@
 
 # REQUIRED: The credentials for creating/accessong your app's database
 #
-db_user: root
+db_user: "#{app_name[0,16]}"
 db_pass:
 db_name: "#{app_name}_#{Rubber.env}"
 

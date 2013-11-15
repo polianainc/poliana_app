@@ -19,8 +19,6 @@ pickle-email-*.html
 
 /lib/congress_scraper.rb
 
-/config/database.yml
-
 /config/rubber/rubber-secret.yml
 # Ignore application configuration
 /config/application.yml

@@ -4,6 +4,11 @@ app_name: poliana
 # REQUIRED: The system user to run your app servers as
 app_user: app
 
+# OPTIONAL: If not set, you won't be able to access web_tools
+# server (graphite, graylog, monit status, haproxy status, etc)
+
+web_tools_user: admin
+web_tools_password: sekret
 
 # REQUIRED: The timezone the server should be in
 timezone: US/Eastern

@@ -30,6 +30,9 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
+gem 'compass-rails'
+gem 'zurb-foundation'
+
 group :development do
   gem 'sunspot_solr'
 end
@@ -57,8 +60,6 @@ end
 group :assets do
 
   gem 'jquery-rails'
-  gem 'compass-rails'
-  gem 'zurb-foundation'
 
   gem 'sass-rails',   '~> 3.2.3'
   gem 'therubyracer', :platforms => :ruby, :group => :production

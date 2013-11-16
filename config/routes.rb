@@ -29,7 +29,7 @@ PolianaApp::Application.routes.draw do
   get "kitchensink", :to => "static_pages#kitchen"
 
   get "search", :to => "search#search"
-  get "bills", :to => "static_pages#bills"
+  get "billstemp", :to => "static_pages#bills"
 
   get "invite", :to => "invitations#new"
   

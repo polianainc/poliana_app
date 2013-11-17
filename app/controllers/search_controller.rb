@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   def search
+
     @search = {}
     fields = params[:fields].split(",")
     
@@ -14,6 +15,7 @@ class SearchController < ApplicationController
     if fields.include? "industries"
       @search["industries"] = searchIndustries(params)
     end
+
 
     respond_to do |format|
       format.html { render :action => "search" }
@@ -38,6 +40,7 @@ class SearchController < ApplicationController
       paginate :page => page, :per_page => 10
       order_by(:score, :desc)
     end
+
 
     @bills["data"] = s.results
 

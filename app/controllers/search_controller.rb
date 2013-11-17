@@ -1,15 +1,16 @@
 class SearchController < ApplicationController
   def search
     @search = {}
-    if params[:bills]
+    fields = params[:fields].split(",")
+    if fields.include? "bills"
       @search["bills"] = searchBills(params)
     end
     
-    if params[:politicians]
+    if fields.include? "politicians"
       @search["politicians"] = searchPoliticians(params)
     end
 
-    if params[:industries]
+    if fields.include? "industries"
       @search["industries"] = searchIndustries(params)
     end
 

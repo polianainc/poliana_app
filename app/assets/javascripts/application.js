@@ -54,6 +54,10 @@ $(document).ready(function() {
 		event.preventDefault();
 		window.location = '/search/?query=' + $(this).prev().val() + "&page=1&fields=bills,politicians";
 	});
+	
+	$(document).on('click', '.pagination .current', function(event) {
+		event.preventDefault();
+	});
 });
 
 $(window).resize(function() {

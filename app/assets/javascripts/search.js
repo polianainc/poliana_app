@@ -45,8 +45,8 @@ function runSearch(fields, query, scroll) {
 				
 				if($elem != undefined && scroll != undefined) {
 					$('html, body').animate({
-				        scrollTop: $elem.top - 90
-				    }, 500);
+						scrollTop: $elem.top - 90
+					}, 500);
 				}
 			});
 		});
@@ -80,6 +80,10 @@ $('.searchInput, .menuSearch').on('keyup', function() {
 }).on('keypress', function(event) {
 	if(event.which == 13) {
 		event.preventDefault();
+		
+		var oldQueryQS = getParam('query', location.search).split(' ').join('%20');
+		history.pushState('', '', location.search.replace("query=" + oldQueryQS, "query=" + $(this).val()));
+		
 		runSearch(getSelected().join(), $(this).val());
 	}
 });
@@ -180,6 +184,88 @@ function formatItem(type, data) {
 	}
 	else if(type == "organizations") {
 		
+	}
+	
+	console.log(data);
+	
+	var count = 0;
+
+	for(var i in data.paging) {
+		if(data.paging.hasOwnProperty(i))
+			count++;
+	}
+	
+	console.log(count);
+	
+	if(count != 0) {
+		/*
+			<div class="pagination-centered">
+			  <ul class="pagination">
+			    <li class="arrow unavailable"><a href="">&laquo;</a></li>
+			    <li class="current"><a href="">1</a></li>
+			    <li><a href="">2</a></li>
+			    <li><a href="">3</a></li>
+			    <li><a href="">4</a></li>
+			    <li class="unavailable"><a href="">&hellip;</a></li>
+			    <li><a href="">12</a></li>
+			    <li><a href="">13</a></li>
+			    <li class="arrow"><a href="">&raquo;</a></li>
+			  </ul>
+			</div>
+		*/
+		$posts.append($('<div>')
+			.attr('class', 'pagination-centered')
+			.append($('<ul>')
+				.attr('class', 'pagination')
+				.append(function() {
+					if(data.paging.previous != undefined) {
+						return $('<li>')
+						.attr('class', 'arrow')
+						.append($('<a>')
+							.attr('href', '#')
+							.text("« Previous")
+						);
+					}
+				})
+				.append(function() {
+					if(data.paging.previous != undefined && data.paging.next != undefined) {
+						return $('<li>')
+						.attr('class', 'current')
+						.append($('<a>')
+							.attr('href', '#')
+							.text(data.paging.next - 1)
+						);
+					}
+					else if(data.paging.previous == undefined && data.paging.next != undefined) {
+						return $('<li>')
+						.attr('class', 'current')
+						.append($('<a>')
+							.attr('href', '#')
+							.text(data.paging.next - 1)
+						);
+					}
+					else if(data.paging.next == undefined && data.paging.previous != undefined) {
+						return $('<li>')
+						.attr('class', 'current')
+						.append($('<a>')
+							.attr('href', '#')
+							.text(data.paging.previous + 1)
+						);
+					}
+				})
+				.append(function() {
+					if(data.paging.next != undefined) {
+						return $('<li>')
+						.attr('class', 'arrow')
+						.append($('<a>')
+							.attr('href', '#')
+							.text("Next »")
+						);
+					}
+				})
+			)
+		);
+		console.log(data.paging);
 	}
 	
 	return $posts;

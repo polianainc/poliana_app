@@ -24,7 +24,7 @@ class SearchController < ApplicationController
   end
 
   def searchBills(params)
-    page = params[:page] ? params[:page] : 1
+    page = params["bill-page"] ? params["bill-page"] : 1
 
     @bills = {}
     paging = {}
@@ -40,7 +40,6 @@ class SearchController < ApplicationController
       paginate :page => page, :per_page => 10
       order_by(:score, :desc)
     end
-
 
     @bills["data"] = s.results
 

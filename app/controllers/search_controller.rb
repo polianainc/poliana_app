@@ -2,6 +2,7 @@ class SearchController < ApplicationController
   def search
     @search = {}
     fields = params[:fields].split(",")
+    
     if fields.include? "bills"
       @search["bills"] = searchBills(params)
     end
@@ -34,7 +35,7 @@ class SearchController < ApplicationController
         boost_fields :subjects => 1.5
       end
 
-      paginate :page => page, :per_page => 15
+      paginate :page => page, :per_page => 10
       order_by(:score, :desc)
     end
 

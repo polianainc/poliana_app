@@ -71,8 +71,8 @@
 								<form>
 						  			<div class="row collapse">
 										<div id="search" class="small-12 columns">
-							  				<input type="text" placeholder="Search">
-											<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
+							  				<input type="text" value="<%= params[:query] %>" class="menuSearch<%= !request.env['PATH_INFO'].include?('search') ? " notSearch" : '' %>" placeholder="Search">
+											<a href="#" class="menuSearchClick"><span aria-hidden="true" class="icon-search"></span></a>
 										</div>
 						  			</div>
 								</form>

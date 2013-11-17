@@ -1,57 +1,20 @@
 <div class="row">
 	<div class="large-12 columns">
-		<h1>14 results for...</h1>
+		<h1 class="searchCount"></h1>
 		<form class="custom">
-			<input type="search" value="Rick Perry" placeholder="Search anything in the political system...">
+			<input type="search" class="searchInput" value="<%= params[:query] %>" placeholder="Search anything in the political system...">
 		</form>
 	</div>
 </div>
 <div class="row">
 	<div class="large-3 columns">
-		<ul class="side-nav blocky" id="searchSelector">
-			<li class="active"><a href="#">Bills</a></li>
-			<li><a href="#">Industries</a></li>
-			<li class="active"><a href="#">Politicians</a></li>
+		<ul class="side-nav blocky searchSelector">
+			<li<%= params[:fields].split(",").include?('bills') ? " class=active" : '' %>><a href="#">Bills</a></li>
+			<li<%= params[:fields].split(",").include?('industries') ? " class=active" : '' %>><a href="#">Industries</a></li>
+			<li<%= params[:fields].split(",").include?('politicians') ? " class=active" : '' %>><a href="#">Politicians</a></li>
 		</ul>
 	</div>
-	<div class="large-9 columns searchArea">
-		<h3>Bills</h3>
-		<div class="searchItem">
-			<h4><a href="#">Search Item One</a></h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor lacinia facilisis. In lacinia viverra gravida. Pellentesque fermentum vel enim viverra consequat. Sed eleifend leo leo, ut ultrices nibh elementum et. <a href="#">Explore &raquo;</a></p>
-		</div>
-		<div class="searchItem">
-			<h4><a href="#">Search Item Two</a></h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor lacinia facilisis. In lacinia viverra gravida. Pellentesque fermentum vel enim viverra consequat. Sed eleifend leo leo, ut ultrices nibh elementum et. <a href="#">Explore &raquo;</a></p>
-		</div>
-		<div class="searchItem">
-			<h4><a href="#">Search Item Three</a></h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor lacinia facilisis. In lacinia viverra gravida. Pellentesque fermentum vel enim viverra consequat. Sed eleifend leo leo, ut ultrices nibh elementum et. <a href="#">Explore &raquo;</a></p>
-		</div>
-		<h3>Politicians</h3>
-		<div class="searchItem">
-			<div class="row">
-				<div class="large-2 hide-for-small columns">
-					<a href="#"><img src="http://www.rickperry.org/files/portrait_rp.jpg" alt="Rick Perry"></a>
-				</div>
-				<div class="large-10 small-12 columns">
-					<h4><a href="#">Politician One</a></h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor lacinia facilisis. In lacinia viverra gravida. Pellentesque fermentum vel enim viverra consequat. Sed eleifend leo leo, ut ultrices nibh elementum et. <a href="#">Explore &raquo;</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="searchItem">
-			<div class="row">
-				<div class="large-2 hide-for-small columns">
-					<a href="#"><img src="http://www.rickperry.org/files/portrait_rp.jpg" alt="Rick Perry"></a>
-				</div>
-				<div class="large-10 small-12 columns">
-					<h4><a href="#">Politician Two</a></h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor lacinia facilisis. In lacinia viverra gravida. Pellentesque fermentum vel enim viverra consequat. Sed eleifend leo leo, ut ultrices nibh elementum et. <a href="#">Explore &raquo;</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="large-9 columns searchArea"></div>
 </div>
 
-<%= javascript_include_tag "search.min", :defer => "defer" %>
+<%= javascript_include_tag "search", :defer => "defer" %>

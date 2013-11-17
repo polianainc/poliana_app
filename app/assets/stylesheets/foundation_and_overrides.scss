@@ -1275,11 +1275,13 @@ $side-nav-divider-color: $secondary-color;
 	&.blocky {
 		margin-bottom: 20px;
 		li {
-			padding: 15px;
 			background: $body-font-color;
-			border-top: 1px solid darken($secondary-color, 15%);
+			border-top: 1px solid $body-bg;
 			@include single-transition(all, 0.1s, linear);
-			a { color: #fff !important; }
+			a {
+				color: #fff !important;
+				padding: 15px;
+			}
 			&.active {
 				background: $primary-color;
 				&:hover { background: $primary-color; }

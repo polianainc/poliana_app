@@ -42,6 +42,18 @@ $(document).ready(function() {
 	$(document).on('click', '.sharable', function() {
 		$('#sharable').foundation('reveal', 'open');
 	});
+	
+	$('.menuSearch.notSearch').on('keypress', function(event) {
+		if(event.which == 13 && $(this).val() != "") {
+			event.preventDefault();
+			window.location = '/search/?query=' + $(this).val() + "&page=1&fields=bills,politicians";
+		}
+	});
+	
+	$('.menuSearchClick').on('click', function(event) {
+		event.preventDefault();
+		window.location = '/search/?query=' + $(this).prev().val() + "&page=1&fields=bills,politicians";
+	});
 });
 
 $(window).resize(function() {

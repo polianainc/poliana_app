@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   def search
+
     @search = {}
     fields = params[:fields].split(",")
     
@@ -15,6 +16,7 @@ class SearchController < ApplicationController
       @search["industries"] = searchIndustries(params)
     end
 
+
     respond_to do |format|
       format.html { render :action => "search" }
       format.json { render :json => @search }
@@ -22,7 +24,7 @@ class SearchController < ApplicationController
   end
 
   def searchBills(params)
-    page = params[:page] ? params[:page] : 1
+    page = params["bill-page"] ? params["bill-page"] : 1
 
     @bills = {}
     paging = {}

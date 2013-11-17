@@ -17,3 +17,4 @@ class Bill
     text :subjects
     text :officialTitle
   end
+end

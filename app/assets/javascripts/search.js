@@ -1,22 +1,22 @@
 function runSearch() {
-	var types = [];
+	var fields = [];
 	
 	if(getParam('users'))
-		types.push("users");
+		fields.push("users");
 	if(getParam('bills'))
-		types.push("bills");
+		fields.push("bills");
 	if(getParam('politicians'))
-		types.push("politicians");
+		fields.push("politicians");
 	if(getParam('industries'))
-		types.push("industries");
+		fields.push("industries");
 	if(getParam('pacs'))
-		types.push("pacs");
+		fields.push("pacs");
 	if(getParam('lobbyists'))
-		types.push("lobbyists");
+		fields.push("lobbyists");
 	if(getParam('organizations'))
-		types.push("organizations");
+		fields.push("organizations");
 	
-	$.get('/search/', { query: getParam('query'), page: getParam('page'), types: types.join(), format: 'json' }, function(data) {
+	$.get('/search/', { query: getParam('query'), page: getParam('page'), fields: fields.join(), format: 'json' }, function(data) {
 		console.log(data);
 	});
 }

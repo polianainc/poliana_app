@@ -1,15 +1,16 @@
 class SearchController < ApplicationController
   def search
     @search = {}
-    if params[:bills]
+    fields = params[:fields].split(",")
+    if fields.include? "bills"
       @search["bills"] = searchBills(params)
     end
     
-    if params[:politicians]
+    if fields.include? "politicians"
       @search["politicians"] = searchPoliticians(params)
     end
 
-    if params[:industries]
+    if fields.include? "industries"
       @search["industries"] = searchIndustries(params)
     end
 
@@ -22,7 +23,10 @@ class SearchController < ApplicationController
   def searchBills(params)
     page = params[:page] ? params[:page] : 1
 
-    @bills = Bill.search do 
+    @bills = {}
+    paging = {}
+
+    s = Bill.search do 
       fulltext params[:query] do
         boost_fields :popularTitle => 3.0
         boost_fields :shortTitle => 2.5
@@ -30,9 +34,18 @@ class SearchController < ApplicationController
         boost_fields :subjects => 1.5
       end
 
-      paginate :page => params[:page], :per_page => 15
+      paginate :page => page, :per_page => 15
       order_by(:score, :desc)
-    end.results
+    end
+
+    @bills["data"] = s.results
+
+    paging["next"] = page.to_i + 1 unless @bills["data"].last_page?
+
+    paging["previous"] = page.to_i - 1 unless @bills["data"].first_page?
+
+    @bills["paging"] = paging
+
     return @bills
   end
 
@@ -43,5 +56,5 @@ class SearchController < ApplicationController
   def searchPoliticians(params)
     #stub
   end
- 
+
 end

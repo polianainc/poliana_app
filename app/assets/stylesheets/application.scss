@@ -41,6 +41,12 @@
 		display: block;
 		margin: 20px inherit;
 	}
+	&.extraLargeIcon {
+		font-size: 10em;
+		text-align: center;
+		display: block;
+		margin: 20px inherit;
+	}
 }
 .icon-download:before {
 	content: "\e000";

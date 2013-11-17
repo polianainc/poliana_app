@@ -24,7 +24,7 @@ class SearchController < ApplicationController
   end
 
   def searchBills(params)
-    page = params["bill-page"] ? params["bill-page"] : 1
+    page = params["bill_page"] ? params["bill_page"] : 1
 
     @bills = {}
     paging = {}

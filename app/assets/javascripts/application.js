@@ -19,6 +19,7 @@ $(document).ready(function() {
 	
 	absoluteHero();
 	
+	// Beta signup
 	$('.mailchimp-form').on('submit', function(event) {
 		event.preventDefault();
 

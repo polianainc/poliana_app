@@ -109,7 +109,7 @@
       "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/application.min.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/application.min-ck.js",
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/application.min.min.js",
       "fileType" : 64
     },
     "\/app\/assets\/images\/pictures\/congress-113\/V000130.jpg" : {
@@ -189,15 +189,6 @@
       "initialSize" : 34867,
       "fileType" : 4096
     },
-    "\/app\/views\/static_pages\/search.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/search.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/R000588.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -209,15 +200,15 @@
       "initialSize" : 4666,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/B000953.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/D000613.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000953.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000613.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000953.jpg",
-      "initialSize" : 33128,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000613.jpg",
+      "initialSize" : 5645,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/O000007.jpg" : {
@@ -231,15 +222,15 @@
       "initialSize" : 41197,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/D000613.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/B000953.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000613.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000953.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000613.jpg",
-      "initialSize" : 5645,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000953.jpg",
+      "initialSize" : 33128,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/L000287.jpg" : {
@@ -286,17 +277,6 @@
       "initialSize" : 34597,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/C000174.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000174.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000174.jpg",
-      "initialSize" : 37122,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/L000553.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -308,6 +288,17 @@
       "initialSize" : 33104,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/B001250.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001250.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001250.jpg",
+      "initialSize" : 36593,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/P000263.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -317,6 +308,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000263.jpg",
       "initialSize" : 32912,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/B000461.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000461.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000461.jpg",
+      "initialSize" : 35297,
       "fileType" : 4096
     },
     "\/public\/favicon.png" : {
@@ -341,26 +343,15 @@
       "initialSize" : 37691,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/B001250.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/C000174.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001250.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000174.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001250.jpg",
-      "initialSize" : 36593,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/B000461.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000461.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000461.jpg",
-      "initialSize" : 35297,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000174.jpg",
+      "initialSize" : 37122,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/S001178.jpg" : {
@@ -396,17 +387,6 @@
       "initialSize" : 32800,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/C000754.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000754.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000754.jpg",
-      "initialSize" : 32088,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/K000336.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -416,6 +396,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000336.jpg",
       "initialSize" : 33367,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/C000754.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000754.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000754.jpg",
+      "initialSize" : 32088,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001143.jpg" : {
@@ -495,17 +486,6 @@
       "initialSize" : 31512,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/L000560.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000560.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000560.jpg",
-      "initialSize" : 31306,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/R000011.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -515,6 +495,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000011.jpg",
       "initialSize" : 34144,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/L000560.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000560.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000560.jpg",
+      "initialSize" : 31306,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/P000605.jpg" : {
@@ -638,6 +629,15 @@
       "initialSize" : 31831,
       "fileType" : 4096
     },
+    "\/app\/views\/devise\/registrations\/new.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/registrations\/new.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/B000657.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -648,15 +648,6 @@
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000657.jpg",
       "initialSize" : 33501,
       "fileType" : 4096
-    },
-    "\/app\/views\/devise\/registrations\/new.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/registrations\/new.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/app\/assets\/images\/pictures\/congress-113\/W000799.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -691,17 +682,6 @@
       "initialSize" : 41715,
       "fileType" : 4096
     },
-    "\/app\/assets\/javascripts\/topojson.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 1,
-      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/topojson.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/topojson.min.js",
-      "fileType" : 64
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/W000215.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -712,6 +692,17 @@
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000215.jpg",
       "initialSize" : 32492,
       "fileType" : 4096
+    },
+    "\/app\/assets\/javascripts\/topojson.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/topojson.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/topojson.min.js",
+      "fileType" : 64
     },
     "\/app\/assets\/images\/pictures\/congress-113\/S001192.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -933,6 +924,17 @@
       "initialSize" : 33700,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/B001282.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001282.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001282.jpg",
+      "initialSize" : 11264,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/S001162.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -944,16 +946,16 @@
       "initialSize" : 32853,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/B001282.jpg" : {
+    "\/app\/assets\/javascripts\/search.min.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001282.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001282.jpg",
-      "initialSize" : 11264,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/search.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/search.min.min.js",
+      "fileType" : 64
     },
     "\/app\/assets\/images\/pictures\/congress-113\/H001047.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -1010,17 +1012,6 @@
       "initialSize" : 16337,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/T000472.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000472.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000472.jpg",
-      "initialSize" : 12552,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/V000132.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1030,6 +1021,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/V000132.jpg",
       "initialSize" : 13404,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/T000472.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000472.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000472.jpg",
+      "initialSize" : 12552,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/B001245.jpg" : {
@@ -1076,17 +1078,6 @@
       "initialSize" : 14685,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/H000676.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000676.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000676.jpg",
-      "initialSize" : 31068,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/H001054.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1096,6 +1087,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H001054.jpg",
       "initialSize" : 5940,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/H000676.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000676.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000676.jpg",
+      "initialSize" : 31068,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/E000187.jpg" : {
@@ -1415,17 +1417,6 @@
       "initialSize" : 34402,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/M001152.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001152.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001152.jpg",
-      "initialSize" : 34628,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/P000586.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1435,6 +1426,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000586.jpg",
       "initialSize" : 31872,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/M001152.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001152.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001152.jpg",
+      "initialSize" : 34628,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/J000285.jpg" : {
@@ -1514,17 +1516,6 @@
       "initialSize" : 36256,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/J000292.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/J000292.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/J000292.jpg",
-      "initialSize" : 6501,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/F000030.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1534,6 +1525,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000030.jpg",
       "initialSize" : 33454,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/J000292.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/J000292.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/J000292.jpg",
+      "initialSize" : 6501,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/F000457.jpg" : {
@@ -1661,7 +1663,7 @@
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
-      "outputPathIsSetByUser" : 1,
+      "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/stupidtable.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
@@ -1756,6 +1758,15 @@
       "initialSize" : 35188,
       "fileType" : 4096
     },
+    "\/app\/views\/static_pages\/contact.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/contact.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/L000035.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1766,15 +1777,6 @@
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000035.jpg",
       "initialSize" : 13700,
       "fileType" : 4096
-    },
-    "\/app\/views\/static_pages\/contact.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/contact.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/app\/assets\/images\/pictures\/congress-113\/H000981.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -1941,6 +1943,17 @@
       "initialSize" : 14775,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/M000303.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000303.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000303.jpg",
+      "initialSize" : 30958,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/W000314.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1961,17 +1974,6 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001184.jpg",
       "initialSize" : 13617,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/M000303.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000303.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000303.jpg",
-      "initialSize" : 30958,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/C001092.jpg" : {
@@ -2040,15 +2042,15 @@
       "initialSize" : 33816,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/N000180.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/B001254.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000180.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001254.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000180.jpg",
-      "initialSize" : 36838,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001254.jpg",
+      "initialSize" : 30480,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/W000813.jpg" : {
@@ -2062,15 +2064,15 @@
       "initialSize" : 13523,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/B001254.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/N000180.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001254.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000180.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001254.jpg",
-      "initialSize" : 30480,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000180.jpg",
+      "initialSize" : 36838,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001191.jpg" : {
@@ -2247,17 +2249,6 @@
       "initialSize" : 11234,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/P000588.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000588.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000588.jpg",
-      "initialSize" : 5285,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/G000556.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2267,6 +2258,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000556.jpg",
       "initialSize" : 11519,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/P000588.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000588.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000588.jpg",
+      "initialSize" : 5285,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001154.jpg" : {
@@ -2313,17 +2315,6 @@
       "initialSize" : 35050,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/P000096.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000096.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000096.jpg",
-      "initialSize" : 34885,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/J000174.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2335,6 +2326,17 @@
       "initialSize" : 33409,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/P000096.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000096.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000096.jpg",
+      "initialSize" : 34885,
+      "fileType" : 4096
+    },
     "\/config\/rubber\/role\/web_tools\/tools-index.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2344,15 +2346,15 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/F000339.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/L000571.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000339.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000571.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000339.jpg",
-      "initialSize" : 32206,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000571.jpg",
+      "initialSize" : 15280,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/logo-square-large.png" : {
@@ -2366,26 +2368,15 @@
       "initialSize" : 43370,
       "fileType" : 8192
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/L000571.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/F000339.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000571.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000339.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000571.jpg",
-      "initialSize" : 15280,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/M000485.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000485.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000485.jpg",
-      "initialSize" : 32187,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000339.jpg",
+      "initialSize" : 32206,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/G000563.jpg" : {
@@ -2399,6 +2390,17 @@
       "initialSize" : 4381,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/P000595.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000595.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000595.jpg",
+      "initialSize" : 13512,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/M001161.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2410,15 +2412,15 @@
       "initialSize" : 33520,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/P000595.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/M000485.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000595.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000485.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000595.jpg",
-      "initialSize" : 13512,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000485.jpg",
+      "initialSize" : 32187,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/J000294.jpg" : {
@@ -2518,6 +2520,17 @@
       "initialSize" : 32190,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/R000576.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000576.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000576.jpg",
+      "initialSize" : 33807,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/D000601.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2529,16 +2542,16 @@
       "initialSize" : 37350,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/R000576.jpg" : {
+    "\/app\/assets\/javascripts\/disqus.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000576.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000576.jpg",
-      "initialSize" : 33807,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/disqus.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/disqus.min.js",
+      "fileType" : 64
     },
     "\/app\/assets\/images\/pictures\/congress-113\/C000243.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -2571,17 +2584,6 @@
       "initialSize" : 15317,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/T000469.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000469.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000469.jpg",
-      "initialSize" : 15913,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/V000129.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2604,6 +2606,17 @@
       "initialSize" : 11241,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/T000469.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000469.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000469.jpg",
+      "initialSize" : 15913,
+      "fileType" : 4096
+    },
     "\/app\/assets\/javascripts\/bills.min.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -2612,7 +2625,7 @@
       "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/bills.min.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/bills.min-ck.js",
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/bills.min.min.js",
       "fileType" : 64
     },
     "\/app\/assets\/images\/pictures\/congress-113\/R000583.jpg" : {
@@ -2676,7 +2689,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/bills.scss",
-      "outputStyle" : 0,
+      "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/app\/assets\/css\/bills.css",
       "fileType" : 4,
@@ -2847,15 +2860,15 @@
       "initialSize" : 14765,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/S000770.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/L000559.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000770.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000559.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000770.jpg",
-      "initialSize" : 33380,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000559.jpg",
+      "initialSize" : 56157,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/N000182.jpg" : {
@@ -2869,6 +2882,15 @@
       "initialSize" : 35206,
       "fileType" : 4096
     },
+    "\/config\/rubber\/role\/web_tools\/rubber-web-tools-monit.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/rubber-web-tools-monit.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/W000815.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2878,17 +2900,6 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000815.jpg",
       "initialSize" : 13548,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/L000559.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000559.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000559.jpg",
-      "initialSize" : 56157,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/D000598.jpg" : {
@@ -2902,15 +2913,15 @@
       "initialSize" : 39511,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/B001256.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/S000770.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001256.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000770.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001256.jpg",
-      "initialSize" : 39290,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000770.jpg",
+      "initialSize" : 33380,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/T000326.jpg" : {
@@ -2935,24 +2946,15 @@
       "initialSize" : 11834,
       "fileType" : 4096
     },
-    "\/config\/rubber\/role\/web_tools\/rubber-web-tools-monit.html" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/B001256.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/rubber-web-tools-monit.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/F000443.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000443.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001256.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000443.jpg",
-      "initialSize" : 36593,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001256.jpg",
+      "initialSize" : 39290,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/B000652.jpg" : {
@@ -2966,15 +2968,26 @@
       "initialSize" : 34174,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/W000794.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/F000443.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000794.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000443.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000794.jpg",
-      "initialSize" : 37755,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000443.jpg",
+      "initialSize" : 36593,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/M000312.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000312.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000312.jpg",
+      "initialSize" : 35199,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/P000422.jpg" : {
@@ -2988,15 +3001,15 @@
       "initialSize" : 35468,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/M000312.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/W000794.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000312.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000794.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000312.jpg",
-      "initialSize" : 35199,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000794.jpg",
+      "initialSize" : 37755,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001149.jpg" : {
@@ -3098,17 +3111,6 @@
       "initialSize" : 35472,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/N000032.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000032.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000032.jpg",
-      "initialSize" : 36563,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/D000492.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -3118,6 +3120,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000492.jpg",
       "initialSize" : 33908,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/N000032.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000032.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000032.jpg",
+      "initialSize" : 36563,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/G000558.jpg" : {
@@ -3298,7 +3311,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/static_pages.scss",
-      "outputStyle" : 0,
+      "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/app\/assets\/css\/static_pages.css",
       "fileType" : 4,
@@ -3322,17 +3335,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/P000597.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000597.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000597.jpg",
-      "initialSize" : 14092,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/G000565.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -3342,6 +3344,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000565.jpg",
       "initialSize" : 4553,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/P000597.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000597.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000597.jpg",
+      "initialSize" : 14092,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001163.jpg" : {
@@ -3454,37 +3467,6 @@
       "initialSize" : 34214,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/K000363.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000363.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000363.jpg",
-      "initialSize" : 32117,
-      "fileType" : 4096
-    },
-    "\/app\/views\/bills\/show.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/bills\/show.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/M001170.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001170.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001170.jpg",
-      "initialSize" : 43622,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/N000002.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -3507,6 +3489,37 @@
       "initialSize" : 11788,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/M001170.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001170.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001170.jpg",
+      "initialSize" : 43622,
+      "fileType" : 4096
+    },
+    "\/app\/views\/bills\/show.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/bills\/show.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/K000363.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000363.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000363.jpg",
+      "initialSize" : 32117,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/R000578.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -3518,17 +3531,6 @@
       "initialSize" : 32941,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/D000603.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000603.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000603.jpg",
-      "initialSize" : 32928,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/T000238.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -3538,6 +3540,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000238.jpg",
       "initialSize" : 33357,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/D000603.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000603.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000603.jpg",
+      "initialSize" : 32928,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/H000329.jpg" : {
@@ -3562,15 +3575,15 @@
       "initialSize" : 34049,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/H000627.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/S001168.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000627.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001168.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000627.jpg",
-      "initialSize" : 32233,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001168.jpg",
+      "initialSize" : 33186,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/K000370.jpg" : {
@@ -3584,15 +3597,15 @@
       "initialSize" : 13726,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/S001168.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/H000627.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001168.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000627.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001168.jpg",
-      "initialSize" : 33186,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000627.jpg",
+      "initialSize" : 32233,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/G000535.jpg" : {
@@ -3617,17 +3630,6 @@
       "initialSize" : 31641,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/L000397.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000397.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000397.jpg",
-      "initialSize" : 40086,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/B000213.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -3637,6 +3639,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000213.jpg",
       "initialSize" : 31007,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/L000397.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000397.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000397.jpg",
+      "initialSize" : 40086,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/C001041.jpg" : {
@@ -3650,17 +3663,6 @@
       "initialSize" : 32181,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/D000610.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000610.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000610.jpg",
-      "initialSize" : 20212,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/R000585.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -3670,6 +3672,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000585.jpg",
       "initialSize" : 4356,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/D000610.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000610.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000610.jpg",
+      "initialSize" : 20212,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/S000185.jpg" : {
@@ -3738,15 +3751,6 @@
       "initialSize" : 18425,
       "fileType" : 4096
     },
-    "\/app\/assets\/css\/application.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/css\/application.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/D000432.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -3757,6 +3761,15 @@
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000432.jpg",
       "initialSize" : 32677,
       "fileType" : 4096
+    },
+    "\/app\/assets\/css\/application.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/css\/application.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001140.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -3791,17 +3804,6 @@
       "initialSize" : 5228,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/K000220.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000220.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000220.jpg",
-      "initialSize" : 36614,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/R000592.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -3811,6 +3813,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000592.jpg",
       "initialSize" : 5480,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/K000220.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000220.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000220.jpg",
+      "initialSize" : 36614,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/W000789.jpg" : {
@@ -4075,17 +4088,6 @@
       "initialSize" : 33731,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/G000359.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000359.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000359.jpg",
-      "initialSize" : 35872,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/B000589.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -4095,6 +4097,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000589.jpg",
       "initialSize" : 35681,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/G000359.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000359.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000359.jpg",
+      "initialSize" : 35872,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/L000568.jpg" : {
@@ -4141,17 +4154,6 @@
       "initialSize" : 35629,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/N000147.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000147.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000147.jpg",
-      "initialSize" : 36823,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/D000136.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -4161,6 +4163,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000136.jpg",
       "initialSize" : 38649,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/N000147.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000147.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000147.jpg",
+      "initialSize" : 36823,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/F000452.jpg" : {
@@ -4321,7 +4334,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/devise.scss",
-      "outputStyle" : 0,
+      "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/app\/assets\/css\/devise.css",
       "fileType" : 4,
@@ -4393,27 +4406,27 @@
       "initialSize" : 31675,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/R000033.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000033.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000033.jpg",
-      "initialSize" : 33787,
-      "fileType" : 4096
-    },
     "\/app\/assets\/javascripts\/application.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 0,
       "hidden" : 0,
-      "outputPathIsSetByUser" : 1,
+      "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/application.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/application.min.js",
       "fileType" : 64
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/A000109.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/A000109.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/A000109.jpg",
+      "initialSize" : 39680,
+      "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/B001235.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -4457,27 +4470,27 @@
       "initialSize" : 32841,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/A000109.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/H000666.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/A000109.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000666.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/A000109.jpg",
-      "initialSize" : 39680,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000666.jpg",
+      "initialSize" : 34107,
       "fileType" : 4096
     },
-    "\/app\/assets\/javascripts\/stupidtable.min.js" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/R000033.jpg" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/stupidtable.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/stupidtable.min-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000033.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000033.jpg",
+      "initialSize" : 33787,
+      "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/H001044.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -4501,16 +4514,16 @@
       "initialSize" : 35711,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/H000666.jpg" : {
+    "\/app\/assets\/javascripts\/stupidtable.min.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000666.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000666.jpg",
-      "initialSize" : 34107,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/stupidtable.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/stupidtable.min.min.js",
+      "fileType" : 64
     },
     "\/app\/assets\/images\/pictures\/congress-113\/L000111.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -4633,6 +4646,17 @@
       "initialSize" : 35711,
       "fileType" : 4096
     },
+    "\/app\/assets\/javascripts\/d3.min.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/d3.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/d3.min.min.js",
+      "fileType" : 64
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/W000801.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -4643,17 +4667,6 @@
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000801.jpg",
       "initialSize" : 33712,
       "fileType" : 4096
-    },
-    "\/app\/assets\/javascripts\/d3.min.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/d3.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/d3.min-ck.js",
-      "fileType" : 64
     },
     "\/app\/assets\/images\/pictures\/congress-113\/H001051.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -4749,7 +4762,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/foundation_and_overrides.scss",
-      "outputStyle" : 0,
+      "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/app\/assets\/css\/foundation_and_overrides.css",
       "fileType" : 4,
@@ -4763,17 +4776,6 @@
       "inputAbbreviatedPath" : "\/app\/views\/static_pages\/about.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
-    },
-    "\/app\/assets\/javascripts\/topojson.min.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/topojson.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/topojson.min-ck.js",
-      "fileType" : 64
     },
     "\/app\/assets\/images\/pictures\/congress-113\/H000636.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -4797,6 +4799,17 @@
       "initialSize" : 30732,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/S001177.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001177.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001177.jpg",
+      "initialSize" : 19089,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/O000170.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -4806,17 +4819,6 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/O000170.jpg",
       "initialSize" : 12594,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/N000179.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000179.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000179.jpg",
-      "initialSize" : 34753,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/D000168.jpg" : {
@@ -4830,16 +4832,16 @@
       "initialSize" : 32251,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/S001177.jpg" : {
+    "\/app\/assets\/javascripts\/topojson.min.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001177.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001177.jpg",
-      "initialSize" : 19089,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/topojson.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/topojson.min.min.js",
+      "fileType" : 64
     },
     "\/app\/assets\/images\/pictures\/congress-113\/G000544.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -4850,6 +4852,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000544.jpg",
       "initialSize" : 37335,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/N000179.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000179.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000179.jpg",
+      "initialSize" : 34753,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001142.jpg" : {
@@ -4874,14 +4887,16 @@
       "initialSize" : 39731,
       "fileType" : 4096
     },
-    "\/app\/views\/devise\/passwords\/edit.html.erb" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/P000197.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/passwords\/edit.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000197.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000197.jpg",
+      "initialSize" : 36390,
+      "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/R000594.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -4938,16 +4953,14 @@
       "initialSize" : 31787,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/P000197.jpg" : {
+    "\/app\/views\/devise\/passwords\/edit.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000197.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000197.jpg",
-      "initialSize" : 36390,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/passwords\/edit.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/app\/assets\/images\/pictures\/congress-113\/C001098.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -5015,6 +5028,17 @@
       "initialSize" : 5032,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/L000321.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000321.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000321.jpg",
+      "initialSize" : 31711,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/G000551.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -5035,17 +5059,6 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000583.jpg",
       "initialSize" : 34681,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/L000321.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000321.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000321.jpg",
-      "initialSize" : 31711,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/Y000031.jpg" : {
@@ -5301,6 +5314,15 @@
       "initialSize" : 32394,
       "fileType" : 4096
     },
+    "\/app\/views\/search\/search.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/search\/search.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/T000464.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -5400,6 +5422,17 @@
       "initialSize" : 4081,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/C001038.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C001038.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C001038.jpg",
+      "initialSize" : 31687,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/D000607.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -5420,17 +5453,6 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M000639.jpg",
       "initialSize" : 37581,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/C001038.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C001038.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C001038.jpg",
-      "initialSize" : 31687,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/V000131.jpg" : {
@@ -5466,17 +5488,6 @@
       "initialSize" : 34578,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/P000523.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000523.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000523.jpg",
-      "initialSize" : 36095,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/david.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -5497,6 +5508,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H001053.jpg",
       "initialSize" : 4474,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/P000523.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000523.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000523.jpg",
+      "initialSize" : 36095,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001181.jpg" : {
@@ -5541,17 +5563,6 @@
       "initialSize" : 40836,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/Y000063.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/Y000063.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/Y000063.jpg",
-      "initialSize" : 5577,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/W000738.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -5561,6 +5572,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000738.jpg",
       "initialSize" : 39340,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/Y000063.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/Y000063.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/Y000063.jpg",
+      "initialSize" : 5577,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/R000589.jpg" : {
@@ -5607,17 +5629,6 @@
       "initialSize" : 32818,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/B000575.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000575.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000575.jpg",
-      "initialSize" : 32200,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/B001066.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -5627,6 +5638,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001066.jpg",
       "initialSize" : 31738,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/B000575.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000575.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B000575.jpg",
+      "initialSize" : 32200,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/B001251.jpg" : {
@@ -5706,15 +5728,15 @@
       "initialSize" : 62898,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/S001179.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/H001016.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001179.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H001016.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001179.jpg",
-      "initialSize" : 12897,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H001016.jpg",
+      "initialSize" : 38874,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/K000381.jpg" : {
@@ -5739,15 +5761,15 @@
       "initialSize" : 33034,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/H001016.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/S001179.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H001016.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001179.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H001016.jpg",
-      "initialSize" : 38874,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001179.jpg",
+      "initialSize" : 12897,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/G000546.jpg" : {
@@ -5880,7 +5902,7 @@
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
-      "outputPathIsSetByUser" : 1,
+      "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/bills.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
@@ -5918,17 +5940,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 32768
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/G000553.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000553.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000553.jpg",
-      "initialSize" : 32794,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/P000585.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -5938,6 +5949,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000585.jpg",
       "initialSize" : 37017,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/G000553.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000553.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000553.jpg",
+      "initialSize" : 32794,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/S000663.jpg" : {
@@ -6068,17 +6090,6 @@
       "initialSize" : 34373,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/B001269.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001269.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001269.jpg",
-      "initialSize" : 4690,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/S001193.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -6088,6 +6099,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001193.jpg",
       "initialSize" : 13887,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/B001269.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001269.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001269.jpg",
+      "initialSize" : 4690,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/G000560.jpg" : {
@@ -6156,6 +6178,17 @@
       "initialSize" : 34536,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/T000459.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000459.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000459.jpg",
+      "initialSize" : 32508,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/L000579.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -6165,17 +6198,6 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000579.jpg",
       "initialSize" : 14079,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/B001276.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001276.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001276.jpg",
-      "initialSize" : 5323,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/A000069.jpg" : {
@@ -6211,15 +6233,15 @@
       "initialSize" : 38810,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/T000459.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/B001276.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000459.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001276.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000459.jpg",
-      "initialSize" : 32508,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001276.jpg",
+      "initialSize" : 5323,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/P000555.jpg" : {
@@ -6233,17 +6255,6 @@
       "initialSize" : 36946,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/G000410.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000410.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000410.jpg",
-      "initialSize" : 32340,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/R000573.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -6253,6 +6264,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000573.jpg",
       "initialSize" : 33684,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/G000410.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000410.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000410.jpg",
+      "initialSize" : 32340,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001169.jpg" : {
@@ -6299,17 +6321,6 @@
       "initialSize" : 31793,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/V000126.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/V000126.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/V000126.jpg",
-      "initialSize" : 35499,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/H000324.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -6332,17 +6343,6 @@
       "initialSize" : 14339,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/D000533.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000533.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000533.jpg",
-      "initialSize" : 30564,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/S001163.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -6352,6 +6352,28 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001163.jpg",
       "initialSize" : 31450,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/B001239.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001239.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001239.jpg",
+      "initialSize" : 31688,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/D000533.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000533.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000533.jpg",
+      "initialSize" : 30564,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/S000709.jpg" : {
@@ -6365,6 +6387,17 @@
       "initialSize" : 32992,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/V000126.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/V000126.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/V000126.jpg",
+      "initialSize" : 35499,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/B001283.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -6374,17 +6407,6 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001283.jpg",
       "initialSize" : 10199,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/B001239.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001239.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001239.jpg",
-      "initialSize" : 31688,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/H001048.jpg" : {
@@ -6504,6 +6526,17 @@
       "initialSize" : 15415,
       "fileType" : 4096
     },
+    "\/app\/assets\/javascripts\/disqus.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/disqus.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/disqus.min.min.js",
+      "fileType" : 64
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/H000206.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -6603,15 +6636,6 @@
       "initialSize" : 9763,
       "fileType" : 4096
     },
-    "\/app\/assets\/css\/static_pages.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/css\/static_pages.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/Y000065.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -6621,6 +6645,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/Y000065.jpg",
       "initialSize" : 12588,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/W000784.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000784.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000784.jpg",
+      "initialSize" : 31962,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/C001047.jpg" : {
@@ -6645,26 +6680,24 @@
       "initialSize" : 5852,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/W000784.jpg" : {
+    "\/app\/assets\/css\/static_pages.css" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000784.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000784.jpg",
-      "initialSize" : 31962,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/app\/assets\/css\/static_pages.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/O000167.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/S000030.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/O000167.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000030.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/O000167.jpg",
-      "initialSize" : 31261,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000030.jpg",
+      "initialSize" : 40374,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/C000556.jpg" : {
@@ -6678,15 +6711,15 @@
       "initialSize" : 38002,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/S000030.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/C000794.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000030.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000794.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000030.jpg",
-      "initialSize" : 40374,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000794.jpg",
+      "initialSize" : 32668,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/B001253.jpg" : {
@@ -6700,15 +6733,15 @@
       "initialSize" : 31468,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/C000794.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/O000167.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000794.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/O000167.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000794.jpg",
-      "initialSize" : 32668,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/O000167.jpg",
+      "initialSize" : 31261,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/W000812.jpg" : {
@@ -6821,15 +6854,15 @@
       "initialSize" : 32165,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/F000061.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/M001146.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000061.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001146.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000061.jpg",
-      "initialSize" : 35870,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001146.jpg",
+      "initialSize" : 35020,
       "fileType" : 4096
     },
     "\/app\/views\/devise\/mailer\/unlock_instructions.html.erb" : {
@@ -6841,15 +6874,15 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/M001146.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/F000061.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001146.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000061.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001146.jpg",
-      "initialSize" : 35020,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000061.jpg",
+      "initialSize" : 35870,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/R000598.jpg" : {
@@ -6918,17 +6951,6 @@
       "initialSize" : 4713,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/G000289.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000289.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000289.jpg",
-      "initialSize" : 34109,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/A000367.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -6938,6 +6960,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/A000367.jpg",
       "initialSize" : 5314,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/G000289.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000289.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000289.jpg",
+      "initialSize" : 34109,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/G000555.jpg" : {
@@ -7039,17 +7072,6 @@
       "initialSize" : 2874,
       "fileType" : 8192
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/G000562.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000562.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000562.jpg",
-      "initialSize" : 4409,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/P000594.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -7061,15 +7083,15 @@
       "initialSize" : 16311,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/M001160.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/G000562.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001160.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000562.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001160.jpg",
-      "initialSize" : 45092,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000562.jpg",
+      "initialSize" : 4409,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/S000672.jpg" : {
@@ -7081,6 +7103,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000672.jpg",
       "initialSize" : 34516,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/M001160.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001160.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001160.jpg",
+      "initialSize" : 45092,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/J000293.jpg" : {
@@ -7105,17 +7138,6 @@
       "initialSize" : 35267,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/D000327.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000327.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000327.jpg",
-      "initialSize" : 35611,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/F000458.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -7125,6 +7147,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/F000458.jpg",
       "initialSize" : 4192,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/D000327.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000327.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000327.jpg",
+      "initialSize" : 35611,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/R000568.jpg" : {
@@ -7193,16 +7226,16 @@
       "initialSize" : 39539,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/S001158.jpg" : {
+    "\/app\/assets\/javascripts\/search.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001158.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001158.jpg",
-      "initialSize" : 30131,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/search.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/search.min.js",
+      "fileType" : 64
     },
     "\/app\/assets\/images\/pictures\/congress-113\/K000360.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -7213,6 +7246,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000360.jpg",
       "initialSize" : 32815,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/S001158.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001158.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001158.jpg",
+      "initialSize" : 30131,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/team.jpg" : {
@@ -7259,17 +7303,6 @@
       "initialSize" : 33708,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/D000600.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000600.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000600.jpg",
-      "initialSize" : 32384,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/R000575.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -7279,6 +7312,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000575.jpg",
       "initialSize" : 31882,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/D000600.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000600.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/D000600.jpg",
+      "initialSize" : 32384,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/L000274.jpg" : {
@@ -7336,15 +7380,15 @@
       "initialSize" : 13197,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/B001285.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/S000018.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001285.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000018.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001285.jpg",
-      "initialSize" : 16587,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000018.jpg",
+      "initialSize" : 15479,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/S001165.jpg" : {
@@ -7358,6 +7402,17 @@
       "initialSize" : 33150,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/B001285.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001285.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001285.jpg",
+      "initialSize" : 16587,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/V000128.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -7367,17 +7422,6 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/V000128.jpg",
       "initialSize" : 33007,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/S000018.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000018.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000018.jpg",
-      "initialSize" : 15479,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/R000582.jpg" : {
@@ -7446,17 +7490,6 @@
       "initialSize" : 34090,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/G000386.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000386.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000386.jpg",
-      "initialSize" : 34123,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/H000067.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -7466,6 +7499,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H000067.jpg",
       "initialSize" : 33672,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/G000386.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000386.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000386.jpg",
+      "initialSize" : 34123,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/S001172.jpg" : {
@@ -7752,6 +7796,17 @@
       "initialSize" : 30307,
       "fileType" : 4096
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/L000565.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000565.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000565.jpg",
+      "initialSize" : 34044,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/B001262.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -7774,17 +7829,6 @@
       "initialSize" : 33047,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/S001142.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001142.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001142.jpg",
-      "initialSize" : 35348,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/A000055.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -7796,15 +7840,15 @@
       "initialSize" : 33073,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/L000565.jpg" : {
+    "\/app\/assets\/images\/pictures\/congress-113\/S001142.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000565.jpg",
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001142.jpg",
       "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000565.jpg",
-      "initialSize" : 34044,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S001142.jpg",
+      "initialSize" : 35348,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/P000589.jpg" : {
@@ -8318,15 +8362,6 @@
       "initialSize" : 4256,
       "fileType" : 4096
     },
-    "\/app\/views\/static_pages\/policy.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/policy.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/M001187.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -8337,6 +8372,15 @@
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001187.jpg",
       "initialSize" : 11973,
       "fileType" : 4096
+    },
+    "\/app\/views\/static_pages\/policy.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/policy.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/app\/assets\/images\/pictures\/congress-113\/C001095.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -8404,17 +8448,6 @@
       "initialSize" : 33643,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/N000183.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000183.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000183.jpg",
-      "initialSize" : 15773,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/A000360.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -8435,6 +8468,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000816.jpg",
       "initialSize" : 10722,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/N000183.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000183.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/N000183.jpg",
+      "initialSize" : 15773,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/B000468.jpg" : {
@@ -8459,17 +8503,6 @@
       "initialSize" : 23419,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/W000437.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000437.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000437.jpg",
-      "initialSize" : 35962,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/H001066.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -8479,6 +8512,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/H001066.jpg",
       "initialSize" : 11171,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/W000437.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000437.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/W000437.jpg",
+      "initialSize" : 35962,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/F000444.jpg" : {
@@ -8556,17 +8600,6 @@
       "initialSize" : 33377,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/L000567.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000567.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000567.jpg",
-      "initialSize" : 14218,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/B001264.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -8576,6 +8609,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001264.jpg",
       "initialSize" : 12811,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/L000567.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000567.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/L000567.jpg",
+      "initialSize" : 14218,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/S001144.jpg" : {
@@ -8684,6 +8728,17 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/app\/assets\/images\/pictures\/congress-113\/I000025.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/I000025.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/I000025.jpg",
+      "initialSize" : 33427,
+      "fileType" : 4096
+    },
     "\/app\/assets\/images\/pictures\/congress-113\/P000099.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -8693,6 +8748,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/P000099.jpg",
       "initialSize" : 35264,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/B001271.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001271.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001271.jpg",
+      "initialSize" : 4509,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/J000177.jpg" : {
@@ -8717,28 +8783,6 @@
       "initialSize" : 4142,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/B001271.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001271.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001271.jpg",
-      "initialSize" : 4509,
-      "fileType" : 4096
-    },
-    "\/app\/assets\/images\/pictures\/congress-113\/I000025.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/I000025.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/I000025.jpg",
-      "initialSize" : 33427,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/B001227.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -8749,6 +8793,18 @@
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001227.jpg",
       "initialSize" : 32178,
       "fileType" : 4096
+    },
+    "\/app\/assets\/stylesheets\/search.css.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/search.css.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/search.css.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/app\/assets\/images\/pictures\/congress-113\/H001036.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -8913,17 +8969,6 @@
       "initialSize" : 35444,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/K000364.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000364.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000364.jpg",
-      "initialSize" : 37421,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/G000573.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -8933,6 +8978,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000573.jpg",
       "initialSize" : 14090,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/K000364.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000364.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/K000364.jpg",
+      "initialSize" : 37421,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001171.jpg" : {
@@ -8946,17 +9002,6 @@
       "initialSize" : 14009,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/logo-primary-large.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/logo-primary-large.png",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/logo-primary-large.png",
-      "initialSize" : 171103,
-      "fileType" : 8192
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/S000510.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -8968,17 +9013,6 @@
       "initialSize" : 30589,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/S000937.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000937.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000937.jpg",
-      "initialSize" : 14023,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/E000063.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -8988,6 +9022,28 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/E000063.jpg",
       "initialSize" : 33073,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/logo-primary-large.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/logo-primary-large.png",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/logo-primary-large.png",
+      "initialSize" : 171103,
+      "fileType" : 8192
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/S000937.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000937.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/S000937.jpg",
+      "initialSize" : 14023,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/B000944.jpg" : {
@@ -9166,17 +9222,6 @@
       "initialSize" : 12880,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/R000122.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000122.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000122.jpg",
-      "initialSize" : 32677,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/R000593.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -9186,6 +9231,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000593.jpg",
       "initialSize" : 6443,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/R000122.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000122.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/R000122.jpg",
+      "initialSize" : 32677,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/M001189.jpg" : {
@@ -9304,7 +9360,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/application.scss",
-      "outputStyle" : 0,
+      "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/app\/assets\/css\/application.css",
       "fileType" : 4,
@@ -9320,15 +9376,6 @@
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/G000550.jpg",
       "initialSize" : 32732,
       "fileType" : 4096
-    },
-    "\/app\/views\/static_pages\/terms.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/terms.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/app\/assets\/images\/pictures\/congress-113\/H001068.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -9351,6 +9398,15 @@
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/C000380.jpg",
       "initialSize" : 17899,
       "fileType" : 4096
+    },
+    "\/app\/views\/static_pages\/terms.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/terms.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/app\/assets\/images\/pictures\/congress-113\/T000260.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -9605,15 +9661,6 @@
       "initialSize" : 5272,
       "fileType" : 4096
     },
-    "\/app\/views\/devise\/unlocks\/new.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/unlocks\/new.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/M001166.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -9624,6 +9671,15 @@
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/M001166.jpg",
       "initialSize" : 30447,
       "fileType" : 4096
+    },
+    "\/app\/views\/devise\/unlocks\/new.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/unlocks\/new.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/app\/assets\/images\/pictures\/congress-113\/C001074.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -9647,17 +9703,6 @@
       "initialSize" : 34421,
       "fileType" : 4096
     },
-    "\/app\/assets\/images\/pictures\/congress-113\/B001280.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001280.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001280.jpg",
-      "initialSize" : 14511,
-      "fileType" : 4096
-    },
     "\/app\/assets\/images\/pictures\/congress-113\/T000463.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -9667,6 +9712,17 @@
       "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/T000463.jpg",
       "initialSize" : 32188,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/images\/pictures\/congress-113\/B001280.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001280.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/pictures\/congress-113\/B001280.jpg",
+      "initialSize" : 14511,
       "fileType" : 4096
     },
     "\/app\/assets\/images\/pictures\/congress-113\/B001236.jpg" : {
@@ -9715,7 +9771,7 @@
     "lessStrictUnits" : 0,
     "lessStrictMath" : 0,
     "coffeeMinifyOutput" : 1,
-    "javascriptOutputSuffix" : "-ck",
+    "javascriptOutputSuffix" : ".min",
     "jadeOutputStyle" : 0,
     "coffeeAutoOutputPathStyle" : 0,
     "autoSyncProjectSettingsFile" : 1,
@@ -9742,7 +9798,7 @@
     "javascriptSyntaxCheckerStyle" : 0,
     "sassAutoOutputPathReplace1" : "sass",
     "slimAutoOutputPathReplace1" : "",
-    "sassOutputStyle" : 0,
+    "sassOutputStyle" : 3,
     "coffeeAutoOutputPathRelativePath" : "",
     "slimCompileOnly" : 0,
     "slimLogicless" : 0,

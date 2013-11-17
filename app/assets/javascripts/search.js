@@ -48,6 +48,11 @@ function runSearch(fields, query, scroll) {
 						scrollTop: $elem.top - 90
 					}, 500);
 				}
+				else {
+					$('html, body').animate({
+						scrollTop: 0
+					}, 500);
+				}
 			});
 		});
 	});
@@ -82,6 +87,8 @@ $('.searchInput, .menuSearch').on('keyup', function() {
 		event.preventDefault();
 		
 		var oldQueryQS = getParam('query', location.search).split(' ').join('%20');
+		
+		// HTML5 wizardry, fuck <= IE9!
 		history.pushState('', '', location.search.replace("query=" + oldQueryQS, "query=" + $(this).val()));
 		
 		runSearch(getSelected().join(), $(this).val());
@@ -91,6 +98,12 @@ $('.searchInput, .menuSearch').on('keyup', function() {
 $('.menuSearchClick').on('click', function(event) {
 	event.preventDefault();
 	runSearch(getSelected().join(), $(this).prev().val());
+});
+
+$(document).on('click', '.searchTypeContainer .pagination a', function(event) {
+	event.preventDefault();
+	
+	// FILL IN PAGINATION
 });
 
 function getSelected() {
@@ -119,7 +132,7 @@ function formatItem(type, data) {
 	if(data.data.length == 0)
 		return false;
 		
-	var $posts = $('<div>').attr('data-searchType', type);
+	var $posts = $('<div>').attr('class', 'searchTypeContainer').attr('data-searchType', type);
 	
 	$posts.append($('<h3>')
 		.text(type.charAt(0).toUpperCase() + type.slice(1))
@@ -186,8 +199,6 @@ function formatItem(type, data) {
 		
 	}
 	
-	console.log(data);
-	
 	var count = 0;
 
 	for(var i in data.paging) {
@@ -195,24 +206,7 @@ function formatItem(type, data) {
 			count++;
 	}
 	
-	console.log(count);
-	
 	if(count != 0) {
-		/*
-			<div class="pagination-centered">
-			  <ul class="pagination">
-			    <li class="arrow unavailable"><a href="">&laquo;</a></li>
-			    <li class="current"><a href="">1</a></li>
-			    <li><a href="">2</a></li>
-			    <li><a href="">3</a></li>
-			    <li><a href="">4</a></li>
-			    <li class="unavailable"><a href="">&hellip;</a></li>
-			    <li><a href="">12</a></li>
-			    <li><a href="">13</a></li>
-			    <li class="arrow"><a href="">&raquo;</a></li>
-			  </ul>
-			</div>
-		*/
 		$posts.append($('<div>')
 			.attr('class', 'pagination-centered')
 			.append($('<ul>')
@@ -223,6 +217,7 @@ function formatItem(type, data) {
 						.attr('class', 'arrow')
 						.append($('<a>')
 							.attr('href', '#')
+							.attr('data-page', data.paging.previous)
 							.text("« Previous")
 						);
 					}
@@ -233,6 +228,7 @@ function formatItem(type, data) {
 						.attr('class', 'current')
 						.append($('<a>')
 							.attr('href', '#')
+							.attr('data-page', data.paging.next - 1)
 							.text(data.paging.next - 1)
 						);
 					}
@@ -241,6 +237,7 @@ function formatItem(type, data) {
 						.attr('class', 'current')
 						.append($('<a>')
 							.attr('href', '#')
+							.attr('data-page', data.paging.next - 1)
 							.text(data.paging.next - 1)
 						);
 					}
@@ -249,6 +246,7 @@ function formatItem(type, data) {
 						.attr('class', 'current')
 						.append($('<a>')
 							.attr('href', '#')
+							.attr('data-page', data.paging.previous + 1)
 							.text(data.paging.previous + 1)
 						);
 					}
@@ -259,6 +257,7 @@ function formatItem(type, data) {
 						.attr('class', 'arrow')
 						.append($('<a>')
 							.attr('href', '#')
+							.attr('data-page', data.paging.next)
 							.text("Next »")
 						);
 					}

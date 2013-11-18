@@ -97,3 +97,29 @@ function throttle(fn, threshhold, scope) {
 		}
 	};
 }
+
+function trimByWord(sentence, count) {
+	var result = sentence;
+	var resultArray = result.split(' ');
+	
+	if(count == undefined)
+		count = 100;
+	
+	if(resultArray.length > count){
+		resultArray = resultArray.slice(0, count);
+		result = resultArray.join(' ') + '...';
+	}
+	
+	return result;
+}
+
+function scrollToPos(value, time) {
+	if(time == undefined)
+		time = 500;
+	else
+		time = 0;
+		
+	$('html, body').animate({
+		scrollTop: value
+	}, time);
+}

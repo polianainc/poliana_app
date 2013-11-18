@@ -2,20 +2,23 @@ class SearchController < ApplicationController
   def search
 
     @search = {}
-    fields = params[:fields].split(",")
-    
-    if fields.include? "bills"
-      @search["bills"] = searchBills(params)
-    end
-    
-    if fields.include? "politicians"
-      @search["politicians"] = searchPoliticians(params)
-    end
 
-    if fields.include? "industries"
-      @search["industries"] = searchIndustries(params)
-    end
+    if params[:fields]!= nil
+      binding.pry
+      fields = params[:fields].split(",")
+    
+      if fields.include? "bills"
+        @search["bills"] = searchBills(params)
+      end
+      
+      if fields.include? "politicians"
+        @search["politicians"] = searchPoliticians(params)
+      end
 
+      if fields.include? "industries"
+        @search["industries"] = searchIndustries(params)
+      end
+    end
 
     respond_to do |format|
       format.html { render :action => "search" }
@@ -43,8 +46,8 @@ class SearchController < ApplicationController
 
     @bills["data"] = s.results
 
+    paging["total"] = s.total
     paging["next"] = page.to_i + 1 unless @bills["data"].last_page?
-
     paging["previous"] = page.to_i - 1 unless @bills["data"].first_page?
 
     @bills["paging"] = paging

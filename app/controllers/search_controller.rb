@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def search
-
     @search = {}
     fields = params[:fields].split(",")
     
@@ -15,7 +14,6 @@ class SearchController < ApplicationController
     if fields.include? "industries"
       @search["industries"] = searchIndustries(params)
     end
-
 
     respond_to do |format|
       format.html { render :action => "search" }

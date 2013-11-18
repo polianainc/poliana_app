@@ -83,7 +83,8 @@ function runSearch(params) {
 	});
 }
 
-runSearch({ fields: getSelected().join(), query: $('.searchInput').val() });
+if(getParam('fields') && getParam('query'))
+	runSearch({ fields: getSelected().join(), query: $('.searchInput').val() });
 
 $('.searchSelector a').on('click', function(event) {
 	event.preventDefault();

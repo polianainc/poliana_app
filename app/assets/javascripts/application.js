@@ -39,9 +39,22 @@ $(document).ready(function() {
 		});
 	});
 	
-	$(document).on('click', '.sharable', function() {
+	$(document).on('click', '.sharable', function(event) {
+		event.preventDefault();
 		$('#sharable').foundation('reveal', 'open');
 	});
+	
+	$(document).on('click', '.otherModal', function(event) {
+		event.preventDefault();
+		
+		var $otherModal = $('#otherModal');
+		var html = $(this).attr('data-othermodal') + '<a class="close-reveal-modal">&#215;</a>';
+		
+		$otherModal.html(html);
+		$otherModal.foundation('reveal', 'open');
+	});
+	
+	$('#otherModal').bind('closed', function() { $(this).html(''); });
 	
 	$('.menuSearch.notSearch').on('keypress', function(event) {
 		if(event.which == 13 && $(this).val() != "") {
@@ -123,3 +136,27 @@ function scrollToPos(value, time) {
 		scrollTop: value
 	}, time);
 }
+
+Number.prototype.ordinate = function() {
+	var num = this,
+		numStr = num.toString(),
+		last = numStr.slice(-1),
+		len = numStr.length,
+		ord = '';
+
+	switch(last) {
+		case '1':
+			ord = numStr.slice(-2) === '11' ? 'th' : 'st';
+			break;
+		case '2':
+			ord = numStr.slice(-2) === '12' ? 'th' : 'nd';
+			break;
+		case '3':
+			ord = numStr.slice(-2) === '13' ? 'th' : 'rd';
+			break;
+		default:
+			ord = 'th';
+			break;
+	}
+	return num.toString() + ord;
+};

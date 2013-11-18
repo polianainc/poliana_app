@@ -66,15 +66,143 @@ $.get('/bills/' + theBillID, { format: 'json' }, function(data) {
 	console.log(data);
 	
 	var shortSummary = trimByWord(data.summary);
+	var chamber = data.billType.charAt(0);
 	
-	$('.entityInfo h1').text(function() {
-		if(data.popularTitle != null)
-			return data.popularTitle;
-		else if(data.shortTitle != null)
-			return data.shortTitle;
-		else
-			return data.officialTitle;
-	}).next('p').text(shortSummary).attr('data-summary', data.summary).after(function() {
+	if(chamber == "s" || chamber == "S")
+		chamber = "Senate";
+	else
+		chamber = "House";
+		
+	var $entityInfo = $('.entityInfo');
+	
+	$entityInfo.find('.large-3').append($('<span>')
+		.attr('class', 'icon-file extraLargeIcon hide-for-small')
+		.attr('aria-hidden', 'true')
+	).append($('<p>')
+		.attr('class', 'hide-for-small')
+		.append($('<small>')
+			.append($('<b>')
+				.text('Sponsor: ')
+			)
+			.append($('<a>')
+				.attr('href', "/politicians/" + data.sponsor.firstName.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "-" + data.sponsor.lastName.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "/" + data.sponsor.bioguideId)
+				.text(data.sponsor.officialFull + " (" + convertParty(data.sponsor.party, 'abbrev') + " - " + data.sponsor.termState + ")")
+			)
+		).append($('<a>')
+			.attr('href', '#')
+			.attr('data-othermodal', function() {
+				var theString = $('<div>');
+				
+				theString.append($('<h4>')
+					.attr('class', 'aligncenter')
+					.text("Bill Co-sponsors")
+				).append($('<table>')
+					.attr('class', 'prettyTable')
+					.append($('<thead>')
+						.append($('<tr>')
+							.append($('<th>')
+								.attr('width', 60)
+								.text("Party")
+							)
+							.append($('<th>')
+								.attr('width', 60)
+								.text("State")
+							)
+							.append($('<th>')
+								.text("Name")
+							)
+						)
+					)
+					.append($('<tbody>'))
+				);
+				
+				for(var i = 0; i < data.cosponsors.length; i++) {
+					theString.find('tbody').append($('<tr>')
+						.append($('<td>')
+							.append($('<span>')
+								.css('background', getColor(data.cosponsors[i].party))
+								.text(data.cosponsors[i].party)
+							)
+						)
+						.append($('<td>')
+							.text(data.cosponsors[i].termState)
+						)
+						.append($('<td>')
+							.append($('<a>')
+								.attr('href', "/politicians/" + data.cosponsors[i].firstName.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "-" + data.cosponsors[i].lastName.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "/" + data.cosponsors[i].bioguideId)
+								.text(data.cosponsors[i].firstName + " " + data.cosponsors[i].lastName)
+							)
+						)
+					);
+				}
+				
+				return theString.get(0).outerHTML;
+			})
+			.attr('class', 'button otherModal tiny aligncenter radius')
+			.text("View co-sponsors (" + data.cosponsors.length + ") »")
+		)
+	);
+	
+	$entityInfo.find('.large-9').append($('<h1>')
+		.text(function() {
+			if(data.popularTitle != null)
+				return data.popularTitle;
+			else if(data.shortTitle != null)
+				return data.shortTitle;
+			else
+				return data.officialTitle;
+		})
+	).append($('<h5>')
+		.attr('class', 'subheader')
+		.text(function() {
+			return parseInt(data.congress).ordinate() + " Congress • " + chamber + " Bill " + data.billId.toUpperCase();
+		})
+	).append($('<ul>')
+		.attr('class', 'inline-list')
+		.append($('<li>')
+			.append($('<span>')
+				.attr('class', 'label radius')
+				.text(data.topSubject)
+			)
+		)
+		.append($('<li>')
+			.append($('<span>')
+				.attr('class', 'label radius otherModal moreSubjects')
+				.attr('data-othermodal', function() {
+					var theString = $('<div>');
+
+					theString.append($('<h4>')
+						.attr('class', 'aligncenter')
+						.text("Bill Subjects")
+					).append($('<table>')
+						.attr('class', 'prettyTable')
+						.append($('<thead>')
+							.append($('<tr>')
+								.append($('<th>')
+									.text("Name")
+								)
+							)
+						)
+						.append($('<tbody>'))
+					);
+
+					for(var i = 0; i < data.subjects.length; i++) {
+						theString.find('tbody').append($('<tr>')
+							.append($('<td>')
+								.text(data.subjects[i])
+							)
+						);
+					}
+
+					return theString.get(0).outerHTML;
+				})
+				.text("View subjects (" + data.subjects.length + ") »")
+			)
+		)
+	).append($('<p>')
+		.text(shortSummary)
+		.attr('data-summary', data.summary)
+	).append(function() {
 		if(shortSummary != data.summary)
 			return $('<p>').attr('class', 'alignright readMore').append($('<a>').attr('href', '#').text("Read more »"));
 	});
@@ -109,13 +237,7 @@ $.get('/bills/' + theBillID, { format: 'json' }, function(data) {
 		}
 	});
 	
-	var chamber = data.billType.charAt(0);
-	
-	if(chamber == "s" || chamber == "S")
-		geoBD_JSON.chamber = "Senate";
-	else
-		geoBD_JSON.chamber = "House";
-		
+	geoBD_JSON.chamber = chamber	
 	geoBD_JSON.yeas = {};
 	geoBD_JSON.nays = {};
 	
@@ -155,8 +277,8 @@ $(document).on('click', '.entityInfo .readMore a', function(event) {
 	
 	$elem.text(replacement).attr('data-summary', orig);
 	
-	if($(this).text() != "Less »")
-		$(this).text("Less »");
+	if($(this).text() != "Read less »")
+		$(this).text("Read less »");
 	else
 		$(this).text("Read more »");
 		
@@ -1124,7 +1246,7 @@ function politicianViewer(theData, type) {
 		)
 	);
 	
-	$poli.find('table').stupidtable().find('th:eq(1)').trigger('click');
+	$poli.find('table.sortable').stupidtable().find('th:eq(1)').trigger('click');
 	
 	$(document).on('keyup', 'input[name="filterPoliticians"]', function() {
 		searchPoli($(this).val());
@@ -1168,6 +1290,7 @@ function politicianViewer(theData, type) {
 		if(theData[location] != undefined && theData[location].length != 0) {
 			if(type == "list") {
 				theString.append($('<table>')
+					.attr('class', 'sortable prettyTable')
 					.append($('<thead>')
 						.append($('<tr>')
 							.append($('<th>')
@@ -1265,15 +1388,6 @@ function politicianViewer(theData, type) {
 		}
 		
 		return theString;
-	}
-	
-	function getColor(party) {
-		if(party == "D" || party == "Democrat")
-			return "#61D2D6";
-		else if(party == "R" || party == "Republican")
-			return "#EA3556";
-		else
-			return "#888888";
 	}
 	
 	function getParty(party) {
@@ -1377,5 +1491,33 @@ function convertState(name, to) {
 		returnthis = returnthis.slice(1);
 	
 	return returnthis;
+}
+
+function convertParty(party, to) {
+	if(to == "abbrev") {
+		if(party == "Democrat" || party == "Democrats")
+			return "D";
+		else if(party == "Republican" || party == "Republicans")
+			return "R";
+		else
+			return "I";
+	}
+	else {
+		if(party == "D")
+			return "Democrat";
+		else if(party == "R")
+			return "Republican";
+		else	
+			return "Independent";
+	}
+}
+
+function getColor(party) {
+	if(party == "D" || party == "Democrat")
+		return "#61D2D6";
+	else if(party == "R" || party == "Republican")
+		return "#EA3556";
+	else
+		return "#888888";
 }
 })();

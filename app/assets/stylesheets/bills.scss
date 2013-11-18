@@ -4,7 +4,23 @@
 		.large-3 {
 			img { margin-top: 1em; }
 		}
-		h1 { font-size: 2em; }
+		h1 {
+			font-size: 2em;
+			text-align: center;
+			@media #{$small} { text-align: left; }
+		}
+		h5 {
+			margin-top: -15px;
+			margin-bottom: 20px;
+			text-align: center;
+			@media #{$small} { text-align: left; }
+		}
+		.inline-list {
+			margin-bottom: 10px;
+			li {
+				&:last-child { cursor: pointer; }
+			}
+		}
 	}
 
 	.graph {
@@ -211,47 +227,6 @@
 					}
 				}
 				&:last-of-type {
-					table {
-						width: 100%;
-						tr {
-							th {
-								&[data-sort] { cursor: pointer; }
-								&.sorting-desc {
-									&:after {
-										content: '▼';
-										color: lighten($body-font-color, 15%);
-										font-size: 0.7em;
-										margin-left: 10px;
-									}
-								}
-								&.sorting-asc {
-									&:after {
-										content: '▲';
-										color: lighten($body-font-color, 15%);
-										font-size: 0.7em;
-										margin-left: 10px;
-									}
-								}
-							}
-							td {
-								font-size: 0.9em;
-								padding: 5px 10px;
-								span {
-									width: 18px;
-									height: 18px;
-									display: block;
-									text-indent: -90px;
-									overflow: hidden;
-								}
-								a {
-									color: $body-font-color;
-									display: block;
-									width: 100%;
-									height: 100%;
-								}
-							}
-						}
-					}
 					ul {
 						list-style-type: none;
 						overflow: hidden;

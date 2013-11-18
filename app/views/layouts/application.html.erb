@@ -147,6 +147,8 @@
 		</div>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
+	
+	<div id="otherModal" class="reveal-modal small"></div>
 
 	<%= javascript_include_tag "application.min" %>
 	
@@ -154,7 +156,7 @@
 		<%= javascript_include_tag "d3.min" %>
 		<%= javascript_include_tag "topojson.min" %>
 		<%= javascript_include_tag "stupidtable.min" %>
-		<%= javascript_include_tag yield(:entity_type) %>
+		<%= javascript_include_tag yield(:entity_type) + ".min" %>
 	<% end %>
 </body>
 </html>

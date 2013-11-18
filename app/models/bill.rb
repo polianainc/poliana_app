@@ -1,4 +1,5 @@
 require 'sunspot_mongoid2'
+
 class Bill
   include Mongoid::Document
   store_in collection: "bills"
@@ -18,10 +19,9 @@ class Bill
     text :officialTitle
   end
 
-
   def self.find_with_nested_fields(id)
     bill = Bill.find(id)
-    bill[:vote] = Vote.find_with_nested_fields(bill.votes["$id"])
+    bill[:votes] = Vote.find_with_nested_fields(bill.votes["$id"])
     bill.sponsor = Legislator.find(bill.sponsor["$id"])
     cosponsor_ids = bill.cosponsors.map { |l| l["$id"]  }
     bill.cosponsors = Legislator.find(cosponsor_ids)

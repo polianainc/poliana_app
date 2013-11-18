@@ -64,26 +64,21 @@ function runSearch(params) {
 			}
 			
 			$(this).fadeIn(250, function() {
-				if(extra == "") {
+				if(extra == undefined || extra == "") {
 					var $elem = $("div[data-searchtype=" + params.scroll + "]").offset();
 				
-					if($elem != undefined && params.scroll != undefined) {
-						$('html, body').animate({
-							scrollTop: $elem.top - 100
-						}, 500);
-					}
-					else {
-						$('html, body').animate({
-							scrollTop: 0
-						}, 500);
-					}
+					if($elem != undefined && params.scroll != undefined)
+						scrollToPos($elem.top - 90);
+					else
+						scrollToPos(0);
 				}
 			});
 		});
 	});
 }
 
-runSearch({ fields: getSelected().join(), query: $('.searchInput').val() });
+if(getParam('fields') && getParam('query'))
+	runSearch({ fields: getSelected().join(), query: $('.searchInput').val() });
 
 $('.searchSelector a').on('click', function(event) {
 	event.preventDefault();
@@ -203,7 +198,7 @@ function formatItem(type, data, partial) {
 					)
 				)
 				.append($('<p>')
-					.text(trimByWord(item.summary))
+					.text(trimByWord(item.summary, 30))
 					.append($('<a>')
 						.attr('href', '/bills/' + this._id)
 						.text("Explore »")
@@ -267,16 +262,4 @@ function formatItem(type, data, partial) {
 	}
 	
 	return $posts;
-}
-
-function trimByWord(sentence) {
-	var result = sentence;
-	var resultArray = result.split(' ');
-	
-	if(resultArray.length > 30){
-		resultArray = resultArray.slice(0, 30);
-		result = resultArray.join(' ') + '...';
-	}
-	
-	return result;
 }

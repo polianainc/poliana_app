@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def search
-
     @search = {}
 
     if params[:fields] != nil

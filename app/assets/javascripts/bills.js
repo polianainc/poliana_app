@@ -58,34 +58,53 @@ var voteBD_JSON = {
 var geoBD_JSON = {};
 var poliView_JSON = {};
 
-//$.get('/assets/bill_test_house.json', function(data) {
-$.get('/assets/bill_test_senate.json', function(data) {
+var theBillID = $('#billID').html();
+
+$.get('/bills/' + theBillID, { format: 'json' }, function(data) {
+	$('#billID').remove();
+	
+	console.log(data);
+	
+	var shortSummary = trimByWord(data.summary);
+	
+	$('.entityInfo h1').text(function() {
+		if(data.popularTitle != null)
+			return data.popularTitle;
+		else if(data.shortTitle != null)
+			return data.shortTitle;
+		else
+			return data.officialTitle;
+	}).next('p').text(shortSummary).attr('data-summary', data.summary).after(function() {
+		if(shortSummary != data.summary)
+			return $('<p>').attr('class', 'alignright readMore').append($('<a>').attr('href', '#').text("Read more »"));
+	});
+	
 	$.each(data.votes.yeas, function(index, value) {
 		if(this.party == "D" || this.party == "Democrat") {
-			voteBD_JSON[this.state].children[0].children[0].size++;
+			voteBD_JSON[this.termState].children[0].children[0].size++;
 			voteBD_JSON.total.children[0].children[0].size++;
 		}
 		else if(this.party == "R" || this.party == "Republican") {
-			voteBD_JSON[this.state].children[0].children[1].size++;
+			voteBD_JSON[this.termState].children[0].children[1].size++;
 			voteBD_JSON.total.children[0].children[1].size++;
 		}
 		else {
-			voteBD_JSON[this.state].children[0].children[2].size++;
+			voteBD_JSON[this.termState].children[0].children[2].size++;
 			voteBD_JSON.total.children[0].children[2].size++;
 		}
 	});
 
 	$.each(data.votes.nays, function(index, value) {
 		if(this.party == "D" || this.party == "Democrat") {
-			voteBD_JSON[this.state].children[1].children[0].size++;
+			voteBD_JSON[this.termState].children[1].children[0].size++;
 			voteBD_JSON.total.children[1].children[0].size++;
 		}
 		else if(this.party == "R" || this.party == "Republican") {
-			voteBD_JSON[this.state].children[1].children[1].size++;
+			voteBD_JSON[this.termState].children[1].children[1].size++;
 			voteBD_JSON.total.children[1].children[1].size++;
 		}
 		else {
-			voteBD_JSON[this.state].children[1].children[2].size++;
+			voteBD_JSON[this.termState].children[1].children[2].size++;
 			voteBD_JSON.total.children[1].children[2].size++;
 		}
 	});
@@ -101,17 +120,17 @@ $.get('/assets/bill_test_senate.json', function(data) {
 	geoBD_JSON.nays = {};
 	
 	$.each(data.votes.yeas, function(index, value) {
-		if(isNaN(geoBD_JSON.yeas[this.state]))
-			geoBD_JSON.yeas[this.state] = 1;
+		if(isNaN(geoBD_JSON.yeas[this.termState]))
+			geoBD_JSON.yeas[this.termState] = 1;
 		else
-			geoBD_JSON.yeas[this.state]++;
+			geoBD_JSON.yeas[this.termState]++;
 	});
 	
 	$.each(data.votes.nays, function(index, value) {
-		if(isNaN(geoBD_JSON.nays[this.state]))
-			geoBD_JSON.nays[this.state] = 1;
+		if(isNaN(geoBD_JSON.nays[this.termState]))
+			geoBD_JSON.nays[this.termState] = 1;
 		else
-			geoBD_JSON.nays[this.state]++;
+			geoBD_JSON.nays[this.termState]++;
 	});
 		
 	geoBD_JSON.yeasTotal = data.votes.yeaTotal;
@@ -125,6 +144,23 @@ $.get('/assets/bill_test_senate.json', function(data) {
 	voteBreakdown(voteBD_JSON, "total", data.votes.notVotingTotal, data.votes.presentTotal);
 	geographicBreakdown(geoBD_JSON);
 	$('.poliViewType li:eq(1)').trigger('click');
+});
+
+$(document).on('click', '.entityInfo .readMore a', function(event) {
+	event.preventDefault();
+	
+	var $elem = $(this).parents('p').prev();
+	var orig = $elem.text();
+	var replacement = $elem.attr('data-summary');
+	
+	$elem.text(replacement).attr('data-summary', orig);
+	
+	if($(this).text() != "Less »")
+		$(this).text("Less »");
+	else
+		$(this).text("Read more »");
+		
+	scrollToPos(0, true);
 });
 
 
@@ -1129,7 +1165,7 @@ function politicianViewer(theData, type) {
 	function drawMembers(location) {
 		var theString = $('<div>');
 		
-		if(theData[location] != undefined) {
+		if(theData[location] != undefined && theData[location].length != 0) {
 			if(type == "list") {
 				theString.append($('<table>')
 					.append($('<thead>')
@@ -1161,14 +1197,13 @@ function politicianViewer(theData, type) {
 					else if(this.party == "Independent" || this.party == "I")
 						this.party = "I";
 						
-					if(this._id == null)
-						this._id = this.bioguideId;
+					this._id = this.bioguideId;
 						
 					theString.find('tbody').append($('<tr>')
 						.attr('data-party', this.party)
 						.attr('data-partylong', getParty(this.party))
-						.attr('data-state', this.state)
-						.attr('data-statelong', convertState(this.state, "name"))
+						.attr('data-state', this.termState)
+						.attr('data-statelong', convertState(this.termState, "name"))
 						.attr('data-name', this.firstName + " " + this.lastName)
 						.append($('<td>')
 							.append($('<span>')
@@ -1177,7 +1212,7 @@ function politicianViewer(theData, type) {
 							)
 						)
 						.append($('<td>')
-							.text(this.state)
+							.text(this.termState)
 						)
 						.append($('<td>')
 							.append($('<a>')
@@ -1199,14 +1234,13 @@ function politicianViewer(theData, type) {
 					else if(this.party == "Independent" || this.party == "I")
 						this.party = "I";
 						
-					if(this._id == null)
-						this._id = this.bioguideId;
+					this._id = this.bioguideId;
 						
 					theString.find('ul').append($('<li>')
 						.attr('data-party', this.party)
 						.attr('data-partylong', getParty(this.party))
-						.attr('data-state', this.state)
-						.attr('data-statelong', convertState(this.state, "name"))
+						.attr('data-state', this.termState)
+						.attr('data-statelong', convertState(this.termState, "name"))
 						.attr('data-name', this.firstName + " " + this.lastName)
 						.css('background-image', 'url(/assets/pictures/congress-113/' + this._id + '.jpg)')
 						.append($('<a>')

@@ -1,18 +1,22 @@
 class SearchController < ApplicationController
   def search
     @search = {}
-    fields = params[:fields].split(",")
-    
-    if fields.include? "bills"
-      @search["bills"] = searchBills(params)
-    end
-    
-    if fields.include? "politicians"
-      @search["politicians"] = searchPoliticians(params)
-    end
 
-    if fields.include? "industries"
-      @search["industries"] = searchIndustries(params)
+    if params[:fields]!= nil
+      binding.pry
+      fields = params[:fields].split(",")
+    
+      if fields.include? "bills"
+        @search["bills"] = searchBills(params)
+      end
+      
+      if fields.include? "politicians"
+        @search["politicians"] = searchPoliticians(params)
+      end
+
+      if fields.include? "industries"
+        @search["industries"] = searchIndustries(params)
+      end
     end
 
     respond_to do |format|
@@ -22,7 +26,7 @@ class SearchController < ApplicationController
   end
 
   def searchBills(params)
-    page = params["bills_page"] ? params["bills_page"] : 1
+    page = params["bill_page"] ? params["bill_page"] : 1
 
     @bills = {}
     paging = {}

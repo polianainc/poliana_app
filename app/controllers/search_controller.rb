@@ -3,8 +3,7 @@ class SearchController < ApplicationController
 
     @search = {}
 
-    if params[:fields]!= nil
-      binding.pry
+    if params[:fields] != nil
       fields = params[:fields].split(",")
     
       if fields.include? "bills"

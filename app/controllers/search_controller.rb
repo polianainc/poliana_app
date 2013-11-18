@@ -24,7 +24,7 @@ class SearchController < ApplicationController
   end
 
   def searchBills(params)
-    page = params["bill-page"] ? params["bill-page"] : 1
+    page = params["bills_page"] ? params["bills_page"] : 1
 
     @bills = {}
     paging = {}
@@ -43,8 +43,8 @@ class SearchController < ApplicationController
 
     @bills["data"] = s.results
 
+    paging["total"] = s.total
     paging["next"] = page.to_i + 1 unless @bills["data"].last_page?
-
     paging["previous"] = page.to_i - 1 unless @bills["data"].first_page?
 
     @bills["paging"] = paging

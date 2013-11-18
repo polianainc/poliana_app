@@ -1,28 +1,51 @@
-function runSearch(fields, query, scroll) {
-	if(fields == undefined)
+var $content = $('.searchArea');
+
+function runSearch(params) {
+	var fields, query, extra;
+	var theData = {};
+	
+	if(params.fields == undefined)
 		fields = getParam('fields');
+	else
+		fields = params.fields;
 		
-	if(query == undefined)
+	if(params.query == undefined)
 		query = getParam('query');
-		
-	$.get('/search/', { query: query, page: getParam('page'), fields: fields, format: 'json' }, function(search) {
+	else
+		query = params.query;
+	
+	theData.query = query;
+	theData.fields = fields;
+	theData.format = "json";
+	
+	$.each(params, function(index, value) {
+		if(index != "fields" && index != "query" && index != "scroll") {
+			theData[index + "_page"] = value;
+			extra = index;
+		}
+	});
+	
+	$.get('/search/', theData, function(search) {
 		var length = 0;
 		var entities = [];
-		var $content = $('.searchArea');
 		
 		$('.searchSelector li').each(function(index, value) {
 			entities.push($(this).text().toLowerCase());
 		});
 		
 		$content.fadeOut(250, function() {
-			$(this).html('');
+			if(extra == undefined) {
+				$(this).html('');
 			
-			for(var i = 0; i < entities.length; i++) {
-				if(search[entities[i]] != undefined) {
-					$content.append(formatItem(entities[i], search[entities[i]]));
-					length += search[entities[i]].data.length;
+				for(var i = 0; i < entities.length; i++) {
+					if(search[entities[i]] != undefined)
+						$content.append(formatItem(entities[i], search[entities[i]], false));
 				}
 			}
+			else
+				$content.append(formatItem(extra, search[extra], true));
+			
+			length = $('.searchItem').length;
 			
 			$('.searchCount').text(function() {
 				if(length == 0)
@@ -41,24 +64,26 @@ function runSearch(fields, query, scroll) {
 			}
 			
 			$(this).fadeIn(250, function() {
-				var $elem = $("div[data-searchType=" + scroll + "]").offset();
+				if(extra == "") {
+					var $elem = $("div[data-searchtype=" + params.scroll + "]").offset();
 				
-				if($elem != undefined && scroll != undefined) {
-					$('html, body').animate({
-						scrollTop: $elem.top - 90
-					}, 500);
-				}
-				else {
-					$('html, body').animate({
-						scrollTop: 0
-					}, 500);
+					if($elem != undefined && params.scroll != undefined) {
+						$('html, body').animate({
+							scrollTop: $elem.top - 100
+						}, 500);
+					}
+					else {
+						$('html, body').animate({
+							scrollTop: 0
+						}, 500);
+					}
 				}
 			});
 		});
 	});
 }
 
-runSearch();
+runSearch({ fields: getSelected().join(), query: $('.searchInput').val() });
 
 $('.searchSelector a').on('click', function(event) {
 	event.preventDefault();
@@ -72,9 +97,9 @@ $('.searchSelector a').on('click', function(event) {
 	history.pushState('', '', event.target.href.replace("fields=" + oldFieldsQS, "fields=" + selected));
 	
 	if($(this).parent().hasClass('active'))
-		runSearch(selected, $('.searchInput').val(), $(this).text().toLowerCase());
+		runSearch({ fields: selected, query: $('.searchInput').val(), scroll: $(this).text().toLowerCase() });
 	else
-		runSearch(selected, $('.searchInput').val());
+		runSearch({ fields: selected, query: $('.searchInput').val() });
 });
 
 $('.searchInput, .menuSearch').on('keyup', function() {
@@ -91,19 +116,28 @@ $('.searchInput, .menuSearch').on('keyup', function() {
 		// HTML5 wizardry, fuck <= IE9!
 		history.pushState('', '', location.search.replace("query=" + oldQueryQS, "query=" + $(this).val()));
 		
-		runSearch(getSelected().join(), $(this).val());
+		runSearch({ fields: getSelected().join(), query: $(this).val() });
 	}
 });
 
 $('.menuSearchClick').on('click', function(event) {
 	event.preventDefault();
-	runSearch(getSelected().join(), $(this).prev().val());
+	runSearch({ fields: getSelected().join(), query: $(this).prev().val() });
 });
 
 $(document).on('click', '.searchTypeContainer .pagination a', function(event) {
 	event.preventDefault();
 	
-	// FILL IN PAGINATION
+	var thePage = $(this).attr('data-page');
+	var theType = $(this).parents('.searchTypeContainer').attr('data-searchtype');
+	var theData = {};
+	
+	theData.fields = getSelected().join();
+	theData.query = $('.searchInput').val();
+	theData.scroll = theType;
+	theData[theType] = thePage;
+	
+	runSearch(theData);
 });
 
 function getSelected() {
@@ -128,15 +162,23 @@ function getParam(name, string) {
 	return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-function formatItem(type, data) {
+function formatItem(type, data, partial) {
 	if(data.data.length == 0)
 		return false;
 		
-	var $posts = $('<div>').attr('class', 'searchTypeContainer').attr('data-searchType', type);
+	var $posts;
+		
+	if(partial == false) {
+		$posts = $('<div>').attr('class', 'searchTypeContainer').attr('data-searchtype', type);
 	
-	$posts.append($('<h3>')
-		.text(type.charAt(0).toUpperCase() + type.slice(1))
-	);
+		$posts.append($('<h3>')
+			.text(type.charAt(0).toUpperCase() + type.slice(1))
+		);
+	}
+	else
+		$posts = $("div[data-searchtype=" + type + "]");
+		
+	$posts.find('.pagination-centered').remove();
 	
 	if(type == "users") {
 		
@@ -199,72 +241,29 @@ function formatItem(type, data) {
 		
 	}
 	
-	var count = 0;
-
-	for(var i in data.paging) {
-		if(data.paging.hasOwnProperty(i))
-			count++;
-	}
-	
-	if(count != 0) {
+	if(data.paging.next != undefined) {
 		$posts.append($('<div>')
 			.attr('class', 'pagination-centered')
 			.append($('<ul>')
 				.attr('class', 'pagination')
-				.append(function() {
-					if(data.paging.previous != undefined) {
-						return $('<li>')
-						.attr('class', 'arrow')
-						.append($('<a>')
-							.attr('href', '#')
-							.attr('data-page', data.paging.previous)
-							.text("« Previous")
-						);
-					}
-				})
-				.append(function() {
-					if(data.paging.previous != undefined && data.paging.next != undefined) {
-						return $('<li>')
-						.attr('class', 'current')
-						.append($('<a>')
-							.attr('href', '#')
-							.attr('data-page', data.paging.next - 1)
-							.text(data.paging.next - 1)
-						);
-					}
-					else if(data.paging.previous == undefined && data.paging.next != undefined) {
-						return $('<li>')
-						.attr('class', 'current')
-						.append($('<a>')
-							.attr('href', '#')
-							.attr('data-page', data.paging.next - 1)
-							.text(data.paging.next - 1)
-						);
-					}
-					else if(data.paging.next == undefined && data.paging.previous != undefined) {
-						return $('<li>')
-						.attr('class', 'current')
-						.append($('<a>')
-							.attr('href', '#')
-							.attr('data-page', data.paging.previous + 1)
-							.text(data.paging.previous + 1)
-						);
-					}
-				})
-				.append(function() {
-					if(data.paging.next != undefined) {
-						return $('<li>')
-						.attr('class', 'arrow')
-						.append($('<a>')
-							.attr('href', '#')
-							.attr('data-page', data.paging.next)
-							.text("Next »")
-						);
-					}
-				})
+				.append($('<li>')
+					.attr('class', 'current')
+					.append($('<a>')
+						.attr('href', '#')
+						.attr('data-page', data.paging.next - 1)
+						.text(data.paging.next - 1)
+					)
+				)
+				.append($('<li>')
+					.attr('class', 'arrow')
+					.append($('<a>')
+						.attr('href', '#')
+						.attr('data-page', data.paging.next)
+						.text("More results »")
+					)
+				)
 			)
 		);
-		console.log(data.paging);
 	}
 	
 	return $posts;

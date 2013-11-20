@@ -90,6 +90,7 @@ $.get('/bills/' + theBillID, { format: 'json' }, function(data) {
 			)
 		).append($('<a>')
 			.attr('href', '#')
+			.attr('class', 'button otherModal small aligncenter radius')
 			.attr('data-othermodal', function() {
 				var theString = $('<div>');
 				
@@ -138,8 +139,40 @@ $.get('/bills/' + theBillID, { format: 'json' }, function(data) {
 				
 				return theString.get(0).outerHTML;
 			})
-			.attr('class', 'button otherModal tiny aligncenter radius')
-			.text("View co-sponsors (" + data.cosponsors.length + ") »")
+			.text("Co-sponsors (" + data.cosponsors.length + ") »")
+		)
+		.append($('<a>')
+			.attr('href', '#')
+			.attr('class', 'button otherModal small aligncenter radius')
+			.attr('data-othermodal', function() {
+				var theString = $('<div>');
+
+				theString.append($('<h4>')
+					.attr('class', 'aligncenter')
+					.text("Bill Subjects")
+				).append($('<table>')
+					.attr('class', 'prettyTable')
+					.append($('<thead>')
+						.append($('<tr>')
+							.append($('<th>')
+								.text("Name")
+							)
+						)
+					)
+					.append($('<tbody>'))
+				);
+
+				for(var i = 0; i < data.subjects.length; i++) {
+					theString.find('tbody').append($('<tr>')
+						.append($('<td>')
+							.text(data.subjects[i])
+						)
+					);
+				}
+
+				return theString.get(0).outerHTML;
+			})
+			.text("Subjects (" + data.subjects.length + ") »")
 		)
 	);
 	
@@ -157,48 +190,6 @@ $.get('/bills/' + theBillID, { format: 'json' }, function(data) {
 		.text(function() {
 			return parseInt(data.congress).ordinate() + " Congress • " + chamber + " Bill " + data.billId.toUpperCase();
 		})
-	).append($('<ul>')
-		.attr('class', 'inline-list')
-		.append($('<li>')
-			.append($('<span>')
-				.attr('class', 'label radius')
-				.text(data.topSubject)
-			)
-		)
-		.append($('<li>')
-			.append($('<span>')
-				.attr('class', 'label radius otherModal moreSubjects')
-				.attr('data-othermodal', function() {
-					var theString = $('<div>');
-
-					theString.append($('<h4>')
-						.attr('class', 'aligncenter')
-						.text("Bill Subjects")
-					).append($('<table>')
-						.attr('class', 'prettyTable')
-						.append($('<thead>')
-							.append($('<tr>')
-								.append($('<th>')
-									.text("Name")
-								)
-							)
-						)
-						.append($('<tbody>'))
-					);
-
-					for(var i = 0; i < data.subjects.length; i++) {
-						theString.find('tbody').append($('<tr>')
-							.append($('<td>')
-								.text(data.subjects[i])
-							)
-						);
-					}
-
-					return theString.get(0).outerHTML;
-				})
-				.text("View subjects (" + data.subjects.length + ") »")
-			)
-		)
 	).append($('<p>')
 		.text(shortSummary)
 		.attr('data-summary', data.summary)

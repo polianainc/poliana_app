@@ -15,11 +15,10 @@ development:
 
 stagingsmall:
   solr:
-    hostname: localhost
-    port: 8982
-    solr_home: solr
-    read_timeout: 2
-    open_timeout: 0.5
+    hostname: 127.0.0.1
+    port: 8080 #tomcat defaults to port 8080
+    path: '/usr/share/solr' # or '/solr' (ubuntu 12.04)
+    log_level: WARNING
 
 test:
   solr:

@@ -12,6 +12,7 @@ gem 'figaro'
 #Database
 gem 'mongoid'
 #Search
+gem 'sunspot_solr'
 gem 'sunspot_rails'
 gem 'sunspot_mongoid2'
 
@@ -32,10 +33,6 @@ gem 'omniauth-facebook'
 
 gem 'compass-rails'
 gem 'zurb-foundation'
-
-group :development do
-  gem 'sunspot_solr'
-end
 
 group :development, :test do
   #Testing email opening in rails

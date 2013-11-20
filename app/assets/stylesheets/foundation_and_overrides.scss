@@ -199,6 +199,8 @@ $subheader-font-color: darken($secondary-color, 15%);
 // $subheader-top-margin: .2em;
 // $subheader-bottom-margin: .5em;
 
+.subheader { font-style: italic; }
+
 // A general <small> styling
 
 // $small-font-size: 60%;
@@ -432,6 +434,10 @@ $button-border-width: 0px;
 .button {
 	@include single-transition(all, 0.1s, linear);
 	@include single-box-shadow(darken($primary-color, 15%), 0px, 3px, 0px);
+	&.aligncenter {
+		display: block;
+		margin: inherit auto;
+	}
 	&.tiny { @include single-box-shadow(darken($primary-color, 15%), 0px, 2px, 0px); }
 	&:active {
 		top: 2px;

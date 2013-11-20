@@ -1,12 +1,26 @@
 /*
-Syntax error: Undefined mixin 'user-select'.
-        on line 13 of /Applications/MAMP/htdocs/poliana/poliana_app/app/assets/stylesheets/bills.scss, in `user-select'
-        from line 13 of /Applications/MAMP/htdocs/poliana/poliana_app/app/assets/stylesheets/bills.scss
+Syntax error: Undefined variable: "$small".
+        on line 10 of /Applications/MAMP/htdocs/poliana/poliana_app/app/assets/stylesheets/bills.scss
 
 Backtrace:
-/Applications/MAMP/htdocs/poliana/poliana_app/app/assets/stylesheets/bills.scss:13:in `user-select'
-/Applications/MAMP/htdocs/poliana/poliana_app/app/assets/stylesheets/bills.scss:13
-/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:253:in `visit_mixin'
+/Applications/MAMP/htdocs/poliana/poliana_app/app/assets/stylesheets/bills.scss:10
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/script/variable.rb:49:in `_perform'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/script/node.rb:40:in `perform'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:398:in `block in run_interp_no_strip'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:396:in `map'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:396:in `run_interp_no_strip'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:406:in `run_interp'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:360:in `visit_media'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:53:in `map'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
 /Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/perform.rb:100:in `visit'
 /Applications/CodeKit.app/Contents/Resources/engines/scss/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -66,4 +80,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'user-select'.\A         on line 13 of /Applications/MAMP/htdocs/poliana/poliana_app/app/assets/stylesheets/bills.scss, in `user-select'\A         from line 13 of /Applications/MAMP/htdocs/poliana/poliana_app/app/assets/stylesheets/bills.scss"; }
+  content: "Syntax error: Undefined variable: \"$small\".\A         on line 10 of /Applications/MAMP/htdocs/poliana/poliana_app/app/assets/stylesheets/bills.scss"; }

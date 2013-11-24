@@ -1,6 +1,6 @@
 class IndustriesController < ApplicationController
   def show
-    @industry = Industry.find(params[:id])
+    @industry = Industry.find_with(params[:id])
 
     respond_to do |format|
       format.html { render :action => "show" }
@@ -9,6 +9,6 @@ class IndustriesController < ApplicationController
   end
 
   def all
-    @bills = Bill.all
+    @industries = Industry.all
   end
 end

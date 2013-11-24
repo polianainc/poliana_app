@@ -3,6 +3,10 @@ PolianaApp::Application.routes.draw do
 
   get "bills/", :to=>"bills#all"
 
+  get "industries/:id", :to =>"industries#show"
+
+  get "industries/", :to=>"industries#all"
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :invitations

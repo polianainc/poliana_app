@@ -54,7 +54,31 @@ class SearchController < ApplicationController
   end
 
   def searchIndustries(params)
-    #stub
+    page = params["industry_page"] ? params["industry_page"] : 1
+
+    @industries = {}
+    paging = {}
+
+    s = Industry.search do 
+      fulltext params[:query] do
+        boost_fields :name => 2.5
+        boost_fields :industry => 1.75
+        boost_fields :sector_long => 1.0
+      end
+
+      paginate :page => page, :per_page => 10
+      order_by(:score, :desc)
+    end
+
+    @industries["data"] = s.results
+
+    paging["total"] = s.total
+    paging["next"] = page.to_i + 1 unless @industries["data"].last_page?
+    paging["previous"] = page.to_i - 1 unless @industries["data"].first_page?
+
+    @industries["paging"] = paging
+
+    return @industries
   end
 
   def searchPoliticians(params)

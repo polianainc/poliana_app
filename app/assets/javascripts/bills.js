@@ -63,8 +63,6 @@ var theBillID = $('#billID').html();
 $.get('/bills/' + theBillID, { format: 'json' }, function(data) {
 	$('#billID').remove();
 	
-	console.log(data);
-	
 	var shortSummary = trimByWord(data.summary);
 	var chamber = data.billType.charAt(0);
 	
@@ -72,6 +70,13 @@ $.get('/bills/' + theBillID, { format: 'json' }, function(data) {
 		chamber = "Senate";
 	else
 		chamber = "House";
+		
+	if(data.popularTitle != null)
+		document.title = data.popularTitle + ' | Poliana';
+	else if(data.shortTitle != null)
+		document.title = data.shortTitle + ' | Poliana';
+	else
+		document.title = data.officialTitle + ' | Poliana';
 		
 	var $entityInfo = $('.entityInfo');
 	

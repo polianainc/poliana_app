@@ -32,8 +32,6 @@ gem 'omniauth-facebook'
 #Front-end
 gem 'compass-rails'
 gem 'zurb-foundation'
-gem 'turbolinks'
-gem 'jquery-turbolinks'
 
 #AWS
 gem 'aws-sdk'

@@ -1,25 +1,58 @@
 (function() {
-	var partyData, geoData, mostData, leastData;
-	
-	function controller(graph, action) {
-		function populateData() {
+	var controller = function() {		
+		this.populateData = function(type) {
+			if(type == "party")
+				data = "hello";
+				
+			return data;
+		}
+		this.run = function() {
+			var partyData = this.populateData("party");
 			
+			if(partyData) {
+				var party = new partyContributions();
+
+				party.draw(partyData);
+			}
 		}
 	}
 	
-	function partyContributions() {
-		
+	var partyContributions = function() {
+		this.draw = function(data) {
+			console.log(data);
+		}
+		this.update = function() {
+			console.log('party update');
+		}
 	}
 	
-	function geographicBreakdown() {
-		
+	var geographicBreakdown = function() {
+		this.draw = function() {
+			console.log('geo draw');
+		}
+		this.update = function() {
+			console.log('geo update');
+		}
 	}
 	
-	function mostPaidPoliticians() {
-		
+	var mostPaidPoliticians = function() {
+		this.draw = function() {
+			console.log('mostPaid draw');
+		}
+		this.update = function() {
+			console.log('mostPaid update');
+		}
 	}
 	
-	function leastPaidPoliticians() {
-		
+	var leastPaidPolitcians = function() {
+		this.draw = function() {
+			console.log('leastPaid draw');
+		}
+		this.update = function() {
+			console.log('leastPaid update');
+		}
 	}
+	
+	var myCont = new controller();
+	myCont.run();
 })();

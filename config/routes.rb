@@ -1,12 +1,8 @@
 PolianaApp::Application.routes.draw do
   get "congress/bills/:billId", :to => "bills#show"
   get "congress/bills/", :to => "bills#all", :as => 'bills'
-
-  Industry.each do |industry|
-    industryName = industry.name.parameterize
-    get "industries/#{industryName}/:industry_id", :to => "industries#show", :industryName => industryName
-  end
   
+  get "industries/:slug/:industry_id", :to => "industries#show"
   get "industries/", :to => "industries#all"
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'

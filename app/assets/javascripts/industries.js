@@ -11,9 +11,8 @@
 			this.run();
 		}	
 		this.populateData = function(type, data) {
-			if(data == undefined) {
+			if(data == undefined)
 				data = type.charAt(0).toUpperCase() + type.slice(1) + ": Initialized";
-			}
 			else
 				data = type.charAt(0).toUpperCase() + type.slice(1) + ": " + data;
 				

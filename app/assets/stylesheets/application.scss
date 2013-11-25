@@ -12,7 +12,7 @@
  */
 @import "compass/css3/transition", "compass/css3/box-shadow", "compass/css3/border-radius", "compass/css3/background-size", "compass/css3/user-interface", "compass/css3/transform", "compass/layout/sticky-footer";
 
-@import "foundation_and_overrides", "static_pages", "devise", "bills";
+@import "foundation_and_overrides", "static_pages", "devise", "bills", "industries";
 
 /* ----- ICON FONT ----- */
 
@@ -471,7 +471,7 @@ small {
 		}
 		p {
 			& a {
-				padding-left: 10px;
+				display: block;
 				font-size: 0.8em;
 			}
 		}

@@ -161,6 +161,8 @@ function formatItem(type, data, partial) {
 	if(data.data.length == 0)
 		return false;
 		
+	console.log(data);
+		
 	var $posts;
 		
 	if(partial == false) {
@@ -208,7 +210,26 @@ function formatItem(type, data, partial) {
 		});
 	}
 	else if(type == "industries") {
-		
+		$.each(data.data, function(index, value) {
+			var item = this;
+			
+			$posts.append($('<div>')
+				.attr('class', 'searchItem')
+				.append($('<h4>')
+					.append($('<a>')
+						.attr('href', '/industries/' + this.name.toLowerCase().replace(/\W/g, ' ').replace(/\s{2,}/g, ' ').split(' ').join('-') + "/" + this.industry_id)
+						.text(this.name)
+					)
+				)
+				.append($('<p>')
+					.html('<b>Industry: </b>' + this.industry + '<br><b>Sector: </b>' + this.sector_long + '<br>')
+					.append($('<a>')
+						.attr('href', '/industries/' + this.name.toLowerCase().replace(/\W/g, ' ').replace(/\s{2,}/g, ' ').split(' ').join('-') + "/" + this.industry_id)
+						.text("Explore »")
+					)
+				)
+			);
+		});
 	}
 	else if(type == "politicians") {
 		/*

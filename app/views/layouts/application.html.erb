@@ -58,12 +58,12 @@
 								<a href="#">Explore</a>
 								<ul class="dropdown">
 						  			<li><%= link_to "Bills", bills_path %></li>
-									<li><a href="#">Industries</a></li>
+									<li><%= link_to "Industries", industries_path %></li>
 									<li><a href="#">Politicians</a></li>
 								</ul>
 					  		</li>
 							<li class="show-for-breakpoint"><%= link_to "Bills", bills_path %></li>
-							<li class="show-for-breakpoint"><a href="#">Industries</a></li>
+							<li class="show-for-breakpoint"><%= link_to "Industries", industries_path %></li>
 							<li class="show-for-breakpoint"><a href="#">Politicians</a></li>
 							<li class="hide-for-breakpoint"><%= link_to "About", about_path %></li>
 							<li><%= link_to "<b>Sign In</b>".html_safe(), new_user_session_path %></a></li>
@@ -100,8 +100,8 @@
 				</ul>
 				<ul>
 					<li><%= link_to "Explore", "#" %></li>
-					<li><%= link_to "Bills", "#" %></li>
-					<li><%= link_to "Industries", "#" %></li>
+					<li><%= link_to "Bills", bills_path %></li>
+					<li><%= link_to "Industries", industries_path %></li>
 					<li><%= link_to "Politicians", "#" %></li>
 				</ul>
 				<ul>
@@ -112,7 +112,7 @@
 					<li>Find Us On</li>
 					<li><%= link_to "Facebook", "https://www.facebook.com/polianainc", :target => "_blank" %></li>
 					<li><%= link_to "Twitter", "https://www.twitter.com/poliana", :target => "_blank" %></li>
-					<li><%= link_to "Google Plus", "#", :target => "_blank" %></li>
+					<li><%= link_to "Our Blog", "http://blog.poliana.com/", :target => "_blank" %></li>
 				</ul>
 			</nav>
 			<div id="copyright" class="large-3 columns">

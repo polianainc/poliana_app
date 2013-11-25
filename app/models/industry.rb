@@ -13,7 +13,6 @@ class Industry
     text :sector_long
   end
 
-
   def self.find_with_nested_fields(id)
     industry = Industry.find(id)
     industry[:monthly_total] = IndustryMonthlyTotal.for_js("this.industry.$id = id", :id => id).first

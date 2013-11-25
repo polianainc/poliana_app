@@ -33,6 +33,7 @@ gem 'omniauth-facebook'
 
 gem 'compass-rails'
 gem 'zurb-foundation'
+gem 'aws-sdk'
 
 group :development, :test do
   #Testing email opening in rails

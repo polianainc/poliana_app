@@ -2,7 +2,7 @@
 # See github.com/sferik/rails_admin for more informations
 
 RailsAdmin.config do |config|
-  ADMIN_EMAILS = ['grayson@poliana.com', 'patrick@poliana.com', 'shawn@poliana.com', 'david@poliana.com']
+  ADMIN_EMAILS = ['grayson@poliana.com', 'patrick@poliana.com', 'shawn@poliana.com', 'david@poliana.com', 'kenny@poliana.com']
 
   ################  Global configuration  ################
 

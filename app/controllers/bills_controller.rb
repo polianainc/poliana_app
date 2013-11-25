@@ -1,11 +1,12 @@
 class BillsController < ApplicationController
   def show
-   @bill = Bill.find_with_nested_fields(params[:id])
+    mongoId = Bill.find_by :billId => params[:billId]
+    @bill = Bill.find_with_nested_fields(mongoId._id)
    
-   respond_to do |format|
-     format.html { render :action => "show" }
-     format.json { render :json => @bill }
-   end
+    respond_to do |format|
+      format.html { render :action => "show" }
+      format.json { render :json => @bill }
+    end
   end
 
   def all

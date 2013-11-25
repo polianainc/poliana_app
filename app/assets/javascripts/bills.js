@@ -60,10 +60,8 @@ var poliView_JSON = {};
 
 var theBillID = $('#billID').html();
 
-$.get('/bills/' + theBillID, { format: 'json' }, function(data) {
+$.get('/congress/bills/' + theBillID, { format: 'json' }, function(data) {
 	$('#billID').remove();
-	
-	console.log(data);
 	
 	var shortSummary = trimByWord(data.summary);
 	var chamber = data.billType.charAt(0);
@@ -75,128 +73,81 @@ $.get('/bills/' + theBillID, { format: 'json' }, function(data) {
 		
 	var $entityInfo = $('.entityInfo');
 	
-	$entityInfo.find('.large-3').append($('<span>')
-		.attr('class', 'icon-file extraLargeIcon hide-for-small')
-		.attr('aria-hidden', 'true')
-	).append($('<p>')
-		.attr('class', 'hide-for-small')
-		.append($('<small>')
-			.append($('<b>')
-				.text('Sponsor: ')
-			)
-			.append($('<a>')
-				.attr('href', "/politicians/" + data.sponsor.firstName.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "-" + data.sponsor.lastName.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "/" + data.sponsor.bioguideId)
-				.text(data.sponsor.officialFull + " (" + convertParty(data.sponsor.party, 'abbrev') + " - " + data.sponsor.termState + ")")
-			)
-		).append($('<a>')
-			.attr('href', '#')
-			.attr('class', 'button otherModal small aligncenter radius')
-			.attr('data-othermodal', function() {
-				var theString = $('<div>');
-				
-				theString.append($('<h4>')
-					.attr('class', 'aligncenter')
-					.text("Bill Co-sponsors")
-				).append($('<table>')
-					.attr('class', 'prettyTable')
-					.append($('<thead>')
-						.append($('<tr>')
-							.append($('<th>')
-								.attr('width', 60)
-								.text("Party")
-							)
-							.append($('<th>')
-								.attr('width', 60)
-								.text("State")
-							)
-							.append($('<th>')
-								.text("Name")
-							)
-						)
+	$entityInfo.find('.otherModal').first().attr('data-othermodal', function() {
+		var theString = $('<div>');
+		
+		theString.append($('<h4>')
+			.attr('class', 'aligncenter')
+			.text("Bill Co-sponsors")
+		).append($('<table>')
+			.attr('class', 'prettyTable')
+			.append($('<thead>')
+				.append($('<tr>')
+					.append($('<th>')
+						.attr('width', 60)
+						.text("Party")
 					)
-					.append($('<tbody>'))
-				);
-				
-				for(var i = 0; i < data.cosponsors.length; i++) {
-					theString.find('tbody').append($('<tr>')
-						.append($('<td>')
-							.append($('<span>')
-								.css('background', getColor(data.cosponsors[i].party))
-								.text(data.cosponsors[i].party)
-							)
-						)
-						.append($('<td>')
-							.text(data.cosponsors[i].termState)
-						)
-						.append($('<td>')
-							.append($('<a>')
-								.attr('href', "/politicians/" + data.cosponsors[i].firstName.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "-" + data.cosponsors[i].lastName.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "/" + data.cosponsors[i].bioguideId)
-								.text(data.cosponsors[i].firstName + " " + data.cosponsors[i].lastName)
-							)
-						)
-					);
-				}
-				
-				return theString.get(0).outerHTML;
-			})
-			.text("Co-sponsors (" + data.cosponsors.length + ") »")
-		)
-		.append($('<a>')
-			.attr('href', '#')
-			.attr('class', 'button otherModal small aligncenter radius')
-			.attr('data-othermodal', function() {
-				var theString = $('<div>');
-
-				theString.append($('<h4>')
-					.attr('class', 'aligncenter')
-					.text("Bill Subjects")
-				).append($('<table>')
-					.attr('class', 'prettyTable')
-					.append($('<thead>')
-						.append($('<tr>')
-							.append($('<th>')
-								.text("Name")
-							)
-						)
+					.append($('<th>')
+						.attr('width', 60)
+						.text("State")
 					)
-					.append($('<tbody>'))
-				);
+					.append($('<th>')
+						.text("Name")
+					)
+				)
+			)
+			.append($('<tbody>'))
+		);
+		
+		for(var i = 0; i < data.cosponsors.length; i++) {
+			theString.find('tbody').append($('<tr>')
+				.append($('<td>')
+					.append($('<span>')
+						.css('background', getColor(data.cosponsors[i].party))
+						.text(data.cosponsors[i].party)
+					)
+				)
+				.append($('<td>')
+					.text(data.cosponsors[i].termState)
+				)
+				.append($('<td>')
+					.append($('<a>')
+						.attr('href', "/politicians/" + data.cosponsors[i].firstName.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "-" + data.cosponsors[i].lastName.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "/" + data.cosponsors[i].bioguideId)
+						.text(data.cosponsors[i].firstName + " " + data.cosponsors[i].lastName)
+					)
+				)
+			);
+		}
+		
+		return theString.get(0).outerHTML;
+	}).next().attr('data-othermodal', function() {
+		var theString = $('<div>');
 
-				for(var i = 0; i < data.subjects.length; i++) {
-					theString.find('tbody').append($('<tr>')
-						.append($('<td>')
-							.text(data.subjects[i])
-						)
-					);
-				}
+		theString.append($('<h4>')
+			.attr('class', 'aligncenter')
+			.text("Bill Subjects")
+		).append($('<table>')
+			.attr('class', 'prettyTable')
+			.append($('<thead>')
+				.append($('<tr>')
+					.append($('<th>')
+						.text("Name")
+					)
+				)
+			)
+			.append($('<tbody>'))
+		);
 
-				return theString.get(0).outerHTML;
-			})
-			.text("Subjects (" + data.subjects.length + ") »")
-		)
-	);
-	
-	$entityInfo.find('.large-9').append($('<h1>')
-		.text(function() {
-			if(data.popularTitle != null)
-				return data.popularTitle;
-			else if(data.shortTitle != null)
-				return data.shortTitle;
-			else
-				return data.officialTitle;
-		})
-	).append($('<h5>')
-		.attr('class', 'subheader')
-		.text(function() {
-			return parseInt(data.congress).ordinate() + " Congress • " + chamber + " Bill " + data.billId.toUpperCase();
-		})
-	).append($('<p>')
-		.text(shortSummary)
-		.attr('data-summary', data.summary)
-	).append(function() {
-		if(shortSummary != data.summary)
-			return $('<p>').attr('class', 'alignright readMore').append($('<a>').attr('href', '#').text("Read more »"));
-	});
+		for(var i = 0; i < data.subjects.length; i++) {
+			theString.find('tbody').append($('<tr>')
+				.append($('<td>')
+					.text(data.subjects[i])
+				)
+			);
+		}
+
+		return theString.get(0).outerHTML;
+	})
 	
 	$.each(data.votes.yeas, function(index, value) {
 		if(this.party == "D" || this.party == "Democrat") {

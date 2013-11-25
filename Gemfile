@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 
-
 gem 'rails', '3.2.13'
 
 #Debugging
@@ -11,6 +10,7 @@ gem 'figaro'
 
 #Database
 gem 'mongoid'
+
 #Search
 gem 'sunspot_solr'
 gem 'sunspot_rails'
@@ -24,29 +24,35 @@ gem 'gibbon'
 
 #Authentication
 gem 'devise'
-
 gem 'bcrypt-ruby'
-
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
+#Front-end
 gem 'compass-rails'
 gem 'zurb-foundation'
+gem 'turbolinks'
+gem 'jquery-turbolinks'
+
+#AWS
 gem 'aws-sdk'
 
 group :development, :test do
-  #Testing email opening in rails
+  #Email
   gem 'letter_opener'
-  # testing
+  
+  #Testing
 	gem 'rspec-rails', '2.11.0'
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
   gem 'guard-rspec'
-  # notifications
+  
+  #Notifications
   gem 'growl'
-  # test db
+  
+  #Test DB
 	gem 'sqlite3'
 end
 
@@ -56,7 +62,6 @@ group :test do
 end
 
 group :assets do
-
   gem 'jquery-rails'
 
   gem 'sass-rails',   '~> 3.2.3'

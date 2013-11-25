@@ -161,8 +161,6 @@ function formatItem(type, data, partial) {
 	if(data.data.length == 0)
 		return false;
 		
-	console.log(data);
-		
 	var $posts;
 		
 	if(partial == false) {

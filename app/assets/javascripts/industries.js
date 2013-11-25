@@ -1,58 +1,83 @@
 (function() {
-	var controller = function() {		
-		this.populateData = function(type) {
-			if(type == "party")
-				data = "hello";
+	var party, geo, most, least;
+	
+	var controller = function() {
+		this.init = function() {
+			party = new partyContributions();
+			geo = new geographicBreakdown();
+			most = new mostPaidPoliticians();
+			least = new leastPaidPoliticians();
+			
+			this.run();
+		}	
+		this.populateData = function(type, data) {
+			if(data == undefined) {
+				if(type == "party")
+					data = "party data";
+				else if(type == "geo")
+					data = "geo data";
+				else if(type == "most")
+					data = "most data";
+				else
+					data = "least data";
+			}
 				
 			return data;
 		}
 		this.run = function() {
-			var partyData = this.populateData("party");
-			
-			if(partyData) {
-				var party = new partyContributions();
-
-				party.draw(partyData);
-			}
+			party.init(this.populateData("party"));
+			geo.init(this.populateData("geo"));
+			most.init(this.populateData("most"));
+			least.init(this.populateData("least"));
+		}
+		this.update = function(data) {			
+			party.update(this.populateData("party", "party " + data));
+			geo.update(this.populateData("geo", "geo " + data));
+			most.update(this.populateData("most", "most " + data));
+			least.update(this.populateData("least", "least " + data));
 		}
 	}
 	
 	var partyContributions = function() {
-		this.draw = function(data) {
+		this.init = function(data) {
 			console.log(data);
 		}
-		this.update = function() {
-			console.log('party update');
+		this.update = function(data) {
+			console.log(data);
 		}
 	}
 	
 	var geographicBreakdown = function() {
-		this.draw = function() {
-			console.log('geo draw');
+		this.init = function(data) {
+			console.log(data);
 		}
-		this.update = function() {
-			console.log('geo update');
+		this.update = function(data) {
+			console.log(data);
 		}
 	}
 	
 	var mostPaidPoliticians = function() {
-		this.draw = function() {
-			console.log('mostPaid draw');
+		this.init = function(data) {
+			console.log(data);
 		}
-		this.update = function() {
-			console.log('mostPaid update');
-		}
-	}
-	
-	var leastPaidPolitcians = function() {
-		this.draw = function() {
-			console.log('leastPaid draw');
-		}
-		this.update = function() {
-			console.log('leastPaid update');
+		this.update = function(data) {
+			console.log(data);
 		}
 	}
 	
-	var myCont = new controller();
-	myCont.run();
+	var leastPaidPoliticians = function() {
+		this.init = function(data) {
+			console.log(data);
+		}
+		this.update = function(data) {
+			console.log(data);
+		}
+	}
+	
+	var cont = new controller();
+	cont.init();
+	
+	$('h1').on('click', function() {
+		cont.update('fuck yes');
+	});
 })();

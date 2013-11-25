@@ -1,6 +1,6 @@
 class IndustriesController < ApplicationController
   def show
-    @industry = Industry.find_with(params[:id])
+    @industry = Industry.find_with_nested_fields(params[:id])
 
     respond_to do |format|
       format.html { render :action => "show" }

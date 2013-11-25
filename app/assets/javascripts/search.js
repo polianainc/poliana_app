@@ -186,7 +186,7 @@ function formatItem(type, data, partial) {
 				.attr('class', 'searchItem')
 				.append($('<h4>')
 					.append($('<a>')
-						.attr('href', '/bills/' + this._id)
+						.attr('href', '/congress/bills/' + this.billId)
 						.text(function() {
 							if(item.popularTitle != null)
 								return item.popularTitle;
@@ -200,7 +200,7 @@ function formatItem(type, data, partial) {
 				.append($('<p>')
 					.text(trimByWord(item.summary, 30))
 					.append($('<a>')
-						.attr('href', '/bills/' + this._id)
+						.attr('href', '/congress/bills/' + this.billId)
 						.text("Explore »")
 					)
 				)

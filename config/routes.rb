@@ -1,11 +1,9 @@
 PolianaApp::Application.routes.draw do
-  get "bills/:id", :to =>"bills#show"
+  get "congress/bills/:billId", :to => "bills#show"
+  get "congress/bills/", :to => "bills#all", :as => 'bills'
 
-  get "bills/", :to=>"bills#all"
-
-  get "industries/:id", :to =>"industries#show"
-
-  get "industries/", :to=>"industries#all"
+  get "industries/:id", :to => "industries#show"
+  get "industries/", :to => "industries#all"
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
@@ -22,6 +20,7 @@ PolianaApp::Application.routes.draw do
   get "/login", :to => redirect('/signin')
   get "/logout", :to => redirect('/signout')
   get "/signup", :to => redirect('/')
+  
   get "about", :to => "static_pages#about"
   get "policy", :to => "static_pages#policy"
   get "terms", :to => "static_pages#terms"
@@ -30,10 +29,8 @@ PolianaApp::Application.routes.draw do
   get "contact", :to => "static_pages#contact"
   get "faq", :to => "static_pages#faq"
   get "mission", :to => "static_pages#mission"
-  get "kitchensink", :to => "static_pages#kitchen"
 
   get "search", :to => "search#search"
-  get "billstemp", :to => "static_pages#bills"
 
   get "invite", :to => "invitations#new"
   

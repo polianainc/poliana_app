@@ -12,15 +12,10 @@
 		}	
 		this.populateData = function(type, data) {
 			if(data == undefined) {
-				if(type == "party")
-					data = "party data";
-				else if(type == "geo")
-					data = "geo data";
-				else if(type == "most")
-					data = "most data";
-				else
-					data = "least data";
+				data = type.charAt(0).toUpperCase() + type.slice(1) + ": Initialized";
 			}
+			else
+				data = type.charAt(0).toUpperCase() + type.slice(1) + ": " + data;
 				
 			return data;
 		}
@@ -31,10 +26,10 @@
 			least.init(this.populateData("least"));
 		}
 		this.update = function(data) {			
-			party.update(this.populateData("party", "party " + data));
-			geo.update(this.populateData("geo", "geo " + data));
-			most.update(this.populateData("most", "most " + data));
-			least.update(this.populateData("least", "least " + data));
+			party.update(this.populateData("party", data));
+			geo.update(this.populateData("geo", data));
+			most.update(this.populateData("most", data));
+			least.update(this.populateData("least", data));
 		}
 	}
 	
@@ -78,6 +73,7 @@
 	cont.init();
 	
 	$('h1').on('click', function() {
-		cont.update('fuck yes');
+		var time = new Date().getTime();
+		cont.update("You clicked the title of industry " + $('#industryID').html() + " at time of " + time);
 	});
 })();

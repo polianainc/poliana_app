@@ -22,7 +22,6 @@ pickle-email-*.html
 # Ignore application configuration
 /config/application.yml
 /config/database.yml
-/config/initializers/aws.rb
 
 /solr/data
 /solr/pids

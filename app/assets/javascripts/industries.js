@@ -23,11 +23,17 @@
 			var newData;
 			
 			if(type == "party") {
-				console.log(data);
 				newData = partyFormat;
 				newData.children[0].size = data.monthly_total.democrat_sum;
 				newData.children[1].size = data.monthly_total.republican_sum;
 				newData.children[2].size = data.monthly_total.independent_sum;
+			}
+			else if(type == "geo") {
+				newData = new Array();
+				
+				$.each(data.monthly_total.states, function(key, value) {
+					newData.push(value);
+				});
 			}
 				
 			return newData;
@@ -266,11 +272,264 @@
 	}
 	
 	var geographicBreakdown = function() {
+		var settings = {};
+		
 		this.init = function(data) {
-			console.log(data);
+			$('#graphs').append($('<div>')
+				.attr('class', 'hide-for-small')
+				.append($('<div>')
+					.attr('class', 'large-6 large-offset-2 columns graph')
+					.attr('id', 'geoCT')
+					.append($('<h4>')
+						.attr('class', 'h4Pad')
+						.text('Geographic Contributions')
+					)
+					.append($('<div>')
+						.attr('class', 'sharable')
+						.append($('<span>')
+							.attr('aria-hidden', true)
+							.attr('class', 'icon-earth')
+						)
+						.append($('<span>')
+							.text('Share')
+						)
+					)
+				)
+			).append($('<div>')
+				.attr('class', 'show-for-small')
+				.append($('<h4>')
+					.attr('class', 'small-12 columns h4Pad')
+					.text('Geographic Contributions')
+				)
+				.append($('<form>')
+					.attr('class', 'small-12 columns custom')
+					.append($('<select>')
+						.attr('class', 'large expand')
+						.attr('id', 'stateSelector')
+						.append($('<option>')
+							.attr('selected', 'selected')
+							.text("All states")
+						)
+						.append(getStates())
+					)
+				)
+			);
+
+			function getStates() {
+				var states = convertState('each', 'name').split(',');
+				var theString = "";
+
+				$.each(states, function(index, value) {
+					theString += '<option>' + states[index] + '</option>';
+				});
+
+				return theString;
+			}
+			
+			var $geo = $('#geoCT');
+			
+			$geo.hide();
+			
+			settings.width = 500;
+			settings.height = 500;
+			settings.centered = "";
+
+			settings.color = d3.scale.ordinal()
+				.range(["#C4D117", "#CAD449", "#D1D77A", "#D7DAAC", "#DDDDDD"])
+				.domain(d3.range(0, 5));
+
+			settings.svg = d3.select("#geoCT")
+				.append("svg")
+					.attr("width", "100%")
+					.attr("height", "100%")
+					.attr('viewBox','0 0 ' + Math.min(settings.width, settings.height) + ' ' + Math.min(settings.width, settings.height))
+					.attr('preserveAspectRatio','xMinYMin');
+
+			settings.projection = d3.geo.albersUsa()
+				.scale(900)
+				.translate([settings.width / 2, settings.height / 2]);
+
+			settings.path = d3.geo.path()
+				.projection(settings.projection);
+
+			settings.g = settings.svg.append("g")
+				.attr("transform", "translate(" + 100 + "," + 0 + ")");
+				
+			$geo.find('h4').after($('<ul>')
+				.attr('class', 'legend top leftFloat')
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'title')
+						.text("Most")
+					)
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', settings.color(0))
+					)
+				)
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', settings.color(1))
+					)
+				)
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', settings.color(2))
+					)
+				)
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', settings.color(3))
+					)
+				)
+				.append($('<li>')
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', settings.color(4))
+					)
+					.append($('<span>')
+						.attr('class', 'title')
+						.text("Least")
+					)
+				)
+			);
+			
+			$geo.find('svg').before($('<div>')
+				.attr('class', 'd3Tooltip smallCentered')
+			);
+				
+			this.update(data);
 		}
 		this.update = function(data) {
-			console.log(data);
+			var $geo = $('#geoCT');
+			
+			function compare(a, b) {
+				if(a.sum < b.sum)
+					return -1;
+			
+				if(a.sum > b.sum)
+					return 1;
+			
+				return 0;
+			}
+
+			data = data.sort(compare).reverse();
+			
+			d3.json("/assets/us.json", function(error, us) {
+				settings.g.append("g")
+					.selectAll("path")
+					.data(topojson.feature(us, us.objects.states).features)
+					.enter().append("path")
+					.attr("d", settings.path)
+					.attr("fill", function(d, i) {
+						if(data[i] != undefined) {
+							var myIndex = 0;
+							
+							$.each(data, function(index, value) {
+								if(value.state == d.id)
+									myIndex = index;
+							});
+							
+							if(myIndex >= 0 && myIndex < 10)
+								return settings.color(0);
+							else if(myIndex >= 10 && myIndex < 20)
+								return settings.color(1);
+							else if(myIndex >= 20 && myIndex < 30)
+								return settings.color(2);
+							else if(myIndex >= 30 && myIndex < 40)
+								return settings.color(3);
+							else
+								return settings.color(4);
+						}
+						
+						return "#888888";
+					})
+					.style("stroke-width", "1px")
+					.style("stroke", "#fafafa")
+					.attr("class", "interactive")
+					.on("mouseover", function(d) { setTooltip(d.id); })
+					.on("click", clicked);
+
+				$geo.find('path').on('mouseover', function() {
+					$geo.find('.d3Tooltip').show();
+				}).on('mouseout', function() {
+					$geo.find('.d3Tooltip').hide();
+				}).on('mousemove', throttle(function(event) {
+					var x = event.pageX - $geo.offset().left;
+					var y = event.pageY - $geo.offset().top;
+
+					if(x < $geo.width() / 2)
+						$geo.find('.d3Tooltip').css('left', x + 10).css('top', y + 10);
+					else
+						$geo.find('.d3Tooltip').css('left', x + ($('.d3Tooltip').width() * -1) - 30).css('top', y + 10);
+				}, 10));
+
+				$geo.fadeIn(500);
+
+				function clicked(d) {
+					$geo.find('.d3Tooltip').fadeOut(250);
+
+					var x, y, k;
+
+					if(d && settings.centered !== d) {
+						var centroid = settings.path.centroid(d);
+						x = centroid[0] - 40;
+						y = centroid[1];
+						k = 3;
+						settings.centered = d;
+					}
+					else {
+						x = 147;
+						y = settings.height / 2;
+						k = 1;
+						settings.centered = null;
+					}
+
+					settings.g.selectAll("path")
+						.classed("active", settings.centered && function(d) { return d === settings.centered; });
+
+					settings.g.transition()
+						.duration(500)
+						.attr("transform", "translate(" + settings.width / 2 + "," + settings.height / 2 + ") scale(" + k + ") translate(" + -x + "," + -y + ")");
+
+					$geo.find('.d3Tooltip').fadeIn(250);
+				}
+
+				function setTooltip(theID) {
+					var theState = convertState(theID, "name");
+					var amount;
+					
+					$.each(data, function(index, value) {
+						if(value.state == theID) {
+							amount = value.sum;
+							return;
+						}
+					});
+
+					$geo.find('.d3Tooltip').html('').append($('<h5>')
+						.text(theState)
+						.append($('<p>')
+							.html("Contributions: <i>$" + commaSeparateNumber(amount) + "</i>")
+						)
+					);
+				}
+				
+				function setGCTHeight() {
+					var $svg = $geo.find('svg');
+					var width = $('#partyContributions').find('svg').width();
+
+					$svg.height(width + 20);
+				}
+				
+				setGCTHeight();
+				
+				$(window).on('resize', function() {
+					setGCTHeight();
+				});
+			});
 		}
 	}
 	
@@ -294,9 +553,4 @@
 	
 	var cont = new controller();
 	cont.init();
-	
-	$('h1').on('click', function() {
-		var time = new Date().getTime();
-		cont.update("You clicked the title of industry " + $('#industryID').html() + " at time of " + time);
-	});
 })();

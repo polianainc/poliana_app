@@ -2,6 +2,7 @@
 <% content_for :title, @industry.name + " Industry" %>
 <div id="industry">
 	<div id="industryID" class="hide"><%= params[:industry_id] %></div>
+	<div id="industrySlug" class="hide"><%= params[:slug] %></div>
 	<div class="row entityInfo">
 		<div class="large-9 push-3 columns">
 			<h1<% if @industry.name.length > 40 %> class="smallerTitle"<% end %>><%= @industry.name %></h1>

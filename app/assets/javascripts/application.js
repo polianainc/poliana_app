@@ -137,6 +137,25 @@ function scrollToPos(value, time) {
 	}, time);
 }
 
+function convertParty(party, to) {
+	if(to == "abbrev") {
+		if(party == "Democrat" || party == "Democrats")
+			return "D";
+		else if(party == "Republican" || party == "Republicans")
+			return "R";
+		else
+			return "I";
+	}
+	else {
+		if(party == "D")
+			return "Democrat";
+		else if(party == "R")
+			return "Republican";
+		else	
+			return "Independent";
+	}
+}
+
 Number.prototype.ordinate = function() {
 	var num = this,
 		numStr = num.toString(),

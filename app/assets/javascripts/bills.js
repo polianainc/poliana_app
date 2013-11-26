@@ -257,7 +257,7 @@ voteBD.height = 300;
 voteBD.radius = Math.min(voteBD.width, voteBD.height) / 2;
 voteBD.color = d3.scale.ordinal()
 	.range(["#C4D117", "#DDDDDD", "#61D2D6", "#EA3556", "#888888"])
-	.domain(d3.range(0,5));
+	.domain(d3.range(0, 5));
 
 voteBD.svg = d3.select("#voteBD")
 	.append("svg")
@@ -1433,25 +1433,6 @@ function convertState(name, to) {
 		returnthis = returnthis.slice(1);
 	
 	return returnthis;
-}
-
-function convertParty(party, to) {
-	if(to == "abbrev") {
-		if(party == "Democrat" || party == "Democrats")
-			return "D";
-		else if(party == "Republican" || party == "Republicans")
-			return "R";
-		else
-			return "I";
-	}
-	else {
-		if(party == "D")
-			return "Democrat";
-		else if(party == "R")
-			return "Republican";
-		else	
-			return "Independent";
-	}
 }
 
 function getColor(party) {

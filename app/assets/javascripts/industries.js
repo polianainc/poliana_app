@@ -301,19 +301,53 @@
 					.attr('class', 'small-12 columns h4Pad')
 					.text('Geographic Contributions')
 				)
-				.append($('<form>')
-					.attr('class', 'small-12 columns custom')
-					.append($('<select>')
-						.attr('class', 'large expand')
-						.attr('id', 'stateSelector')
-						.append($('<option>')
-							.attr('selected', 'selected')
-							.text("All states")
+				.append($('<div>')
+					.attr('class', 'small-12 columns')
+					.append($('<table>')
+						.attr('class', 'sortable prettyTable')
+						.append($('<thead>')
+							.append($('<tr>')
+								.append($('<th>')
+									.attr('width', 140)
+									.attr('data-sort', 'string')
+									.text("State")
+								)
+								.append($('<th>')
+									.attr('data-sort', 'currency')
+									.text("Amount")
+								)
+							)
 						)
-						.append(getStates())
+						.append($('<tbody>'))
 					)
 				)
 			);
+			
+			for(var i = 0; i < data.length; i++) {
+				if(convertState(data[i].state, "name") != "") {
+					$('#graphs tbody').append($('<tr>')
+						.append($('<td>')
+							.text(convertState(data[i].state, "name"))
+						)
+						.append($('<td>')
+							.text("$" + commaSeparateNumber(data[i].sum))
+						)
+					);
+				}
+			}
+			
+			var currencyToNum = function(str) {
+			    return str.replace('$', '').replace(/,/g, '');
+			}
+			
+			$('table.sortable').stupidtable({
+				"currency": function(a, b) {
+			        aDate = currencyToNum(a);
+			        bDate = currencyToNum(b);
+
+			        return aDate - bDate;
+			    }
+			}).find('th:eq(0)').trigger('click');
 
 			function getStates() {
 				var states = convertState('each', 'name').split(',');

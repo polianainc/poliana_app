@@ -19,7 +19,8 @@ class Industry
 
   def self.find_with_nested_fields(id)
     industry = Industry.find(id)
-    industry[:monthly_total] = IndustryMonthlyTotal.for_js("this.industry.$id = id", :id => id).first
+    industry[:monthly_total] = IndustryMonthlyTotal.find_by(:industry => id.to_s)
+    binding.pry
     return industry
   end
   

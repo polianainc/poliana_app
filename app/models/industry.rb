@@ -1,3 +1,5 @@
+require 'sunspot_mongoid2'
+
 class Industry
   include Mongoid::Document
   before_save :create_slug

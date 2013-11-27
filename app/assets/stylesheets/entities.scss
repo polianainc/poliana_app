@@ -27,6 +27,7 @@
 		margin-bottom: 20px;
 		@include user-select(none);
 		h4 {
+			margin-bottom: 20px;
 			&.h4Pad { margin-bottom: 100px; }
 		}
 		.d3Tooltip {
@@ -73,12 +74,23 @@
 				top: 35px;
 				@media #{$small} { top: 50px; }
 			}
+			&.bottom {
+				position: relative;
+				padding-bottom: 40px;
+				@media #{$small} { padding-bottom: 20px; }
+			}
+			&.leftPad {
+				margin-left: 0px;
+				@media #{$small} { margin-left: 50px; }
+			}
 			margin-left: 0px;
 			overflow: hidden;
 			list-style-type: none;
 			li {
 				margin-bottom: 10px;
 				min-height: 18px;
+				font-size: 0.8em;
+				@media #{$small} { font-size: 1em; }
 				span {
 					display: block;
 					float: left;
@@ -88,6 +100,7 @@
 					height: 18px;
 					margin-right: 10px;
 				}
+				a { color: $body-font-color; }
 				.title {
 					text-transform: capitalize;
 					line-height: 18px;
@@ -258,6 +271,17 @@
 						}
 					}
 				}
+			}
+		}
+		.axis {
+			.tick {
+				&:nth-child(odd) {
+					text { display: none; }
+				}
+				line { stroke: darken($secondary-color, 5%); }
+			}
+			&.y {
+				.domain { display: none; }
 			}
 		}
 	}

@@ -34,6 +34,56 @@
 				$.each(data.monthly_total.states, function(key, value) {
 					newData.push(value);
 				});
+				
+				function compare(a, b) {
+					if(a.sum < b.sum)
+						return -1;
+
+					if(a.sum > b.sum)
+						return 1;
+
+					return 0;
+				}
+
+				newData = newData.sort(compare).reverse();
+			}
+			else if(type == "most") {
+				newData = new Array();
+
+				$.each(data.monthly_total.top_recipients, function(key, value) {
+					newData.push(value);
+				});
+				
+				function compare(a, b) {
+					if(a.sum < b.sum)
+						return -1;
+
+					if(a.sum > b.sum)
+						return 1;
+
+					return 0;
+				}
+
+				newData = newData.sort(compare).reverse();
+			}
+			else if(type == "least") {
+				newData = new Array();
+
+				$.each(data.monthly_total.bottom_recipients, function(key, value) {
+					newData.push(value);
+				});
+				
+				function compare(a, b) {
+					if(a.sum < b.sum)
+						return -1;
+
+					if(a.sum > b.sum)
+						return 1;
+
+					return 0;
+				}
+
+				newData = newData.sort(compare).reverse();
 			}
 				
 			return newData;
@@ -275,7 +325,7 @@
 		var settings = {};
 		
 		this.init = function(data) {
-			$('#graphs').append($('<div>')
+			$graphs.append($('<div>')
 				.attr('class', 'hide-for-small')
 				.append($('<div>')
 					.attr('class', 'large-6 large-offset-2 columns graph')
@@ -325,7 +375,7 @@
 			
 			for(var i = 0; i < data.length; i++) {
 				if(convertState(data[i].state, "name") != "") {
-					$('#graphs tbody').append($('<tr>')
+					$graphs.find('tbody').append($('<tr>')
 						.append($('<td>')
 							.text(convertState(data[i].state, "name"))
 						)
@@ -337,16 +387,16 @@
 			}
 			
 			var currencyToNum = function(str) {
-			    return str.replace('$', '').replace(/,/g, '');
+				return str.replace('$', '').replace(/,/g, '');
 			}
 			
 			$('table.sortable').stupidtable({
 				"currency": function(a, b) {
-			        aDate = currencyToNum(a);
-			        bDate = currencyToNum(b);
+					aDate = currencyToNum(a);
+					bDate = currencyToNum(b);
 
-			        return aDate - bDate;
-			    }
+					return aDate - bDate;
+				}
 			}).find('th:eq(0)').trigger('click');
 
 			function getStates() {
@@ -439,18 +489,6 @@
 		}
 		this.update = function(data) {
 			var $geo = $('#geoCT');
-			
-			function compare(a, b) {
-				if(a.sum < b.sum)
-					return -1;
-			
-				if(a.sum > b.sum)
-					return 1;
-			
-				return 0;
-			}
-
-			data = data.sort(compare).reverse();
 			
 			d3.json("/assets/us.json", function(error, us) {
 				settings.g.append("g")
@@ -568,20 +606,265 @@
 	}
 	
 	var mostPaidPoliticians = function() {
+		var settings = {};
+		
 		this.init = function(data) {
-			console.log(data);
+			$graphs.append($('<div>')
+				.attr('class', 'large-6 small-12 large-uncentered small-centered columns graph')
+				.attr('id', 'mostPaid')
+				.append($('<h4>')
+					.text('Most Paid Politicians')
+				)
+				.append($('<div>')
+					.attr('class', 'sharable')
+					.append($('<span>')
+						.attr('aria-hidden', true)
+						.attr('class', 'icon-earth')
+					)
+					.append($('<span>')
+						.text('Share')
+					)
+				)
+			);
+			
+			var $mostPaid = $('#mostPaid');
+			
+			$mostPaid.hide();
+			
+			settings.width = 460;
+			settings.height = 200;
+
+			settings.x = d3.scale.ordinal()
+				.rangeRoundBands([0, settings.width], .1);
+
+			settings.y = d3.scale.linear()
+				.range([settings.height, 0]);
+
+			settings.xAxis = d3.svg.axis()
+				.scale(settings.x)
+				.orient("bottom");
+
+			settings.yAxis = d3.svg.axis()
+				.scale(settings.y)
+				.ticks(6)
+				.tickFormat(function(d) { return "$" + currencyNumber(d, 0); })
+				.orient("left");
+				
+			settings.color = d3.scale.ordinal()
+				.range(["#A82221", "#DB5E31", "#EDA23E", "#F2CB67", "#D6BF59"])
+				.domain(d3.range(0, 5));
+				
+			settings.svg = d3.select("#mostPaid")
+				.append("svg")
+					.attr("width", "100%")
+					.attr("height", "100%")
+					.attr('viewBox','0 0 ' + settings.width + ' ' + settings.height)
+					.attr('preserveAspectRatio','xMinYMin')
+					.append("g")
+					.attr("transform", "translate(" + 55 + "," + 0 + ") scale(0.87)");
+					
+			$mostPaid.find('svg').after($('<ul>')
+				.attr('class', 'legend bottom leftPad')
+			);
+			
+			$.each(data, function(index, value) {
+				$mostPaid.find('.legend').append($('<li>')
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', settings.color(index))
+					)
+					.append($('<a>')
+						.attr('href', "/politicians/" + value.first_name.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "-" + value.last_name.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "/" + value.bioguide_id)
+						.append($('<span>')
+							.attr('class', 'title')
+							.text(value.first_name + " " + value.last_name + " (" + convertParty(value.party, "abbrev") + " - " + value.state + ")")
+						)
+					)
+				)
+			});
+
+			this.update(data);
 		}
 		this.update = function(data) {
-			console.log(data);
+			var $mostPaid = $('#mostPaid');
+			
+			data = JSON.parse(JSON.stringify(data));
+			
+			settings.x.domain(data.map(function(d) { return d.bioguide_id; }));
+			settings.y.domain([0, d3.max(data, function(d) { return d.sum; })]);
+
+			var yAxis = settings.svg.append("g")
+				.attr("class", "y axis")
+				.call(settings.yAxis);
+				
+			yAxis.selectAll("line")
+				.attr('x1', 0)
+				.attr('x2', settings.width);
+			
+			yAxis.selectAll("text")
+				.attr('font-size', '1.25em')
+				.attr('x', -4);
+
+			settings.svg.selectAll(".bar")
+				.data(data)
+				.enter().append("rect")
+				.attr("class", "bar")
+				.attr("x", function(d) { return settings.x(d.bioguide_id); })
+				.attr("width", settings.x.rangeBand())
+				.attr("y", function(d) { return settings.y(d.sum); })
+				.attr("height", function(d) {
+					if(d.sum < 0)
+						d.sum = 0;
+						
+					return settings.height - settings.y(d.sum);
+				})
+				.attr("fill", function(d, i) { return settings.color(i); });
+			
+			$mostPaid.fadeIn(500);
+			
+			function setMPPHeight() {
+				var $svg = $mostPaid.find('svg');
+				var $group = $svg.find('g:first-of-type');
+				var height = $group[0].getBoundingClientRect().height;
+
+				$svg.height(height + 20);
+			}
+			
+			setMPPHeight();
+			
+			$(window).on('resize', function() {
+				setMPPHeight();
+			});
 		}
 	}
 	
 	var leastPaidPoliticians = function() {
+		var settings = {};
+		
 		this.init = function(data) {
-			console.log(data);
+			$graphs.append($('<div>')
+				.attr('class', 'large-6 small-12 large-uncentered small-centered columns graph')
+				.attr('id', 'leastPaid')
+				.append($('<h4>')
+					.text('Least Paid Politicians')
+				)
+				.append($('<div>')
+					.attr('class', 'sharable')
+					.append($('<span>')
+						.attr('aria-hidden', true)
+						.attr('class', 'icon-earth')
+					)
+					.append($('<span>')
+						.text('Share')
+					)
+				)
+			);
+			
+			var $leastPaid = $('#leastPaid');
+			
+			$leastPaid.hide();
+			
+			settings.width = 460;
+			settings.height = 200;
+
+			settings.x = d3.scale.ordinal()
+				.rangeRoundBands([0, settings.width], .1);
+
+			settings.y = d3.scale.linear()
+				.range([settings.height, 0]);
+
+			settings.xAxis = d3.svg.axis()
+				.scale(settings.x)
+				.orient("bottom");
+
+			settings.yAxis = d3.svg.axis()
+				.scale(settings.y)
+				.ticks(6)
+				.tickFormat(function(d) { return "$" + currencyNumber(d, 0); })
+				.orient("left");
+				
+			settings.color = d3.scale.ordinal()
+				.range(["#0B486B", "#3B8686", "#79BD9A", "#A8DBA8", "#CEF0B7"])
+				.domain(d3.range(0, 5));
+				
+			settings.svg = d3.select("#leastPaid")
+				.append("svg")
+					.attr("width", "100%")
+					.attr("height", "100%")
+					.attr('viewBox','0 0 ' + settings.width + ' ' + settings.height)
+					.attr('preserveAspectRatio','xMinYMin')
+					.append("g")
+					.attr("transform", "translate(" + 55 + "," + 0 + ") scale(0.87)");
+					
+			$leastPaid.find('svg').after($('<ul>')
+				.attr('class', 'legend bottom leftPad')
+			);
+			
+			$.each(data, function(index, value) {
+				$leastPaid.find('.legend').append($('<li>')
+					.append($('<span>')
+						.attr('class', 'square')
+						.css('background', settings.color(index))
+					)
+					.append($('<a>')
+						.attr('href', "/politicians/" + value.first_name.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "-" + value.last_name.toLowerCase().replace(/\s+/g,'').replace(/"(.*?)"/ig, '') + "/" + value.bioguide_id)
+						.append($('<span>')
+							.attr('class', 'title')
+							.text(value.first_name + " " + value.last_name + " (" + convertParty(value.party, "abbrev") + " - " + value.state + ")")
+						)
+					)
+				)
+			});
+
+			this.update(data);
 		}
 		this.update = function(data) {
-			console.log(data);
+			var $leastPaid = $('#leastPaid');
+			
+			data = JSON.parse(JSON.stringify(data));
+			
+			settings.x.domain(data.map(function(d) { return d.bioguide_id; }));
+			settings.y.domain([0, d3.max(data, function(d) { return d.sum; })]);
+
+			var yAxis = settings.svg.append("g")
+				.attr("class", "y axis")
+				.call(settings.yAxis);
+				
+			yAxis.selectAll("line")
+				.attr('x1', 0)
+				.attr('x2', settings.width);
+			
+			yAxis.selectAll("text")
+				.attr('font-size', '1.25em')
+				.attr('x', -4);
+
+			settings.svg.selectAll(".bar")
+				.data(data)
+				.enter().append("rect")
+				.attr("class", "bar")
+				.attr("x", function(d) { return settings.x(d.bioguide_id); })
+				.attr("width", settings.x.rangeBand())
+				.attr("y", function(d) { return settings.y(d.sum); })
+				.attr("height", function(d) {
+					if(d.sum < 0)
+						d.sum = 0;
+						
+					return settings.height - settings.y(d.sum);
+				})
+				.attr("fill", function(d, i) { return settings.color(i); });
+			
+			$leastPaid.fadeIn(500);
+			
+			function setLPPHeight() {
+				var $svg = $leastPaid.find('svg');
+				$svg.height($('#mostPaid svg').height());
+			}
+			
+			setLPPHeight();
+			
+			$(window).on('resize', function() {
+				setLPPHeight();
+			});
 		}
 	}
 	

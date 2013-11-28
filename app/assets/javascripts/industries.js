@@ -299,7 +299,7 @@
 				var centerHeight = $center.height();
 				var centerWidth = $center.width();
 
-				$center.css('margin-top', (groupHeight / 2) - (centerHeight / 2) - 2).css('margin-left', (groupWidth / 2) - (centerWidth / 2) - 3);
+				$center.css('margin-top', (groupHeight / 2) - (centerHeight / 2) - 12).css('margin-left', (groupWidth / 2) - (centerWidth / 2) - 3);
 			}
 			
 			function setPCTHeight() {
@@ -497,14 +497,15 @@
 					.enter().append("path")
 					.attr("d", settings.path)
 					.attr("fill", function(d, i) {
-						if(data[i] != undefined) {
-							var myIndex = 0;
-							
-							$.each(data, function(index, value) {
-								if(value.state == d.id)
-									myIndex = index;
-							});
-							
+						console.log(d.id);
+						var myIndex = -1;
+						
+						$.each(data, function(index, value) {
+							if(value.state == d.id)
+								myIndex = index;
+						});
+						
+						if(data[i] != undefined || myIndex != -1 || isNaN(d.id)) {							
 							if(myIndex >= 0 && myIndex < 10)
 								return settings.color(0);
 							else if(myIndex >= 10 && myIndex < 20)
@@ -643,10 +644,17 @@
 			settings.xAxis = d3.svg.axis()
 				.scale(settings.x)
 				.orient("bottom");
+				
+			var tickVals = [];
+			var iterations = 6;
+			var average = data[0].sum / iterations;
+			
+			for(var i = 0; i < iterations; i++)
+				tickVals.push(Math.floor(i * average));
 
 			settings.yAxis = d3.svg.axis()
 				.scale(settings.y)
-				.ticks(6)
+				.tickValues(tickVals)
 				.tickFormat(function(d) { return "$" + currencyNumber(d, 0); })
 				.orient("left");
 				
@@ -698,8 +706,8 @@
 				.call(settings.yAxis);
 				
 			yAxis.selectAll("line")
-				.attr('x1', 0)
-				.attr('x2', settings.width);
+				.attr('x1', 4)
+				.attr('x2', settings.width - 4);
 			
 			yAxis.selectAll("text")
 				.attr('font-size', '1.25em')
@@ -777,9 +785,16 @@
 				.scale(settings.x)
 				.orient("bottom");
 
+			var tickVals = [];
+			var iterations = 6;
+			var average = data[0].sum / iterations;
+
+			for(var i = 0; i < iterations; i++)
+				tickVals.push(Math.floor(i * average));
+
 			settings.yAxis = d3.svg.axis()
 				.scale(settings.y)
-				.ticks(6)
+				.tickValues(tickVals)
 				.tickFormat(function(d) { return "$" + currencyNumber(d, 0); })
 				.orient("left");
 				
@@ -831,8 +846,8 @@
 				.call(settings.yAxis);
 				
 			yAxis.selectAll("line")
-				.attr('x1', 0)
-				.attr('x2', settings.width);
+				.attr('x1', 4)
+				.attr('x2', settings.width - 4);
 			
 			yAxis.selectAll("text")
 				.attr('font-size', '1.25em')

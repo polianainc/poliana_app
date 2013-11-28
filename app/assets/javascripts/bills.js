@@ -343,6 +343,9 @@ function voteBreakdown(theData, selector, notVoting, absent) {
 		var loseR = parseInt((root[selector].children[1].children[1].size / naysTotal) * 100);
 		var loseI = parseInt((root[selector].children[1].children[2].size / naysTotal) * 100);
 	}
+	
+	var notVotingPct = parseInt((notVoting / (yeasTotal + naysTotal + notVoting + absent)) * 100);
+	var absentPct = parseInt((absent / (yeasTotal + naysTotal + notVoting + absent)) * 100);
 		
 	$vote.find('h4').after($('<ul>')
 		.attr('class', 'legend top')
@@ -425,6 +428,26 @@ function voteBreakdown(theData, selector, notVoting, absent) {
 				.text(losePct + "%")
 			)
 		)
+		.append($('<li>')
+			.append($('<span>')
+				.attr('class', 'title')
+				.text("Not Voting")
+			)
+			.append($('<span>')
+				.attr('class', 'amount')
+				.text(notVotingPct + "%")
+			)
+		)
+		.append($('<li>')
+			.append($('<span>')
+				.attr('class', 'title')
+				.text("Absent")
+			)
+			.append($('<span>')
+				.attr('class', 'amount')
+				.text(absentPct + "%")
+			)
+		)
 	);
 	
 	$vote.find('svg').before($('<div>')
@@ -467,10 +490,12 @@ function voteBreakdown(theData, selector, notVoting, absent) {
 	
 	$vote.find('path').on('click', function() {
 		if($(this).attr('data-depth') == 0) {
-			if(getCenter() == 1)
+			var center = getCenter();
+
+			if(center + 1 >= $('.voteBD-center').children().length)
 				setCenter(0);
 			else
-				setCenter(1);
+				setCenter(center + 1);
 		}
 		else {
 			if(getDepth() == 1) {

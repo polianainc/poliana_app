@@ -234,7 +234,7 @@
 			
 			var firstPct = parseInt((sorted[0].value / partyTotals) * 100);
 			var secondPct = parseInt((sorted[1].value / partyTotals) * 100);
-			var thirdPct = parseInt((sorted[2].value / partyTotals) * 100);
+			var thirdPct = 100 - (firstPct + secondPct);
 
 			$party.find('.legend').after($('<ul>')
 				.attr('class', 'partyCT-center interactive')

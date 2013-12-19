@@ -14,7 +14,19 @@
 			var tempCont = this;
 			
 			$.get('/industries/' + $('#industrySlug').text() + "/" + $('#industryID').text(), { format: 'json' }, function(data) {
-				tempCont.run(data);
+				if(data.monthly_total.democrat_sum != 0
+				&& data.monthly_total.republican_sum != 0
+				&& data.monthly_total.independent_sum != 0
+				&& data.monthly_total.states != undefined
+				&& data.monthly_total.top_recipients != undefined
+				&& data.monthly_total.bottom_recipients != undefined) {
+					tempCont.run(data);	
+				}
+				
+				$graphs.append($('<p>')
+					.attr('class', 'hero')
+					.html('<b>Sorry, we don\'t have enough data on this industry yet.</b>')
+				);
 				
 				$('#industrySlug, #industryID').remove();
 			});
@@ -110,7 +122,7 @@
 				.attr('class', 'large-4 small-10 large-uncentered small-centered columns graph')
 				.attr('id', 'partyContributions')
 				.append($('<h4>')
-					.attr('class', 'h4Pad')
+					.attr('class', function() { if(data != undefined) return 'h4Pad'; })
 					.text('Party Contributions')
 				)
 				.append($('<div>')
@@ -326,12 +338,11 @@
 		
 		this.init = function(data) {
 			$graphs.append($('<div>')
-				.attr('class', 'hide-for-small')
+				.attr('class', 'large-6 large-offset-2 columns graph hide-for-small')
 				.append($('<div>')
-					.attr('class', 'large-6 large-offset-2 columns graph')
 					.attr('id', 'geoCT')
 					.append($('<h4>')
-						.attr('class', 'h4Pad')
+						.attr('class', function() { if(data.length != 0) return 'h4Pad'; })
 						.text('Geographic Contributions')
 					)
 					.append($('<div>')
@@ -346,13 +357,12 @@
 					)
 				)
 			).append($('<div>')
-				.attr('class', 'show-for-small')
+				.attr('class', 'small-12 columns show-for-small')
 				.append($('<h4>')
-					.attr('class', 'small-12 columns h4Pad')
+					.attr('class', function() { if(data.length != 0) return 'h4Pad'; })
 					.text('Geographic Contributions')
 				)
 				.append($('<div>')
-					.attr('class', 'small-12 columns')
 					.append($('<table>')
 						.attr('class', 'sortable prettyTable')
 						.append($('<thead>')
@@ -497,7 +507,6 @@
 					.enter().append("path")
 					.attr("d", settings.path)
 					.attr("fill", function(d, i) {
-						console.log(d.id);
 						var myIndex = -1;
 						
 						$.each(data, function(index, value) {
@@ -505,7 +514,10 @@
 								myIndex = index;
 						});
 						
-						if(data[i] != undefined || myIndex != -1 || isNaN(d.id)) {							
+						if(myIndex == -1)
+							return "#888888";
+						
+						if(myIndex >= 0) {							
 							if(myIndex >= 0 && myIndex < 10)
 								return settings.color(0);
 							else if(myIndex >= 10 && myIndex < 20)
@@ -517,8 +529,6 @@
 							else
 								return settings.color(4);
 						}
-						
-						return "#888888";
 					})
 					.style("stroke-width", "1px")
 					.style("stroke", "#fafafa")
@@ -535,9 +545,9 @@
 					var y = event.pageY - $geo.offset().top;
 
 					if(x < $geo.width() / 2)
-						$geo.find('.d3Tooltip').css('left', x + 10).css('top', y + 10);
+						$geo.find('.d3Tooltip').css('left', x + 20).css('top', y + 10);
 					else
-						$geo.find('.d3Tooltip').css('left', x + ($('.d3Tooltip').width() * -1) - 30).css('top', y + 10);
+						$geo.find('.d3Tooltip').css('left', x + ($('.d3Tooltip').width() * -1) - 10).css('top', y + 10);
 				}, 10));
 
 				$geo.fadeIn(500);
@@ -585,7 +595,12 @@
 					$geo.find('.d3Tooltip').html('').append($('<h5>')
 						.text(theState)
 						.append($('<p>')
-							.html("Contributions: <i>$" + commaSeparateNumber(amount) + "</i>")
+							.html(function() {
+								if(amount != undefined)
+									return "Contributions: <i>$" + commaSeparateNumber(amount) + "</i>";
+								else
+									return "Contributions: <i>$0</i>";
+							})
 						)
 					);
 				}
@@ -830,7 +845,7 @@
 					)
 				)
 			});
-
+			
 			this.update(data);
 		}
 		this.update = function(data) {

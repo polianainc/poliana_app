@@ -16,6 +16,7 @@ rerun.txt
 pickle-email-*.html
 
 .DS_Store
+codekit-config.json
 
 /lib/congress_scraper.rb
 /config/rubber/rubber-secret.yml

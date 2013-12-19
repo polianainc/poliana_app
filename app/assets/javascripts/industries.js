@@ -22,11 +22,12 @@
 				&& data.monthly_total.bottom_recipients != undefined) {
 					tempCont.run(data);	
 				}
-				
-				$graphs.append($('<p>')
-					.attr('class', 'hero')
-					.html('<b>Sorry, we don\'t have enough data on this industry yet.</b>')
-				);
+				else {
+					$graphs.append($('<p>')
+						.attr('class', 'hero')
+						.html('<b>Sorry, we don\'t have enough data on this industry yet.</b>')
+					);
+				}
 				
 				$('#industrySlug, #industryID').remove();
 			});

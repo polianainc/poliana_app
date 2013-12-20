@@ -23,14 +23,6 @@ class StaticPagesController < ApplicationController
   def mission
   end
   
-  # Delete upon creation of search controller
-  def search
-  end
-  
-  # Delete upon creation of various bills controllers
-  def bills
-  end
-  
   def mailchimp_signup
     gb = Gibbon::API.new("e30680ef84b786d6d9cbfc173529a8e3-us7")
     
@@ -39,8 +31,5 @@ class StaticPagesController < ApplicationController
     else
       render :inline => "Nope"
     end
-  end
-  
-  def kitchensink
   end
 end

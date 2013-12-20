@@ -37,6 +37,8 @@ PolianaApp::Application.routes.draw do
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"
   get "/500", :to => "errors#internal_error"
+  
+  get "kitchensink", :to => "static_pages#kitchensink"
 
   root :to => "static_pages#index"
 end

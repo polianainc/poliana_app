@@ -41,6 +41,6 @@ class StaticPagesController < ApplicationController
     end
   end
   
-  def kitchen
+  def kitchensink
   end
 end

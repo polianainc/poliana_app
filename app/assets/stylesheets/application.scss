@@ -8,14 +8,13 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require foundation_and_overrides
  */
 
 // Fonts
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
 
 // Helpers
-@import "compass", "icons";
+@import "_variables", "_functions", "compass", "foundation_and_overrides", "icons";
 
-
+// General
+*:focus { outline: none !important; }

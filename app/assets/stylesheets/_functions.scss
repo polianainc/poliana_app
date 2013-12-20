@@ -1,0 +1,4 @@
+@mixin flatten($color, $depth: 2px) {
+	border-width: 0px !important;
+	@include single-box-shadow($color, 0px, $depth, 0px);
+}

@@ -1,0 +1,17 @@
+// Primary colors
+$white: #fafafa;
+$black: #222;
+$gray: #ddd;
+$blue: #61d2d6;
+$red: #ea3556;
+$green: #c4d117;
+$yellow: #ffdb18;
+
+// Alternate colors
+$whiteAlt: darken($white, 10%);
+$blackAlt: lighten($black, 25%);
+$grayAlt: darken($gray, 10%);
+$blueAlt: darken($blue, 15%);
+$redAlt: darken($red, 10%);
+$greenAlt: darken($green, 10%);
+$yellowAlt: darken($yellow, 10%);

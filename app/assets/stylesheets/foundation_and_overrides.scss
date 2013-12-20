@@ -2,6 +2,8 @@
 // FOUNDATION SETTINGS
 //
 
+@import "_variables", "_functions";
+
 // Uncomment to use rem-calc() in your settings
 // @import "foundation/functions";
 
@@ -35,10 +37,10 @@
 // $total-columns: 12;
 
 // We use these to control various global styles
-// $body-bg: #fff;
-// $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $body-font-weight: normal;
+$body-bg: $white;
+$body-font-color: $black;
+$body-font-family: 'Open Sans', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-weight: 300;
 // $body-font-style: normal;
 
 // We use this to control font-smoothing
@@ -50,17 +52,98 @@
 // $default-float: left;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
-// $success-color: #43AC6A;
+$primary-color: $blue;
+$secondary-color: $gray;
+$alert-color: $red;
+$success-color: $green;
+
+$primary-colorAlt: $blueAlt;
+$secondary-colorAlt: $grayAlt;
+$alert-colorAlt: $redAlt;
+$success-colorAlt: $greenAlt;
+
+// Flatten everything
+.alert-box,
+button, .button,
+.label,
+.pagination .current a,
+.sub-nav .active a {
+	@include flatten($primary-colorAlt);
+	&.secondary { @include flatten($secondary-colorAlt); }
+	&.success { @include flatten($success-colorAlt); }
+	&.alert { @include flatten($alert-colorAlt); }
+}
+
+.breadcrumbs,
+kbd,
+.panel,
+table { @include flatten($secondary-colorAlt); }
+
+input {
+	&[type="text"],
+	&[type="password"],
+	&[type="date"],
+	&[type="datetime"],
+	&[type="datetime-local"],
+	&[type="month"],
+	&[type="week"],
+	&[type="email"],
+	&[type="number"],
+	&[type="search"],
+	&[type="tel"],
+	&[type="time"],
+	&[type="url"] {
+		@include flatten($whiteAlt !important);
+		&:focus { @include flatten($grayAlt !important); }
+	}
+	&[type=submit] {
+		@include flatten($primary-colorAlt);
+		&.secondary { @include flatten($secondary-colorAlt); }
+		&.success { @include flatten($success-colorAlt); }
+		&.alert { @include flatten($alert-colorAlt); }
+	}
+}
+
+textarea,
+select,
+.prefix,
+.postfix {
+	@include flatten($whiteAlt !important);
+	&:focus { @include flatten($grayAlt !important); }
+}
+
+[data-magellan-expedition],
+.pricing-table,
+.vcard { @include flatten($whiteAlt); }
+
+.progress {
+	@include flatten($whiteAlt);
+	.meter { @include flatten($primary-colorAlt, 1px); }
+	&.secondary .meter { @include flatten($secondary-colorAlt, 1px); }
+	&.success .meter { @include flatten($success-colorAlt, 1px); }
+	&.alert .meter { @include flatten($alert-colorAlt, 1px); }
+}
+
+.accordion, .tabs {
+	dd {
+		@include flatten($secondary-colorAlt);
+		&.active { @include flatten($whiteAlt); }
+	}
+}
+
+.switch {
+	@include flatten($secondary-colorAlt);
+	span { @include flatten($whiteAlt); }
+}
+
+.tooltip { @include flatten($blackAlt); }
 
 // We use these to make sure border radius matches unless we want it different.
-// $global-radius: 3px;
+$global-radius: 5px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
-// $shiny-edge-size: 0 1px 0;
+$shiny-edge-size: 0px;
 // $shiny-edge-color: rgba(#fff, .5);
 // $shiny-edge-active-color: rgba(#000, .2);
 
@@ -108,7 +191,7 @@
 // $include-html-accordion-classes: $include-html-classes;
 
 // $accordion-navigation-padding: rem-calc(16);
-// $accordion-navigation-bg-color: #efefef  ;
+// $accordion-navigation-bg-color: #efefef;
 // $accordion-navigation-hover-bg-color: darken($accordion-navigation-bg-color, 5%);
 // $accordion-navigation-active-bg-color: darken($accordion-navigation-bg-color, 3%);
 // $accordion-navigation-font-color: #222;
@@ -189,7 +272,7 @@
 // $crumb-font-color-current: #333;
 // $crumb-font-color-unavailable: #999;
 // $crumb-font-transform: uppercase;
-// $crumb-link-decor: underline;
+$crumb-link-decor: none;
 
 // We use these to control the slash between breadcrumbs
 // $crumb-slash-color: #aaa;
@@ -333,7 +416,7 @@
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: rem-calc(14);
 // $input-bg-color: #fff;
-// $input-focus-bg-color: darken(#fff, 2%);
+$input-focus-bg-color: #fff;
 // $input-border-color: darken(#fff, 20%);
 // $input-focus-border-color: darken(#fff, 40%);
 // $input-border-style: solid;
@@ -341,6 +424,8 @@
 // $input-disabled-bg: #ddd;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 // $input-include-glowing-effect: true;
+
+textarea { resize: none !important; }
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
@@ -368,16 +453,18 @@
 // $input-error-message-top: -1px;
 // $input-error-message-font-size: rem-calc(12);
 // $input-error-message-font-weight: normal;
-// $input-error-message-font-style: italic;
+$input-error-message-font-style: none;
 // $input-error-message-font-color: #fff;
 // $input-error-message-font-color-alt: #333;
 
 // We use this to style the glowing effect of inputs when focused
-// $glowing-effect-fade-time: 0.45s;
+$glowing-effect-fade-time: 0.3s;
 // $glowing-effect-color: $input-focus-border-color;
 
 // Select variables
-// $select-bg-color: #fafafa  ;
+$select-bg-color: #fff; // This variable doesn't work...
+
+select { background: #fff url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==") no-repeat !important; }
 
 // Inline Lists
 
@@ -474,7 +561,9 @@
 // $include-html-magellan-classes: $include-html-classes;
 
 // $magellan-bg: #fff;
-// $magellan-padding: 10px;
+$magellan-padding: 15px;
+
+[data-magellan-expedition] .sub-nav dd { line-height: 2em !important; }
 
 // Off-canvas
 
@@ -927,46 +1016,46 @@
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+$topbar-bg-color: $white;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-// $topbar-height: 45px;
-// $topbar-margin-bottom: 0;
+$topbar-height: 80px;
+$topbar-margin-bottom: 20px;
 
 // Control Input height for top bar
 
 // Controlling the styles for the title in the top bar
-// $topbar-title-weight: normal;
+$topbar-title-weight: 300;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-// $topbar-dropdown-bg: #333;
-// $topbar-dropdown-link-color: #fff;
-// $topbar-dropdown-link-bg: #333;
+$topbar-dropdown-bg: $whiteAlt;
+$topbar-dropdown-link-color: $black;
+$topbar-dropdown-link-bg: $whiteAlt;
 // $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: #fff;
-// $topbar-dropdown-toggle-alpha: 0.4;
+$topbar-dropdown-toggle-color: $black;
+$topbar-dropdown-toggle-alpha: 0.75;
 
 // Set the link colors and styles for top-level nav
-// $topbar-link-color: #fff;
-// $topbar-link-color-hover: #fff;
-// $topbar-link-color-active: #fff;
-// $topbar-link-weight: normal;
-// $topbar-link-font-size: rem-calc(13);
+$topbar-link-color: $black;
+$topbar-link-color-hover: $primary-color;
+$topbar-link-color-active: $black;
+$topbar-link-weight: 300;
+$topbar-link-font-size: rem-calc(16);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg-hover: #272727  ;
+$topbar-link-bg-hover: $white;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: darken($primary-color, 5%);
 // $topbar-link-font-family: $body-font-family;
 
-// $topbar-button-font-size: 0.75rem;
+$topbar-button-font-size: 0.65rem;
 
-// $topbar-dropdown-label-color: #777;
+$topbar-dropdown-label-color: $blackAlt;
 // $topbar-dropdown-label-text-transform: uppercase;
 // $topbar-dropdown-label-font-weight: bold;
 // $topbar-dropdown-label-font-size: rem-calc(10);
-// $topbar-dropdown-label-bg: #333;
+$topbar-dropdown-label-bg: $secondary-colorAlt;
 
 // Top menu icon styles
 // $topbar-menu-link-transform: uppercase;
@@ -984,11 +1073,16 @@
 // $topbar-media-query: "only screen and (min-width: #{upper-bound($medium-range)})";
 
 // Divider Styles
-// $topbar-divider-border-bottom: solid 1px lighten($topbar-bg-color, 10%);
-// $topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%);
+$topbar-divider-border-bottom: solid 1px darken($topbar-bg-color, 10%);
+$topbar-divider-border-top: none;
 
 // Sticky Class
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+
+.top-bar {
+	a { font-weight: 300 !important; }
+	.dropdown a:hover { color: $black !important; }
+}
 
 @import 'foundation';

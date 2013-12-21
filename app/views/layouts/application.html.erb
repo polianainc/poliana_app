@@ -27,6 +27,41 @@
 	<![endif]-->
 </head>
 <body>
+	<header id="header" class="contain-to-grid fixed invert">
+		<nav class="top-bar" data-topbar>
+			<ul class="title-area">
+				<li class="name">
+					<%= link_to '<div id="logo"></div>'.html_safe(), root_path %>
+				</li>
+				<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+			</ul>
+			<section class="top-bar-section">
+				<ul class="right">
+			  		<li class="has-dropdown">
+						<a href="#">Explore</a>
+						<ul class="dropdown">
+							<li><label>Explore</label></li>
+				  			<li><%= link_to "Bills", bills_path %></li>
+							<li><%= link_to "Industries", industries_path %></li>
+							<li><a href="#">Politicians</a></li>
+						</ul>
+			  		</li>
+					<li><%= link_to "About", about_path %></li>
+					<li><%= link_to "<b>Sign In</b>".html_safe(), new_user_session_path %></a></li>
+			  		<li class="has-form">
+						<form>
+				  			<div class="row collapse">
+								<div id="search" class="small-12 columns">
+					  				<input type="text" value="<%= params[:query] %>" class="menuSearch<%= !request.env['PATH_INFO'].include?('search') ? " notSearch" : '' %>" placeholder="Search">
+									<a href="#" class="menuSearchClick"><span aria-hidden="true" class="icon-search"></span></a>
+								</div>
+				  			</div>
+						</form>
+			  		</li>
+				</ul>
+			</section>
+		</nav>
+	</header>
 	<%= yield %>
 
 	<%= javascript_include_tag "application" %>

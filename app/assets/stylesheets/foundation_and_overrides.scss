@@ -37,7 +37,7 @@
 // $total-columns: 12;
 
 // We use these to control various global styles
-$body-bg: $white;
+$body-bg: $black;
 $body-font-color: $black;
 $body-font-family: 'Open Sans', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $body-font-weight: 300;
@@ -424,6 +424,8 @@ $input-focus-bg-color: #fff;
 // $input-disabled-bg: #ddd;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 // $input-include-glowing-effect: true;
+
+input, textarea { @include border-radius($global-radius !important); }
 
 textarea { resize: none !important; }
 
@@ -1021,7 +1023,7 @@ $topbar-bg-color: $white;
 
 // Height and margin
 $topbar-height: 80px;
-$topbar-margin-bottom: 20px;
+$topbar-margin-bottom: 0px;
 
 // Control Input height for top bar
 
@@ -1035,7 +1037,7 @@ $topbar-dropdown-link-color: $black;
 $topbar-dropdown-link-bg: $whiteAlt;
 // $topbar-dropdown-toggle-size: 5px;
 $topbar-dropdown-toggle-color: $black;
-$topbar-dropdown-toggle-alpha: 0.75;
+$topbar-dropdown-toggle-alpha: 1;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $black;
@@ -1049,7 +1051,7 @@ $topbar-link-bg-hover: $white;
 // $topbar-link-bg-active-hover: darken($primary-color, 5%);
 // $topbar-link-font-family: $body-font-family;
 
-$topbar-button-font-size: 0.65rem;
+// $topbar-button-font-size: 0.65rem;
 
 $topbar-dropdown-label-color: $blackAlt;
 // $topbar-dropdown-label-text-transform: uppercase;
@@ -1061,10 +1063,10 @@ $topbar-dropdown-label-bg: $secondary-colorAlt;
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: rem-calc(13);
 // $topbar-menu-link-weight: bold;
-// $topbar-menu-link-color: #fff;
-// $topbar-menu-icon-color: #fff;
-// $topbar-menu-link-color-toggled: #888;
-// $topbar-menu-icon-color-toggled: #888;
+$topbar-menu-link-color: $black;
+$topbar-menu-icon-color: $black;
+$topbar-menu-link-color-toggled: $blackAlt;
+$topbar-menu-icon-color-toggled: $blackAlt;
 
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;

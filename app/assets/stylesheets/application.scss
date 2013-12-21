@@ -18,3 +18,79 @@
 
 // General
 *:focus { outline: none !important; }
+
+
+// Header
+#header {
+	&.invert {
+		background: none;
+		.top-bar {
+			background: none;
+			#logo {
+				background: url('logo-white.png') no-repeat;
+				background-size: 128px 35px;
+			}
+			.menu-icon {
+				margin-top: -40px;
+				span { @include box-shadow(0 10px 0 1px $white, 0 16px 0 1px $white, 0 22px 0 1px $white); }
+			}
+			.right {
+				background: none;
+				li {
+					background: none;
+					a {
+						color: $white;
+						background: none;
+						&:hover { color: $primary-color; }
+						&:after { border-color: #fff transparent transparent transparent; }
+					}
+					&.has-dropdown {
+						li {
+							background: $white;
+							a {
+								color: $black;
+								&:hover { color: $primary-color !important; }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.top-bar {
+		#logo {
+			background: url('logo.png') no-repeat;
+			background-size: 128px 35px;
+			height: 35px;
+			width: 128px;
+			margin-top: 25px;
+			margin-left: 15px;
+		}
+		.right {
+			li {
+				a { font-size: 0.9em; }
+				#search {
+					position: relative;
+					input {
+						height: 35px;
+						margin-top: 15px;
+						padding-right: 35px;
+					}
+					a {
+						color: $secondary-color;
+						background: none;
+						padding: 0px;
+						line-height: 0px;
+						&:hover { color: $secondary-colorAlt; }
+						span {
+							display: block;
+							position: absolute;
+							top: 32px;
+							right: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

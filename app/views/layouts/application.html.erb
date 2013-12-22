@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	<meta property="og:title" content="<%= content_for?(:title) ? yield(:title) + " | Poliana" : "Poliana | See Through Government" %>"/>
@@ -27,23 +27,31 @@
 	<![endif]-->
 </head>
 <body>
-	<header id="header">
-		<nav id="mainNav" class="row">
-			<div class="large-2 medium-3 columns">
-				<%= link_to '<div id="logo"></div>'.html_safe(), root_path %>
-			</div>
-			<div class="large-10 medium-9 columns">
-				<ul class="right">
-					<li class="has-dropdown">
-						<a href="#">Explore</a>
-						<ul class="dropdown">
-				  			<li><%= link_to "Bills", bills_path %></li>
-							<li><%= link_to "Industries", industries_path %></li>
-							<li><a href="#">Politicians</a></li>
-						</ul>
-			  		</li>
-					<li><%= link_to "About", about_path %></li>
-					<li><%= link_to "<b>Sign In</b>".html_safe(), new_user_session_path %></a></li>
+	<div class="off-canvas-wrap">
+		<div class="inner-wrap">
+			<nav class="tab-bar show-for-small-only" id="mobileNav">
+				<section class="left-small">
+					<a class="left-off-canvas-toggle menu-icon"><span></span></a>
+				</section>
+				<section class="middle tab-bar-section">
+					<%= link_to image_tag('logo.png', :id => "logo"), root_path %>
+				</section>
+				<% if user_signed_in? %>
+				<section class="right-small">
+					<a class="right-off-canvas-toggle user-icon"><span aria-hidden="true" class="icon-user"></span></a>
+				</section>
+				<% end %>
+			</nav>
+			<aside class="left-off-canvas-menu">
+				<ul class="off-canvas-list">
+					<li><label>Explore</label></li>
+					<li><%= link_to '<span aria-hidden="true" class="icon-signup"></span><span>Bills</span>'.html_safe(), bills_path %></li>
+					<li><%= link_to '<span aria-hidden="true" class="icon-office"></span><span>Industries</span>'.html_safe(), industries_path %></li>
+					<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), '#' %></li>
+					<li><label>General</label></li>
+					<li><%= link_to '<span aria-hidden="true" class="icon-info"></span><span>About Us</span>'.html_safe(), about_path %></li>
+					<li><%= link_to '<span aria-hidden="true" class="icon-enter"></span><span>Sign In</span>'.html_safe(), new_user_session_path %></a></li>
+					<li><label>Search</label></li>
 			  		<li class="has-form">
 						<form>
 			  				<input type="text" value="<%= params[:query] %>" class="menuSearch<%= !request.env['PATH_INFO'].include?('search') ? " notSearch" : '' %>" placeholder="Search">
@@ -51,15 +59,20 @@
 						</form>
 			  		</li>
 				</ul>
-			</div>
-		</nav>
-	</header>
-	<div id="content">
-		<%= yield %>
+			</aside>
+			<% if user_signed_in? %>
+			<aside class="right-off-canvas-menu">
+				<ul class="off-canvas-list">
+					<li><label>User Account</label></li>
+					<li><%= link_to "Bills", bills_path %></li>
+				</ul>
+			</aside>
+			<% end %>
+			<section id="content" class="main-section">
+				<%= yield %>
+			</section>
+		</div>
 	</div>
-	<footer id="footer">
-		
-	</footer.>
 
 	<%= javascript_include_tag "application" %>
 	<%= javascript_include_tag params[:controller] if javascript_exists?(params[:controller]) %>

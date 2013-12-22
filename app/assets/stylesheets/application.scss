@@ -18,79 +18,90 @@
 
 // General
 *:focus { outline: none !important; }
-
+a { @include single-transition(color, 0.1s, linear); }
 
 // Header
 #header {
-	&.invert {
-		background: none;
-		.top-bar {
-			background: none;
-			#logo {
-				background: url('logo-white.png') no-repeat;
-				background-size: 128px 35px;
-			}
-			.menu-icon {
-				margin-top: -40px;
-				span { @include box-shadow(0 10px 0 1px $white, 0 16px 0 1px $white, 0 22px 0 1px $white); }
-			}
-			.right {
-				background: none;
-				li {
-					background: none;
-					a {
-						color: $white;
-						background: none;
-						&:hover { color: $primary-color; }
-						&:after { border-color: #fff transparent transparent transparent; }
-					}
-					&.has-dropdown {
+	position: fixed;
+	width: 100%;
+	height: $header-height;
+	background: $white;
+	z-index: 5;
+	#mainNav {
+		overflow: visible;
+		#logo {
+			background-image: url('logo.png');
+			background-repeat: no-repeat;
+			background-size: auto $logo-height;
+			height: $logo-height;
+			margin-top: (($header-height - $logo-height) / 2) + 3;
+		}
+		ul {
+			list-style-type: none;
+			margin-left: 0px;
+		}
+		.right {
+			float: right;
+			li {
+				float: left;
+				line-height: $header-height;
+				&:hover {
+					a { color: $primary-color; }
+				}
+				&.has-dropdown {
+					position: relative;
+					&:hover .dropdown { display: block; }
+					a { &:after { content: "\00a0\25BE"; } }
+					.dropdown {
+						display: none;
+						position: absolute;
+						top: $header-height - 40;
+						padding-top: 20px;
+						left: 25px;
+						width: 100%;
 						li {
-							background: $white;
+							line-height: 1em;
+							width: 100%;
+							background: darken($white, 5%);
 							a {
+								padding: 10px;
 								color: $black;
-								&:hover { color: $primary-color !important; }
+								&:hover { color: $primary-color; }
+								&:after { content: ""; }
 							}
 						}
 					}
 				}
-			}
-		}
-	}
-	.top-bar {
-		#logo {
-			background: url('logo.png') no-repeat;
-			background-size: 128px 35px;
-			height: 35px;
-			width: 128px;
-			margin-top: 25px;
-			margin-left: 15px;
-		}
-		.right {
-			li {
-				a { font-size: 0.9em; }
-				#search {
+				&.has-form {
+					margin-top: (($header-height - 37) / 2) - 1;
 					position: relative;
-					input {
-						height: 35px;
-						margin-top: 15px;
-						padding-right: 35px;
-					}
+					margin-left: 25px;
+					input { padding-right: 35px; }
 					a {
-						color: $secondary-color;
-						background: none;
+						position: absolute;
+						top: (($header-height - 14) / 2) - 21;
+						right: 10px;
 						padding: 0px;
-						line-height: 0px;
-						&:hover { color: $secondary-colorAlt; }
-						span {
-							display: block;
-							position: absolute;
-							top: 32px;
-							right: 10px;
-						}
+						line-height: 1em;
+						color: $whiteAlt;
+						&:hover { color: $primary-color; }
 					}
+				}
+				a {
+					font-size: 0.9em;
+					display: block;
+					padding: 0px 25px;
+					color: $black;
 				}
 			}
 		}
 	}
+	&.inverse {
+		
+	}
+}
+
+// Content
+#content {
+	padding-top: $header-height;
 }

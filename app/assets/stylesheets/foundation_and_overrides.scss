@@ -37,7 +37,7 @@
 // $total-columns: 12;
 
 // We use these to control various global styles
-$body-bg: $black;
+$body-bg: $white;
 $body-font-color: $black;
 $body-font-family: 'Open Sans', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $body-font-weight: 300;
@@ -1018,55 +1018,55 @@ $magellan-padding: 15px;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $white;
+// $topbar-bg-color: $white;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: 80px;
-$topbar-margin-bottom: 0px;
+// $topbar-height: 80px;
+// $topbar-margin-bottom: 0px;
 
 // Control Input height for top bar
 
 // Controlling the styles for the title in the top bar
-$topbar-title-weight: 300;
+// $topbar-title-weight: 300;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: $whiteAlt;
-$topbar-dropdown-link-color: $black;
-$topbar-dropdown-link-bg: $whiteAlt;
+// $topbar-dropdown-bg: $whiteAlt;
+// $topbar-dropdown-link-color: $black;
+// $topbar-dropdown-link-bg: $whiteAlt;
 // $topbar-dropdown-toggle-size: 5px;
-$topbar-dropdown-toggle-color: $black;
-$topbar-dropdown-toggle-alpha: 1;
+// $topbar-dropdown-toggle-color: $black;
+// $topbar-dropdown-toggle-alpha: 1;
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: $black;
-$topbar-link-color-hover: $primary-color;
-$topbar-link-color-active: $black;
-$topbar-link-weight: 300;
-$topbar-link-font-size: rem-calc(16);
+// $topbar-link-color: $black;
+// $topbar-link-color-hover: $primary-color;
+// $topbar-link-color-active: $black;
+// $topbar-link-weight: 300;
+// $topbar-link-font-size: rem-calc(16);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
-$topbar-link-bg-hover: $white;
+// $topbar-link-bg-hover: $white;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: darken($primary-color, 5%);
 // $topbar-link-font-family: $body-font-family;
 
 // $topbar-button-font-size: 0.65rem;
 
-$topbar-dropdown-label-color: $blackAlt;
+// $topbar-dropdown-label-color: $blackAlt;
 // $topbar-dropdown-label-text-transform: uppercase;
 // $topbar-dropdown-label-font-weight: bold;
 // $topbar-dropdown-label-font-size: rem-calc(10);
-$topbar-dropdown-label-bg: $secondary-colorAlt;
+// $topbar-dropdown-label-bg: $secondary-colorAlt;
 
 // Top menu icon styles
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: rem-calc(13);
 // $topbar-menu-link-weight: bold;
-$topbar-menu-link-color: $black;
-$topbar-menu-icon-color: $black;
-$topbar-menu-link-color-toggled: $blackAlt;
-$topbar-menu-icon-color-toggled: $blackAlt;
+// $topbar-menu-link-color: $black;
+// $topbar-menu-icon-color: $black;
+// $topbar-menu-link-color-toggled: $blackAlt;
+// $topbar-menu-icon-color-toggled: $blackAlt;
 
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
@@ -1075,16 +1075,11 @@ $topbar-menu-icon-color-toggled: $blackAlt;
 // $topbar-media-query: "only screen and (min-width: #{upper-bound($medium-range)})";
 
 // Divider Styles
-$topbar-divider-border-bottom: solid 1px darken($topbar-bg-color, 10%);
-$topbar-divider-border-top: none;
+// $topbar-divider-border-bottom: solid 1px darken($topbar-bg-color, 10%);
+// $topbar-divider-border-top: none;
 
 // Sticky Class
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
-
-.top-bar {
-	a { font-weight: 300 !important; }
-	.dropdown a:hover { color: $black !important; }
-}
 
 @import 'foundation';

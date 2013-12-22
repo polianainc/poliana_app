@@ -5,9 +5,18 @@ module ApplicationHelper
   end
   
   def stylesheet_exists?(stylesheet)
-     stylesheet = "#{Rails.root}/app/assets/stylesheets/#{params[:controller]}.css"
-     File.exists?(stylesheet) || File.exists?("#{stylesheet}.scss") 
-   end
+    stylesheet = "#{Rails.root}/app/assets/stylesheets/#{params[:controller]}.css"
+    File.exists?(stylesheet) || File.exists?("#{stylesheet}.scss") 
+  end
+  
+  def avatar_url(user)
+    if user.avatar_url.present?
+      user.avatar_url
+    else
+      gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+      "http://gravatar.com/avatar/#{gravatar_id}.png?s=128"
+    end
+  end
 end
 
 class String

@@ -29,7 +29,7 @@
 <body>
 	<div class="off-canvas-wrap">
 		<div class="inner-wrap">
-			<nav class="tab-bar show-for-small-only" id="mobileNav">
+			<nav class="tab-bar hide-for-medium-up" id="mobileNav">
 				<section class="left-small">
 					<a class="left-off-canvas-toggle menu-icon"><span></span></a>
 				</section>
@@ -64,12 +64,49 @@
 			<aside class="right-off-canvas-menu">
 				<ul class="off-canvas-list">
 					<li><label>Your Account</label></li>
-					<li><p class="text-center"><%= current_user.username %></p></li>
+					<li class="row collapse">
+						<div class="small-3 columns">
+							<%= image_tag avatar_url(current_user) %>
+						</div>
+						<div class="small-9 columns">
+							<p><%= current_user.username %></p>
+							<p></p>
+						</div>
+					</li>
+					<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Beta Invitations</span>'.html_safe(), new_invitation_path %></li>
 					<li><%= link_to '<span aria-hidden="true" class="icon-key"></span><span>Change Password</span>'.html_safe(), edit_user_password_path %></li>
 					<li><%= link_to '<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
 				</ul>
 			</aside>
 			<% end %>
+			<nav class="top-bar show-for-medium-up" id="desktopNav" data-topbar>
+				<ul class="title-area">
+					<li class="name">
+						<%= link_to image_tag('logo-white.png', :id => "logo"), root_path %>
+					</li>
+					<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+				</ul>
+				<section class="top-bar-section">
+					<ul class="right">
+						<li class="has-dropdown">
+							<a href="#">Explore</a>
+							<ul class="dropdown">
+								<li><%= link_to '<span aria-hidden="true" class="icon-signup"></span><span>Bills</span>'.html_safe(), bills_path %></li>
+								<li><%= link_to '<span aria-hidden="true" class="icon-office"></span><span>Industries</span>'.html_safe(), industries_path %></li>
+								<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), '#' %></li>
+							</ul>
+						</li>
+						<li><%= link_to 'Login', new_user_session_path %></a></li>
+						<li><%= link_to 'About Us', about_path %></li>
+						<li class="has-form">
+							<form>
+				  				<input type="text" value="<%= params[:query] %>" class="menuSearch<%= !request.env['PATH_INFO'].include?('search') ? " notSearch" : '' %>" placeholder="Search">
+								<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
+							</form>
+				  		</li>
+					</ul>
+				</section>
+			</nav>
 			<section id="content" class="main-section">
 				<%= yield %>
 			</section>

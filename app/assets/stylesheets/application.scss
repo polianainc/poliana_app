@@ -19,6 +19,7 @@
 // General
 *:focus { outline: none !important; }
 a { @include single-transition(color, 0.1s, linear); }
+p { font-weight: 300; }
 
 // Menu
 #logo {
@@ -54,10 +55,13 @@ a { @include single-transition(color, 0.1s, linear); }
 		&:first-of-type { padding-right: 10px; }
 	}
 	li {
-		p {
-			color: $white;
+		&.row {
 			padding: 15px;
-			margin-bottom: 0px;
+			p {
+				color: $white;
+				margin-bottom: 0px;
+				padding-left: 10px;
+			}
 		}
 		&.has-form {
 			position: relative;
@@ -70,6 +74,41 @@ a { @include single-transition(color, 0.1s, linear); }
 				border-bottom: none;
 				color: $black;
 				&:hover { color: $primary-color; }
+			}
+		}
+	}
+}
+
+#desktopNav {
+	#logo {
+		margin-left: 15px;
+		margin-top: 15px;
+	}
+	.right {
+		li {
+			.dropdown {
+				left: 0px;
+				right: auto;
+			}
+			span {
+				&:first-of-type { padding-right: 10px; }
+			}
+			&.has-form {
+				position: relative;
+				input {
+					padding-right: 35px;
+					top: 14px;
+				}
+				a {
+					position: absolute;
+					top: 1px;
+					right: 20px;
+					border-bottom: none;
+					color: $black;
+					padding: 0px;
+					background: none;
+					&:hover { color: $primary-color; }
+				}
 			}
 		}
 	}

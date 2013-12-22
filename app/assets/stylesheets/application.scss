@@ -79,10 +79,20 @@ p { font-weight: 300; }
 	}
 }
 
+@include keyframes(shake) {
+    0% { @include rotate(0deg); }
+    50% { @include rotate(-1deg); }
+    100% { @include rotate(0deg); }
+}
+
 #desktopNav {
 	#logo {
 		margin-left: 15px;
 		margin-top: 15px;
+		&:hover {
+		    @include animation(shake 0.2s 2 linear);
+		    @include transform-origin(50% 50%);
+		}
 	}
 	.right {
 		li {

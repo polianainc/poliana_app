@@ -30,7 +30,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 #Front-end
-gem 'compass-rails'
 gem 'foundation-rails'
 
 #AWS
@@ -62,7 +61,8 @@ end
 group :assets do
   gem 'jquery-rails'
 
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails'
+  gem 'compass-rails'
   gem 'therubyracer', :platforms => :ruby, :group => :production
   gem 'uglifier', '>= 1.0.3'
 end

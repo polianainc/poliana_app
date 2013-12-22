@@ -49,8 +49,8 @@
 					<li><%= link_to '<span aria-hidden="true" class="icon-office"></span><span>Industries</span>'.html_safe(), industries_path %></li>
 					<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), '#' %></li>
 					<li><label>General</label></li>
+					<li><%= link_to '<span aria-hidden="true" class="icon-enter"></span><span>Login</span>'.html_safe(), new_user_session_path %></a></li>
 					<li><%= link_to '<span aria-hidden="true" class="icon-info"></span><span>About Us</span>'.html_safe(), about_path %></li>
-					<li><%= link_to '<span aria-hidden="true" class="icon-enter"></span><span>Sign In</span>'.html_safe(), new_user_session_path %></a></li>
 					<li><label>Search</label></li>
 			  		<li class="has-form">
 						<form>
@@ -63,8 +63,10 @@
 			<% if user_signed_in? %>
 			<aside class="right-off-canvas-menu">
 				<ul class="off-canvas-list">
-					<li><label>User Account</label></li>
-					<li><%= link_to "Bills", bills_path %></li>
+					<li><label>Your Account</label></li>
+					<li><p class="text-center"><%= current_user.username %></p></li>
+					<li><%= link_to '<span aria-hidden="true" class="icon-key"></span><span>Change Password</span>'.html_safe(), edit_user_password_path %></li>
+					<li><%= link_to '<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
 				</ul>
 			</aside>
 			<% end %>

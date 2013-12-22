@@ -29,9 +29,13 @@ a { @include single-transition(color, 0.1s, linear); }
 #mobileNav {
 	.left-small, .right-small {
 		@include box-shadow(none);
+		.menu-icon, .user-icon { cursor: pointer; }
 		.user-icon {
 			position: relative;
 			color: $black;
+			width: 100%;
+			height: 100%;
+			display: block;
 			@include single-transition(none);
 			&:hover { color: $primary-color; }
 			span {
@@ -50,6 +54,11 @@ a { @include single-transition(color, 0.1s, linear); }
 		&:first-of-type { padding-right: 10px; }
 	}
 	li {
+		p {
+			color: $white;
+			padding: 15px;
+			margin-bottom: 0px;
+		}
 		&.has-form {
 			position: relative;
 			padding: 15px;

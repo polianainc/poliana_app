@@ -2,8 +2,6 @@
 // FOUNDATION SETTINGS
 //
 
-@import "_variables", "_functions";
-
 // Uncomment to use rem-calc() in your settings
 @import "foundation/functions";
 
@@ -572,10 +570,10 @@ $magellan-padding: 15px;
 
 // Off-canvas
 
-$tabbar-bg: $white;
+$tabbar-bg: $black;
 $tabbar-height: rem-calc(60);
 // $tabbar-line-height: $tabbar-height;
-$tabbar-color: $black;
+$tabbar-color: $white;
 // $tabbar-middle-padding: 0 rem-calc(10);
 
 // Off Canvas Divider Styles
@@ -606,7 +604,7 @@ $off-canvas-link-color: $white;
 $off-canvas-link-border-bottom: 1px solid $blackAlt;
 
 // Off Canvas Menu Icon Variables
-$tabbar-menu-icon-color: $black;
+$tabbar-menu-icon-color: $white;
 $tabbar-menu-icon-hover: $primary-color;
 
 // $tabbar-menu-icon-text-indent: rem-calc(35);
@@ -617,7 +615,7 @@ $tabbar-menu-icon-hover: $primary-color;
 
 // $tabbar-hamburger-icon-width: rem-calc(16);
 $tabbar-hamburger-icon-left: rem-calc(20);
-$tabbar-hamburger-icon-top: rem-calc(12);
+$tabbar-hamburger-icon-top: rem-calc(14);
 
 // Off Canvas Back-Link Overlay
 // $off-canvas-overlay-transition: background 300ms ease;
@@ -1021,7 +1019,7 @@ $menu-slide: "transform 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5)";
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: $whiteAlt;
+$topbar-bg-color: $black;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1049,7 +1047,7 @@ $topbar-margin-bottom: 20px;
 // $topbar-link-weight: 300;
 // $topbar-link-font-size: rem-calc(16);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg-hover: $white;
+$topbar-link-bg-hover: darken($black, 5%);
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: darken($primary-color, 5%);
 // $topbar-link-font-family: $body-font-family;

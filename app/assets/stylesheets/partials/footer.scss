@@ -1,0 +1,43 @@
+@include sticky-footer(250px, "#root", "#root-footer", "#footer");
+
+#footer {
+	background: $black;
+	color: $white;
+	.row {
+		padding-top: 30px;
+		#logoFooter {
+			height: 35px;
+			width: auto;
+		}
+		h4 {
+			font-weight: bold;
+			text-align: center;
+			color: $white;
+			margin-bottom: 20px;
+		}
+		p {
+			color: $white;
+			font-size: 0.85em;
+			margin-top: 10px;
+			small {
+				font-size: 0.9em;
+				color: lighten($black, 20%);
+			}
+		}
+		.social {
+			list-style-type: none;
+			margin-left: 0px;
+			overflow: hidden;
+			margin-bottom: 5px;
+			li {
+				float: left;
+				margin-right: 10px;
+				a {
+					font-size: 1.25em;
+					color: $gray;
+					&:hover { color: $white; }
+				}
+			}
+		}
+	}
+}

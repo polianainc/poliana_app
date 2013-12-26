@@ -62,7 +62,13 @@ group :assets do
   gem 'jquery-rails'
 
   gem 'sass-rails'
+  
+  #Temporary bullshit... we'll have to watch how the compass-rails gem is maintained
+  #They need to support to Compass 0.13 so we can handle custom keyframe animations
+  gem 'compass', '~> 0.13.alpha.12'
   gem 'compass-rails'
+  
+  gem 'requirejs-rails'
   gem 'therubyracer', :platforms => :ruby, :group => :production
   gem 'uglifier', '>= 1.0.3'
 end

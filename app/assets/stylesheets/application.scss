@@ -1,125 +1,15 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- */
-
-// Fonts
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
 
-// Helpers
-@import "_variables", "_functions", "compass", "foundation_and_overrides", "icons";
+@import "compass/css3",
+	"compass/layout/sticky-footer";
 
-// General
-*:focus { outline: none !important; }
-a { @include single-transition(color, 0.1s, linear); }
-p { font-weight: 300; }
+@import "modules/_variables",
+	"modules/_functions",
+	"modules/_icons",
+	"modules/_global",
+	"modules/_animations";
+	
+@import "vendor/foundation_and_overrides";
 
-// Menu
-#logo {
-	height: 35px;
-	width: auto;
-}
-
-#mobileNav {
-	.left-small, .right-small {
-		@include box-shadow(none);
-		.menu-icon, .user-icon { cursor: pointer; }
-		.user-icon {
-			position: relative;
-			color: $black;
-			width: 100%;
-			height: 100%;
-			display: block;
-			@include single-transition(none);
-			&:hover { color: $primary-color; }
-			span {
-				position: absolute;
-				display: block;
-				left: 1.5rem;
-				top: 1.1rem;
-				font-size: 1.2rem;
-			}
-		}
-	}
-}
-
-.off-canvas-list {
-	span {
-		&:first-of-type { padding-right: 10px; }
-	}
-	li {
-		&.row {
-			padding: 15px;
-			p {
-				color: $white;
-				margin-bottom: 0px;
-				padding-left: 10px;
-			}
-		}
-		&.has-form {
-			position: relative;
-			padding: 15px;
-			input { padding-right: 35px; }
-			a {
-				position: absolute;
-				top: 8px;
-				right: 0px;
-				border-bottom: none;
-				color: $black;
-				&:hover { color: $primary-color; }
-			}
-		}
-	}
-}
-
-@include keyframes(shake) {
-    0% { @include rotate(0deg); }
-    50% { @include rotate(-1deg); }
-    100% { @include rotate(0deg); }
-}
-
-#desktopNav {
-	#logo {
-		margin-left: 15px;
-		margin-top: 15px;
-		&:hover {
-		    @include animation(shake 0.2s 2 linear);
-		    @include transform-origin(50% 50%);
-		}
-	}
-	.right {
-		li {
-			.dropdown {
-				left: 0px;
-				right: auto;
-			}
-			span {
-				&:first-of-type { padding-right: 10px; }
-			}
-			&.has-form {
-				position: relative;
-				input {
-					padding-right: 35px;
-					top: 14px;
-				}
-				a {
-					position: absolute;
-					top: 1px;
-					right: 20px;
-					border-bottom: none;
-					color: $black;
-					padding: 0px;
-					background: none;
-					&:hover { color: $primary-color; }
-				}
-			}
-		}
-	}
-}
+@import "partials/header";
+@import "partials/footer";

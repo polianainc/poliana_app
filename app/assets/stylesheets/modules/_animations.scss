@@ -1,0 +1,14 @@
+@include keyframes(shake) {
+    0% { @include rotate(0deg); }
+    25% { @include rotate(-1deg); }
+	50% { @include rotate(0deg); }
+	75% { @include rotate(1deg); }
+    100% { @include rotate(0deg); }
+}
+
+.shake {
+	&:hover {
+	    @include animation(shake 0.2s 2 linear);
+	    @include transform-origin(50% 50%);
+	}
+}

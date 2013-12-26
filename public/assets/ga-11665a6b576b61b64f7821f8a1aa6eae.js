@@ -1,0 +1,1 @@
+!function(t,e,n,i,s,a,o){t.GoogleAnalyticsObject=s,t[s]=t[s]||function(){(t[s].q=t[s].q||[]).push(arguments)},t[s].l=1*new Date,a=e.createElement(n),o=e.getElementsByTagName(n)[0],a.async=1,a.src=i,o.parentNode.insertBefore(a,o)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-42980806-1","poliana.com"),ga("send","pageview");

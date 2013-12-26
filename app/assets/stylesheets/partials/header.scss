@@ -1,0 +1,99 @@
+#header {
+	#logoMobile, #logoDesktop {
+		height: 35px;
+		width: auto;
+	}
+
+	#mobileNav {
+		margin-bottom: 20px;
+		#logoMobile {
+			margin-top: 3px;
+			@extend .shake;
+		}
+		.left-small, .right-small {
+			@include box-shadow(none);
+			.menu-icon, .user-icon { cursor: pointer; }
+			.user-icon {
+				position: relative;
+				color: $white;
+				width: 100%;
+				height: 100%;
+				display: block;
+				@include single-transition(none);
+				&:hover { color: $primary-color; }
+				span {
+					position: absolute;
+					display: block;
+					left: 1.5rem;
+					top: 1.2rem;
+					font-size: 1.2rem;
+				}
+			}
+		}
+	}
+
+	.off-canvas-list {
+		span {
+			&:first-of-type { padding-right: 10px; }
+		}
+		li {
+			&.row {
+				padding: 15px;
+				p {
+					color: $white;
+					margin-bottom: 0px;
+					padding-left: 10px;
+				}
+			}
+			&.has-form {
+				position: relative;
+				padding: 15px;
+				input { padding-right: 35px; }
+				a {
+					position: absolute;
+					top: 8px;
+					right: 0px;
+					border-bottom: none;
+					color: $black;
+					&:hover { color: $primary-color; }
+				}
+			}
+		}
+	}
+
+	#desktopNav {
+		#logoDesktop {
+			margin-left: 20px;
+			margin-top: 15px;
+			@extend .shake;
+		}
+		.right {
+			li {
+				.dropdown {
+					left: 0px;
+					right: auto;
+				}
+				span {
+					&:first-of-type { padding-right: 10px; }
+				}
+				&.has-form {
+					position: relative;
+					input {
+						padding-right: 35px;
+						top: 14px;
+					}
+					a {
+						position: absolute;
+						top: 1px;
+						right: 20px;
+						border-bottom: none;
+						color: $black;
+						padding: 0px;
+						background: none;
+						&:hover { color: $primary-color; }
+					}
+				}
+			}
+		}
+	}
+}

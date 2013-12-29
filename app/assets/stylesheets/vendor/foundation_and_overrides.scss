@@ -55,10 +55,10 @@ $secondary-color: $gray;
 $alert-color: $red;
 $success-color: $green;
 
-$primary-colorAlt: $blueAlt;
-$secondary-colorAlt: $grayAlt;
-$alert-colorAlt: $redAlt;
-$success-colorAlt: $greenAlt;
+$primary-colorAlt: $blue-alt;
+$secondary-colorAlt: $gray-alt;
+$alert-colorAlt: $red-alt;
+$success-colorAlt: $green-alt;
 
 // Flatten everything
 .alert-box,
@@ -91,8 +91,8 @@ input {
 	&[type="tel"],
 	&[type="time"],
 	&[type="url"] {
-		@include flatten($whiteAlt !important);
-		&:focus { @include flatten($grayAlt !important); }
+		@include flatten($white-alt !important);
+		&:focus { @include flatten($gray-alt !important); }
 	}
 	&[type=submit] {
 		@include flatten($primary-colorAlt);
@@ -106,16 +106,16 @@ textarea,
 select,
 .prefix,
 .postfix {
-	@include flatten($whiteAlt !important);
-	&:focus { @include flatten($grayAlt !important); }
+	@include flatten($white-alt !important);
+	&:focus { @include flatten($gray-alt !important); }
 }
 
 [data-magellan-expedition],
 .pricing-table,
-.vcard { @include flatten($whiteAlt); }
+.vcard { @include flatten($white-alt); }
 
 .progress {
-	@include flatten($whiteAlt);
+	@include flatten($white-alt);
 	.meter { @include flatten($primary-colorAlt, 1px); }
 	&.secondary .meter { @include flatten($secondary-colorAlt, 1px); }
 	&.success .meter { @include flatten($success-colorAlt, 1px); }
@@ -125,16 +125,16 @@ select,
 .accordion, .tabs {
 	dd {
 		@include flatten($secondary-colorAlt);
-		&.active { @include flatten($whiteAlt); }
+		&.active { @include flatten($white-alt); }
 	}
 }
 
 .switch {
 	@include flatten($secondary-colorAlt);
-	span { @include flatten($whiteAlt); }
+	span { @include flatten($white-alt); }
 }
 
-.tooltip { @include flatten($blackAlt); }
+.tooltip { @include flatten($black-alt); }
 
 // We use these to make sure border radius matches unless we want it different.
 $global-radius: 5px;
@@ -571,7 +571,7 @@ $magellan-padding: 15px;
 // Off-canvas
 
 $tabbar-bg: $black;
-$tabbar-height: rem-calc(60);
+$tabbar-height: $header-height;
 // $tabbar-line-height: $tabbar-height;
 $tabbar-color: $white;
 // $tabbar-middle-padding: 0 rem-calc(10);
@@ -595,13 +595,13 @@ $off-canvas-bg: $black;
 $off-canvas-label-color: $gray;
 // $off-canvas-label-text-transform: uppercase;
 // $off-canvas-label-font-weight: bold;
-$off-canvas-label-bg: $blackAlt;
+$off-canvas-label-bg: $black-alt;
 $off-canvas-label-border-top: none;
 // $off-canvas-label-border-bottom: none;
 // $off-canvas-label-margin: 0;
 $off-canvas-link-padding: rem-calc(15);
 $off-canvas-link-color: $white;
-$off-canvas-link-border-bottom: 1px solid $blackAlt;
+$off-canvas-link-border-bottom: 1px solid $black-alt;
 
 // Off Canvas Menu Icon Variables
 $tabbar-menu-icon-color: $white;
@@ -1023,7 +1023,7 @@ $topbar-bg-color: $black;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: 60px;
+$topbar-height: $header-height;
 $topbar-margin-bottom: 20px;
 
 // Control Input height for top bar
@@ -1033,9 +1033,9 @@ $topbar-margin-bottom: 20px;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-// $topbar-dropdown-bg: $whiteAlt;
+// $topbar-dropdown-bg: $white-alt;
 // $topbar-dropdown-link-color: $black;
-// $topbar-dropdown-link-bg: $whiteAlt;
+// $topbar-dropdown-link-bg: $white-alt;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $black;
 // $topbar-dropdown-toggle-alpha: 1;
@@ -1054,7 +1054,7 @@ $topbar-link-bg-hover: darken($black, 5%);
 
 // $topbar-button-font-size: 0.65rem;
 
-// $topbar-dropdown-label-color: $blackAlt;
+// $topbar-dropdown-label-color: $black-alt;
 // $topbar-dropdown-label-text-transform: uppercase;
 // $topbar-dropdown-label-font-weight: bold;
 // $topbar-dropdown-label-font-size: rem-calc(10);
@@ -1066,8 +1066,8 @@ $topbar-link-bg-hover: darken($black, 5%);
 // $topbar-menu-link-weight: bold;
 // $topbar-menu-link-color: $black;
 // $topbar-menu-icon-color: $black;
-// $topbar-menu-link-color-toggled: $blackAlt;
-// $topbar-menu-icon-color-toggled: $blackAlt;
+// $topbar-menu-link-color-toggled: $black-alt;
+// $topbar-menu-icon-color-toggled: $black-alt;
 
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;

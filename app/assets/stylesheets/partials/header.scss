@@ -1,12 +1,12 @@
 #header {
-	#logoMobile, #logoDesktop {
-		height: 35px;
+	#logo-mobile, #logo-desktop {
+		height: $logo-height;
 		width: auto;
 	}
 
-	#mobileNav {
+	#mobile-nav {
 		margin-bottom: 20px;
-		#logoMobile {
+		#logo-mobile {
 			margin-top: 3px;
 			@extend .shake;
 		}
@@ -61,8 +61,8 @@
 		}
 	}
 
-	#desktopNav {
-		#logoDesktop {
+	#desktop-nav {
+		#logo-desktop {
 			margin-left: 20px;
 			margin-top: 15px;
 			@extend .shake;

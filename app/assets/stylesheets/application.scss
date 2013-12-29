@@ -1,15 +1,15 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
 
-@import "compass/css3",
-	"compass/layout/sticky-footer";
+@import "compass/css3";
 
 @import "modules/_variables",
-	"modules/_functions",
-	"modules/_icons",
-	"modules/_global",
-	"modules/_animations";
-	
+	"modules/_functions";
+
 @import "vendor/foundation_and_overrides";
+
+@import	"modules/_global",
+	"modules/_icons",	
+	"modules/_animations";
 
 @import "partials/header";
 @import "partials/footer";

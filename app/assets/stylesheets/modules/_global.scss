@@ -5,4 +5,22 @@ p { font-weight: 300; }
 ::selection { background: rgba($blue, 0.75); color: $white; }
 ::-moz-selection { background: rgba($blue, 0.75); color: $white; }
 
-#content { margin-bottom: 20px; }
+html, body { height: 100%; }
+
+.off-canvas-wrap {
+	#container {
+		min-height: auto;
+		min-height: 100%;
+		margin-bottom: -1 * $footer-height-small;
+		&:after {	
+			content: "";
+			display: block;
+			height: $footer-height-small;
+		}
+		@media #{$medium-up} {
+			margin-bottom: -1 * $footer-height-medium;
+			&:after { height: $footer-height-medium; }
+		}
+		#content { padding-bottom: 20px; }
+	}
+}

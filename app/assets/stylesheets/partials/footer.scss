@@ -1,13 +1,19 @@
-@include sticky-footer(250px, "#root", "#root-footer", "#footer");
-
 #footer {
 	background: $black;
 	color: $white;
+	height: $footer-height-small;
+	@media #{$medium-up} {
+		height: $footer-height-medium;
+	}
 	.row {
 		padding-top: 30px;
-		#logoFooter {
-			height: 35px;
-			width: auto;
+		#logo-footer {
+			display: none;
+			@media #{$medium-up} {
+				display: block;
+				height: $logo-height;
+				width: auto;
+			}
 		}
 		h4 {
 			font-weight: bold;
@@ -17,8 +23,14 @@
 		}
 		p {
 			color: $white;
-			font-size: 0.85em;
+			font-size: 1em;
 			margin-top: 10px;
+			text-align: center;
+			&:first-of-type { text-align: left; }
+			@media #{$medium-up} {
+				font-size: 0.85em;
+				text-align: left;
+			}
 			small {
 				font-size: 0.9em;
 				color: lighten($black, 20%);
@@ -26,9 +38,15 @@
 		}
 		.social {
 			list-style-type: none;
-			margin-left: 0px;
 			overflow: hidden;
 			margin-bottom: 5px;
+			width: 155px;
+			margin-left: auto;
+			margin-right: auto;
+			@media #{$medium-up} {
+				margin-left: 0px;
+				margin-right: 0px;
+			}
 			li {
 				float: left;
 				margin-right: 10px;

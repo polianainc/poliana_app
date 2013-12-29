@@ -14,7 +14,20 @@
 //= require jquery_ujs
 //= require foundation
 
+var $container = $('#container');
+
 $(document).ready(function() {
 	// Initialize Foundation
 	$(document).foundation();
+	
+	stickyFooter();
 });
+
+$(window).on('resize', function() {
+	stickyFooter();
+});
+
+function stickyFooter() {
+	if($(window).height() > $container.height())
+		$container.height($(window).height());
+}

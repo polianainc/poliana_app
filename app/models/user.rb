@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
     :uniqueness => {
       :case_sensitive => false
     },
-    :format => { :with => /^[A-Za-z0-9_.]{1,15}$/,
+    :format => { :with => /^[A-Za-z0-9_.]{1,16}$/,
       message: "no spaces or dashes" }
 
   validate :token_must_be_present_for_social_sign_ins

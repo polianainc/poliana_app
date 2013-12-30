@@ -2,73 +2,54 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8403",
   "files" : {
-    "\/app\/views\/devise\/mailer\/unlock_instructions.html.erb" : {
+    "\/app\/assets\/javascripts\/vendor\/stupidtable.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/mailer\/unlock_instructions.html.erb",
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/stupidtable.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/stupidtable.min.js",
+      "fileType" : 64
+    },
+    "\/app\/views\/bills\/all.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/bills\/all.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/views\/devise\/mailer\/confirmation_instructions.html.erb" : {
+    "\/app\/views\/devise\/mailer\/reset_password_instructions.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/mailer\/confirmation_instructions.html.erb",
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/mailer\/reset_password_instructions.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/assets\/stylesheets\/foundation_and_overrides.scss" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/foundation_and_overrides.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/css\/foundation_and_overrides.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/app\/views\/beta\/new.html.erb" : {
+    "\/app\/views\/devise\/registrations\/edit.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/beta\/new.html.erb",
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/registrations\/edit.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/assets\/images\/logo-large.png" : {
+    "\/app\/assets\/javascripts\/controllers\/bills.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/logo-large.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/logo-large.png",
-      "initialSize" : 166144,
-      "fileType" : 8192
-    },
-    "\/config\/rubber\/role\/web_tools\/rubber-web-tools-haproxy.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/rubber-web-tools-haproxy.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/search\/search.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/search\/search.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/bills.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/bills.min.js",
+      "fileType" : 64
     },
     "\/app\/views\/devise\/registrations\/new.html.erb" : {
       "ignoreWasSetByUser" : 0,
@@ -79,21 +60,325 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/views\/errors\/internal_error.html.erb" : {
+    "\/app\/views\/devise\/shared\/_links.erb" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/errors\/internal_error.html.erb",
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/shared\/_links.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/views\/static_pages\/mission.html.erb" : {
+    "\/app\/assets\/stylesheets\/modules\/_animations.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_animations.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_animations.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/views\/industries\/all.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/mission.html.erb",
+      "inputAbbreviatedPath" : "\/app\/views\/industries\/all.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/beta\/new.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/beta\/new.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/beta_mailer\/invitation.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/beta_mailer\/invitation.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/stylesheets\/modules\/_functions.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_functions.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_functions.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/config\/rubber\/role\/web_tools\/rubber-web-tools-monit.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/rubber-web-tools-monit.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/config\/rubber\/role\/web_tools\/tools-index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/tools-index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/static_pages\/about.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/about.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/javascripts\/controllers\/static_pages.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/static_pages.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/static_pages.min.js",
+      "fileType" : 64
+    },
+    "\/app\/views\/errors\/not_found.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/errors\/not_found.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/javascripts\/modules\/functions.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/functions.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/functions.min.js",
+      "fileType" : 64
+    },
+    "\/app\/assets\/stylesheets\/modules\/_variables.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_variables.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_variables.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/views\/devise\/confirmations\/new.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/confirmations\/new.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/static_pages\/team.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/team.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/javascripts\/vendor\/topojson.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/topojson.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/topojson.min.js",
+      "fileType" : 64
+    },
+    "\/app\/views\/errors\/unacceptable.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/errors\/unacceptable.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/javascripts\/vendor\/d3.v3.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/d3.v3.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/d3.v3.min.js",
+      "fileType" : 64
+    },
+    "\/app\/assets\/stylesheets\/modules\/_icons.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_icons.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_icons.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/config\/rubber\/role\/graphite_web\/dashboard.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/config\/rubber\/role\/graphite_web\/dashboard.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/layouts\/application.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/layouts\/application.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/public\/favicon.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/favicon.png",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/public\/favicon.png",
+      "initialSize" : 1432,
+      "fileType" : 8192
+    },
+    "\/app\/views\/devise\/passwords\/edit.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/passwords\/edit.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/devise\/mailer\/unlock_instructions.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/mailer\/unlock_instructions.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/javascripts\/modules\/variables.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/variables.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/variables.min.js",
+      "fileType" : 64
+    },
+    "\/app\/assets\/javascripts\/modules\/layout.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/layout.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/layout.min.js",
+      "fileType" : 64
+    },
+    "\/app\/views\/devise\/unlocks\/new.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/unlocks\/new.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/stylesheets\/vendor\/foundation_and_overrides.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/vendor\/foundation_and_overrides.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/foundation_and_overrides.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/assets\/stylesheets\/modules\/_global.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_global.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_global.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/assets\/javascripts\/controllers\/search.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/search.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/search.min.js",
+      "fileType" : 64
+    },
+    "\/app\/views\/devise\/sessions\/new.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/sessions\/new.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/invitations\/new.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/invitations\/new.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -108,32 +393,51 @@
       "initialSize" : 16289,
       "fileType" : 8192
     },
-    "\/app\/views\/devise\/registrations\/edit.html.erb" : {
+    "\/app\/assets\/stylesheets\/partials\/_header.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/registrations\/edit.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/partials\/_header.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_header.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
-    "\/app\/views\/devise\/mailer\/reset_password_instructions.html.erb" : {
+    "\/app\/assets\/javascripts\/vendor\/disqus.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/mailer\/reset_password_instructions.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/disqus.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/disqus.min.js",
+      "fileType" : 64
     },
-    "\/app\/views\/industries\/all.html.erb" : {
+    "\/app\/assets\/stylesheets\/application.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/industries\/all.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/application.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/application.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/assets\/images\/logo-white.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/logo-white.png",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/logo-white.png",
+      "initialSize" : 15895,
+      "fileType" : 8192
     },
     "\/config.rb" : {
       "ignoreWasSetByUser" : 0,
@@ -144,21 +448,21 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 32768
     },
-    "\/config\/rubber\/role\/web_tools\/tools-index.html" : {
+    "\/config\/rubber\/role\/web_tools\/rubber-web-tools-haproxy.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/tools-index.html",
+      "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/rubber-web-tools-haproxy.html",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/views\/bills\/all.html.erb" : {
+    "\/app\/views\/errors\/internal_error.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/bills\/all.html.erb",
+      "inputAbbreviatedPath" : "\/app\/views\/errors\/internal_error.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -173,215 +477,12 @@
       "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/application.min.js",
       "fileType" : 64
     },
-    "\/public\/favicon.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/favicon.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/public\/favicon.png",
-      "initialSize" : 1432,
-      "fileType" : 8192
-    },
-    "\/app\/views\/errors\/not_found.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/errors\/not_found.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/static_pages\/faq.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/faq.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/static_pages\/terms.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/terms.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/errors\/unacceptable.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/errors\/unacceptable.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/devise\/passwords\/new.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/passwords\/new.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/solr\/conf\/admin-extra.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/solr\/conf\/admin-extra.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/devise\/confirmations\/new.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/confirmations\/new.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/config\/rubber\/role\/graphite_web\/dashboard.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config\/rubber\/role\/graphite_web\/dashboard.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/config\/rubber\/role\/web_tools\/rubber-web-tools-monit.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/rubber-web-tools-monit.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/static_pages\/about.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/about.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/devise\/sessions\/new.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/sessions\/new.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/industries\/show.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/industries\/show.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/devise\/shared\/_links.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/shared\/_links.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/static_pages\/team.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/team.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/app\/views\/static_pages\/policy.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/views\/static_pages\/policy.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/beta_mailer\/invitation.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/beta_mailer\/invitation.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/layouts\/application.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/layouts\/application.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/bills\/show.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/bills\/show.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/devise\/passwords\/edit.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/passwords\/edit.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/assets\/stylesheets\/application.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/application.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/css\/application.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/app\/views\/invitations\/new.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/invitations\/new.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/devise\/unlocks\/new.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/devise\/unlocks\/new.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -394,12 +495,138 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/app\/views\/static_pages\/mission.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/mission.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/search\/search.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/search\/search.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/solr\/conf\/admin-extra.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/solr\/conf\/admin-extra.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/static_pages\/terms.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/terms.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/devise\/passwords\/new.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/passwords\/new.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/industries\/show.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/industries\/show.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/javascripts\/vendor\/ga.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/ga.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/ga.min.js",
+      "fileType" : 64
+    },
     "\/app\/views\/static_pages\/index.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/views\/static_pages\/index.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/javascripts\/controllers\/industries.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/industries.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/industries.min.js",
+      "fileType" : 64
+    },
+    "\/app\/assets\/images\/logo-large.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/logo-large.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/logo-large.png",
+      "initialSize" : 166144,
+      "fileType" : 8192
+    },
+    "\/app\/views\/bills\/show.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/bills\/show.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/stylesheets\/partials\/_footer.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/partials\/_footer.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_footer.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/views\/static_pages\/faq.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/faq.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/devise\/mailer\/confirmation_instructions.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/devise\/mailer\/confirmation_instructions.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     }

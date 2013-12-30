@@ -1,12 +1,14 @@
+// Basic site-wide element resets
+html, body { height: 100%; }
 *:focus { outline: none !important; }
 a { @include single-transition(color, 0.1s, linear); }
 p { font-weight: 300; }
 
+// Pretty little text selection
 ::selection { background: rgba($blue, 0.75); color: $white; }
 ::-moz-selection { background: rgba($blue, 0.75); color: $white; }
 
-html, body { height: 100%; }
-
+// Off canvas menu wrapper and general content styles
 .off-canvas-wrap {
 	#container {
 		min-height: auto;

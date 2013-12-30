@@ -68,7 +68,6 @@ group :assets do
   gem 'compass', '~> 0.13.alpha.12'
   gem 'compass-rails'
   
-  gem 'requirejs-rails'
   gem 'therubyracer', :platforms => :ruby, :group => :production
   gem 'uglifier', '>= 1.0.3'
 end

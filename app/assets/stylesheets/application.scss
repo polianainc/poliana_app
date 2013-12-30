@@ -1,15 +1,14 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
+// Fonts
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,700);
 
+// Compass mixins
 @import "compass/css3";
 
-@import "modules/_variables",
-	"modules/_functions";
+// Site-wide variables and functions
+@import "modules/_variables", "modules/_functions", "modules/_icons", "modules/_animations";
 
+// Foundation
 @import "vendor/foundation_and_overrides";
 
-@import	"modules/_global",
-	"modules/_icons",	
-	"modules/_animations";
-
-@import "partials/header";
-@import "partials/footer";
+// Global styles and layout includes
+@import "modules/_global", "partials/_header", "partials/_footer";

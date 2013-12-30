@@ -1,3 +1,4 @@
+// Shake animation, used on the Poliana logos
 @include keyframes(shake) {
     0% { @include rotate(0deg); }
     25% { @include rotate(-1deg); }

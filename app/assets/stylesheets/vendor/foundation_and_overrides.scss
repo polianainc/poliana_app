@@ -210,7 +210,7 @@ $large-only: "#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-w
 // $alert-padding-bottom: $alert-padding-top;
 
 // We use these to control text style.
-// $alert-font-weight: normal;
+$alert-font-weight: $body-font-weight;
 // $alert-font-size: rem-calc(13);
 // $alert-font-color: #fff;
 // $alert-font-color-alt: darken($secondary-color, 60%);
@@ -283,6 +283,8 @@ $crumb-link-decor: none;
 // Sets the margin for the right side by default, and the left margin if right-to-left direction is used
 // $button-bar-margin-opposite: rem-calc(10);
 // $button-group-border-width: 1px;
+
+a.button, .button, button, input[type=submit] { font-weight: 300 !important; }
 
 // Clearing
 
@@ -407,7 +409,7 @@ $crumb-link-decor: none;
 // We use these to style the labels in different ways
 // $form-label-pointer: pointer;
 // $form-label-font-size: rem-calc(14);
-// $form-label-font-weight: normal;
+$form-label-font-weight: $body-font-weight;
 // $form-label-font-color: lighten(#000, 30%);
 // $form-label-bottom-margin: rem-calc(8);
 // $input-font-family: inherit;
@@ -425,7 +427,7 @@ $input-focus-bg-color: #fff;
 
 input, textarea {
 	@include border-radius($global-radius !important);
-	font-weight: 300;
+	font-weight: $body-font-weight;
 }
 
 textarea { resize: none !important; }
@@ -455,7 +457,7 @@ textarea { resize: none !important; }
 // $input-error-message-padding: rem-calc(6 9 9);
 // $input-error-message-top: -1px;
 // $input-error-message-font-size: rem-calc(12);
-// $input-error-message-font-weight: normal;
+$input-error-message-font-weight: $body-font-weight;
 $input-error-message-font-style: none;
 // $input-error-message-font-color: #fff;
 // $input-error-message-font-color-alt: #333;
@@ -518,10 +520,12 @@ select { background: #fff url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cD
 // This changes up the styles for the close button
 // $joyride-tip-close-color: #777;
 // $joyride-tip-close-size: 24px;
-// $joyride-tip-close-weight: normal;
+$joyride-tip-close-weight: $body-font-weight;
 
 // When Joyride is filling the screen, we use this style for the bg
 // $joyride-screenfill: rgba(0,0,0,0.5);
+
+.joyride-tip-guide { font-weight: $body-font-weight !important; }
 
 // Keystrokes
 
@@ -554,7 +558,7 @@ select { background: #fff url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cD
 
 // We use these to style the label text
 // $label-font-sizing: rem-calc(11);
-// $label-font-weight: normal;
+$label-font-weight: $body-font-weight;
 // $label-font-color: #333;
 // $label-font-color-alt: #fff;
 // $label-font-family: $body-font-family;
@@ -735,7 +739,7 @@ $menu-slide: "transform 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5)";
 // $price-title-padding: rem-calc(15 20);
 // $price-title-align: center;
 // $price-title-color: #eee;
-// $price-title-weight: normal;
+$price-title-weight: $body-font-weight;
 // $price-title-size: rem-calc(16);
 // $price-title-font-family: $body-font-family;
 
@@ -744,7 +748,7 @@ $menu-slide: "transform 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5)";
 // $price-money-padding: rem-calc(15 20);
 // $price-money-align: center;
 // $price-money-color: #333;
-// $price-money-weight: normal;
+$price-money-weight: $body-font-weight;
 // $price-money-size: rem-calc(32);
 // $price-money-font-family: $body-font-family;
 
@@ -755,7 +759,7 @@ $menu-slide: "transform 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5)";
 // $price-desc-padding: rem-calc(15);
 // $price-desc-align: center;
 // $price-desc-font-size: rem-calc(12);
-// $price-desc-weight: normal;
+$price-desc-weight: $body-font-weight;
 // $price-desc-line-height: 1.4;
 // $price-desc-bottom-border: dotted 1px #ddd;
 
@@ -764,7 +768,7 @@ $menu-slide: "transform 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5)";
 // $price-item-padding: rem-calc(15);
 // $price-item-align: center;
 // $price-item-font-size: rem-calc(14);
-// $price-item-weight: normal;
+$price-item-weight: $body-font-weight;
 // $price-item-bottom-border: dotted 1px #ddd;
 
 // We use these to control the CTA area styles
@@ -842,7 +846,7 @@ $menu-slide: "transform 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5)";
 // $side-nav-link-color: $primary-color;
 // $side-nav-link-color-active: lighten(#000, 30%);
 // $side-nav-font-size: rem-calc(14);
-// $side-nav-font-weight: normal;
+$side-nav-font-weight: $body-font-weight;
 // $side-nav-font-family: $body-font-family;
 // $side-nav-active-font-family: $side-nav-font-family;
 
@@ -903,7 +907,7 @@ $menu-slide: "transform 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5)";
 // $sub-nav-font-family: $body-font-family;
 // $sub-nav-font-size: rem-calc(14);
 // $sub-nav-font-color: #999;
-// $sub-nav-font-weight: normal;
+$sub-nav-font-weight: $body-font-weight;
 // $sub-nav-text-decoration: none;
 // $sub-nav-border-radius: 3px;
 // $sub-nav-font-color-hover: darken($sub-nav-font-color, 15%);
@@ -911,7 +915,7 @@ $menu-slide: "transform 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5)";
 
 // We use these to control the active item styles
 
-// $sub-nav-active-font-weight: normal;
+$sub-nav-active-font-weight: $body-font-weight;
 // $sub-nav-active-bg: $primary-color;
 // $sub-nav-active-bg-hover: darken($sub-nav-active-bg, 5%);
 // $sub-nav-active-color: #fff;
@@ -1002,11 +1006,11 @@ $menu-slide: "transform 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5)";
 // $tooltip-padding: rem-calc(12);
 // $tooltip-bg: #333;
 // $tooltip-font-size: rem-calc(14);
-// $tooltip-font-weight: normal;
+$tooltip-font-weight: $body-font-weight;
 // $tooltip-font-color: #fff;
 // $tooltip-line-height: 1.3;
 // $tooltip-close-font-size: rem-calc(10);
-// $tooltip-close-font-weight: normal;
+$tooltip-close-font-weight: $body-font-weight;
 // $tooltip-close-font-color: #777;
 // $tooltip-font-size-sml: rem-calc(14);
 // $tooltip-radius: $global-radius;
@@ -1029,7 +1033,7 @@ $topbar-margin-bottom: 20px;
 // Control Input height for top bar
 
 // Controlling the styles for the title in the top bar
-// $topbar-title-weight: 300;
+$topbar-title-weight: $body-font-weight;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
@@ -1044,7 +1048,7 @@ $topbar-margin-bottom: 20px;
 // $topbar-link-color: $black;
 // $topbar-link-color-hover: $primary-color;
 // $topbar-link-color-active: $black;
-// $topbar-link-weight: 300;
+$topbar-link-weight: $body-font-weight;
 // $topbar-link-font-size: rem-calc(16);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 $topbar-link-bg-hover: darken($black, 5%);
@@ -1082,5 +1086,7 @@ $topbar-link-bg-hover: darken($black, 5%);
 // Sticky Class
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+
+.top-bar-section .dropdown li a { font-weight: $body-font-weight !important; }
 
 @import 'foundation';

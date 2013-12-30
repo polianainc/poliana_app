@@ -1,0 +1,55 @@
+// Prefix and postfix border radius
+.pre-input, .post-input {
+	div {
+		&:first-of-type {
+			span, input { @include border-radius(5px 0px 0px 5px !important); }
+		}
+		&:last-of-type {
+			span, input { @include border-radius(0px 5px 5px 0px !important); }
+		}
+	}
+}
+
+// Omniauth including facebook & twitter
+.omniauth {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	@media #{$medium-up} { margin-bottom: 20px; }
+	.facebook, .twitter {
+		color: $white;
+		span {
+			&:first-of-type { padding-right: 10px; }
+		}
+	}
+	.facebook {
+		background: $facebook;
+		@include flatten(darken($facebook, 10%));
+		&:hover { background: darken($facebook, 5%); };
+	}
+	.twitter {
+		background: $twitter;
+		@include flatten(darken($twitter, 10%));
+		&:hover { background: darken($twitter, 5%); };
+	}
+}
+
+.error {
+	div {
+		input { @include border-radius(5px 5px 0px 0px !important); }
+	}
+	&.pre-input, &.post-input {
+		div {
+			&:first-of-type {
+				span, input { @include border-radius(5px 0px 0px 0px !important); }
+			}
+			&:last-of-type {
+				span, input { @include border-radius(0px 5px 0px 0px !important); }
+			}
+		}
+	}
+	small {
+		position: relative;
+		z-index: 2;
+		@include border-radius(0px 0px 5px 5px);
+	}
+}

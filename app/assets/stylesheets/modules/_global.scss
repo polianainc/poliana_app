@@ -3,10 +3,19 @@ html, body { height: 100%; }
 *:focus { outline: none !important; }
 a { @include single-transition(color, 0.1s, linear); }
 p { font-weight: 300; }
+small { font-size: 0.75em; }
 
 // Pretty little text selection
 ::selection { background: rgba($blue, 0.75); color: $white; }
 ::-moz-selection { background: rgba($blue, 0.75); color: $white; }
+
+// Helper classes
+.no-space {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
 
 // Off canvas menu wrapper and general content styles
 .off-canvas-wrap {

@@ -16,7 +16,6 @@
 	<title><%= content_for?(:title) ? yield(:title) + " | Poliana" : "Poliana | See Through Government" %></title>
 
 	<%= stylesheet_link_tag "application" %>
-	<%= stylesheet_link_tag params[:controller] if stylesheet_exists?(params[:controller]) %>
 	
 	<%= csrf_meta_tags %>
 

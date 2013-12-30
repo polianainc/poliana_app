@@ -1,7 +1,7 @@
 // Fonts
 @import url(//fonts.googleapis.com/css?family=Open+Sans:300,700);
 
-// Compass mixins
+// Compass
 @import "compass/css3";
 
 // Site-wide variables and functions
@@ -11,4 +11,10 @@
 @import "vendor/foundation_and_overrides";
 
 // Global styles and layout includes
-@import "modules/_global", "partials/_header", "partials/_footer";
+@import "modules/_global", "modules/_header", "modules/_footer";
+
+// Various other modules
+@import "modules/_forms", "modules/_email", "modules/_errors";
+
+// Load all of the controllers
+@import "controllers/*";

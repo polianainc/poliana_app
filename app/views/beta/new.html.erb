@@ -19,7 +19,7 @@
 <% end -%>
 <div class="row">
 	<div class="large-6 medium-6 large-centered medium-centered columns">
-		<%= form_for(resource, :html => { :class => "new_user custom", :autocomplete => "off" }, :as => resource_name, :url => beta_registration_path) do |f| %>
+		<%= form_for(resource, :html => { :class => "custom", :autocomplete => "off" }, :as => resource_name, :url => beta_registration_path) do |f| %>
 			<div class="row collapse pre-input<%= " error" if !resource.errors[:email].empty? %>">
 				<div class="small-2 columns">
 		            <span aria-hidden="true" class="prefix icon-envelope"></span>
@@ -59,7 +59,7 @@
 
 			<%= f.hidden_field :invitation_key, :autocomplete => "off" %>
 
-			<%= f.submit "Let's go.", :class => "button expand radius" %>
+			<%= f.submit "Let's Go", :class => "button expand radius" %>
 			<p class="text-center no-space"><small><%= link_to "Already signed up?", new_user_session_path %></small></p>
 			<p class="text-center no-space"><small><%= link_to "Forgot your password?", new_user_password_path %></small></p>
 		<% end %>

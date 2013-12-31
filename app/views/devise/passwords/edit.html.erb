@@ -1,31 +1,32 @@
 <% content_for :title, "Change Password" %>
-<div class="row extraPad">
+<div class="row">
 	<div class="large-12 columns">
-		<h1 class="aligncenter">Change your password</h1>
+		<h1 class="text-center">Change your Password</h1>
 	</div>
 </div>
 <div class="row">
-	<div class="large-6 large-centered columns">
-		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "new_user custom", :autocomplete => "off" }) do |f| %>
-		  	<%= devise_error_messages! %>	
+	<div class="large-6 medium-6 large-centered medium-centered columns">
+		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "custom", :autocomplete => "off" }) do |f| %>	
 			<%= f.hidden_field :reset_password_token %>
-			<div class="row collapse">
-				<div class="small-1 columns">
+			<div class="row collapse pre-input<%= " error" if !resource.errors[:password].empty? %>">
+				<div class="small-2 columns">
 		            <span aria-hidden="true" class="prefix icon-lock"></span>
 		        </div>
-				<div class="small-11 columns">
+				<div class="small-10 columns">
 		  			<%= f.password_field :password, :autofocus => true, :autocomplete => "off", :placeholder => "Password" %>
 				</div>
+				<%= '<div class="small-12 columns"><small class="error">Your password must be strong like Popeye</small></div>'.html_safe() if !resource.errors[:password].empty? %>
 			</div>
-			<div class="row collapse">
-				<div class="small-1 columns">
+			<div class="row collapse pre-input<%= " error" if !resource.errors[:password_confirmation].empty? %>">
+				<div class="small-2 columns">
 		            <span aria-hidden="true" class="prefix icon-lock"></span>
 		        </div>
-				<div class="small-11 columns">
+				<div class="small-10 columns">
 		  			<%= f.password_field :password_confirmation, :autofocus => true, :autocomplete => "off", :placeholder => "Confirm Password" %>
 				</div>
+				<%= '<div class="small-12 columns"><small class="error">Tell us your password again</small></div>'.html_safe() if !resource.errors[:password_confirmation].empty? %>
 			</div>
-		  	<%= f.submit "Nice one slim!", :class => "button expand large radius" %>
+		  	<%= f.submit "Submit Changes", :class => "button expand radius" %>
 		<% end %>
 	</div>
 </div>

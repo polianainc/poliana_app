@@ -1,12 +1,23 @@
-<h2>Resend confirmation instructions</h2>
+<% content_for :title, "Resend Confirmation" %>
+<div class="row">
+	<div class="large-12 columns">
+		<h1 class="text-center">Resend confirmation instructions</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="large-6 medium-6 large-centered medium-centered columns">
+		<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => "custom", :autocomplete => "off" }) do |f| %>
+			<div class="row collapse pre-input<%= " error" if !resource.errors[:email].empty? %>">
+				<div class="small-2 columns">
+		            <span aria-hidden="true" class="prefix icon-envelope"></span>
+		        </div>
+				<div class="small-10 columns">
+					<%= f.email_field :email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>
+				</div>
+				<%= '<div class="small-12 columns"><small class="error">You must enter a valid email address</small></div>'.html_safe() if !resource.errors[:email].empty? %>
+			</div>
 
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+			<div><%= f.submit "Resend", :class => "button expand radius" %></div>
+		<% end %>
+	</div>
+</div>

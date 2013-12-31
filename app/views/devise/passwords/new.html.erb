@@ -1,24 +1,24 @@
 <% content_for :title, "Forgot Password" %>
-<div class="row extraPad">
+<div class="row">
 	<div class="large-12 columns">
-		<h1 class="aligncenter">Forgot your password?</h1>
+		<h1 class="text-center">Forgot your Password</h1>
 	</div>
 </div>
 <div class="row">
-	<div class="large-6 large-centered columns">
-		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "new_user custom", :autocomplete => "off" }) do |f| %>
-		  	<%= devise_error_messages! %>
-			<div class="row collapse">
-				<div class="small-1 columns">
-		            <span aria-hidden="true" class="prefix icon-envelop"></span>
+	<div class="large-6 medium-6 large-centered medium-centered columns">
+		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "custom", :autocomplete => "off" }) do |f| %>
+			<div class="row collapse pre-input<%= " error" if !resource.errors[:email].empty? %>">
+				<div class="small-2 columns">
+		            <span aria-hidden="true" class="prefix icon-envelope"></span>
 		        </div>
-				<div class="small-11 columns">
+				<div class="small-10 columns">
 		  			<%= f.email_field :email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>
 				</div>
+				<%= '<div class="small-12 columns"><small class="error">You have to enter in a registered email</small></div>'.html_safe() if !resource.errors[:email].empty? %>
 			</div>
-		  	<%= f.submit "Happens to the best of us.", :class => "button expand large radius" %>
-			<small class="aligncenter"><%= link_to "Sign in?", new_user_session_path %></small>
-			<small class="aligncenter"><%= link_to "Want an invitation?", root_path %></small>
+		  	<%= f.submit "Help Me Remember", :class => "button expand radius" %>
+			<p class="text-center no-space"><small><%= link_to "Sign in?", new_user_session_path %></small></p>
+			<p class="text-center no-space"><small><%= link_to "Want an invitation?", root_path %></small></p>
 		<% end %>
 	</div>
 </div>

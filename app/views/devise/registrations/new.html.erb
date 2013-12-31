@@ -1,16 +1,16 @@
 <% content_for :title, "Sign Up" %>
-<div class="row extraPad">
+<div class="row">
 	<div class="large-12 columns">
-		<h1 class="aligncenter">Welcome to the beta!</h1>
+		<h1 class="text-center">Join the Poliana beta!</h1>
 	</div>
 </div>
 <%- if devise_mapping.omniauthable? %>
-	<div class="row">
-		<div class="large-6 large-centered columns">
+	<div class="row omniauth">
+		<div class="large-6 medium-6 large-centered medium-centered columns">
 			<div class="row">
 		  	<%- resource_class.omniauth_providers.each do |provider| %>
-				<div class="large-6 columns">
-		    	<%= link_to "<span aria-hidden='true' class='icon-#{provider.to_s.titleize.downcase}'></span><span>Connect</span>".html_safe(), omniauth_authorize_path(resource_name, provider), :class => "button expand radius #{provider.to_s.titleize.downcase}" %>
+				<div class="large-6 small-6 columns">
+		    	<%= link_to "<span aria-hidden='true' class='icon-#{provider.to_s.titleize.downcase}'></span><span>Connect</span>".html_safe(), omniauth_authorize_path(resource_name, provider), :class => "button small expand radius #{provider.to_s.titleize.downcase}" %>
 				</div>
 		  	<% end -%>
 			</div>
@@ -18,45 +18,48 @@
 	</div>
 <% end -%>
 <div class="row">
-	<div class="large-6 large-centered columns">
-		<%= form_for(resource, :html => { :class => "new_user custom", :autocomplete => "off" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-			<%= devise_error_messages! %>
-			<div class="row collapse">
-				<div class="small-1 columns">
-		            <span aria-hidden="true" class="prefix icon-envelop"></span>
+	<div class="large-6 medium-6 large-centered medium-centered columns">
+		<%= form_for(resource, :html => { :class => "custom", :autocomplete => "off" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+			<div class="row collapse pre-input<%= " error" if !resource.errors[:email].empty? %>">
+				<div class="small-2 columns">
+		            <span aria-hidden="true" class="prefix icon-envelope"></span>
 		        </div>
-				<div class="small-11 columns">
+				<div class="small-10 columns">
 					<%= f.email_field :email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>
 				</div>
+				<%= '<div class="small-12 columns"><small class="error">You must enter a valid email address</small></div>'.html_safe() if !resource.errors[:email].empty? %>
 			</div>
-			<div class="row collapse">
-				<div class="small-1 columns">
-		            <span aria-hidden="true" class="prefix icon-user-2"></span>
+			<div class="row collapse pre-input<%= " error" if !resource.errors[:username].empty? %>">
+				<div class="small-2 columns">
+		            <span aria-hidden="true" class="prefix icon-user"></span>
 		        </div>
-				<div class="small-11 columns">
+				<div class="small-10 columns">
 					<%= f.text_field :username, :autocomplete => "off", :placeholder => "Username" %>
 				</div>
+				<%= '<div class="small-12 columns"><small class="error">You must enter a valid email address</small></div>'.html_safe() if !resource.errors[:username].empty? %>
 			</div>
-			<div class="row collapse">
-				<div class="small-1 columns">
+			<div class="row collapse pre-input<%= " error" if !resource.errors[:password].empty? %>">
+				<div class="small-2 columns">
 		            <span aria-hidden="true" class="prefix icon-lock"></span>
 		        </div>
-				<div class="small-11 columns">
+				<div class="small-10 columns">
 					<%= f.password_field :password, :autocomplete => "off", :placeholder => "Password" %>
 				</div>
+				<%= '<div class="small-12 columns"><small class="error">You must enter a valid email address</small></div>'.html_safe() if !resource.errors[:password].empty? %>
 			</div>
-			<div class="row collapse">
-				<div class="small-1 columns">
+			<div class="row collapse pre-input<%= " error" if !resource.errors[:password_confirmation].empty? %>">
+				<div class="small-2 columns">
 		            <span aria-hidden="true" class="prefix icon-lock"></span>
 		        </div>
-				<div class="small-11 columns">
+				<div class="small-10 columns">
 					<%= f.password_field :password_confirmation, :autocomplete => "off", :placeholder => "Confirm Password" %>
 				</div>
+				<%= '<div class="small-12 columns"><small class="error">You must enter a valid email address</small></div>'.html_safe() if !resource.errors[:password_confirmation].empty? %>
 			</div>
 
-			<%= f.submit "We got fun and games.", :class => "button expand large radius" %>
-			<small class="aligncenter"><%= link_to "Sign in?", new_user_session_path %></small>
-			<small class="aligncenter"><%= link_to "Forgot your password?", new_user_password_path %></small>
+			<%= f.submit "Let's Go", :class => "button expand radius" %>
+			<p class="text-center no-space"><small><%= link_to "Sign in?", new_user_session_path %></small></p>
+			<p class="text-center no-space"><small><%= link_to "Forgot your password?", new_user_password_path %></small></p>
 		<% end %>
 	</div>
 </div>

@@ -1,4 +1,4 @@
-var $content = $('.searchArea');
+var $content = $('.search-area');
 
 function runSearch(params) {
 	var fields, query, extra;
@@ -29,7 +29,7 @@ function runSearch(params) {
 		var length = 0;
 		var entities = [];
 		
-		$('.searchSelector li').each(function(index, value) {
+		$('.search-selector li').each(function(index, value) {
 			entities.push($(this).text().toLowerCase());
 		});
 		
@@ -45,9 +45,9 @@ function runSearch(params) {
 			else
 				$content.append(formatItem(extra, search[extra], true));
 			
-			length = $('.searchItem').length;
+			length = $('.search-item').length;
 			
-			$('.searchCount').text(function() {
+			$('.search-count').text(function() {
 				if(length == 0)
 					return "No results for...";
 				else if(length == 1)
@@ -58,7 +58,7 @@ function runSearch(params) {
 			
 			if(length == 0) {
 				$content.html($('<p>')
-					.attr('class', 'aligncenter')
+					.attr('class', 'text-center')
 					.text("Sorry, we didn't find anything! Try searching more entities.")
 				);
 			}
@@ -78,9 +78,9 @@ function runSearch(params) {
 }
 
 if(getParam('fields') && getParam('query'))
-	runSearch({ fields: getSelected().join(), query: $('.searchInput').val() });
+	runSearch({ fields: getSelected().join(), query: $('.search-input').val() });
 
-$('.searchSelector a').on('click', function(event) {
+$('.search-selector a').on('click', function(event) {
 	event.preventDefault();
 	
 	$(this).parent().toggleClass('active');
@@ -92,16 +92,16 @@ $('.searchSelector a').on('click', function(event) {
 	history.pushState('', '', event.target.href.replace("fields=" + oldFieldsQS, "fields=" + selected));
 	
 	if($(this).parent().hasClass('active'))
-		runSearch({ fields: selected, query: $('.searchInput').val(), scroll: $(this).text().toLowerCase() });
+		runSearch({ fields: selected, query: $('.search-input').val(), scroll: $(this).text().toLowerCase() });
 	else
-		runSearch({ fields: selected, query: $('.searchInput').val() });
+		runSearch({ fields: selected, query: $('.search-input').val() });
 });
 
-$('.searchInput, .menuSearch').on('keyup', function() {
-	if($(this).hasClass('searchInput'))
-		$('.menuSearch').val($(this).val());
+$('.search-input, .menu-search').on('keyup', function() {
+	if($(this).hasClass('search-input'))
+		$('.menu-search').val($(this).val());
 	else
-		$('.searchInput').val($(this).val());
+		$('.search-input').val($(this).val());
 }).on('keypress', function(event) {
 	if(event.which == 13) {
 		event.preventDefault();
@@ -115,20 +115,20 @@ $('.searchInput, .menuSearch').on('keyup', function() {
 	}
 });
 
-$('.menuSearchClick').on('click', function(event) {
+$('.menu-search-click').on('click', function(event) {
 	event.preventDefault();
 	runSearch({ fields: getSelected().join(), query: $(this).prev().val() });
 });
 
-$(document).on('click', '.searchTypeContainer .pagination a', function(event) {
+$(document).on('click', '.search-type-container .pagination a', function(event) {
 	event.preventDefault();
 	
 	var thePage = $(this).attr('data-page');
-	var theType = $(this).parents('.searchTypeContainer').attr('data-searchtype');
+	var theType = $(this).parents('.search-type-container').attr('data-searchtype');
 	var theData = {};
 	
 	theData.fields = getSelected().join();
-	theData.query = $('.searchInput').val();
+	theData.query = $('.search-input').val();
 	theData.scroll = theType;
 	theData[theType] = thePage;
 	
@@ -138,7 +138,7 @@ $(document).on('click', '.searchTypeContainer .pagination a', function(event) {
 function getSelected() {
 	var list = [];
 	
-	$('.searchSelector li').each(function() {
+	$('.search-selector li').each(function() {
 		if($(this).hasClass('active'))
 			list.push($(this).text().toLowerCase());
 	})
@@ -164,7 +164,7 @@ function formatItem(type, data, partial) {
 	var $posts;
 		
 	if(partial == false) {
-		$posts = $('<div>').attr('class', 'searchTypeContainer').attr('data-searchtype', type);
+		$posts = $('<div>').attr('class', 'search-type-container').attr('data-searchtype', type);
 	
 		$posts.append($('<h3>')
 			.text(type.charAt(0).toUpperCase() + type.slice(1))
@@ -183,7 +183,7 @@ function formatItem(type, data, partial) {
 			var item = this;
 			
 			$posts.append($('<div>')
-				.attr('class', 'searchItem')
+				.attr('class', 'search-item')
 				.append($('<h4>')
 					.append($('<a>')
 						.attr('href', '/congress/bills/' + this.billId)
@@ -212,7 +212,7 @@ function formatItem(type, data, partial) {
 			var item = this;
 			
 			$posts.append($('<div>')
-				.attr('class', 'searchItem')
+				.attr('class', 'search-item')
 				.append($('<h4>')
 					.append($('<a>')
 						.attr('href', '/industries/' + this.name.toLowerCase().replace(/\W/g, ' ').replace(/\s{2,}/g, ' ').split(' ').join('-') + "/" + this.industry_id)
@@ -232,7 +232,7 @@ function formatItem(type, data, partial) {
 	else if(type == "politicians") {
 		/*
 			<h3>Politicians</h3>
-			<div class="searchItem">
+			<div class="search-item">
 				<div class="row">
 					<div class="large-2 hide-for-small columns">
 						<a href="#"><img src="http://www.rickperry.org/files/portrait_rp.jpg" alt="Rick Perry"></a>

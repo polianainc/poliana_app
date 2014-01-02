@@ -9,7 +9,7 @@
 
 .shake {
 	&:hover {
-	    @include animation(shake 0.2s 2 linear);
+	    @include animation(shake 0.2s 1 linear);
 	    @include transform-origin(50% 50%);
 	}
 }

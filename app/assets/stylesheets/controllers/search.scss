@@ -1,0 +1,19 @@
+.search-area {
+	h3 { border-bottom: 1px solid $secondary-color; }
+	.search-item {
+		h4 {
+			& a {
+				font-weight: bold;
+				color: $body-font-color;
+				&:hover { color: $primary-color; }
+			}
+		}
+		p {
+			& a {
+				display: block;
+				font-size: 0.8em;
+			}
+		}
+		img { margin-top: 10px; }
+	}
+}

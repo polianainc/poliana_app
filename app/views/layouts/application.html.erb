@@ -53,7 +53,7 @@
 							<li><label>Search</label></li>
 					  		<li class="has-form">
 								<form>
-					  				<input type="text" value="<%= params[:query] %>" class="menuSearch<%= !request.env['PATH_INFO'].include?('search') ? " notSearch" : '' %>" placeholder="Search">
+					  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
 									<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
 								</form>
 					  		</li>
@@ -99,7 +99,7 @@
 								<li><%= link_to 'About Us', about_path %></li>
 								<li class="has-form">
 									<form>
-						  				<input type="text" value="<%= params[:query] %>" class="menuSearch<%= !request.env['PATH_INFO'].include?('search') ? " notSearch" : '' %>" placeholder="Search">
+						  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
 										<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
 									</form>
 						  		</li>
@@ -136,6 +136,7 @@
 			</footer>
 		</div>
 	</div>
+	<div id="other-modal" class="reveal-modal small"></div>
 
 	<%= javascript_include_tag "application" %>
 </body>

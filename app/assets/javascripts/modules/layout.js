@@ -12,7 +12,7 @@ $(document).ready(function() {
 	});
 	
 	// Open all other modal dialogs
-	$(document).on('click', '.otherModal', function(event) {
+	$(document).on('click', '.other-modal', function(event) {
 		event.preventDefault();
 		
 		var $otherModal = $('#otherModal');
@@ -23,20 +23,20 @@ $(document).ready(function() {
 	});
 	
 	// On exiting the other modal dialog, remove all the content within so it can be re-populated
-	$('#otherModal').bind('closed', function() { $(this).html(''); });
+	$('#other-modal').bind('closed', function() { $(this).html(''); });
 	
 	// Run a search query
-	$('.menuSearch.notSearch').on('keypress', function(event) {
+	$('.menu-search.not-search').on('keypress', function(event) {
 		if(event.which == 13 && $(this).val() != "") {
 			event.preventDefault();
-			window.location = '/search/?query=' + $(this).val() + "&fields=bills,politicians";
+			runSearch($(this).val());
 		}
 	});
 	
 	// Run a search query
-	$('.menuSearchClick').on('click', function(event) {
+	$('.menu-search-click').on('click', function(event) {
 		event.preventDefault();
-		window.location = '/search/?query=' + $(this).prev().val() + "&fields=bills,politicians";
+		runSearch($(this).prev().val());
 	});
 	
 	// Ignore the natural pagination Javascript
@@ -57,7 +57,7 @@ $(window).resize(function() {
 
 // This is a Javascript shim to fix some CSS bullshit. Without this we pick between an off-canvas menu (mobile) and a sticky footer.
 function stickyFooter() {
-	if($(window).height() > $container.height())
+	if($(window).height() >= $container.height())
 		$container.height($(window).height());
 }
 
@@ -78,4 +78,12 @@ function pageSpecific() {
 			$pageSpecific.remove();
 		});
 	}
+}
+
+// Runs a search query
+function runSearch(query, fields) {
+	if(fields == undefined)
+		fields = "bills,politicians";
+		
+	window.location = '/search/?query=' + query + '&fields=' + fields;
 }

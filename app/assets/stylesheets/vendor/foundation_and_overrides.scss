@@ -850,12 +850,43 @@ $side-nav-font-weight: $body-font-weight;
 // $side-nav-font-family: $body-font-family;
 // $side-nav-active-font-family: $side-nav-font-family;
 
-
-
 // We use these to control border styles
 // $side-nav-divider-size: 1px;
 // $side-nav-divider-style: solid;
 // $side-nav-divider-color: darken(#fff, 10%);
+
+.side-nav {
+	a {
+		&:hover { color: $primary-color; }
+	}
+	&.blocky {
+		margin-bottom: 20px;
+		li {
+			background: $body-font-color;
+			margin-bottom: 0px;
+			@include single-transition(all, 0.1s, linear);
+			a {
+				color: #fff !important;
+				padding: 15px;
+			}
+			&.active {
+				background: $primary-color;
+				&:hover { background: $primary-color; }
+			}
+			&:hover { background: darken($body-font-color, 15%); }
+			&:first-child {
+				border-top: none;
+				@include border-radius($global-radius $global-radius 0px 0px);
+			}
+			&:last-child {
+				@include border-radius(0px 0px $global-radius $global-radius);
+				@include flatten($black-alt);
+				&.active { @include flatten($blue-alt); }
+			}
+			&.divider { border: none; }
+		}
+	}
+}
 
 // Split Buttons
 

@@ -1,20 +1,21 @@
+<div class="page-specific"></div>
 <div class="row">
 	<div class="large-12 columns">
-		<h1 class="searchCount">Search</h1>
+		<h1 class="search-count">Search</h1>
 		<form class="custom">
-			<input type="search" class="searchInput" value="<%= params[:query] %>" placeholder="Search anything in the political system...">
+			<input type="search" class="search-input" value="<%= params[:query] %>" placeholder="Search anything in the political system...">
 		</form>
 	</div>
 </div>
 <div class="row">
-	<div class="large-3 columns">
-		<ul class="side-nav blocky searchSelector">
+	<div class="large-3 medium-4 columns">
+		<ul class="side-nav blocky search-selector">
 			<li<%= params[:fields].split(",").include?('bills') ? " class=active" : '' if params[:fields] %>><a href="#">Bills</a></li>
 			<li<%= params[:fields].split(",").include?('industries') ? " class=active" : '' if params[:fields] %>><a href="#">Industries</a></li>
 			<li<%= params[:fields].split(",").include?('politicians') ? " class=active" : '' if params[:fields] %>><a href="#">Politicians</a></li>
 		</ul>
 	</div>
-	<div class="large-9 columns searchArea"><p class="aligncenter">What are you looking for?</p></div>
+	<div class="large-9 medium-8 columns search-area">
+		<p class="text-center">What are you looking for?</p>
+	</div>
 </div>
-
-<%= javascript_include_tag "search", :defer => "defer" %>

@@ -17,6 +17,15 @@ small { font-size: 0.75em; }
 	padding-bottom: 0px;
 }
 
+.read-more {
+	padding-top: 0px;
+	margin-top: -10px;
+	a {
+		font-size: 0.9em;
+		font-weight: bold;
+	}
+}
+
 // Off canvas menu wrapper and general content styles
 .off-canvas-wrap {
 	#container {

@@ -1,0 +1,36 @@
+<%
+	backgrounds = {
+		"about" => [
+			"aboutImage small",
+			"aboutImage medium",
+			"aboutImage large"
+		],
+		"another" => [
+			"anotherImage small",
+			"anotherImage medium",
+			"anotherImage large"
+		],
+		"yetAnother" => [
+			"yetAnotherImage small",
+			"yetAnotherImage medium",
+			"yetAnotherImage large"
+		]
+	}
+	
+	# If the image variable isn't defined in the view OR if the image variable isn't a key in our list of backgrounds
+	if defined?(image).nil? || !backgrounds.has_key?(image)
+		image = backgrounds[backgrounds.keys.sample]
+	# If the image variable is specified and matches a key in our list of backgrounds, grab the location
+	else
+		image = backgrounds[image]
+	end
+%>
+
+<div>
+	<div class="row">
+		<div class="large-12 columns">
+			<%= image %>
+			<%= yield %>
+		</div>
+	</div>
+</div>

@@ -87,3 +87,15 @@ function runSearch(query, fields) {
 		
 	window.location = '/search/?query=' + query + '&fields=' + fields;
 }
+
+// Get the current media query
+function getMediaQuery() {
+	var level = parseInt($stateIndicator.css('z-index'));
+	
+	if(level > 0 && level <= 2)
+		return "small";
+	else if(level > 2 && level <= 4)
+		return "medium";
+	else
+		return "large";
+}

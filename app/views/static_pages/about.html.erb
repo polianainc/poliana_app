@@ -1,10 +1,8 @@
 <% content_for :title, "About" %>
-<div class="fullRow aboutWideBlurred">
-	<div class="absoluteHero">
-		<h1>So what's this Poliana thing?</h1>
-		<p class="largerParagraph">Get to know a little bit more about us.</p>
-	</div>
-</div>
+<%= render layout: "shared/backgrounds", locals: { image: "about" } do %>
+<h1>About Poliana</h1>
+<p>Get to know a little bit more about us!</p>
+<% end %>
 <div class="row extraPad">
 	<div class="large-6 columns">
 		<h2>We're on a mission...</h2>

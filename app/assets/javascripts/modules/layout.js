@@ -87,8 +87,9 @@ function pageSpecific() {
 
 // Runs a search query
 function runSearch(query, fields) {
+	// This is a comma-separated list of entities to search by
 	if(fields == undefined)
-		fields = "bills,politicians";
+		fields = "politicians";
 		
 	window.location = '/search/?query=' + query + '&fields=' + fields;
 }

@@ -44,8 +44,6 @@
 					<aside class="left-off-canvas-menu">
 						<ul class="off-canvas-list">
 							<li><label>Explore</label></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-signup"></span><span>Bills</span>'.html_safe(), bills_path %></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-office"></span><span>Industries</span>'.html_safe(), industries_path %></li>
 							<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), '#' %></li>
 							<li><label>General</label></li>
 							<% if user_signed_in? %>
@@ -94,8 +92,6 @@
 								<li class="has-dropdown">
 									<a href="#">Explore</a>
 									<ul class="dropdown">
-										<li><%= link_to '<span aria-hidden="true" class="icon-signup"></span><span>Bills</span>'.html_safe(), bills_path %></li>
-										<li><%= link_to '<span aria-hidden="true" class="icon-office"></span><span>Industries</span>'.html_safe(), industries_path %></li>
 										<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), '#' %></li>
 									</ul>
 								</li>

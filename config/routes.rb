@@ -1,10 +1,4 @@
 PolianaApp::Application.routes.draw do
-  get "congress/bills/:billId", :to => "bills#show"
-  get "congress/bills/", :to => "bills#all", :as => 'bills'
-  
-  get "industries/:slug/:industry_id", :to => "industries#show"
-  get "industries/", :to => "industries#all"
-
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :invitations

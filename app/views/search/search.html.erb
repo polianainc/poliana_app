@@ -10,8 +10,6 @@
 <div class="row">
 	<div class="large-3 medium-4 columns">
 		<ul class="side-nav blocky search-selector">
-			<li<%= params[:fields].split(",").include?('bills') ? " class=active" : '' if params[:fields] %>><a href="#">Bills</a></li>
-			<li<%= params[:fields].split(",").include?('industries') ? " class=active" : '' if params[:fields] %>><a href="#">Industries</a></li>
 			<li<%= params[:fields].split(",").include?('politicians') ? " class=active" : '' if params[:fields] %>><a href="#">Politicians</a></li>
 		</ul>
 	</div>

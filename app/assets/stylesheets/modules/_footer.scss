@@ -32,10 +32,6 @@
 				font-size: 0.85em;
 				text-align: left;
 			}
-			small {
-				font-size: 0.9em;
-				color: lighten($black, 20%);
-			}
 		}
 		.social {
 			list-style-type: none;
@@ -56,6 +52,31 @@
 					color: $gray;
 					&:hover { color: $white; }
 				}
+			}
+		}
+		.copyright {
+			list-style-type: none;
+			margin: 0px;
+			margin-top: 10px;
+			li {
+				font-size: 0.9em;
+				text-align: center;
+				color: $black-alt;
+				@media #{$medium-up} {
+					text-align: left;
+					float: left;
+					padding-left: 10px;
+					margin-right: 10px;
+					border-left: 1px solid $black-alt;
+					&:first-child {
+						border-left: none;
+						padding-left: 0px;
+					}
+				}
+			}
+			a {
+				color: $black-alt;
+				&:hover { color: $gray-alt; }
 			}
 		}
 	}

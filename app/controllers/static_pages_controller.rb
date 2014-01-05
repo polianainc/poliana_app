@@ -11,18 +11,6 @@ class StaticPagesController < ApplicationController
   def terms
   end
   
-  def team
-  end
-  
-  def contact
-  end
-  
-  def faq
-  end
-  
-  def mission
-  end
-  
   def mailchimp_signup
     gb = Gibbon::API.new("e30680ef84b786d6d9cbfc173529a8e3-us7")
     

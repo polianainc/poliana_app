@@ -1,0 +1,41 @@
+.team-member {
+	.picture {
+		@include border-radius($global-radius);
+		@include background-size(cover);
+		width: 240px;
+		height: 240px;
+		margin: 10px auto;
+		position: relative;
+		@media #{$medium-up} {
+			width: 150px;
+			height: 150px;
+		}
+		@media #{$large-up} {
+			width: 220px;
+			height: 220px;
+		}
+		ul {
+			position: absolute;
+			right: -5px;
+			bottom: 0px;
+			list-style-type: none;
+			overflow: hidden;
+			margin: 0px;
+			li {
+				float: left;
+				margin-right: 15px;
+				font-size: 1.25em;
+				a {
+					color: $white;
+					@include text-pop($black);
+					&:hover { color: $white-alt; }
+				}
+			}
+		}
+	}
+	h4 {
+		font-weight: bold;
+		margin-bottom: 0px;
+		@media #{$medium-up} { font-weight: 300; }
+	}
+}

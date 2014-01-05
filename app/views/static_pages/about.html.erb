@@ -1,38 +1,58 @@
 <% content_for :title, "About" %>
-<%= render layout: "shared/backgrounds", locals: { image: "about" } do %>
-<h1>About Poliana</h1>
-<p>Get to know a little bit more about us!</p>
+<%= render layout: "shared/backgrounds", locals: { image: "michaelcollins" } do %>
+<h1>Want to know more?</h1>
+<p>Poliana is a web application that demystifies the political process.</p>
 <% end %>
-<div class="row extraPad">
-	<div class="large-6 columns">
-		<h2>We're on a mission...</h2>
-		<p class="highLines">The right to know how your government is voting and the reasons behind it is an inalienable right. We want to clear up the political ecosystem and visualize it in a way that makes sense to everyone. <%= link_to "Click here", mission_path %> to read up more on our mission.</p>
-	</div>
-	<div class="large-6 small-8 small-centered large-uncentered columns">
-		<%= image_tag "pictures/shawn-wide.jpg", :alt => "We're on a mission..." %>
+<div class="row">
+	<div class="large-12 columns hero">
+		<h2 class="text-center">We're on a mission to simplify politics.</h2>
+		<p>Government is a complicated process. With so many people involved in every decision, understanding the major factors that play into how government makes choices is difficult. Of course politicians, corporations, lobbyists, and PACs are all related, but knowing <em>how</em> they affect each other currently requires dedicated time and effort. This confusion leads to more and more people having trouble staying informed and feeling included in the political process - this is where our work begins.</p>
+		<p>Poliana believes that understanding government must be straight-forward. By providing more evidence-based insights and allowing you to easily and visually explore the information you’re most interested in, we keep you in the know. We also encourage you to share the knowledge you gain and help raise the bar of political awareness. And since we don't have any reporters (just numbers, baby!), we avoid human bias and make it a personal goal to let the data speak for itself, allowing you to draw your own conclusions.</p>
 	</div>
 </div>
-<div class="row extraPad">
-	<div class="large-6 columns">
-		<h2>How it works...</h2>
-		<p class="highLines">We take data... lots of data, from the <%= link_to "Center for Responsive Politics", "http://opensecrets.org", :target => "_blank" %>, <%= link_to "Sunlight Foundation", "http://sunlightfoundation.com", :target => "_blank" %>, <%= link_to "Maplight", "http://maplight.org", :target => "_blank" %>, and others. Once we’ve got it, we run some analysis and churn out interactive graphs to explain that information. Alas, politics can be beautiful.</p>
+<div class="row">
+	<div class="large-12 columns hero">
+		<h2 class="text-center">Hey, check out these nerds.</h2>
+		<p>Big data is all the craze these days and at Poliana we just can’t get enough of it. We like to think our team consists of data scientists, developers, designers, and dreamers.</p>
 	</div>
-	<div class="large-6 small-8 small-centered large-uncentered columns">
-		<%= image_tag "pictures/laptop.png", :alt => "How it works..." %>
+	<div class="large-3 medium-3 columns team-member">
+		<div class="picture" style="background-image: url(<%= image_path 'team/grayson.jpg' %>);">
+			<ul>
+				<li><%= link_to '<span aria-hidden="true" class="icon-linkedin"></span>'.html_safe(), 'http://www.linkedin.com/profile/view?id=257513776', :target => "_blank" %></li>
+				<li><%= link_to '<span aria-hidden="true" class="icon-envelope"></span>'.html_safe(), 'mailto:grayson@poliana.com' %></li>
+			</ul>
+		</div>
+		<h4 class="text-center">Grayson Carroll</h4>
+		<p class="text-center">Supreme Leader</p>
 	</div>
-</div>
-<div class="row extraPad">
-	<div class="large-6 columns">
-		<h2>We have a rockstar team...</h2>
-		<p class="highLines">Big data is all the craze these days and at Poliana we just can’t get enough of it. Our team consists of data scientists, developers, designers, and dreamers. Learn more about who we are on our <%= link_to "team page", team_path %>.</p>
+	<div class="large-3 medium-3 columns team-member">
+		<div class="picture" style="background-image: url(<%= image_path 'team/patrick.jpg' %>);">
+			<ul>
+				<li><%= link_to '<span aria-hidden="true" class="icon-linkedin"></span>'.html_safe(), 'http://www.linkedin.com/profile/view?id=68665857', :target => "_blank" %></li>
+				<li><%= link_to '<span aria-hidden="true" class="icon-envelope"></span>'.html_safe(), 'mailto:patrick@poliana.com' %></li>
+			</ul>
+		</div>
+		<h4 class="text-center">Patrick Cason</h4>
+		<p class="text-center">Code &amp; Colors</p>
 	</div>
-	<div class="large-6 small-8 small-centered large-uncentered columns">
-		<%= image_tag "pictures/team.jpg", :alt => "We have a rockstar team..." %>
+	<div class="large-3 medium-3 columns team-member">
+		<div class="picture" style="background-image: url(<%= image_path 'team/david.jpg' %>);">
+			<ul>
+				<li><%= link_to '<span aria-hidden="true" class="icon-linkedin"></span>'.html_safe(), 'http://www.linkedin.com/profile/view?id=114293672', :target => "_blank" %></li>
+				<li><%= link_to '<span aria-hidden="true" class="icon-envelope"></span>'.html_safe(), 'mailto:david@poliana.com' %></li>
+			</ul>
+		</div>
+		<h4 class="text-center">David Gilmore</h4>
+		<p class="text-center">Data Wrangler</p>
 	</div>
-</div>
-<div class="row hero">
-	<div class="large-12 columns">
-		<h2>Wanna know more?</h2>
-		<p><%= link_to "Go ahead and ask", contact_path %>, we’d love to hear what you think!</p>
+	<div class="large-3 medium-3 columns team-member">
+		<div class="picture" style="background-image: url(<%= image_path 'team/shawn.jpg' %>);">
+			<ul>
+				<li><%= link_to '<span aria-hidden="true" class="icon-linkedin"></span>'.html_safe(), 'http://www.linkedin.com/profile/view?id=221531876g', :target => "_blank" %></li>
+				<li><%= link_to '<span aria-hidden="true" class="icon-envelope"></span>'.html_safe(), 'mailto:shawn@poliana.com' %></li>
+			</ul>
+		</div>
+		<h4 class="text-center">Shawn Whiting</h4>
+		<p class="text-center">Jack of all Trades</p>
 	</div>
 </div>

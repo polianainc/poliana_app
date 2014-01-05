@@ -5,17 +5,19 @@ $(document).ready(function() {
 	// Load page-specific Javascript
 	pageSpecific();
 	
+	// Change all the full backgrounds
+	fullBackgrounds();
+	
 	// Open the sharable modal dialog
 	$(document).on('click', '.sharable', function(event) {
 		event.preventDefault();
-		$('#sharable').foundation('reveal', 'open');
+		$sharable.foundation('reveal', 'open');
 	});
 	
 	// Open all other modal dialogs
 	$(document).on('click', '.other-modal', function(event) {
 		event.preventDefault();
 		
-		var $otherModal = $('#otherModal');
 		var html = $(this).attr('data-othermodal') + '<a class="close-reveal-modal">&#215;</a>';
 		
 		$otherModal.html(html);
@@ -23,7 +25,7 @@ $(document).ready(function() {
 	});
 	
 	// On exiting the other modal dialog, remove all the content within so it can be re-populated
-	$('#other-modal').bind('closed', function() { $(this).html(''); });
+	$otherModal.bind('closed', function() { $(this).html(''); });
 	
 	// Run a search query
 	$('.menu-search.not-search').on('keypress', function(event) {
@@ -50,10 +52,13 @@ $(window).load(function() {
 	stickyFooter();
 });
 
-$(window).resize(function() {
+$(window).resize(throttle(function() {
 	// Reposition the footer if necessary as you resize
 	stickyFooter();
-});
+
+	// Change all the full backgrounds
+	fullBackgrounds();
+}, 500));
 
 // This is a Javascript shim to fix some CSS bullshit. Without this we pick between an off-canvas menu (mobile) and a sticky footer.
 function stickyFooter() {
@@ -98,4 +103,11 @@ function getMediaQuery() {
 		return "medium";
 	else
 		return "large";
+}
+
+// Responsive full background images
+function fullBackgrounds() {
+	var newImage = $fullBackground.attr('data-' + getMediaQuery());
+	
+	$fullBackground.css('background-image', 'url(\'/assets/backgrounds/' + newImage + '\')');
 }

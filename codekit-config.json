@@ -31,6 +31,17 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/app\/assets\/images\/backgrounds\/mlk-small.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/mlk-small.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/mlk-small.jpg",
+      "initialSize" : 35142,
+      "fileType" : 4096
+    },
     "\/app\/views\/devise\/registrations\/edit.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -50,6 +61,18 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/bills.min.js",
       "fileType" : 64
+    },
+    "\/app\/assets\/stylesheets\/controllers\/errors.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/controllers\/errors.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/errors.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/app\/views\/devise\/registrations\/new.html.erb" : {
       "ignoreWasSetByUser" : 0,
@@ -81,6 +104,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/app\/assets\/images\/backgrounds\/michaelcollins-medium.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/michaelcollins-medium.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/michaelcollins-medium.jpg",
+      "initialSize" : 72075,
+      "fileType" : 4096
+    },
     "\/app\/views\/industries\/all.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -90,14 +124,53 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/views\/beta\/new.html.erb" : {
+    "\/app\/assets\/stylesheets\/controllers\/beta_mailer.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/beta\/new.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/controllers\/beta_mailer.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/beta_mailer.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/assets\/stylesheets\/controllers\/bills.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/controllers\/bills.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/bills.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/assets\/stylesheets\/controllers\/beta.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/controllers\/beta.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/beta.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/assets\/stylesheets\/modules\/_header.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_header.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_header.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/app\/views\/beta_mailer\/invitation.html.erb" : {
       "ignoreWasSetByUser" : 0,
@@ -107,18 +180,6 @@
       "inputAbbreviatedPath" : "\/app\/views\/beta_mailer\/invitation.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
-    },
-    "\/app\/assets\/stylesheets\/modules\/_functions.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_functions.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/css\/_functions.css",
-      "fileType" : 4,
-      "debugStyle" : 0
     },
     "\/config\/rubber\/role\/web_tools\/rubber-web-tools-monit.html" : {
       "ignoreWasSetByUser" : 0,
@@ -137,6 +198,59 @@
       "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/tools-index.html",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
+    },
+    "\/app\/views\/shared\/_backgrounds.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/shared\/_backgrounds.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/stylesheets\/modules\/_functions.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_functions.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_functions.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/views\/beta\/new.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/beta\/new.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/images\/backgrounds\/michaelcollins-small.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/michaelcollins-small.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/michaelcollins-small.jpg",
+      "initialSize" : 57479,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/stylesheets\/controllers\/industries.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/controllers\/industries.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/industries.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/app\/views\/static_pages\/about.html.erb" : {
       "ignoreWasSetByUser" : 0,
@@ -167,17 +281,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/assets\/javascripts\/modules\/functions.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/functions.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/functions.min.js",
-      "fileType" : 64
-    },
     "\/app\/assets\/stylesheets\/modules\/_variables.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -189,6 +292,29 @@
       "outputAbbreviatedPath" : "\/app\/assets\/css\/_variables.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/app\/assets\/stylesheets\/modules\/_footer.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_footer.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_footer.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/app\/assets\/javascripts\/modules\/functions.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/functions.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/functions.min.js",
+      "fileType" : 64
     },
     "\/app\/views\/devise\/confirmations\/new.html.erb" : {
       "ignoreWasSetByUser" : 0,
@@ -208,25 +334,25 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/assets\/javascripts\/vendor\/topojson.js" : {
+    "\/app\/views\/layouts\/application.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/topojson.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/topojson.min.js",
-      "fileType" : 64
-    },
-    "\/app\/views\/errors\/unacceptable.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/errors\/unacceptable.html.erb",
+      "inputAbbreviatedPath" : "\/app\/views\/layouts\/application.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
+    },
+    "\/app\/assets\/javascripts\/vendor\/mailchimp.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/mailchimp.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/mailchimp.min.js",
+      "fileType" : 64
     },
     "\/app\/assets\/javascripts\/vendor\/d3.v3.js" : {
       "ignoreWasSetByUser" : 0,
@@ -238,6 +364,24 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/d3.v3.min.js",
       "fileType" : 64
+    },
+    "\/config\/rubber\/role\/graphite_web\/dashboard.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/config\/rubber\/role\/graphite_web\/dashboard.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/views\/errors\/unacceptable.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/errors\/unacceptable.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/app\/assets\/stylesheets\/modules\/_icons.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -251,23 +395,16 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/config\/rubber\/role\/graphite_web\/dashboard.html" : {
+    "\/app\/assets\/javascripts\/vendor\/topojson.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config\/rubber\/role\/graphite_web\/dashboard.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/layouts\/application.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/layouts\/application.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/topojson.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/topojson.min.js",
+      "fileType" : 64
     },
     "\/public\/favicon.png" : {
       "ignoreWasSetByUser" : 0,
@@ -298,6 +435,17 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/app\/assets\/images\/backgrounds\/mlk-medium.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/mlk-medium.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/mlk-medium.jpg",
+      "initialSize" : 46069,
+      "fileType" : 4096
+    },
     "\/app\/assets\/javascripts\/modules\/variables.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -320,6 +468,18 @@
       "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/modules\/layout.min.js",
       "fileType" : 64
     },
+    "\/app\/assets\/stylesheets\/controllers\/devise.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/controllers\/devise.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/devise.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/app\/views\/devise\/unlocks\/new.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -328,6 +488,29 @@
       "inputAbbreviatedPath" : "\/app\/views\/devise\/unlocks\/new.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
+    },
+    "\/app\/assets\/images\/backgrounds\/michaelcollins-large.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/michaelcollins-large.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/michaelcollins-large.jpg",
+      "initialSize" : 136051,
+      "fileType" : 4096
+    },
+    "\/app\/assets\/stylesheets\/controllers\/search.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/controllers\/search.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/search.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/app\/assets\/stylesheets\/vendor\/foundation_and_overrides.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -364,6 +547,17 @@
       "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/search.min.js",
       "fileType" : 64
     },
+    "\/app\/assets\/images\/backgrounds\/mlk-large.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/mlk-large.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/backgrounds\/mlk-large.jpg",
+      "initialSize" : 101464,
+      "fileType" : 4096
+    },
     "\/app\/views\/devise\/sessions\/new.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -388,22 +582,21 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/app\/assets\/images\/logo.png",
-      "processed" : 0,
+      "processed" : 1,
       "outputAbbreviatedPath" : "\/app\/assets\/images\/logo.png",
       "initialSize" : 16289,
       "fileType" : 8192
     },
-    "\/app\/assets\/stylesheets\/partials\/_header.scss" : {
+    "\/app\/assets\/images\/logo-white.png" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/partials\/_header.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/css\/_header.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/logo-white.png",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/logo-white.png",
+      "initialSize" : 15895,
+      "fileType" : 8192
     },
     "\/app\/assets\/javascripts\/vendor\/disqus.js" : {
       "ignoreWasSetByUser" : 0,
@@ -428,16 +621,14 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/app\/assets\/images\/logo-white.png" : {
+    "\/config\/rubber\/role\/web_tools\/rubber-web-tools-haproxy.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/logo-white.png",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/logo-white.png",
-      "initialSize" : 15895,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/rubber-web-tools-haproxy.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/config.rb" : {
       "ignoreWasSetByUser" : 0,
@@ -448,21 +639,12 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 32768
     },
-    "\/config\/rubber\/role\/web_tools\/rubber-web-tools-haproxy.html" : {
+    "\/app\/views\/static_pages\/policy.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config\/rubber\/role\/web_tools\/rubber-web-tools-haproxy.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app\/views\/errors\/internal_error.html.erb" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/errors\/internal_error.html.erb",
+      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/policy.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -477,12 +659,12 @@
       "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/application.min.js",
       "fileType" : 64
     },
-    "\/app\/views\/static_pages\/policy.html.erb" : {
+    "\/app\/views\/errors\/internal_error.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/policy.html.erb",
+      "inputAbbreviatedPath" : "\/app\/views\/errors\/internal_error.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -495,14 +677,17 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/views\/static_pages\/mission.html.erb" : {
+    "\/app\/assets\/stylesheets\/controllers\/invitations.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/mission.html.erb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/controllers\/invitations.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/invitations.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/app\/views\/search\/search.html.erb" : {
       "ignoreWasSetByUser" : 0,
@@ -521,6 +706,27 @@
       "inputAbbreviatedPath" : "\/solr\/conf\/admin-extra.html",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
+    },
+    "\/app\/views\/static_pages\/mission.html.erb" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/views\/static_pages\/mission.html.erb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app\/assets\/stylesheets\/modules\/_email.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_email.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_email.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/app\/views\/static_pages\/terms.html.erb" : {
       "ignoreWasSetByUser" : 0,
@@ -549,6 +755,18 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/app\/assets\/stylesheets\/modules\/_errors.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_errors.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_errors.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/app\/assets\/javascripts\/vendor\/ga.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -560,6 +778,18 @@
       "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/vendor\/ga.min.js",
       "fileType" : 64
     },
+    "\/app\/assets\/stylesheets\/modules\/_forms.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/modules\/_forms.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/_forms.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/app\/views\/static_pages\/index.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -568,6 +798,17 @@
       "inputAbbreviatedPath" : "\/app\/views\/static_pages\/index.html.erb",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
+    },
+    "\/app\/assets\/images\/logo-large.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app\/assets\/images\/logo-large.png",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/app\/assets\/images\/logo-large.png",
+      "initialSize" : 166144,
+      "fileType" : 8192
     },
     "\/app\/assets\/javascripts\/controllers\/industries.js" : {
       "ignoreWasSetByUser" : 0,
@@ -580,17 +821,6 @@
       "outputAbbreviatedPath" : "\/app\/assets\/javascripts\/controllers\/industries.min.js",
       "fileType" : 64
     },
-    "\/app\/assets\/images\/logo-large.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/images\/logo-large.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/images\/logo-large.png",
-      "initialSize" : 166144,
-      "fileType" : 8192
-    },
     "\/app\/views\/bills\/show.html.erb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -600,15 +830,15 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/app\/assets\/stylesheets\/partials\/_footer.scss" : {
+    "\/app\/assets\/stylesheets\/controllers\/static_pages.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/partials\/_footer.scss",
+      "inputAbbreviatedPath" : "\/app\/assets\/stylesheets\/controllers\/static_pages.scss",
       "outputStyle" : 3,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/app\/assets\/css\/_footer.css",
+      "outputAbbreviatedPath" : "\/app\/assets\/css\/static_pages.css",
       "fileType" : 4,
       "debugStyle" : 0
     },

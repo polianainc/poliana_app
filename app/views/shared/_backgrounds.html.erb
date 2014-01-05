@@ -1,19 +1,14 @@
 <%
 	backgrounds = {
-		"about" => [
-			"aboutImage small",
-			"aboutImage medium",
-			"aboutImage large"
+		"mlk" => [
+			"mlk-small.jpg",
+			"mlk-medium.jpg",
+			"mlk-large.jpg"
 		],
-		"another" => [
-			"anotherImage small",
-			"anotherImage medium",
-			"anotherImage large"
-		],
-		"yetAnother" => [
-			"yetAnotherImage small",
-			"yetAnotherImage medium",
-			"yetAnotherImage large"
+		"michaelcollins" => [
+			"michaelcollins-small.jpg",
+			"michaelcollins-medium.jpg",
+			"michaelcollins-large.jpg"
 		]
 	}
 	
@@ -26,10 +21,9 @@
 	end
 %>
 
-<div>
+<div class="full-background" data-small="<%= image[0] %>" data-medium="<%= image[1] %>" data-large="<%= image[2] %>">
 	<div class="row">
 		<div class="large-12 columns">
-			<%= image %>
 			<%= yield %>
 		</div>
 	</div>

@@ -11,7 +11,10 @@
 	<meta property="og:image" content="//www.poliana.com/assets/logo-large.png" />
 	<meta property="og:site_name" content="Poliana" />
 	<meta property="og:locale" content="EN_US" />
-	<meta property="og:description" content="Poliana is a web application that simpliﬁes the legislative system by analyzing and visualizing money’s inﬂuence in politics." />
+	<meta property="og:description" content="<%= content_for?(:description) ? yield(:description) : "Poliana is a web application that simpliﬁes the legislative system by analyzing and visualizing money’s inﬂuence in politics." %>" />
+	
+	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Poliana is a web application that simpliﬁes the legislative system by analyzing and visualizing money’s inﬂuence in politics." %>" />
+	<meta name="keywords" content="Poliana,politics,government,influence,data,visualization,legislation,analyze,money,simplify,system,political" />
 
 	<title><%= content_for?(:title) ? yield(:title) + " | Poliana" : "Poliana | See Through Government" %></title>
 

@@ -32,6 +32,9 @@ gem 'omniauth-facebook'
 #Front-end
 gem 'foundation-rails'
 
+#SEO
+gem 'sitemap_generator'
+
 #AWS
 gem 'aws-sdk'
 

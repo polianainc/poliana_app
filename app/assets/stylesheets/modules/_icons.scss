@@ -20,6 +20,11 @@
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	&.large-icon {
+		font-size: 4em;
+		@media #{$medium-up} { font-size: 6em; }
+	}
+	&.text-pop { @include text-pop($black, 2px); }
 }
 
 .icon-home:before {

@@ -5,13 +5,13 @@
 @import "compass/css3";
 
 // Site-wide variables and functions
-@import "modules/_variables", "modules/_functions", "modules/_icons", "modules/_animations";
+@import "modules/_variables", "modules/_functions", "modules/_animations";
 
 // Foundation
 @import "vendor/foundation_and_overrides";
 
 // Global styles and layout includes
-@import "modules/_global", "modules/_header", "modules/_footer";
+@import "modules/_global", "modules/_icons", "modules/_header", "modules/_footer";
 
 // Various other modules
 @import "modules/_forms", "modules/_email", "modules/_errors";

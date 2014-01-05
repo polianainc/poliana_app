@@ -1,44 +1,47 @@
-<div class="fullRow homeWideBlurred">
-	<div class="row">
-		<div class="large-8 columns">
-			<h1>Welcome to Poliana</h1>
-			<p class="largerParagraph">We're using <em>data visualization</em> <br>to drive political transparency</p>
-		</div>
+<%= render layout: "shared/backgrounds", locals: { image: "michaelcollins", classes: 'expanded home' } do %>
+<div class="page-specific"></div>
+<h1 class="text-center">We put politics on display.</h1>
+<div class="text-center play-video">
+	<%= link_to '<span aria-hidden="true" class="icon-play large-icon text-pop"></span>'.html_safe(), 'https://vimeo.com/82250634', :target => '_blank' %>
+	<div class="vimeo-player hide">
+		<iframe src="//player.vimeo.com/video/82250634?title=0&amp;byline=0&amp;portrait=0&amp;color=61d2d6&amp;autoplay=0&amp;" width="888" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 	</div>
-	<div class="row">
-		<div class="large-4 small-10 small-centered large-uncentered columns">
-			<small>Get in line for an invite!</small>
-			<form action="http://poliana.us7.list-manage1.com/subscribe/post?u=92d5bd31807677bfb3c47261b&amp;id=f21dcc0b54" method="post" class="mailchimp-form">
-				<input type="email" class="email" name="EMAIL" placeholder="Email Address">
-				<button type="submit" aria-hidden="true" class="submit icon-heart"></button>
-			</form>
-		</div>
+</div>
+<% end %>
+<div class="row hero">
+	<div class="large-12 columns">
+		<h2 class="text-center">Our mission is to simplify the political system</h2>
 	</div>
 </div>
 <div class="row hero">
-	<h2>What's all the buzz about?</h2>
-	<p>Here goes the graph explorer</p>
+	<div class="large-2 medium-2 columns hide-for-small">
+		<span aria-hidden="true" class="icon-drawer large-icon"></span>
+	</div>
+	<div class="large-10 medium-10 columns">
+		<h3>Just the facts</h3>
+		<p>We aggregate millions of data points on a wide range of government activity. Voting records, financial contributions, lobbying, bills, and industry influence are just some examples of what’s available.</p>
+	</div>
+</div>
+<div class="row hero">
+	<div class="large-2 medium-2 columns hide-for-small">
+		<span aria-hidden="true" class="icon-stats large-icon"></span>
+	</div>
+	<div class="large-10 medium-10 columns">
+		<h3>Gain a deeper understanding</h3>
+		<p>Once you’ve identified a representative, bill, or company you want to look into, we provide user friendly tools for browsing and digging deeply into the data available on that entity.</p>
+	</div>
+</div>
+<div class="row hero">
+	<div class="large-2 medium-2 columns hide-for-small">
+		<span aria-hidden="true" class="icon-bullhorn large-icon"></span>
+	</div>
+	<div class="large-10 medium-10 columns">
+		<h3>Share with your friends</h3>
+		<p>Easily share the most interesting things you find while browsing the site to your social media. Our data-based insights are sure to spark lively discussions.</p>
+	</div>
 </div>
 <div class="row hero">
 	<div class="large-12 columns">
-		<h2>What else can I view?</h2>
-	</div>
-	<div class="large-4 small-10 small-centered large-uncentered columns">
-		<span aria-hidden="true" class="icon-file largeIcon"></span>
-		<h3>Bills</h3>
-		<p>A bill can be any kind of legislation moving through Congress. We also have historical data.</p>
-		<%= link_to "Explore &raquo;".html_safe(), bills_path, :class => "button radius" %>
-	</div>
-	<div class="large-4 small-10 small-centered large-uncentered columns">
-		<span aria-hidden="true" class="icon-office largeIcon"></span>
-		<h3>Industries</h3>
-		<p>An industry is a group of organizations. This also encompasses special interest groups.</p>
-		<%= link_to "Explore &raquo;".html_safe(), industries_path, :class => "button radius" %>
-	</div>
-	<div class="large-4 small-10 small-centered large-uncentered columns">
-		<span aria-hidden="true" class="icon-user largeIcon"></span>
-		<h3>Politicians</h3>
-		<p>A politician is any person currently or previously elected to the House of Representatives or Senate.</p>
-		<%= link_to "Explore &raquo;".html_safe(), "#", :class => "button radius" %>
+		<h4 class="text-center"><%= link_to "Still got questions?", about_path %></h4>
 	</div>
 </div>

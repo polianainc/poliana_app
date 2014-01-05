@@ -39,3 +39,12 @@
 		@media #{$medium-up} { font-weight: 300; }
 	}
 }
+
+.full-video {
+	position: fixed;
+	top: $header-height;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1000;
+}

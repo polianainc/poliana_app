@@ -11,9 +11,7 @@ $('.mailchimp-form').on('submit', function(event) {
 		ajax: true
 	}, function(data) {
 		if(data == "Success") {
-			$form.find('.email').val('').attr('disabled', 'disabled');
-			$form.find('button').fadeOut(250);
-			$form.prev('small').text("You're awesome, thanks!");
+			$form.find('.email').val('See you in the beta!').attr('disabled', 'disabled');
 		}
 	});
 });

@@ -21,7 +21,7 @@
 	end
 %>
 
-<div class="full-background" data-small="<%= image[0] %>" data-medium="<%= image[1] %>" data-large="<%= image[2] %>">
+<div class="full-background<%= " " + classes if !defined?(classes).nil? %>" data-small="<%= image[0] %>" data-medium="<%= image[1] %>" data-large="<%= image[2] %>">
 	<div class="row">
 		<div class="large-12 columns">
 			<%= yield %>

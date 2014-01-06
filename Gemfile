@@ -34,6 +34,7 @@ gem 'foundation-rails'
 
 #SEO
 gem 'sitemap_generator'
+gem 'gabba'
 
 #AWS
 gem 'aws-sdk'

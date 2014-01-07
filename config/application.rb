@@ -72,5 +72,7 @@ module PolianaApp
     
     # Configure 404 pages: http://wearestac.com/blog/dynamic-error-pages-in-rails
     config.exceptions_app = self.routes
+    
+    config.assets.precompile += ['application.css', 'application.js', 'controllers/*.js']
   end
 end

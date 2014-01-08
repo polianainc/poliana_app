@@ -1,6 +1,9 @@
+//= require controllers/static_pages
+
 describe("Home page", function() {	
-	it("should have a heading", function() {
-		loadFixtures('static_pages/index.html.erb');
-		expect($('h1')).toExist();
+	it("should play a video", function() {
+		var $videoLink = $('.play-video a');
+		
+		expect($videoLink).toExist();
 	});
 });

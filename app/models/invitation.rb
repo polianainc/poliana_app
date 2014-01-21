@@ -6,8 +6,9 @@ class Invitation < ActiveRecord::Base
   has_one :recipient, :class_name => 'User'
 
   validates_presence_of :recipient_email
+  validates_format_of :recipient_email, :with => /@/
 
-  before_create :recipient_not_signed_up
+  before_validation :recipient_not_signed_up
   before_create :generate_key
 
   validate :sender_has_invitations, :if => :sender
@@ -22,7 +23,7 @@ class Invitation < ActiveRecord::Base
 
   def sender_has_invitations
     unless sender.invitations_left > 0
-        errors.add(:base, "You have ran out of invitations, email us for more!")
+      errors.add(:base, "You have ran out of invitations, email us for more!")
     end
   end
 

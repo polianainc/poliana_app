@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+	before_filter :authenticate_user!
 	def new
 		@invitation = Invitation.new
 	end

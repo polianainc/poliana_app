@@ -1,3 +1,5 @@
+require 'services/track_events.rb'
+
 class BetaController < Devise::RegistrationsController
     def new
         build_resource({})

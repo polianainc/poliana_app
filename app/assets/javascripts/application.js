@@ -1,3 +1,4 @@
+//= require vendor/ga
 //= require jquery
 //= require jquery_ujs
 //= require vendor/modernizr

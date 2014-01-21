@@ -3,7 +3,7 @@ class EventTracker
     # My Google Analytics tracking code and domain are
     # stored in environment variables. That makes them
     # easy to use on Heroku.
-    @gabba = Gabba::Gabba.new(ENV["UA-42980806-1"], ENV["poliana.com"])
+    @gabba = Gabba::Gabba.new("UA-42980806-1", "poliana.com")
   end
 
   def track(category, action, label = nil, value = nil)

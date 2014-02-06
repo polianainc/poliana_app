@@ -27,7 +27,7 @@
 				<div class="small-10 columns">
 					<%= f.email_field :email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>
 				</div>
-				<%= '<div class="small-12 columns"><small class="error">You must enter a valid email address</small></div>'.html_safe() if !resource.errors[:email].empty? %>
+				<%= throw_errors("Email Address", resource.errors[:email]) %>
 			</div>
 			<div class="row collapse pre-input<%= " error" if !resource.errors[:username].empty? %>">
 				<div class="small-2 columns">
@@ -36,7 +36,7 @@
 				<div class="small-10 columns">
 					<%= f.text_field :username, :autocomplete => "off", :placeholder => "Username" %>
 				</div>
-				<%= '<div class="small-12 columns"><small class="error">You must enter a valid email address</small></div>'.html_safe() if !resource.errors[:username].empty? %>
+				<%= throw_errors("Username", resource.errors[:username]) %>
 			</div>
 			<div class="row collapse pre-input<%= " error" if !resource.errors[:password].empty? %>">
 				<div class="small-2 columns">
@@ -45,7 +45,7 @@
 				<div class="small-10 columns">
 					<%= f.password_field :password, :autocomplete => "off", :placeholder => "Password" %>
 				</div>
-				<%= '<div class="small-12 columns"><small class="error">You must enter a valid email address</small></div>'.html_safe() if !resource.errors[:password].empty? %>
+				<%= throw_errors("Password", resource.errors[:password]) %>
 			</div>
 			<div class="row collapse pre-input<%= " error" if !resource.errors[:password_confirmation].empty? %>">
 				<div class="small-2 columns">
@@ -54,7 +54,7 @@
 				<div class="small-10 columns">
 					<%= f.password_field :password_confirmation, :autocomplete => "off", :placeholder => "Confirm Password" %>
 				</div>
-				<%= '<div class="small-12 columns"><small class="error">You must enter a valid email address</small></div>'.html_safe() if !resource.errors[:password_confirmation].empty? %>
+				<%= throw_errors("Password confirmation", resource.errors[:password_confirmation]) %>
 			</div>
 
 			<%= f.submit "Let's Go", :class => "button expand radius" %>

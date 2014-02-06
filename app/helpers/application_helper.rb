@@ -19,6 +19,20 @@ module ApplicationHelper
       "http://gravatar.com/avatar/#{gravatar_id}.png?s=128"
     end
   end
+  
+  def throw_errors(name, errors)
+    if errors.length > 1
+      the_string = "<div class='small-12 columns'><small class='error'><ul>".html_safe
+      
+      errors.each do |error|
+        the_string += "<li>".html_safe + name + " " + error + "</li>".html_safe
+      end
+      
+      the_string +="</ul></small></div>".html_safe
+    elsif errors.length == 1
+      the_string = "<div class='small-12 columns'><small class='error'>#{name} #{errors[0]}</small></div>".html_safe
+    end
+  end
 end
 
 class String

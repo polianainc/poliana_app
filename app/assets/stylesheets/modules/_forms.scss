@@ -53,5 +53,10 @@
 		position: relative;
 		z-index: 2;
 		@include border-radius(0px 0px 5px 5px);
+		ul {
+			margin-bottom: 0px;
+			padding-left: 5px;
+			li { font-size: 0.75em; }
+		}
 	}
 }

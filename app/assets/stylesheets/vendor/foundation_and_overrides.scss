@@ -70,6 +70,9 @@ button, .button,
 	&.secondary { @include flatten($secondary-colorAlt); }
 	&.success { @include flatten($success-colorAlt); }
 	&.alert { @include flatten($alert-colorAlt); }
+	&.success, &.alert{
+		p { margin-bottom: 0px; }
+	}
 }
 
 .breadcrumbs,

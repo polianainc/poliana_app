@@ -3,11 +3,12 @@ class AuthCallbacksController < Devise::OmniauthCallbacksController
     def all
         user = User.from_omniauth(request.env['omniauth.auth'])
         user.invitation_key ||= session[:invitation_key]
+
         if user.save
             sign_in_and_redirect user, notice: "Success!"
         else
-            session["device.user_attributes"] = user.attributes
-            redirect_to new_user_registration_url
+            flash[:alert] = "You don't have an invitation code yet. Sign up for the beta, and we'll send you one when we're ready!" 
+            redirect_to root_url
         end
     end
 

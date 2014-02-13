@@ -19,6 +19,8 @@ PolianaApp::Application.routes.draw do
   get "about", :to => "static_pages#about"
   get "policy", :to => "static_pages#policy"
   get "terms", :to => "static_pages#terms"
+  get "politician", :to => "static_pages#politician"
+  get "politicians", :to => "static_pages#politicians"
   get "mailchimp_signup", :to => "static_pages#mailchimp_signup"
 
   get "search", :to => "search#search"

@@ -69,18 +69,24 @@ function stickyFooter() {
 // Here we can load page-specific Javascript asynchronously while letting Sprokets handle site-wide dependencies.
 function pageSpecific() {
 	if($pageSpecific.length > 0) {
-		var file = "";
-		
-		// Is the file specified by the element itself?  If not, we default to the body's data-controller attribute.
-		if($pageSpecific.attr('data-controller') != undefined)
-			file = $pageSpecific.attr('data-controller');
-		else
-			file = $('body').attr('data-controller');
-			
-		// <3 asynch loading
-		$.get('/assets/controllers/' + file + ".js", function() {
-			// Don't forget we can remove this now useless element.
-			$pageSpecific.remove();
+		$pageSpecific.each(function() {
+			var file = "";
+			var $elem = $(this);
+
+			// Is the file specified by the element itself?  If not, we default to the body's data-controller attribute.
+			if($elem.attr('data-controller') != undefined)
+				file = $elem.attr('data-controller');
+			else
+				file = $('body').attr('data-controller');
+
+			$.ajax({
+				url: '/assets/controllers/' + file + '.js',
+				async: false,
+				type: 'GET'
+			}).done(function() {
+				// Don't forget we can remove this now useless element.
+				$elem.remove();
+			})
 		});
 	}
 }

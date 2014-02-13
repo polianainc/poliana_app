@@ -10,6 +10,7 @@
 //= require vendor/disqus
 //= require vendor/stupidtable
 //= require vendor/d3.v3
+//= require vendor/crossfilter
 
 $(document).ready(function() {
 	// Initialize Foundation

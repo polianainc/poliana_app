@@ -1,4 +1,4 @@
-var $content = $('.search-area');
+var $searchArea = $('.search-area');
 
 function runSearch(params) {
 	var fields, query, extra;
@@ -33,17 +33,17 @@ function runSearch(params) {
 			entities.push($(this).text().toLowerCase());
 		});
 		
-		$content.fadeOut(250, function() {
+		$searchArea.fadeOut(250, function() {
 			if(extra == undefined) {
 				$(this).html('');
 			
 				for(var i = 0; i < entities.length; i++) {
 					if(search[entities[i]] != undefined)
-						$content.append(formatItem(entities[i], search[entities[i]], false));
+						$searchArea.append(formatItem(entities[i], search[entities[i]], false));
 				}
 			}
 			else
-				$content.append(formatItem(extra, search[extra], true));
+				$searchArea.append(formatItem(extra, search[extra], true));
 			
 			length = $('.search-item').length;
 			
@@ -57,7 +57,7 @@ function runSearch(params) {
 			});
 			
 			if(length == 0) {
-				$content.html($('<p>')
+				$searchArea.html($('<p>')
 					.attr('class', 'text-center')
 					.text("Sorry, we didn't find anything! Try searching more entities.")
 				);

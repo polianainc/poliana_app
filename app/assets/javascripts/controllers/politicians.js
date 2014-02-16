@@ -1,16 +1,15 @@
-var cont = ge.controller({
-	name: "controller"
-});
+var cont = ge.controller();
 
-var bar1 = ge.verticalBarGraph();
+var pacs = ge.verticalBarGraph();
+var industries = ge.verticalBarGraph();
 
-var bar2 = ge.verticalBarGraph({
-	width: 500,
-	height: 300
-}).width(100);
-
-cont.addGraph(bar1).addGraph(bar2);
-
-bar1.width(400).height(200);
+cont.addGraph(pacs).addGraph(industries);
 
 console.log(cont.listGraphs());
+
+cont.render();
+
+
+
+// Go ahead and make the politicians graphs now... abstract them later --------------------
+

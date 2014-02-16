@@ -24,15 +24,34 @@ ge = (function() {
 			},
 			settings: function() {
 				return _controller;
+			},
+			render: function() {
+				for(var i = 0; i < _controller.graphs.length; i++) {
+					_controller.graphs[i].draw();
+				}
+			},
+			redraw: function() {
+				// Compute changes in data and draw incremental changes
 			}
 		};
 	};
+	
+	// colors
+	// data
+	// render?
+	// onClick
+	// onHover
+	// classes
 	
 	ge.verticalBarGraph = function(_graph) {
 		if(_graph === undefined)
 			var _graph = {};
 			
 		_graph.unique_id = getUniqueID();
+		
+		_graph.draw = function() {
+			console.log('d3 time');
+		}
 		
 		function getUniqueID() {
 			return Math.random().toString(36).substr(2, 9);

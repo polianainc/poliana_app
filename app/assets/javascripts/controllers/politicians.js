@@ -1,15 +1,29 @@
 var cont = ge.controller();
 
-var pacs = ge.verticalBarGraph();
-var industries = ge.verticalBarGraph();
+var pacsBar = ge.verticalBarGraph({
+	width: 400,
+	height: 400,
+	selector: $('#pacs-bar'),
+	margins: {
+		all: 40
+	}
+});
 
-cont.addGraph(pacs).addGraph(industries);
+var industriesBar = ge.verticalBarGraph({
+	width: 400,
+	height: 400,
+	selector: $('#industries-bar'),
+	margins: {
+		top: 40,
+		bottom: 30,
+		left: 20,
+		right: 10
+	}
+});
+
+cont.addGraph(pacsBar)
+	.addGraph(industriesBar);
 
 console.log(cont.listGraphs());
 
 cont.render();
-
-
-
-// Go ahead and make the politicians graphs now... abstract them later --------------------
-

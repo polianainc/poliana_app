@@ -1,6 +1,7 @@
 <% content_for :title, "Politician" %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
+<div class="hide primary-key" data-id="ID"></div>
 <div class="row">
 	<div class="large-3 medium-3 columns">
 		<img src="" alt="FULL NAME">
@@ -36,24 +37,24 @@
 	</div>
 	<div class="row">
 		<div class="large-12 columns show-for-medium-up">
-			<div id="timeline">LARGE TIMELINE</div>
+			<div id="timeline-area">LARGE TIMELINE</div>
 		</div>
 		<div class="small-12 columns show-for-small">
-			SMALL TIMELINE
+			<div id="timeline-select">SMALL TIMELINE</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="large-6 medium-6 columns show-for-medium-up">
-			<div id="pacs">PACS BAR</div>
+			<div id="pacs-bar">PACS BAR</div>
 		</div>
 		<div class="small-12 columns show-for-small">
-			PACS PIE
+			<div id="pacs-pie">PACS PIE</div>
 		</div>
 		<div class="large-6 medium-6 columns show-for-medium-up">
-			<div id="industries">INDUSTRIES BAR</div>
+			<div id="industries-bar">INDUSTRIES BAR</div>
 		</div>
 		<div class="small-12 columns show-for-small">
-			INDUSTRIES PIE
+			<div id="industries-pie">INDUSTRIES PIE</div>
 		</div>
 	</div>
 </div>

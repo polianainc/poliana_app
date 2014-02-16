@@ -1,3 +1,4 @@
+<% if flash[:error] || flash[:errors] || flash[:alert] || flash[:success] || flash[:notice] %>
 <div class="large-12 columns">
 	<% if flash[:error] || flash[:errors] || flash[:alert] %>
 	<div data-alert class="alert-box alert radius">
@@ -15,3 +16,4 @@
 	</div>
 	<% end %>
 </div>
+<% end %>

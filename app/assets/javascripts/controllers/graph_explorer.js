@@ -37,7 +37,6 @@ ge = (function() {
 		};
 	};
 	
-	// colors
 	// data
 	// render?
 	// onClick
@@ -58,6 +57,7 @@ ge = (function() {
 		// Set our defaults
 		_graph.width = _graph.width === undefined ? 400 : _graph.width;
 		_graph.height = _graph.height === undefined ? 400 : _graph.height;
+		_graph.colors = _graph.color === undefined ? warmColors : _graph.colors;
 		
 		if(_graph.margins === undefined)
 			setMargins()
@@ -97,6 +97,11 @@ ge = (function() {
 				.style("background-color", "black")
 				.append("g")
 					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+					
+			var colors = d3.scale.ordinal()
+				.domain([0, _graph.colors.length - 1])
+				.range(_graph.colors);
+				
 			/*
 			d3.tsv("data.tsv", type, function(error, data) {
 			  x.domain(data.map(function(d) { return d.letter; }));
@@ -124,7 +129,8 @@ ge = (function() {
 				  .attr("x", function(d) { return x(d.letter); })
 				  .attr("width", x.rangeBand())
 				  .attr("y", function(d) { return y(d.frequency); })
-				  .attr("height", function(d) { return height - y(d.frequency); });
+				  .attr("height", function(d) { return height - y(d.frequency); })
+				  .attr("fill", function(d, i) { return colors(i); });
 
 			});
 

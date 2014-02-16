@@ -1,4 +1,4 @@
-// Get our biogiude
+// Get our bioguide
 var bioguide = $('#primary-key').attr('data-id');
 
 // Define our controller
@@ -13,7 +13,8 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 		selector: $('#pacs-bar'),
 		margins: {
 			all: 40
-		}
+		},
+		colors: warmColors
 	});
 	
 	cont.addGraph(pacsBar);
@@ -31,7 +32,8 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 			bottom: 30,
 			left: 20,
 			right: 10
-		}
+		},
+		colors: coolColors
 	});
 	
 	cont.addGraph(industriesBar);
@@ -39,9 +41,13 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 
 // Tell jQuery's AJAX to be patient
 $.when(getPacs, getIndustries).done(function() {
-	// Let's rock and roll
-	cont.render();
+	// Hide the loader
+	$('.loader').fadeOut(250, function() {
+		// Let's rock and roll
+		cont.render();
+		$('#primary-key').remove();
 
-	// Show me what ya got
-	console.log(cont.listGraphs());
+		// Show me what ya got
+		console.log(cont.listGraphs());
+	});
 });

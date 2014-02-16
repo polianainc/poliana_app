@@ -45,6 +45,11 @@ $(document).ready(function() {
 	$(document).on('click', '.pagination .current', function(event) {
 		event.preventDefault();
 	});
+	
+	// Add a div to loaders, so front-end doesn't have to be cluttered in view
+	$('.loader').each(function() {
+		$(this).append($('<div>'));
+	});
 });
 
 $(window).load(function() {

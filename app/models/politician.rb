@@ -9,4 +9,5 @@ class Politician
   field :birthday, :type=> Date
 
   embeds_many :terms
+  index "terms.term_start" => 2
 end

@@ -36,7 +36,8 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	var cf_contributions = cf.dimension(function(c) { return c.contribution_sum; });
 	var cf_congress = cf.dimension(function(c) { return c.congress; });
 	
-	var pacsBar = ge.verticalBarGraph({
+	var pacsBar = ge.graph({
+		type: 'verticalBar',
 		width: 400,
 		height: 400,
 		selector: $('#pacs-bar'),
@@ -44,8 +45,7 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 			all: 40
 		},
 		colors: warmColors,
-		data: transform,
-		crossfilter: cf,
+		data: cf,
 		dimensions: {
 			contributions: cf_contributions,
 			congress: cf_congress
@@ -58,7 +58,8 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 // Get all the industries
 //var getIndustries = $.get('//default-environment-ygymzummgf.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
 var getIndustries = $.get('/temp/industries.json', function(data) {
-	var industriesBar = ge.verticalBarGraph({
+	var industriesBar = ge.graph({
+		type: 'verticalBar',
 		width: 400,
 		height: 400,
 		selector: $('#industries-bar'),

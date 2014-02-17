@@ -27,38 +27,28 @@ ge = (function() {
 			},
 			render: function() {
 				for(var i = 0; i < _controller.graphs.length; i++) {
-					_controller.graphs[i].draw();
+					_controller.graphs[i].render();
 				}
 				return this;
 			},
 			redraw: function() {
-				// Compute changes in data and draw incremental changes
+				for(var i = 0; i < _controller.graphs.length; i++) {
+					_controller.graphs[i].redraw();
+				}
+				return this;
 			}
 		};
 	};
 	
-	// data
-	// render?
-	// onClick
-	// onHover
-	// classes
-	
-	ge.verticalBarGraph = function(_graph) {
+	ge.graph = function(_graph) {
 		// If we don't pass any settings, we have to get them from their functions, at least define _graph
 		if(_graph === undefined)
 			var _graph = {};
-		
-		// This is so that we have a jQuery-namespaced variable to work with	
-		var $graph;
-			
-		if(_graph.selector !== undefined)
-			$graph = _graph.selector;
 			
 		// Set our defaults
 		_graph.width = _graph.width === undefined ? 400 : _graph.width;
 		_graph.height = _graph.height === undefined ? 400 : _graph.height;
 		_graph.colors = _graph.color === undefined ? warmColors : _graph.colors;
-		_graph.crossfilter = _graph.crossfilter === undefined ? crossfilter(_graph.data) : _graph.crossfilter;
 		
 		if(_graph.margins === undefined)
 			setMargins()
@@ -67,93 +57,8 @@ ge = (function() {
 			
 		_graph.unique_id = getUniqueID();
 		
-		_graph.draw = function() {
-			var margin = {
-					top: _graph.margins.top,
-					bottom: _graph.margins.bottom,
-					left: _graph.margins.left,
-					right: _graph.margins.right
-				},
-				width = _graph.width - margin.left - margin.right,
-				height = _graph.height - margin.top - margin.bottom;
-			
-			var x = d3.scale.ordinal()
-				.rangeRoundBands([0, width], .1);
-
-			var y = d3.scale.linear()
-				.range([height, 0]);
-
-			var xAxis = d3.svg.axis()
-				.scale(x)
-				.orient("bottom");
-
-			var yAxis = d3.svg.axis()
-				.scale(y)
-				.orient("left")
-				.ticks(10, "%");
-
-			var svg = d3.select($graph.selector).append("svg")
-				.attr("width", width + margin.left + margin.right)
-				.attr("height", height + margin.top + margin.bottom)
-				.append("g")
-					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-					
-			var colors = d3.scale.ordinal()
-				.domain([0, _graph.colors.length - 1])
-				.range(_graph.colors);
-				
-			var data;
-			
-			/*if(_graph.dataSelector !== undefined)
-				data = crossfilter(_graph.data[_graph.dataSelector]);
-			else
-				data = crossfilter(_graph.data);
-				
-			var dimension = data.dimension(function(c) { return c[_graph.dimension]; });
-			
-			console.log("Top 5 all-time:");
-			
-			dimension.top(5).forEach(function(p, i) {
-				console.log(p.pac_name + " (" + p.congress + ")" + ": $" + commaSeparateNumber(p.contribution_sum));
-			});
-						
-			console.log("Top 5 for 109th Congress:");
-			
-			data.dimension(function(c) { return c.congress; }).filter(110).group().order(function(c) { console.log(c); return c; }).top(5).forEach(function(p, i) {
-				console.log(p.pac_name + " (" + p.congress + ")" + ": $" + commaSeparateNumber(p.contribution_sum));
-			});
-			
-			if(data !== undefined) {				
-				x.domain(data.map(function(d) { return d[_graph.keySelector]; }));
-				y.domain([0, d3.max(data, function(d) { return d[_graph.valueSelector]; })]);
-
-				svg.append("g")
-					.attr("class", "x axis")
-					.attr("transform", "translate(0, " + height + ")")
-					.call(xAxis);
-
-				svg.append("g")
-					.attr("class", "y axis")
-					.call(yAxis)
-					.append("text")
-					.attr("transform", "rotate(-90)")
-					.attr("y", 6)
-					.attr("dy", ".71em")
-					.style("text-anchor", "end")
-					.text("Frequency");
-
-				svg.selectAll(".bar")
-					.data(data)
-					.enter().append("rect")
-						.attr("class", "bar")
-						.attr("x", function(d) { return x(d[_graph.keySelector]); })
-						.attr("width", x.rangeBand())
-						.attr("y", function(d) { return y(d[_graph.valueSelector]); })
-						.attr("height", function(d) { return height - y(d[_graph.valueSelector]); })
-						.attr("fill", function(d, i) { return colors(i); });
-			}
-			*/
-		}
+		if(_graph.type === "verticalBar")
+			ge.verticalBar(_graph);
 		
 		function getUniqueID() {
 			return Math.random().toString(36).substr(2, 9);
@@ -215,10 +120,6 @@ ge = (function() {
 				_graph.data = data;
 				return this;
 			},
-			crossfilter: function(cf) {
-				_graph.crossfilter = cf;
-				return this;
-			},
 			dimensions: function(dimensions) {
 				_graph.dimensions = dimensions;
 				return this;
@@ -226,6 +127,87 @@ ge = (function() {
 			settings: function() {
 				return _graph;
 			}
+		};
+	};
+	
+	ge.verticalBar = function(_graph) {
+		_graph.redraw = function() {
+			console.log('redraw');
+		};
+		
+		_graph.render = function() {
+			console.log('draw');
+			var data = _graph.data;
+			
+			// This is so that we have a jQuery-namespaced variable to work with	
+			var $graph;
+
+			if(_graph.selector !== undefined)
+				$graph = _graph.selector;
+			
+			var margin = {
+					top: _graph.margins.top,
+					bottom: _graph.margins.bottom,
+					left: _graph.margins.left,
+					right: _graph.margins.right
+				},
+				width = _graph.width - margin.left - margin.right,
+				height = _graph.height - margin.top - margin.bottom;
+			
+			var x = d3.scale.ordinal()
+				.rangeRoundBands([0, width], .1);
+
+			var y = d3.scale.linear()
+				.range([height, 0]);
+
+			var xAxis = d3.svg.axis()
+				.scale(x)
+				.orient("bottom");
+
+			var yAxis = d3.svg.axis()
+				.scale(y)
+				.orient("left")
+				.ticks(10, "%");
+
+			var svg = d3.select($graph.selector).append("svg")
+				.attr("width", width + margin.left + margin.right)
+				.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+					
+			var colors = d3.scale.ordinal()
+				.domain([0, _graph.colors.length - 1])
+				.range(_graph.colors);
+				
+			/*if(data !== undefined) {				
+				x.domain(data.map(function(d) { return d[_graph.keySelector]; }));
+				y.domain([0, d3.max(data, function(d) { return d[_graph.valueSelector]; })]);
+
+				svg.append("g")
+					.attr("class", "x axis")
+					.attr("transform", "translate(0, " + height + ")")
+					.call(xAxis);
+
+				svg.append("g")
+					.attr("class", "y axis")
+					.call(yAxis)
+					.append("text")
+					.attr("transform", "rotate(-90)")
+					.attr("y", 6)
+					.attr("dy", ".71em")
+					.style("text-anchor", "end")
+					.text("Frequency");
+
+				svg.selectAll(".bar")
+					.data(data)
+					.enter().append("rect")
+						.attr("class", "bar")
+						.attr("x", function(d) { return x(d[_graph.keySelector]); })
+						.attr("width", x.rangeBand())
+						.attr("y", function(d) { return y(d[_graph.valueSelector]); })
+						.attr("height", function(d) { return height - y(d[_graph.valueSelector]); })
+						.attr("fill", function(d, i) { return colors(i); });
+			}*/
 		};
 	};
 	

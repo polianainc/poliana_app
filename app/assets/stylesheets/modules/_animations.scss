@@ -17,15 +17,15 @@
 // Loader animation, used sitewide
 
 @include keyframes(loaderLeft) {
-    0% { left: 50%; @include scale(1); }
+    0% { left: 25%; @include scale(1); }
 	50% { left: -25%; @include scale(0.75); }
-    100% { left: 50%; @include scale(1); }
+    100% { left: 25%; @include scale(1); }
 }
 
 @include keyframes(loaderRight) {
-    0% { left: 50%; @include scale(1); }
+    0% { left: 75%; @include scale(1); }
 	50% { left: 125%; @include scale(0.75); }
-    100% { left: 50%; @include scale(1); }
+    100% { left: 75%; @include scale(1); }
 }
 
 .loader {

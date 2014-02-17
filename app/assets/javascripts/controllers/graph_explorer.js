@@ -58,6 +58,7 @@ ge = (function() {
 		_graph.width = _graph.width === undefined ? 400 : _graph.width;
 		_graph.height = _graph.height === undefined ? 400 : _graph.height;
 		_graph.colors = _graph.color === undefined ? warmColors : _graph.colors;
+		_graph.crossfilter = _graph.crossfilter === undefined ? crossfilter(_graph.data) : _graph.crossfilter;
 		
 		if(_graph.margins === undefined)
 			setMargins()
@@ -94,7 +95,6 @@ ge = (function() {
 			var svg = d3.select($graph.selector).append("svg")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height", height + margin.top + margin.bottom)
-				.style("background-color", "black")
 				.append("g")
 					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 					
@@ -102,41 +102,55 @@ ge = (function() {
 				.domain([0, _graph.colors.length - 1])
 				.range(_graph.colors);
 				
-			/*
-			d3.tsv("data.tsv", type, function(error, data) {
-			  x.domain(data.map(function(d) { return d.letter; }));
-			  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-
-			  svg.append("g")
-				  .attr("class", "x axis")
-				  .attr("transform", "translate(0," + height + ")")
-				  .call(xAxis);
-
-			  svg.append("g")
-				  .attr("class", "y axis")
-				  .call(yAxis)
-				.append("text")
-				  .attr("transform", "rotate(-90)")
-				  .attr("y", 6)
-				  .attr("dy", ".71em")
-				  .style("text-anchor", "end")
-				  .text("Frequency");
-
-			  svg.selectAll(".bar")
-				  .data(data)
-				.enter().append("rect")
-				  .attr("class", "bar")
-				  .attr("x", function(d) { return x(d.letter); })
-				  .attr("width", x.rangeBand())
-				  .attr("y", function(d) { return y(d.frequency); })
-				  .attr("height", function(d) { return height - y(d.frequency); })
-				  .attr("fill", function(d, i) { return colors(i); });
-
+			var data;
+			
+			/*if(_graph.dataSelector !== undefined)
+				data = crossfilter(_graph.data[_graph.dataSelector]);
+			else
+				data = crossfilter(_graph.data);
+				
+			var dimension = data.dimension(function(c) { return c[_graph.dimension]; });
+			
+			console.log("Top 5 all-time:");
+			
+			dimension.top(5).forEach(function(p, i) {
+				console.log(p.pac_name + " (" + p.congress + ")" + ": $" + commaSeparateNumber(p.contribution_sum));
 			});
+						
+			console.log("Top 5 for 109th Congress:");
+			
+			data.dimension(function(c) { return c.congress; }).filter(110).group().order(function(c) { console.log(c); return c; }).top(5).forEach(function(p, i) {
+				console.log(p.pac_name + " (" + p.congress + ")" + ": $" + commaSeparateNumber(p.contribution_sum));
+			});
+			
+			if(data !== undefined) {				
+				x.domain(data.map(function(d) { return d[_graph.keySelector]; }));
+				y.domain([0, d3.max(data, function(d) { return d[_graph.valueSelector]; })]);
 
-			function type(d) {
-			  d.frequency = +d.frequency;
-			  return d;
+				svg.append("g")
+					.attr("class", "x axis")
+					.attr("transform", "translate(0, " + height + ")")
+					.call(xAxis);
+
+				svg.append("g")
+					.attr("class", "y axis")
+					.call(yAxis)
+					.append("text")
+					.attr("transform", "rotate(-90)")
+					.attr("y", 6)
+					.attr("dy", ".71em")
+					.style("text-anchor", "end")
+					.text("Frequency");
+
+				svg.selectAll(".bar")
+					.data(data)
+					.enter().append("rect")
+						.attr("class", "bar")
+						.attr("x", function(d) { return x(d[_graph.keySelector]); })
+						.attr("width", x.rangeBand())
+						.attr("y", function(d) { return y(d[_graph.valueSelector]); })
+						.attr("height", function(d) { return height - y(d[_graph.valueSelector]); })
+						.attr("fill", function(d, i) { return colors(i); });
 			}
 			*/
 		}
@@ -195,6 +209,18 @@ ge = (function() {
 			},
 			margins: function(margins) {
 				setMargins(margins);
+				return this;
+			},
+			data: function(data) {
+				_graph.data = data;
+				return this;
+			},
+			crossfilter: function(cf) {
+				_graph.crossfilter = cf;
+				return this;
+			},
+			dimensions: function(dimensions) {
+				_graph.dimensions = dimensions;
 				return this;
 			},
 			settings: function() {

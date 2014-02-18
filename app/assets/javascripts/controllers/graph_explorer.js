@@ -133,6 +133,10 @@ ge = (function() {
 				_graph.size = size;
 				return this;
 			},
+			type: function(type) {
+				_graph.type = type;
+				return this;
+			},
 			settings: function() {
 				return _graph;
 			}
@@ -156,7 +160,7 @@ ge = (function() {
 			height = _graph.height - margin.top - margin.bottom;
 		
 		var x = d3.scale.ordinal()
-			.rangeRoundBands([30, width], .1, 0.5);
+			.rangeRoundBands([30, width], .05, 0.5);
 
 		var y = d3.scale.linear()
 			.range([height, 0]);
@@ -183,14 +187,15 @@ ge = (function() {
 			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
 			.range(_graph.colors);
 			
-		function topRoundedRect(x, y, width, height, radius) {
-			return "M" + x + "," + y
+		function topRoundedRect(x, y, width, height, radius, start) {
+			start = start === undefined ? 1 : 0;
+			
+			return "M" + x + "," + (_graph.height - margin.top - margin.bottom)
 				+ "h" + (width - radius)
-				+ "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius
-				+ "v" + (height - radius)
-				+ "h" + (radius - width - radius)
-				+ "v" + (radius - height)
-				+ "a" + radius + "," + radius + " 0 0 1 " + radius + "," + -radius
+				+ "v" + (radius - height) * start
+				+ "a" + radius + "," + radius + " 0 0 0 " + -radius + "," + -radius
+				+ "h" + ((radius * 2) - width + radius)
+				+ "a" + radius + "," + radius + " 0 0 0 " + -radius + "," + radius
 				+ "z";
 		}
 			
@@ -201,9 +206,8 @@ ge = (function() {
 		_graph.render = function() {
 			var data;
 			
-			if(_graph.primaryDimension !== undefined) {
+			if(_graph.primaryDimension !== undefined)
 				data = _graph.primaryDimension.top(_graph.size);
-			}
 				
 			if(data !== undefined) {				
 				x.domain(data.map(function(d) { return d[_graph.keySelector]; }));
@@ -225,7 +229,7 @@ ge = (function() {
 					.attr("x", 4)
 					.attr("dy", -4);
 
-				svg.selectAll(".bar")
+				var bars = svg.selectAll(".bar")
 					.data(data)
 					.enter().append("path")
 						// We use a custom path function rather than SVG's rect element to get rounded corners
@@ -235,11 +239,26 @@ ge = (function() {
 								y(d[_graph.valueSelector]),
 								x.rangeBand(),
 								height - y(d[_graph.valueSelector]),
-								5
+								5,
+								true
 							);
 						})
 						.attr("class", "bar")
 						.attr("fill", function(d, i) { return colors(i); });
+						
+				bars.transition()
+					.delay(function(d, i){ return i * 100;})
+					.duration(500)
+					// We use a custom path function rather than SVG's rect element to get rounded corners
+					.attr("d", function(d) {
+						return topRoundedRect(
+							x(d[_graph.keySelector]),
+							y(d[_graph.valueSelector]),
+							x.rangeBand(),
+							height - y(d[_graph.valueSelector]),
+							5
+						);
+					});
 			}
 		};
 		

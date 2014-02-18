@@ -33,7 +33,7 @@ ge = (function() {
 			},
 			redraw: function() {
 				for(var i = 0; i < _controller.graphs.length; i++) {
-					_controller.graphs[i].redraw();
+					_controller.graphs[i].redraw('redraw');
 				}
 				return this;
 			}
@@ -48,7 +48,8 @@ ge = (function() {
 		// Set our defaults
 		_graph.width = _graph.width === undefined ? 400 : _graph.width;
 		_graph.height = _graph.height === undefined ? 400 : _graph.height;
-		_graph.colors = _graph.color === undefined ? warmColors : _graph.colors;
+		_graph.colors = _graph.colors === undefined ? warmColors : _graph.colors;
+		_graph.size = _graph.size === undefined ? 5 : _graph.size;
 		
 		if(_graph.margins === undefined)
 			setMargins()
@@ -57,8 +58,8 @@ ge = (function() {
 			
 		_graph.unique_id = getUniqueID();
 		
-		if(_graph.type === "verticalBar")
-			ge.verticalBar(_graph);
+		// Trickle down our settings by calling the specific graph function
+		ge[_graph.type](_graph);
 		
 		function getUniqueID() {
 			return Math.random().toString(36).substr(2, 9);
@@ -120,8 +121,16 @@ ge = (function() {
 				_graph.data = data;
 				return this;
 			},
-			dimensions: function(dimensions) {
-				_graph.dimensions = dimensions;
+			primaryDimension: function(dimension) {
+				_graph.primaryDimension = dimension;
+				return this;
+			},
+			otherDimensions: function(dimensions) {
+				_graph.otherDimensions = dimensions;
+				return this;
+			},
+			size: function(size) {
+				_graph.size = size;
 				return this;
 			},
 			settings: function() {
@@ -131,84 +140,110 @@ ge = (function() {
 	};
 	
 	ge.verticalBar = function(_graph) {
-		_graph.redraw = function() {
-			console.log('redraw');
+		// This is so that we have a jQuery-namespaced variable to work with	
+		var $graph;
+
+		if(_graph.selector !== undefined)
+			$graph = _graph.selector;
+		
+		var margin = {
+				top: _graph.margins.top,
+				bottom: _graph.margins.bottom,
+				left: _graph.margins.left,
+				right: _graph.margins.right
+			},
+			width = _graph.width - margin.left - margin.right,
+			height = _graph.height - margin.top - margin.bottom;
+		
+		var x = d3.scale.ordinal()
+			.rangeRoundBands([30, width], .1, 0.5);
+
+		var y = d3.scale.linear()
+			.range([height, 0]);
+
+		var xAxis = d3.svg.axis()
+			.scale(x)
+			.orient("bottom");
+
+		var yAxis = d3.svg.axis()
+			.scale(y)
+			.orient("right")
+			.ticks(5)
+			.tickSize(width)
+			.tickFormat(function(d) { return "$" + currencyNumber(d, 1); });
+
+		var svg = d3.select($graph.selector).append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.attr("class", camelToHyphen(_graph.type))
+			.append("g")
+				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+				
+		var colors = d3.scale.ordinal()
+			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
+			.range(_graph.colors);
+			
+		function topRoundedRect(x, y, width, height, radius) {
+			return "M" + x + "," + y
+				+ "h" + (width - radius)
+				+ "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius
+				+ "v" + (height - radius)
+				+ "h" + (radius - width - radius)
+				+ "v" + (radius - height)
+				+ "a" + radius + "," + radius + " 0 0 1 " + radius + "," + -radius
+				+ "z";
+		}
+			
+		_graph.redraw = function(newData) {
+			console.log(newData);
 		};
 		
 		_graph.render = function() {
-			console.log('draw');
-			var data = _graph.data;
+			var data;
 			
-			// This is so that we have a jQuery-namespaced variable to work with	
-			var $graph;
-
-			if(_graph.selector !== undefined)
-				$graph = _graph.selector;
-			
-			var margin = {
-					top: _graph.margins.top,
-					bottom: _graph.margins.bottom,
-					left: _graph.margins.left,
-					right: _graph.margins.right
-				},
-				width = _graph.width - margin.left - margin.right,
-				height = _graph.height - margin.top - margin.bottom;
-			
-			var x = d3.scale.ordinal()
-				.rangeRoundBands([0, width], .1);
-
-			var y = d3.scale.linear()
-				.range([height, 0]);
-
-			var xAxis = d3.svg.axis()
-				.scale(x)
-				.orient("bottom");
-
-			var yAxis = d3.svg.axis()
-				.scale(y)
-				.orient("left")
-				.ticks(10, "%");
-
-			var svg = d3.select($graph.selector).append("svg")
-				.attr("width", width + margin.left + margin.right)
-				.attr("height", height + margin.top + margin.bottom)
-				.append("g")
-					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-					
-			var colors = d3.scale.ordinal()
-				.domain([0, _graph.colors.length - 1])
-				.range(_graph.colors);
+			if(_graph.primaryDimension !== undefined) {
+				data = _graph.primaryDimension.top(_graph.size);
+			}
 				
-			/*if(data !== undefined) {				
+			if(data !== undefined) {				
 				x.domain(data.map(function(d) { return d[_graph.keySelector]; }));
-				y.domain([0, d3.max(data, function(d) { return d[_graph.valueSelector]; })]);
+				y.domain([0, d3.max(data, function(d) { return d[_graph.valueSelector] * 1.15; })]);
 
 				svg.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0, " + height + ")")
 					.call(xAxis);
 
-				svg.append("g")
+				var gy = svg.append("g")
 					.attr("class", "y axis")
-					.call(yAxis)
-					.append("text")
-					.attr("transform", "rotate(-90)")
-					.attr("y", 6)
-					.attr("dy", ".71em")
-					.style("text-anchor", "end")
-					.text("Frequency");
+					.call(yAxis);
+					
+				gy.selectAll("g").filter(function(d) { return d; })
+					.classed("minor", true);
+
+				gy.selectAll("text")
+					.attr("x", 4)
+					.attr("dy", -4);
 
 				svg.selectAll(".bar")
 					.data(data)
-					.enter().append("rect")
+					.enter().append("path")
+						// We use a custom path function rather than SVG's rect element to get rounded corners
+						.attr("d", function(d) {
+							return topRoundedRect(
+								x(d[_graph.keySelector]),
+								y(d[_graph.valueSelector]),
+								x.rangeBand(),
+								height - y(d[_graph.valueSelector]),
+								5
+							);
+						})
 						.attr("class", "bar")
-						.attr("x", function(d) { return x(d[_graph.keySelector]); })
-						.attr("width", x.rangeBand())
-						.attr("y", function(d) { return y(d[_graph.valueSelector]); })
-						.attr("height", function(d) { return height - y(d[_graph.valueSelector]); })
 						.attr("fill", function(d, i) { return colors(i); });
-			}*/
+			}
 		};
+		
+		return _graph;
 	};
 	
 	return ge;

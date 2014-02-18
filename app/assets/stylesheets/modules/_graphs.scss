@@ -1,0 +1,22 @@
+.vertical-bar {	
+	.axis {
+		path { display: none; }
+		.tick {
+			text {
+				font-size: 0.75em;
+			}
+			line {
+				shape-rendering: crispEdges;
+				stroke: $black;
+			}
+			&.minor {
+				line {
+					stroke: $gray;
+				}
+			}
+			&:first-child {
+				text { display: none; }
+			}
+		}
+	}
+}

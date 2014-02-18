@@ -33,23 +33,29 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	
 	var cf = crossfilter(transform.contributions);
 	
-	var cf_contributions = cf.dimension(function(c) { return c.contribution_sum; });
-	var cf_congress = cf.dimension(function(c) { return c.congress; });
+	var cf_contributions = cf.dimension(function(c) { return +c.contribution_sum; });
+	var cf_congress = cf.dimension(function(c) { return +c.congress; });
 	
 	var pacsBar = ge.graph({
 		type: 'verticalBar',
 		width: 400,
-		height: 400,
+		height: 300,
 		selector: $('#pacs-bar'),
 		margins: {
-			all: 40
+			top: 60,
+			bottom: 20,
+			left: 0,
+			right: 0
 		},
 		colors: warmColors,
 		data: cf,
-		dimensions: {
-			contributions: cf_contributions,
+		primaryDimension: cf_contributions,
+		otherDimensions: {
 			congress: cf_congress
-		}
+		},
+		size: 5,
+		keySelector: 'pac_name',
+		valueSelector: 'contribution_sum'
 	});
 	
 	cont.addGraph(pacsBar);

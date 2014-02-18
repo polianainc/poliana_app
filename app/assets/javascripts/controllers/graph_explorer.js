@@ -13,7 +13,7 @@ ge = (function() {
 			
 		return {
 			addGraph: function(graph) {
-				_controller.graphs.push(graph.settings());
+				_controller.graphs.push(graph);
 				return this;
 			},
 			getGraph: function(index) {
@@ -26,15 +26,15 @@ ge = (function() {
 				return _controller;
 			},
 			render: function() {
-				for(var i = 0; i < _controller.graphs.length; i++) {
+				for(var i = 0; i < _controller.graphs.length; i++)
 					_controller.graphs[i].render();
-				}
+				
 				return this;
 			},
 			redraw: function() {
-				for(var i = 0; i < _controller.graphs.length; i++) {
+				for(var i = 0; i < _controller.graphs.length; i++)
 					_controller.graphs[i].redraw('redraw');
-				}
+				
 				return this;
 			}
 		};
@@ -48,18 +48,26 @@ ge = (function() {
 		// Set our defaults
 		_graph.width = _graph.width === undefined ? 400 : _graph.width;
 		_graph.height = _graph.height === undefined ? 400 : _graph.height;
+		_graph.selector = _graph.selector === undefined ? $('body') : _graph.selector;
+		_graph.data = _graph.data === undefined ? "" : _graph.data;
+		_graph.primaryDimension = _graph.primaryDimension === undefined ? "" : _graph.primaryDimension;
+		_graph.otherDimensions = _graph.otherDimensions === undefined ? {} : _graph.otherDimensions;
 		_graph.colors = _graph.colors === undefined ? warmColors : _graph.colors;
 		_graph.size = _graph.size === undefined ? 5 : _graph.size;
+		_graph.type = _graph.type === undefined ? "" : _graph.type;
+		_graph.keySelector = _graph.keySelector === undefined ? "" : _graph.keySelector;
+		_graph.valueSelector = _graph.valueSelector === undefined ? "" : _graph.valueSelector;
 		
 		if(_graph.margins === undefined)
-			setMargins()
+			setMargins();
 		else
 			setMargins(_graph.margins);
 			
 		_graph.unique_id = getUniqueID();
 		
 		// Trickle down our settings by calling the specific graph function
-		ge[_graph.type](_graph);
+		if(_graph.type !== undefined && _graph.type !== "")
+			ge[_graph.type](_graph);
 		
 		function getUniqueID() {
 			return Math.random().toString(36).substr(2, 9);
@@ -99,48 +107,7 @@ ge = (function() {
 			}
 		}
 		
-		return {
-			width: function(width) {
-				_graph.width = width;
-				return this;
-			},
-			height: function(height) {
-				_graph.height = height;
-				return this;
-			},
-			selector: function(elem) {
-				_graph.selector = elem;
-				$graph = _graph.selector;
-				return this;
-			},
-			margins: function(margins) {
-				setMargins(margins);
-				return this;
-			},
-			data: function(data) {
-				_graph.data = data;
-				return this;
-			},
-			primaryDimension: function(dimension) {
-				_graph.primaryDimension = dimension;
-				return this;
-			},
-			otherDimensions: function(dimensions) {
-				_graph.otherDimensions = dimensions;
-				return this;
-			},
-			size: function(size) {
-				_graph.size = size;
-				return this;
-			},
-			type: function(type) {
-				_graph.type = type;
-				return this;
-			},
-			settings: function() {
-				return _graph;
-			}
-		};
+		return _graph;
 	};
 	
 	ge.verticalBar = function(_graph) {

@@ -95,27 +95,27 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	var cf_contributions = cf.dimension(function(c) { return +c.contribution_sum; });
 	var cf_congress = cf.dimension(function(c) { return +c.congress; });
 	
-	// Gotta figure out why the chain approach doesn't work...
-	var industriesBar = ge.graph()
-		.type('verticalBar')
-		.width(400)
-		.height(300)
-		.selector($('#industries-bar'))
-		.margins({
+	var industriesBar = ge.graph({
+		type: 'verticalBar',
+		width: 400,
+		height: 300,
+		selector: $('#industries-bar'),
+		margins: {
 			top: 60,
 			bottom: 20,
 			left: 0,
 			right: 0
-		})
-		.colors(coolColors)
-		.data(cf)
-		.primaryDimension(cf_contributions)
-		.otherDimensions({
+		},
+		colors: coolColors,
+		data: cf,
+		primaryDimension: cf_contributions,
+		otherDimensions: {
 			congress: cf_congress
-		})
-		.size(5)
-		.keySelector('industry_name')
-		.valueSelector('contribution_sum');
+		},
+		size: 5,
+		keySelector: 'industry_name',
+		valueSelector: 'contribution_sum'
+	});
 	
 	cont.addGraph(industriesBar);
 });

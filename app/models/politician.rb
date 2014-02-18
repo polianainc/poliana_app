@@ -11,6 +11,6 @@ class Politician
   index "terms.term_start" => 1
 
   def self.find_all_after(date)
-    where("terms.term_start" => { "$gte" => date }).all
+    where("terms.term_start" => { "$gte" => date })
   end
 end

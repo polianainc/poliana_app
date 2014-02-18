@@ -2,11 +2,15 @@ class PoliticiansController < ApplicationController
   before_filter :set_start_date
 
   def index
-    @politicians = Politician.find_all_after(@date)
+    @politicians = Politician.find_all_after(@date).all
     respond_to do |format|
       format.html
       format.json { render :json => @politicians.to_json }
     end
+  end
+
+  def show
+    @politician = Politician.find_all_after(@date).find(params[:id].upcase)
   end
 
   private

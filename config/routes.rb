@@ -30,6 +30,7 @@ PolianaApp::Application.routes.draw do
   get "/500", :to => "errors#internal_error"
 
   get "/politicians", :to => "politicians#index"
+  get "/politicians/:id", :to => "politicians#show"
 
   root :to => "static_pages#index"
 end

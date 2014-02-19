@@ -10,7 +10,7 @@ class PoliticiansController < ApplicationController
   end
 
   def show
-    @politician = Politician.find_all_after(@date).find(params[:id].upcase)
+    @politician = Politician.find_all_after(@date).find(:bioguide_id => params[:id].upcase)
   end
 
   private

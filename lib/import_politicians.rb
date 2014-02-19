@@ -1,5 +1,3 @@
-require 'json'
-
 def import_raw_legislators_to_mongo
   
   json = File.read('lib/assets/legislators.json')
@@ -15,9 +13,9 @@ def import_raw_legislators_to_mongo
 
     if !mpol
       mpol = Politician.new()
+      mpol.id = pol["bioguide_id"]
     end
 
-    mpol.id ||= pol["bioguide_id"]
     mpol.first_name ||= pol["first_name"]
     mpol.last_name ||= pol["last_name"]
     

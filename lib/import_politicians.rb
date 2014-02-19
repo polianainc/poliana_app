@@ -2,14 +2,21 @@ def import_raw_legislators_to_mongo
   
   json = File.read('lib/assets/legislators.json')
   legislators = JSON.parse(json)
+  start_date = Date.new(1992, 1, 1)
 
   legislators.each do |pol|
+
     if pol["bioguide_id"] == nil
       puts pol["first_name"] + " " + pol["last_name"] 
       next
     end
 
-    mpol = Politician.find(pol["bioguide_id"])
+    term_start = DateTime.strptime((pol["begin_timestamp"]).to_s, '%s').to_date
+    if term_start < start_date
+      next
+    end
+
+    mpol = Politician.where(:bioguide_id => pol["bioguide_id"])[0]
 
     if !mpol
       mpol = Politician.new()
@@ -26,7 +33,7 @@ def import_raw_legislators_to_mongo
 
     term = Term.new()
     term.term_type = pol["term_type"]
-    term.term_start = DateTime.strptime((pol["begin_timestamp"]).to_s, '%s').to_date
+    term.term_start = term_start
     term.term_end = DateTime.strptime((pol["end_timestamp"]).to_s, '%s').to_date
 
     mpol.terms << term

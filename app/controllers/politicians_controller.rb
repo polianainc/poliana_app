@@ -1,5 +1,4 @@
 class PoliticiansController < ApplicationController
-  before_filter :set_start_date
 
   def index
     @politicians = Politician.find_all_after(@date).all
@@ -10,11 +9,6 @@ class PoliticiansController < ApplicationController
   end
 
   def show
-    @politician = Politician.find_all_after(@date).find(:bioguide_id => params[:id].upcase)
+    @politician = Politician.find(:bioguide_id => params[:id].upcase)
   end
-
-  private
-    def set_start_date
-      @date = Date.new(1996,1,23)
-    end
 end

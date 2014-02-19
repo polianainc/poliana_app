@@ -35,8 +35,4 @@ class Politician
       order_by(:score, :desc)
     end
   end
-
-  def self.find_all_after(date)
-    where("terms.term_start" => { "$gte" => date })
-  end
 end

@@ -13,7 +13,7 @@ def import_raw_legislators_to_mongo
 
     if !mpol
       mpol = Politician.new()
-      mpol.id = pol["bioguide_id"]
+      mpol.bioguide_id = pol["bioguide_id"]
     end
 
     mpol.first_name ||= pol["first_name"]

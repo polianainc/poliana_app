@@ -6,12 +6,14 @@ class Politician
   field :first_name, :type => String
   field :last_name, :type => String
   field :party, :type => String
-  field :district, :type=> Integer
-  field :birthday, :type=> Date
+  field :district, :type => Integer
+  field :birthday, :type => Date
+  field :bioguide_id, :type => String
 
   embeds_many :terms
 
   index "terms.term_start" => 1
+  index :bioguide_id => 1
 
   include Sunspot::Mongoid2
   searchable do

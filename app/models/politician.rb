@@ -24,10 +24,9 @@ class Politician
     
     self.search do 
        fulltext query do
-        boost_fields :popularTitle => 3.0
-        boost_fields :shortTitle => 2.5
-        boost_fields :topSubject => 2.0
-        boost_fields :subjects => 1.5
+        boost_fields :last_name => 3.0
+        boost_fields :first_name => 2.5
+        boost_fields :party => 2.0
       end
 
       paginate :page => page, :per_page => 10

@@ -139,17 +139,33 @@ ge = (function() {
 			.ticks(5)
 			.tickSize(width)
 			.tickFormat(function(d) { return "$" + currencyNumber(d, 1); });
+			
+		var colors = d3.scale.ordinal()
+			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
+			.range(_graph.colors);
 
 		var svg = d3.select($graph.selector).append("svg")
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
 			.attr("class", camelToHyphen(_graph.type))
+			.attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+			.attr("preserveAspectRatio", "xMidYMid")
 			.append("g")
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 				
-		var colors = d3.scale.ordinal()
-			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
-			.range(_graph.colors);
+		var aspect = (width + margin.left + margin.right) / (height + margin.top + margin.bottom);
+		
+		function resizeGraph() {
+			var targetWidth = $graph.width();
+			var $svg = $graph.find('svg');
+			
+			$svg.attr("width", targetWidth);
+			$svg.attr("height", targetWidth / aspect);
+		}
+		
+		resizeGraph();
+		
+		$(window).on("resize", function() { resizeGraph(); });
 			
 		function topRoundedRect(x, y, width, height, radius, start) {
 			start = start === undefined ? 1 : 0;

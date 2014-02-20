@@ -1,6 +1,7 @@
 // Prefix and postfix border radius
 .pre-input, .post-input {
 	div {
+		span { line-height: 2.75em; }
 		&:first-of-type {
 			span, input { @include border-radius(5px 0px 0px 5px !important); }
 		}
@@ -39,6 +40,7 @@
 	}
 	&.pre-input, &.post-input {
 		div {
+			span { line-height: 2.75em; }
 			&:first-of-type {
 				span, input { @include border-radius(5px 0px 0px 0px !important); }
 			}
@@ -51,5 +53,10 @@
 		position: relative;
 		z-index: 2;
 		@include border-radius(0px 0px 5px 5px);
+		ul {
+			margin-bottom: 0px;
+			padding-left: 5px;
+			li { font-size: 0.75em; }
+		}
 	}
 }

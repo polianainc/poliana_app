@@ -27,7 +27,7 @@
 				<div class="small-10 columns">
 		  			<%= f.text_field :login, :autofocus => true, :autocomplete => "off", :placeholder => "Username or Email Address" %>
 				</div>
-				<%= '<div class="small-12 columns"><small class="error">Your password must be strong like Popeye</small></div>'.html_safe() if !resource.errors[:login].empty? %>
+				<%= throw_errors("Username or Email Address", resource.errors[:login]) %>
 			</div>
 			<div class="row collapse pre-input<%= " error" if !resource.errors[:password].empty? %>">
 				<div class="small-2 columns">
@@ -36,7 +36,7 @@
 				<div class="small-10 columns">
 		  			<%= f.password_field :password, :autocomplete => "off", :placeholder => "Password" %>
 				</div>
-				<%= '<div class="small-12 columns"><small class="error">Your password must be strong like Popeye</small></div>'.html_safe() if !resource.errors[:password].empty? %>
+				<%= throw_errors("Password", resource.errors[:password]) %>
 			</div>
 			<% if devise_mapping.rememberable? -%>
 				<%= f.label :remember_me do |g| %><%= f.check_box :remember_me %> Remember Me?<% end %>

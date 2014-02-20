@@ -1,7 +1,4 @@
-$(document).ready(function() {
-	// Make the footer stick (preferably without duct tape)
-	stickyFooter();
-	
+$(document).ready(function() {	
 	// Load page-specific Javascript
 	pageSpecific();
 	
@@ -45,42 +42,39 @@ $(document).ready(function() {
 	$(document).on('click', '.pagination .current', function(event) {
 		event.preventDefault();
 	});
-});
-
-$(window).load(function() {
-	// Call this again just in case any large images offset the height of the document
-	stickyFooter();
+	
+	// Add a div to loaders, so front-end doesn't have to be cluttered in view
+	$('.loader').each(function() {
+		$(this).append($('<div>'));
+	});
 });
 
 $(window).resize(throttle(function() {
-	// Reposition the footer if necessary as you resize
-	stickyFooter();
-
 	// Change all the full backgrounds
 	fullBackgrounds();
 }, 500));
 
-// This is a Javascript shim to fix some CSS bullshit. Without this we pick between an off-canvas menu (mobile) and a sticky footer.
-function stickyFooter() {
-	if($(window).height() >= $container.height())
-		$container.height($(window).height());
-}
-
 // Here we can load page-specific Javascript asynchronously while letting Sprokets handle site-wide dependencies.
 function pageSpecific() {
 	if($pageSpecific.length > 0) {
-		var file = "";
-		
-		// Is the file specified by the element itself?  If not, we default to the body's data-controller attribute.
-		if($pageSpecific.attr('data-controller') != undefined)
-			file = $pageSpecific.attr('data-controller');
-		else
-			file = $('body').attr('data-controller');
-			
-		// <3 asynch loading
-		$.get('/assets/controllers/' + file + ".js", function() {
-			// Don't forget we can remove this now useless element.
-			$pageSpecific.remove();
+		$pageSpecific.each(function() {
+			var file = "";
+			var $elem = $(this);
+
+			// Is the file specified by the element itself?  If not, we default to the body's data-controller attribute.
+			if($elem.attr('data-controller') != undefined)
+				file = $elem.attr('data-controller');
+			else
+				file = $('body').attr('data-controller');
+
+			$.ajax({
+				url: '/assets/controllers/' + file + '.js',
+				async: false,
+				type: 'GET'
+			}).done(function() {
+				// Don't forget we can remove this now useless element.
+				$elem.remove();
+			})
 		});
 	}
 }

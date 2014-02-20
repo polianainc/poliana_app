@@ -360,6 +360,7 @@ GEM
     sunspot (2.1.0)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
+    sunspot_matchers (2.1.0.0)
     sunspot_mongoid2 (0.5.1.7)
       mongoid (>= 2)
       sunspot (>= 2)
@@ -433,6 +434,7 @@ DEPENDENCIES
   sitemap_generator
   spork-rails!
   sqlite3
+  sunspot_matchers
   sunspot_mongoid2
   sunspot_rails
   sunspot_solr

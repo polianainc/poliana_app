@@ -54,6 +54,7 @@ group :development, :test do
   gem 'jasmine-rails'
   gem 'jasmine-jquery-rails'
   gem 'guard-jasmine'
+  gem 'sunspot_matchers'
   
   #Notifications
   gem 'growl'

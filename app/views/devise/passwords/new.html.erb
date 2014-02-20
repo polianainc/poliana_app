@@ -14,7 +14,7 @@
 				<div class="small-10 columns">
 		  			<%= f.email_field :email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>
 				</div>
-				<%= '<div class="small-12 columns"><small class="error">You have to enter in a registered email</small></div>'.html_safe() if !resource.errors[:email].empty? %>
+				<%= throw_errors("Email Address", resource.errors[:email]) %>
 			</div>
 		  	<%= f.submit "Help Me Remember", :class => "button expand radius" %>
 			<p class="text-center no-space"><small><%= link_to "Sign in?", new_user_session_path %></small></p>

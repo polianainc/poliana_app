@@ -15,7 +15,7 @@
 				<div class="small-10 columns">
 		  			<%= f.password_field :password, :autofocus => true, :autocomplete => "off", :placeholder => "Password" %>
 				</div>
-				<%= '<div class="small-12 columns"><small class="error">Your password must be strong like Popeye</small></div>'.html_safe() if !resource.errors[:password].empty? %>
+				<%= throw_errors("Password", resource.errors[:password]) %>
 			</div>
 			<div class="row collapse pre-input<%= " error" if !resource.errors[:password_confirmation].empty? %>">
 				<div class="small-2 columns">
@@ -24,7 +24,7 @@
 				<div class="small-10 columns">
 		  			<%= f.password_field :password_confirmation, :autofocus => true, :autocomplete => "off", :placeholder => "Confirm Password" %>
 				</div>
-				<%= '<div class="small-12 columns"><small class="error">Tell us your password again</small></div>'.html_safe() if !resource.errors[:password_confirmation].empty? %>
+				<%= throw_errors("Password confirmation", resource.errors[:password_confirmation]) %>
 			</div>
 		  	<%= f.submit "Submit Changes", :class => "button expand radius" %>
 		<% end %>

@@ -231,8 +231,8 @@ test:
       hosts:
         - ds033419.mongolab.com:33419
 
-      username: rails
-      password: Ch0msky5!
+      username: test
+      password: N0amCh0m
 
       options:
         consistency: :strong

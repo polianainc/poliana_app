@@ -1,7 +1,4 @@
-$(document).ready(function() {
-	// Make the footer stick (preferably without duct tape)
-	stickyFooter();
-	
+$(document).ready(function() {	
 	// Load page-specific Javascript
 	pageSpecific();
 	
@@ -52,24 +49,10 @@ $(document).ready(function() {
 	});
 });
 
-$(window).load(function() {
-	// Call this again just in case any large images offset the height of the document
-	stickyFooter();
-});
-
 $(window).resize(throttle(function() {
-	// Reposition the footer if necessary as you resize
-	stickyFooter();
-
 	// Change all the full backgrounds
 	fullBackgrounds();
 }, 500));
-
-// This is a Javascript shim to fix some CSS bullshit. Without this we pick between an off-canvas menu (mobile) and a sticky footer.
-function stickyFooter() {
-	if($(window).height() >= $container.height())
-		$container.height($(window).height());
-}
 
 // Here we can load page-specific Javascript asynchronously while letting Sprokets handle site-wide dependencies.
 function pageSpecific() {

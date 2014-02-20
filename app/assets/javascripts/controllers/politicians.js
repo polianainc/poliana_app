@@ -1,5 +1,5 @@
 // Get our bioguide
-var bioguide = $('#primary-key').attr('data-id');
+var bioguide = $('.primary-key').attr('data-id');
 
 // Define our controller
 var cont = ge.controller();
@@ -33,8 +33,11 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	
 	var cf = crossfilter(transform.contributions);
 	
-	var cf_contributions = cf.dimension(function(c) { return +c.contribution_sum; });
-	var cf_congress = cf.dimension(function(c) { return +c.congress; });
+	var cfContributions = cf.dimension(function(c) { return +c.contribution_sum; });
+	var cfCongress = cf.dimension(function(c) { return +c.congress; });
+	var cfNames = cf.dimension(function(c) { return c.pac_name; });
+	
+	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
 	
 	var pacsBar = ge.graph({
 		type: 'verticalBar',
@@ -49,13 +52,24 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 		},
 		colors: warmColors,
 		data: cf,
-		primaryDimension: cf_contributions,
-		otherDimensions: {
-			congress: cf_congress
-		},
-		size: 5,
-		keySelector: 'pac_name',
-		valueSelector: 'contribution_sum'
+		dimensions: [
+			{
+				data: cfNamesReduce,
+				keySelector: 'key',
+				valueSelector: 'value'
+			},
+			{
+				data: cfContributions,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			},
+			{
+				data: cfCongress,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			}
+		],
+		size: 5
 	});
 	
 	cont.addGraph(pacsBar);
@@ -92,8 +106,11 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	
 	var cf = crossfilter(transform.contributions);
 	
-	var cf_contributions = cf.dimension(function(c) { return +c.contribution_sum; });
-	var cf_congress = cf.dimension(function(c) { return +c.congress; });
+	var cfContributions = cf.dimension(function(c) { return +c.contribution_sum; });
+	var cfCongress = cf.dimension(function(c) { return +c.congress; });
+	var cfNames = cf.dimension(function(c) { return c.industry_name; });
+	
+	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
 	
 	var industriesBar = ge.graph({
 		type: 'verticalBar',
@@ -108,13 +125,24 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 		},
 		colors: coolColors,
 		data: cf,
-		primaryDimension: cf_contributions,
-		otherDimensions: {
-			congress: cf_congress
-		},
-		size: 5,
-		keySelector: 'industry_name',
-		valueSelector: 'contribution_sum'
+		dimensions: [
+			{
+				data: cfNamesReduce,
+				keySelector: 'key',
+				valueSelector: 'value'
+			},
+			{
+				data: cfContributions,
+				keySelector: 'industry_name',
+				valueSelector: 'contribution_sum'
+			},
+			{
+				data: cfCongress,
+				keySelector: 'industry_name',
+				valueSelector: 'contribution_sum'
+			}
+		],
+		size: 5
 	});
 	
 	cont.addGraph(industriesBar);
@@ -124,11 +152,17 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 $.when(getPacs, getIndustries).done(function() {
 	// Hide the loader
 	$('.loader').fadeOut(250, function() {
+		// What congresses are we looking at?
+		for(var i = 0; i < cont.listGraphs().length; i++)
+			cont.getGraph(i).dimensions[2].data.filter([108, 109 + 1]);
+		
 		// Let's rock and roll
 		cont.render();
-		$('#primary-key').remove();
+		
+		// No need for this shit anymore...
+		$('.primary-key').remove();
 
-		// Show me what ya got
+		// Tell me what ya got
 		console.log(cont.listGraphs());
 	});
 });

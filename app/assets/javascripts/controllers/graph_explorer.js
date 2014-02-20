@@ -50,13 +50,10 @@ ge = (function() {
 		_graph.height = _graph.height === undefined ? 400 : _graph.height;
 		_graph.selector = _graph.selector === undefined ? $('body') : _graph.selector;
 		_graph.data = _graph.data === undefined ? "" : _graph.data;
-		_graph.primaryDimension = _graph.primaryDimension === undefined ? "" : _graph.primaryDimension;
-		_graph.otherDimensions = _graph.otherDimensions === undefined ? {} : _graph.otherDimensions;
+		_graph.dimensions = _graph.dimensions === undefined ? {} : _graph.dimensions;
 		_graph.colors = _graph.colors === undefined ? warmColors : _graph.colors;
 		_graph.size = _graph.size === undefined ? 5 : _graph.size;
 		_graph.type = _graph.type === undefined ? "" : _graph.type;
-		_graph.keySelector = _graph.keySelector === undefined ? "" : _graph.keySelector;
-		_graph.valueSelector = _graph.valueSelector === undefined ? "" : _graph.valueSelector;
 		
 		if(_graph.margins === undefined)
 			setMargins();
@@ -173,17 +170,35 @@ ge = (function() {
 		_graph.render = function() {
 			var data;
 			
-			if(_graph.primaryDimension !== undefined)
-				data = _graph.primaryDimension.top(_graph.size);
+			if(_graph.dimensions[0].data !== undefined)
+				data = _graph.dimensions[0].data.top(_graph.size);
+				
+			var theKey = _graph.dimensions[0].keySelector;
+			var theValue = _graph.dimensions[0].valueSelector;
 				
 			if(data !== undefined) {				
-				x.domain(data.map(function(d) { return d[_graph.keySelector]; }));
-				y.domain([0, d3.max(data, function(d) { return d[_graph.valueSelector] * 1.15; })]);
+				x.domain(data.map(function(d) { return d[theKey]; }));
+				y.domain([0, d3.max(data, function(d) { return d[theValue] * 1.15; })]);
+					
+				var legend = d3.select($graph.selector).append("ul")
+					.attr("class", "legend vertical");
 
-				svg.append("g")
-					.attr("class", "x axis")
-					.attr("transform", "translate(0, " + height + ")")
-					.call(xAxis);
+				var legendItems = legend.selectAll('li')
+					.data(data)
+					.enter().append('li')
+						.style("opacity", 0)
+						.each(function(d, i) {
+							var li = d3.select(this);
+							var iteration = i;
+							
+							li.append("span").style("background-color", function(d, i) { return colors(iteration); });
+							li.append("p").text(function(d) { return d[theKey]; });
+						});
+						
+				legendItems.transition()
+					.delay(function(d, i) { return i * 100; })
+					.duration(500)
+					.style("opacity", 1);
 
 				var gy = svg.append("g")
 					.attr("class", "y axis")
@@ -202,10 +217,10 @@ ge = (function() {
 						// We use a custom path function rather than SVG's rect element to get rounded corners
 						.attr("d", function(d) {
 							return topRoundedRect(
-								x(d[_graph.keySelector]),
-								y(d[_graph.valueSelector]),
+								x(d[theKey]),
+								y(d[theValue]),
 								x.rangeBand(),
-								height - y(d[_graph.valueSelector]),
+								height - y(d[theValue]),
 								5,
 								true
 							);
@@ -214,15 +229,15 @@ ge = (function() {
 						.attr("fill", function(d, i) { return colors(i); });
 						
 				bars.transition()
-					.delay(function(d, i){ return i * 100;})
+					.delay(function(d, i) { return i * 100; })
 					.duration(500)
 					// We use a custom path function rather than SVG's rect element to get rounded corners
 					.attr("d", function(d) {
 						return topRoundedRect(
-							x(d[_graph.keySelector]),
-							y(d[_graph.valueSelector]),
+							x(d[theKey]),
+							y(d[theValue]),
 							x.rangeBand(),
-							height - y(d[_graph.valueSelector]),
+							height - y(d[theValue]),
 							5
 						);
 					});

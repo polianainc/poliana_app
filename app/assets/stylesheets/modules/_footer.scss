@@ -3,6 +3,7 @@
 	background: $black;
 	color: $white;
 	height: $footer-height-small;
+	margin-top: 20px;
 	@media #{$medium-up} {
 		height: $footer-height-medium;
 	}

@@ -9,6 +9,6 @@ class PoliticiansController < ApplicationController
   end
 
   def show
-    @politician = Politician.find(:bioguide_id => params[:id].upcase)
+    @politician = Politician.where(:bioguide_id => params[:id].upcase).first
   end
 end

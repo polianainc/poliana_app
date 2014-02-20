@@ -1,0 +1,47 @@
+.graph {
+	h4 { margin-top: 40px; }
+	.vertical-bar {
+		.axis {
+			path { display: none; }
+			.tick {
+				text {
+					font-size: 0.75em;
+				}
+				line {
+					shape-rendering: crispEdges;
+					stroke: $gray;
+				}
+				&:first-child {
+					text { display: none; }
+				}
+			}
+		}
+	}
+
+	.legend {
+		&.vertical {
+			margin: 0px;
+			list-style-type: none;
+			padding: 0px;
+			li {
+				overflow: hidden;
+				span {
+					display: block;
+					width: 24px;
+					height: 24px;
+					float: left;
+					@include border-radius($global-radius);
+				}
+				p {
+					margin-bottom: 5px;
+					margin-top: 1px;
+					padding-left: 10px;
+					float: left;
+					width: 85%;
+					font-size: 0.9em;
+				
+				}
+			}
+		}
+	}
+}

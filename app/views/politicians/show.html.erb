@@ -1,0 +1,63 @@
+<%= @politician %>
+
+<% content_for :title, "Politician" %>
+<div class="page-specific" data-controller="graph_explorer"></div>
+<div class="page-specific" data-controller="politicians"></div>
+<div class="hide primary-key" data-id="O000167"></div>
+<div class="row">
+	<div class="large-3 medium-3 columns">
+		<img src="" alt="FULL NAME">
+	</div>
+	<div class="large-9 medium-9 columns">
+		<h1>FULL NAME</h1>
+		<h4>ROLE</h4>
+		<div class="accordion">
+			<div class="row">
+				<div class="small-12 columns show-for-small">
+					Personal Information
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-4 medium-4 columns">
+					BIRTHDAY
+				</div>
+				<div class="large-4 medium-4 columns">
+					GENDER
+				</div>
+				<div class="large-4 medium-4 columns">
+					RELIGION
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="accordion">
+	<div class="row show-for-small">
+		<div class="small-12 columns">
+			Timeline
+		</div>
+	</div>
+	<div class="row">
+		<div class="loader"></div>
+		<div class="large-12 columns show-for-medium-up">
+			<div id="timeline-area" class="graph"></div>
+		</div>
+		<div class="small-12 columns show-for-small">
+			<div id="timeline-select" class="graph">SMALL TIMELINE</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-6 medium-6 columns show-for-medium-up">
+			<div id="pacs-bar" class="graph"></div>
+		</div>
+		<div class="small-12 columns show-for-small">
+			<div id="pacs-pie" class="graph">PACS PIE</div>
+		</div>
+		<div class="large-6 medium-6 columns show-for-medium-up">
+			<div id="industries-bar" class="graph"></div>
+		</div>
+		<div class="small-12 columns show-for-small">
+			<div id="industries-pie" class="graph">INDUSTRIES PIE</div>
+		</div>
+	</div>
+</div>

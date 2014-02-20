@@ -156,6 +156,11 @@ function currencyNumber(number, decPlaces) {
 	return number;
 }
 
+// Camelcase to hyphen conversion
+function camelToHyphen(string) {
+	return string.replace(/([a-z][A-Z])/g, function (g) { return g[0] + '-' + g[1].toLowerCase() });
+}
+
 // Return the ordinated value of a number
 Number.prototype.ordinate = function() {
 	var num = this,

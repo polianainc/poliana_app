@@ -1,5 +1,5 @@
 // Fonts
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700);
 
 // Compass
 @import "compass/css3";
@@ -11,7 +11,7 @@
 @import "vendor/foundation_and_overrides";
 
 // Global styles and layout includes
-@import "modules/_global", "modules/_icons", "modules/_header", "modules/_footer";
+@import "modules/_global", "modules/_icons", "modules/_header", "modules/_footer", "modules/_graphs";
 
 // Various other modules
 @import "modules/_forms", "modules/_email", "modules/_errors";

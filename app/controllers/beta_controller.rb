@@ -3,6 +3,7 @@ require 'services/track_events.rb'
 class BetaController < Devise::RegistrationsController
     def new
         build_resource({})
+        
         resource.invitation_key = params[:key]
 
         #stores the beta key in a session in case they use social sign in

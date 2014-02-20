@@ -5,14 +5,14 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: processing_cache
+      database: rails_cache
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - ds035428.mongolab.com:35428
+        - ds027779.mongolab.com:27779
 
       username: rails
-      password: N0amCh0msky1!
+      password: Ch0msky5!
 
       options:
         # Change whether the session persists in safe mode by default.
@@ -36,6 +36,7 @@ development:
     # Configuration for whether or not to allow access to fields that do
     # not have a field definition on the model. (default: true)
     # allow_dynamic_fields: true
+    raise_not_found_error: false
 
     # Enable the identity map, needed for eager loading. (default: false)
     # identity_map_enabled: false

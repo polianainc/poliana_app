@@ -20,4 +20,10 @@ FactoryGirl.define do
         recipient_email "test200@example.com"
         beta_key "123123"
     end
+
+    factory :politician do
+        first_name = "Barack"
+        last_name = "Obama"
+        bioguide_id = "O000167"
+    end
 end

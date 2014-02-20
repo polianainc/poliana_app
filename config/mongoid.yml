@@ -231,14 +231,14 @@ test:
       hosts:
         - ds033419.mongolab.com:33419
 
-      username: rails
-      password: Ch0msky5!
+      username: test
+      password: N0amCh0m
 
       options:
         consistency: :strong
         # In the test environment we lower the retries and retry interval to
         # low amounts for fast failures.
-        max_retries: 1
+        max_retries: 10
         retry_interval: 0
 
   options:

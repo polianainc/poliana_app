@@ -16,6 +16,11 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
+
+    config.before do
+      Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
+    end
+
     # == Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -40,6 +45,8 @@ Spork.prefork do
 
     #devise helpers
     config.include Devise::TestHelpers, :type => :controller
+    config.include SunspotMatchers
+    
     config.extend ControllerMacros, :type => :controller
   end
 end

@@ -47,6 +47,24 @@ $(document).ready(function() {
 	$('.loader').each(function() {
 		$(this).append($('<div>'));
 	});
+	
+	$foldable.find('.foldable-header').on('click', function(event, speed) {
+		if(speed === undefined)
+			speed = 250;
+			
+		if(speed === 0)
+			$(this).siblings('.foldable-content').hide();
+		else
+			$(this).siblings('.foldable-content').slideToggle(speed);
+			
+		$(this).toggleClass('down');
+		
+		// Force graphs to re-render
+		$(window).trigger('resize');
+	});
+	
+	// Fold everything down
+	$foldable.find('.foldable-header').trigger('click', [0]);
 });
 
 $(window).resize(throttle(function() {

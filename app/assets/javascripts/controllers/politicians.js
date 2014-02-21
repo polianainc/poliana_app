@@ -7,9 +7,15 @@ var cont = ge.controller();
 // Get all the PACS
 //var getPacs = $.get('//default-environment-ygymzummgf.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
 var getPacs = $.get('/temp/pacs.json', function(data) {
-	var $selector = $('#pacs-bar');
+	var $barSelector = $('#pacs-bar');
+	var $pieSelector = $('#pacs-pie');
 	
-	$selector.append($('<h4>')
+	$barSelector.append($('<h4>')
+		.addClass('text-center')
+		.text('Top 5 PAC Contributors')
+	);
+	
+	$pieSelector.append($('<h4>')
 		.addClass('text-center')
 		.text('Top 5 PAC Contributors')
 	);
@@ -46,11 +52,47 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	
 	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
 	
+	var top = cfNamesReduce.top(1);
+	
 	var pacsBar = ge.graph({
 		type: 'verticalBar',
 		width: 400,
 		height: 300,
-		selector: $selector,
+		selector: $barSelector,
+		margins: {
+			top: 20,
+			bottom: 20,
+			left: 0,
+			right: 0
+		},
+		colors: warmColors,
+		data: cf,
+		dimensions: [
+			{
+				data: cfNamesReduce,
+				keySelector: 'key',
+				valueSelector: 'value'
+			},
+			{
+				data: cfContributions,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			},
+			{
+				data: cfCongress,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			}
+		],
+		ticks: ge.graph().makeTicks(top),
+		size: 5
+	});
+	
+	var pacsPie = ge.graph({
+		type: 'pie',
+		width: 400,
+		height: 400,
+		selector: $pieSelector,
 		margins: {
 			top: 20,
 			bottom: 20,
@@ -80,14 +122,21 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	});
 	
 	cont.addGraph(pacsBar);
+	cont.addGraph(pacsPie);
 });
 
 // Get all the industries
 //var getIndustries = $.get('//default-environment-ygymzummgf.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
 var getIndustries = $.get('/temp/industries.json', function(data) {
-	var $selector = $('#industries-bar');
+	var $barSelector = $('#industries-bar');
+	var $pieSelector = $('#industries-pie');
 	
-	$selector.append($('<h4>')
+	$barSelector.append($('<h4>')
+		.addClass('text-center')
+		.text('Top 5 Industry Contributors')
+	);
+	
+	$pieSelector.append($('<h4>')
 		.addClass('text-center')
 		.text('Top 5 Industry Contributors')
 	);
@@ -126,11 +175,15 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	
 	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
 	
+	cfCongress.filter([108, 109 + 1]);
+	
+	var top = cfNamesReduce.top(1);
+	
 	var industriesBar = ge.graph({
 		type: 'verticalBar',
 		width: 400,
 		height: 300,
-		selector: $selector,
+		selector: $barSelector,
 		margins: {
 			top: 20,
 			bottom: 20,
@@ -156,20 +209,51 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
+		ticks: ge.graph().makeTicks(top),
+		size: 5
+	});
+	
+	var industriesPie = ge.graph({
+		type: 'pie',
+		width: 400,
+		height: 400,
+		selector: $pieSelector,
+		margins: {
+			top: 20,
+			bottom: 20,
+			left: 0,
+			right: 0
+		},
+		colors: coolColors,
+		data: cf,
+		dimensions: [
+			{
+				data: cfNamesReduce,
+				keySelector: 'key',
+				valueSelector: 'value'
+			},
+			{
+				data: cfContributions,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			},
+			{
+				data: cfCongress,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			}
+		],
 		size: 5
 	});
 	
 	cont.addGraph(industriesBar);
+	cont.addGraph(industriesPie);
 });
 
 // Tell jQuery's AJAX to be patient
 $.when(getPacs, getIndustries).done(function() {
 	// Hide the loader
-	$('.loader').fadeOut(250, function() {
-		// What congresses are we looking at?
-		for(var i = 0; i < cont.listGraphs().length; i++)
-			cont.getGraph(i).dimensions[2].data.filter([108, 109 + 1]);
-		
+	$('.loader').fadeOut(250, function() {		
 		// Let's rock and roll
 		cont.render();
 		

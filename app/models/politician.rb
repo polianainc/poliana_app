@@ -9,6 +9,8 @@ class Politician
   field :district, :type => Integer
   field :birthday, :type => Date
   field :bioguide_id, :type => String
+  field :gender, :type => String
+  field :religion, :type => String
 
   embeds_many :terms
 

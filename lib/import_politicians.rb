@@ -31,6 +31,9 @@ def import_raw_legislators_to_mongo
 
     mpol.birthday ||= Date.strptime(pol["birthday"], "%Y-%m-%d") if pol["birthday"]
 
+    mpol.gender =  pol["gender"] if pol["gender"]
+    mpol.religion =  pol["religion"] if pol["religion"]
+
     term = Term.new()
     term.term_type = pol["term_type"]
     term.term_start = term_start

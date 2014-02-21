@@ -86,7 +86,7 @@ stagingsmall:
         - ds035428.mongolab.com:35428
 
       username: rails
-      password: N0amCh0msky1!
+      password: Ch0msky5!
 
       options:
         # Change whether the session persists in safe mode by default.
@@ -159,7 +159,7 @@ production:
         - ds035428.mongolab.com:35428
 
       username: rails
-      password: N0amCh0msky1!
+      password: Ch0msky5!
 
       options:
         # Change whether the session persists in safe mode by default.

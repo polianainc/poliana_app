@@ -7,9 +7,15 @@ var cont = ge.controller();
 // Get all the PACS
 //var getPacs = $.get('//default-environment-ygymzummgf.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
 var getPacs = $.get('/temp/pacs.json', function(data) {
-	var $selector = $('#pacs-bar');
+	var $barSelector = $('#pacs-bar');
+	var $pieSelector = $('#pacs-pie');
 	
-	$selector.append($('<h4>')
+	$barSelector.append($('<h4>')
+		.addClass('text-center')
+		.text('Top 5 PAC Contributors')
+	);
+	
+	$pieSelector.append($('<h4>')
 		.addClass('text-center')
 		.text('Top 5 PAC Contributors')
 	);
@@ -50,7 +56,40 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 		type: 'verticalBar',
 		width: 400,
 		height: 300,
-		selector: $selector,
+		selector: $barSelector,
+		margins: {
+			top: 20,
+			bottom: 20,
+			left: 0,
+			right: 0
+		},
+		colors: warmColors,
+		data: cf,
+		dimensions: [
+			{
+				data: cfNamesReduce,
+				keySelector: 'key',
+				valueSelector: 'value'
+			},
+			{
+				data: cfContributions,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			},
+			{
+				data: cfCongress,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			}
+		],
+		size: 5
+	});
+	
+	var pacsPie = ge.graph({
+		type: 'pie',
+		width: 400,
+		height: 400,
+		selector: $pieSelector,
 		margins: {
 			top: 20,
 			bottom: 20,
@@ -80,14 +119,21 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	});
 	
 	cont.addGraph(pacsBar);
+	cont.addGraph(pacsPie);
 });
 
 // Get all the industries
 //var getIndustries = $.get('//default-environment-ygymzummgf.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
 var getIndustries = $.get('/temp/industries.json', function(data) {
-	var $selector = $('#industries-bar');
+	var $barSelector = $('#industries-bar');
+	var $pieSelector = $('#industries-pie');
 	
-	$selector.append($('<h4>')
+	$barSelector.append($('<h4>')
+		.addClass('text-center')
+		.text('Top 5 Industry Contributors')
+	);
+	
+	$pieSelector.append($('<h4>')
 		.addClass('text-center')
 		.text('Top 5 Industry Contributors')
 	);
@@ -130,7 +176,7 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 		type: 'verticalBar',
 		width: 400,
 		height: 300,
-		selector: $selector,
+		selector: $barSelector,
 		margins: {
 			top: 20,
 			bottom: 20,
@@ -159,7 +205,41 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 		size: 5
 	});
 	
+	var industriesPie = ge.graph({
+		type: 'pie',
+		width: 400,
+		height: 400,
+		selector: $pieSelector,
+		margins: {
+			top: 20,
+			bottom: 20,
+			left: 0,
+			right: 0
+		},
+		colors: coolColors,
+		data: cf,
+		dimensions: [
+			{
+				data: cfNamesReduce,
+				keySelector: 'key',
+				valueSelector: 'value'
+			},
+			{
+				data: cfContributions,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			},
+			{
+				data: cfCongress,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			}
+		],
+		size: 5
+	});
+	
 	cont.addGraph(industriesBar);
+	cont.addGraph(industriesPie);
 });
 
 // Tell jQuery's AJAX to be patient

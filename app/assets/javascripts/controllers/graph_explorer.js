@@ -263,5 +263,137 @@ ge = (function() {
 		return _graph;
 	};
 	
+	ge.pie = function(_graph) {
+		// This is so that we have a jQuery-namespaced variable to work with	
+		var $graph;
+
+		if(_graph.selector !== undefined)
+			$graph = _graph.selector;
+		
+		var margin = {
+				top: _graph.margins.top,
+				bottom: _graph.margins.bottom,
+				left: _graph.margins.left,
+				right: _graph.margins.right
+			},
+			width = _graph.width - margin.left - margin.right,
+			height = _graph.height - margin.top - margin.bottom,
+			radius = Math.min(width, height) / 2;
+			
+		var colors = d3.scale.ordinal()
+			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
+			.range(_graph.colors);
+
+		var svg = d3.select($graph.selector).append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.attr("class", camelToHyphen(_graph.type))
+			.attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+			.attr("preserveAspectRatio", "xMidYMid")
+			.append("g")
+				.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+				
+		var aspect = (width + margin.left + margin.right) / (height + margin.top + margin.bottom);
+		
+		function resizeGraph() {
+			var targetWidth = $graph.width();
+			var $svg = $graph.find('svg');
+			
+			$svg.attr("width", targetWidth);
+			$svg.attr("height", targetWidth / aspect);
+		}
+		
+		resizeGraph();
+		
+		function arcTween(a) {
+			var i = d3.interpolate(this._current, a);
+			this._current = i(0);
+			
+			return function(t) {
+				return arc(i(t));
+			};
+		}
+		
+		$(window).on("resize", function() { resizeGraph(); });
+			
+		_graph.redraw = function(newData) {
+			console.log(newData);
+		};
+		
+		_graph.render = function() {
+			var data;
+			
+			if(_graph.dimensions[0].data !== undefined)
+				data = _graph.dimensions[0].data.top(_graph.size);
+				
+			var theKey = _graph.dimensions[0].keySelector;
+			var theValue = _graph.dimensions[0].valueSelector;
+				
+			if(data !== undefined) {
+				var arc = d3.svg.arc()
+					.outerRadius(radius - 10)
+					.innerRadius(0);
+
+				var pie = d3.layout.pie()
+					.sort(null)
+					.value(function(d) { return d[theValue]; });
+						
+				var legend = d3.select($graph.selector).append("ul")
+					.attr("class", "legend vertical");
+
+				var legendItems = legend.selectAll('li')
+					.data(data)
+					.enter().append('li')
+						.style("opacity", 0)
+						.each(function(d, i) {
+							var li = d3.select(this);
+							var iteration = i;
+							
+							li.append("span").style("background-color", function(d, i) { return colors(iteration); });
+							li.append("p").text(function(d) { return d[theKey]; });
+						});
+						
+				legendItems.transition()
+					.delay(function(d, i) { return i * 100; })
+					.duration(500)
+					.style("opacity", 1);
+
+				var g = svg.selectAll(".arc")
+					.data(pie(data))
+					.enter().append("g")
+						.attr("class", "arc");
+
+				var path = g.append("path")
+					.style("fill", function(d, i) { return colors(i); })
+					.transition()
+						.delay(function(d, i) { return i * 100; })
+						.duration(500)
+						.attrTween('d', function(d) {
+							var i = d3.interpolate(d.startAngle, d.endAngle);
+							return function(t) {
+								d.endAngle = i(t);
+								return arc(d);
+							}
+						});
+
+				g.append("text")
+					.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+					.attr("dy", ".35em")
+					.attr("fill", "#fafafa")
+					.style("text-anchor", "middle")
+					.text(function(d) { return "$" + currencyNumber(d[theValue], 1); })
+					.attr("display", function(d) {
+						var text = "$" + currencyNumber(d.value, 1);
+						
+						// We might want to play with this formula a bit...
+						if(text.length / (d.endAngle - d.startAngle) > 10.25)
+							return "none";
+					});
+			}
+		};
+		
+		return _graph;
+	};
+	
 	return ge;
 })();

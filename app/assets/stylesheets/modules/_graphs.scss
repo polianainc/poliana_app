@@ -1,5 +1,12 @@
 .graph {
-	h4 { margin-top: 40px; }
+	h4 {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		@media #{$medium-up} {
+			margin-top: 40px;
+			margin-bottom: 0px;
+		}
+	}
 	.vertical-bar {
 		.axis {
 			path { display: none; }
@@ -17,7 +24,18 @@
 			}
 		}
 	}
-
+	.pie {
+		.arc {
+			path {
+				stroke: $white;
+				stroke-width: 2px;
+			}
+			text {
+				font-weight: 700;
+				font-size: 1em;
+			}
+		}
+	}
 	.legend {
 		&.vertical {
 			margin: 0px;
@@ -33,13 +51,13 @@
 					@include border-radius($global-radius);
 				}
 				p {
-					margin-bottom: 10px;
+					margin-bottom: 5px;
 					margin-top: 1px;
 					padding-left: 10px;
 					float: left;
 					width: 85%;
 					font-size: 0.9em;
-				
+					@media #{$medium-up} { margin-bottom: 10px; }
 				}
 			}
 		}

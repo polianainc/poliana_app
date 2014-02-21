@@ -51,7 +51,8 @@
 				<div id="timeline-select" class="graph">
 					<select>
 					<% @politician.terms.each do |f| %>
-						<option value="<%= role(f.term_type).downcase %>"><%= role(f.term_type) %></option>
+					<%= f.inspect %>
+						<option value="<%= f.congress %>"><%= role(f.term_type) + " (" + f.start.strftime("%Y") + ")" %></option>
 					<% end %>
 					</select>
 				</div>

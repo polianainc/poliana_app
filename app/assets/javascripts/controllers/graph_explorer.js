@@ -5,6 +5,16 @@ ge = (function() {
 		version: '1.0'
 	};
 	
+	// On click of either graph icons
+	$(document).on('click', '.information .icons li', function() {
+		if($(this).index() == 0) {
+			console.log('information');
+		}
+		else {
+			console.log('share');
+		}
+	});
+	
 	ge.controller = function(_controller) {
 		if(_controller === undefined)
 			var _controller = {};

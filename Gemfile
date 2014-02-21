@@ -39,6 +39,9 @@ gem 'gabba'
 #AWS
 gem 'aws-sdk'
 
+#Data Ingestion
+gem 'congress'
+
 group :development, :test do
   #Email
   gem 'letter_opener'

@@ -11,8 +11,10 @@ class Politician
   field :bioguide_id, :type => String
   field :gender, :type => String
   field :religion, :type => String
+  field :percent_age_difference, :type => Float
 
   embeds_many :terms
+  accepts_nested_attributes_for :terms
 
   index "terms.term_start" => 1
   index :bioguide_id => 1

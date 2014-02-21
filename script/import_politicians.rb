@@ -2,7 +2,7 @@ def import_raw_legislators_to_mongo
   
   json = File.read('lib/assets/legislators.json')
   legislators = JSON.parse(json)
-  start_date = Date.new(1992, 1, 1)
+  start_date = Date.new(2003, 1, 1)
 
   legislators.each do |pol|
 

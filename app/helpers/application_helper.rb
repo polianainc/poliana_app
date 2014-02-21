@@ -20,6 +20,20 @@ module ApplicationHelper
     end
   end
   
+  def full_name(person)
+    person.first_name + " " + person.last_name
+  end
+  
+  def role(term)
+    if term == "prez"
+      "President of the United States"
+    elsif term == "sen"
+      "Senator"
+    else
+      "Congressman"
+    end
+  end
+  
   def throw_errors(name, errors)
     if errors.length > 1
       the_string = "<div class='small-12 columns'><small class='error'><ul>".html_safe

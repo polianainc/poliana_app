@@ -1,16 +1,14 @@
-<%= @politician %>
-
 <% content_for :title, "Politician" %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
-<div class="hide primary-key" data-id="O000167"></div>
+<div class="hide primary-key" data-id="<%= @politician.bioguide_id %>"></div>
 <div class="row">
 	<div class="large-3 medium-3 columns">
-		<img src="" alt="FULL NAME">
+		<%= image_tag "congress/FILL THIS SHIT IN HERE/" + @politician.bioguide_id + ".png" %>
 	</div>
 	<div class="large-9 medium-9 columns">
-		<h1>FULL NAME</h1>
-		<h4>ROLE</h4>
+		<h1><%= full_name(@politician) %></h1>
+		<h4>ADD GENDER HERE <%= role(@politician.terms.first.term_type) %></h4>
 		<div class="accordion">
 			<div class="row">
 				<div class="small-12 columns show-for-small">

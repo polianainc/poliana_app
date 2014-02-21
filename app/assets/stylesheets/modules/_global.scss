@@ -106,3 +106,31 @@ small { font-size: 0.75em; }
 		#content { padding-bottom: 20px; }
 	}
 }
+
+.foldable {
+	.foldable-header {
+		h3 {
+			position: relative;
+			cursor: pointer;
+			&:after {
+				content: "\25BA";
+				position: absolute;
+				font-size: 0.8em;
+				right: 0px;
+				top: 0px;
+				line-height: 2em;
+				color: $gray;
+				&:hover { color: $gray-alt; }
+			}
+		}
+		&.down {
+			h3 {
+				&:after { content: "\25BC"; }
+			}
+		}
+	}
+	.foldable-content {
+		margin: 10px 0px;
+		@media #{$medium-up} { display: block !important; }
+	}
+}

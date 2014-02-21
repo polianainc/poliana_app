@@ -54,6 +54,7 @@ ge = (function() {
 		_graph.colors = _graph.colors === undefined ? warmColors : _graph.colors;
 		_graph.size = _graph.size === undefined ? 5 : _graph.size;
 		_graph.type = _graph.type === undefined ? "" : _graph.type;
+		_graph.ticks = _graph.ticks === undefined ? undefined : _graph.ticks;
 		
 		if(_graph.margins === undefined)
 			setMargins();
@@ -104,6 +105,49 @@ ge = (function() {
 			}
 		}
 		
+		_graph.drawIcons = function(location) {
+			var icons = location.append("ul")
+				.attr("class", "icons");
+
+			icons.append("li")
+				.append("span")
+					.attr("aria-hidden", "true")
+					.attr("class", "icon-info");
+
+			icons.append("li")
+				.append("span")
+					.attr("aria-hidden", "true")
+					.attr("class", "icon-bubbles");
+		};
+		
+		_graph.drawLegend = function(location, data, key, colors) {
+			var legend = location.append("ul")
+				.attr("class", "legend vertical");
+
+			var legendItems = legend.selectAll('li')
+				.data(data)
+				.enter().append('li')
+					.style("opacity", 0)
+					.each(function(d, i) {
+						var li = d3.select(this);
+						var iteration = i;
+						
+						li.append("span").style("background-color", function(d, i) { return colors(iteration); });
+						li.append("p").text(function(d) { return d[key]; });
+					});
+					
+			legendItems.transition()
+				.delay(function(d, i) { return i * 100; })
+				.duration(500)
+				.style("opacity", 1);
+		};
+		
+		_graph.makeTicks = function(data) {
+			var top = nearest(data[0].value, 10000);
+			
+			return [0, top * 0.25 , top * 0.5, top * 0.75, top];
+		};
+		
 		return _graph;
 	};
 	
@@ -137,6 +181,8 @@ ge = (function() {
 			.scale(y)
 			.orient("right")
 			.ticks(5)
+			// Defaults to nothing if _graph.ticks isn't defined
+			.tickValues(_graph.ticks)
 			.tickSize(width)
 			.tickFormat(function(d) { return "$" + currencyNumber(d, 1); });
 			
@@ -194,28 +240,15 @@ ge = (function() {
 				
 			if(data !== undefined) {				
 				x.domain(data.map(function(d) { return d[theKey]; }));
-				y.domain([0, d3.max(data, function(d) { return d[theValue] * 1.15; })]);
+				y.domain([0, d3.max(data, function(d) { return d[theValue]; })]);
 					
-				var legend = d3.select($graph.selector).append("ul")
-					.attr("class", "legend vertical");
-
-				var legendItems = legend.selectAll('li')
-					.data(data)
-					.enter().append('li')
-						.style("opacity", 0)
-						.each(function(d, i) {
-							var li = d3.select(this);
-							var iteration = i;
-							
-							li.append("span").style("background-color", function(d, i) { return colors(iteration); });
-							li.append("p").text(function(d) { return d[theKey]; });
-						});
-						
-				legendItems.transition()
-					.delay(function(d, i) { return i * 100; })
-					.duration(500)
-					.style("opacity", 1);
-
+				var information = d3.select($graph.selector).append("div")
+					.attr("class", "information");
+					
+				ge.graph().drawIcons(information);
+					
+				ge.graph().drawLegend(information, data, theKey, colors);
+					
 				var gy = svg.append("g")
 					.attr("class", "y axis")
 					.call(yAxis);
@@ -338,25 +371,12 @@ ge = (function() {
 					.sort(null)
 					.value(function(d) { return d[theValue]; });
 						
-				var legend = d3.select($graph.selector).append("ul")
-					.attr("class", "legend vertical");
+				var information = d3.select($graph.selector).append("div")
+					.attr("class", "information");
+					
+				ge.graph().drawIcons(information);
 
-				var legendItems = legend.selectAll('li')
-					.data(data)
-					.enter().append('li')
-						.style("opacity", 0)
-						.each(function(d, i) {
-							var li = d3.select(this);
-							var iteration = i;
-							
-							li.append("span").style("background-color", function(d, i) { return colors(iteration); });
-							li.append("p").text(function(d) { return d[theKey]; });
-						});
-						
-				legendItems.transition()
-					.delay(function(d, i) { return i * 100; })
-					.duration(500)
-					.style("opacity", 1);
+				ge.graph().drawLegend(information, data, theKey, colors);
 
 				var g = svg.selectAll(".arc")
 					.data(pie(data))

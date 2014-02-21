@@ -4,16 +4,14 @@
 		margin-bottom: 20px;
 		@media #{$medium-up} {
 			margin-top: 40px;
-			margin-bottom: 0px;
+			margin-bottom: 20px;
 		}
 	}
 	.vertical-bar {
 		.axis {
 			path { display: none; }
 			.tick {
-				text {
-					font-size: 0.75em;
-				}
+				text { font-size: 0.75em; }
 				line {
 					shape-rendering: crispEdges;
 					stroke: $gray;
@@ -36,28 +34,67 @@
 			}
 		}
 	}
-	.legend {
-		&.vertical {
-			margin: 0px;
+	.information {
+		overflow: hidden;
+		.icons {
+			float: none;
+			width: 75px;
+			overflow: hidden;
+			margin: 0px auto 10px auto;
 			list-style-type: none;
-			padding: 0px;
+			@media #{$medium-up} {
+				float: right;
+				margin: 0px;
+				margin-bottom: 0px;
+				width: 50px;
+			}
 			li {
-				overflow: hidden;
-				span {
-					display: block;
-					width: 24px;
-					height: 24px;
-					float: left;
-					@include border-radius($global-radius);
+				float: left;
+				margin-right: 20px;
+				&:last-child { margin-right: 0px; }
+				@media #{$medium-up} { 
+					margin-right: 0px;
+					&:last-child { float: right; }
 				}
-				p {
-					margin-bottom: 5px;
-					margin-top: 1px;
-					padding-left: 10px;
-					float: left;
-					width: 85%;
-					font-size: 0.9em;
-					@media #{$medium-up} { margin-bottom: 10px; }
+				span {
+					color: $gray;
+					cursor: pointer;
+					font-size: 1.5em;
+					@media #{$medium-up} { font-size: 1.1em; }
+					@include single-transition(color, 0.1s, linear);
+					&:hover { color: $gray-alt; }
+				}
+			}
+		}
+		.legend {
+			float: none;
+			width: 100%;
+			@media #{$medium-up} {
+				float: left;
+				width: 85%;
+			}
+			&.vertical {
+				margin: 0px;
+				list-style-type: none;
+				padding: 0px;
+				li {
+					overflow: hidden;
+					span {
+						display: block;
+						width: 20px;
+						height: 20px;
+						float: left;
+						@include border-radius($global-radius);
+					}
+					p {
+						margin-bottom: 5px;
+						margin-top: -1px;
+						padding-left: 10px;
+						float: left;
+						width: 85%;
+						font-size: 0.9em;
+						@media #{$medium-up} { margin-bottom: 10px; }
+					}
 				}
 			}
 		}

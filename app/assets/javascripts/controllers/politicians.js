@@ -52,6 +52,8 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	
 	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
 	
+	var top = cfNamesReduce.top(1);
+	
 	var pacsBar = ge.graph({
 		type: 'verticalBar',
 		width: 400,
@@ -82,6 +84,7 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
+		ticks: ge.graph().makeTicks(top),
 		size: 5
 	});
 	
@@ -172,6 +175,10 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	
 	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
 	
+	cfCongress.filter([108, 109 + 1]);
+	
+	var top = cfNamesReduce.top(1);
+	
 	var industriesBar = ge.graph({
 		type: 'verticalBar',
 		width: 400,
@@ -202,6 +209,7 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
+		ticks: ge.graph().makeTicks(top),
 		size: 5
 	});
 	
@@ -245,11 +253,7 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 // Tell jQuery's AJAX to be patient
 $.when(getPacs, getIndustries).done(function() {
 	// Hide the loader
-	$('.loader').fadeOut(250, function() {
-		// What congresses are we looking at?
-		for(var i = 0; i < cont.listGraphs().length; i++)
-			cont.getGraph(i).dimensions[2].data.filter([108, 109 + 1]);
-		
+	$('.loader').fadeOut(250, function() {		
 		// Let's rock and roll
 		cont.render();
 		

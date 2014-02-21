@@ -30,7 +30,7 @@ module ApplicationHelper
     elsif term == "sen"
       "Senator"
     else
-      "Congressman"
+      "Representative"
     end
   end
   

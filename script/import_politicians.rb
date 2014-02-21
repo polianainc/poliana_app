@@ -36,8 +36,10 @@ def import_raw_legislators_to_mongo
 
     term = Term.new()
     term.term_type = pol["term_type"]
-    term.term_start = term_start
-    term.term_end = DateTime.strptime((pol["end_timestamp"]).to_s, '%s').to_date
+    term.start = term_start
+    term.end = DateTime.strptime((pol["end_timestamp"]).to_s, '%s').to_date
+
+    term.congress = (term.start.year - 1787) / 2;
 
     mpol.terms << term
 

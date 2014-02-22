@@ -45,25 +45,37 @@ def import_raw_legislators_to_mongo
   end
 end
 
-def add_congress_numbers
+def add_congresses
   
   Politician.all.each do |pol|
 
     pol.terms.each do |term|
 
-      term.congress_numbers = []
+      term.congresses = []
       i = term.start
 
       while(i < (term.end - 1.month))
-        term.congress_numbers << (i.year - 1787) / 2 
+        term.congresses << (i.year - 1787) / 2 
         i += 1.year
       end
 
-      term.congress_numbers.uniq!
+      term.congresses.uniq!
     end
 
     pol.save()
   end
 end
+
+def add_birthday_stats
+  count = Politician.count.to_f
+  Politician.order_by([:birthday, :asc]).each_with_index do |pol, i|
+    fi = i.to_f
+
+    calc = ((i+1.0)/count)
+    pol.percent_age_difference = (calc*100).to_i
+    puts pol.percent_age_difference
+  end
+end
 import_raw_legislators_to_mongo
-add_congress_numbers
+add_congresses
+add_birthday_stats

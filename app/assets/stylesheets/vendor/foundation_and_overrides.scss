@@ -845,6 +845,10 @@ $price-item-weight: $body-font-weight;
 // $reveal-modal-class: "reveal-modal";
 // $close-reveal-modal-class: "close-reveal-modal";
 
+.reveal-modal {
+	h1, h2, h3, h4, h5 { margin-bottom: 20px; }
+}
+
 // Side Nav
 
 // $include-html-nav-classes: $include-html-classes;

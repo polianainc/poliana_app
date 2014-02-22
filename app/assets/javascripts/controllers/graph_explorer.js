@@ -8,11 +8,11 @@ ge = (function() {
 	// On click of either graph icons
 	$(document).on('click', '.information .icons li', function() {
 		if($(this).index() == 0) {
-			console.log('information');
+			$otherModal.html($(this).parents('.graph').find('.other').html());
+			$otherModal.foundation('reveal', 'open');
 		}
-		else {
-			console.log('share');
-		}
+		else
+			$sharable.foundation('reveal', 'open');
 	});
 	
 	ge.controller = function(_controller) {

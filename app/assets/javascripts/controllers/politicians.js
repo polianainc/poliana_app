@@ -10,15 +10,24 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	var $barSelector = $('#pacs-bar');
 	var $pieSelector = $('#pacs-pie');
 	
+	var title = "Top 5 PAC Contributors";
+	
+	var $info = $('<div>')
+		.addClass('other hide')
+		.text("Top 5 PACs");
+	
 	$barSelector.append($('<h4>')
 		.addClass('text-center')
-		.text('Top 5 PAC Contributors')
+		.text(title)
 	);
 	
 	$pieSelector.append($('<h4>')
 		.addClass('text-center')
-		.text('Top 5 PAC Contributors')
+		.text(title)
 	);
+	
+	$barSelector.append($info);
+	$pieSelector.append($info.clone());
 	
 	// Format data from API return to our specifications
 	var transform = {};
@@ -131,15 +140,24 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	var $barSelector = $('#industries-bar');
 	var $pieSelector = $('#industries-pie');
 	
+	var title = "Top 5 Industry Contributors";
+	
+	var $info = $('<div>')
+		.addClass('other hide')
+		.text("Top 5 Industries");
+	
 	$barSelector.append($('<h4>')
 		.addClass('text-center')
-		.text('Top 5 Industry Contributors')
+		.text(title)
 	);
 	
 	$pieSelector.append($('<h4>')
 		.addClass('text-center')
-		.text('Top 5 Industry Contributors')
+		.text(title)
 	);
+	
+	$barSelector.append($info);
+	$pieSelector.append($info.clone());
 	
 	// Format data from API return to our specifications
 	var transform = {};
@@ -253,7 +271,7 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 // Tell jQuery's AJAX to be patient
 $.when(getPacs, getIndustries).done(function() {
 	// Hide the loader
-	$('.loader').fadeOut(250, function() {		
+	$loader.fadeOut(250, function() {		
 		// Let's rock and roll
 		cont.render();
 		

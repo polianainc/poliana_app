@@ -1,3 +1,4 @@
+<% terms = @politician.terms.sort { |a, b| b.start <=> a.start } %>
 <% content_for :title, "Politician" %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
@@ -8,7 +9,7 @@
 	</div>
 	<div class="large-9 medium-9 columns">
 		<h1><%= full_name(@politician) %></h1>
-		<h4><%= role(@politician.terms.first.term_type) %></h4>
+		<h4><%= role(terms.first.term_type) %></h4>
 		<div class="foldable">
 			<div class="foldable-header down">
 				<div class="row show-for-small">
@@ -50,9 +51,9 @@
 			<div class="small-12 columns show-for-small">
 				<div id="timeline-select" class="graph">
 					<select>
-					<% @politician.terms.each do |f| %>
+					<% terms.each do |f| %>
 					<%= f.inspect %>
-						<option value="<%= f.congress %>"><%= role(f.term_type) + " (" + f.start.strftime("%Y") + ")" %></option>
+						<option value="<%= f.congress %>"><%= role(f.term_type) + " (" + (f.start.year - 1).to_s + ")" %></option>
 					<% end %>
 					</select>
 				</div>

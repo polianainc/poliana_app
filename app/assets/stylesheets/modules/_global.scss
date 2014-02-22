@@ -134,3 +134,34 @@ small { font-size: 0.75em; }
 		@media #{$medium-up} { display: block !important; }
 	}
 }
+
+.facebook, .twitter, .google-plus, .linkedin {
+	color: $white;
+	span {
+		&:first-of-type { padding-right: 10px; }
+	}
+}
+
+.facebook {
+	background: $facebook;
+	@include flatten(darken($facebook, 10%));
+	&:hover { background: darken($facebook, 5%); };
+}
+
+.twitter {
+	background: $twitter;
+	@include flatten(darken($twitter, 10%));
+	&:hover { background: darken($twitter, 5%); };
+}
+
+.google-plus {
+	background: $google-plus;
+	@include flatten(darken($google-plus, 10%));
+	&:hover { background: darken($google-plus, 5%); };
+}
+
+.linkedin {
+	background: $linkedin;
+	@include flatten(darken($linkedin, 10%));
+	&:hover { background: darken($linkedin, 5%); };
+}

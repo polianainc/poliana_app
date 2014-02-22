@@ -39,12 +39,31 @@ def import_raw_legislators_to_mongo
     term.start = term_start
     term.end = DateTime.strptime((pol["end_timestamp"]).to_s, '%s').to_date
 
-    term.congress = (term.start.year - 1787) / 2;
-
     mpol.terms << term
 
     mpol.save()
   end
 end
 
-import_raw_legislators_to_mongo()
+def add_congress_numbers
+  
+  Politician.all.each do |pol|
+
+    pol.terms.each do |term|
+
+      term.congress_numbers = []
+      i = term.start
+
+      while(i < (term.end - 1.month))
+        term.congress_numbers << (i.year - 1787) / 2 
+        i += 1.year
+      end
+
+      term.congress_numbers.uniq!
+    end
+
+    pol.save()
+  end
+end
+import_raw_legislators_to_mongo
+add_congress_numbers

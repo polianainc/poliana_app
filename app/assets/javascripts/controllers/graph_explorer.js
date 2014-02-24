@@ -157,7 +157,7 @@ ge = (function() {
 		};
 		
 		_graph.makeTicks = function(data) {
-			var top = nearest(data[0].value, 10000);
+			var top = typeof data === 'number' ? nearest(data, 1000) : nearest(data[0].value, 1000);
 			
 			return [0, top * 0.25 , top * 0.5, top * 0.75, top];
 		};
@@ -252,10 +252,28 @@ ge = (function() {
 			var x0 = x.domain(data.map(function(d) { return d[theKey]; }));
 			var y0 = y.domain([0, d3.max(data, function(d) { return d[theValue]; })]);
 			
-			var transition = svg.transition().duration(500);
-				
-			transition.selectAll(".bar")
+			var yAxis0 = d3.svg.axis()
+				.scale(y)
+				.orient("right")
+				.ticks(5)
+				// Defaults to nothing if _graph.ticks isn't defined
+				.tickValues(ge.graph().makeTicks(d3.max(data, function(d) { return d[theValue]; })))
+				.tickSize(width)
+				.tickFormat(function(d) { return "$" + currencyNumber(d, 1); });
+			
+			var gy = svg.selectAll(".y.axis").transition()
 				.delay(function(d, i) { return i * 100; })
+				.duration(500)
+				.call(yAxis0);
+
+			gy.selectAll("text")
+				.attr("x", 4)
+				.attr("dy", -4);
+					
+			svg.selectAll(".bar").data(data).transition()
+				.delay(function(d, i) { return i * 100; })
+				.duration(500)
+				// We use a custom path function rather than SVG's rect element to get rounded corners
 				.attr("d", function(d) {
 					return topRoundedRect(
 						x0(d[theKey]),

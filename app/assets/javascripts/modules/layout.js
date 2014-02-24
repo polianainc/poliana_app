@@ -15,14 +15,20 @@ $(document).ready(function() {
 	$(document).on('click', '.other-modal', function(event) {
 		event.preventDefault();
 		
-		var html = $(this).attr('data-othermodal') + '<a class="close-reveal-modal">&#215;</a>';
+		var html = $(this).attr('data-othermodal');
 		
 		$otherModal.html(html);
 		$otherModal.foundation('reveal', 'open');
 	});
 	
 	// On exiting the other modal dialog, remove all the content within so it can be re-populated
-	$otherModal.bind('closed', function() { $(this).html(''); });
+	$otherModal.on('closed', function() { $(this).html(''); });
+	
+	$(document).on('opened', '[data-reveal]', function() {
+		var html = $(this).html();
+		
+		$(this).html(html + '<a class="close-reveal-modal">&#215;</a>');
+	});
 	
 	// Run a search query
 	$('.menu-search.not-search').on('keypress', function(event) {
@@ -44,9 +50,27 @@ $(document).ready(function() {
 	});
 	
 	// Add a div to loaders, so front-end doesn't have to be cluttered in view
-	$('.loader').each(function() {
+	$loader.each(function() {
 		$(this).append($('<div>'));
 	});
+	
+	$foldable.find('.foldable-header').on('click', function(event, speed) {
+		if(speed === undefined)
+			speed = 250;
+			
+		if(speed === 0)
+			$(this).siblings('.foldable-content').hide();
+		else
+			$(this).siblings('.foldable-content').slideToggle(speed);
+			
+		$(this).toggleClass('down');
+		
+		// Force graphs to re-render
+		$(window).trigger('resize');
+	});
+	
+	// Fold everything down
+	$foldable.find('.foldable-header').trigger('click', [0]);
 });
 
 $(window).resize(throttle(function() {

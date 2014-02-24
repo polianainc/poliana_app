@@ -7,12 +7,27 @@ var cont = ge.controller();
 // Get all the PACS
 //var getPacs = $.get('//default-environment-ygymzummgf.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
 var getPacs = $.get('/temp/pacs.json', function(data) {
-	var $selector = $('#pacs-bar');
+	var $barSelector = $('#pacs-bar');
+	var $pieSelector = $('#pacs-pie');
 	
-	$selector.append($('<h4>')
+	var title = "Top 5 PAC Contributors";
+	
+	var $info = $('<div>')
+		.addClass('other hide')
+		.text("Top 5 PACs");
+	
+	$barSelector.append($('<h4>')
 		.addClass('text-center')
-		.text('Top 5 PAC Contributors')
+		.text(title)
 	);
+	
+	$pieSelector.append($('<h4>')
+		.addClass('text-center')
+		.text(title)
+	);
+	
+	$barSelector.append($info);
+	$pieSelector.append($info.clone());
 	
 	// Format data from API return to our specifications
 	var transform = {};
@@ -50,7 +65,7 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 		type: 'verticalBar',
 		width: 400,
 		height: 300,
-		selector: $selector,
+		selector: $barSelector,
 		margins: {
 			top: 20,
 			bottom: 20,
@@ -76,21 +91,72 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
-		size: 5
+		size: 5,
+		filterDimension: 2
+	});
+	
+	var pacsPie = ge.graph({
+		type: 'pie',
+		width: 400,
+		height: 400,
+		selector: $pieSelector,
+		margins: {
+			top: 20,
+			bottom: 20,
+			left: 0,
+			right: 0
+		},
+		colors: warmColors,
+		data: cf,
+		dimensions: [
+			{
+				data: cfNamesReduce,
+				keySelector: 'key',
+				valueSelector: 'value'
+			},
+			{
+				data: cfContributions,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			},
+			{
+				data: cfCongress,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			}
+		],
+		size: 5,
+		filterDimension: 2
 	});
 	
 	cont.addGraph(pacsBar);
+	cont.addGraph(pacsPie);
 });
 
 // Get all the industries
 //var getIndustries = $.get('//default-environment-ygymzummgf.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
 var getIndustries = $.get('/temp/industries.json', function(data) {
-	var $selector = $('#industries-bar');
+	var $barSelector = $('#industries-bar');
+	var $pieSelector = $('#industries-pie');
 	
-	$selector.append($('<h4>')
+	var title = "Top 5 Industry Contributors";
+	
+	var $info = $('<div>')
+		.addClass('other hide')
+		.text("Top 5 Industries");
+	
+	$barSelector.append($('<h4>')
 		.addClass('text-center')
-		.text('Top 5 Industry Contributors')
+		.text(title)
 	);
+	
+	$pieSelector.append($('<h4>')
+		.addClass('text-center')
+		.text(title)
+	);
+	
+	$barSelector.append($info);
+	$pieSelector.append($info.clone());
 	
 	// Format data from API return to our specifications
 	var transform = {};
@@ -130,7 +196,7 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 		type: 'verticalBar',
 		width: 400,
 		height: 300,
-		selector: $selector,
+		selector: $barSelector,
 		margins: {
 			top: 20,
 			bottom: 20,
@@ -156,27 +222,122 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
-		size: 5
+		size: 5,
+		filterDimension: 2
+	});
+	
+	var industriesPie = ge.graph({
+		type: 'pie',
+		width: 400,
+		height: 400,
+		selector: $pieSelector,
+		margins: {
+			top: 20,
+			bottom: 20,
+			left: 0,
+			right: 0
+		},
+		colors: coolColors,
+		data: cf,
+		dimensions: [
+			{
+				data: cfNamesReduce,
+				keySelector: 'key',
+				valueSelector: 'value'
+			},
+			{
+				data: cfContributions,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			},
+			{
+				data: cfCongress,
+				keySelector: 'pac_name',
+				valueSelector: 'contribution_sum'
+			}
+		],
+		size: 5,
+		filterDimension: 2
 	});
 	
 	cont.addGraph(industriesBar);
+	cont.addGraph(industriesPie);
 });
+
+function runFilter(dimension, filter, controller) {
+	for(var i = 0; i < controller.listGraphs().length; i++) {
+		if(controller.getGraph(i).type !== "scrubber") {
+			controller.getGraph(i).dimensions[dimension].data.filter(filter);
+			//var top = controller.getGraph(i).dimensions[0].data.top(1);
+			//controller.getGraph(i).ticks = ge.graph().makeTicks(top);
+		}
+	}
+}
 
 // Tell jQuery's AJAX to be patient
 $.when(getPacs, getIndustries).done(function() {
 	// Hide the loader
-	$('.loader').fadeOut(250, function() {
-		// What congresses are we looking at?
-		for(var i = 0; i < cont.listGraphs().length; i++)
-			cont.getGraph(i).dimensions[2].data.filter([108, 109 + 1]);
+	$loader.fadeOut(250, function() {
+		var pacData = cont.getGraph(0).dimensions[2].data;
+		var industryData = cont.getGraph(2).dimensions[2].data;
 		
+		var pacReduced = pacData.group().reduceSum(function(c) { return +c.contribution_sum; });
+		var industryReduced = industryData.group().reduceSum(function(c) { return +c.contribution_sum; });
+		
+		var pacTotals = [];
+		var industryTotals = [];
+		
+		pacReduced.top(Infinity).forEach(function(p, i) {
+			pacTotals.push(p);
+		});
+		
+		industryReduced.top(Infinity).forEach(function(p, i) {
+			industryTotals.push(p);
+		});
+		
+		// Order everything
+		function compare(a, b) {
+			if (a.key < b.key)
+				return -1;
+			if (a.key > b.key)
+				return 1;
+				
+			return 0;
+		}
+		
+		pacTotals.sort(compare);
+		industryTotals.sort(compare);
+		
+		var $timelineSelector = $('#timeline-area');
+		
+		var timelineScrub = ge.graph({
+			type: 'scrubber',
+			width: 940,
+			height: 100,
+			selector: $timelineSelector,
+			margins: {
+				top: 20,
+				bottom: 20,
+				left: 0,
+				right: 0
+			},
+			colors: monoColors,
+			data: {
+				"All PACs": pacTotals,
+				"All Industries": industryTotals
+			},
+			controller: cont
+		});
+		
+		cont.addGraph(timelineScrub);
+		
+		// Run our initial filters
+		//runFilter(2, [108, 109 + 1], cont);
+			
 		// Let's rock and roll
 		cont.render();
 		
 		// No need for this shit anymore...
 		$('.primary-key').remove();
-
-		// Tell me what ya got
-		console.log(cont.listGraphs());
 	});
 });

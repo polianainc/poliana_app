@@ -161,6 +161,13 @@ function camelToHyphen(string) {
 	return string.replace(/([a-z][A-Z])/g, function (g) { return g[0] + '-' + g[1].toLowerCase() });
 }
 
+// Round up to nearest v
+function nearest(n, v) {
+	n = n / v;
+	n = Math.ceil(n) * v;
+	return n;
+}
+
 // Return the ordinated value of a number
 Number.prototype.ordinate = function() {
 	var num = this,

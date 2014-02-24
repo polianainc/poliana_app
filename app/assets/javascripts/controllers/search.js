@@ -230,20 +230,37 @@ function formatItem(type, data, partial) {
 		});
 	}
 	else if(type == "politicians") {
-		/*
-			<h3>Politicians</h3>
-			<div class="search-item">
-				<div class="row">
-					<div class="large-2 hide-for-small columns">
-						<a href="#"><img src="http://www.rickperry.org/files/portrait_rp.jpg" alt="Rick Perry"></a>
-					</div>
-					<div class="large-10 small-12 columns">
-						<h4><a href="#">Politician One</a></h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor lacinia facilisis. In lacinia viverra gravida. Pellentesque fermentum vel enim viverra consequat. Sed eleifend leo leo, ut ultrices nibh elementum et. <a href="#">Explore &raquo;</a></p>
-					</div>
-				</div>
-			</div>
-		*/
+		$.each(data.data, function(index, value) {
+			var item = this;
+			
+			this.name = this.first_name + ' ' + this.last_name;
+			
+			$posts.append($('<div>')
+				.attr('class', 'search-item')
+				.append($('<div>')
+					.attr('class', 'row')
+					.append($('<div>')
+						.attr('class', 'large-2 show-for-large-up columns')
+						.append($('<a>')
+							.attr('href', '/congress/politicians/' + this.bioguide_id)
+							.append($('<img>')
+								.attr('src', '#')
+								.attr('alt', this.name)
+							)
+						)
+					)
+					.append($('<div>')
+						.attr('class', 'large-10 small-12 columns')
+						.append($('<h4>')
+							.append($('<a>')
+								.attr('href', '/congress/politicians/' + this.bioguide_id)
+								.text(this.name)
+							)
+						)
+					)
+				)
+			);
+		});
 	}
 	else if(type == "pacs") {
 		

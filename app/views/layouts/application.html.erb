@@ -35,7 +35,7 @@
 							<a class="left-off-canvas-toggle menu-icon"><span></span></a>
 						</section>
 						<section class="middle tab-bar-section">
-							<%= link_to image_tag('logo-white.png', :id => "logo-mobile", :alt => "Poliana"), root_path %>
+							<%= link_to image_tag('logo.png', :id => "logo-mobile", :alt => "Poliana"), root_path %>
 						</section>
 						<% if user_signed_in? %>
 						<section class="right-small">
@@ -85,7 +85,7 @@
 					<nav class="top-bar show-for-medium-up" id="desktop-nav" data-topbar>
 						<ul class="title-area">
 							<li class="name">
-								<%= link_to image_tag('logo-white.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
+								<%= link_to image_tag('logo.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
 							</li>
 							<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 						</ul>
@@ -148,7 +148,26 @@
 		</div>
 	</div>
 	<div class="state-indicator"></div>
-	<div id="other-modal" class="reveal-modal small"></div>
+	<div id="sharable" class="reveal-modal small" data-reveal style="display: none;">
+		<div class="row">
+			<div class="large-12 columns">
+				<h3 class="text-center">Find something interesting?</h3>
+			</div>
+			<div class="large-6 medium-12 small-12 columns">
+				<%= link_to "<span aria-hidden='true' class='icon-facebook'></span><span>Share on Facebook</span>".html_safe(), 'https://www.facebook.com/sharer/sharer.php?u=' + request.original_url, :class => "button small expand radius facebook", :target => "_blank" %>
+			</div>
+			<div class="large-6 medium-12 small-12 columns">
+				<%= link_to "<span aria-hidden='true' class='icon-twitter'></span><span>Share on Twitter</span>".html_safe(), 'https://twitter.com/home?status=' + request.original_url, :class => "button small expand radius twitter", :target => "_blank" %>
+			</div>
+			<div class="large-6 medium-12 small-12 columns">
+				<%= link_to "<span aria-hidden='true' class='icon-google-plus'></span><span>Share on Google</span>".html_safe(), 'https://plus.google.com/share?url=' + request.original_url, :class => "button small expand radius google-plus", :target => "_blank" %>
+			</div>
+			<div class="large-6 medium-12 small-12 columns">
+				<%= link_to "<span aria-hidden='true' class='icon-linkedin'></span><span>Share on LinkedIn</span>".html_safe(), 'https://www.linkedin.com/shareArticle?&url=' + request.original_url, :class => "button small expand radius linkedin", :target => "_blank" %>
+			</div>
+		</div>
+	</div>
+	<div id="other-modal" class="reveal-modal medium" data-reveal style="display: none;"></div>
 	
 	<%= javascript_include_tag "application" %>
 </body>

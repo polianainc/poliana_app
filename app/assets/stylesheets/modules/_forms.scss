@@ -16,22 +16,6 @@
 	margin-top: 20px;
 	margin-bottom: 10px;
 	@media #{$medium-up} { margin-bottom: 20px; }
-	.facebook, .twitter {
-		color: $white;
-		span {
-			&:first-of-type { padding-right: 10px; }
-		}
-	}
-	.facebook {
-		background: $facebook;
-		@include flatten(darken($facebook, 10%));
-		&:hover { background: darken($facebook, 5%); };
-	}
-	.twitter {
-		background: $twitter;
-		@include flatten(darken($twitter, 10%));
-		&:hover { background: darken($twitter, 5%); };
-	}
 }
 
 .error {

@@ -1,63 +1,80 @@
-<%= @politician %>
-
+<% terms = @politician.terms.sort { |a, b| b.start <=> a.start } %>
 <% content_for :title, "Politician" %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
-<div class="hide primary-key" data-id="O000167"></div>
+<div class="hide primary-key" data-id="<%= @politician.bioguide_id %>"></div>
 <div class="row">
 	<div class="large-3 medium-3 columns">
-		<img src="" alt="FULL NAME">
+		<%= image_tag "congress/FILL THIS SHIT IN HERE/" + @politician.bioguide_id + ".png" %>
 	</div>
 	<div class="large-9 medium-9 columns">
-		<h1>FULL NAME</h1>
-		<h4>ROLE</h4>
-		<div class="accordion">
-			<div class="row">
-				<div class="small-12 columns show-for-small">
-					Personal Information
+		<h1><%= full_name(@politician) %></h1>
+		<h4><%= role(terms.first.term_type) %></h4>
+		<div class="foldable">
+			<div class="foldable-header down">
+				<div class="row show-for-small">
+					<div class="small-12 columns">
+						<h3>Personal Information</h3>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="large-4 medium-4 columns">
-					BIRTHDAY
-				</div>
-				<div class="large-4 medium-4 columns">
-					GENDER
-				</div>
-				<div class="large-4 medium-4 columns">
-					RELIGION
+			<div class="foldable-content">
+				<div class="row">
+					<div class="large-4 medium-4 columns">
+						BIRTHDAY
+					</div>
+					<div class="large-4 medium-4 columns">
+						GENDER
+					</div>
+					<div class="large-4 medium-4 columns">
+						RELIGION
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="accordion">
-	<div class="row show-for-small">
-		<div class="small-12 columns">
-			Timeline
+<div class="loader"></div>
+<div class="foldable">
+	<div class="foldable-header down">
+		<div class="row show-for-small">
+			<div class="small-12 columns">
+				<h3>Timeline</h3>
+			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="loader"></div>
-		<div class="large-12 columns show-for-medium-up">
-			<div id="timeline-area" class="graph"></div>
+	<div class="foldable-content">
+		<div class="row">
+			<div class="large-12 columns show-for-medium-up">
+				<div id="timeline-area" class="graph">
+					<% terms.each do |f| %>
+						<span data-congresses="<%= f.congresses.join(',') %>" data-role="<%= role(f.term_type) %>" data-year="<%= (f.start.year - 1).to_s %>" class="hide"></span>
+					<% end %>
+				</div>
+			</div>
+			<div class="small-12 columns show-for-small">
+				<div id="timeline-select" class="graph">
+					<select>
+					<% terms.each do |f| %>
+						<option value="<%= f.congresses.join(',') %>"><%= role(f.term_type) + " (" + (f.start.year - 1).to_s + ")" %></option>
+					<% end %>
+					</select>
+				</div>
+			</div>
 		</div>
-		<div class="small-12 columns show-for-small">
-			<div id="timeline-select" class="graph">SMALL TIMELINE</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="large-6 medium-6 columns show-for-medium-up">
-			<div id="pacs-bar" class="graph"></div>
-		</div>
-		<div class="small-12 columns show-for-small">
-			<div id="pacs-pie" class="graph">PACS PIE</div>
-		</div>
-		<div class="large-6 medium-6 columns show-for-medium-up">
-			<div id="industries-bar" class="graph"></div>
-		</div>
-		<div class="small-12 columns show-for-small">
-			<div id="industries-pie" class="graph">INDUSTRIES PIE</div>
+		<div class="row">
+			<div class="large-6 medium-6 columns show-for-medium-up">
+				<div id="pacs-bar" class="graph"></div>
+			</div>
+			<div class="small-12 columns show-for-small">
+				<div id="pacs-pie" class="graph"></div>
+			</div>
+			<div class="large-6 medium-6 columns show-for-medium-up">
+				<div id="industries-bar" class="graph"></div>
+			</div>
+			<div class="small-12 columns show-for-small">
+				<div id="industries-pie" class="graph"></div>
+			</div>
 		</div>
 	</div>
 </div>

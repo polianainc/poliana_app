@@ -557,6 +557,18 @@ ge = (function() {
 					.selectAll("rect")
 					.attr("y", -20)
 					.attr("height", height + 20);
+					
+				d3.selectAll('.brush .resize rect').each(function(d, i) {
+					var elem = d3.select(this);
+					var width = 6;
+					var height = 30;
+					var oldHeight = elem.attr("height");
+
+					if(i === 0)
+						elem.attr("width", width).attr("height", height).attr("x", -width).attr("y", ((oldHeight - height) / 2) - 20);
+					else
+						elem.attr("width", width).attr("height", height).attr("x", 0).attr("y", ((oldHeight - height) / 2) - 20);
+				});
 			}
 		};
 		

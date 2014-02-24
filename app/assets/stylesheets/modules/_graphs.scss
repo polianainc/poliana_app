@@ -46,7 +46,7 @@
 					fill: $gray;
 				}
 				&:nth-child(even) {
-					text { display: none; }
+					text, line { display: none; }
 				}
 				&:first-of-type, &:last-of-type {
 					line { display: none; }
@@ -62,6 +62,12 @@
 			.extent {
 				fill: $black;
 				fill-opacity: 0.25;
+			}
+			.resize {
+				rect {
+					fill: $white;
+					visibility: visible !important;
+				}
 			}
 		}
 	}

@@ -425,5 +425,143 @@ ge = (function() {
 		return _graph;
 	};
 	
+	ge.scrubber = function(_graph) {
+		// This is so that we have a jQuery-namespaced variable to work with	
+		var $graph;
+
+		if(_graph.selector !== undefined)
+			$graph = _graph.selector;
+			
+		var data = _graph.data;
+		
+		var margin = {
+				top: _graph.margins.top,
+				bottom: _graph.margins.bottom,
+				left: _graph.margins.left,
+				right: _graph.margins.right
+			},
+			width = _graph.width - margin.left - margin.right,
+			height = _graph.height - margin.top - margin.bottom;
+		
+		var x = d3.scale.linear()
+			.range([width, 0]);
+
+		var y = d3.scale.linear()
+			.range([height, 0]);
+
+		var xAxis = d3.svg.axis()
+			.scale(x)
+			.orient("top")
+			.tickSize(height + 20)
+			.tickFormat(function(d) { return parseInt(d).ordinate(); });
+
+		var yAxis = d3.svg.axis()
+			.scale(y)
+			.orient("left");
+			
+		var brush = d3.svg.brush()
+			.x(x)
+			.on("brushend", brushed);
+			
+		function brushed() {
+			if(!d3.event.sourceEvent) return;
+			
+			var extent0 = brush.extent();
+			var extent1 = [Math.round(extent0[0]), Math.round(extent0[1])];
+			
+			if(extent1[0] >= extent1[1]) {
+				extent1[0] = Math.floor(extent0[0]);
+				extent1[1] = Math.ceil(extent0[1]);
+			}
+
+			d3.select(this).transition()
+				.duration(250)
+				.call(brush.extent(extent1));
+				
+			console.log(extent1);
+		}
+			
+		var colors = d3.scale.ordinal()
+			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
+			.range(_graph.colors);
+
+		var svg = d3.select($graph.selector).append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.attr("class", camelToHyphen(_graph.type))
+			.attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+			.attr("preserveAspectRatio", "xMidYMid");
+			
+		var context = svg.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+				
+		var aspect = (width + margin.left + margin.right) / (height + margin.top + margin.bottom);
+		
+		function resizeGraph() {
+			var targetWidth = $graph.width();
+			var $svg = $graph.find('svg');
+			
+			$svg.attr("width", targetWidth);
+			$svg.attr("height", targetWidth / aspect);
+		}
+		
+		resizeGraph();
+		
+		$(window).on("resize", function() { resizeGraph(); });
+			
+		_graph.redraw = function(newData) {
+			console.log(newData);
+		};
+		
+		_graph.render = function() {
+			if(data !== undefined) {
+				Object.keys(data).forEach(function(key, iteration) {
+					var area = d3.svg.area()
+						.interpolate("monotone")
+						.x(function(d) { return x(d.key); })
+						.y0(height)
+						.y1(function(d) { return y(d.value); });
+
+					x.domain(d3.extent(data[key].map(function(d) { return d.key; })));
+					y.domain([0, d3.max(data[key].map(function(d) { return d.value; }))]);
+
+					context.append("path")
+						.datum(data[key])
+						.attr("class", "area")
+						.attr("fill", function(d, i) { return colors(iteration); })
+						.attr("fill-opacity", 0.75)
+						.attr("d", area);
+				});
+				
+				context.append("g")
+					.attr("class", "x axis")
+					.attr("transform", "translate(0," + height + ")")
+					.call(xAxis);
+					
+				var xLength = d3.selectAll('.x .tick text').size();
+					
+				d3.selectAll('.x .tick text').each(function(d, i) {
+					var elem = d3.select(this);
+					
+					elem.attr("x", 5)
+						.attr("y", +elem.attr("y") + 20)
+						.style("text-anchor", "start");
+						
+					if(i === 0)
+						elem.style("text-anchor", "end").attr("x", -10);
+				});
+				
+				context.append("g")
+					.attr("class", "x brush")
+					.call(brush)
+					.selectAll("rect")
+					.attr("y", -20)
+					.attr("height", height + 20);
+			}
+		};
+		
+		return _graph;
+	};
+	
 	return ge;
 })();

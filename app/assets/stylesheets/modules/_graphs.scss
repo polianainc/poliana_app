@@ -34,6 +34,37 @@
 			}
 		}
 	}
+	.scrubber {
+		.axis {
+			path { display: none; }
+			.tick {
+				line { stroke: $gray; }
+				text {
+					font-size: 0.75em;
+					text-transform: uppercase;
+					font-weight: 700;
+					fill: $gray;
+				}
+				&:nth-child(even) {
+					text { display: none; }
+				}
+				&:first-of-type, &:last-of-type {
+					line { display: none; }
+				}
+			}
+		}
+		.brush {
+			.background {
+				fill: $gray;
+				fill-opacity: 0.25;
+				visibility: visible !important;
+			}
+			.extent {
+				fill: $black;
+				fill-opacity: 0.25;
+			}
+		}
+	}
 	.information {
 		overflow: hidden;
 		.icons {

@@ -61,8 +61,6 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	
 	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
 	
-	var top = cfNamesReduce.top(1);
-	
 	var pacsBar = ge.graph({
 		type: 'verticalBar',
 		width: 400,
@@ -93,7 +91,6 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
-		ticks: ge.graph().makeTicks(top),
 		size: 5
 	});
 	
@@ -193,10 +190,6 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	
 	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
 	
-	cfCongress.filter([108, 109 + 1]);
-	
-	var top = cfNamesReduce.top(1);
-	
 	var industriesBar = ge.graph({
 		type: 'verticalBar',
 		width: 400,
@@ -227,7 +220,6 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
-		ticks: ge.graph().makeTicks(top),
 		size: 5
 	});
 	
@@ -268,10 +260,77 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	cont.addGraph(industriesPie);
 });
 
+function runFilter(dimension, filter, controller) {
+	for(var i = 0; i < controller.listGraphs().length; i++) {
+		if(controller.getGraph(i).type !== "scrubber") {
+			controller.getGraph(i).dimensions[dimension].data.filter(filter);
+			//var top = controller.getGraph(i).dimensions[0].data.top(1);
+			//controller.getGraph(i).ticks = ge.graph().makeTicks(top);
+		}
+	}
+}
+
 // Tell jQuery's AJAX to be patient
 $.when(getPacs, getIndustries).done(function() {
 	// Hide the loader
-	$loader.fadeOut(250, function() {		
+	$loader.fadeOut(250, function() {
+		var pacData = cont.getGraph(0).dimensions[2].data;
+		var industryData = cont.getGraph(2).dimensions[2].data;
+		
+		var pacReduced = pacData.group().reduceSum(function(c) { return +c.contribution_sum; });
+		var industryReduced = industryData.group().reduceSum(function(c) { return +c.contribution_sum; });
+		
+		var pacTotals = [];
+		var industryTotals = [];
+		
+		pacReduced.top(Infinity).forEach(function(p, i) {
+			pacTotals.push(p);
+		});
+		
+		industryReduced.top(Infinity).forEach(function(p, i) {
+			industryTotals.push(p);
+		});
+		
+		//pacTotals.push({key: 112, value: 0});
+		
+		// Order everything
+		function compare(a, b) {
+			if (a.key < b.key)
+				return -1;
+			if (a.key > b.key)
+				return 1;
+				
+			return 0;
+		}
+		
+		pacTotals.sort(compare);
+		industryTotals.sort(compare);
+		
+		var $timelineSelector = $('#timeline-area');
+		
+		var timelineScrub = ge.graph({
+			type: 'scrubber',
+			width: 940,
+			height: 100,
+			selector: $timelineSelector,
+			margins: {
+				top: 20,
+				bottom: 20,
+				left: 0,
+				right: 0
+			},
+			colors: monoColors,
+			data: {
+				"All PACs": pacTotals,
+				"All Industries": industryTotals
+			}
+		});
+		
+		cont.addGraph(timelineScrub);
+		
+		// Run our initial filters
+		runFilter(2, [108, 109 + 1], cont);
+			
 		// Let's rock and roll
 		cont.render();
 		

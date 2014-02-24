@@ -91,7 +91,8 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
-		size: 5
+		size: 5,
+		filterDimension: 2
 	});
 	
 	var pacsPie = ge.graph({
@@ -124,7 +125,8 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
-		size: 5
+		size: 5,
+		filterDimension: 2
 	});
 	
 	cont.addGraph(pacsBar);
@@ -220,7 +222,8 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
-		size: 5
+		size: 5,
+		filterDimension: 2
 	});
 	
 	var industriesPie = ge.graph({
@@ -253,7 +256,8 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 				valueSelector: 'contribution_sum'
 			}
 		],
-		size: 5
+		size: 5,
+		filterDimension: 2
 	});
 	
 	cont.addGraph(industriesBar);
@@ -291,8 +295,6 @@ $.when(getPacs, getIndustries).done(function() {
 			industryTotals.push(p);
 		});
 		
-		//pacTotals.push({key: 112, value: 0});
-		
 		// Order everything
 		function compare(a, b) {
 			if (a.key < b.key)
@@ -323,21 +325,19 @@ $.when(getPacs, getIndustries).done(function() {
 			data: {
 				"All PACs": pacTotals,
 				"All Industries": industryTotals
-			}
+			},
+			controller: cont
 		});
 		
 		cont.addGraph(timelineScrub);
 		
 		// Run our initial filters
-		runFilter(2, [108, 109 + 1], cont);
+		//runFilter(2, [108, 109 + 1], cont);
 			
 		// Let's rock and roll
 		cont.render();
 		
 		// No need for this shit anymore...
 		$('.primary-key').remove();
-
-		// Tell me what ya got
-		console.log(cont.listGraphs());
 	});
 });

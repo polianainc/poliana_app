@@ -41,9 +41,9 @@ ge = (function() {
 				
 				return this;
 			},
-			redraw: function() {
-				for(var i = 0; i < _controller.graphs.length; i++)
-					_controller.graphs[i].redraw('redraw');
+			redraw: function(data) {			
+				for(var i = 0; i < this.listGraphs().length; i++)
+					this.getGraph(i).redraw(data);
 				
 				return this;
 			}
@@ -65,6 +65,8 @@ ge = (function() {
 		_graph.size = _graph.size === undefined ? 5 : _graph.size;
 		_graph.type = _graph.type === undefined ? "" : _graph.type;
 		_graph.ticks = _graph.ticks === undefined ? undefined : _graph.ticks;
+		_graph.controller = _graph.controller === undefined ? undefined : _graph.controller;
+		_graph.filterDimension = _graph.filterDimension === undefined ? undefined : _graph.filterDimension;
 		
 		if(_graph.margins === undefined)
 			setMargins();
@@ -131,6 +133,8 @@ ge = (function() {
 		};
 		
 		_graph.drawLegend = function(location, data, key, colors) {
+			location.selectAll('.legend').remove();
+			
 			var legend = location.append("ul")
 				.attr("class", "legend vertical");
 
@@ -209,6 +213,9 @@ ge = (function() {
 			.append("g")
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 				
+		var information = d3.select($graph.selector).append("div")
+			.attr("class", "information");
+				
 		var aspect = (width + margin.left + margin.right) / (height + margin.top + margin.bottom);
 		
 		function resizeGraph() {
@@ -236,7 +243,30 @@ ge = (function() {
 		}
 			
 		_graph.redraw = function(newData) {
-			console.log(newData);
+			var filter = _graph.dimensions[_graph.filterDimension].data.filter(newData);
+			
+			var data = _graph.dimensions[0].data.top(_graph.size);
+			var theKey = _graph.dimensions[0].keySelector;
+			var theValue = _graph.dimensions[0].valueSelector;
+			
+			var x0 = x.domain(data.map(function(d) { return d[theKey]; }));
+			var y0 = y.domain([0, d3.max(data, function(d) { return d[theValue]; })]);
+			
+			var transition = svg.transition().duration(500);
+				
+			transition.selectAll(".bar")
+				.delay(function(d, i) { return i * 100; })
+				.attr("d", function(d) {
+					return topRoundedRect(
+						x0(d[theKey]),
+						y0(d[theValue]),
+						x0.rangeBand(),
+						height - y0(d[theValue]),
+						5
+					);
+				});
+				
+			ge.graph().drawLegend(information, data, theKey, colors);
 		};
 		
 		_graph.render = function() {
@@ -251,9 +281,6 @@ ge = (function() {
 			if(data !== undefined) {				
 				x.domain(data.map(function(d) { return d[theKey]; }));
 				y.domain([0, d3.max(data, function(d) { return d[theValue]; })]);
-					
-				var information = d3.select($graph.selector).append("div")
-					.attr("class", "information");
 					
 				ge.graph().drawIcons(information);
 					
@@ -478,7 +505,9 @@ ge = (function() {
 				.duration(250)
 				.call(brush.extent(extent1));
 				
-			console.log(extent1);
+			extent1[1]++;
+				
+			_graph.controller.redraw(extent1);
 		}
 			
 		var colors = d3.scale.ordinal()
@@ -510,20 +539,35 @@ ge = (function() {
 		$(window).on("resize", function() { resizeGraph(); });
 			
 		_graph.redraw = function(newData) {
-			console.log(newData);
+			// Do absolutely nothing, we never redraw scrubbers!
 		};
 		
 		_graph.render = function() {
 			if(data !== undefined) {
+				//ge.graph().drawLegend(information, data, theKey, colors);
+				
+				var totals = [];
+				
+				Object.keys(data).forEach(function(key, iteration) {
+					for(var i = 0; i < data[key].length; i++) {
+						totals.push(data[key][i]);
+					}
+				});
+				
+				x.domain(d3.extent(totals.map(function(d) { return d.key; })));
+				y.domain([0, d3.max(totals.map(function(d) { return d.value; }))]);
+				
+				context.append("g")
+					.attr("class", "x axis")
+					.attr("transform", "translate(0," + height + ")")
+					.call(xAxis);
+				
 				Object.keys(data).forEach(function(key, iteration) {
 					var area = d3.svg.area()
 						.interpolate("monotone")
 						.x(function(d) { return x(d.key); })
 						.y0(height)
 						.y1(function(d) { return y(d.value); });
-
-					x.domain(d3.extent(data[key].map(function(d) { return d.key; })));
-					y.domain([0, d3.max(data[key].map(function(d) { return d.value; }))]);
 
 					context.append("path")
 						.datum(data[key])
@@ -532,11 +576,6 @@ ge = (function() {
 						.attr("fill-opacity", 0.75)
 						.attr("d", area);
 				});
-				
-				context.append("g")
-					.attr("class", "x axis")
-					.attr("transform", "translate(0," + height + ")")
-					.call(xAxis);
 					
 				var xLength = d3.selectAll('.x .tick text').size();
 					

@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(:version => 20130924223828) do
 
+  create_table "bills", :force => true do |t|
+    t.text     "summary"
+    t.string   "title"
+    t.string   "data_id"
+    t.string   "sponsor_name"
+    t.string   "result"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "invitations", :force => true do |t|
     t.integer  "sender_id"
     t.string   "recipient_email"

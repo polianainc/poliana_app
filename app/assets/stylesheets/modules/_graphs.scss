@@ -110,7 +110,7 @@
 				float: left;
 				width: 85%;
 			}
-			&.vertical {
+			&.vertical, &.horizontal {
 				margin: 0px;
 				list-style-type: none;
 				padding: 0px;
@@ -132,6 +132,13 @@
 						font-size: 0.9em;
 						@media #{$medium-up} { margin-bottom: 10px; }
 					}
+				}
+			}
+			&.horizontal {
+				overflow: hidden;
+				li {
+					float: left;
+					width: 150px;
 				}
 			}
 		}

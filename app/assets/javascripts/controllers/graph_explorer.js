@@ -132,11 +132,14 @@ ge = (function() {
 					.attr("class", "icon-bubbles");
 		};
 		
-		_graph.drawLegend = function(location, data, key, colors) {
+		_graph.drawLegend = function(location, data, key, colors, direction) {
 			location.selectAll('.legend').remove();
 			
+			if(direction === undefined)
+				direction = "vertical";
+			
 			var legend = location.append("ul")
-				.attr("class", "legend vertical");
+				.attr("class", "legend " + direction);
 
 			var legendItems = legend.selectAll('li')
 				.data(data)
@@ -186,19 +189,6 @@ ge = (function() {
 
 		var y = d3.scale.linear()
 			.range([height, 0]);
-
-		var xAxis = d3.svg.axis()
-			.scale(x)
-			.orient("bottom");
-
-		var yAxis = d3.svg.axis()
-			.scale(y)
-			.orient("right")
-			.ticks(5)
-			// Defaults to nothing if _graph.ticks isn't defined
-			.tickValues(_graph.ticks)
-			.tickSize(width)
-			.tickFormat(function(d) { return "$" + currencyNumber(d, 1); });
 			
 		var colors = d3.scale.ordinal()
 			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
@@ -256,7 +246,6 @@ ge = (function() {
 				.scale(y)
 				.orient("right")
 				.ticks(5)
-				// Defaults to nothing if _graph.ticks isn't defined
 				.tickValues(ge.graph().makeTicks(d3.max(data, function(d) { return d[theValue]; })))
 				.tickSize(width)
 				.tickFormat(function(d) { return "$" + currencyNumber(d, 1); });
@@ -296,7 +285,19 @@ ge = (function() {
 			var theKey = _graph.dimensions[0].keySelector;
 			var theValue = _graph.dimensions[0].valueSelector;
 				
-			if(data !== undefined) {				
+			if(data !== undefined) {
+				var xAxis = d3.svg.axis()
+					.scale(x)
+					.orient("bottom");
+
+				var yAxis = d3.svg.axis()
+					.scale(y)
+					.orient("right")
+					.ticks(5)
+					.tickValues(ge.graph().makeTicks(d3.max(data, function(d) { return d[theValue]; })))
+					.tickSize(width)
+					.tickFormat(function(d) { return "$" + currencyNumber(d, 1); });
+									
 				x.domain(data.map(function(d) { return d[theKey]; }));
 				y.domain([0, d3.max(data, function(d) { return d[theValue]; })]);
 					
@@ -520,7 +521,7 @@ ge = (function() {
 			}
 
 			d3.select(this).transition()
-				.duration(250)
+				.duration(500)
 				.call(brush.extent(extent1));
 				
 			extent1[1]++;
@@ -561,16 +562,22 @@ ge = (function() {
 		};
 		
 		_graph.render = function() {
-			if(data !== undefined) {
-				//ge.graph().drawLegend(information, data, theKey, colors);
-				
+			if(data !== undefined) {				
 				var totals = [];
+				var allKeys = [];
 				
 				Object.keys(data).forEach(function(key, iteration) {
+					allKeys.push({ key: key });
+					
 					for(var i = 0; i < data[key].length; i++) {
 						totals.push(data[key][i]);
 					}
 				});
+				
+				var information = d3.select($graph.selector).insert("div", "svg")
+					.attr("class", "information");
+				
+				ge.graph().drawLegend(information, allKeys, 'key', colors, 'horizontal');
 				
 				x.domain(d3.extent(totals.map(function(d) { return d.key; })));
 				y.domain([0, d3.max(totals.map(function(d) { return d.value; }))]);

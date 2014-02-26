@@ -535,7 +535,7 @@ ge = (function() {
 			
 		var area = d3.svg.area()
 			.interpolate("monotone")
-			.x(function(d) { console.log(d); return x(d.key); })
+			.x(function(d) { return x(d.key); })
 			.y0(height)
 			.y1(function(d) { return y(d.value); });
 
@@ -598,12 +598,20 @@ ge = (function() {
 				ge.graph().drawLegend(information, allKeys, 'key', colors, 'horizontal');
 					
 				var xLength = d3.selectAll('.x .tick text').size();
+				
+				d3.selectAll('.x .tick').each(function(d, i) {
+					var elem = d3.select(this);
+					
+					if(i % 2 !== 0)
+						elem.remove();
+				});
 					
 				d3.selectAll('.x .tick text').each(function(d, i) {
 					var elem = d3.select(this);
 					
 					elem.attr("x", 5)
 						.attr("y", +elem.attr("y") + 20)
+						.attr("class", "tick-text")
 						.style("text-anchor", "start");
 						
 					if(i === 0)
@@ -628,6 +636,30 @@ ge = (function() {
 					else
 						elem.attr("width", width).attr("height", height).attr("x", 0).attr("y", ((oldHeight - height) / 2) - 20);
 				});
+				
+				if($graph.find('span.hide').size() > 1) {
+					$('span.hide').each(function() {
+						var elem = this;
+						
+						d3.selectAll('.x .tick .tick-text').each(function(d, i) {
+							if($.inArray(d.toString(), $(elem).attr('data-value').split(',')) !== -1) {
+								var role = $(elem).attr('data-key');
+								
+								role = "<b>" + role.substring(0, role.indexOf(" ")) + "</b> " + role.substring(role.indexOf(" ") + 1);
+								
+								d3.select(this.parentNode).append("foreignObject")
+									.attr("x", 5)
+									.attr("y", 5)
+									.attr("width", 160)
+									.attr("height", 20)
+									.attr("class", "tick-secondary-text")
+									.html(role);
+							}
+						});
+						
+						$(this).remove();
+					});
+				}
 			}
 		};
 		

@@ -26,7 +26,7 @@ module ApplicationHelper
   
   def role(term)
     if term == "prez"
-      "President of the United States"
+      "President"
     elsif term == "sen"
       "Senator"
     else

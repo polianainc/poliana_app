@@ -39,14 +39,15 @@
 			path { display: none; }
 			.tick {
 				line { stroke: $gray; }
-				text {
+				.tick-text {
 					font-size: 0.75em;
 					text-transform: uppercase;
 					font-weight: 700;
 					fill: $gray;
 				}
-				&:nth-child(even) {
-					text, line { display: none; }
+				.tick-secondary-text {
+					font-size: 0.9em;
+					color: $black;
 				}
 				&:first-of-type, &:last-of-type {
 					line { display: none; }

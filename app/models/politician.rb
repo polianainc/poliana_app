@@ -26,6 +26,13 @@ class Politician
     text :party
   end
 
+# HACK - these values are manually calculated to reduce storage on the database level.
+  def percent_gender
+    return 83.226 if gender == "M"
+    return 16.774 if gender == "F"
+    return nil
+  end
+
   def self.boosted_search(page, query)
     
     self.search do 

@@ -276,16 +276,6 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	cont.addGraph(industriesPie);
 });
 
-function runFilter(dimension, filter, controller) {
-	for(var i = 0; i < controller.listGraphs().length; i++) {
-		if(controller.getGraph(i).type !== "scrubber") {
-			controller.getGraph(i).dimensions[dimension].data.filter(filter);
-			//var top = controller.getGraph(i).dimensions[0].data.top(1);
-			//controller.getGraph(i).ticks = ge.graph().makeTicks(top);
-		}
-	}
-}
-
 // Tell jQuery's AJAX to be patient
 $.when(getPacs, getIndustries).done(function(pacs, industries) {
 	// Hide the loader
@@ -309,9 +299,6 @@ $.when(getPacs, getIndustries).done(function(pacs, industries) {
 		});
 		
 		cont.addGraph(timelineScrub);
-		
-		// Run our initial filters
-		//runFilter(2, [108, 109 + 1], cont);
 			
 		// Let's rock and roll
 		cont.render();

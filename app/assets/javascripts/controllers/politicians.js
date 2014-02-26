@@ -280,12 +280,12 @@ $.when(getPacs, getIndustries).done(function() {
 	$loader.fadeOut(250, function() {
 		var pacData = cont.getGraph(0).dimensions[2].data;
 		var pacReduced = pacData.group().reduceSum(function(c) { return +c.contribution_sum; });
-		var pacTotals = pacReduced.top(Infinity);
+		var pacTotals = pacReduced.all();
 		$.each(pacTotals, function(key, value) { pacTotals[key].group = "All PACs"; });
 		
 		var industryData = cont.getGraph(2).dimensions[2].data;
 		var industryReduced = industryData.group().reduceSum(function(c) { return +c.contribution_sum; });
-		var industryTotals = industryReduced.top(Infinity);
+		var industryTotals = industryReduced.all();
 		$.each(industryTotals, function(key, value) { industryTotals[key].group = "All Industries"; });
 		
 		// Order everything

@@ -279,21 +279,14 @@ $.when(getPacs, getIndustries).done(function() {
 	// Hide the loader
 	$loader.fadeOut(250, function() {
 		var pacData = cont.getGraph(0).dimensions[2].data;
-		var industryData = cont.getGraph(2).dimensions[2].data;
-		
 		var pacReduced = pacData.group().reduceSum(function(c) { return +c.contribution_sum; });
+		var pacTotals = pacReduced.top(Infinity);
+		$.each(pacTotals, function(key, value) { pacTotals[key].group = "All PACs"; });
+		
+		var industryData = cont.getGraph(2).dimensions[2].data;
 		var industryReduced = industryData.group().reduceSum(function(c) { return +c.contribution_sum; });
-		
-		var pacTotals = [];
-		var industryTotals = [];
-		
-		pacReduced.top(Infinity).forEach(function(p, i) {
-			pacTotals.push(p);
-		});
-		
-		industryReduced.top(Infinity).forEach(function(p, i) {
-			industryTotals.push(p);
-		});
+		var industryTotals = industryReduced.top(Infinity);
+		$.each(industryTotals, function(key, value) { industryTotals[key].group = "All Industries"; });
 		
 		// Order everything
 		function compare(a, b) {
@@ -322,10 +315,7 @@ $.when(getPacs, getIndustries).done(function() {
 				right: 0
 			},
 			colors: monoColors,
-			data: {
-				"All PACs": pacTotals,
-				"All Industries": industryTotals
-			},
+			data: [ pacTotals, industryTotals ],
 			controller: cont
 		});
 		

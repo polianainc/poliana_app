@@ -532,6 +532,12 @@ ge = (function() {
 		var colors = d3.scale.ordinal()
 			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
 			.range(_graph.colors);
+			
+		var area = d3.svg.area()
+			.interpolate("monotone")
+			.x(function(d) { console.log(d); return x(d.key); })
+			.y0(height)
+			.y1(function(d) { return y(d.value); });
 
 		var svg = d3.select($graph.selector).append("svg")
 			.attr("width", width + margin.left + margin.right)
@@ -562,22 +568,11 @@ ge = (function() {
 		};
 		
 		_graph.render = function() {
-			if(data !== undefined) {				
-				var totals = [];
-				var allKeys = [];
-				
-				Object.keys(data).forEach(function(key, iteration) {
-					allKeys.push({ key: key });
-					
-					for(var i = 0; i < data[key].length; i++) {
-						totals.push(data[key][i]);
-					}
-				});
-				
+			if(data !== undefined) {
 				var information = d3.select($graph.selector).insert("div", "svg")
 					.attr("class", "information");
-				
-				ge.graph().drawLegend(information, allKeys, 'key', colors, 'horizontal');
+					
+				var totals = $.map(data, function(n) { return n; });
 				
 				x.domain(d3.extent(totals.map(function(d) { return d.key; })));
 				y.domain([0, d3.max(totals.map(function(d) { return d.value; }))]);
@@ -586,21 +581,21 @@ ge = (function() {
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
 					.call(xAxis);
-				
-				Object.keys(data).forEach(function(key, iteration) {
-					var area = d3.svg.area()
-						.interpolate("monotone")
-						.x(function(d) { return x(d.key); })
-						.y0(height)
-						.y1(function(d) { return y(d.value); });
-
-					context.append("path")
-						.datum(data[key])
-						.attr("class", "area")
-						.attr("fill", function(d, i) { return colors(iteration); })
-						.attr("fill-opacity", 0.75)
-						.attr("d", area);
-				});
+					
+				var allKeys = [];
+					
+				var paths = context.selectAll("path.area")
+					.data(data)
+					.enter().append("path")
+					.attr("d", area)
+					.attr("class", "area")
+					.attr("fill", function(d, i) { return colors(i); })
+					.attr("fill-opacity", 0.75)
+					.each(function(d) {
+						allKeys.push({ key: d[0].group });
+					});
+					
+				ge.graph().drawLegend(information, allKeys, 'key', colors, 'horizontal');
 					
 				var xLength = d3.selectAll('.x .tick text').size();
 					

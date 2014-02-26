@@ -61,6 +61,12 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	
 	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
 	
+	var pacReduced = cfCongress.group().reduceSum(function(c) { return +c.contribution_sum; });
+	var pacTotals = pacReduced.all();
+	$.each(pacTotals, function(key, value) { pacTotals[key].group = "All PACs"; });
+	
+	data.totals = pacTotals;
+	
 	var pacsBar = ge.graph({
 		type: 'verticalBar',
 		width: 400,
@@ -192,6 +198,12 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	
 	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
 	
+	var industryReduced = cfCongress.group().reduceSum(function(c) { return +c.contribution_sum; });
+	var industryTotals = industryReduced.all();
+	$.each(industryTotals, function(key, value) { industryTotals[key].group = "All Industries"; });
+	
+	data.totals = industryTotals;
+	
 	var industriesBar = ge.graph({
 		type: 'verticalBar',
 		width: 400,
@@ -275,32 +287,9 @@ function runFilter(dimension, filter, controller) {
 }
 
 // Tell jQuery's AJAX to be patient
-$.when(getPacs, getIndustries).done(function() {
+$.when(getPacs, getIndustries).done(function(pacs, industries) {
 	// Hide the loader
 	$loader.fadeOut(250, function() {
-		var pacData = cont.getGraph(0).dimensions[2].data;
-		var pacReduced = pacData.group().reduceSum(function(c) { return +c.contribution_sum; });
-		var pacTotals = pacReduced.all();
-		$.each(pacTotals, function(key, value) { pacTotals[key].group = "All PACs"; });
-		
-		var industryData = cont.getGraph(2).dimensions[2].data;
-		var industryReduced = industryData.group().reduceSum(function(c) { return +c.contribution_sum; });
-		var industryTotals = industryReduced.all();
-		$.each(industryTotals, function(key, value) { industryTotals[key].group = "All Industries"; });
-		
-		// Order everything
-		function compare(a, b) {
-			if (a.key < b.key)
-				return -1;
-			if (a.key > b.key)
-				return 1;
-				
-			return 0;
-		}
-		
-		pacTotals.sort(compare);
-		industryTotals.sort(compare);
-		
 		var $timelineSelector = $('#timeline-area');
 		
 		var timelineScrub = ge.graph({
@@ -315,7 +304,7 @@ $.when(getPacs, getIndustries).done(function() {
 				right: 0
 			},
 			colors: monoColors,
-			data: [ pacTotals, industryTotals ],
+			data: [ pacs[0].totals, industries[0].totals ],
 			controller: cont
 		});
 		

@@ -56,7 +56,9 @@
 				<div id="timeline-select" class="graph">
 					<select>
 					<% terms.each do |f| %>
-						<option value="<%= f.congresses.join(',') %>"><%= role(f.term_type) + " (" + (f.start.year - 1).to_s + ")" %></option>
+						<% f.congresses.sort { |x, y| y <=> x }.each do |g| %>
+							<option value="<%= g %>"><%= role(f.term_type) + " (" + g.ordinalize + " Congress)" %></option>
+						<% end %>
 					<% end %>
 					</select>
 				</div>

@@ -280,11 +280,12 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 $.when(getPacs, getIndustries).done(function(pacs, industries) {
 	// Hide the loader
 	$loader.fadeOut(250, function() {
-		var $timelineSelector = $('#timeline-area');
+		var $timelineArea = $('#timeline-area');
+		var $timelineSelect = $('#timeline-select');
 
 		var title = "Timeline";
 
-		$timelineSelector.append($('<h4>')
+		$timelineArea.append($('<h4>')
 			.text(title)
 		);
 		
@@ -292,7 +293,8 @@ $.when(getPacs, getIndustries).done(function(pacs, industries) {
 			type: 'scrubber',
 			width: 940,
 			height: 100,
-			selector: $timelineSelector,
+			selector: $timelineArea,
+			secondarySelector: $timelineSelect,
 			margins: {
 				top: 20,
 				bottom: 20,
@@ -308,6 +310,19 @@ $.when(getPacs, getIndustries).done(function(pacs, industries) {
 			
 		// Let's rock and roll
 		cont.render();
+		
+		$timelineSelect.find('option').each(function() {
+			var value = parseInt($(this).val()).ordinate();
+			var found = false;
+			
+			$timelineArea.find('.tick-text').each(function() {
+				if($(this).text() === value)
+					found = true;
+			});
+			
+			if(!found)
+				$(this).remove();
+		});
 		
 		// No need for this shit anymore...
 		$('.primary-key').remove();

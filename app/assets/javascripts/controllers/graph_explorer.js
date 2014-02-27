@@ -509,10 +509,13 @@ ge = (function() {
 			.x(x)
 			.on("brushend", brushed);
 			
-		function brushed() {
-			if(!d3.event.sourceEvent) return;
+		function brushed(vals) {
+			var extent0;
 			
-			var extent0 = brush.extent();
+			if(vals === undefined)
+				extent0 = brush.extent();
+			else
+				extent0 = vals;
 			var extent1 = [Math.round(extent0[0]), Math.round(extent0[1])];
 			
 			if(extent1[0] >= extent1[1]) {
@@ -524,9 +527,14 @@ ge = (function() {
 				.duration(500)
 				.call(brush.extent(extent1));
 				
-			extent1[1]++;
-				
 			_graph.controller.redraw(extent1);
+			
+			if(_graph.secondarySelector !== undefined) {
+				_graph.secondarySelector.find('option').each(function() {
+					if(parseInt($(this).val()) === extent1[1])
+						$(this).attr('selected', 'selected');
+				});
+			}
 		}
 			
 		var colors = d3.scale.ordinal()
@@ -663,6 +671,17 @@ ge = (function() {
 						});
 						
 						$(this).remove();
+					});
+				}
+				
+				if(_graph.secondarySelector !== undefined) {
+					var secondarySelector = _graph.secondarySelector.selector;
+					
+					$(document).on('change', secondarySelector, function(event) {
+						var value = parseInt($(this).find('option:selected').val());
+						var newRange = [value--, value];
+						
+						svg.select(".brush").call(brush.extent(newRange));
 					});
 				}
 			}

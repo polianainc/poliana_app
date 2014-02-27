@@ -9,6 +9,7 @@
 //= require vendor/mailchimp
 //= require vendor/disqus
 //= require vendor/stupidtable
+//= require vendor/stellar
 //= require vendor/d3.v3
 //= require vendor/crossfilter
 

@@ -699,6 +699,7 @@ ge = (function() {
 						var value = parseInt($(this).find('option:selected').val());
 						var newRange = [value, value];
 						
+						// This shit is incorrect
 						console.log(newRange);
 						
 						svg.select(".brush").call(brush.extent(newRange));

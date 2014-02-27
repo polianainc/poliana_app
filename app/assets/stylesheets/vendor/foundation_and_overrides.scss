@@ -482,9 +482,7 @@ $glowing-effect-fade-time: 0.3s;
 // $glowing-effect-color: $input-focus-border-color;
 
 // Select variables
-$select-bg-color: #fff; // This variable doesn't work...
-
-select { background: #fff url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==") no-repeat !important; }
+$select-bg-color: #fff;
 
 // Inline Lists
 

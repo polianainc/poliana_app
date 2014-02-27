@@ -26,6 +26,7 @@
 	<![endif]-->
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+	<%= render 'shared/errors' %>
 	<div class="off-canvas-wrap">
 		<div class="inner-wrap">
 			<div id="container">
@@ -120,7 +121,6 @@
 					</nav>
 				</header>
 				<section id="content" class="main-section">
-					<%= render 'shared/errors' %>
 					<%= yield %>
 				</section>
 			</div>

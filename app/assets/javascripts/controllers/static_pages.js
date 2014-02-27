@@ -5,7 +5,7 @@ $('.play-video a').on('click', function(event) {
 	var $origin = $(this);
 	
 	// Fade out the background
-	$origin.parents('.full-background .row').animate({ opacity: 0 }, 250, function() {
+	$origin.parents('.full-background .row').animate({ opacity: 0 }, 250, 'swing', function() {
 		// Move the video into the right DOM position and add the modal background
 		$('body').append($theVideo).append($('<div>').addClass('reveal-modal-bg').fadeIn(250, function() {
 			// Set the video size
@@ -23,7 +23,7 @@ $('.play-video a').on('click', function(event) {
 					// Followed by a fade out of the modal background
 					$reveal.fadeOut(250, function() {
 						// And fade back our text
-						$('.full-background .row').animate({ opacity: 1 }, 250);
+						$('.full-background .row').animate({ opacity: 1 }, 250, 'swing');
 					}).remove();
 				});
 				

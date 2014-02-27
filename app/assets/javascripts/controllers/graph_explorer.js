@@ -590,10 +590,15 @@ ge = (function() {
 					.attr("d", area)
 					.attr("class", "area")
 					.attr("fill", function(d, i) { return colors(i); })
-					.attr("fill-opacity", 0.75)
+					.attr("fill-opacity", 0)
 					.each(function(d) {
 						allKeys.push({ key: d[0].group });
 					});
+					
+				paths.transition()
+					.delay(function(d, i) { return i * 100; })
+					.duration(500)
+					.attr("fill-opacity", 0.75);
 					
 				ge.graph().drawLegend(information, allKeys, 'key', colors, 'horizontal');
 					

@@ -281,6 +281,12 @@ $.when(getPacs, getIndustries).done(function(pacs, industries) {
 	// Hide the loader
 	$loader.fadeOut(250, function() {
 		var $timelineSelector = $('#timeline-area');
+
+		var title = "Timeline";
+
+		$timelineSelector.append($('<h4>')
+			.text(title)
+		);
 		
 		var timelineScrub = ge.graph({
 			type: 'scrubber',

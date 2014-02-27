@@ -372,6 +372,10 @@ ge = (function() {
 		var colors = d3.scale.ordinal()
 			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
 			.range(_graph.colors);
+			
+		var arc = d3.svg.arc()
+			.outerRadius(radius - 10)
+			.innerRadius(0);
 
 		var svg = d3.select($graph.selector).append("svg")
 			.attr("width", width + margin.left + margin.right)
@@ -381,6 +385,9 @@ ge = (function() {
 			.attr("preserveAspectRatio", "xMidYMid")
 			.append("g")
 				.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+				
+		var information = d3.select($graph.selector).append("div")
+			.attr("class", "information");
 				
 		var aspect = (width + margin.left + margin.right) / (height + margin.top + margin.bottom);
 		
@@ -406,7 +413,25 @@ ge = (function() {
 		$(window).on("resize", function() { resizeGraph(); });
 			
 		_graph.redraw = function(newData) {
-			console.log(newData);
+			var filter = _graph.dimensions[_graph.filterDimension].data.filter(newData);
+			
+			var data = _graph.dimensions[0].data.top(_graph.size);
+			var theKey = _graph.dimensions[0].keySelector;
+			var theValue = _graph.dimensions[0].valueSelector;
+			
+			var pie = d3.layout.pie()
+				.sort(null)
+				.value(function(d) { return d[theValue]; });
+			
+			var path = svg.selectAll('.arc path');
+			
+			path.data(pie(data))
+				.transition()
+					.delay(function(d, i) { return i * 100; })
+					.duration(500)
+					.attrTween("d", arcTween);
+					
+			ge.graph().drawLegend(information, data, theKey, colors);
 		};
 		
 		_graph.render = function() {
@@ -419,16 +444,9 @@ ge = (function() {
 			var theValue = _graph.dimensions[0].valueSelector;
 				
 			if(data !== undefined) {
-				var arc = d3.svg.arc()
-					.outerRadius(radius - 10)
-					.innerRadius(0);
-
 				var pie = d3.layout.pie()
 					.sort(null)
 					.value(function(d) { return d[theValue]; });
-						
-				var information = d3.select($graph.selector).append("div")
-					.attr("class", "information");
 					
 				ge.graph().drawIcons(information);
 
@@ -450,7 +468,8 @@ ge = (function() {
 								d.endAngle = i(t);
 								return arc(d);
 							}
-						});
+						})
+						.each(function(d) { this._current = d; });
 
 				g.append("text")
 					.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
@@ -516,6 +535,7 @@ ge = (function() {
 				extent0 = brush.extent();
 			else
 				extent0 = vals;
+				
 			var extent1 = [Math.round(extent0[0]), Math.round(extent0[1])];
 			
 			if(extent1[0] >= extent1[1]) {
@@ -527,14 +547,17 @@ ge = (function() {
 				.duration(500)
 				.call(brush.extent(extent1));
 				
-			_graph.controller.redraw(extent1);
-			
 			if(_graph.secondarySelector !== undefined) {
 				_graph.secondarySelector.find('option').each(function() {
 					if(parseInt($(this).val()) === extent1[1])
 						$(this).attr('selected', 'selected');
 				});
 			}
+				
+			extent1[0]++;
+			extent1[1]++;
+			
+			_graph.controller.redraw(extent1);
 		}
 			
 		var colors = d3.scale.ordinal()
@@ -609,8 +632,6 @@ ge = (function() {
 					.attr("fill-opacity", 0.75);
 					
 				ge.graph().drawLegend(information, allKeys, 'key', colors, 'horizontal');
-					
-				var xLength = d3.selectAll('.x .tick text').size();
 				
 				d3.selectAll('.x .tick').each(function(d, i) {
 					var elem = d3.select(this);
@@ -626,9 +647,6 @@ ge = (function() {
 						.attr("y", +elem.attr("y") + 20)
 						.attr("class", "tick-text")
 						.style("text-anchor", "start");
-						
-					if(i === 0)
-						elem.style("text-anchor", "end").attr("x", -10);
 				});
 				
 				context.append("g")
@@ -677,9 +695,11 @@ ge = (function() {
 				if(_graph.secondarySelector !== undefined) {
 					var secondarySelector = _graph.secondarySelector.selector;
 					
-					$(document).on('change', secondarySelector, function(event) {
+					$(document).on('change', secondarySelector, function() {
 						var value = parseInt($(this).find('option:selected').val());
-						var newRange = [value--, value];
+						var newRange = [value, value];
+						
+						console.log(newRange);
 						
 						svg.select(".brush").call(brush.extent(newRange));
 					});

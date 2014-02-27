@@ -49,7 +49,8 @@
 					font-size: 0.9em;
 					color: $black;
 				}
-				&:first-of-type, &:last-of-type {
+				&:first-of-type { display: none; }
+				&:last-of-type {
 					line { display: none; }
 				}
 			}

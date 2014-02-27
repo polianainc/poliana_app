@@ -55,13 +55,12 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	
 	var cf = crossfilter(transform.contributions);
 	
-	var cfContributions = cf.dimension(function(c) { return +c.contribution_sum; });
 	var cfCongress = cf.dimension(function(c) { return +c.congress; });
 	var cfNames = cf.dimension(function(c) { return c.pac_name; });
 	
 	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
-	
 	var pacReduced = cfCongress.group().reduceSum(function(c) { return +c.contribution_sum; });
+	
 	var pacTotals = pacReduced.all();
 	$.each(pacTotals, function(key, value) { pacTotals[key].group = "All PACs"; });
 	
@@ -87,18 +86,13 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 				valueSelector: 'value'
 			},
 			{
-				data: cfContributions,
-				keySelector: 'pac_name',
-				valueSelector: 'contribution_sum'
-			},
-			{
 				data: cfCongress,
 				keySelector: 'pac_name',
 				valueSelector: 'contribution_sum'
 			}
 		],
 		size: 5,
-		filterDimension: 2
+		filterDimension: 1
 	});
 	
 	var pacsPie = ge.graph({
@@ -121,18 +115,13 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 				valueSelector: 'value'
 			},
 			{
-				data: cfContributions,
-				keySelector: 'pac_name',
-				valueSelector: 'contribution_sum'
-			},
-			{
 				data: cfCongress,
 				keySelector: 'pac_name',
 				valueSelector: 'contribution_sum'
 			}
 		],
 		size: 5,
-		filterDimension: 2
+		filterDimension: 1
 	});
 	
 	cont.addGraph(pacsBar);
@@ -192,13 +181,12 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	
 	var cf = crossfilter(transform.contributions);
 	
-	var cfContributions = cf.dimension(function(c) { return +c.contribution_sum; });
 	var cfCongress = cf.dimension(function(c) { return +c.congress; });
 	var cfNames = cf.dimension(function(c) { return c.industry_name; });
 	
 	var cfNamesReduce = cfNames.group().reduceSum(function(c) { return +c.contribution_sum; });
-	
 	var industryReduced = cfCongress.group().reduceSum(function(c) { return +c.contribution_sum; });
+	
 	var industryTotals = industryReduced.all();
 	$.each(industryTotals, function(key, value) { industryTotals[key].group = "All Industries"; });
 	
@@ -224,18 +212,13 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 				valueSelector: 'value'
 			},
 			{
-				data: cfContributions,
-				keySelector: 'industry_name',
-				valueSelector: 'contribution_sum'
-			},
-			{
 				data: cfCongress,
 				keySelector: 'industry_name',
 				valueSelector: 'contribution_sum'
 			}
 		],
 		size: 5,
-		filterDimension: 2
+		filterDimension: 1
 	});
 	
 	var industriesPie = ge.graph({
@@ -258,18 +241,13 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 				valueSelector: 'value'
 			},
 			{
-				data: cfContributions,
-				keySelector: 'pac_name',
-				valueSelector: 'contribution_sum'
-			},
-			{
 				data: cfCongress,
 				keySelector: 'pac_name',
 				valueSelector: 'contribution_sum'
 			}
 		],
 		size: 5,
-		filterDimension: 2
+		filterDimension: 1
 	});
 	
 	cont.addGraph(industriesBar);
@@ -305,6 +283,8 @@ $.when(getPacs, getIndustries).done(function(pacs, industries) {
 			data: [ pacs[0].totals, industries[0].totals ],
 			controller: cont
 		});
+		
+		console.log(pacs[0].totals, industries[0].totals);
 		
 		cont.addGraph(timelineScrub);
 			

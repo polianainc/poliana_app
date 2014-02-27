@@ -49,7 +49,7 @@ function scrollToPos(value, time) {
 		
 	$('html, body').animate({
 		scrollTop: value
-	}, time);
+	}, time, 'swing');
 }
 
 // Helpful function to convert political parties to and from their full names and respective abbreviations

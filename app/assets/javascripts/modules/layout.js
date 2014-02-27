@@ -54,6 +54,7 @@ $(document).ready(function() {
 		$(this).append($('<div>'));
 	});
 	
+	// Create foldable sections for mobile
 	$foldable.find('.foldable-header').on('click', function(event, speed) {
 		if(speed === undefined)
 			speed = 250;
@@ -71,6 +72,15 @@ $(document).ready(function() {
 	
 	// Fold everything down
 	$foldable.find('.foldable-header').trigger('click', [0]);
+	
+	// Parallax backgrounds
+	$(window).stellar();
+	
+	if($errors.length > 0) {
+		$errors.animate({
+			top: 80
+		}, 500, 'swing');
+	}
 });
 
 $(window).resize(throttle(function() {

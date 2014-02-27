@@ -48,7 +48,7 @@
 			<div class="large-12 columns show-for-medium-up">
 				<div id="timeline-area" class="graph">
 					<% terms.each do |f| %>
-						<span data-congresses="<%= f.congresses.join(',') %>" data-role="<%= role(f.term_type) %>" data-year="<%= (f.start.year - 1).to_s %>" class="hide"></span>
+						<span data-key="<%= role(f.term_type) + " (" + (f.start.year - 1).to_s + ")" %>" data-value="<%= f.congresses.join(',') %>" class="hide"></span>
 					<% end %>
 				</div>
 			</div>
@@ -56,7 +56,9 @@
 				<div id="timeline-select" class="graph">
 					<select>
 					<% terms.each do |f| %>
-						<option value="<%= f.congresses.join(',') %>"><%= role(f.term_type) + " (" + (f.start.year - 1).to_s + ")" %></option>
+						<% f.congresses.sort { |x, y| y <=> x }.each do |g| %>
+							<option value="<%= g %>"><%= role(f.term_type) + " (" + g.ordinalize + " Congress)" %></option>
+						<% end %>
 					<% end %>
 					</select>
 				</div>

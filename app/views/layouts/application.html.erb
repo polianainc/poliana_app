@@ -26,6 +26,7 @@
 	<![endif]-->
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+	<%= render 'shared/errors' %>
 	<div class="off-canvas-wrap">
 		<div class="inner-wrap">
 			<div id="container">
@@ -45,8 +46,10 @@
 					</nav>
 					<aside class="left-off-canvas-menu">
 						<ul class="off-canvas-list">
+							<% if user_signed_in? %>
 							<li><label>Explore</label></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), '#' %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
+							<% end %>
 							<li><label>General</label></li>
 							<% if user_signed_in? %>
 							<li><%= link_to('<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path) %></li>
@@ -54,6 +57,7 @@
 							<li><%= link_to '<span aria-hidden="true" class="icon-enter"></span><span>Login</span>'.html_safe(), new_user_session_path %></li>
 							<% end %>
 							<li><%= link_to '<span aria-hidden="true" class="icon-info"></span><span>About Us</span>'.html_safe(), about_path %></li>
+							<% if user_signed_in? %>
 							<li><label>Search</label></li>
 					  		<li class="has-form">
 								<form>
@@ -61,6 +65,7 @@
 									<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
 								</form>
 					  		</li>
+							<% end %>
 						</ul>
 					</aside>
 					<% if user_signed_in? %>
@@ -69,7 +74,7 @@
 							<li><label>Your Account</label></li>
 							<li class="row collapse">
 								<div class="small-3 columns">
-									<%  #image_tag avatar_url(current_user) %>
+									<% image_tag avatar_url(current_user) %>
 								</div>
 								<div class="small-9 columns">
 									<p><%= current_user.username %></p>
@@ -91,30 +96,31 @@
 						</ul>
 						<section class="top-bar-section">
 							<ul class="right">
+								<% if user_signed_in? %>
 								<li class="has-dropdown">
 									<a href="#">Explore</a>
 									<ul class="dropdown">
-										<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), '#' %></li>
+										<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
 									</ul>
 								</li>
-								<% if user_signed_in? %>
 								<li><%= link_to 'Logout', destroy_user_session_path %></li>
 								<% else %>
 								<li><%= link_to 'Login', new_user_session_path %></li>
 								<% end %>
 								<li><%= link_to 'About Us', about_path %></li>
+								<% if user_signed_in? %>
 								<li class="has-form">
 									<form>
 						  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
 										<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
 									</form>
 						  		</li>
+								<% end %>
 							</ul>
 						</section>
 					</nav>
 				</header>
 				<section id="content" class="main-section">
-					<%= render 'shared/errors' %>
 					<%= yield %>
 				</section>
 			</div>

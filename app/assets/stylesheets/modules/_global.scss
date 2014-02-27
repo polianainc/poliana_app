@@ -22,7 +22,7 @@ small { font-size: 0.75em; }
 	margin-top: -10px;
 	a {
 		font-size: 0.9em;
-		font-weight: bold;
+		font-weight: 700;
 	}
 }
 
@@ -64,7 +64,7 @@ small { font-size: 0.75em; }
 		h1 {
 			font-size: 3em;
 			margin-top: 90px;
-			font-weight: bold;
+			font-weight: 700;
 			@include text-pop($black, 2px);
 		}
 	}

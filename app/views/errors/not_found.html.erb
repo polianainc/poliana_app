@@ -1,16 +1,5 @@
 <% content_for :title, "Page Not Found" %>
 <%= render layout: "shared/backgrounds", locals: { image: "mlk" } do %>
 <h1 class="text-center">Uh oh.</h1>
-<p class="text-center">There was a problem...</p>
+<p class="text-center">There was a problem... <%= link_to "Wanna go home!", root_path %></p>
 <% end %>
-<div class="row">
-	<div class="large-12 columns">
-		<h1 class="text-center">So, we couldn't really find what exactly you were looking for...</h1>
-	</div>
-	<div class="large-4 medium-6 small-10 large-centered medium-centered small-centered columns">
-		<%= link_to "Let's go home!", root_path, :class => "button expand radius" %>
-	</div>
-	<div class="large-12 columns">
-		<p class="text-center"><em>Our tech team has been notified, sorry for the inconvenience!</em></p>
-	</div>
-</div>

@@ -39,16 +39,18 @@
 			path { display: none; }
 			.tick {
 				line { stroke: $gray; }
-				text {
+				.tick-text {
 					font-size: 0.75em;
 					text-transform: uppercase;
 					font-weight: 700;
 					fill: $gray;
 				}
-				&:nth-child(even) {
-					text, line { display: none; }
+				.tick-secondary-text {
+					font-size: 0.9em;
+					color: $black;
 				}
-				&:first-of-type, &:last-of-type {
+				&:first-of-type { display: none; }
+				&:last-of-type {
 					line { display: none; }
 				}
 			}
@@ -110,7 +112,7 @@
 				float: left;
 				width: 85%;
 			}
-			&.vertical {
+			&.vertical, &.horizontal {
 				margin: 0px;
 				list-style-type: none;
 				padding: 0px;
@@ -132,6 +134,13 @@
 						font-size: 0.9em;
 						@media #{$medium-up} { margin-bottom: 10px; }
 					}
+				}
+			}
+			&.horizontal {
+				overflow: hidden;
+				li {
+					float: left;
+					width: 150px;
 				}
 			}
 		}

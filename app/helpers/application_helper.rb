@@ -20,42 +20,6 @@ module ApplicationHelper
     end
   end
   
-  def full_name(person)
-    person.first_name + " " + person.last_name
-  end
-  
-  def role(term)
-    if term == "prez"
-      "President"
-    elsif term == "sen"
-      "Senator"
-    elsif term == "rep"
-      "Representative"
-    else
-      "Pre-election"
-    end
-  end
-  
-  def party(party)
-    if party == "D" || party == "R" || party == "I"
-      if party == "D"
-        "Democrat"
-      elsif party == "R"
-        "Republican"
-      else
-        "Independent"
-      end
-    else
-      if party == "Democrat"
-        "D"
-      elsif party == "Republican"
-        "R"
-      else
-        "I"
-      end
-    end
-  end
-  
   def throw_errors(name, errors)
     if errors.length > 1
       the_string = "<div class='small-12 columns'><small class='error'><ul>".html_safe

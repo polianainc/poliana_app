@@ -113,7 +113,7 @@ def add_birthday_stats
 
     calc = ((fi+1.0)/count)
     pol.percent_age_difference = (calc*100).to_i
-    puts pol.percent_age_difference
+    pol.save()
   end
 end
 

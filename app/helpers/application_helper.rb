@@ -29,8 +29,10 @@ module ApplicationHelper
       "President"
     elsif term == "sen"
       "Senator"
-    else
+    elsif term == "rep"
       "Representative"
+    else
+      "Pre-election"
     end
   end
   

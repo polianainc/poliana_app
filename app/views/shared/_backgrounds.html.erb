@@ -19,6 +19,12 @@
 	else
 		image = backgrounds[image]
 	end
+	
+	expanded = false
+	
+	if !defined?(classes).nil? && classes.include?("expanded")
+		expanded = true
+	end
 %>
 
 <div class="full-background<%= " " + classes if !defined?(classes).nil? %>" data-stellar-background-ratio="0.5" data-small="<%= image[0] %>" data-medium="<%= image[1] %>" data-large="<%= image[2] %>">

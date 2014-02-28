@@ -11,6 +11,7 @@ class Politician
   field :bioguide_id, :type => String
   field :gender, :type => String
   field :religion, :type => String
+  field :state, :type => String
   field :percent_age_difference, :type => Float
 
   embeds_many :terms

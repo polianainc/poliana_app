@@ -55,6 +55,8 @@ def import_raw_legislators_to_mongo
     mpol.gender =  pol["gender"] if pol["gender"]
     mpol.religion =  pol["religion"] if pol["religion"]
 
+    mpol.state ||= pol["term_state"]
+
     term = Term.new()
     term.term_type = pol["term_type"]
     term.start = term_start

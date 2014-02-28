@@ -4,7 +4,7 @@ def import_raw_legislators_to_mongo
   
   json = File.read('lib/assets/legislators.json')
   legislators = JSON.parse(json)
-  
+
   legislators.each do |pol|
 
     if pol["bioguide_id"] == nil
@@ -15,18 +15,16 @@ def import_raw_legislators_to_mongo
     term_start = DateTime.strptime((pol["begin_timestamp"]).to_s, '%s').to_date
     term_end = DateTime.strptime((pol["end_timestamp"]).to_s, '%s').to_date
 
-    if term_start < @start_date
-      next
-    end
+    term_type = pol["term_type"]
 
     # incorrect term end senate fix
-    if term_end < @start_date && pol["term_type"] == "sen" && term_start + 6.years <= Date.today
+    if term_end < @start_date && term_type == "sen" && term_start + 6.years <= Date.today
       puts "incorrect term end senate: " + pol["first_name"] + " " + pol["last_name"] + ", end: " + term_end.to_s
       term_end = term_start + 6.years
     end
 
     # incorrect term end house fix
-    if term_end < @start_date && pol["term_type"] == "rep" && term_start + 2.years <= Date.today
+    if term_end < @start_date && term_type == "rep" && term_start + 2.years <= Date.today
       puts "incorrect term end house: " + pol["first_name"] + " " + pol["last_name"] + ", end: " + term_end.to_s
       term_end = term_start + 2.years
     end
@@ -36,6 +34,19 @@ def import_raw_legislators_to_mongo
       puts "elected within term limit: " + pol["first_name"] + " " + pol["last_name"] + ", elected on: " + term_start.to_s
       term_end = Date.today
     end
+
+    # skip the term if it ends before the start date
+    if term_end < @start_date
+      next
+    end
+
+    # HACK
+    # when term type is senate and term end is within 6 years of start date, we need to hack the term_start to be the start_date
+    # so that we correctly label that term and the valid congress numbers that should be displayed on the front end
+    if term_type == "sen" && term_end < @start_date + 7.years
+      term_start = @start_date + 2.days
+    end
+      
 
     mpol = Politician.where(:bioguide_id => pol["bioguide_id"])[0]
 
@@ -58,7 +69,7 @@ def import_raw_legislators_to_mongo
     mpol.state ||= pol["term_state"]
 
     term = Term.new()
-    term.term_type = pol["term_type"]
+    term.term_type = term_type
     term.start = term_start
     term.end = term_end
 
@@ -100,7 +111,7 @@ def add_birthday_stats
   Politician.order_by([:birthday, :asc]).each_with_index do |pol, i|
     fi = i.to_f
 
-    calc = ((i+1.0)/count)
+    calc = ((fi+1.0)/count)
     pol.percent_age_difference = (calc*100).to_i
     puts pol.percent_age_difference
   end

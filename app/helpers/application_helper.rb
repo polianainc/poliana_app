@@ -45,7 +45,7 @@ module ApplicationHelper
       else
         "Independent"
       end
-    elsif
+    else
       if party == "Democrat"
         "D"
       elsif party == "Republican"

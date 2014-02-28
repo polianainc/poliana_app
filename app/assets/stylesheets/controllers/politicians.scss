@@ -1,0 +1,66 @@
+$politician-border-width: 4px;
+$politician-dimensions: 20px;
+$politician-width: $politician-dimensions + $politician-border-width + $politician-border-width;
+$politician-height: $politician-dimensions + $politician-border-width;
+
+.politician-card {
+	&.sided {
+		display: inline-block;
+		margin-left: 10px;
+	}
+	list-style-type: none;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+	width: ($politician-border-width + $politician-width) * 2;
+	@include border-radius($global-radius);
+	&.democrat {
+		border: $politician-border-width solid $blue;
+		li {
+			&:first-child {
+				background: $blue;
+				color: $white;
+			}
+			&:last-child {
+				background: $white;
+				color: $blue;
+			}
+		}
+	}
+	&.republican {
+		border: $politician-border-width solid $red;
+		li {
+			&:first-child {
+				background: $red;
+				color: $white;
+			}
+			&:last-child {
+				background: $white;
+				color: $red;
+			}
+		}
+	}
+	&.independent {
+		border: $politician-border-width solid $purple;
+		li {
+			&:first-child {
+				background: $purple;
+				color: $white;
+			}
+			&:last-child {
+				background: $white;
+				color: $purple;
+			}
+		}
+	}
+	li {
+		float: left;
+		width: $politician-width;
+		height: $politician-height;
+		line-height: $politician-height;
+		text-align: center;
+		font-size: 1.1em;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+}

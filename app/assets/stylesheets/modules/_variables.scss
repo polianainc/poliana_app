@@ -6,6 +6,7 @@ $blue: #61d2d6;
 $red: #ea3556;
 $green: #c4d117;
 $yellow: #ffdb18;
+$purple: #8b3c56;
 
 // Alternate colors
 $white-alt: darken($white, 10%);
@@ -15,6 +16,7 @@ $blue-alt: darken($blue, 15%);
 $red-alt: darken($red, 10%);
 $green-alt: darken($green, 10%);
 $yellow-alt: darken($yellow, 10%);
+$purple-alt: lighten($purple, 10%);
 
 // General variables
 $header-height: 60px;

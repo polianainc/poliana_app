@@ -26,6 +26,10 @@ class Politician
     text :last_name
     text :party
   end
+  
+  def self.get_image(bioguide_id)
+    return "https://s3.amazonaws.com/poliana.media/web/" + bioguide_id + ".png"
+  end
 
 # HACK - these values are manually calculated to reduce storage on the database level.
   def percent_gender

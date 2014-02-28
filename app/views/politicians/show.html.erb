@@ -1,5 +1,6 @@
 <% terms = @politician.terms.sort { |a, b| b.start <=> a.start } %>
 <% content_for :title, "Politician" %>
+<%= @politician.inspect %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
 <div class="hide primary-key" data-id="<%= @politician.bioguide_id %>"></div>

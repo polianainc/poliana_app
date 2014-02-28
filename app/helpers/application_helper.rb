@@ -20,10 +20,6 @@ module ApplicationHelper
     end
   end
   
-  def full_name(person)
-    person.first_name + " " + person.last_name
-  end
-  
   def role(term)
     if term == "prez"
       "President"

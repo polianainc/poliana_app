@@ -9,7 +9,7 @@
 		<%= image_tag "congress/FILL THIS SHIT IN HERE/" + @politician.bioguide_id + ".png" %>
 	</div>
 	<div class="large-9 medium-9 columns">
-		<h1><%= full_name(@politician) %></h1>
+		<h1><%= @politician.full_name %></h1>
 		<h4><%= role(terms.first.term_type) %></h4>
 		<div class="foldable">
 			<div class="foldable-header down">

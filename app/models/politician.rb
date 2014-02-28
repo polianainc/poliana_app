@@ -31,6 +31,10 @@ class Politician
     return "https://s3.amazonaws.com/poliana.media/web/" + bioguide_id + ".png"
   end
 
+  def full_name()
+    first_name + " " + last_name
+  end
+
 # HACK - these values are manually calculated to reduce storage on the database level.
   def percent_gender
     return 83.226 if gender == "M"

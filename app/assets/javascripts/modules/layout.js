@@ -138,5 +138,6 @@ function getMediaQuery() {
 function fullBackgrounds() {
 	var newImage = $fullBackground.attr('data-' + getMediaQuery());
 	
-	$fullBackground.css('background-image', 'url(\'/assets/backgrounds/' + newImage + '\')');
+	if($fullBackground.css('background-image').indexOf(newImage) == -1 || $fullBackground.css('background-image') == "none")
+		$fullBackground.css('background-image', 'url(\'/assets/backgrounds/' + newImage + '\')');
 }

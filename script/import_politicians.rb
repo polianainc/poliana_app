@@ -21,16 +21,14 @@ def import_raw_legislators_to_mongo
     if term_end < @start_date && term_type == "sen" && term_start + 6.years <= Date.today
       puts "incorrect term end senate: " + pol["first_name"] + " " + pol["last_name"] + ", end: " + term_end.to_s
       term_end = term_start + 6.years
-    end
 
     # incorrect term end house fix
-    if term_end < @start_date && term_type == "rep" && term_start + 2.years <= Date.today
+    elsif term_end < @start_date && term_type == "rep" && term_start + 2.years <= Date.today
       puts "incorrect term end house: " + pol["first_name"] + " " + pol["last_name"] + ", end: " + term_end.to_s
       term_end = term_start + 2.years
-    end
 
     # elected within term limit fix
-    if term_end < @start_date
+    elsif term_end < @start_date && term_start >= @start_date
       puts "elected within term limit: " + pol["first_name"] + " " + pol["last_name"] + ", elected on: " + term_start.to_s
       term_end = Date.today
     end
@@ -136,6 +134,17 @@ def add_pre_election_terms
       pol.save()
     end
   end
+end
+
+# HACK deletes senators which were still in office during the 2003 congress
+# but did not get reelected (we don't have photos for 'em)
+def delete_invalid_senators
+  Politician.where(:terms.elem_match => 
+    { 
+    :start.gt => d1, 
+    :start.lt => d2,
+    :term_type => "sen"
+    }).where(:terms.with_size => 1)
 end
 
 # RUN THE CODE

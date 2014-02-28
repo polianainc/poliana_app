@@ -38,6 +38,10 @@ class Politician
     return nil
   end
 
+  def get_image()
+    Politician.get_image(bioguide_id)
+  end
+
   def self.boosted_search(page, query)
     
     self.search do 

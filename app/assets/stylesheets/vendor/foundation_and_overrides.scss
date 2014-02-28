@@ -118,7 +118,7 @@ select,
 .vcard { @include flatten($white-alt); }
 
 .progress {
-	@include flatten($white-alt);
+	@include flatten($gray);
 	.meter { @include flatten($primary-colorAlt, 1px); }
 	&.secondary .meter { @include flatten($secondary-colorAlt, 1px); }
 	&.success .meter { @include flatten($success-colorAlt, 1px); }
@@ -794,8 +794,8 @@ $price-item-weight: $body-font-weight;
 // $include-html-media-classes: $include-html-classes;
 
 // We use this to se the prog bar height
-// $progress-bar-height: rem-calc(25);
-// $progress-bar-color: #f6f6f6  ;
+$progress-bar-height: rem-calc(22);
+// $progress-bar-color: $white;
 
 // We use these to control the border styles
 // $progress-bar-border-color: darken(#fff, 20%);

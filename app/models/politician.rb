@@ -28,7 +28,7 @@ class Politician
   end
 
   def full_name()
-    first_name + " " + last_name
+    return first_name + " " + last_name
   end
 
 # HACK - these values are manually calculated to reduce storage on the database level.
@@ -52,39 +52,57 @@ class Politician
     end
   end
 
-  def self.get_image(bioguide_id)
-    return "https://s3.amazonaws.com/poliana.media/web/" + bioguide_id + ".png"
+  def get_image
+    uri = URI("https://s3.amazonaws.com/poliana.media/web/" + bioguide_id + ".png")
+
+    request = Net::HTTP.new uri.host
+    response = request.request_head uri.path
+    
+    if response.code.to_i == 200
+      return uri
+    else
+      if gender == "M"
+        return "male.png"
+      else
+        return "female.png"
+      end
+    end
   end
 
   def self.role(term)
     if term == "prez"
-      "President"
+      return "President"
     elsif term == "sen"
-      "Senator"
+      return "Senator"
     elsif term == "rep"
-      "Representative"
+      return "Representative"
     else
-      "Pre-election"
+      return "Pre-election"
     end
   end
 
   def self.party(party)
     if party == "D" || party == "R" || party == "I"
       if party == "D"
-        "Democrat"
+        return "Democrat"
       elsif party == "R"
-        "Republican"
+        return "Republican"
       else
-        "Independent"
+        return "Independent"
       end
-    elsif
-      if party == "Democrat"
-        "D"
+    else
+      if party == "Democrat" || party = "Popular Democrat"
+        return "D"
       elsif party == "Republican"
-        "R"
+        return "R"
       else
-        "I"
+        return "I"
       end
     end
+  end
+  
+  def age
+    now = Time.now.utc.to_date
+    now.year - birthday.year - ((now.month > birthday.month || (now.month == birthday.month && now.day >= birthday.day)) ? 0 : 1)
   end
 end

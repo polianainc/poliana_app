@@ -64,3 +64,13 @@ $politician-height: $politician-dimensions + $politician-border-width;
 		font-weight: 700;
 	}
 }
+
+.politician-personal-section {
+	p {
+		margin-bottom: 0px;
+		&.gray-caps {
+			margin-bottom: 10px;
+		}
+	}
+	.progress { margin-top: 10px; }
+}

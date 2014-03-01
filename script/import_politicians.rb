@@ -5,7 +5,7 @@ def import_raw_legislators_to_mongo
   json = File.read('lib/assets/legislators.json')
   legislators = JSON.parse(json)
 
-  legislators.each do |pol|
+  legislators.each_with_index do |pol, i|
 
     if pol["bioguide_id"] == nil
       puts "bioguide nil: " + pol["first_name"] + " " + pol["last_name"] 
@@ -17,36 +17,25 @@ def import_raw_legislators_to_mongo
 
     term_type = pol["term_type"]
 
+    if term_start < @start_date
+      next
+    end
+
     # incorrect term end senate fix
     if term_end < @start_date && term_type == "sen" && term_start + 6.years <= Date.today
       puts "incorrect term end senate: " + pol["first_name"] + " " + pol["last_name"] + ", end: " + term_end.to_s
       term_end = term_start + 6.years
-    end
 
     # incorrect term end house fix
-    if term_end < @start_date && term_type == "rep" && term_start + 2.years <= Date.today
+    elsif term_end < @start_date && term_type == "rep" && term_start + 2.years <= Date.today
       puts "incorrect term end house: " + pol["first_name"] + " " + pol["last_name"] + ", end: " + term_end.to_s
       term_end = term_start + 2.years
-    end
 
     # elected within term limit fix
-    if term_end < @start_date
+    elsif term_end < @start_date && term_start >= @start_date
       puts "elected within term limit: " + pol["first_name"] + " " + pol["last_name"] + ", elected on: " + term_start.to_s
       term_end = Date.today
     end
-
-    # skip the term if it ends before the start date
-    if term_end < @start_date
-      next
-    end
-
-    # HACK
-    # when term type is senate and term end is within 6 years of start date, we need to hack the term_start to be the start_date
-    # so that we correctly label that term and the valid congress numbers that should be displayed on the front end
-    if term_type == "sen" && term_end < @start_date + 7.years
-      term_start = @start_date + 2.days
-    end
-      
 
     mpol = Politician.where(:bioguide_id => pol["bioguide_id"])[0]
 
@@ -78,9 +67,54 @@ def import_raw_legislators_to_mongo
     mpol.save()
   end
 
+  add_senator_edge_cases(legislators)
   add_birthday_stats
   add_pre_election_terms
   add_congresses
+end
+
+def add_senator_edge_cases(legislators)
+  senator_edge_cases = {}
+  legislators.each_with_index do |pol, i|
+
+    if pol["bioguide_id"] == nil
+      next
+    end
+
+    term_start = DateTime.strptime((pol["begin_timestamp"]).to_s, '%s').to_date
+    term_end = DateTime.strptime((pol["end_timestamp"]).to_s, '%s').to_date
+
+    term_type = pol["term_type"]
+
+    if term_type == "sen" && (term_start > Date.new(1998, 12, 31) && term_start < @start_date)
+      senator_edge_cases[pol["bioguide_id"]] = i
+    end
+  end
+
+  pols = Politician.in(:bioguide_id => senator_edge_cases.keys)
+
+  pols.each do |pol|
+    i = senator_edge_cases[pol.bioguide_id]
+    info = legislators[i]
+
+    term_start = DateTime.strptime((info["begin_timestamp"]).to_s, '%s').to_date
+    term_end = DateTime.strptime((info["end_timestamp"]).to_s, '%s').to_date
+    term_type = info["term_type"]
+    if term_end < @start_date
+      term_end = term_start + 6.years
+    end
+
+    term_start = @start_date + 2.days
+
+    term = Term.new()
+    term.term_type = term_type
+    term.start = term_start
+    term.end = term_end
+
+    pol.terms << term
+
+    pol.save()
+  end
 end
 
 def add_congresses
@@ -139,5 +173,4 @@ def add_pre_election_terms
 end
 
 # RUN THE CODE
-
-import_raw_legislators_to_mongo()
+import_raw_legislators_to_mongo

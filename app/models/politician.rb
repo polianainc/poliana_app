@@ -11,6 +11,7 @@ class Politician
   field :bioguide_id, :type => String
   field :gender, :type => String
   field :religion, :type => String
+  field :state, :type => String
   field :percent_age_difference, :type => Float
 
   embeds_many :terms
@@ -26,11 +27,19 @@ class Politician
     text :party
   end
 
+  def full_name()
+    first_name + " " + last_name
+  end
+
 # HACK - these values are manually calculated to reduce storage on the database level.
   def percent_gender
     return 83.226 if gender == "M"
     return 16.774 if gender == "F"
     return nil
+  end
+
+  def get_image()
+    Politician.get_image(bioguide_id)
   end
 
   def self.boosted_search(page, query)
@@ -44,6 +53,42 @@ class Politician
 
       paginate :page => page, :per_page => 10
       order_by(:score, :desc)
+    end
+  end
+
+  def self.get_image(bioguide_id)
+    return "https://s3.amazonaws.com/poliana.media/web/" + bioguide_id + ".png"
+  end
+
+  def self.role(term)
+    if term == "prez"
+      "President"
+    elsif term == "sen"
+      "Senator"
+    elsif term == "rep"
+      "Representative"
+    else
+      "Pre-election"
+    end
+  end
+
+  def self.party(party)
+    if party == "D" || party == "R" || party == "I"
+      if party == "D"
+        "Democrat"
+      elsif party == "R"
+        "Republican"
+      else
+        "Independent"
+      end
+    elsif
+      if party == "Democrat"
+        "D"
+      elsif party == "Republican"
+        "R"
+      else
+        "I"
+      end
     end
   end
 end

@@ -20,20 +20,6 @@ module ApplicationHelper
     end
   end
   
-  def full_name(person)
-    person.first_name + " " + person.last_name
-  end
-  
-  def role(term)
-    if term == "prez"
-      "President of the United States"
-    elsif term == "sen"
-      "Senator"
-    else
-      "Representative"
-    end
-  end
-  
   def throw_errors(name, errors)
     if errors.length > 1
       the_string = "<div class='small-12 columns'><small class='error'><ul>".html_safe
@@ -53,25 +39,5 @@ class String
   def words_limit(limit)
     string_arr = self.split(' ')
     string_arr.count > limit ? "#{string_arr[0..(limit-1)].join(' ')}..." : self
-  end
-  
-  def convert_party(to)
-    if to == "abbrev"
-  		if self == "Democrat" or self == "Democrats"
-  			"D"
-  		elsif self == "Republican" or self == "Republicans"
-  			"R"
-  		else
-  			"I"
-			end
-  	else
-  		if self == "D"
-  			"Democrat"
-  		elsif self == "R"
-  			"Republican"
-  		else	
-  			"Independent"
-			end
-  	end
   end
 end

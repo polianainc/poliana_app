@@ -456,7 +456,7 @@ textarea { resize: none !important; }
 
 // We use these to style the legends when you use them
 // $legend-bg: #fff;
-// $legend-font-weight: bold;
+$legend-font-weight: 700;
 // $legend-padding: rem-calc(0 3);
 
 // We use these to style the prefix and postfix input elements
@@ -482,9 +482,7 @@ $glowing-effect-fade-time: 0.3s;
 // $glowing-effect-color: $input-focus-border-color;
 
 // Select variables
-$select-bg-color: #fff; // This variable doesn't work...
-
-select { background: #fff url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==") no-repeat !important; }
+$select-bg-color: #fff;
 
 // Inline Lists
 
@@ -522,7 +520,7 @@ select { background: #fff url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cD
 // Here, we're setting the tip dont styles
 // $joyride-tip-font-color: #fff;
 // $joyride-tip-font-size: rem-calc(14);
-// $joyride-tip-header-weight: bold;
+$joyride-tip-header-weight: 700;
 
 // This changes the nub size
 // $joyride-tip-nub-size: 10px;
@@ -601,7 +599,7 @@ $tabbar-left-section-border: none;
 
 // Off Canvas Tab Bar Headers
 // $tabbar-header-color: #FFF;
-// $tabbar-header-weight: bold;
+$tabbar-header-weight: 700;
 // $tabbar-header-line-height: $tabbar-height;
 // $tabbar-header-margin: 0;
 
@@ -613,7 +611,7 @@ $off-canvas-bg: $black;
 // $off-canvas-label-padding: 0.3rem rem-calc(15);
 $off-canvas-label-color: $gray;
 // $off-canvas-label-text-transform: uppercase;
-// $off-canvas-label-font-weight: bold;
+$off-canvas-label-font-weight: 700;
 $off-canvas-label-bg: $black-alt;
 $off-canvas-label-border-top: none;
 // $off-canvas-label-border-bottom: none;
@@ -711,7 +709,7 @@ $menu-slide: "transform 500ms cubic-bezier(0.5, -0.5, 0.5, 1.5)";
 // We use these for currently selected anchor links
 // $pagination-link-current-background: $primary-color;
 // $pagination-link-current-font-color: #fff;
-// $pagination-link-current-font-weight: bold;
+$pagination-link-current-font-weight: 700;
 // $pagination-link-current-cursor: default;
 // $pagination-link-current-active-bg: $primary-color;
 
@@ -835,7 +833,7 @@ $price-item-weight: $body-font-weight;
 // $reveal-close-top: rem-calc(8);
 // $reveal-close-side: rem-calc(11);
 // $reveal-close-color: #aaa;
-// $reveal-close-weight: bold;
+$reveal-close-weight: 700;
 
 // We use these to control the modal border
 // $reveal-border-style: solid;
@@ -992,7 +990,7 @@ $sub-nav-active-font-weight: $body-font-weight;
 // $table-head-bg: #f5f5f5  ;
 // $table-head-font-size: rem-calc(14);
 // $table-head-font-color: #222;
-// $table-head-font-weight: bold;
+$table-head-font-weight: 700;
 // $table-head-padding: rem-calc(8 10 10);
 
 // These control the row padding and font styles
@@ -1047,7 +1045,7 @@ $sub-nav-active-font-weight: $body-font-weight;
 // $include-html-tooltip-classes: $include-html-classes;
 
 // $has-tip-border-bottom: dotted 1px #ccc;
-// $has-tip-font-weight: bold;
+$has-tip-font-weight: 700;
 // $has-tip-font-color: #333;
 // $has-tip-border-bottom-hover: dotted 1px darken($primary-color, 20%);
 // $has-tip-font-color-hover: $primary-color;
@@ -1110,14 +1108,14 @@ $topbar-link-bg-hover: $white-alt;
 
 // $topbar-dropdown-label-color: $black-alt;
 // $topbar-dropdown-label-text-transform: uppercase;
-// $topbar-dropdown-label-font-weight: bold;
+$topbar-dropdown-label-font-weight: 700;
 // $topbar-dropdown-label-font-size: rem-calc(10);
 // $topbar-dropdown-label-bg: $secondary-colorAlt;
 
 // Top menu icon styles
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: rem-calc(13);
-// $topbar-menu-link-weight: bold;
+$topbar-menu-link-weight: 700;
 // $topbar-menu-link-color: $black;
 // $topbar-menu-icon-color: $black;
 // $topbar-menu-link-color-toggled: $black-alt;

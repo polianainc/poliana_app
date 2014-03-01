@@ -17,6 +17,10 @@ describe Politician do
   it { should respond_to(:bioguide_id) }
   it { should respond_to(:party) }
   it { should respond_to(:birthday) }
+  it { should respond_to(:state) }
+  it { should respond_to(:gender) }
+  it { should respond_to(:percent_age_difference) }
+  
   it { should be_valid }
 
   it { should have_searchable_field(:first_name) }

@@ -1,1 +1,8 @@
-// This partial will handle the following controllers: errors
+#alert-section {
+	position: fixed;
+	left: 0;
+	top: -200px;
+	z-index: 100;
+	width: 100%;
+	height: auto;
+}

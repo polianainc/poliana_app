@@ -22,7 +22,7 @@ small { font-size: 0.75em; }
 	margin-top: -10px;
 	a {
 		font-size: 0.9em;
-		font-weight: bold;
+		font-weight: 700;
 	}
 }
 
@@ -31,9 +31,11 @@ small { font-size: 0.75em; }
 	height: $small-background;
 	width: 100%;
 	margin-bottom: 40px;
-	background: $black;
-	&.expanded { height: $small-background + 200; }
+	background: $white;
+	background-repeat: no-repeat;
+	&.expanded { height: $small-background + 150; }
 	&.home {
+		h1 { margin-top: 80px; }
 		.play-video { margin-top: 30px; }
 	}
 	@include background-size(cover);
@@ -43,16 +45,16 @@ small { font-size: 0.75em; }
 	}
 	p { display: none; }
 	h1 {
-		margin-top: 60px;
+		margin-top: 100px;
 		@include text-pop($black);
 	}
 	@media #{$medium-up} {
 		height: $medium-background;
-		&.expanded { height: $medium-background + 200; }
+		&.expanded { height: $medium-background + 100; }
 		&.home {
 			h1 {
 				font-weight: 300;
-				margin-top: 120px;
+				margin-top: 80px;
 			}
 		}
 		* { text-align: left; }
@@ -64,17 +66,17 @@ small { font-size: 0.75em; }
 		h1 {
 			font-size: 3em;
 			margin-top: 90px;
-			font-weight: bold;
+			font-weight: 700;
 			@include text-pop($black, 2px);
 		}
 	}
 	@media #{$large-up} {
 		height: $large-background;
-		&.expanded { height: $large-background + 100; }
+		&.expanded { height: $large-background + 50; }
 		p { font-size: 1.25em; }
 		h1 {
 			font-size: 3.5em;
-			margin-top: 120px;
+			margin-top: 120px !important;
 		}
 	}
 }

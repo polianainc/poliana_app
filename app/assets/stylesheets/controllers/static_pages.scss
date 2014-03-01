@@ -34,7 +34,7 @@
 		}
 	}
 	h4 {
-		font-weight: bold;
+		font-weight: 700;
 		margin-bottom: 0px;
 		@media #{$medium-up} { font-weight: 300; }
 	}
@@ -48,3 +48,5 @@
 	right: 0px;
 	z-index: 1000;
 }
+
+.vimeo-player { margin-top: 15px !important; }

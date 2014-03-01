@@ -132,11 +132,14 @@ ge = (function() {
 					.attr("class", "icon-bubbles");
 		};
 		
-		_graph.drawLegend = function(location, data, key, colors) {
+		_graph.drawLegend = function(location, data, key, colors, direction) {
 			location.selectAll('.legend').remove();
 			
+			if(direction === undefined)
+				direction = "vertical";
+			
 			var legend = location.append("ul")
-				.attr("class", "legend vertical");
+				.attr("class", "legend " + direction);
 
 			var legendItems = legend.selectAll('li')
 				.data(data)
@@ -186,19 +189,6 @@ ge = (function() {
 
 		var y = d3.scale.linear()
 			.range([height, 0]);
-
-		var xAxis = d3.svg.axis()
-			.scale(x)
-			.orient("bottom");
-
-		var yAxis = d3.svg.axis()
-			.scale(y)
-			.orient("right")
-			.ticks(5)
-			// Defaults to nothing if _graph.ticks isn't defined
-			.tickValues(_graph.ticks)
-			.tickSize(width)
-			.tickFormat(function(d) { return "$" + currencyNumber(d, 1); });
 			
 		var colors = d3.scale.ordinal()
 			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
@@ -256,7 +246,6 @@ ge = (function() {
 				.scale(y)
 				.orient("right")
 				.ticks(5)
-				// Defaults to nothing if _graph.ticks isn't defined
 				.tickValues(ge.graph().makeTicks(d3.max(data, function(d) { return d[theValue]; })))
 				.tickSize(width)
 				.tickFormat(function(d) { return "$" + currencyNumber(d, 1); });
@@ -296,7 +285,19 @@ ge = (function() {
 			var theKey = _graph.dimensions[0].keySelector;
 			var theValue = _graph.dimensions[0].valueSelector;
 				
-			if(data !== undefined) {				
+			if(data !== undefined) {
+				var xAxis = d3.svg.axis()
+					.scale(x)
+					.orient("bottom");
+
+				var yAxis = d3.svg.axis()
+					.scale(y)
+					.orient("right")
+					.ticks(5)
+					.tickValues(ge.graph().makeTicks(d3.max(data, function(d) { return d[theValue]; })))
+					.tickSize(width)
+					.tickFormat(function(d) { return "$" + currencyNumber(d, 1); });
+									
 				x.domain(data.map(function(d) { return d[theKey]; }));
 				y.domain([0, d3.max(data, function(d) { return d[theValue]; })]);
 					
@@ -371,6 +372,10 @@ ge = (function() {
 		var colors = d3.scale.ordinal()
 			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
 			.range(_graph.colors);
+			
+		var arc = d3.svg.arc()
+			.outerRadius(radius - 10)
+			.innerRadius(0);
 
 		var svg = d3.select($graph.selector).append("svg")
 			.attr("width", width + margin.left + margin.right)
@@ -380,6 +385,9 @@ ge = (function() {
 			.attr("preserveAspectRatio", "xMidYMid")
 			.append("g")
 				.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+				
+		var information = d3.select($graph.selector).append("div")
+			.attr("class", "information");
 				
 		var aspect = (width + margin.left + margin.right) / (height + margin.top + margin.bottom);
 		
@@ -405,7 +413,25 @@ ge = (function() {
 		$(window).on("resize", function() { resizeGraph(); });
 			
 		_graph.redraw = function(newData) {
-			console.log(newData);
+			var filter = _graph.dimensions[_graph.filterDimension].data.filter(newData);
+			
+			var data = _graph.dimensions[0].data.top(_graph.size);
+			var theKey = _graph.dimensions[0].keySelector;
+			var theValue = _graph.dimensions[0].valueSelector;
+			
+			var pie = d3.layout.pie()
+				.sort(null)
+				.value(function(d) { return d[theValue]; });
+			
+			var path = svg.selectAll('.arc path');
+			
+			path.data(pie(data))
+				.transition()
+					.delay(function(d, i) { return i * 100; })
+					.duration(500)
+					.attrTween("d", arcTween);
+					
+			ge.graph().drawLegend(information, data, theKey, colors);
 		};
 		
 		_graph.render = function() {
@@ -418,16 +444,9 @@ ge = (function() {
 			var theValue = _graph.dimensions[0].valueSelector;
 				
 			if(data !== undefined) {
-				var arc = d3.svg.arc()
-					.outerRadius(radius - 10)
-					.innerRadius(0);
-
 				var pie = d3.layout.pie()
 					.sort(null)
 					.value(function(d) { return d[theValue]; });
-						
-				var information = d3.select($graph.selector).append("div")
-					.attr("class", "information");
 					
 				ge.graph().drawIcons(information);
 
@@ -449,7 +468,8 @@ ge = (function() {
 								d.endAngle = i(t);
 								return arc(d);
 							}
-						});
+						})
+						.each(function(d) { this._current = d; });
 
 				g.append("text")
 					.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
@@ -508,10 +528,14 @@ ge = (function() {
 			.x(x)
 			.on("brushend", brushed);
 			
-		function brushed() {
-			if(!d3.event.sourceEvent) return;
+		function brushed(vals) {
+			var extent0;
 			
-			var extent0 = brush.extent();
+			if(vals === undefined)
+				extent0 = brush.extent();
+			else
+				extent0 = vals;
+				
 			var extent1 = [Math.round(extent0[0]), Math.round(extent0[1])];
 			
 			if(extent1[0] >= extent1[1]) {
@@ -520,17 +544,31 @@ ge = (function() {
 			}
 
 			d3.select(this).transition()
-				.duration(250)
+				.duration(500)
 				.call(brush.extent(extent1));
 				
-			extent1[1]++;
+			if(_graph.secondarySelector !== undefined) {
+				_graph.secondarySelector.find('option').each(function() {
+					if(parseInt($(this).val()) === extent1[1])
+						$(this).attr('selected', 'selected');
+				});
+			}
 				
+			extent1[0]++;
+			extent1[1]++;
+			
 			_graph.controller.redraw(extent1);
 		}
 			
 		var colors = d3.scale.ordinal()
 			.domain([0, (_graph.colors.length - (_graph.colors.length - 1))])
 			.range(_graph.colors);
+			
+		var area = d3.svg.area()
+			.interpolate("monotone")
+			.x(function(d) { return x(d.key); })
+			.y0(height)
+			.y1(function(d) { return y(d.value); });
 
 		var svg = d3.select($graph.selector).append("svg")
 			.attr("width", width + margin.left + margin.right)
@@ -562,15 +600,10 @@ ge = (function() {
 		
 		_graph.render = function() {
 			if(data !== undefined) {
-				//ge.graph().drawLegend(information, data, theKey, colors);
-				
-				var totals = [];
-				
-				Object.keys(data).forEach(function(key, iteration) {
-					for(var i = 0; i < data[key].length; i++) {
-						totals.push(data[key][i]);
-					}
-				});
+				var information = d3.select($graph.selector).insert("div", "svg")
+					.attr("class", "information");
+					
+				var totals = $.map(data, function(n) { return n; });
 				
 				x.domain(d3.extent(totals.map(function(d) { return d.key; })));
 				y.domain([0, d3.max(totals.map(function(d) { return d.value; }))]);
@@ -579,33 +612,41 @@ ge = (function() {
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
 					.call(xAxis);
-				
-				Object.keys(data).forEach(function(key, iteration) {
-					var area = d3.svg.area()
-						.interpolate("monotone")
-						.x(function(d) { return x(d.key); })
-						.y0(height)
-						.y1(function(d) { return y(d.value); });
-
-					context.append("path")
-						.datum(data[key])
-						.attr("class", "area")
-						.attr("fill", function(d, i) { return colors(iteration); })
-						.attr("fill-opacity", 0.75)
-						.attr("d", area);
-				});
 					
-				var xLength = d3.selectAll('.x .tick text').size();
+				var allKeys = [];
+					
+				var paths = context.selectAll("path.area")
+					.data(data)
+					.enter().append("path")
+					.attr("d", area)
+					.attr("class", "area")
+					.attr("fill", function(d, i) { return colors(i); })
+					.attr("fill-opacity", 0)
+					.each(function(d) {
+						allKeys.push({ key: d[0].group });
+					});
+					
+				paths.transition()
+					.delay(function(d, i) { return i * 100; })
+					.duration(500)
+					.attr("fill-opacity", 0.75);
+					
+				ge.graph().drawLegend(information, allKeys, 'key', colors, 'horizontal');
+				
+				d3.selectAll('.x .tick').each(function(d, i) {
+					var elem = d3.select(this);
+					
+					if(i % 2 !== 0)
+						elem.remove();
+				});
 					
 				d3.selectAll('.x .tick text').each(function(d, i) {
 					var elem = d3.select(this);
 					
 					elem.attr("x", 5)
 						.attr("y", +elem.attr("y") + 20)
+						.attr("class", "tick-text")
 						.style("text-anchor", "start");
-						
-					if(i === 0)
-						elem.style("text-anchor", "end").attr("x", -10);
 				});
 				
 				context.append("g")
@@ -626,6 +667,44 @@ ge = (function() {
 					else
 						elem.attr("width", width).attr("height", height).attr("x", 0).attr("y", ((oldHeight - height) / 2) - 20);
 				});
+				
+				if($graph.find('span.hide').size() > 1) {
+					$('span.hide').each(function() {
+						var elem = this;
+						
+						d3.selectAll('.x .tick .tick-text').each(function(d, i) {
+							if($.inArray(d.toString(), $(elem).attr('data-value').split(',')) !== -1) {
+								var role = $(elem).attr('data-key');
+								
+								role = "<b>" + role.substring(0, role.indexOf(" ")) + "</b> " + role.substring(role.indexOf(" ") + 1);
+								
+								d3.select(this.parentNode).append("foreignObject")
+									.attr("x", 5)
+									.attr("y", 5)
+									.attr("width", 160)
+									.attr("height", 20)
+									.attr("class", "tick-secondary-text")
+									.html(role);
+							}
+						});
+						
+						$(this).remove();
+					});
+				}
+				
+				if(_graph.secondarySelector !== undefined) {
+					var secondarySelector = _graph.secondarySelector.selector;
+					
+					$(document).on('change', secondarySelector, function() {
+						var value = parseInt($(this).find('option:selected').val());
+						var newRange = [value, value];
+						
+						// This shit is incorrect
+						console.log(newRange);
+						
+						svg.select(".brush").call(brush.extent(newRange));
+					});
+				}
 			}
 		};
 		

@@ -1,15 +1,22 @@
 <% terms = @politician.terms.sort { |a, b| b.start <=> a.start } %>
+<% birthday = @politician.birthday.to_time.strftime('%b %d, %Y') %>
 <% content_for :title, "Politician" %>
-<%= @politician.inspect %>
+
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
 <div class="hide primary-key" data-id="<%= @politician.bioguide_id %>"></div>
 <div class="row">
 	<div class="large-3 medium-3 columns">
-		<%= image_tag "congress/FILL THIS SHIT IN HERE/" + @politician.bioguide_id + ".png" %>
+		<%= image_tag @politician.get_image %>
 	</div>
 	<div class="large-9 medium-9 columns">
-		<h1><%= @politician.full_name %></h1>
+		<h1>
+			<%= @politician.full_name %>
+			<ul class="politician-card sided <%= @politician.party.downcase %>">
+				<li><%= Politician.party(@politician.party) %></li>
+				<li><%= @politician.state %></li>
+			</ul>
+		</h1>
 		<h4><%= Politician.role(terms.first.term_type) %></h4>
 		<div class="foldable">
 			<div class="foldable-header down">
@@ -19,17 +26,41 @@
 					</div>
 				</div>
 			</div>
-			<div class="foldable-content">
+			<div class="foldable-content politician-personal-information">
 				<div class="row">
+					<% if @politician.birthday %>
 					<div class="large-4 medium-4 columns">
-						BIRTHDAY
+						<div class="politician-personal-section">
+							<p class="text-center gray-caps">Birthday</p>
+							<p class="text-center upsize"><%= birthday + " (" + @politician.age.to_s + ")" %></p>
+							<p class="text-center downsize"><i>Older than <%= 100 - @politician.percent_age_difference.to_i %>% of Congress</i></p>
+							<div class="progress radius success">
+								<span class="meter" style="width: <%= 100 - @politician.percent_age_difference.to_i %>%;"></span>
+							</div>
+						</div>
 					</div>
+					<% end %>
+					<% if @politician.gender %>
 					<div class="large-4 medium-4 columns">
-						GENDER
+						<div class="politician-personal-section">
+							<p class="text-center gray-caps">Gender</p>
+							<p class="text-center upsize"><%= Politician.gender(@politician.gender) %></p>
+							<p class="text-center downsize"><i><%= @politician.percent_gender.to_i %>% of Congress</i></p>
+							<div class="progress radius success">
+								<span class="meter" style="width: <%= @politician.percent_gender.to_i %>%;"></span>
+							</div>
+						</div>
 					</div>
+					<% end %>
+					<% if @politician.religion && @politician.religion != "Unknown"  %>
 					<div class="large-4 medium-4 columns">
-						RELIGION
+						<div class="politician-personal-section">
+							<p class="text-center gray-caps">Religion</p>
+							<p class="text-center upsize"><%= @politician.general_religion %></p>
+							<p class="text-center downsize"><i><%= @politician.religion %></i></p>
+						</div>
 					</div>
+					<% end %>
 				</div>
 			</div>
 		</div>

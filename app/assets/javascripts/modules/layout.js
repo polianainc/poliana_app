@@ -3,7 +3,8 @@ $(document).ready(function() {
 	pageSpecific();
 	
 	// Change all the full backgrounds
-	fullBackgrounds();
+	if($fullBackground.length > 0)
+		fullBackgrounds();
 	
 	// Open the sharable modal dialog
 	$(document).on('click', '.sharable', function(event) {
@@ -78,14 +79,26 @@ $(document).ready(function() {
 	
 	if($errors.length > 0) {
 		$errors.animate({
-			top: 80
+			top: 20
 		}, 500, 'swing');
+		
+		var success = false;
+		
+		$errors.find('[data-alert]').each(function() {
+			if($(this).hasClass('success'))
+				success = true;
+		});
+		
+		if(success) {
+			$errors.delay(5000).fadeOut(250);
+		}
 	}
 });
 
 $(window).resize(throttle(function() {
 	// Change all the full backgrounds
-	fullBackgrounds();
+	if($fullBackground.length > 0)
+		fullBackgrounds();
 }, 500));
 
 // Here we can load page-specific Javascript asynchronously while letting Sprokets handle site-wide dependencies.

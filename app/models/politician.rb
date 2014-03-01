@@ -27,23 +27,7 @@ class Politician
     text :party
   end
 
-  def full_name()
-    first_name + " " + last_name
-  end
-
-# HACK - these values are manually calculated to reduce storage on the database level.
-  def percent_gender
-    return 83.226 if gender == "M"
-    return 16.774 if gender == "F"
-    return nil
-  end
-
-  def get_image()
-    Politician.get_image(bioguide_id)
-  end
-
   def self.boosted_search(page, query)
-    
     self.search do 
        fulltext query do
         boost_fields :last_name => 3.0
@@ -56,38 +40,89 @@ class Politician
     end
   end
 
-  def self.get_image(bioguide_id)
-    return "https://s3.amazonaws.com/poliana.media/web/" + bioguide_id + ".png"
+  def get_image
+    uri = URI("https://s3.amazonaws.com/poliana.media/web/" + bioguide_id + ".png")
+
+    request = Net::HTTP.new uri.host
+    response = request.request_head uri.path
+    
+    if response.code.to_i == 200
+      return uri
+    else
+      if gender == "M"
+        return "male.png"
+      else
+        return "female.png"
+      end
+    end
+  end
+  
+  def full_name
+    return first_name + " " + last_name
+  end
+
+  # HACK - these values are manually calculated to reduce storage on the database level.
+  def percent_gender
+    return 83.226 if gender == "M"
+    return 16.774 if gender == "F"
+    return nil
+  end
+  
+  def age
+    now = Time.now.utc.to_date
+    now.year - birthday.year - ((now.month > birthday.month || (now.month == birthday.month && now.day >= birthday.day)) ? 0 : 1)
+  end
+  
+  def general_religion
+    #"Protestant", "Episcopalian", "Lutheran", "Baptist", "Jewish", "Methodist", "Presbyterian", "Roman Catholic", "Christian", "African Methodist Episcopal", "Catholic", "Latter Day Saints", "Congregationalist", "First Christian Church (Disciples of Christ)", "United Brethren in Christ", "Greek Orthodox", "Unitarian Universalist", "Assembly of God", "United Church of Christ", "Unitarian", "Seventh-Day Adventist", "Christian Scientist", "Second Baptist", "United Methodist", "Southern Baptist", "Christian Reformed", "Reformed Church in America", "Reformed Latter Day Saint", "Moravian", "Unknown", "Seventh Day Adventist", "Nazarene", "Episcopal", "Church of Christ"
+    
+    if religion == "Jewish"
+      return "Jewish"
+    elsif religion == "Unitarian Universalist" || religion == "Unitarian"
+      return "Other/Non-religious"
+    elsif religion == "Muslim"
+      return "Muslim"
+    else
+      return "Christian"
+    end
   end
 
   def self.role(term)
     if term == "prez"
-      "President"
+      return "President"
     elsif term == "sen"
-      "Senator"
+      return "Senator"
     elsif term == "rep"
-      "Representative"
+      return "Representative"
     else
-      "Pre-election"
+      return "Pre-election"
+    end
+  end
+  
+  def self.gender(gender)
+    if gender == "M"
+      return "Male"
+    else
+      return "Female"
     end
   end
 
   def self.party(party)
     if party == "D" || party == "R" || party == "I"
       if party == "D"
-        "Democrat"
+        return "Democrat"
       elsif party == "R"
-        "Republican"
+        return "Republican"
       else
-        "Independent"
+        return "Independent"
       end
-    elsif
-      if party == "Democrat"
-        "D"
+    else
+      if party == "Democrat" || party = "Popular Democrat"
+        return "D"
       elsif party == "Republican"
-        "R"
+        return "R"
       else
-        "I"
+        return "I"
       end
     end
   end

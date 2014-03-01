@@ -26,6 +26,16 @@ small { font-size: 0.75em; }
 	}
 }
 
+.gray-caps {
+	text-transform: uppercase;
+	font-weight: 700;
+	color: $gray;
+	font-size: 0.9em;
+}
+
+.upsize { font-size: 1.25em; }
+.downsize { font-size: 0.75em; }
+
 .full-background {
 	margin-top: -20px;
 	height: $small-background;

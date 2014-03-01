@@ -84,7 +84,6 @@ stagingsmall:
       # of host:port pairs. (required)
       hosts:
         - ds035428.mongolab.com:35428
-
       username: rails
       password: Ch0msky5!
 

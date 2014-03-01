@@ -25,9 +25,14 @@ class User < ActiveRecord::Base
 
   has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
   belongs_to :invitation
+  
+  #get those avatars
+  def avatar_url
+    gravatar_id = Digest::MD5::hexdigest(email).downcase
+    return "https://gravatar.com/avatar/#{gravatar_id}.png?s=128"
+  end
 
   #creates a user from the auth information
-  
   def self.from_omniauth(auth)
     where("#{auth.provider}_id".to_sym => auth.uid).first_or_create do |user|
       user["has_#{auth.provider}"] = true
@@ -90,7 +95,6 @@ class User < ActiveRecord::Base
   end
 
   #beta methods
-
   def invitation_key
     invitation.beta_key if invitation
   end

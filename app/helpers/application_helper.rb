@@ -11,15 +11,6 @@ module ApplicationHelper
     File.exists?(stylesheetCSS) || File.exists?(stylesheetSCSS) 
   end
   
-  def avatar_url(user)
-    if user.avatar_url.present?
-      user.avatar_url
-    else
-      gravatar_id = Digest::MD5::hexdigest(user.email).downcase
-      "http://gravatar.com/avatar/#{gravatar_id}.png?s=128"
-    end
-  end
-  
   def throw_errors(name, errors)
     if errors.length > 1
       the_string = "<div class='small-12 columns'><small class='error'><ul>".html_safe

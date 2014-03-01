@@ -79,8 +79,19 @@ $(document).ready(function() {
 	
 	if($errors.length > 0) {
 		$errors.animate({
-			top: 80
+			top: 20
 		}, 500, 'swing');
+		
+		var success = false;
+		
+		$errors.find('[data-alert]').each(function() {
+			if($(this).hasClass('success'))
+				success = true;
+		});
+		
+		if(success) {
+			$errors.delay(5000).fadeOut(250);
+		}
 	}
 });
 

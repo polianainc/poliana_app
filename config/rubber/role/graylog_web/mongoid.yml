@@ -26,3 +26,11 @@ production:
   username:
   password:
   database: <%= rubber_env.graylog_mongo_database %>
+
+# set these environment variables on your prod server
+stagingsmall:
+  host: <%= graylog_server.full_name %>
+  port: 27017
+  username:
+  password:
+  database: <%= rubber_env.graylog_mongo_database %>

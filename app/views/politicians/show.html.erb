@@ -58,7 +58,7 @@
 					<select>
 					<% terms.each do |f| %>
 						<% f.congresses.sort { |x, y| y <=> x }.each do |g| %>
-							<option value="<%= g %>"><%= role(f.term_type) + " (" + g.ordinalize + " Congress)" %></option>
+							<option value="<%= g %>"><%= Politician.role(f.term_type) + " (" + g.ordinalize + " Congress)" %></option>
 						<% end %>
 					<% end %>
 					</select>

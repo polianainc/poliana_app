@@ -3,7 +3,8 @@ $(document).ready(function() {
 	pageSpecific();
 	
 	// Change all the full backgrounds
-	fullBackgrounds();
+	if($fullBackground.length > 0)
+		fullBackgrounds();
 	
 	// Open the sharable modal dialog
 	$(document).on('click', '.sharable', function(event) {
@@ -85,7 +86,8 @@ $(document).ready(function() {
 
 $(window).resize(throttle(function() {
 	// Change all the full backgrounds
-	fullBackgrounds();
+	if($fullBackground.length > 0)
+		fullBackgrounds();
 }, 500));
 
 // Here we can load page-specific Javascript asynchronously while letting Sprokets handle site-wide dependencies.

@@ -1,13 +1,12 @@
 <% terms = @politician.terms.sort { |a, b| b.start <=> a.start } %>
 <% birthday = @politician.birthday.to_time.strftime('%b %d, %Y') %>
 <% content_for :title, "Politician" %>
-
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
 <div class="hide primary-key" data-id="<%= @politician.bioguide_id %>"></div>
 <div class="row">
 	<div class="large-3 medium-3 columns">
-		<%= image_tag @politician.get_image %>
+		<%= image_tag @politician.image_url %>
 	</div>
 	<div class="large-9 medium-9 columns">
 		<h1>

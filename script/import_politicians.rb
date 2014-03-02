@@ -172,5 +172,21 @@ def add_pre_election_terms
   end
 end
 
+def add_image_urls
+  Politician.each do |pol|
+    uri = URI("https://s3.amazonaws.com/poliana.media/web/" + pol.bioguide_id + ".png")
+    
+    request = Net::HTTP.new uri.host
+    response = request.request_head(uri.path)
+
+    if response.code.to_i == 200
+      pol.image_url = uri
+    else
+      pol.image_url = "male.png" if pol.gender == "M"
+      pol.image_url = "female.png" if pol.gender == "F"
+    end
+  end
+end
+
 # RUN THE CODE
-import_raw_legislators_to_mongo
+add_image_urls

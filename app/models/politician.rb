@@ -13,7 +13,7 @@ class Politician
   field :religion, :type => String
   field :state, :type => String
   field :percent_age_difference, :type => Float
-
+  field :image_url, :type => String
   embeds_many :terms
   accepts_nested_attributes_for :terms
 
@@ -37,23 +37,6 @@ class Politician
 
       paginate :page => page, :per_page => 10
       order_by(:score, :desc)
-    end
-  end
-
-  def get_image
-    uri = URI("https://s3.amazonaws.com/poliana.media/web/" + bioguide_id + ".png")
-
-    request = Net::HTTP.new uri.host
-    response = request.request_head uri.path
-    
-    if response.code.to_i == 200
-      return uri
-    else
-      if gender == "M"
-        return "male.png"
-      else
-        return "female.png"
-      end
     end
   end
   
@@ -117,7 +100,7 @@ class Politician
         return "Independent"
       end
     else
-      if party == "Democrat" || party = "Popular Democrat"
+      if party == "Democrat" || party == "Popular Democrat"
         return "D"
       elsif party == "Republican"
         return "R"

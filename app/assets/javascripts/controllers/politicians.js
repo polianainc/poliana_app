@@ -5,7 +5,7 @@ var bioguide = $('.primary-key').attr('data-id');
 var cont = ge.controller();
 
 // Get all the PACS
-//var getPacs = $.get('//default-environment-ygymzummgf.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
+//var getPacs = $.get('//poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
 var getPacs = $.get('/temp/pacs.json', function(data) {
 	var $barSelector = $('#pacs-bar');
 	var $pieSelector = $('#pacs-pie');
@@ -14,7 +14,7 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 	
 	var $info = $('<div>')
 		.addClass('other hide')
-		.text("Top 5 PACs");
+		.html("<h3 class='text-center'>What is a PAC?</h3><p>A political action committee (PAC) is an organization that raises and spends campaign contributions for the express purpose of advocating for the election or defeat of candidates seeking federal office. Typically associated with business, labor, or ideological interests, its contributions are considered “hard money”. The Federal Election Commission places limits on how much an individual can give to a PAC as well as how much a PAC can give directly to a candidate.</p><p>In this chart, we see the top 5 PACs that advocated in favor of a politician during a certain time range. Note that these figures include expenditures far beyond direct contributions to the candidate. Move and expand the timeline to see how these PAC contributions have changed over time.</p><p><a href='http://wiki.poliana.com/index.php/Political_Action_Committees_(PACs)' target='_blank'>Click here to know more?</a></p>" + dataPartners);
 	
 	$barSelector.append($('<h4>')
 		.addClass('text-center')
@@ -129,7 +129,7 @@ var getPacs = $.get('/temp/pacs.json', function(data) {
 });
 
 // Get all the industries
-//var getIndustries = $.get('//default-environment-ygymzummgf.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
+//var getIndustries = $.get('//poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
 var getIndustries = $.get('/temp/industries.json', function(data) {
 	var $barSelector = $('#industries-bar');
 	var $pieSelector = $('#industries-pie');
@@ -138,7 +138,7 @@ var getIndustries = $.get('/temp/industries.json', function(data) {
 	
 	var $info = $('<div>')
 		.addClass('other hide')
-		.text("Top 5 Industries");
+		.html("<h3 class='text-center'>What is an industry?</h3><p>Each business sector in the United States has its own special interests, and each contributes heavily to candidates who will advance those interests. In this chart, the totals represent the aggregate amount of contributions from all individuals, businesses, and PACs associated with a particular industry and made in favor of this politician for the given timerange. Move and expand the scrubber to see how these industry contributions have changed over time.</p><p><a href='http://wiki.poliana.com/index.php/Industries' target='_blank'>Click here to know more?</a></p>" + dataPartners);
 	
 	$barSelector.append($('<h4>')
 		.addClass('text-center')

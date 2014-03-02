@@ -185,6 +185,7 @@ def add_image_urls
       pol.image_url = "male.png" if pol.gender == "M"
       pol.image_url = "female.png" if pol.gender == "F"
     end
+    pol.save
   end
 end
 

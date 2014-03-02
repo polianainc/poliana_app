@@ -117,7 +117,7 @@ class Politician
         return "Independent"
       end
     else
-      if party == "Democrat" || party = "Popular Democrat"
+      if party == "Democrat" || party == "Popular Democrat"
         return "D"
       elsif party == "Republican"
         return "R"

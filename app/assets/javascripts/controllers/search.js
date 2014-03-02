@@ -244,7 +244,7 @@ function formatItem(type, data, partial) {
 						.append($('<a>')
 							.attr('href', '/congress/politicians/' + this.bioguide_id)
 							.append($('<img>')
-								.attr('src', '#')
+								.attr('src', this.image_url)
 								.attr('alt', this.name)
 							)
 						)

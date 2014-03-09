@@ -1,0 +1,35 @@
+<% content_for :title, "Politicians" %>
+<div class="page-specific" data-controller="graph_explorer"></div>
+<div class="page-specific" data-controller="politicians"></div>
+<%= render layout: "shared/backgrounds", locals: { image: "michaelcollins", classes: "single" } do %>
+<div class="hide-for-small">
+	<h1 class="text-center">What’s your politician up to?</h1><br>
+	<input type="search" name="politician_search_main" placeholder="Start typing a name, party, state, religion, or anything!">
+</div>
+<div class="show-for-small">
+	<h1 class="text-center">Politicians</h1>
+</div>
+<% end %>
+<div class="row">
+	<div class="small-12 columns hide-for-medium-up">
+		<input type="search" name="politician_search_small" placeholder="Search for a politician...">
+	</div>
+</div>
+<div class="row">
+	<div class="large-12 columns">
+		<h2 class="text-center"><span class="count">20</span> results for &quot;<span class="query">blah</span>&quot;</h2>
+	</div>
+</div>
+<div class="row" id="politicians-result">
+	<% @politicians.each do |p| %>
+		<% congresses = [] %>
+		<% p.terms.each do |t| %>
+			<% congresses.concat t.congresses %>
+		<% end %>
+		<% congresses.map! { |c| c.ordinalize } %>
+		
+		<div class="large-12 medium-12 small-12 columns politician" data-birthyear="<%= p.birthday.year %>" data-birthmonth="<%= Date::MONTHNAMES[p.birthday.month] %>" data-firstname="<%= p.first_name %>" data-lastname="<%= p.last_name %>" data-gender="<%= Politician.gender(p.gender) if !defined?(p.gender).nil? %>" data-party="<%= Politician.party(p.party) if !defined?(p.party).nil? %>" data-religion="<%= p.religion if !defined?(p.religion).nil? %>" data-generalreligion="<%= p.general_religion if !defined?(p.general_religion).nil? %>" data-state="<%= Politician.state(p.state) if !defined?(p.state).nil? %>" data-congresses="<%= congresses.join(',') %>">
+			
+		</div>
+	<% end %>
+</div>

@@ -1,6 +1,6 @@
 <% terms = @politician.terms.sort { |a, b| b.start <=> a.start } %>
 <% birthday = @politician.birthday.to_time.strftime('%b %d, %Y') %>
-<% content_for :title, "Politician" %>
+<% content_for :title, @politician.full_name %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
 <div class="hide primary-key" data-id="<%= @politician.bioguide_id %>"></div>
@@ -30,7 +30,7 @@
 					<% if @politician.birthday %>
 					<div class="large-4 medium-4 columns">
 						<div class="politician-personal-section">
-							<p class="text-center gray-caps">Birthday</p>
+							<p class="text-center gray-caps">Age</p>
 							<p class="text-center upsize"><%= birthday + " (" + @politician.age.to_s + ")" %></p>
 							<p class="text-center downsize"><i>Older than <%= 100 - @politician.percent_age_difference.to_i %>% of Congress</i></p>
 							<div class="progress radius success">

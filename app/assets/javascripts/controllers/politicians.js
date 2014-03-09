@@ -320,12 +320,17 @@ else {
 		else
 			$('input[name=politician_search_main]').val($(this).val());
 			
-		if($(this).val().length >= 3)
+		if($(this).val() != "")
 			runPoliticianSearch($(this).val().toLowerCase());
+		else {
+			$allPoliticians.find('.politician').addClass('hide');
+			$allPoliticiansCounter.hide();
+		}
 	});
 	
 	function runPoliticianSearch(value) {
 		var lookups = ['birthyear', 'birthmonth', 'firstname', 'lastname', 'fullname', 'gender', 'party', 'religion', 'generalreligion', 'state', 'congresses'];
+		var count = 0;
 		
 		$allPoliticians.find('.politician').each(function() {
 			var found = false;
@@ -336,10 +341,28 @@ else {
 					found = true;
 			});
 			
-			if(found)
+			if(found) {
 				$(this).removeClass('hide');
+				count++;
+			}
 			else
 				$(this).addClass('hide');
 		});
+		
+		if(count <= 12)
+			$allPoliticians.addClass('less');
+		else
+			$allPoliticians.removeClass('less');
+		
+		if(count == 0)
+			count = "No results";
+		else if(count == 1)
+			count = "1 result";
+		else
+			count = count + " results";
+			
+		$allPoliticiansCounter.find('.count').html(count);
+		$allPoliticiansCounter.find('.query').html(value);
+		$allPoliticiansCounter.show();
 	}
 }

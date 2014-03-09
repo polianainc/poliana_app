@@ -4,10 +4,7 @@ $politician-width: $politician-dimensions + $politician-border-width + $politici
 $politician-height: $politician-dimensions + $politician-border-width;
 
 .politician-card {
-	&.sided {
-		display: inline-block;
-		margin-left: 10px;
-	}
+	&.sided { margin-right: 10px; }
 	list-style-type: none;
 	overflow: hidden;
 	margin: 0px;
@@ -59,7 +56,7 @@ $politician-height: $politician-dimensions + $politician-border-width;
 		height: $politician-height;
 		line-height: $politician-height;
 		text-align: center;
-		font-size: 1.1em;
+		font-size: 1em;
 		text-transform: uppercase;
 		font-weight: 700;
 	}
@@ -80,3 +77,41 @@ $politician-height: $politician-dimensions + $politician-border-width;
 	}
 }
 
+#politicians-result {
+	.short { display: block; }
+	.long { display: none; }
+	&.less {
+		.short { display: none; }
+		.long { display: block; }
+	}
+	.politician {
+		.short, .long {
+			margin-top: 10px;
+			float: left;
+		}
+		.short {
+			h5 { font-size: 1em; }
+		}
+		.long {
+			.thumbnail {
+				width: 140px;
+				height: 140px;
+				background-repeat: no-repeat;
+				@include background-size(contain);
+				background-position: 50% 0%;
+				display: block;
+				margin: 0px auto 10px auto;
+			}
+			h5 { margin-bottom: 0px; }
+			p {
+				margin-bottom: 0px;
+				color: $black;
+				&:hover { color: $black; }
+			}
+			ul {
+				display: block;
+				margin: 10px auto;
+			}
+		}
+	}
+}

@@ -9,14 +9,14 @@
 		<%= image_tag @politician.image_url %>
 	</div>
 	<div class="large-9 medium-9 columns">
-		<h1>
-			<%= @politician.full_name %>
-			<ul class="politician-card sided <%= @politician.party.downcase %>">
+		<h1><%= @politician.full_name %></h1>
+		<div class="clearfix">
+			<ul class="politician-card sided left <%= @politician.party.downcase %>">
 				<li><%= Politician.party(@politician.party) %></li>
 				<li><%= @politician.state %></li>
 			</ul>
-		</h1>
-		<h4><%= Politician.role(terms.first.term_type) %></h4>
+			<h5 class="left"><%= Politician.role(terms.first.term_type) %></h5>
+		</div>
 		<div class="foldable">
 			<div class="foldable-header down">
 				<div class="row show-for-small">

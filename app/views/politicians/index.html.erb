@@ -17,19 +17,40 @@
 </div>
 <div class="row">
 	<div class="large-12 columns">
-		<h2 class="text-center"><span class="count">20</span> results for &quot;<span class="query">blah</span>&quot;</h2>
+		<h2 class="text-center hide" id="politicians-counter"><span class="count"></span> for &quot;<span class="query"></span>&quot;</h2>
 	</div>
 </div>
 <div class="row" id="politicians-result">
 	<% @politicians.each do |p| %>
+		<% terms = p.terms.sort { |a, b| b.start <=> a.start } %>
+		
 		<% congresses = [] %>
 		<% p.terms.each do |t| %>
 			<% congresses.concat t.congresses %>
 		<% end %>
 		<% congresses.map! { |c| c.ordinalize } %>
 		
-		<div class="large-12 medium-12 small-12 columns politician hide" data-birthyear="<%= p.birthday.year %>" data-birthmonth="<%= Date::MONTHNAMES[p.birthday.month] %>" data-firstname="<%= p.first_name %>" data-lastname="<%= p.last_name %>" data-fullname="<%= p.full_name %>" data-gender="<%= Politician.gender(p.gender) if !defined?(p.gender).nil? %>" data-party="<%= p.party if !defined?(p.party).nil? %>" data-religion="<%= p.religion if !defined?(p.religion).nil? %>" data-generalreligion="<%= p.general_religion if !defined?(p.religion).nil? %>" data-state="<%= Politician.state(p.state) if !defined?(p.state).nil? %>" data-congresses="<%= congresses.join(',') %>">
-			<%= p.full_name %>
+		<div class="politician hide" data-birthyear="<%= p.birthday.year %>" data-birthmonth="<%= Date::MONTHNAMES[p.birthday.month] %>" data-firstname="<%= p.first_name %>" data-lastname="<%= p.last_name %>" data-fullname="<%= p.full_name %>" data-gender="<%= Politician.gender(p.gender) if !defined?(p.gender).nil? %>" data-party="<%= p.party if !defined?(p.party).nil? %>" data-religion="<%= p.religion if !defined?(p.religion).nil? %>" data-generalreligion="<%= p.general_religion if !defined?(p.religion).nil? %>" data-state="<%= Politician.state(p.state) if !defined?(p.state).nil? %>" data-congresses="<%= congresses.join(',') %>">
+			<div class="clearfix short large-4 medium-4 small-12 columns">
+				<a href="/congress/politicians/<%= p.bioguide_id %>">
+					<ul class="politician-card sided left <%= p.party.downcase %>">
+						<li><%= Politician.party(p.party) %></li>
+						<li><%= p.state %></li>
+					</ul>
+					<h5 class="left"><%= p.full_name %></h5>
+				</a>
+			</div>
+			<div class="long large-3 medium-4 small-6 columns">
+				<a href="/congress/politicians/<%= p.bioguide_id %>">
+					<div class="thumbnail" style="background-image: url(<%= p.image_url %>);"></div>
+					<h5 class="text-center"><%= p.full_name %></h5>
+					<p class="text-center"><strong><%= Politician.role(terms.first.term_type) %></strong></p>
+					<ul class="politician-card <%= p.party.downcase %>">
+						<li><%= Politician.party(p.party) %></li>
+						<li><%= p.state %></li>
+					</ul>
+				</a>
+			</div>
 		</div>
 	<% end %>
 </div>

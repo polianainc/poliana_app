@@ -61,8 +61,8 @@ def import_raw_legislators_to_mongo
     term.term_type = term_type
     term.start = term_start
     term.end = term_end
-
-    mpol.terms << term
+    
+    mpol.terms << term if mpol.terms.where(:start => term.start).count == 0
 
     mpol.save()
   end
@@ -71,6 +71,7 @@ def import_raw_legislators_to_mongo
   add_birthday_stats
   add_pre_election_terms
   add_congresses
+  add_image_urls
 end
 
 def add_senator_edge_cases(legislators)
@@ -190,4 +191,4 @@ def add_image_urls
 end
 
 # RUN THE CODE
-add_image_urls
+import_raw_legislators_to_mongo

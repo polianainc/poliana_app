@@ -1,6 +1,6 @@
 <% terms = @politician.terms.sort { |a, b| b.start <=> a.start } %>
 <% birthday = @politician.birthday.to_time.strftime('%b %d, %Y') %>
-<% content_for :title, "Politician" %>
+<% content_for :title, @politician.full_name %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
 <div class="hide primary-key" data-id="<%= @politician.bioguide_id %>"></div>
@@ -9,14 +9,14 @@
 		<%= image_tag @politician.image_url %>
 	</div>
 	<div class="large-9 medium-9 columns">
-		<h1>
-			<%= @politician.full_name %>
-			<ul class="politician-card sided <%= @politician.party.downcase %>">
+		<h1><%= @politician.full_name %></h1>
+		<div class="clearfix">
+			<ul class="politician-card sided left <%= @politician.party.downcase %>">
 				<li><%= Politician.party(@politician.party) %></li>
 				<li><%= @politician.state %></li>
 			</ul>
-		</h1>
-		<h4><%= Politician.role(terms.first.term_type) %></h4>
+			<h5 class="left"><%= Politician.role(terms.first.term_type) %></h5>
+		</div>
 		<div class="foldable">
 			<div class="foldable-header down">
 				<div class="row show-for-small">
@@ -30,7 +30,7 @@
 					<% if @politician.birthday %>
 					<div class="large-4 medium-4 columns">
 						<div class="politician-personal-section">
-							<p class="text-center gray-caps">Birthday</p>
+							<p class="text-center gray-caps">Age</p>
 							<p class="text-center upsize"><%= birthday + " (" + @politician.age.to_s + ")" %></p>
 							<p class="text-center downsize"><i>Older than <%= 100 - @politician.percent_age_difference.to_i %>% of Congress</i></p>
 							<div class="progress radius success">

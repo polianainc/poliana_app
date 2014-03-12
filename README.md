@@ -10,7 +10,7 @@ java - for solr, your OS should take care of updating this when you start runnin
 
 1. Clone the repository
 2. Create poliana_development database on your local installation of mysql
-3. Setup your database.yml file to point to the poliana_development database and configure the username and password to allow access thru rails
+3. Setup your database.yml file to point to the poliana_development database and configure the username and password to allow access thru rails, get an example database.yml file from other rails programmer
 4. Install latest version of ruby 1.9.3 using rvm
 5. Create the poliana gemset for this version of ruby
 6. bundle install

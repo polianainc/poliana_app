@@ -10,14 +10,15 @@ java - for solr, your OS should take care of updating this when you start runnin
 
 1. Clone the repository
 2. Create poliana_development database on your local installation of mysql
-3. Setup your database.yml file to point to the poliana_development database and configure the username and password to allow access thru rails, get an example database.yml file from other rails programmer
-4. Install latest version of ruby 1.9.3 using rvm
-5. Create the poliana gemset for this version of ruby
-6. bundle install
-7. rake db:migrate
-8. rake db:test:prepare
-9. guard # Runs the test suite
-10. rake sunspot:solr:start # starts the local solr search server
-11. rake sunspot:reindex # Updates your search indexing to include the lastest database records
+3. Make a config/database.yml file as a copy of database-sample.yml
+4. Update database.yml with your local mysql information
+5. Install latest version of ruby 1.9.3 using rvm
+6. Create the poliana gemset for this version of ruby
+7. bundle install
+8. rake db:migrate
+9. rake db:test:prepare
+10. guard # Runs the test suite
+11. rake sunspot:solr:start # starts the local solr search server
+12. rake sunspot:reindex # Updates your search indexing to include the lastest database records
 
 If your tests are passing, you're ready to go!

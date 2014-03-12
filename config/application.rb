@@ -32,6 +32,9 @@ module PolianaApp
 
     config.assets.initialize_on_precompile = false
 
+    config.generators do |g|
+        g.orm :active_record
+    end
     
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer

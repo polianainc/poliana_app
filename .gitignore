@@ -29,3 +29,5 @@ codekit-config.json
 /solr/pids
 
 /lib/assets/legislators.json
+
+.idea/

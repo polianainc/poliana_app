@@ -49,10 +49,7 @@
 					font-size: 0.9em;
 					color: $black;
 				}
-				&:first-of-type { display: none; }
-				&:last-of-type {
-					line { display: none; }
-				}
+				&:last-of-type { display: none; }
 			}
 		}
 		.brush {

@@ -547,15 +547,14 @@ ge = (function() {
 				.duration(500)
 				.call(brush.extent(extent1));
 				
-			if(_graph.secondarySelector !== undefined) {
+			if(_graph.secondarySelector !== undefined && vals === undefined) {
 				_graph.secondarySelector.find('option').each(function() {
-					if(parseInt($(this).val()) === extent1[1])
+					if(parseInt($(this).val()) === extent1[0])
 						$(this).attr('selected', 'selected');
 				});
 			}
 				
-			extent1[0]++;
-			extent1[1]++;
+			console.log(extent1);
 			
 			_graph.controller.redraw(extent1);
 		}
@@ -604,8 +603,11 @@ ge = (function() {
 					.attr("class", "information");
 					
 				var totals = $.map(data, function(n) { return n; });
+				var extent = d3.extent(totals.map(function(d) { return d.key; }));
 				
-				x.domain(d3.extent(totals.map(function(d) { return d.key; })));
+				extent[1]++;
+				
+				x.domain(extent);
 				y.domain([0, d3.max(totals.map(function(d) { return d.value; }))]);
 				
 				context.append("g")
@@ -639,14 +641,28 @@ ge = (function() {
 					if(i % 2 !== 0)
 						elem.remove();
 				});
+				
+				if($keyValues.length > 0) {
+					var xs = [];
+					
+					$keyValues.each(function() {
+						var value = $(this).attr('data-value');
+						
+						$.each($(this).attr('data-key').split(','), function() {
+							xs.push({ key: +this, value: value });
+						});
+					});
+					
+					// CONTINUE HERE WITH FILLING IN POSITIONS
+				}
 					
 				d3.selectAll('.x .tick text').each(function(d, i) {
 					var elem = d3.select(this);
 					
-					elem.attr("x", 5)
+					elem.attr("x", -5)
 						.attr("y", +elem.attr("y") + 20)
 						.attr("class", "tick-text")
-						.style("text-anchor", "start");
+						.style("text-anchor", "end");
 				});
 				
 				context.append("g")
@@ -668,8 +684,8 @@ ge = (function() {
 						elem.attr("width", width).attr("height", height).attr("x", 0).attr("y", ((oldHeight - height) / 2) - 20);
 				});
 				
-				if($graph.find('span.hide').size() > 1) {
-					$('span.hide').each(function() {
+				/*if($keyValues.size() > 1) {
+					$keyValues.each(function() {
 						var elem = this;
 						
 						d3.selectAll('.x .tick .tick-text').each(function(d, i) {
@@ -690,19 +706,24 @@ ge = (function() {
 						
 						$(this).remove();
 					});
-				}
+				}*/
 				
 				if(_graph.secondarySelector !== undefined) {
 					var secondarySelector = _graph.secondarySelector.selector;
 					
 					$(document).on('change', secondarySelector, function() {
-						var value = parseInt($(this).find('option:selected').val());
-						var newRange = [value, value];
-						
-						// This shit is incorrect
-						console.log(newRange);
+						if($(this).find('option:selected').val() != "all") {
+							var value = parseInt($(this).find('option:selected').val());
+							var newRange = [value, value];
+						}
+						else
+							var newRange = [parseInt($keyValues.last().attr('data-key')), parseInt($keyValues.first().attr('data-key'))];
+							
+						newRange[1]++;
 						
 						svg.select(".brush").call(brush.extent(newRange));
+					
+						_graph.controller.redraw(newRange);
 					});
 				}
 			}

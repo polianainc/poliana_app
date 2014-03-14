@@ -296,16 +296,18 @@ if($key.length > 0) {
 			cont.render();
 		
 			$timelineSelect.find('option').each(function() {
-				var value = parseInt($(this).val()).ordinate();
-				var found = false;
+				if($(this).val() !== "all") {
+					var value = parseInt($(this).val()).ordinate();
+					var found = false;
 			
-				$timelineArea.find('.tick-text').each(function() {
-					if($(this).text() === value)
-						found = true;
-				});
+					$timelineArea.find('.tick-text').each(function() {
+						if($(this).text() === value)
+							found = true;
+					});
 			
-				if(!found)
-					$(this).remove();
+					if(!found)
+						$(this).remove();
+				}
 			});
 		
 			// No need for this shit anymore...

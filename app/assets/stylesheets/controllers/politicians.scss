@@ -62,6 +62,18 @@ $politician-height: $politician-dimensions + $politician-border-width;
 	}
 }
 
+.politician-sub-information {
+	.left {
+		@media #{$small-only} {
+			float: none !important;
+			text-align: center;
+			&.politician-card {
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
 .politician-personal-information {
 	.columns {
 		&:last-child { float: left; }

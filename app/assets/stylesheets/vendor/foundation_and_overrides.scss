@@ -483,6 +483,7 @@ $glowing-effect-fade-time: 0.3s;
 
 // Select variables
 $select-bg-color: #fff;
+select { @include border-radius($global-radius !important); }
 
 // Inline Lists
 

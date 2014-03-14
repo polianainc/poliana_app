@@ -239,6 +239,13 @@ ge = (function() {
 			var theKey = _graph.dimensions[0].keySelector;
 			var theValue = _graph.dimensions[0].valueSelector;
 			
+			var tempData = [];
+				
+			$.each(data, function() {
+				if(this.value != 0)
+					tempData.push(this);
+			});
+			
 			var x0 = x.domain(data.map(function(d) { return d[theKey]; }));
 			var y0 = y.domain([0, d3.max(data, function(d) { return d[theValue]; })]);
 			
@@ -283,14 +290,19 @@ ge = (function() {
 						return 0;
 				});
 				
-			var tempData = [];
-				
-			$.each(data, function() {
-				if(this.value != 0)
-					tempData.push(this);
-			});
-				
 			ge.graph().drawLegend(information, tempData, theKey, colors);
+			
+			if(tempData.length === 0) {
+				svg.append('foreignObject')
+					.attr('class', 'nothing-text')
+					.attr('x', 0)
+					.attr('y', 0)
+					.attr('width', width)
+					.attr('height', 100)
+					.html('We don\'t have data on this yet, sorry!');
+			}
+			else
+				svg.selectAll('.nothing-text').remove();
 		};
 		
 		_graph.render = function() {
@@ -436,34 +448,69 @@ ge = (function() {
 			var theKey = _graph.dimensions[0].keySelector;
 			var theValue = _graph.dimensions[0].valueSelector;
 			
+			var tempData = [];
+				
+			$.each(data, function() {
+				if(this.value != 0)
+					tempData.push(this);
+			});
+			
 			var pie = d3.layout.pie()
 				.sort(null)
 				.value(function(d) { return d[theValue]; });
 			
 			var path = svg.selectAll('.arc path');
 			
-			path.data(pie(data))
-				.transition()
-					.delay(function(d, i) { return i * 100; })
-					.duration(500)
-					.attrTween("d", arcTween);
+			if(tempData.length > 0) {
+				path.data(pie(data))
+					.transition()
+						.delay(function(d, i) { return i * 100; })
+						.duration(500)
+						.style('fill-opacity', 1)
+						.attrTween("d", arcTween);
+						
+				svg.selectAll('text')
+					.data(pie(data))
+					.transition()
+						.delay(function(d, i) { return i * 100; })
+						.duration(500)
+						.style('fill-opacity', 1)
+						.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+						.text(function(d) { return "$" + currencyNumber(d[theValue], 1); })
+						.attr("display", function(d, i) {
+							var text = "$" + currencyNumber(d.value, 1);
+
+							// We might want to play with this formula a bit...
+							if(text.length / (d.endAngle - d.startAngle) > 10.25)
+								return "none";
+						});
+						
+				svg.selectAll('.nothing-text').remove();
+			}
+			else {
+				path.data(pie(data))
+					.transition()
+						.delay(function(d, i) { return i * 100; })
+						.duration(500)
+						.style('fill-opacity', 0);
+						
+				svg.selectAll('text')
+					.data(pie(data))
+					.transition()
+						.delay(function(d, i) { return i * 100; })
+						.duration(500)
+						.style('fill-opacity', 0);
+						
+				svg.append('foreignObject')
+					.attr('class', 'nothing-text')
+					.attr('x', -(width / 2))
+					.attr('y', 0)
+					.attr('width', width)
+					.attr('height', 100)
+					.html('We don\'t have data on this yet, sorry!');
+			}
 					
-			ge.graph().drawLegend(information, data, theKey, colors);
-			
-			svg.selectAll('text')
-				.data(pie(data))
-				.transition()
-					.delay(function(d, i) { return i * 100; })
-					.duration(500)
-					.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-					.text(function(d) { return "$" + currencyNumber(d[theValue], 1); })
-					.attr("display", function(d, i) {
-						var text = "$" + currencyNumber(d.value, 1);
-				
-						// We might want to play with this formula a bit...
-						if(text.length / (d.endAngle - d.startAngle) > 10.25)
-							return "none";
-					});
+			ge.graph().drawLegend(information, tempData, theKey, colors);
 		};
 		
 		_graph.render = function() {
@@ -585,8 +632,6 @@ ge = (function() {
 						$(this).attr('selected', 'selected');
 				});
 			}
-				
-			console.log(extent1);
 			
 			_graph.controller.redraw(extent1);
 		}

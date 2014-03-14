@@ -4,13 +4,15 @@ var $key = $('.primary-key');
 if($key.length > 0) {
 	// Get our bioguide
 	var bioguide = $key.attr('data-id');
+	var startDate = $key.attr('data-start');
+	var endDate = $key.attr('data-end');
 
 	// Define our controller
 	var cont = ge.controller();
 
 	// Get all the PACS
-	//var getPacs = $.get('//poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
-	var getPacs = $.get('/temp/pacs.json', function(data) {
+	var getPacs = $.get('//poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: startDate, end: endDate, unit: 'congress' }, function(data) {
+	//var getPacs = $.get('/temp/pacs.json', function(data) {
 		var $barSelector = $('#pacs-bar');
 		var $pieSelector = $('#pacs-pie');
 	
@@ -133,8 +135,8 @@ if($key.length > 0) {
 	});
 
 	// Get all the industries
-	//var getIndustries = $.get('//poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: '05-05-2003', end: '05-05-2013', unit: 'congress' }, function(data) {
-	var getIndustries = $.get('/temp/industries.json', function(data) {
+	var getIndustries = $.get('//poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: startDate, end: endDate, unit: 'congress' }, function(data) {
+	//var getIndustries = $.get('/temp/industries.json', function(data) {
 		var $barSelector = $('#industries-bar');
 		var $pieSelector = $('#industries-pie');
 	
@@ -322,10 +324,13 @@ else {
 		else
 			$('input[name=politician_search_main]').val($(this).val());
 			
-		if($(this).val() != "")
+		if($(this).val() != "") {
+			$allPoliticians.find('.lead').hide();
 			runPoliticianSearch($(this).val().toLowerCase());
+		}
 		else {
 			$allPoliticians.find('.politician').addClass('hide');
+			$allPoliticians.find('.lead').show();
 			$allPoliticiansCounter.hide();
 		}
 	});

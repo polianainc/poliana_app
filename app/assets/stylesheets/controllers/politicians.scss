@@ -5,6 +5,9 @@ $politician-height: $politician-dimensions + $politician-border-width;
 
 .politician-card {
 	&.sided { margin-right: 10px; }
+	&.small-centered {
+		@media #{$small-only} { margin: 0 auto; }
+	}
 	list-style-type: none;
 	overflow: hidden;
 	margin: 0px;
@@ -67,9 +70,6 @@ $politician-height: $politician-dimensions + $politician-border-width;
 		@media #{$small-only} {
 			float: none !important;
 			text-align: center;
-			&.politician-card {
-				margin: 0 auto;
-			}
 		}
 	}
 }

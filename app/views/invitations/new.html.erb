@@ -14,7 +14,7 @@
 				<div class="small-10 columns">
 					<%= f.text_field :recipient_email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>
 				</div>
-				<%= throw_errors("Email Address", resource.errors[:recipient_email]) %>
+				<%= throw_errors("Email Address", @invitation.errors[:recipient_email]) %>
 			</div>
 		  	<%= f.submit "Send an invitation!", :class => "button expand radius" %>
 		<% end %>

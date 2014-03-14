@@ -1,3 +1,4 @@
+B
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.13'
@@ -37,7 +38,7 @@ gem 'sitemap_generator'
 gem 'gabba'
 
 #AWS
-gem 'aws-sdk'
+gem 'aws-ses', '~> 0.4.4', :require => 'aws/ses'
 
 #Data Ingestion
 gem 'congress'

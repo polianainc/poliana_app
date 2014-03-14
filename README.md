@@ -22,3 +22,8 @@ java - for solr, your OS should take care of updating this when you start runnin
 12. rake sunspot:reindex # Updates your search indexing to include the lastest database records
 
 If your tests are passing, you're ready to go!
+
+
+Deployment:
+
+Make sure AWS Configuration is set up in the Environment variables (key and secret)

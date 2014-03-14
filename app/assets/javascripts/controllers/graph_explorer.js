@@ -432,6 +432,21 @@ ge = (function() {
 					.attrTween("d", arcTween);
 					
 			ge.graph().drawLegend(information, data, theKey, colors);
+			
+			svg.selectAll('text')
+				.data(pie(data))
+				.transition()
+					.delay(function(d, i) { return i * 100; })
+					.duration(500)
+					.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+					.text(function(d) { return "$" + currencyNumber(d[theValue], 1); })
+					.attr("display", function(d, i) {
+						var text = "$" + currencyNumber(d.value, 1);
+				
+						// We might want to play with this formula a bit...
+						if(text.length / (d.endAngle - d.startAngle) > 10.25)
+							return "none";
+					});
 		};
 		
 		_graph.render = function() {
@@ -641,20 +656,6 @@ ge = (function() {
 					if(i % 2 !== 0)
 						elem.remove();
 				});
-				
-				if($keyValues.length > 0) {
-					var xs = [];
-					
-					$keyValues.each(function() {
-						var value = $(this).attr('data-value');
-						
-						$.each($(this).attr('data-key').split(','), function() {
-							xs.push({ key: +this, value: value });
-						});
-					});
-					
-					// CONTINUE HERE WITH FILLING IN POSITIONS
-				}
 					
 				d3.selectAll('.x .tick text').each(function(d, i) {
 					var elem = d3.select(this);
@@ -684,20 +685,21 @@ ge = (function() {
 						elem.attr("width", width).attr("height", height).attr("x", 0).attr("y", ((oldHeight - height) / 2) - 20);
 				});
 				
-				/*if($keyValues.size() > 1) {
+				if($keyValues.size() > 1) {
+					var $firstTick = $graph.find('.tick').first();
+					var width = parseInt($firstTick.position().left - $firstTick.next().position().left) - 5;
+					
 					$keyValues.each(function() {
 						var elem = this;
 						
 						d3.selectAll('.x .tick .tick-text').each(function(d, i) {
-							if($.inArray(d.toString(), $(elem).attr('data-value').split(',')) !== -1) {
-								var role = $(elem).attr('data-key');
-								
-								role = "<b>" + role.substring(0, role.indexOf(" ")) + "</b> " + role.substring(role.indexOf(" ") + 1);
+							if($.inArray(d.toString(), $(elem).attr('data-key').split(',')) !== -1) {
+								var role = $(elem).attr('data-value');
 								
 								d3.select(this.parentNode).append("foreignObject")
-									.attr("x", 5)
+									.attr("x", -width)
 									.attr("y", 5)
-									.attr("width", 160)
+									.attr("width", width)
 									.attr("height", 20)
 									.attr("class", "tick-secondary-text")
 									.html(role);
@@ -706,7 +708,7 @@ ge = (function() {
 						
 						$(this).remove();
 					});
-				}*/
+				}
 				
 				if(_graph.secondarySelector !== undefined) {
 					var secondarySelector = _graph.secondarySelector.selector;

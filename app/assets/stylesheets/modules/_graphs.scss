@@ -46,13 +46,12 @@
 					fill: $gray;
 				}
 				.tick-secondary-text {
-					font-size: 0.9em;
+					font-size: 0.85em;
+					font-weight: 700;
 					color: $black;
+					text-align: center;
 				}
-				&:first-of-type { display: none; }
-				&:last-of-type {
-					line { display: none; }
-				}
+				&:last-of-type { display: none; }
 			}
 		}
 		.brush {

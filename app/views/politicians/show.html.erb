@@ -3,15 +3,15 @@
 <% content_for :title, @politician.full_name %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
-<div class="hide primary-key" data-id="<%= @politician.bioguide_id %>"></div>
+<div class="hide primary-key" data-id="<%= @politician.bioguide_id %>" data-start="<%= terms.last.start.strftime('%m-%d-%Y') %>" data-end="<%= terms.first.end.strftime('%m-%d-%Y') %>"></div>
 <div class="row">
-	<div class="large-3 medium-3 columns">
+	<div class="large-3 medium-3 small-4 small-centered medium-uncentered large-uncentered columns">
 		<%= image_tag @politician.image_url %>
 	</div>
 	<div class="large-9 medium-9 columns">
-		<h1><%= @politician.full_name %></h1>
-		<div class="clearfix">
-			<ul class="politician-card sided left <%= @politician.party.downcase %>">
+		<h1 class="small-only-text-center"><%= @politician.full_name %></h1>
+		<div class="clearfix politician-sub-information">
+			<ul class="politician-card sided left small-centered <%= @politician.party.downcase %>">
 				<li><%= Politician.party(@politician.party) %></li>
 				<li><%= @politician.state %></li>
 			</ul>
@@ -79,13 +79,14 @@
 			<div class="large-12 columns show-for-medium-up">
 				<div id="timeline-area" class="graph">
 					<% terms.each do |f| %>
-						<span data-key="<%= Politician.role(f.term_type) + " (" + (f.start.year - 1).to_s + ")" %>" data-value="<%= f.congresses.join(',') %>" class="hide"></span>
+						<span data-key="<%= f.congresses.join(',') %>" data-value="<%= Politician.role(f.term_type) %>" class="hide key-value"></span>
 					<% end %>
 				</div>
 			</div>
 			<div class="small-12 columns show-for-small">
 				<div id="timeline-select" class="graph">
 					<select>
+						<option value="all">All Congresses</option>
 					<% terms.each do |f| %>
 						<% f.congresses.sort { |x, y| y <=> x }.each do |g| %>
 							<option value="<%= g %>"><%= Politician.role(f.term_type) + " (" + g.ordinalize + " Congress)" %></option>

@@ -35,7 +35,7 @@ $rem-base: 16px;
 // $total-columns: 12;
 
 // We use these to control various global styles
-$body-bg: $white;
+$body-bg: $black;
 $body-font-color: $black;
 $body-font-family: 'Open Sans', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $body-font-weight: 300;
@@ -483,6 +483,7 @@ $glowing-effect-fade-time: 0.3s;
 
 // Select variables
 $select-bg-color: #fff;
+select { @include border-radius($global-radius !important); }
 
 // Inline Lists
 

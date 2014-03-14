@@ -106,6 +106,7 @@ small { font-size: 0.75em; }
 		min-height: auto;
 		min-height: 100%;
 		margin-bottom: -1 * $footer-height-small;
+		background: $white;
 		&:after {	
 			content: "";
 			display: block;

@@ -230,6 +230,12 @@ function formatItem(type, data, partial) {
 		});
 	}
 	else if(type == "politicians") {
+		/*
+		<ul class="politician-card sided left <%= @politician.party.downcase %>">
+			<li><%= Politician.party(@politician.party) %></li>
+			<li><%= @politician.state %></li>
+		</ul>
+		*/
 		$.each(data.data, function(index, value) {
 			var item = this;
 			
@@ -240,7 +246,7 @@ function formatItem(type, data, partial) {
 				.append($('<div>')
 					.attr('class', 'row')
 					.append($('<div>')
-						.attr('class', 'large-2 show-for-large-up columns')
+						.attr('class', 'large-2 medium-3 show-for-medium-up columns')
 						.append($('<a>')
 							.attr('href', '/congress/politicians/' + this.bioguide_id)
 							.append($('<img>')
@@ -250,11 +256,21 @@ function formatItem(type, data, partial) {
 						)
 					)
 					.append($('<div>')
-						.attr('class', 'large-10 small-12 columns')
+						.attr('class', 'large-10 medium-9 small-12 columns')
 						.append($('<h4>')
+							.attr('class', 'small-only-text-center')
 							.append($('<a>')
 								.attr('href', '/congress/politicians/' + this.bioguide_id)
 								.text(this.name)
+							)
+						)
+						.append($('<ul>')
+							.attr('class', 'politician-card sided small-centered ' + this.party.toLowerCase())
+							.append($('<li>')
+								.html(convertParty(this.party, "abbrev"))
+							)
+							.append($('<li>')
+								.html(this.state)
 							)
 						)
 					)

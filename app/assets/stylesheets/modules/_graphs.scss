@@ -7,6 +7,13 @@
 			margin-bottom: 20px;
 		}
 	}
+	.nothing-text {
+		text-align: center;
+		text-transform: uppercase;
+		color: $gray;
+		font-size: 0.9em;
+		font-weight: bold;
+	}
 	.vertical-bar {
 		.axis {
 			path { display: none; }

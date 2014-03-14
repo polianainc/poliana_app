@@ -1136,9 +1136,14 @@ $topbar-transition-speed: 250ms;
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 
-.top-bar-section .dropdown li a {
-	font-weight: $body-font-weight !important;
-	&:hover { background: $gray-alt !important; }
+.top-bar-section .dropdown li {
+	a {
+		font-weight: $body-font-weight !important;
+		background: $white-alt !important;
+		@include single-transition(all, 0.1s, linear);
+		&:hover { background: $gray-alt !important; }
+	}
+	&:last-of-type a { @include border-radius(0px 0px $global-radius $global-radius); }
 }
 
 @import 'foundation';

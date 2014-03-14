@@ -67,7 +67,7 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: web_tools
     options: {}
-  instance_id: i-6c04b711
+  instance_id: i-7c92895d
   image_type: m1.small
   image_id: ami-b6089bdf
   security_groups:
@@ -94,10 +94,10 @@
   - poliana_stagingsmall_graylog_server
   - poliana_stagingsmall_graylog_web
   - poliana_stagingsmall_haproxy
-  external_host: ec2-54-204-239-119.compute-1.amazonaws.com
-  external_ip: 54.204.239.119
-  internal_host: ip-10-114-106-101.ec2.internal
-  internal_ip: 10.114.106.101
+  external_host: ec2-54-226-229-127.compute-1.amazonaws.com
+  external_ip: 54.226.229.127
+  internal_host: ip-10-11-139-179.ec2.internal
+  internal_ip: 10.11.139.179
   zone: us-east-1a
   provider: aws
   platform: linux

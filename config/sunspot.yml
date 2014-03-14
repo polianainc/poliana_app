@@ -23,9 +23,9 @@ development:
 
 stagingsmall:
   solr:
-    hostname: ec2-184-73-233-18.compute-1.amazonaws.com 
+    hostname: localhost 
     port: 8983
-    path: '/opt/bitnami/apache-solr/solr/' # or '/solr' (ubuntu 12.04)
+    solr_home: solr
     log_level: WARNING
 
 test:

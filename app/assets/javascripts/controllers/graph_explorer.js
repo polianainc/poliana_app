@@ -222,7 +222,7 @@ ge = (function() {
 			
 		function topRoundedRect(x, y, width, height, radius, start) {
 			start = start === undefined ? 1 : 0;
-			
+		
 			return "M" + x + "," + (_graph.height - margin.top - margin.bottom)
 				+ "h" + (width - radius)
 				+ "v" + (radius - height) * start
@@ -264,16 +264,33 @@ ge = (function() {
 				.duration(500)
 				// We use a custom path function rather than SVG's rect element to get rounded corners
 				.attr("d", function(d) {
-					return topRoundedRect(
-						x0(d[theKey]),
-						y0(d[theValue]),
-						x0.rangeBand(),
-						height - y0(d[theValue]),
-						5
-					);
+					if(height - y0(d[theValue]) !== 0) {
+						return topRoundedRect(
+							x0(d[theKey]),
+							y0(d[theValue]),
+							x0.rangeBand(),
+							height - y0(d[theValue]),
+							5
+						);
+					}
+					else
+						return $(this).attr('d');
+				})
+				.style('fill-opacity', function(d) {
+					if(height - y0(d[theValue]) !== 0)
+						return 1;
+					else
+						return 0;
 				});
 				
-			ge.graph().drawLegend(information, data, theKey, colors);
+			var tempData = [];
+				
+			$.each(data, function() {
+				if(this.value != 0)
+					tempData.push(this);
+			});
+				
+			ge.graph().drawLegend(information, tempData, theKey, colors);
 		};
 		
 		_graph.render = function() {

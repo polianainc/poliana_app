@@ -82,7 +82,7 @@
 								</div>
 							</li>
 							<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Beta Invitations</span>'.html_safe(), new_invitation_path %></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-key"></span><span>Change Password</span>'.html_safe(), edit_user_password_path %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-key"></span><span>Change Password</span>'.html_safe(), edit_user_registration_path %></li>
 							<li><%= link_to '<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
 						</ul>
 					</aside>
@@ -103,7 +103,14 @@
 										<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
 									</ul>
 								</li>
-								<li><%= link_to 'Logout', destroy_user_session_path %></li>
+								<li class="has-dropdown">
+									<a href="#"><%= image_tag current_user.avatar_url, :width => "24px" %>&nbsp;&nbsp;You</a>
+									<ul class="dropdown">
+										<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Beta Invitations</span>'.html_safe(), new_invitation_path %></li>
+										<li><%= link_to '<span aria-hidden="true" class="icon-key"></span><span>Change Password</span>'.html_safe(), edit_user_registration_path %></li>
+										<li><%= link_to '<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
+									</ul>
+								</li>
 								<% else %>
 								<li><%= link_to 'Login', new_user_session_path %></li>
 								<% end %>

@@ -290,8 +290,6 @@ if($key.length > 0) {
 				controller: cont
 			});
 		
-			console.log(pacs[0].totals, industries[0].totals);
-		
 			cont.addGraph(timelineScrub);
 			
 			// Let's rock and roll

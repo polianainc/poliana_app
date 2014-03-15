@@ -48,10 +48,15 @@ PolianaApp::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
-  # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :ses
+  config.action_mailer.delivery_method = :smtp
 
+  config.action_mailer.smtp_settings = {
+    :address => "email-smtp.us-east-1.amazonaws.com",
+    :user_name => "AKIAIGBX3G7EOAXXZGDA", # Your SMTP user here.
+    :password => "Ak2qZWPcKxZ41EUHeXilWMOytcw6slCrOmpmDon1ESNc",
+    :authentication => :login,
+    :enable_starttls_auto => true
+  }
   # Enable threaded mode
   # config.threadsafe!
 

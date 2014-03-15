@@ -183,8 +183,8 @@ def add_image_urls
     if response.code.to_i == 200
       pol.image_url = uri
     else
-      pol.image_url = "assets/politician-male.png" if pol.gender == "M"
-      pol.image_url = "assets/politician-female.png"  if pol.gender == "F"
+      pol.image_url = "/assets/politician-male.png" if pol.gender == "M"
+      pol.image_url = "/assets/politician-female.png"  if pol.gender == "F"
     end
     pol.save
   end

@@ -78,6 +78,9 @@ group :assets do
   
   gem 'therubyracer', :platforms => :ruby, :group => :production
   gem 'uglifier', '>= 1.0.3'
+  
+  #Asset Compilation Speedup
+  gem 'turbo-sprockets-rails3'
 end
 
 group :production do

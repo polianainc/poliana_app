@@ -1,6 +1,6 @@
 PolianaApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-
+  # Roles: apache,app,collectd,common,db:primary=true,elasticsearch,examples,graphite_server,graphite_web,graylog_elasticsearch,graylog_mongodb,graylog_server,graylog_web,haproxy,mongodb,monit,passenger,mysql,mysql_master,web,web_tools
   # Code is not reloaded between requests
   config.cache_classes = true
 

@@ -1,6 +1,6 @@
 ---
 - !ruby/object:Rubber::Configuration::InstanceItem
-  name: poliana
+  name: production
   domain: poliana.com
   roles:
   - !ruby/object:Rubber::Configuration::RoleItem
@@ -67,14 +67,14 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: web_tools
     options: {}
-  instance_id: i-43adf521
+  instance_id: i-13b37a30
   image_type: c1.medium
   image_id: ami-b6089bdf
   security_groups:
   - poliana_production_default
   - poliana_production_web
   - poliana_production_web_tools
-  - poliana_production_poliana
+  - poliana_production_production
   - poliana_production_apache
   - poliana_production_app
   - poliana_production_passenger
@@ -94,11 +94,11 @@
   - poliana_production_graylog_server
   - poliana_production_graylog_web
   - poliana_production_haproxy
-  external_host: ec2-174-129-166-245.compute-1.amazonaws.com
-  external_ip: 174.129.166.245
-  internal_host: ip-10-195-30-52.ec2.internal
-  internal_ip: 10.195.30.52
-  zone: us-east-1a
+  external_host: ec2-54-198-12-12.compute-1.amazonaws.com
+  external_ip: 54.198.12.12
+  internal_host: ip-10-30-156-177.ec2.internal
+  internal_ip: 10.30.156.177
+  zone: us-east-1c
   provider: aws
   platform: linux
   root_device_type: instance-store

@@ -74,6 +74,7 @@ def import_raw_legislators_to_mongo
   add_image_urls
 end
 
+#Adds senator terms which straddle our start date (i.e. they were elected 4 years or 2 years before the start of the 108th congress) so that we don't incorrectly say that these were pre election terms for these congresspeople
 def add_senator_edge_cases(legislators)
   senator_edge_cases = {}
   legislators.each_with_index do |pol, i|

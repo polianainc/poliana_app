@@ -4,7 +4,6 @@
 		height: $logo-height;
 		width: auto;
 	}
-
 	#mobile-nav {
 		margin-bottom: 20px;
 		#logo-mobile {
@@ -32,7 +31,6 @@
 			}
 		}
 	}
-
 	.off-canvas-list {
 		span {
 			&:first-of-type { padding-right: 10px; }
@@ -61,38 +59,38 @@
 			}
 		}
 	}
-
 	#desktop-nav {
 		#logo-desktop {
 			margin-left: 20px;
 			margin-top: 15px;
 			@extend .shake;
 		}
-		.right {
+		.left {
 			li {
-				.dropdown {
-					left: 0px;
-					right: auto;
-				}
-				span {
-					&:first-of-type { padding-right: 10px; }
-				}
 				&.has-form {
 					position: relative;
 					input {
+						background: $white;
 						padding-right: 35px;
 						top: 14px;
 					}
 					a {
 						position: absolute;
 						top: 18px;
-						right: 20px;
+						right: 30px;
 						border-bottom: none;
 						color: $black;
 						padding: 0px;
 						background: none;
 						&:hover { color: $primary-color; }
 					}
+				}
+			}
+		}
+		.right {
+			li {
+				span {
+					&:first-of-type { padding-right: 10px; }
 				}
 			}
 		}

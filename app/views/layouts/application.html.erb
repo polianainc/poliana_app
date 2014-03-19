@@ -90,21 +90,32 @@
 					<nav class="top-bar show-for-medium-up" id="desktop-nav" data-topbar>
 						<ul class="title-area">
 							<li class="name">
-								<%= link_to image_tag('logo.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
+								<% if user_signed_in? %>
+									<%= link_to image_tag('logo-mark.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
+								<% else %>
+									<%= link_to image_tag('logo.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
+								<% end %>
 							</li>
 							<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 						</ul>
+						<% if user_signed_in? %>
+						<section class="top-bar-section">
+							<ul class="left">
+								<li class="has-form">
+									<form>
+						  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
+										<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
+									</form>
+						  		</li>
+							</ul>
+						</section>
+						<% end %>
 						<section class="top-bar-section">
 							<ul class="right">
 								<% if user_signed_in? %>
+								<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
 								<li class="has-dropdown">
-									<a href="#">Explore</a>
-									<ul class="dropdown">
-										<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
-									</ul>
-								</li>
-								<li class="has-dropdown">
-									<a href="#"><%= image_tag current_user.avatar_url, :width => "24px" %>&nbsp;&nbsp;You</a>
+									<a href="#"><%= image_tag current_user.avatar_url, :width => "24px" %></a>
 									<ul class="dropdown">
 										<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Beta Invitations</span>'.html_safe(), new_invitation_path %></li>
 										<li><%= link_to '<span aria-hidden="true" class="icon-key"></span><span>Change Password</span>'.html_safe(), edit_user_registration_path %></li>
@@ -113,15 +124,7 @@
 								</li>
 								<% else %>
 								<li><%= link_to 'Login', new_user_session_path %></li>
-								<% end %>
 								<li><%= link_to 'About Us', about_path %></li>
-								<% if user_signed_in? %>
-								<li class="has-form">
-									<form>
-						  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
-										<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
-									</form>
-						  		</li>
 								<% end %>
 							</ul>
 						</section>

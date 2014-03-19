@@ -149,8 +149,8 @@ $shiny-edge-size: 0px;
 // $shiny-edge-active-color: rgba(#000, .2);
 
 // Media Query Ranges
-$small-range: (0em, 46em);
-$medium-range: (46.063em, 64em);
+$small-range: (0em, 40em);
+$medium-range: (40.063em, 64em);
 $large-range: (64.063em, 90em);
 // $xlarge-range: (90.063em, 120em);
 // $xxlarge-range: (120.063em);
@@ -1072,7 +1072,7 @@ $tooltip-close-font-weight: $body-font-weight;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $white;
+$topbar-bg-color: #fff;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin

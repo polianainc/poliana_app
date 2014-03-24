@@ -316,13 +316,14 @@ if($key.length > 0) {
 	});
 }
 else {
+	// http://localhost:3000/search/?query=joe&fields=politicians&format=json
 	$('input[name=politician_search_main], input[name=politician_search_small]').on('keyup', function(event) {
 		if($(this).attr('name') == "politician_search_main")
 			$('input[name=politician_search_small]').val($(this).val());
 		else
 			$('input[name=politician_search_main]').val($(this).val());
 			
-		if($(this).val() != "") {
+		if($(this).val() != "" && $(this).val().length > 2) {
 			$allPoliticians.find('.lead').hide();
 			runPoliticianSearch($(this).val().toLowerCase());
 		}

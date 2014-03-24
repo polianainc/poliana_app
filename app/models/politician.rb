@@ -27,7 +27,7 @@ class Politician
     text :party
   end
 
-  def self.boosted_search(page, query)
+  def self.boosted_search(page, query, num = 10)
     self.search do 
        fulltext query do
         boost_fields :last_name => 3.0
@@ -35,7 +35,7 @@ class Politician
         boost_fields :party => 2.0
       end
 
-      paginate :page => page, :per_page => 10
+      paginate :page => page, :per_page => num
       order_by(:score, :desc)
     end
   end

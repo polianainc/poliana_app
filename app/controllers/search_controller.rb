@@ -25,8 +25,10 @@ class SearchController < ApplicationController
 
     models = {}
     paging = {}
+    
+    num = params["per_page"] ? params["per_page"] : 10
 
-    s = model_name.capitalize.singularize.constantize.boosted_search(page, params[:query])
+    s = model_name.capitalize.singularize.constantize.boosted_search(page, params[:query], num)
 
     models["data"]  = s.results
 

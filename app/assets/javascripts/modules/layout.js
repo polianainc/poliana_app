@@ -95,11 +95,11 @@ $(document).ready(function() {
 	}
 });
 
-$(window).resize(throttle(function() {
+$(window).resize($.debounce(250, function() {
 	// Change all the full backgrounds
 	if($fullBackground.length > 0)
 		fullBackgrounds();
-}, 500));
+}));
 
 // Here we can load page-specific Javascript asynchronously while letting Sprokets handle site-wide dependencies.
 function pageSpecific() {

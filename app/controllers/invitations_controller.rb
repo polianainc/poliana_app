@@ -12,6 +12,10 @@ class InvitationsController < ApplicationController
 			if user_signed_in?
 				BetaMailer.invitation(@invitation, beta_signup_url(@invitation.beta_key)).deliver
 				flash[:notice] = "Thanks for sharing! The invitation just went out."
+
+        gabba = Gabba::Gabba.new("UA-42980806-1", "poliana.com")
+        gabba.event("Invitations", "Sent", "", current_user.invitations_left.to_s, true)
+
 				current_user.remove_invite
 				redirect_to root_url
 			end

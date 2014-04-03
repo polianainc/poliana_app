@@ -79,7 +79,7 @@
 			<div class="large-12 columns show-for-medium-up">
 				<div id="timeline-area" class="graph">
 					<% terms.each do |f| %>
-						<span data-key="<%= f.congresses.join(',') %>" data-value="<%= Politician.role(f.term_type) %>" class="hide key-value"></span>
+						<span data-key="<%= f.congresses.join(',') %>" data-value="<b><%= Politician.role(f.term_type) %></b> (<%= f.start.year - 1 %>)" class="hide key-value"></span>
 					<% end %>
 				</div>
 			</div>

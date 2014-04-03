@@ -36,10 +36,12 @@
 		<div class="politician hide" data-birthyear="<%= p.birthday.year %>" data-birthmonth="<%= Date::MONTHNAMES[p.birthday.month] %>" data-firstname="<%= p.first_name %>" data-lastname="<%= p.last_name %>" data-fullname="<%= p.full_name %>" data-gender="<%= Politician.gender(p.gender) if !defined?(p.gender).nil? %>" data-party="<%= p.party if !defined?(p.party).nil? %>" data-religion="<%= p.religion if !defined?(p.religion).nil? %>" data-generalreligion="<%= p.general_religion if !defined?(p.religion).nil? %>" data-state="<%= Politician.state(p.state) if !defined?(p.state).nil? %>" data-congresses="<%= congresses.join(',') %>">
 			<div class="clearfix short large-4 medium-4 small-12 columns">
 				<a href="/congress/politicians/<%= p.bioguide_id %>">
+					<% if p.party and p.state %>
 					<ul class="politician-card sided left <%= p.party.downcase %>">
 						<li><%= Politician.party(p.party) %></li>
 						<li><%= p.state %></li>
 					</ul>
+					<% end %>
 					<h5 class="left"><%= p.full_name %></h5>
 				</a>
 			</div>
@@ -47,11 +49,15 @@
 				<a href="/congress/politicians/<%= p.bioguide_id %>">
 					<div class="thumbnail" style="background-image: url(<%= p.image_url %>);"></div>
 					<h5 class="text-center"><%= p.full_name %></h5>
+					<% if !terms.first.term_type.nil? %>
 					<p class="text-center"><strong><%= Politician.role(terms.first.term_type) %></strong></p>
+					<% end %>
+					<% if p.party and p.state %>
 					<ul class="politician-card <%= p.party.downcase %>">
 						<li><%= Politician.party(p.party) %></li>
 						<li><%= p.state %></li>
 					</ul>
+					<% end %>
 				</a>
 			</div>
 		</div>

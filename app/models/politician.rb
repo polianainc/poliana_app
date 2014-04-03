@@ -68,11 +68,15 @@ class Politician
     elsif religion != "" and religion != nil
       return "Christian"
     end
+    
+    return nil
   end
 
   def self.role(term)
     if term == "prez"
       return "President"
+    elsif term == "viceprez"
+      return "Vice President"
     elsif term == "sen"
       return "Senator"
     elsif term == "rep"
@@ -83,11 +87,15 @@ class Politician
   end
   
   def self.pronoun(gender)
-    if gender == "M"
-      return "his"
-    else
-      return "her"
+    if !gender.nil?
+      if gender == "M"
+        return "his"
+      else
+        return "her"
+      end
     end
+    
+    return "their"
   end
   
   def self.gender(gender)
@@ -108,6 +116,8 @@ class Politician
 	      return s[:name]
       end
 	  end
+	  
+	  return nil
   end
 
   def self.party(party)

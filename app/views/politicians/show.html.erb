@@ -21,11 +21,15 @@
 	<div class="large-9 medium-9 columns">
 		<h1 class="small-only-text-center"><%= @politician.full_name %></h1>
 		<div class="clearfix politician-sub-information">
+			<% if @politician.party and @politician.state %>
 			<ul class="politician-card sided left small-centered <%= @politician.party.downcase %>">
 				<li><%= Politician.party(@politician.party) %></li>
 				<li><%= @politician.state %></li>
 			</ul>
+			<% end %>
+			<% if !terms.first.term_type.nil? %>
 			<h5 class="left"><%= Politician.role(terms.first.term_type) %></h5>
+			<% end %>
 		</div>
 		<div class="foldable">
 			<div class="foldable-header down">

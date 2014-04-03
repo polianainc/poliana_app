@@ -14,7 +14,6 @@ if($key.length > 0) {
 	var getPacs = $.get('http://poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: startDate, end: endDate, unit: 'congress' }, function(data) {
 	//var getPacs = $.get('/temp/pacs.json', function(data) {
 		var $barSelector = $('#pacs-bar');
-		var $pieSelector = $('#pacs-pie');
 	
 		var title = "Top 5 PAC Contributors";
 	
@@ -27,13 +26,7 @@ if($key.length > 0) {
 			.text(title)
 		);
 	
-		$pieSelector.append($('<h4>')
-			.addClass('text-center')
-			.text(title)
-		);
-	
 		$barSelector.append($info);
-		$pieSelector.append($info.clone());
 	
 		// Format data from API return to our specifications
 		var transform = {};
@@ -101,44 +94,13 @@ if($key.length > 0) {
 			filterDimension: 1
 		});
 	
-		var pacsPie = ge.graph({
-			type: 'pie',
-			width: 400,
-			height: 400,
-			selector: $pieSelector,
-			margins: {
-				top: 20,
-				bottom: 20,
-				left: 0,
-				right: 0
-			},
-			colors: warmColors,
-			data: cf,
-			dimensions: [
-				{
-					data: cfNamesReduce,
-					keySelector: 'key',
-					valueSelector: 'value'
-				},
-				{
-					data: cfCongress,
-					keySelector: 'pac_name',
-					valueSelector: 'contribution_sum'
-				}
-			],
-			size: 5,
-			filterDimension: 1
-		});
-	
 		cont.addGraph(pacsBar);
-		cont.addGraph(pacsPie);
 	});
 
 	// Get all the industries
 	var getIndustries = $.get('http://poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: startDate, end: endDate, unit: 'congress' }, function(data) {
 	//var getIndustries = $.get('/temp/industries.json', function(data) {
 		var $barSelector = $('#industries-bar');
-		var $pieSelector = $('#industries-pie');
 	
 		var title = "Top 5 Industry Contributors";
 	
@@ -151,13 +113,7 @@ if($key.length > 0) {
 			.text(title)
 		);
 	
-		$pieSelector.append($('<h4>')
-			.addClass('text-center')
-			.text(title)
-		);
-	
 		$barSelector.append($info);
-		$pieSelector.append($info.clone());
 	
 		// Format data from API return to our specifications
 		var transform = {};
@@ -227,37 +183,7 @@ if($key.length > 0) {
 			filterDimension: 1
 		});
 	
-		var industriesPie = ge.graph({
-			type: 'pie',
-			width: 400,
-			height: 400,
-			selector: $pieSelector,
-			margins: {
-				top: 20,
-				bottom: 20,
-				left: 0,
-				right: 0
-			},
-			colors: coolColors,
-			data: cf,
-			dimensions: [
-				{
-					data: cfNamesReduce,
-					keySelector: 'key',
-					valueSelector: 'value'
-				},
-				{
-					data: cfCongress,
-					keySelector: 'pac_name',
-					valueSelector: 'contribution_sum'
-				}
-			],
-			size: 5,
-			filterDimension: 1
-		});
-	
 		cont.addGraph(industriesBar);
-		cont.addGraph(industriesPie);
 	});
 
 	// Tell jQuery's AJAX to be patient

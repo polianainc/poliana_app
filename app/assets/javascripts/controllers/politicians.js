@@ -272,6 +272,29 @@ if($key.length > 0) {
 			$timelineArea.append($('<h4>')
 				.text(title)
 			);
+			
+			var allData = [];
+			
+			sumArrays(pacs[0].totals, allData);
+			sumArrays(industries[0].totals, allData);
+			
+			function sumArrays(array, finalArray) {
+				$.each(array, function() {
+					var orig = this;
+					var count = 0;
+
+					$.each(finalArray, function() {
+						if(this.key == orig.key) {
+							count++;
+
+							this.value += orig.value;
+						}
+					});
+
+					if(count === 0)
+						finalArray.push({ group: "Total Contributions", key: orig.key, value: orig.value });
+				});
+			}
 		
 			var timelineScrub = ge.graph({
 				type: 'scrubber',
@@ -286,7 +309,7 @@ if($key.length > 0) {
 					right: 0
 				},
 				colors: monoColors,
-				data: [ pacs[0].totals, industries[0].totals ],
+				data: [ allData ],
 				controller: cont
 			});
 		

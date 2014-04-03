@@ -54,6 +54,9 @@
 					color: $black;
 					text-align: center;
 				}
+				&:first-of-type {
+					line { display: none; }
+				}
 				&:last-of-type { display: none; }
 			}
 		}

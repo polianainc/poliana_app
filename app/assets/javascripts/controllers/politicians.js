@@ -213,12 +213,17 @@ if($key.length > 0) {
 						if(this.key == orig.key) {
 							count++;
 
-							this.value += orig.value;
+							if(orig.value > 0)
+								this.value += orig.value;
 						}
 					});
 
-					if(count === 0)
-						finalArray.push({ group: "Total Contributions", key: orig.key, value: orig.value });
+					if(count === 0) {
+						if(orig.value >= 0)
+							finalArray.push({ group: "Total Contributions", key: orig.key, value: orig.value });
+						else
+							finalArray.push({ group: "Total Contributions", key: orig.key, value: 0 });
+					}
 				});
 			}
 		

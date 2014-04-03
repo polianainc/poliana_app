@@ -270,15 +270,26 @@ ge = (function() {
 				.delay(function(d, i) { return i * 100; })
 				.duration(500)
 				// We use a custom path function rather than SVG's rect element to get rounded corners
-				.attr("d", function(d) {
+				.attr("d", function(d, i) {
 					if(height - y0(d[theValue]) !== 0) {
-						return topRoundedRect(
-							x0(d[theKey]),
-							y0(d[theValue]),
-							x0.rangeBand(),
-							height - y0(d[theValue]),
-							5
-						);
+						if(d[theValue] / data[0].value > 0.02) {
+							return topRoundedRect(
+								x(d[theKey]),
+								y(d[theValue]),
+								x.rangeBand(),
+								height - y(d[theValue]),
+								5
+							);
+						}
+						else {
+							return topRoundedRect(
+								x(d[theKey]),
+								y(data[0].value * 0.02),
+								x.rangeBand(),
+								height - y(data[0].value * 0.02),
+								5
+							);
+						}
 					}
 					else
 						return $(this).attr('d');
@@ -366,14 +377,25 @@ ge = (function() {
 					.delay(function(d, i) { return i * 100; })
 					.duration(500)
 					// We use a custom path function rather than SVG's rect element to get rounded corners
-					.attr("d", function(d) {
-						return topRoundedRect(
-							x(d[theKey]),
-							y(d[theValue]),
-							x.rangeBand(),
-							height - y(d[theValue]),
-							5
-						);
+					.attr("d", function(d, i) {
+						if(d[theValue] / data[0].value > 0.02) {
+							return topRoundedRect(
+								x(d[theKey]),
+								y(d[theValue]),
+								x.rangeBand(),
+								height - y(d[theValue]),
+								5
+							);
+						}
+						else {
+							return topRoundedRect(
+								x(d[theKey]),
+								y(data[0].value * 0.02),
+								x.rangeBand(),
+								height - y(data[0].value * 0.02),
+								5
+							);
+						}
 					});
 			}
 		};

@@ -82,6 +82,14 @@ class Politician
     end
   end
   
+  def self.pronoun(gender)
+    if gender = "M"
+      return "his"
+    else
+      return "her"
+    end
+  end
+  
   def self.gender(gender)
     if gender == "M"
       return "Male"

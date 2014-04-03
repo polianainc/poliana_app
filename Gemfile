@@ -39,6 +39,9 @@ gem 'gabba'
 #Wikipedia API
 gem 'wikipedia-client'
 
+#Time
+gem 'dotiw'
+
 #AWS
 gem 'aws-ses', '~> 0.4.4', :require => 'aws/ses'
 

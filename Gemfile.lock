@@ -102,6 +102,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.1.3)
+    dotiw (1.1.1)
+      actionpack (~> 3)
     erubis (2.7.0)
     excon (0.31.0)
     execjs (2.0.2)
@@ -421,6 +423,7 @@ DEPENDENCIES
   compass-rails
   congress
   devise
+  dotiw
   factory_girl_rails
   figaro
   foundation-rails

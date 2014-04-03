@@ -588,7 +588,7 @@ ge = (function() {
 			height = _graph.height - margin.top - margin.bottom;
 		
 		var x = d3.scale.linear()
-			.range([width, 0]);
+			.range([0, width]);
 
 		var y = d3.scale.linear()
 			.range([height, 0]);
@@ -722,10 +722,10 @@ ge = (function() {
 				d3.selectAll('.x .tick text').each(function(d, i) {
 					var elem = d3.select(this);
 					
-					elem.attr("x", -5)
+					elem.attr("x", 5)
 						.attr("y", +elem.attr("y") + 20)
 						.attr("class", "tick-text")
-						.style("text-anchor", "end");
+						.style("text-anchor", "start");
 				});
 				
 				context.append("g")
@@ -749,7 +749,7 @@ ge = (function() {
 				
 				if($keyValues.size() > 1) {
 					var $firstTick = $graph.find('.tick').first();
-					var width = parseInt($firstTick.position().left - $firstTick.next().position().left) - 5;
+					var width = -1 * parseInt($firstTick.position().left - $firstTick.next().position().left) - 5;
 					
 					$keyValues.each(function() {
 						var elem = this;
@@ -759,7 +759,7 @@ ge = (function() {
 								var role = $(elem).attr('data-value');
 								
 								d3.select(this.parentNode).append("foreignObject")
-									.attr("x", -width)
+									.attr("x", 0)
 									.attr("y", 5)
 									.attr("width", width)
 									.attr("height", 20)

@@ -77,6 +77,7 @@ $(document).ready(function() {
 	// Parallax backgrounds
 	$(window).stellar();
 	
+	// Swing in errors, fade em' out
 	if($errors.length > 0) {
 		$errors.animate({
 			top: 20
@@ -93,6 +94,15 @@ $(document).ready(function() {
 			$errors.delay(5000).fadeOut(250);
 		}
 	}
+	
+	// Slide reveals
+	$('a.slide-reveal').on('click', function(event) {
+		event.preventDefault();
+		
+		var key = $(this).attr('data-id');
+		
+		$('div.slide-reveal[data-id=' + key + ']').slideToggle(250);
+	});
 });
 
 $(window).resize($.debounce(250, function() {

@@ -26,6 +26,14 @@
 				</div>
 			</div>
 			<div class="foldable-content politician-personal-information">
+				<% if !@wikipediaBio.nil? %>
+				<p><a href="#" class="slide-reveal" data-id="1">Read Biography &raquo;</a></p>
+				<div class="row hide slide-reveal" data-id="1">
+					<div class="large-12 columns">
+						<i><%= @wikipediaBio.to_s.html_safe %></i>
+					</div>
+				</div>
+				<% end %>
 				<div class="row">
 					<% if @politician.birthday %>
 					<div class="large-4 medium-4 columns">

@@ -36,6 +36,9 @@ gem 'foundation-rails'
 gem 'sitemap_generator'
 gem 'gabba'
 
+#Wikipedia API
+gem 'wikipedia-client'
+
 #AWS
 gem 'aws-ses', '~> 0.4.4', :require => 'aws/ses'
 

@@ -100,7 +100,7 @@
 		</div>
 	</div>
 	<div class="foldable-content">
-		<div class="row">
+		<div class="row" id="timeline">
 			<div class="large-12 columns show-for-medium-up">
 				<div id="timeline-area" class="graph">
 					<% terms.each do |f| %>
@@ -131,3 +131,70 @@
 		</div>
 	</div>
 </div>
+<ol class="joyride-list" data-cookie="politicians_show" data-joyride>
+	<li>
+		<div class="row hero">
+			<div class="large-12 columns">
+				<h4 class="text-center">Welcome to <%= @politician.full_name %>'s page!</h4>
+				<p>Here you can find anything you want to know about a politician. We've set up a brief tutorial to show you around. Shall we begin?</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-8 medium-10 small-10 large-centered medium-centered small-centered columns">
+				<div class="progress radius success">
+					<span class="meter" style="width: 25%">1/4</span>
+				</div>
+				<a href="#" class="small button radius expand joyride-next-tip">Awesome, let's go!</a>
+			</div>
+		</div>
+	</li>
+	<li data-id="timeline" data-options="tip_location:bottom;">
+		<div class="row hero">
+			<div class="large-12 columns">
+				<h4 class="text-center">See influence over time!</h4>
+				<p>This is a graph that gives you a bird's eye view of campaign finance contributions over time. You can also click on the graph at a specific congress or range of congresses to see how the money stacks up.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-8 medium-10 small-10 large-centered medium-centered small-centered columns">
+				<div class="progress radius success">
+					<span class="meter" style="width: 50%">2/4</span>
+				</div>
+				<a href="#" class="small button radius expand joyride-next-tip">Sweet, tell me more!</a>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="row hero">
+			<div class="large-12 columns">
+				<h4 class="text-center">You can view PAC contributions!</h4>
+				<p>Off to the left you can view donations to <%= @politician.full_name %> made through PAC's (or "Political Action Committees"). If you want to know more about what PAC's are and how they influence a campaign, click the <span aria-hidden="true" class="icon-info"></span> button.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-8 medium-10 small-10 large-centered medium-centered small-centered columns">
+				<div class="progress radius success">
+					<span class="meter" style="width: 75%">3/4</span>
+				</div>
+				<a href="#" class="small button radius expand joyride-next-tip">Oh nice, I like it!</a>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="row hero">
+			<div class="large-12 columns">
+				<h4 class="text-center">Or even industry contributions!</h4>
+				<p>Likewise, you can also contributions made by businesses or people within an industry. Again, if you want to know more, feel free to click the <span aria-hidden="true" class="icon-info"></span> button.</p>
+				<p>If you find something interesting, don't forget to share it out to your friends on social media. Just click the <span aria-hidden="true" class="icon-bubbles"></span> button.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-8 medium-10 small-10 large-centered medium-centered small-centered columns">
+				<div class="progress radius success">
+					<span class="meter" style="width: 100%">All done!</span>
+				</div>
+				<a href="#" class="small button radius expand joyride-next-tip">Let me play with it...</a>
+			</div>
+		</div>
+	</li>
+</ol>

@@ -511,15 +511,15 @@ select { @include border-radius($global-radius !important); }
 // $include-html-joyride-classes: $include-html-classes;
 
 // Controlling default Joyride styles
-// $joyride-tip-bg: #333;
-// $joyride-tip-default-width: 300px;
+$joyride-tip-bg: $black;
+$joyride-tip-default-width: 40%;
 // $joyride-tip-padding: rem-calc(18 20 24);
 // $joyride-tip-border: solid 1px #555;
 // $joyride-tip-radius: 4px;
 // $joyride-tip-position-offset: 22px;
 
 // Here, we're setting the tip dont styles
-// $joyride-tip-font-color: #fff;
+$joyride-tip-font-color: $white;
 // $joyride-tip-font-size: rem-calc(14);
 $joyride-tip-header-weight: 700;
 
@@ -532,14 +532,17 @@ $joyride-tip-header-weight: 700;
 // $joyride-tip-timer-color: #666;
 
 // This changes up the styles for the close button
-// $joyride-tip-close-color: #777;
+$joyride-tip-close-color: $gray;
 // $joyride-tip-close-size: 24px;
 $joyride-tip-close-weight: $body-font-weight;
 
 // When Joyride is filling the screen, we use this style for the bg
 // $joyride-screenfill: rgba(0,0,0,0.5);
 
-.joyride-tip-guide { font-weight: $body-font-weight !important; }
+.joyride-tip-guide {
+	font-weight: $body-font-weight !important;
+	@include border-radius($global-radius);
+}
 
 // Keystrokes
 
@@ -813,6 +816,12 @@ $progress-bar-height: rem-calc(22);
 // $progress-meter-secondary-color: $secondary-color;
 // $progress-meter-success-color: $success-color;
 // $progress-meter-alert-color: $alert-color;
+
+.meter {
+	text-align: center;
+	font-size: 0.8em;
+	line-height: rem-calc(18);
+}
 
 // Reveal
 

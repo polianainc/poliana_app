@@ -38,6 +38,7 @@
 		li {
 			&.row {
 				padding: 15px;
+				img { @include border-radius($global-radius); }
 				p {
 					color: $white;
 					margin-bottom: 0px;
@@ -89,6 +90,7 @@
 		}
 		.right {
 			li {
+				img { @include border-radius($global-radius); }
 				span {
 					&:first-of-type { padding-right: 10px; }
 				}

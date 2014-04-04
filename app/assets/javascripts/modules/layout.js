@@ -106,10 +106,17 @@ $(document).ready(function() {
 });
 
 $(window).resize($.debounce(250, function() {
+	// THINGS TO DO JUST AFTER RESIZING
+	
 	// Change all the full backgrounds
 	if($fullBackground.length > 0)
 		fullBackgrounds();
-}));
+})).resize(function() {
+	// THINGS TO DO WHILE RESIZING
+	
+	if($('.joyride-tip-guide').length == 0)
+		$('.joyride-modal-bg').remove();
+});
 
 // Here we can load page-specific Javascript asynchronously while letting Sprokets handle site-wide dependencies.
 function pageSpecific() {

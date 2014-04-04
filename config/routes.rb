@@ -1,5 +1,4 @@
 PolianaApp::Application.routes.draw do
-  mount JasmineRails::Engine => '/jasmine' if defined?(JasmineRails)
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :invitations

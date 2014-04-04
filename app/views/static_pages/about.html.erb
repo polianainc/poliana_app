@@ -1,58 +1,26 @@
 <% content_for :title, "About" %>
 <%= render layout: "shared/backgrounds" do %>
-<h1>About Poliana</h1>
-<p>Poliana is a web application that demystifies the political process.</p>
+<h1 class="text-center">About Poliana</h1>
 <% end %>
 <div class="row hero">
 	<div class="large-12 columns">
-		<h2 class="text-center">We're on a mission to simplify politics.</h2>
-		<p>Government is a complicated process. With so many people involved in every decision, understanding the major factors that play into how government makes choices is difficult. Of course politicians, corporations, lobbyists, and PACs are all related, but knowing <em>how</em> they affect each other currently requires dedicated time and effort. This confusion leads to more and more people having trouble staying informed and feeling included in the political process - this is where our work begins.</p>
-		<p>Poliana believes that understanding government must be straight-forward. By providing more evidence-based insights and allowing you to easily and visually explore the information you’re most interested in, we keep you in the know. We also encourage you to share the knowledge you gain and help raise the bar of political awareness. And since we don't have any reporters (just numbers, baby!), we avoid human bias and make it a personal goal to let the data speak for itself, allowing you to draw your own conclusions.</p>
+		<p class="lead">With so many people involved in every decision, understanding why our government makes certain choices is difficult. Politicians, corporations, lobbyists, and PACs are all related, but knowing how they affect each other is hidden in a maze of paperwork and legal language. Poliana untangles this web of complicated relationships and visualizes what individuals and groups are having the greatest impact on the political process.</p>
 	</div>
 </div>
-<div class="row hero">
+<div class="row hero data-partners">
 	<div class="large-12 columns">
-		<h2 class="text-center">Hey, check out these nerds.</h2>
-		<p>Big data is all the craze these days and at Poliana we just can’t get enough of it. We like to think our team consists of data scientists, developers, designers, and dreamers.</p>
+		<h2 class="text-center">Where's the data come from?</h2>
 	</div>
-	<div class="large-3 medium-3 columns team-member">
-		<div class="picture" style="background-image: url(<%= image_path 'team/grayson.jpg' %>);">
-			<ul>
-				<li><%= link_to '<span aria-hidden="true" class="icon-linkedin"></span>'.html_safe(), 'http://www.linkedin.com/profile/view?id=257513776', :target => "_blank" %></li>
-				<li><%= link_to '<span aria-hidden="true" class="icon-envelope"></span>'.html_safe(), 'mailto:grayson@poliana.com' %></li>
-			</ul>
-		</div>
-		<h4 class="text-center">Grayson Carroll</h4>
-		<p class="text-center">Supreme Leader</p>
+	<div class="large-3 medium-3 columns">
+		<a href="http://www.opensecrets.org/" target="_blank"><img src="/assets/open-secrets.png"></a>
 	</div>
-	<div class="large-3 medium-3 columns team-member">
-		<div class="picture" style="background-image: url(<%= image_path 'team/patrick.jpg' %>);">
-			<ul>
-				<li><%= link_to '<span aria-hidden="true" class="icon-linkedin"></span>'.html_safe(), 'http://www.linkedin.com/profile/view?id=68665857', :target => "_blank" %></li>
-				<li><%= link_to '<span aria-hidden="true" class="icon-envelope"></span>'.html_safe(), 'mailto:patrick@poliana.com' %></li>
-			</ul>
-		</div>
-		<h4 class="text-center">Patrick Cason</h4>
-		<p class="text-center">Code &amp; Colors</p>
+	<div class="large-3 medium-3 columns">
+		<a href="http://sunlightfoundation.com/" target="_blank"><img src="/assets/sunlight-foundation.png"></a>
 	</div>
-	<div class="large-3 medium-3 columns team-member">
-		<div class="picture" style="background-image: url(<%= image_path 'team/david.jpg' %>);">
-			<ul>
-				<li><%= link_to '<span aria-hidden="true" class="icon-linkedin"></span>'.html_safe(), 'http://www.linkedin.com/profile/view?id=114293672', :target => "_blank" %></li>
-				<li><%= link_to '<span aria-hidden="true" class="icon-envelope"></span>'.html_safe(), 'mailto:david@poliana.com' %></li>
-			</ul>
-		</div>
-		<h4 class="text-center">David Gilmore</h4>
-		<p class="text-center">Data Wrangler</p>
+	<div class="large-3 medium-3 columns">
+		<a href="http://congress.gov" target="_blank"><img src="/assets/congress-gov.png"></a>
 	</div>
-	<div class="large-3 medium-3 columns team-member">
-		<div class="picture" style="background-image: url(<%= image_path 'team/shawn.jpg' %>);">
-			<ul>
-				<li><%= link_to '<span aria-hidden="true" class="icon-linkedin"></span>'.html_safe(), 'http://www.linkedin.com/profile/view?id=221531876g', :target => "_blank" %></li>
-				<li><%= link_to '<span aria-hidden="true" class="icon-envelope"></span>'.html_safe(), 'mailto:shawn@poliana.com' %></li>
-			</ul>
-		</div>
-		<h4 class="text-center">Shawn Whiting</h4>
-		<p class="text-center">Jack of all Trades</p>
+	<div class="large-3 medium-3 columns">
+		<a href="https://www.govtrack.us/" target="_blank"><img src="/assets/govtrack.png"></a>
 	</div>
 </div>

@@ -152,7 +152,7 @@
 	}
 }
 
-.data-partners {
+ul.data-partners {
 	list-style-type: none;
 	overflow: hidden;
 	li {
@@ -160,5 +160,11 @@
 		max-width: 100px;
 		height: 60px;
 		margin-right: 20px;
+	}
+}
+div.data-partners {
+	img {
+		display: block;
+		margin: 0px auto;
 	}
 }

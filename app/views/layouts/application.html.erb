@@ -54,9 +54,8 @@
 							<% if user_signed_in? %>
 							<li><%= link_to('<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path) %></li>
 							<% else %>
-							<li><%= link_to '<span aria-hidden="true" class="icon-enter"></span><span>Login</span>'.html_safe(), new_user_session_path %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-enter"></span><span>Sign In</span>'.html_safe(), new_user_session_path %></li>
 							<% end %>
-							<li><%= link_to '<span aria-hidden="true" class="icon-info"></span><span>About Us</span>'.html_safe(), about_path %></li>
 							<% if user_signed_in? %>
 							<li><label>Search</label></li>
 					  		<li class="has-form">
@@ -123,8 +122,7 @@
 									</ul>
 								</li>
 								<% else %>
-								<li><%= link_to 'Login', new_user_session_path %></li>
-								<li><%= link_to 'About Us', about_path %></li>
+								<li><%= link_to 'Sign In', new_user_session_path %></li>
 								<% end %>
 							</ul>
 						</section>

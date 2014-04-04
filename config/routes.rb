@@ -15,7 +15,6 @@ PolianaApp::Application.routes.draw do
   get "/logout", :to => redirect('/signout')
   get "/signup", :to => redirect('/')
 
-  get "about", :to => "static_pages#about"
   get "policy", :to => "static_pages#policy"
   get "terms", :to => "static_pages#terms"
   get "mailchimp_signup", :to => "static_pages#mailchimp_signup"

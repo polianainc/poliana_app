@@ -1,7 +1,7 @@
 <% content_for :title, "Sign In" %>
 <div class="row">
 	<div class="large-12 columns">
-		<h1 class="text-center">Sign In to Poliana</h1>
+		<h1 class="text-center">Sign in to Poliana</h1>
 	</div>
 </div>
 <%- if devise_mapping.omniauthable? %>
@@ -17,7 +17,7 @@
 		</div>
 	</div>
 <% end -%>
-<div class="row">
+<div class="row hide slide-reveal" data-id="1">
 	<div class="large-6 medium-6 large-centered medium-centered columns">
 		<%= form_for(resource, :html => { :class => "custom", :autocomplete => "off" }, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 			<div class="row collapse pre-input<%= " error" if !resource.errors[:login].empty? %>">
@@ -42,8 +42,13 @@
 				<%= f.label :remember_me do |g| %><%= f.check_box :remember_me %> Remember Me?<% end %>
 			<% end -%>
 		  	<%= f.submit "Welcome back!", :class => "button expand radius" %>
-			<p class="text-center no-space"><small><%= link_to "Forgot your password?", new_user_password_path %></small></p>
-			<p class="text-center no-space"><small><%= link_to "Want an invitation?", root_path %></small></p>
 		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="large-12 columns">
+		<p class="text-center no-space"><small><a href="#" class="slide-reveal button tiny radius secondary" data-id="1">Don't use social networks?</a></small></p>
+		<p class="text-center no-space"><small><%= link_to "Forgot your password?", new_user_password_path %></small></p>
+		<p class="text-center no-space"><small><%= link_to "Want an invitation?", root_path %></small></p>
 	</div>
 </div>

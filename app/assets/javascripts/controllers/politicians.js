@@ -71,8 +71,8 @@ if($key.length > 0) {
 			height: 300,
 			selector: $barSelector,
 			margins: {
-				top: 20,
-				bottom: 20,
+				top: 30,
+				bottom: 15,
 				left: 0,
 				right: 0
 			},
@@ -160,8 +160,8 @@ if($key.length > 0) {
 			height: 300,
 			selector: $barSelector,
 			margins: {
-				top: 20,
-				bottom: 20,
+				top: 30,
+				bottom: 15,
 				left: 0,
 				right: 0
 			},

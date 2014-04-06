@@ -50,20 +50,20 @@
 							<li><label>Explore</label></li>
 							<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
 							<% end %>
+							<% if !user_signed_in? %>
 							<li><label>General</label></li>
-							<% if user_signed_in? %>
-							<li><%= link_to('<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path) %></li>
-							<% else %>
 							<li><%= link_to '<span aria-hidden="true" class="icon-enter"></span><span>Sign In</span>'.html_safe(), new_user_session_path %></li>
 							<% end %>
 							<% if user_signed_in? %>
-							<li><label>Search</label></li>
-					  		<li class="has-form">
-								<form>
-					  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
-									<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
-								</form>
-					  		</li>
+								<% if false %>
+								<li><label>Search</label></li>
+						  		<li class="has-form">
+									<form>
+						  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
+										<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
+									</form>
+						  		</li>
+								<% end %>
 							<% end %>
 						</ul>
 					</aside>
@@ -98,16 +98,18 @@
 							<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 						</ul>
 						<% if user_signed_in? %>
-						<section class="top-bar-section">
-							<ul class="left">
-								<li class="has-form">
-									<form>
-						  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
-										<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
-									</form>
-						  		</li>
-							</ul>
-						</section>
+							<% if false %>
+							<section class="top-bar-section">
+								<ul class="left">
+									<li class="has-form">
+										<form>
+							  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
+											<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
+										</form>
+							  		</li>
+								</ul>
+							</section>
+							<% end %>
 						<% end %>
 						<section class="top-bar-section">
 							<ul class="right">

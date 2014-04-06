@@ -289,8 +289,6 @@ else {
 	
 	function runPoliticianSearch(value) {
 		var lookups = ['birthyear', 'birthmonth', 'firstname', 'lastname', 'fullname', 'gender', 'party', 'religion', 'generalreligion', 'state', 'congresses'];
-		var count = 0;
-		var start = +new Date();  // log start timestamp
 		
 		$allPoliticians.find('.politician').each(function() {
 			var found = false;
@@ -324,10 +322,5 @@ else {
 		$allPoliticiansCounter.find('.count').html(count);
 		$allPoliticiansCounter.find('.query').html(value);
 		$allPoliticiansCounter.show();
-		
-		var end =  +new Date();  // log end timestamp
-		var diff = end - start;
-		
-		console.log(diff);
 	}
 }

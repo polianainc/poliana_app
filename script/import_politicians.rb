@@ -68,6 +68,7 @@ def import_raw_legislators_to_mongo
   end
 
   add_senator_edge_cases(legislators)
+  patch_cheney
   add_birthday_stats
   add_pre_election_terms
   add_congresses
@@ -140,6 +141,16 @@ def add_congresses
 
     pol.save()
   end
+end
+
+#HACK adds Cheney's vice presidential term as a half term to not conflict with our start date or throw weird errors
+def patch_cheney
+  cheney = Politician.where(:bioguide_id => "C000344").first
+  term = Term.new
+  term.start = @start_date + 2.days 
+  term.end = DateTime.strptime("1106179200", '%s').to_date
+  term.term_type = "viceprez"
+  cheney.terms << term
 end
 
 def add_birthday_stats

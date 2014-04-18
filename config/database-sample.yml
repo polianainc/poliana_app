@@ -1,4 +1,4 @@
-development:
+Ïevelopment:
   adapter: mysql2
   encoding: utf8
   database: <your_database_name>
@@ -22,7 +22,7 @@ production:
   encoding: utf8
   database: poliana_production
   username: root
-  password: 
+  password:
   host: 127.0.0.1
   port: 3306
 
@@ -31,6 +31,6 @@ stagingsmall:
   encoding: utf8
   database: poliana_stagingsmall
   username: root
-  password: 
+  password:
   host: 127.0.0.1
   port: 3306

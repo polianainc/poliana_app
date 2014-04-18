@@ -16,6 +16,12 @@ gem 'sunspot_solr'
 gem 'sunspot_rails'
 gem 'sunspot_mongoid2'
 
+#Image Processing
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'strong_parameters'
+
 #Administration
 gem 'rails_admin'
 
@@ -51,7 +57,7 @@ gem 'congress'
 group :development, :test do
   #Email
   gem 'letter_opener'
-  
+
   #Testing
   gem 'capybara'
   gem 'factory_girl_rails'
@@ -64,10 +70,10 @@ group :development, :test do
   gem 'jasmine-jquery-rails'
   gem 'guard-jasmine'
   gem 'sunspot_matchers'
-  
+
   #Notifications
   gem 'growl'
-  
+
   #Test DB
 	gem 'sqlite3'
 end
@@ -76,15 +82,15 @@ group :assets do
   gem 'jquery-rails'
 
   gem 'sass-rails'
-  
+
   #Temporary bullshit... we'll have to watch how the compass-rails gem is maintained
   #They need to support to Compass 0.13 so we can handle custom keyframe animations
   gem 'compass', '~> 0.13.alpha.12'
   gem 'compass-rails'
-  
+
   gem 'therubyracer', :platforms => :ruby, :group => :production
   gem 'uglifier', '>= 1.0.3'
-  
+
   #Asset Compilation Speedup
   gem 'turbo-sprockets-rails3'
 end

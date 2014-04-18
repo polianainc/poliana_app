@@ -124,7 +124,7 @@ ge = (function() {
 			icons.append("li")
 				.append("span")
 					.attr("aria-hidden", "true")
-					.attr("class", "icon-info");
+					.attr("class", "icon-question");
 
 			icons.append("li")
 				.append("span")

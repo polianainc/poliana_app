@@ -18,15 +18,15 @@
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
+
+	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	&.large-icon {
-		font-size: 4em;
-		@media #{$medium-up} { font-size: 6em; }
-	}
-	&.text-pop { @include text-pop($black, 2px); }
 }
 
+.icon-question:before {
+	content: "\e65f";
+}
 .icon-home:before {
 	content: "\e600";
 }
@@ -311,37 +311,4 @@
 }
 .icon-instagram:before {
 	content: "\e65e";
-}
-.icon-bars:before {
-	content: "\e65f";
-}
-.icon-bars2:before {
-	content: "\e660";
-}
-.icon-pie:before {
-	content: "\e661";
-}
-.icon-play:before {
-	content: "\e662";
-}
-.icon-pause:before {
-	content: "\e663";
-}
-.icon-stop:before {
-	content: "\e664";
-}
-.icon-backward:before {
-	content: "\e665";
-}
-.icon-forward:before {
-	content: "\e666";
-}
-.icon-bubbles:before {
-	content: "\e667";
-}
-.icon-drawer:before {
-	content: "\e668";
-}
-.icon-reorder:before {
-	content: "\e669";
 }

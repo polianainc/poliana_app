@@ -18,7 +18,7 @@
 	<title><%= content_for?(:title) ? yield(:title) + " | Poliana" : "Poliana | See Through Government" %></title>
 
 	<%= stylesheet_link_tag "application" %>
-	
+
 	<%= csrf_meta_tags %>
 
 	<!--[if lt IE 9]>
@@ -27,6 +27,7 @@
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
 	<%= render 'shared/errors' %>
+	<%= render 'shared/feedback' %>
 	<div class="off-canvas-wrap">
 		<div class="inner-wrap">
 			<div id="container">
@@ -184,7 +185,7 @@
 		</div>
 	</div>
 	<div id="other-modal" class="reveal-modal medium" data-reveal style="display: none;"></div>
-	
+
 	<%= javascript_include_tag "application" %>
 </body>
 </html>

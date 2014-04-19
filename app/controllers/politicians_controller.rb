@@ -13,7 +13,7 @@ class PoliticiansController < ApplicationController
     require 'wikipedia'
     
     @politician = Politician.where(:bioguide_id => params[:id].upcase).first
-    
+
     wiki = Wikipedia.find(@politician.first_name + " " + @politician.last_name)
     if wiki.templates.first != "Template:Category handler"
       wikiNoko = Nokogiri::HTML(wiki.sanitized_content)

@@ -1,20 +1,49 @@
 <div id="feedback-modal" class="reveal-modal medium" data-reveal style="display: none;">
-	<%= form_for @feedbacker, :html => { :multipart => true } do |f| %>
-	  <%= f.label :name %>
-	  <%= f.text_field :name %>
-
-	  <%= f.label :email %>
-	  <%= f.text_field :email %>
-
-	  <%= f.label :description %>
-	  <%= f.text_field :description %>
-
-	  <%= f.label :link %>
-	  <%= f.text_field :link %>
-
-	  <%= f.label "Screenshot" %>
-	  <%= f.file_field :image %>
-
-	  <%= f.submit "Submit" %>
-	<% end %>
+	<div class="row">
+		<div class="large-12 columns">
+			<h1 class="text-center">Give us your feedback!</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-8 medium-10 large-centered medium-centered columns">
+			<%= form_for @feedbacker, :html => { :multipart => true } do |f| %>
+				<div class="row collapse pre-input">
+					<div class="small-2 columns">
+						<span aria-hidden="true" class="prefix icon-user"></span>
+					</div>
+					<div class="small-10 columns">
+						<%= f.text_field :name, :autofocus => true, :autocomplete => "off", :placeholder => "Name" %>
+					</div>
+				</div>
+				<div class="row collapse pre-input">
+					<div class="small-2 columns">
+						<span aria-hidden="true" class="prefix icon-envelope"></span>
+					</div>
+					<div class="small-10 columns">
+						<%= f.email_field :email, :autofocus => true, :autocomplete => "off", :placeholder => "Email", :value => current_user.email %>
+					</div>
+				</div>
+				<div class="row collapse pre-input">
+					<div class="small-12 columns">
+						<%= f.text_area :description, :autofocus => true, :autocomplete => "off", :placeholder => "Description of the problem..." %>
+					</div>
+				</div>
+				<div class="row collapse pre-input">
+					<div class="small-2 columns">
+						<span aria-hidden="true" class="prefix icon-link"></span>
+					</div>
+					<div class="small-10 columns">
+						<%= f.text_field :link, :autofocus => true, :autocomplete => "off", :placeholder => "Link", :value => request.original_url %>
+					</div>
+				</div>
+				<div class="row collapse pre-input">
+					<div class="small-12 columns">
+						<%= f.file_field :image, :autofocus => true, :autocomplete => "off", :placeholder => "Image" %>
+					</div>
+				</div>
+				<%= f.submit "Tell us about it!", :class => "button small expand radius" %>
+			<% end %>
+		</div>
+	</div>
+	<a class="close-reveal-modal">&#215;</a>
 </div>

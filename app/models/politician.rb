@@ -13,6 +13,7 @@ class Politician
   field :religion, :type => String
   field :state, :type => String
   field :percent_age_difference, :type => Float
+  field :first_elected, :type => String
   field :image_url, :type => String
   embeds_many :terms
   accepts_nested_attributes_for :terms
@@ -28,7 +29,7 @@ class Politician
   end
 
   def self.boosted_search(page, query, num = 10)
-    self.search do 
+    self.search do
        fulltext query do
         boost_fields :last_name => 3.0
         boost_fields :first_name => 2.5
@@ -39,7 +40,7 @@ class Politician
       order_by(:score, :desc)
     end
   end
-  
+
   def full_name
     return first_name + " " + last_name
   end
@@ -50,15 +51,15 @@ class Politician
     return 16.774 if gender == "F"
     return nil
   end
-  
+
   def age
     now = Time.now.utc.to_date
     now.year - birthday.year - ((now.month > birthday.month || (now.month == birthday.month && now.day >= birthday.day)) ? 0 : 1)
   end
-  
+
   def general_religion
     #"Protestant", "Episcopalian", "Lutheran", "Baptist", "Jewish", "Methodist", "Presbyterian", "Roman Catholic", "Christian", "African Methodist Episcopal", "Catholic", "Latter Day Saints", "Congregationalist", "First Christian Church (Disciples of Christ)", "United Brethren in Christ", "Greek Orthodox", "Unitarian Universalist", "Assembly of God", "United Church of Christ", "Unitarian", "Seventh-Day Adventist", "Christian Scientist", "Second Baptist", "United Methodist", "Southern Baptist", "Christian Reformed", "Reformed Church in America", "Reformed Latter Day Saint", "Moravian", "Unknown", "Seventh Day Adventist", "Nazarene", "Episcopal", "Church of Christ"
-    
+
     if religion == "Jewish"
       return "Jewish"
     elsif religion == "Unitarian Universalist" || religion == "Unitarian"
@@ -68,7 +69,7 @@ class Politician
     elsif religion != "" and religion != nil
       return "Christian"
     end
-    
+
     return nil
   end
 
@@ -85,7 +86,7 @@ class Politician
       return "Pre-election"
     end
   end
-  
+
   def self.pronoun(gender)
     if !gender.nil?
       if gender == "M"
@@ -94,10 +95,10 @@ class Politician
         return "her"
       end
     end
-    
+
     return "their"
   end
-  
+
   def self.gender(gender)
     if gender == "M"
       return "Male"
@@ -105,10 +106,10 @@ class Politician
       return "Female"
     end
   end
-  
+
   def self.state(state)
     states = [{name: 'Alabama', abbrev: 'AL'},{name: 'Alaska', abbrev: 'AK'},{name: 'Arizona', abbrev: 'AZ'},{name: 'Arkansas', abbrev: 'AR'},{name: 'California', abbrev: 'CA'},{name: 'Colorado', abbrev: 'CO'},{name: 'Connecticut', abbrev: 'CT'},{name: 'Delaware', abbrev: 'DE'},{name: 'Florida', abbrev: 'FL'},{name: 'Georgia', abbrev: 'GA'},{name: 'Hawaii', abbrev: 'HI'},{name: 'Idaho', abbrev: 'ID'},{name: 'Illinois', abbrev: 'IL'},{name: 'Indiana', abbrev: 'IN'},{name: 'Iowa', abbrev: 'IA'},{name: 'Kansas', abbrev: 'KS'},{name: 'Kentucky', abbrev: 'KY'},{name: 'Louisiana', abbrev: 'LA'},{name: 'Maine', abbrev: 'ME'},{name: 'Maryland', abbrev: 'MD'},{name: 'Massachusetts', abbrev: 'MA'},{name: 'Michigan', abbrev: 'MI'},{name: 'Minnesota', abbrev: 'MN'},{name: 'Mississippi', abbrev: 'MS'},{name: 'Missouri', abbrev: 'MO'},{name: 'Montana', abbrev: 'MT'},{name: 'Nebraska', abbrev: 'NE'},{name: 'Nevada', abbrev: 'NV'},{name: 'New Hampshire', abbrev: 'NH'},{name: 'New Jersey', abbrev: 'NJ'},{name: 'New Mexico', abbrev: 'NM'},{name: 'New York', abbrev: 'NY'},{name: 'North Carolina', abbrev: 'NC'},{name: 'North Dakota', abbrev: 'ND'},{name: 'Ohio', abbrev: 'OH'},{name: 'Oklahoma', abbrev: 'OK'},{name: 'Oregon', abbrev: 'OR'},{name: 'Pennsylvania', abbrev: 'PA'},{name: 'Puerto Rico', abbrev: 'PR'},{name: 'Rhode Island', abbrev: 'RI'},{name: 'South Carolina', abbrev: 'SC'},{name: 'South Dakota', abbrev: 'SD'},{name: 'Tennessee', abbrev: 'TN'},{name: 'Texas', abbrev: 'TX'},{name: 'Utah', abbrev: 'UT'},{name: 'Vermont', abbrev: 'VT'},{name: 'Virginia', abbrev: 'VA'},{name: 'Washington', abbrev: 'WA'},{name: 'West Virginia', abbrev: 'WV'},{name: 'Wisconsin', abbrev: 'WI'},{name: 'Wyoming', abbrev: 'WY'}]
-  		
+
   	states.each do |s|
   	  if state == s[:name]
   	    return s[:abbrev]
@@ -116,7 +117,7 @@ class Politician
 	      return s[:name]
       end
 	  end
-	  
+
 	  return nil
   end
 

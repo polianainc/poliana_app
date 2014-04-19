@@ -18,7 +18,7 @@
 	<title><%= content_for?(:title) ? yield(:title) + " | Poliana" : "Poliana | See Through Government" %></title>
 
 	<%= stylesheet_link_tag "application" %>
-	
+
 	<%= csrf_meta_tags %>
 
 	<!--[if lt IE 9]>
@@ -183,8 +183,12 @@
 			</div>
 		</div>
 	</div>
+	<% if user_signed_in? %>
+		<a href="#" class="feedback-link" data-reveal-id="feedback-modal" data-reveal>Feedback?</a>
+		<%= render 'shared/feedback' %>
+	<% end %>
 	<div id="other-modal" class="reveal-modal medium" data-reveal style="display: none;"></div>
-	
+
 	<%= javascript_include_tag "application" %>
 </body>
 </html>

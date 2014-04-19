@@ -7,7 +7,7 @@ class AuthCallbacksController < Devise::OmniauthCallbacksController
         if user.save
             sign_in_and_redirect user, notice: "Success!"
         else
-            flash[:alert] = "You don't have an invitation code yet. Sign up for the beta, and we'll send you one when we're ready!" 
+            flash[:alert] = "You don't have an invitation code yet. Sign up for the beta, and we'll send you one when we're ready!"
             redirect_to root_url
         end
     end

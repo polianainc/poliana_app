@@ -107,7 +107,7 @@ small { font-size: 0.75em; }
 		min-height: 100%;
 		margin-bottom: -1 * $footer-height-small;
 		background: $white;
-		&:after {	
+		&:after {
 			content: "";
 			display: block;
 			height: $footer-height-small;
@@ -145,6 +145,25 @@ small { font-size: 0.75em; }
 	.foldable-content {
 		margin: 10px 0px;
 		@media #{$medium-up} { display: block !important; }
+	}
+}
+
+.feedback-link {
+	position: fixed;
+	bottom: 0px;
+	right: 20px;
+	display: block;
+	background: $black;
+	color: $white;
+	text-transform: uppercase;
+	font-size: 0.9em;
+	font-weight: 700;
+	padding: 10px 20px;
+	@include single-transition(all, 0.1s, linear);
+	@include border-radius($global-radius $global-radius 0px 0px);
+	&:hover {
+		background: $black-alt;
+		color: $white;
 	}
 }
 

@@ -2,7 +2,7 @@
 # See github.com/sferik/rails_admin for more informations
 
 RailsAdmin.config do |config|
-  ADMIN_EMAILS = ['grayson@poliana.com', 'patrick@poliana.com', 'shawn@poliana.com', 'david@poliana.com', 'kenny@poliana.com']
+  ADMIN_EMAILS = ['grayson@poliana.com', 'patrick@poliana.com', 'shawn@poliana.com', 'david@poliana.com', 'jay@poliana.com']
 
   ################  Global configuration  ################
 
@@ -76,14 +76,14 @@ RailsAdmin.config do |config|
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :summary, :text 
-  #     configure :title, :string 
-  #     configure :data_id, :string 
-  #     configure :sponsor_name, :string 
-  #     configure :result, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
+  #     configure :id, :integer
+  #     configure :summary, :text
+  #     configure :title, :string
+  #     configure :data_id, :string
+  #     configure :sponsor_name, :string
+  #     configure :result, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
 
   #   # Cross-section configuration:
 
@@ -119,17 +119,17 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :sender, :belongs_to_association 
-  #     configure :recipient, :has_one_association 
+  #     configure :sender, :belongs_to_association
+  #     configure :recipient, :has_one_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :sender_id, :integer         # Hidden 
-  #     configure :recipient_email, :string 
-  #     configure :beta_key, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
+  #     configure :id, :integer
+  #     configure :sender_id, :integer         # Hidden
+  #     configure :recipient_email, :string
+  #     configure :beta_key, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
 
   #   # Cross-section configuration:
 
@@ -165,32 +165,32 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :sent_invitations, :has_many_association 
+  #     configure :sent_invitations, :has_many_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :email, :string 
-  #     configure :password, :password         # Hidden 
-  #     configure :password_confirmation, :password         # Hidden 
-  #     configure :reset_password_token, :string         # Hidden 
-  #     configure :reset_password_sent_at, :datetime 
-  #     configure :remember_created_at, :datetime 
-  #     configure :sign_in_count, :integer 
-  #     configure :current_sign_in_at, :datetime 
-  #     configure :last_sign_in_at, :datetime 
-  #     configure :current_sign_in_ip, :string 
-  #     configure :last_sign_in_ip, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :has_facebook, :boolean 
-  #     configure :has_twitter, :boolean 
-  #     configure :facebook_id, :string 
-  #     configure :twitter_id, :string 
-  #     configure :token, :string 
-  #     configure :token_secret, :string 
-  #     configure :invitation_key, :integer 
-  #     configure :invitations_left, :integer 
+  #     configure :id, :integer
+  #     configure :email, :string
+  #     configure :password, :password         # Hidden
+  #     configure :password_confirmation, :password         # Hidden
+  #     configure :reset_password_token, :string         # Hidden
+  #     configure :reset_password_sent_at, :datetime
+  #     configure :remember_created_at, :datetime
+  #     configure :sign_in_count, :integer
+  #     configure :current_sign_in_at, :datetime
+  #     configure :last_sign_in_at, :datetime
+  #     configure :current_sign_in_ip, :string
+  #     configure :last_sign_in_ip, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :has_facebook, :boolean
+  #     configure :has_twitter, :boolean
+  #     configure :facebook_id, :string
+  #     configure :twitter_id, :string
+  #     configure :token, :string
+  #     configure :token_secret, :string
+  #     configure :invitation_key, :integer
+  #     configure :invitations_left, :integer
 
   #   # Cross-section configuration:
 

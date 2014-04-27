@@ -1081,7 +1081,7 @@ $tooltip-close-font-weight: $body-font-weight;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: #fff;
+$topbar-bg-color: $white;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1095,9 +1095,9 @@ $topbar-title-weight: $body-font-weight;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: $white-alt;
+$topbar-dropdown-bg: $white;
 $topbar-dropdown-link-color: $black;
-$topbar-dropdown-link-bg: $white-alt;
+$topbar-dropdown-link-bg: $white;
 // $topbar-dropdown-toggle-size: 5px;
 $topbar-dropdown-toggle-color: $black;
 // $topbar-dropdown-toggle-alpha: 1;
@@ -1148,9 +1148,9 @@ $topbar-transition-speed: 250ms;
 .top-bar-section .dropdown li {
 	a {
 		font-weight: $body-font-weight !important;
-		background: $white-alt !important;
+		background: $white !important;
 		@include single-transition(all, 0.1s, linear);
-		&:hover { background: $gray-alt !important; }
+		&:hover { background: $white-alt !important; }
 	}
 	&:last-of-type a { @include border-radius(0px 0px $global-radius $global-radius); }
 }

@@ -108,9 +108,9 @@ $(document).ready(function() {
 	});
 
 	// Remove the background video content and show it when the video is ready
-	$backgroundVideo.find('.hero').hide();
-
-	$backgroundVideo.find('video').on('play', function() {
+	$backgroundVideo.find('video').on('loadstart', function() {
+		$(this).next('.hero').hide();
+	}).on('play', function() {
 		$(this).next('.hero').show().addClass('animated fadeInDown');
 	});
 });

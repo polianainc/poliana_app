@@ -43,6 +43,8 @@ small { font-size: 0.75em; }
 	margin-bottom: 40px;
 	background: $white;
 	background-repeat: no-repeat;
+	position: relative;
+	z-index: 1;
 	&.expanded { height: $small-background + 150; }
 	&.single {
 		h1 { margin-top: 80px; }
@@ -89,6 +91,80 @@ small { font-size: 0.75em; }
 			margin-top: 120px !important;
 		}
 	}
+}
+
+.background-video {
+	position: relative;
+	margin-top: -20px;
+	height: $small-background;
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 40px;
+	background: $white;
+	video {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		min-width: 100%;
+		width: 100%;
+		z-index: 0;
+		background: $black;
+		@include background-size(cover);
+		@media #{$medium-up} { top: -40px; }
+		@media #{$large-up} { top: -100px; }
+	}
+	.row {
+		position: relative;
+		z-index: 2;
+		* {
+			color: $white;
+			text-align: center;
+		}
+		h1 {
+			margin-top: 40px;
+			@include text-pop($black);
+			font-size: 1.5em;
+			@media #{$medium-up} {
+				margin-top: 30px;
+				font-size: 2.5em;
+			}
+			@media #{$large-up} {
+				margin-top: 100px;
+				font-size: 3em;
+			}
+		}
+		h3 {
+			@include text-pop($black);
+			display: none;
+			@media #{$medium-up} {
+				display: block;
+				font-size: 1.25em;
+			}
+			@media #{$medium-up} { font-size: 1.5em; }
+		}
+		form {
+			margin-top: 20px;
+			margin-bottom: 0px;
+			input {
+				&[type=email] {
+					text-align: left;
+					height: 100%;
+				}
+				&[type=submit] {
+					font-weight: 700 !important;
+					font-size: 0.9em;
+					padding: 8px;
+				}
+			}
+			@media #{$medium-up} {
+				margin-top: 40px;
+				margin-bottom: 20px;
+			}
+			@media #{$large-up} { margin-bottom: 60px; }
+		}
+	}
+	@media #{$medium-up} { height: $medium-background + 100; }
+	@media #{$large-up} { height: $large-background + 200; }
 }
 
 .hero {
@@ -196,4 +272,8 @@ small { font-size: 0.75em; }
 	background: $linkedin;
 	@include flatten(darken($linkedin, 10%));
 	&:hover { background: darken($linkedin, 5%); };
+}
+
+.blue {
+	color: $blue !important;
 }

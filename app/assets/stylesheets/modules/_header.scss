@@ -1,5 +1,7 @@
 // All header styles
 #header {
+	position: relative;
+	z-index: 3;
 	#logo-mobile, #logo-desktop {
 		height: $logo-height;
 		width: auto;
@@ -8,7 +10,6 @@
 		margin-bottom: 20px;
 		#logo-mobile {
 			margin-top: 3px;
-			@extend .shake;
 		}
 		.left-small, .right-small {
 			@include box-shadow(none);
@@ -64,7 +65,6 @@
 		#logo-desktop {
 			margin-left: 20px;
 			margin-top: 15px;
-			@extend .shake;
 		}
 		.left {
 			li {

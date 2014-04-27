@@ -48,11 +48,11 @@
 						<ul class="off-canvas-list">
 							<% if user_signed_in? %>
 							<li><label>Explore</label></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
 							<% end %>
 							<% if !user_signed_in? %>
 							<li><label>General</label></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-enter"></span><span>Sign In</span>'.html_safe(), new_user_session_path %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-login"></span><span>Sign In</span>'.html_safe(), new_user_session_path %></li>
 							<% end %>
 							<% if user_signed_in? %>
 								<% if false %>
@@ -82,7 +82,7 @@
 							</li>
 							<% if true === false %><li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Beta Invitations</span>'.html_safe(), new_invitation_path %></li><% end %>
 							<li><%= link_to '<span aria-hidden="true" class="icon-key"></span><span>Change Password</span>'.html_safe(), edit_user_registration_path %></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-logout"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
 						</ul>
 					</aside>
 					<% end %>
@@ -114,13 +114,13 @@
 						<section class="top-bar-section">
 							<ul class="right">
 								<% if user_signed_in? %>
-								<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
+								<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
 								<li class="has-dropdown">
 									<a href="#"><%= image_tag current_user.avatar_url, :width => "24px" %></a>
 									<ul class="dropdown">
 										<% if true === false %><li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Beta Invitations</span>'.html_safe(), new_invitation_path %></li><% end %>
 										<li><%= link_to '<span aria-hidden="true" class="icon-key"></span><span>Change Password</span>'.html_safe(), edit_user_registration_path %></li>
-										<li><%= link_to '<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
+										<li><%= link_to '<span aria-hidden="true" class="icon-logout"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
 									</ul>
 								</li>
 								<% else %>

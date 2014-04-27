@@ -7,6 +7,10 @@
 		width: auto;
 	}
 	#mobile-nav {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
 		margin-bottom: 20px;
 		#logo-mobile {
 			margin-top: 3px;
@@ -62,6 +66,10 @@
 		}
 	}
 	#desktop-nav {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
 		#logo-desktop {
 			margin-left: 20px;
 			margin-top: 15px;
@@ -93,6 +101,9 @@
 				img { @include border-radius($global-radius); }
 				span {
 					&:first-of-type { padding-right: 10px; }
+				}
+				&.has-form {
+					.button { margin-top: 6px; }
 				}
 			}
 		}

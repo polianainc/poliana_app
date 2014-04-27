@@ -17,6 +17,10 @@ small { font-size: 0.75em; }
 	padding-bottom: 0px;
 }
 
+.extra-space {
+	margin: 20px inherit;
+}
+
 .read-more {
 	padding-top: 0px;
 	margin-top: -10px;
@@ -181,6 +185,7 @@ small { font-size: 0.75em; }
 	#container {
 		min-height: auto;
 		min-height: 100%;
+		margin-top: 80px;
 		margin-bottom: -1 * $footer-height-small;
 		background: $white;
 		&:after {

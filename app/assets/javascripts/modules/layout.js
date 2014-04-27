@@ -2,6 +2,9 @@ $(document).ready(function() {
 	// Load page-specific Javascript
 	pageSpecific();
 
+	// Correctly position footer
+	footerPosition();
+
 	// Change all the full backgrounds
 	if($fullBackground.length > 0)
 		fullBackgrounds();
@@ -109,7 +112,7 @@ $(document).ready(function() {
 
 	$backgroundVideo.find('video').on('play', function() {
 		$(this).next('.hero').show().addClass('animated fadeInDown');
-	})
+	});
 });
 
 $(window).resize($.debounce(250, function() {
@@ -123,6 +126,9 @@ $(window).resize($.debounce(250, function() {
 
 	if($('.joyride-tip-guide').length == 0)
 		$('.joyride-modal-bg').remove();
+
+	// Correctly position footer
+	footerPosition();
 });
 
 // Here we can load page-specific Javascript asynchronously while letting Sprokets handle site-wide dependencies.
@@ -177,4 +183,14 @@ function fullBackgrounds() {
 
 	if($fullBackground.css('background-image').indexOf(newImage) == -1 || $fullBackground.css('background-image') == "none")
 		$fullBackground.css('background-image', 'url(\'/assets/backgrounds/' + newImage + '\')');
+}
+
+// Correctly position footer
+function footerPosition() {
+	var padAmount = $(window).height() - $('.off-canvas-wrap').outerHeight(true) + parseInt($container.css('padding-bottom'));
+
+	if(padAmount < 0)
+		padAmount = 0;
+
+	$container.css('padding-bottom', padAmount);
 }

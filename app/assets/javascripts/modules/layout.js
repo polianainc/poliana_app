@@ -83,7 +83,7 @@ $(document).ready(function() {
 	// Swing in errors, fade em' out
 	if($errors.length > 0) {
 		$errors.animate({
-			top: 20
+			top: 100
 		}, 500, 'swing');
 
 		var success = false;

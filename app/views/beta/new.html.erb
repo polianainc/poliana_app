@@ -22,7 +22,7 @@
 		<%= form_for(resource, :html => { :class => "custom", :autocomplete => "off" }, :as => resource_name, :url => beta_registration_path) do |f| %>
 			<div class="row collapse pre-input<%= " error" if !resource.errors[:email].empty? %>">
 				<div class="small-2 columns">
-		            <span aria-hidden="true" class="prefix icon-envelope"></span>
+		            <span aria-hidden="true" class="prefix icon-mail"></span>
 		        </div>
 				<div class="small-10 columns">
 					<%= f.email_field :email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>

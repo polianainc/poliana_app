@@ -89,11 +89,7 @@
 					<nav class="top-bar show-for-medium-up" id="desktop-nav" data-topbar>
 						<ul class="title-area">
 							<li class="name">
-								<% if user_signed_in? %>
-									<%= link_to image_tag('logo-mark.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
-								<% else %>
-									<%= link_to image_tag('logo.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
-								<% end %>
+								<%= link_to image_tag('logo.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
 							</li>
 							<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 						</ul>

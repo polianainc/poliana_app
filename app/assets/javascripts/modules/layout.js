@@ -109,6 +109,9 @@ $(document).ready(function() {
 	}).on('play', function() {
 		$(this).next('.hero').show().addClass('animated fadeInDown');
 	});
+
+	// Take care of animating in elements on scroll
+	new WOW().init();
 });
 
 $(window).resize($.debounce(250, function() {

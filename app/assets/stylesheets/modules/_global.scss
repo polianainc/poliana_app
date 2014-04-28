@@ -19,7 +19,8 @@ small { font-size: 0.75em; }
 }
 
 .extra-space {
-	margin: 20px inherit;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .read-more {
@@ -37,6 +38,26 @@ small { font-size: 0.75em; }
 	color: $gray;
 	font-size: 0.9em;
 }
+
+.vertAlignImage a {
+	height: 100px;
+	display: block;
+	margin-bottom: 20px;
+	text-align: center;
+	img {
+		vertical-align: middle;
+		max-height: 90px;
+		max-width: 80%;
+	}
+	&:before {
+		content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+	}
+}
+
+.last-pull-up { margin-bottom: -40px; }
 
 .upsize { font-size: 1.25em; }
 .downsize { font-size: 0.75em; }
@@ -104,7 +125,6 @@ small { font-size: 0.75em; }
 	height: $small-background;
 	width: 100%;
 	overflow: hidden;
-	margin-bottom: 40px;
 	background: $white;
 	video {
 		position: absolute;
@@ -280,6 +300,34 @@ small { font-size: 0.75em; }
 	&:hover { background: darken($linkedin, 5%); };
 }
 
-.blue {
-	color: $blue !important;
+.colored-text {
+	&.blue { color: $blue !important; }
+}
+
+.colored-background {
+	padding-bottom: 40px;
+	&.blue {
+		background: $blue !important;
+		h1, h2, h3, h4, h5, span, p { color: $white; }
+		a {
+			color: $black;
+			&:hover { color: $black-alt; }
+		}
+	}
+	&.white {
+		background: $white !important;
+		h1, h2, h3, h4, h5, span, p { color: $black; }
+		a {
+			color: $blue;
+			&:hover { color: $blue-alt; }
+		}
+	}
+	&.black {
+		background: $black !important;
+		h1, h2, h3, h4, h5, span, p { color: $white; }
+		a {
+			color: $blue;
+			&:hover { color: $blue-alt; }
+		}
+	}
 }

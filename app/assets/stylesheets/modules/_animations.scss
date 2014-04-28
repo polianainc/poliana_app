@@ -1,4 +1,12 @@
 // Loader animation, used sitewide
 .loader {
-  
+
+}
+
+[data-animate] {
+  $seconds: 1s;
+  -webkit-animation-duration: $seconds !important;
+  -moz-animation-duration: $seconds !important;
+  -o-animation-duration: $seconds !important;
+  animation-duration: $seconds !important;
 }

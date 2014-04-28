@@ -6,7 +6,7 @@
 		<source src="//s3.amazonaws.com/poliana.media/video/backgrounds/poliana-backgrounds.ogv" type="video/ogg">
 	</video>
 	<div class="row hero">
-		<h1 class="text-center"><span class="blue">Poliana</span> visualizes political influence</h1>
+		<h1 class="text-center"><span class="colored-text blue">Poliana</span> visualizes political influence</h1>
 		<h3 class="text-center">Find the politicians and donors that are impacting your future</h3>
 		<div class="large-8 medium-8 small-12 large-centered medium-centered small-centered columns">
 			<form action="http://poliana.us7.list-manage1.com/subscribe/post?u=92d5bd31807677bfb3c47261b&amp;id=f21dcc0b54" method="post" class="mailchimp-form row">
@@ -26,17 +26,71 @@
 		</div>
 	</div>
 </div>
-<div class="row hero">
-	<div class="large-12 columns extra-space">
-		<h2 class="text-center">We give you just the facts about your politicians</h2>
+<div class="colored-background white extra-space">
+	<div class="row hero">
+		<div class="large-12 columns extra-space">
+			<h2 class="text-center wow fadeInDown">We give you just the facts about your politicians</h2>
+		</div>
+		<div class="large-4 medium-5 small-8 large-uncentered medium-uncentered small-centered columns">
+			<%= image_tag 'speech.png', :alt => 'We give you just the facts about your politicians', :class => 'wow flipInX', :data => { :wow_delay => '0.25s'} %>
+		</div>
+		<div class="large-6 medium-6 small-12 columns">
+			<h4 class="wow fadeInDown">Poliana is 100% driven by open data!</h4>
+			<p class="wow fadeInDown">We bring together millions of data points on the political system: voting records, political donations, lobbyist spending, bill sponsorships, industry influence, and more.</p>
+			<p class="wow fadeInDown">Unlike traditional media, we’re not interested in feeding you a pre-made agenda. We make it our goal to provide you with raw, unaltered information on our government to let you draw your own conclusions.</p>
+			<p class="wow fadeInDown">Using a bi-partisan approach gives the American people a wholistic view on Washington, and that’s what we’re all about.</p>
+		</div>
 	</div>
-	<div class="large-4 columns">
-		<%= image_tag 'speech.png', :alt => 'We give you just the facts about your politicians' %>
+</div>
+<div class="colored-background blue extra-space">
+	<div class="row hero">
+		<div class="large-12 columns extra-space">
+			<h2 class="text-center wow fadeInDown">Learn about the issues that matter most to you</h2>
+		</div>
+		<div class="large-4 medium-5 small-8 large-push-8 medium-push-7 large-uncentered medium-uncentered small-centered columns">
+			<%= image_tag 'magnify.png', :alt => 'We give you just the facts about your politicians', :class => 'wow flipInX', :data => { :wow_delay => '0.25s'} %>
+		</div>
+		<div class="large-6 medium-6 small-12 large-pull-6 medium-pull-6 columns">
+			<h4 class="wow fadeInDown">Gain a deeper insight into politicians!</h4>
+			<p class="wow fadeInDown">We help you find the politicians and donors that are having the greatest impact on the issues you care about. You can browse the big picture or search for something more specific.</p>
+			<p class="wow fadeInDown">Whether you lean liberal or conservative, we want to connect you to the politicians that most share your political views.</p>
+		</div>
 	</div>
-	<div class="large-6 columns">
-		<h4>Poliana is 100% driven by open data!</h4>
-		<p>We bring together millions of data points on the political system: voting records, political donations, lobbyist spending, bill sponsorships, industry influence, and more.</p>
-		<p>Unlike traditional media, we’re not interested in feeding you a pre-made agenda. We make it our goal to provide you with raw, unaltered information on our government to let you draw your own conclusions.</p>
-		<p>Using a bi-partisan approach gives the American people a wholistic view on Washington, and that’s what we’re all about.</p>
+</div>
+<div class="colored-background white extra-space">
+	<div class="row hero">
+		<div class="large-12 columns extra-space">
+			<h2 class="text-center wow fadeInDown">We work with those dedicated to transparency</h2>
+		</div>
+		<div class="large-3 medium-3 small-6 columns vertAlignImage">
+			<%= link_to image_tag('open-secrets.png', :alt => "Open Secrets", :class => 'wow flipInX'), 'http://www.opensecrets.org', :target => "_blank" %>
+		</div>
+		<div class="large-3 medium-3 small-6 columns vertAlignImage">
+			<%= link_to image_tag('govtrack.png', :alt => "Govtrack", :class => 'wow flipInX', :data => { :wow_delay => '0.25s'}), 'http://www.govtrack.us', :target => "_blank" %>
+		</div>
+		<div class="large-3 medium-3 small-6 columns vertAlignImage">
+			<%= link_to image_tag('congress-gov.png', :alt => "Congress.gov", :class => 'wow flipInX', :data => { :wow_delay => '0.5s'}), 'http://www.congress.gov', :target => "_blank" %>
+		</div>
+		<div class="large-3 medium-3 small-6 columns vertAlignImage">
+			<%= link_to image_tag('sunlight-foundation.png', :alt => "Sunlight Foundation", :class => 'wow flipInX', :data => { :wow_delay => '0.75s'}), 'http://www.sunlightfoundation.com', :target => "_blank" %>
+		</div>
+		<div class="large-12 columns">
+			<p class="text-center wow fadeInDown">Our data comes from a variety of political transparency initiatives. We allow only the best, most trusted sources of open-government data for use on Poliana. All information we use comes from those who really care about making a difference in our government.</p>
+		</div>
+	</div>
+</div>
+<div class="colored-background black extra-space last-pull-up">
+	<div class="row hero">
+		<div class="large-12 columns extra-space">
+			<h2 class="text-center wow fadeInDown">Share with your friends on social media</h2>
+		</div>
+		<div class="large-4 medium-5 small-8 large-uncentered medium-uncentered small-centered columns">
+			<%= image_tag 'people-up.png', :alt => 'We give you just the facts about your politicians', :class => 'wow flipInX', :data => { :wow_delay => '0.25s'} %>
+		</div>
+		<div class="large-6 medium-6 small-12 columns">
+			<h4 class="wow fadeInDown">Start a conversation!</h4>
+			<p class="wow fadeInDown">We think Poliana is sure to spark a much needed conversation in our government, so we’ve made it easy to share the most interesting things you find on the site to social media.</p>
+			<p class="wow fadeInDown">The more you share, the more we can raise awareness about the issues that we face as a nation. That’s progress, not congress.</p>
+		</div>
 	</div>
 </div>

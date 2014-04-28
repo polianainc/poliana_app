@@ -18,6 +18,9 @@
 		.left-small, .right-small {
 			@include box-shadow(none);
 			.menu-icon, .user-icon { cursor: pointer; }
+			.menu-icon {
+				span { top: 1.35rem; }
+			}
 			.user-icon {
 				position: relative;
 				color: $black;

@@ -1,5 +1,6 @@
 // Basic site-wide element resets
 html, body { height: 100%; }
+html { overflow-y: scroll; }
 *:focus { outline: none !important; }
 a { @include single-transition(color, 0.1s, linear); }
 p { font-weight: 300; }

@@ -80,12 +80,8 @@ $(document).ready(function() {
 	// Parallax backgrounds
 	$(window).stellar();
 
-	// Swing in errors, fade em' out
+	// Fade out errors
 	if($errors.length > 0) {
-		$errors.animate({
-			top: 100
-		}, 500, 'swing');
-
 		var success = false;
 
 		$errors.find('[data-alert]').each(function() {

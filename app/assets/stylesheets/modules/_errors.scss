@@ -1,8 +1,13 @@
 #alert-section {
 	position: fixed;
-	left: 0;
-	top: -200px;
+	top: 20px;
+	left: 50%;
 	z-index: 100;
-	width: 100%;
+	width: 90%;
 	height: auto;
+	margin-left: -45%;
+	@media #{$medium-up} {
+		width: 50%;
+		margin-left: -25%;
+	}
 }

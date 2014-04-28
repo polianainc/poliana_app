@@ -18,9 +18,6 @@
 		.left-small, .right-small {
 			@include box-shadow(none);
 			.menu-icon, .user-icon { cursor: pointer; }
-			.menu-icon {
-				span { top: 1.35rem; }
-			}
 			.user-icon {
 				position: relative;
 				color: $black;
@@ -39,31 +36,35 @@
 			}
 		}
 	}
-	.off-canvas-list {
-		span {
-			&:first-of-type { padding-right: 10px; }
-		}
-		li {
-			&.row {
-				padding: 15px;
-				img { @include border-radius($global-radius); }
-				p {
-					color: $white;
-					margin-bottom: 0px;
-					padding-left: 10px;
-				}
+	.left-off-canvas-menu, .right-off-canvas-menu {
+		height: 9999px;
+		top: -$header-height;
+		.off-canvas-list {
+			span {
+				&:first-of-type { padding-right: 10px; }
 			}
-			&.has-form {
-				position: relative;
-				padding: 15px;
-				input { padding-right: 35px; }
-				a {
-					position: absolute;
-					top: 8px;
-					right: 0px;
-					border-bottom: none;
-					color: $black;
-					&:hover { color: $primary-color; }
+			li {
+				&.row {
+					padding: 15px;
+					img { @include border-radius($global-radius); }
+					p {
+						color: $white;
+						margin-bottom: 0px;
+						padding-left: 10px;
+					}
+				}
+				&.has-form {
+					position: relative;
+					padding: 15px;
+					input { padding-right: 35px; }
+					a {
+						position: absolute;
+						top: 8px;
+						right: 0px;
+						border-bottom: none;
+						color: $black;
+						&:hover { color: $primary-color; }
+					}
 				}
 			}
 		}

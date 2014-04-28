@@ -13,6 +13,7 @@
 <% content_for :title, @politician.full_name %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
+<div class="loader"></div>
 <div class="hide primary-key" data-id="<%= @politician.bioguide_id %>" data-start="<%= terms.last.start.strftime('%m-%d-%Y') %>" data-end="<%= terms.first.end.strftime('%m-%d-%Y') %>"></div>
 <div class="row">
 	<div class="large-3 medium-3 small-4 small-centered medium-uncentered large-uncentered columns">
@@ -90,7 +91,6 @@
 		</div>
 	</div>
 </div>
-<div class="loader"></div>
 <div class="foldable">
 	<div class="foldable-header down">
 		<div class="row show-for-small">

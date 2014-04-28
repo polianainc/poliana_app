@@ -9,7 +9,7 @@
 		<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => "custom", :autocomplete => "off" }) do |f| %>
 			<div class="row collapse pre-input<%= " error" if !resource.errors[:email].empty? %>">
 				<div class="small-2 columns">
-		            <span aria-hidden="true" class="prefix icon-envelope"></span>
+		            <span aria-hidden="true" class="prefix icon-mail"></span>
 		        </div>
 				<div class="small-10 columns">
 					<%= f.email_field :email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>

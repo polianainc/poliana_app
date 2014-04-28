@@ -9,6 +9,8 @@ var $sharable = $('#sharable');
 var $foldable = $('.foldable');
 var $loader = $('.loader');
 var $errors = $('#alert-section');
+var $backgroundVideo = $('.background-video');
+var $footer = $('#footer');
 
 var $allPoliticians = $('#politicians-result');
 var $allPoliticiansCounter = $('#politicians-counter');

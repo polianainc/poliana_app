@@ -1,7 +1,7 @@
 <% if flash[:error] || flash[:errors] || flash[:alert] || flash[:success] || flash[:notice] %>
-<div id="alert-section">
+<div id="alert-section" class="animated fadeInDown">
 	<div class="row">
-		<div class="large-6 medium-8 large-centered medium-centered columns">
+		<div class="large-12 medium-12 small-12 columns">
 			<% if flash[:error] || flash[:errors] || flash[:alert] %>
 			<div data-alert class="alert-box alert radius">
 				<a href="#" class="close">&times;</a>

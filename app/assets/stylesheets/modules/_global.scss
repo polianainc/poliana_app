@@ -1,5 +1,6 @@
 // Basic site-wide element resets
 html, body { height: 100%; }
+html { overflow-y: scroll; }
 *:focus { outline: none !important; }
 a { @include single-transition(color, 0.1s, linear); }
 p { font-weight: 300; }
@@ -15,6 +16,11 @@ small { font-size: 0.75em; }
 	margin-bottom: 0px;
 	padding-top: 0px;
 	padding-bottom: 0px;
+}
+
+.extra-space {
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .read-more {
@@ -33,6 +39,26 @@ small { font-size: 0.75em; }
 	font-size: 0.9em;
 }
 
+.vertAlignImage a {
+	height: 100px;
+	display: block;
+	margin-bottom: 20px;
+	text-align: center;
+	img {
+		vertical-align: middle;
+		max-height: 90px;
+		max-width: 80%;
+	}
+	&:before {
+		content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+	}
+}
+
+.last-pull-up { margin-bottom: -40px; }
+
 .upsize { font-size: 1.25em; }
 .downsize { font-size: 0.75em; }
 
@@ -43,6 +69,8 @@ small { font-size: 0.75em; }
 	margin-bottom: 40px;
 	background: $white;
 	background-repeat: no-repeat;
+	position: relative;
+	z-index: 1;
 	&.expanded { height: $small-background + 150; }
 	&.single {
 		h1 { margin-top: 80px; }
@@ -91,6 +119,79 @@ small { font-size: 0.75em; }
 	}
 }
 
+.background-video {
+	position: relative;
+	margin-top: -20px;
+	height: $small-background;
+	width: 100%;
+	overflow: hidden;
+	background: $white;
+	video {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		min-width: 100%;
+		width: 100%;
+		z-index: 0;
+		background: $black;
+		@include background-size(cover);
+		@media #{$medium-up} { top: -40px; }
+		@media #{$large-up} { top: -100px; }
+	}
+	.row {
+		position: relative;
+		z-index: 2;
+		* {
+			color: $white;
+			text-align: center;
+		}
+		h1 {
+			margin-top: 40px;
+			@include text-pop($black);
+			font-size: 1.5em;
+			@media #{$medium-up} {
+				margin-top: 30px;
+				font-size: 2.5em;
+			}
+			@media #{$large-up} {
+				margin-top: 100px;
+				font-size: 3em;
+			}
+		}
+		h3 {
+			@include text-pop($black);
+			display: none;
+			@media #{$medium-up} {
+				display: block;
+				font-size: 1.25em;
+			}
+			@media #{$medium-up} { font-size: 1.5em; }
+		}
+		form {
+			margin-top: 20px;
+			margin-bottom: 0px;
+			input {
+				&[type=email] {
+					text-align: left;
+					height: 100%;
+				}
+				&[type=submit] {
+					font-weight: 700 !important;
+					font-size: 0.9em;
+					padding: 8px;
+				}
+			}
+			@media #{$medium-up} {
+				margin-top: 40px;
+				margin-bottom: 20px;
+			}
+			@media #{$large-up} { margin-bottom: 60px; }
+		}
+	}
+	@media #{$medium-up} { height: $medium-background + 100; }
+	@media #{$large-up} { height: $large-background + 200; }
+}
+
 .hero {
 	margin: 10px auto;
 	@media #{$medium-up} { margin: 20px auto; }
@@ -105,6 +206,7 @@ small { font-size: 0.75em; }
 	#container {
 		min-height: auto;
 		min-height: 100%;
+		margin-top: 80px;
 		margin-bottom: -1 * $footer-height-small;
 		background: $white;
 		&:after {
@@ -196,4 +298,36 @@ small { font-size: 0.75em; }
 	background: $linkedin;
 	@include flatten(darken($linkedin, 10%));
 	&:hover { background: darken($linkedin, 5%); };
+}
+
+.colored-text {
+	&.blue { color: $blue !important; }
+}
+
+.colored-background {
+	padding-bottom: 40px;
+	&.blue {
+		background: $blue !important;
+		h1, h2, h3, h4, h5, span, p { color: $white; }
+		a {
+			color: $black;
+			&:hover { color: $black-alt; }
+		}
+	}
+	&.white {
+		background: $white !important;
+		h1, h2, h3, h4, h5, span, p { color: $black; }
+		a {
+			color: $blue;
+			&:hover { color: $blue-alt; }
+		}
+	}
+	&.black {
+		background: $black !important;
+		h1, h2, h3, h4, h5, span, p { color: $white; }
+		a {
+			color: $blue;
+			&:hover { color: $blue-alt; }
+		}
+	}
 }

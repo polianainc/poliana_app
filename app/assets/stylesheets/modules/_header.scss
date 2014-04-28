@@ -1,14 +1,19 @@
 // All header styles
 #header {
+	position: relative;
+	z-index: 3;
 	#logo-mobile, #logo-desktop {
 		height: $logo-height;
 		width: auto;
 	}
 	#mobile-nav {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
 		margin-bottom: 20px;
 		#logo-mobile {
 			margin-top: 3px;
-			@extend .shake;
 		}
 		.left-small, .right-small {
 			@include box-shadow(none);
@@ -31,40 +36,47 @@
 			}
 		}
 	}
-	.off-canvas-list {
-		span {
-			&:first-of-type { padding-right: 10px; }
-		}
-		li {
-			&.row {
-				padding: 15px;
-				img { @include border-radius($global-radius); }
-				p {
-					color: $white;
-					margin-bottom: 0px;
-					padding-left: 10px;
-				}
+	.left-off-canvas-menu, .right-off-canvas-menu {
+		height: 9999px;
+		top: -$header-height;
+		.off-canvas-list {
+			span {
+				&:first-of-type { padding-right: 10px; }
 			}
-			&.has-form {
-				position: relative;
-				padding: 15px;
-				input { padding-right: 35px; }
-				a {
-					position: absolute;
-					top: 8px;
-					right: 0px;
-					border-bottom: none;
-					color: $black;
-					&:hover { color: $primary-color; }
+			li {
+				&.row {
+					padding: 15px;
+					img { @include border-radius($global-radius); }
+					p {
+						color: $white;
+						margin-bottom: 0px;
+						padding-left: 10px;
+					}
+				}
+				&.has-form {
+					position: relative;
+					padding: 15px;
+					input { padding-right: 35px; }
+					a {
+						position: absolute;
+						top: 8px;
+						right: 0px;
+						border-bottom: none;
+						color: $black;
+						&:hover { color: $primary-color; }
+					}
 				}
 			}
 		}
 	}
 	#desktop-nav {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
 		#logo-desktop {
 			margin-left: 20px;
 			margin-top: 15px;
-			@extend .shake;
 		}
 		.left {
 			li {
@@ -93,6 +105,9 @@
 				img { @include border-radius($global-radius); }
 				span {
 					&:first-of-type { padding-right: 10px; }
+				}
+				&.has-form {
+					.button { margin-top: 6px; }
 				}
 			}
 		}

@@ -48,11 +48,11 @@
 						<ul class="off-canvas-list">
 							<% if user_signed_in? %>
 							<li><label>Explore</label></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
 							<% end %>
 							<% if !user_signed_in? %>
 							<li><label>General</label></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-enter"></span><span>Sign In</span>'.html_safe(), new_user_session_path %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-login"></span><span>Sign In</span>'.html_safe(), new_user_session_path %></li>
 							<% end %>
 							<% if user_signed_in? %>
 								<% if false %>
@@ -82,18 +82,14 @@
 							</li>
 							<% if true === false %><li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Beta Invitations</span>'.html_safe(), new_invitation_path %></li><% end %>
 							<li><%= link_to '<span aria-hidden="true" class="icon-key"></span><span>Change Password</span>'.html_safe(), edit_user_registration_path %></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-logout"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
 						</ul>
 					</aside>
 					<% end %>
 					<nav class="top-bar show-for-medium-up" id="desktop-nav" data-topbar>
 						<ul class="title-area">
 							<li class="name">
-								<% if user_signed_in? %>
-									<%= link_to image_tag('logo-mark.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
-								<% else %>
-									<%= link_to image_tag('logo.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
-								<% end %>
+								<%= link_to image_tag('logo.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
 							</li>
 							<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 						</ul>
@@ -114,17 +110,17 @@
 						<section class="top-bar-section">
 							<ul class="right">
 								<% if user_signed_in? %>
-								<li><%= link_to '<span aria-hidden="true" class="icon-user2"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
+								<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
 								<li class="has-dropdown">
 									<a href="#"><%= image_tag current_user.avatar_url, :width => "24px" %></a>
 									<ul class="dropdown">
 										<% if true === false %><li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Beta Invitations</span>'.html_safe(), new_invitation_path %></li><% end %>
 										<li><%= link_to '<span aria-hidden="true" class="icon-key"></span><span>Change Password</span>'.html_safe(), edit_user_registration_path %></li>
-										<li><%= link_to '<span aria-hidden="true" class="icon-exit"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
+										<li><%= link_to '<span aria-hidden="true" class="icon-logout"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
 									</ul>
 								</li>
 								<% else %>
-								<li><%= link_to 'Sign In', new_user_session_path %></li>
+								<li class="has-form"><%= link_to 'Sign Up!', new_user_session_path, :class => 'button radius' %></li>
 								<% end %>
 							</ul>
 						</section>
@@ -147,11 +143,11 @@
 						<%= link_to image_tag('logo-white.png', :id => "logo-footer", :alt => "Poliana"), root_path %>
 						<p>Poliana is a web application that visualizes political influence. We’re based out of Nashville, Tennessee and love it here. To get in touch please email us at <%= link_to "contact@poliana.com", "mailto:contact@poliana.com" %> or find us on social media!</p>
 						<ul class="social">
-							<li><%= link_to '<span aria-hidden="true" class="icon-facebook"></span>'.html_safe(), 'https://www.facebook.com/polianainc', :target => '_blank' %></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-twitter"></span>'.html_safe(), 'https://twitter.com/poliana', :target => '_blank' %></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-github"></span>'.html_safe(), 'https://github.com/polianaco/', :target => '_blank' %></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-tumblr"></span>'.html_safe(), 'http://blog.poliana.com/', :target => '_blank' %></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-vimeo"></span>'.html_safe(), 'https://vimeo.com/82250634', :target => '_blank' %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-facebook2"></span>'.html_safe(), 'https://www.facebook.com/polianainc', :target => '_blank' %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-twitter2"></span>'.html_safe(), 'https://twitter.com/poliana', :target => '_blank' %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-github2"></span>'.html_safe(), 'https://github.com/polianaco/', :target => '_blank' %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-tumblr2"></span>'.html_safe(), 'http://blog.poliana.com/', :target => '_blank' %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-vimeo2"></span>'.html_safe(), 'https://vimeo.com/82250634', :target => '_blank' %></li>
 						</ul>
 						<ul class="copyright">
 							<li>Copyright &copy; <%= Time.now.year %> Poliana, Inc.</li>

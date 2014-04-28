@@ -66,9 +66,6 @@ group :development, :test do
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
   gem 'guard-rspec'
-  gem 'jasmine-rails'
-  gem 'jasmine-jquery-rails'
-  gem 'guard-jasmine'
   gem 'sunspot_matchers'
 
   #Notifications
@@ -80,12 +77,8 @@ end
 
 group :assets do
   gem 'jquery-rails'
-
   gem 'sass-rails'
 
-  #Temporary bullshit... we'll have to watch how the compass-rails gem is maintained
-  #They need to support to Compass 0.13 so we can handle custom keyframe animations
-  gem 'compass', '~> 0.13.alpha.12'
   gem 'compass-rails'
 
   gem 'therubyracer', :platforms => :ruby, :group => :production

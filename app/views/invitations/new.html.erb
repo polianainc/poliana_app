@@ -9,7 +9,7 @@
 		<%= form_for @invitation, :class => "custom" do |f| %>
 			<div class="row collapse pre-input<%= " error" if !@invitation.errors[:recipient_email].empty? %>">
 				<div class="small-2 columns">
-		            <span aria-hidden="true" class="prefix icon-envelope"></span>
+		            <span aria-hidden="true" class="prefix icon-mail"></span>
 		        </div>
 				<div class="small-10 columns">
 					<%= f.text_field :recipient_email, :autofocus => true, :autocomplete => "off", :placeholder => "Email Address" %>

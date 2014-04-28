@@ -11,6 +11,7 @@
 //= require vendor/disqus
 //= require vendor/stupidtable
 //= require vendor/stellar
+//= require vendor/wow
 //= require vendor/d3.v3
 //= require vendor/crossfilter
 
@@ -36,7 +37,7 @@ $(document).ready(function() {
 			}
 		}
 	});
-	
+
 	// They see me ridin'... they hatin'...
 	if($('.joyride-list').length > 0) {
 		if($('.joyride-list').attr('data-cookie') != "") {

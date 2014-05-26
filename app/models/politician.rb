@@ -14,6 +14,9 @@ class Politician
   field :state, :type => String
   field :percent_age_difference, :type => Float
   field :image_url, :type => String
+
+  field :contributions, :type => Hash, :default => ->{ Hash.new }
+
   embeds_many :terms
   accepts_nested_attributes_for :terms
 

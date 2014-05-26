@@ -73,6 +73,7 @@ def import_raw_legislators_to_mongo
   add_pre_election_terms
   add_congresses
   add_image_urls
+  add_contribution_totals
 end
 
 #Adds senator terms which straddle our start date (i.e. they were elected 4 years or 2 years before the start of the 108th congress) so that we don't incorrectly say that these were pre election terms for these congresspeople
@@ -199,6 +200,33 @@ def add_image_urls
       pol.image_url = "/assets/politician-female.png"  if pol.gender == "F"
     end
     pol.save
+  end
+end
+
+def add_contribution_totals
+  congresses = (108..113)
+  totals_cache = {}
+
+  congresses.each do |c|
+    url = "http://poliana-staging.elasticbeanstalk.com/politicians/contributions?apikey=07f8f343-f811-4174-94a4-9da1048fb9fe&congress=#{c}"
+    response = HTTParty.get(url)
+    totals_cache[c] = JSON.parse(response.body)["content"]
+  end
+
+  Politician.each do |pol|
+    pol.terms.each do |t|
+      t.congresses.each do |c|
+        data = totals_cache[c].select { |d| d["bioguide_id"] == pol.bioguide_id }
+        if data.count > 0
+          data = data[0]
+          pol.contributions[c] = { industry: data["individual_contributions"], pac: data["pac_contributions"] }
+          pol.save
+        else
+          pol.contributions[c] = { industry: 0.0, pac: 0.0 }
+          pol.save
+        end
+      end
+    end
   end
 end
 

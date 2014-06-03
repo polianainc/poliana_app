@@ -13,7 +13,6 @@ class Politician
   field :religion, :type => String
   field :state, :type => String
   field :percent_age_difference, :type => Float
-  field :first_elected, :type => String
   field :image_url, :type => String
 
   field :contributions, :type => Hash, :default => ->{ Hash.new }

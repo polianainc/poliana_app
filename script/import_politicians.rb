@@ -64,7 +64,6 @@ def import_raw_legislators_to_mongo
 
     mpol.terms << term if mpol.terms.where(:start => term.start).count == 0
 
-    mpol.first_elected = mpol.terms[0].start
 
     mpol.save()
   end

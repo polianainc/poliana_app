@@ -270,5 +270,48 @@ if($key.length > 0) {
 	});
 }
 else {
-	console.log("Index");
+	var $searchForm = $('#politician-search');
+
+	var $allInputs = {
+		search: $searchForm.find('input[name=query]'),
+		state: $searchForm.find('select[name=state]'),
+		type: $searchForm.find('input[name=type]'),
+		party: $searchForm.find('input[name=party]'),
+		gender: $searchForm.find('select[name=gender]'),
+		religion: $searchForm.find('input[name=religion]'),
+		sort: $searchForm.find('select[name=sort]'),
+		time: $searchForm.find('select[name=time]')
+	};
+
+	$searchForm.find('select, input').on('change', function() {
+		// Prepare the query data
+		var queryString = {};
+
+		// Populate it
+		$.each($allInputs, function() {
+			var value;
+
+			if($(this).size() > 1) {
+				var checked = [];
+
+				$(this).each(function() {
+					if($(this).is(':checked'))
+						checked.push($(this).val());
+				});
+
+				checked = checked.join();
+
+				if(checked !== "")
+					queryString[$(this).attr('name')] = checked;
+			}
+			else if($(this).size() === 1 && $(this).val() != "" && $(this).val() != "all")
+				queryString[$(this).attr('name')] = $(this).val();
+		});
+
+		console.log(queryString);
+
+		/*$.get('/congress/politicians', queryString, function(data) {
+			console.log(data);
+		});*/
+	});
 }

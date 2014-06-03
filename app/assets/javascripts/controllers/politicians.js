@@ -270,57 +270,5 @@ if($key.length > 0) {
 	});
 }
 else {
-	$('input[name=politician_search_main], input[name=politician_search_small]').on('keyup', $.debounce(500, function(event) {
-		if($(this).attr('name') == "politician_search_main")
-			$('input[name=politician_search_small]').val($(this).val());
-		else
-			$('input[name=politician_search_main]').val($(this).val());
-
-		if($(this).val() != "" && $(this).val().length > 2) {
-			$allPoliticians.find('.lead').hide();
-			runPoliticianSearch($(this).val().toLowerCase());
-		}
-		else {
-			$allPoliticians.find('.politician').addClass('hide');
-			$allPoliticians.find('.lead').show();
-			$allPoliticiansCounter.hide();
-		}
-	}));
-
-	function runPoliticianSearch(value) {
-		var lookups = ['birthyear', 'birthmonth', 'firstname', 'lastname', 'fullname', 'gender', 'party', 'religion', 'generalreligion', 'state', 'congresses'];
-
-		$allPoliticians.find('.politician').each(function() {
-			var found = false;
-			var $elem = $(this);
-
-			$.each(lookups, function() {
-				if($elem.attr('data-' + this).toLowerCase().indexOf(value) != -1)
-					found = true;
-			});
-
-			if(found) {
-				$(this).removeClass('hide');
-				count++;
-			}
-			else
-				$(this).addClass('hide');
-		});
-
-		if(count <= 12)
-			$allPoliticians.addClass('less');
-		else
-			$allPoliticians.removeClass('less');
-
-		if(count == 0)
-			count = "No results";
-		else if(count == 1)
-			count = "1 result";
-		else
-			count = count + " results";
-
-		$allPoliticiansCounter.find('.count').html(count);
-		$allPoliticiansCounter.find('.query').html(value);
-		$allPoliticiansCounter.show();
-	}
+	console.log("Index");
 }

@@ -1,66 +1,48 @@
 <% content_for :title, "Politicians" %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
-<%= render layout: "shared/backgrounds", locals: { classes: "single" } do %>
-<div class="hide-for-small">
-	<h1 class="text-center">What’s your politician up to?</h1><br>
-	<input type="search" name="politician_search_main" placeholder="Start typing a name, party, state, religion, or anything!">
-</div>
-<div class="show-for-small">
-	<h1 class="text-center">Politicians</h1>
-</div>
-<% end %>
-<div class="row">
-	<div class="small-12 columns hide-for-medium-up">
-		<input type="search" name="politician_search_small" placeholder="Search for a politician...">
-	</div>
-</div>
 <div class="row">
 	<div class="large-12 columns">
-		<h2 class="text-center hide" id="politicians-counter"><span class="count"></span> for &quot;<span class="query"></span>&quot;</h2>
+		<h1 class="text-center">Search All Politicians</h1>
 	</div>
 </div>
-<div>
-<div class="row" id="politicians-result">
-	<div class="large-12 show-for-medium-up columns">
-		<p class="lead text-center">Learn more about any politician in the political system. Whether that be the President, a Senator, or a Congressperson, our goal is to get you informed on what they're up to and how they're running their term.</p>
-	</div>
-	<% @politicians.each do |p| %>
-		<% terms = p.terms.sort { |a, b| b.start <=> a.start } %>
-		
-		<% congresses = [] %>
-		<% p.terms.each do |t| %>
-			<% congresses.concat t.congresses %>
-		<% end %>
-		<% congresses.map! { |c| c.ordinalize } %>
-		
-		<div class="politician hide" data-birthyear="<%= p.birthday.year %>" data-birthmonth="<%= Date::MONTHNAMES[p.birthday.month] %>" data-firstname="<%= p.first_name %>" data-lastname="<%= p.last_name %>" data-fullname="<%= p.full_name %>" data-gender="<%= Politician.gender(p.gender) if !defined?(p.gender).nil? %>" data-party="<%= p.party if !defined?(p.party).nil? %>" data-religion="<%= p.religion if !defined?(p.religion).nil? %>" data-generalreligion="<%= p.general_religion if !defined?(p.religion).nil? %>" data-state="<%= Politician.state(p.state) if !defined?(p.state).nil? %>" data-congresses="<%= congresses.join(',') %>">
-			<div class="clearfix short large-4 medium-4 small-12 columns">
-				<a href="/congress/politicians/<%= p.bioguide_id %>">
-					<% if p.party and p.state %>
-					<ul class="politician-card sided left <%= p.party.downcase %>">
-						<li><%= Politician.party(p.party) %></li>
-						<li><%= p.state %></li>
-					</ul>
-					<% end %>
-					<h5 class="left"><%= p.full_name %></h5>
-				</a>
-			</div>
-			<div class="long large-3 medium-4 small-6 columns">
-				<a href="/congress/politicians/<%= p.bioguide_id %>">
-					<div class="thumbnail" style="background-image: url(<%= p.image_url %>);"></div>
-					<h5 class="text-center"><%= p.full_name %></h5>
-					<% if !terms.first.term_type.nil? %>
-					<p class="text-center"><strong><%= Politician.role(terms.first.term_type) %></strong></p>
-					<% end %>
-					<% if p.party and p.state %>
-					<ul class="politician-card <%= p.party.downcase %>">
-						<li><%= Politician.party(p.party) %></li>
-						<li><%= p.state %></li>
-					</ul>
-					<% end %>
-				</a>
+<div class="foldable">
+	<div class="foldable-header down">
+		<div class="row show-for-small">
+			<div class="small-12 columns">
+				<h3 class="title">Search Options</h3>
 			</div>
 		</div>
-	<% end %>
+	</div>
+	<div class="foldable-content">
+		<div class="row">
+			<div class="large-3 medium-4 small-12 columns">
+				<form id="politician-search">
+					<input type="text" name="query" placeholder="Search for anything...">
+					<div class="foldable">
+						<div class="foldable-header down">
+							<div class="row">
+								<div class="small-12 columns">
+									<p class="gray-caps title">State</p>
+								</div>
+							</div>
+						</div>
+						<div class="foldable-content">
+							<select name="state">
+								<option disabled selected>Select a state</option>
+							</select>
+						</div>
+					</div>
+					<p class="gray-caps">Politician Type</p>
+					<input type="checkbox" id="type-0" name="type" value="President"><label for="type-0">President</label>
+					<input type="checkbox" id="type-1" name="type" value="Vice-president"><label for="type-1">Vice-President</label>
+					<input type="checkbox" id="type-2" name="type" value="Senator"><label for="type-2">Senator</label>
+					<input type="checkbox" id="type-3" name="type" value="Representative"><label for="type-3">Representative</label>
+				</form>
+			</div>
+			<div class="large-8 medium-8 small-12 large-offset-1 columns">
+
+			</div>
+		</div>
+	</div>
 </div>

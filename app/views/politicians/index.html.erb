@@ -19,25 +19,74 @@
 			<div class="large-3 medium-4 small-12 columns">
 				<form id="politician-search">
 					<input type="text" name="query" placeholder="Search for anything...">
-					<div class="foldable">
-						<div class="foldable-header down">
-							<div class="row">
-								<div class="small-12 columns">
-									<p class="gray-caps title">State</p>
-								</div>
-							</div>
-						</div>
-						<div class="foldable-content">
-							<select name="state">
-								<option disabled selected>Select a state</option>
-							</select>
-						</div>
-					</div>
+					<p class="gray-caps">State</p>
+					<select name="state">
+						<option selected value="all">All states</option>
+					</select>
 					<p class="gray-caps">Politician Type</p>
-					<input type="checkbox" id="type-0" name="type" value="President"><label for="type-0">President</label>
-					<input type="checkbox" id="type-1" name="type" value="Vice-president"><label for="type-1">Vice-President</label>
-					<input type="checkbox" id="type-2" name="type" value="Senator"><label for="type-2">Senator</label>
-					<input type="checkbox" id="type-3" name="type" value="Representative"><label for="type-3">Representative</label>
+					<div class="input-new-line">
+						<input type="checkbox" id="type-0" name="type" value="President"><label for="type-0">President</label>
+					</div>
+					<div class="input-new-line">
+						<input type="checkbox" id="type-1" name="type" value="Vice-President"><label for="type-1">Vice-President</label>
+					</div>
+					<div class="input-new-line">
+						<input type="checkbox" id="type-2" name="type" value="Senator"><label for="type-2">Senator</label>
+					</div>
+					<div class="input-new-line">
+						<input type="checkbox" id="type-3" name="type" value="Representative"><label for="type-3">Representative</label>
+					</div>
+					<p class="gray-caps">Party</p>
+					<div class="input-new-line">
+						<input type="checkbox" id="party-0" name="type" value="Democrat"><label for="party-0">Democrat</label>
+					</div>
+					<div class="input-new-line">
+						<input type="checkbox" id="party-1" name="type" value="Republican"><label for="party-1">Republican</label>
+					</div>
+					<div class="input-new-line">
+						<input type="checkbox" id="party-2" name="type" value="Independent"><label for="party-2">Independent</label>
+					</div>
+					<p class="gray-caps">Gender</p>
+					<select name="gender">
+						<option selected value="all">All</option>
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+					</select>
+					<p class="gray-caps">Religion</p>
+					<div class="input-new-line">
+						<input type="checkbox" id="religion-0" name="religion" value="Christian"><label for="religion-0">Christian</label>
+					</div>
+					<div class="input-new-line">
+						<input type="checkbox" id="religion-1" name="religion" value="Muslim"><label for="religion-1">Muslim</label>
+					</div>
+					<div class="input-new-line">
+						<input type="checkbox" id="religion-2" name="religion" value="Jewish"><label for="religion-2">Jewish</label>
+					</div>
+					<div class="input-new-line">
+						<input type="checkbox" id="religion-3" name="religion" value="Buddhism"><label for="religion-3">Buddhism</label>
+					</div>
+					<div class="input-new-line">
+						<input type="checkbox" id="religion-4" name="religion" value="None/Other"><label for="religion-4">None/Other</label>
+					</div>
+					<p class="gray-caps">Sort by</p>
+					<select name="sort">
+						<option selected value="total-desc">Total Contributions &#x25BC;</option>
+						<option value="total-asc">Total Contributions &#x25B2;</option>
+						<option value="pac-desc">PAC Contributions &#x25BC;</option>
+						<option value="pac-asc">PAC Contributions &#x25B2;</option>
+						<option value="industry-desc">Industry Contributions &#x25BC;</option>
+						<option value="industry-asc">Industry Contributions &#x25B2;</option>
+					</select>
+					<p class="gray-caps">Time</p>
+					<select name="time">
+						<option selected value="all-time">All-time</option>
+						<option value="113">113th Congress</option>
+						<option value="112">112th Congress</option>
+						<option value="111">111th Congress</option>
+						<option value="110">110th Congress</option>
+						<option value="109">109th Congress</option>
+						<option value="108">108th Congress</option>
+					</select>
 				</form>
 			</div>
 			<div class="large-8 medium-8 small-12 large-offset-1 columns">

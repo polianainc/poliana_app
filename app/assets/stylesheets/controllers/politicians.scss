@@ -127,3 +127,11 @@ $politician-height: $politician-dimensions + $politician-border-width;
 		}
 	}
 }
+
+#politician-search {
+	.gray-caps {
+		margin-top: 10px;
+		margin-bottom: 5px;
+	}
+	.input-new-line { display: block; }
+}

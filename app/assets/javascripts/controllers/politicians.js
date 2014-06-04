@@ -271,6 +271,7 @@ if($key.length > 0) {
 }
 else {
 	var $searchForm = $('#politician-search');
+	var dataHold;
 
 	$searchForm.on('submit', function(event) {
 		event.preventDefault();
@@ -288,7 +289,34 @@ else {
 	$query = $searchForm.find('input[name=query]');
 	$sort = $searchForm.find('select[name=sort]');
 
-	$searchForm.find('select, input').on('change', function() {
+	var inputListSelectors = [];
+
+	$.each($allInputs, function() {
+		inputListSelectors.push($(this).selector);
+	});
+
+	var querySortSelectors = [];
+
+	querySortSelectors.push($query.selector);
+	querySortSelectors.push($sort.selector);
+
+	// We don't need to make an AJAX call unless nothing has been set
+	$(querySortSelectors.join()).on('change', function() {
+		if(typeof dataHold != "undefined")
+			prepareData(dataHold);
+		else
+			console.log("More information needed");
+	});
+
+	// We need to make an AJAX call
+	$(inputListSelectors.join()).on('change', function() {
+		var queryString = gatherInputs();
+
+		// $.get('/congress/politicians?format=json', queryString, function(data) { prepareData(data) });
+		$.get('/sample.json', queryString, function(data) { prepareData(data) });
+	});
+
+	function gatherInputs() {
 		// Prepare the query data
 		var queryString = {};
 
@@ -313,60 +341,60 @@ else {
 				queryString[$(this).attr('name')] = $(this).val();
 		});
 
-		// Don't make the big call!
-		if(Object.keys(queryString).length !== 0) {
-			console.log(queryString);
+		return queryString;
+	}
 
-			// Make the right call
-			$.get('/congress/politicians?format=json', queryString, function(data) {
-				// First and last name filter, then apply sort
-				var sortVal = $sort.val();
+	function prepareData(data) {
+		// Hold on to the information
+		dataHold = data;
 
-				$.each(data, function() {
-					var poli = this;
-					var contib = poli.contributions;
+		// Filter by query first
+		var queryVal = $query.val();
 
-					poli.pacTotal = 0;
-					poli.industryTotal = 0;
-					poli.total = 0;
+		console.log('Filter by names!');
 
-					$.each(contrib, function() {
-						contrib.pacTotal += parseInt(this.pac);
-						contrib.industryTotal += parseInt(this.industry);
-					});
+		// Now sort all the rows
+		var sortVal = $sort.val();
 
-					poli.total = poli.pacTotal + poli.industryTotal;
-				});
+		$.each(data, function() {
+			var poli = this;
+			var contrib = poli.contributions;
 
-				if(sortVal === "total-desc") {
-					data.sort(dynamicSort("-total"));
-				}
-				else if(sortVal === "total-asc") {
-					data.sort(dynamicSort("total"));
-				}
-				else if(sortVal === "pac-desc") {
-					data.sort(dynamicSort("-pacTotal"));
-				}
-				else if(sortVal === "pac-asc") {
-					data.sort(dynamicSort("pacTotal"));
-				}
-				else if(sortVal === "industry-desc") {
-					data.sort(dynamicSort("-industryTotal"));
-				}
-				else if(sortVal === "industry-asc") {
-					data.sort(dynamicSort("industryTotal"));
-				}
-				else if(sortVal === "age-desc") {
+			poli.pacTotal = 0;
+			poli.industryTotal = 0;
+			poli.total = 0;
 
-				}
-				else if(sortVal === "age-asc") {
-
-				}
-
-				$.each(data, function() {
-					console.log(data);
-				});
+			$.each(contrib, function() {
+				poli.pacTotal += parseInt(this.pac);
+				poli.industryTotal += parseInt(this.industry);
 			});
-		}
-	});
+
+			poli.total = poli.pacTotal + poli.industryTotal;
+		});
+
+		if(sortVal === "total-desc")
+			data.sort(dynamicSort("-total"));
+		else if(sortVal === "total-asc")
+			data.sort(dynamicSort("total"));
+		else if(sortVal === "pac-desc")
+			data.sort(dynamicSort("-pacTotal"));
+		else if(sortVal === "pac-asc")
+			data.sort(dynamicSort("pacTotal"));
+		else if(sortVal === "industry-desc")
+			data.sort(dynamicSort("-industryTotal"));
+		else if(sortVal === "industry-asc")
+			data.sort(dynamicSort("industryTotal"));
+		else if(sortVal === "age-desc")
+			data.sort(dynamicSort("percent_age_difference"));
+		else if(sortVal === "age-asc")
+			data.sort(dynamicSort("-percent_age_difference"));
+
+		formatData(data);
+	}
+
+	function formatData(data) {
+		$.each(data, function() {
+			console.log(this);
+		});
+	}
 }

@@ -349,9 +349,18 @@ else {
 		dataHold = data;
 
 		// Filter by query first
-		var queryVal = $query.val();
+		var queryVal = $query.val().toLowerCase();
+		var temp = [];
 
-		console.log('Filter by names!');
+		$.each(data, function() {
+			var fName = this.first_name.toLowerCase();
+			var lName = this.last_name.toLowerCase();
+
+			if(fName.indexOf(queryVal) != -1 || lName.indexOf(queryVal) != -1)
+				temp.push(this);
+		});
+
+		data = temp;
 
 		// Now sort all the rows
 		var sortVal = $sort.val();
@@ -394,7 +403,7 @@ else {
 
 	function formatData(data) {
 		$.each(data, function() {
-			console.log(this);
+			console.log(this.first_name, this.last_name);
 		});
 	}
 }

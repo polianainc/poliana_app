@@ -339,22 +339,22 @@ else {
 				});
 
 				if(sortVal === "total-desc") {
-					data.sort(dynamicSort("total"));
-				}
-				else if(sortVal === "total-asc") {
 					data.sort(dynamicSort("-total"));
 				}
-				else if(sortVal === "pac-desc") {
-					data.sort(dynamicSort("pacTotal"));
+				else if(sortVal === "total-asc") {
+					data.sort(dynamicSort("total"));
 				}
-				else if(sortVal === "pac-asc") {
+				else if(sortVal === "pac-desc") {
 					data.sort(dynamicSort("-pacTotal"));
 				}
+				else if(sortVal === "pac-asc") {
+					data.sort(dynamicSort("pacTotal"));
+				}
 				else if(sortVal === "industry-desc") {
-					data.sort(dynamicSort("industryTotal"));
+					data.sort(dynamicSort("-industryTotal"));
 				}
 				else if(sortVal === "industry-asc") {
-					data.sort(dynamicSort("-industryTotal"));
+					data.sort(dynamicSort("industryTotal"));
 				}
 				else if(sortVal === "age-desc") {
 

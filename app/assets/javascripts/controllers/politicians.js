@@ -402,8 +402,13 @@ else {
 	}
 
 	function formatData(data) {
-		$.each(data, function() {
-			console.log(this.first_name, this.last_name);
-		});
+		if(data.length > 0) {
+			$.each(data, function() {
+				console.log(this.first_name, this.last_name, this.total);
+			});
+		}
+		else {
+			console.log("No politicians fit this query");
+		}
 	}
 }

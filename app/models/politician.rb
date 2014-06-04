@@ -11,6 +11,7 @@ class Politician
   field :bioguide_id, :type => String
   field :gender, :type => String
   field :religion, :type => String
+  field :general_religion, :type => String
   field :state, :type => String
   field :percent_age_difference, :type => Float
   field :image_url, :type => String
@@ -59,7 +60,7 @@ class Politician
     now.year - birthday.year - ((now.month > birthday.month || (now.month == birthday.month && now.day >= birthday.day)) ? 0 : 1)
   end
 
-  def general_religion
+  def calculate_general_religion
     #"Protestant", "Episcopalian", "Lutheran", "Baptist", "Jewish", "Methodist", "Presbyterian", "Roman Catholic", "Christian", "African Methodist Episcopal", "Catholic", "Latter Day Saints", "Congregationalist", "First Christian Church (Disciples of Christ)", "United Brethren in Christ", "Greek Orthodox", "Unitarian Universalist", "Assembly of God", "United Church of Christ", "Unitarian", "Seventh-Day Adventist", "Christian Scientist", "Second Baptist", "United Methodist", "Southern Baptist", "Christian Reformed", "Reformed Church in America", "Reformed Latter Day Saint", "Moravian", "Unknown", "Seventh Day Adventist", "Nazarene", "Episcopal", "Church of Christ"
 
     if religion == "Jewish"

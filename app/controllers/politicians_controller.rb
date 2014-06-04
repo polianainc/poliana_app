@@ -8,8 +8,8 @@ class PoliticiansController < ApplicationController
     @politicians = @politicians.where(:state => params[:state]) if params[:state].present?
     @politicians = @politicians.any_in(:party => params[:party].split(',')) if params[:party].present?
     @politicians = @politicians.where(:gender => params[:gender]) if params[:gender].present?
-    @politicians = @politicians.any_in(:gen_religion => params[:religion].split(',')) if params[:religion].present?
-
+    @politicians = @politicians.any_in(:general_religion => params[:religion].split(',')) if params[:religion].present?
+    binding.pry
     if params[:time].present? || params[:type].present?
       found = []
 
@@ -41,10 +41,10 @@ class PoliticiansController < ApplicationController
 
     wiki = Wikipedia.find(@politician.first_name + " " + @politician.last_name)
     if wiki.templates.first != "Template:Category handler"
-      wikiNoko = Nokogiri::HTML(wiki.sanitized_content)
-      @wikipediaBio = wikiNoko.search('p').first
+      wiki_noko = Nokogiri::HTML(wiki.sanitized_content)
+      @wikipedia_bio = wikiNoko.search('p').first
     else
-      @wikipediaBio = nil
+      @wikipedia_bio = nil
     end
   end
 end

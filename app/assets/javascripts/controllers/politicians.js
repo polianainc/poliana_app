@@ -282,7 +282,7 @@ else {
 		party: $searchForm.find('input[name=party]'),
 		gender: $searchForm.find('select[name=gender]'),
 		religion: $searchForm.find('input[name=religion]'),
-		time: $searchForm.find('select[name=time]')
+		congress: $searchForm.find('select[name=congress]')
 	};
 
 	$query = $searchForm.find('input[name=query]');

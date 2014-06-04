@@ -4,16 +4,15 @@ class PoliticiansController < ApplicationController
   def index
     @politicians = Politician.all
 
-    # Religion remain to be queriable
     @politicians = @politicians.where(:state => params[:state]) if params[:state].present?
     @politicians = @politicians.any_in(:party => params[:party].split(',')) if params[:party].present?
     @politicians = @politicians.where(:gender => params[:gender]) if params[:gender].present?
     @politicians = @politicians.any_in(:general_religion => params[:religion].split(',')) if params[:religion].present?
-    binding.pry
+
     if params[:time].present? || params[:type].present?
       found = []
 
-      congress = params.fetch(:time, 0).to_i
+      congress = params.fetch(:congress, 0).to_i
       type = params.fetch(:type, "").split(',')
 
       @politicians.each do |politician|

@@ -9,15 +9,34 @@ class PoliticiansController < ApplicationController
     @politicians = @politicians.where(:gender => params[:gender]) if params[:gender].present?
     @politicians = @politicians.any_in(:general_religion => params[:religion].split(',')) if params[:religion].present?
 
-    if params[:time].present? || params[:type].present?
+    # Ideally refactor these two n^2 loops into one...
+    # Originally this was the case, but it wasn't filtering correctly
+
+    if params[:congress].present?
       found = []
 
       congress = params.fetch(:congress, 0).to_i
+
+      @politicians.each do |politician|
+        politician.terms.each do |term|
+          if term.congresses.include? congress
+            found.push(politician)
+            break
+          end
+        end
+      end
+
+      @politicians = found
+    end
+
+    if params[:type].present?
+      found = []
+
       type = params.fetch(:type, "").split(',')
 
       @politicians.each do |politician|
         politician.terms.each do |term|
-          if term.congresses.include? congress or type.include? term.term_type
+          if type.include? term.term_type
             found.push(politician)
             break
           end

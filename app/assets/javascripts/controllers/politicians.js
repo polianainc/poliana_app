@@ -272,16 +272,21 @@ if($key.length > 0) {
 else {
 	var $searchForm = $('#politician-search');
 
+	$searchForm.on('submit', function(event) {
+		event.preventDefault();
+	});
+
 	var $allInputs = {
-		search: $searchForm.find('input[name=query]'),
 		state: $searchForm.find('select[name=state]'),
 		type: $searchForm.find('input[name=type]'),
 		party: $searchForm.find('input[name=party]'),
 		gender: $searchForm.find('select[name=gender]'),
 		religion: $searchForm.find('input[name=religion]'),
-		sort: $searchForm.find('select[name=sort]'),
 		time: $searchForm.find('select[name=time]')
 	};
+
+	$query = $searchForm.find('input[name=query]');
+	$sort = $searchForm.find('select[name=sort]');
 
 	$searchForm.find('select, input').on('change', function() {
 		// Prepare the query data
@@ -308,10 +313,13 @@ else {
 				queryString[$(this).attr('name')] = $(this).val();
 		});
 
-		console.log(queryString);
+		// Don't make the big call!
+		if(Object.keys(queryString).length !== 0) {
+			console.log(queryString);
 
-		if(Object.keys(queryString).length > 1) {
+			// Make the right call
 			$.get('/congress/politicians?format=json', queryString, function(data) {
+				// First and last name filter, then apply sort
 				console.log(data);
 			});
 		}

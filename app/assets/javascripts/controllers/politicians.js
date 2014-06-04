@@ -320,7 +320,52 @@ else {
 			// Make the right call
 			$.get('/congress/politicians?format=json', queryString, function(data) {
 				// First and last name filter, then apply sort
-				console.log(data);
+				var sortVal = $sort.val();
+
+				$.each(data, function() {
+					var poli = this;
+					var contib = poli.contributions;
+
+					poli.pacTotal = 0;
+					poli.industryTotal = 0;
+					poli.total = 0;
+
+					$.each(contrib, function() {
+						contrib.pacTotal += parseInt(this.pac);
+						contrib.industryTotal += parseInt(this.industry);
+					});
+
+					poli.total = poli.pacTotal + poli.industryTotal;
+				});
+
+				if(sortVal === "total-desc") {
+					data.sort(dynamicSort("total"));
+				}
+				else if(sortVal === "total-asc") {
+					data.sort(dynamicSort("-total"));
+				}
+				else if(sortVal === "pac-desc") {
+					data.sort(dynamicSort("pacTotal"));
+				}
+				else if(sortVal === "pac-asc") {
+					data.sort(dynamicSort("-pacTotal"));
+				}
+				else if(sortVal === "industry-desc") {
+					data.sort(dynamicSort("industryTotal"));
+				}
+				else if(sortVal === "industry-asc") {
+					data.sort(dynamicSort("-industryTotal"));
+				}
+				else if(sortVal === "age-desc") {
+
+				}
+				else if(sortVal === "age-asc") {
+
+				}
+
+				$.each(data, function() {
+					console.log(data);
+				});
 			});
 		}
 	});

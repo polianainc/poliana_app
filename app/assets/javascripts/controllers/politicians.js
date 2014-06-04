@@ -310,8 +310,10 @@ else {
 
 		console.log(queryString);
 
-		/*$.get('/congress/politicians', queryString, function(data) {
-			console.log(data);
-		});*/
+		if(Object.keys(queryString).length > 1) {
+			$.get('/congress/politicians?format=json', queryString, function(data) {
+				console.log(data);
+			});
+		}
 	});
 }

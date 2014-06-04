@@ -4,10 +4,11 @@ class PoliticiansController < ApplicationController
   def index
     @politicians = Politician.all
 
+    # First name, last name, term, and religion remain to be queriable
     @politicians = @politicians.where(:state => params[:state]) if params[:state].present?
     @politicians = @politicians.any_in(:party => params[:party].split(',')) if params[:party].present?
     @politicians = @politicians.where(:gender => params[:gender]) if params[:gender].present?
-    @politicians = @politicians.any_in(:religion => params[:religion].split(',')) if params[:religion].present?
+    @politicians = @politicians.any_in(:gen_religion => params[:religion].split(',')) if params[:religion].present?
 
     if params[:time].present? || params[:type].present?
       found = []

@@ -141,6 +141,7 @@ $politician-height: $politician-dimensions + $politician-border-width;
 		position: relative;
 		height: 90px;
 		margin-bottom: 20px;
+		font-weight: 700;
 		.picture {
 			width: 64px;
 			height: 64px;
@@ -160,9 +161,7 @@ $politician-height: $politician-dimensions + $politician-border-width;
 			position: absolute;
 			top: 0px;
 			left: 80px;
-			h5 {
-				margin-top: 15px;
-			}
+			h5 { margin-top: 15px; }
 			.role {
 				font-size: 0.9em;
 				font-style: italic;

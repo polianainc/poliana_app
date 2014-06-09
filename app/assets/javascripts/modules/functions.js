@@ -72,6 +72,30 @@ function convertParty(party, to) {
 	}
 }
 
+// Helpful function to convert term types to and from their full names and respective abbreviations
+function convertType(type, to) {
+	if(to == "name") {
+		if(type == "prez")
+			return "President";
+		else if(type == "viceprez")
+			return "Vice President";
+		else if(type == "sen")
+			return "Senator";
+		else
+			return "Representative";
+	}
+	else {
+		if(type == "President")
+			return "prez";
+		else if(type == "Vice President")
+			return "viceprez";
+		else if(type == "Senator")
+			return "sen";
+		else
+			return "rep";
+	}
+}
+
 // Helpful function to convert states to and from their full names and respective abbreviations
 function convertState(name, to) {
 	var states = new Array(							{'name':'Alabama', 'abbrev':'AL'},			{'name':'Alaska', 'abbrev':'AK'},

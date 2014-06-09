@@ -135,3 +135,31 @@ $politician-height: $politician-dimensions + $politician-border-width;
 	}
 	.input-new-line { display: block; }
 }
+
+#politician-search-list {
+	li {
+		position: relative;
+		height: 90px;
+		margin-bottom: 20px;
+		.picture {
+			width: 64px;
+			height: 64px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			@include background-size(cover);
+			& + div {
+				margin-top: 39px;
+				ul {
+					height: 32px;
+					@include border-radius(0px 0px 5px 5px);
+				}
+			}
+		}
+		.politician-info {
+			position: absolute;
+			top: 0px;
+			left: 80px;
+		}
+	}
+}

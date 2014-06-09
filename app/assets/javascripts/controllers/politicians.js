@@ -317,6 +317,12 @@ else {
 		$.get('/sample.json', queryString, function(data) { prepareData(data) });
 	});
 
+	var getStates = convertState('each', 'name');
+	var allStates = getStates.split(',');
+
+	for(var state in allStates)
+		$allInputs.state.append('<option value="' + convertState(allStates[state], 'abbrev') + '">' + allStates[state] + '</option>');
+
 	function gatherInputs() {
 		// Prepare the query data
 		var queryString = {};
@@ -403,10 +409,11 @@ else {
 	}
 
 	function formatData(data) {
+		var sortVal = $sort.val();
+		var queryVal = $query.val();
+
 		function getHeading() {
 			var string = "";
-
-			var sortVal = $sort.val();
 
 			if(sortVal === "total-desc")
 				string += "Top " + resultsNum + " Highest Earning Politicians";
@@ -432,15 +439,6 @@ else {
 			var string = [];
 
 			$.each(gatherInputs(), function(key, value) {
-				/*
-				state: $searchForm.find('select[name=state]'),
-				type: $searchForm.find('input[name=type]'),
-				party: $searchForm.find('input[name=party]'),
-				gender: $searchForm.find('select[name=gender]'),
-				religion: $searchForm.find('input[name=religion]'),
-				congress: $searchForm.find('select[name=congress]')
-				*/
-
 				function filterType(input, kind) {
 					if(kind == "type") {
 						if(input == "prez")
@@ -487,7 +485,7 @@ else {
 				}
 
 				if(key == "state")
-					string.push(" from " + value);
+					string.push(" from " + convertState(value, 'name'));
 
 				if(key == "type")
 					string.push(multipleSentence(value, "type"));
@@ -511,7 +509,7 @@ else {
 			if(finalLength > 1)
 				finalString = finalString.splice(finalString.lastIndexOf(', ') + 1, 0, " and");
 
-			return "That are " + finalString;
+			return "Politicians named " + queryVal + " that are " + finalString;
 		}
 
 		var $map = $('#map');
@@ -520,14 +518,80 @@ else {
 		$map.siblings('.gray-caps').html(getSubheading());
 
 		var $politiciansList = $('#politician-search-list');
+		var $mainHeader = $('#content h1');
+		var resultsCounter = 0;
 
 		if(data.length > 0) {
+			$mainHeader.html(data.length + " politicians found");
+
 			$.each(data, function() {
-				
+				if(resultsCounter < resultsNum) {
+					var poli = this;
+
+					$politiciansList.append($('<li>')
+						.append($('<div>')
+							.addClass('picture')
+							.css('background-image', 'url(\'' + this.image_url + '\')')
+						)
+						.append($('<div>')
+							.append($('<ul>')
+								.addClass('politician-card ' + this.party.toLowerCase())
+								.append($('<li>')
+									.html(convertParty(this.party, "abbrev"))
+								)
+								.append($('<li>')
+									.html(this.state)
+								)
+							)
+						)
+						.append($('<div>')
+							.addClass('politician-info')
+							.append($('<h5>')
+								.html(this.first_name + " " + this.last_name)
+							)
+							.append($('<p>')
+								.addClass('role')
+								.html(convertType(this.terms[0].term_type, "name"))
+							)
+							.append($('<p>')
+								.addClass('important')
+								.html(function() {
+									var congress = $allInputs.congress.val();
+
+									if(congress == "all") {
+										if(sortVal == "total-desc" || sortVal == "total-asc")
+											return '<span>$' + commaSeparateNumber(poli.total) + '</span> in contributions';
+										else if(sortVal == "pac-desc" || sortVal == "pac-asc")
+											return '<span>$' + commaSeparateNumber(poli.pac_total) + '</span> in PAC contributions';
+										else if(sortVal == "industry-desc" || sortVal == "industry-asc")
+											return '<span>$' + commaSeparateNumber(poli.industry_total) + '</span> in industry contributions';
+									}
+									else {
+										if(sortVal == "total-desc" || sortVal == "total-asc")
+											return '<span>$' + commaSeparateNumber(poli.contributions[congress].pac + poli.contributions[congress].industry) + '</span> in contributions';
+										else if(sortVal == "pac-desc" || sortVal == "pac-asc")
+											return '<span>$' + commaSeparateNumber(poli.contributions[congress].pac) + '</span> in PAC contributions';
+										else if(sortVal == "industry-desc" || sortVal == "industry-asc")
+											return '<span>$' + commaSeparateNumber(poli.contributions[congress].industry) + '</span> in industry contributions';
+									}
+
+									if(sortVal == "age-desc" || sortVal == "age-asc")
+										return 'Older than <span>%' + parseInt(this.percent_age_difference) + '</span> of Congress';
+								})
+							)
+						)
+					);
+				}
+				else
+					return false;
+
+				resultsCounter++;
+
 				console.log(this);
 			});
 		}
 		else {
+			$mainHeader.html("Search All Politicians");
 			console.log("No politicians fit this query");
 		}
 	}

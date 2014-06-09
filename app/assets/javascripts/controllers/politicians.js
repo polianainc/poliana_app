@@ -272,6 +272,7 @@ if($key.length > 0) {
 else {
 	var $searchForm = $('#politician-search');
 	var dataHold;
+	var resultsNum = 5;
 
 	$searchForm.on('submit', function(event) {
 		event.preventDefault();
@@ -402,9 +403,128 @@ else {
 	}
 
 	function formatData(data) {
+		function getHeading() {
+			var string = "";
+
+			var sortVal = $sort.val();
+
+			if(sortVal === "total-desc")
+				string += "Top " + resultsNum + " Highest Earning Politicians";
+			else if(sortVal === "total-asc")
+				string += "Top " + resultsNum + " Lowest Earning Politicians";
+			else if(sortVal === "pac-desc")
+				string += "Top " + resultsNum + " Highest Earning Politicians from PACs";
+			else if(sortVal === "pac-asc")
+				string += "Top " + resultsNum + " Lowest Earning Politicians from PACs";
+			else if(sortVal === "industry-desc")
+				string += "Top " + resultsNum + " Highest Earning Politicians from Industries";
+			else if(sortVal === "industry-asc")
+				string += "Top " + resultsNum + " Lowest Earning Politicians from Industries";
+			else if(sortVal === "age-desc")
+				string += "Top " + resultsNum + " Oldest Politicians";
+			else if(sortVal === "age-asc")
+				string += "Top " + resultsNum + " Youngest Politicians";
+
+			return string;
+		}
+
+		function getSubheading() {
+			var string = [];
+
+			$.each(gatherInputs(), function(key, value) {
+				/*
+				state: $searchForm.find('select[name=state]'),
+				type: $searchForm.find('input[name=type]'),
+				party: $searchForm.find('input[name=party]'),
+				gender: $searchForm.find('select[name=gender]'),
+				religion: $searchForm.find('input[name=religion]'),
+				congress: $searchForm.find('select[name=congress]')
+				*/
+
+				function filterType(input, kind) {
+					if(kind == "type") {
+						if(input == "prez")
+							return "President";
+						else if(input == "viceprez")
+							return "Vice President";
+						else if(input == "sen")
+							return "Senator";
+						else
+							return "Represenative";
+					}
+					else if(kind == "gender") {
+						if(input == "M")
+							return "Male"
+						else if(input == "F")
+							return "Female";
+					}
+					else
+						return input;
+				}
+
+				function multipleSentence(value, kind) {
+					var allVals = value.split(',');
+
+					if(allVals.length == 1)
+						return filterType(allVals[0], kind);
+					else if(allVals.length == 2)
+						return filterType(allVals[0], kind) + " or " + filterType(allVals[1], kind);
+					else {
+						var longValue = "either ";
+						var i = 0;
+
+						$.each(allVals, function() {
+							if(allVals.length - 1 == i)
+								longValue += "or " + filterType(allVals[i], kind);
+							else
+								longValue += filterType(allVals[i], kind) + ", ";
+
+							i++;
+						});
+
+						return longValue;
+					}
+				}
+
+				if(key == "state")
+					string.push(" from " + value);
+
+				if(key == "type")
+					string.push(multipleSentence(value, "type"));
+
+				if(key == "party")
+					string.push(multipleSentence(value, "party"));
+
+				if(key == "gender")
+					string.push(filterType(value, "gender"));
+
+				if(key == "religion")
+					string.push(multipleSentence(value, "religion"));
+
+				if(key == "congress")
+					string.push("in the " + parseInt(value).ordinate() + " congress");
+			});
+
+			var finalLength = string.length;
+			var finalString = string.join(', ');
+
+			if(finalLength > 1)
+				finalString = finalString.splice(finalString.lastIndexOf(', ') + 1, 0, " and");
+
+			return "That are " + finalString;
+		}
+
+		var $map = $('#map');
+
+		$map.siblings('h3').html(getHeading());
+		$map.siblings('.gray-caps').html(getSubheading());
+
+		var $politiciansList = $('#politician-search-list');
+
 		if(data.length > 0) {
 			$.each(data, function() {
-				console.log(this.first_name, this.last_name, this.total);
+				
+				console.log(this);
 			});
 		}
 		else {

@@ -168,6 +168,11 @@ function nearest(n, v) {
 	return n;
 }
 
+// Splices things into a string, rather than an array
+String.prototype.splice = function(idx, rem, s) {
+	return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
+};
+
 // Return the ordinated value of a number
 Number.prototype.ordinate = function() {
 	var num = this,

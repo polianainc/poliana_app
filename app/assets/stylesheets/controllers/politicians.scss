@@ -160,6 +160,19 @@ $politician-height: $politician-dimensions + $politician-border-width;
 			position: absolute;
 			top: 0px;
 			left: 80px;
+			h5 {
+				margin-top: 15px;
+			}
+			.role {
+				font-size: 0.9em;
+				font-style: italic;
+				margin-top: -10px;
+				margin-bottom: 5px;
+			}
+			.important {
+				font-size: 0.9em;
+				span { font-weight: 700; }
+			}
 		}
 	}
 }

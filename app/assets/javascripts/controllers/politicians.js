@@ -509,7 +509,10 @@ else {
 			if(finalLength > 1)
 				finalString = finalString.splice(finalString.lastIndexOf(', ') + 1, 0, " and");
 
-			return "Politicians named " + queryVal + " that are " + finalString;
+			if(queryVal != "")
+				return "Politicians named '" + queryVal + "' that are " + finalString;
+			else
+				return "That are " + finalString;
 		}
 
 		var $map = $('#map');
@@ -520,6 +523,8 @@ else {
 		var $politiciansList = $('#politician-search-list');
 		var $mainHeader = $('#content h1');
 		var resultsCounter = 0;
+
+		$politiciansList.html('');
 
 		if(data.length > 0) {
 			$mainHeader.html(data.length + " politicians found");
@@ -586,8 +591,6 @@ else {
 					return false;
 
 				resultsCounter++;
-
-				console.log(this);
 			});
 		}
 		else {

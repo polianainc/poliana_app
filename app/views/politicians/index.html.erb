@@ -23,40 +23,38 @@
 					<p class="gray-caps">State</p>
 					<%= select_tag(:state, options_for_select(@states.collect {|s| [ s['name'], s['abbrev'] ] }, params[:state]), prompt: "Select a state") %>
 
-					<!-- <input type="checkbox" id="party-0" name="party" value="Democrat"><label for="party-0">Democrat</label> -->
-
 					<p class="gray-caps">Politician Type</p>
 					<% poli_type = params[:type] ? params[:type].split(',') : [] %>
 					<div class="input-new-line">
-						<%= check_box_tag('type[0]', 'prez', poli_type.include?("prez")) %>
-						<%= label_tag('type[0]', "President") %>
+						<%= check_box_tag(:type, 'prez', poli_type.include?("prez"), :id => 'type-0') %>
+						<%= label_tag('type-0', "President") %>
 					</div>
 					<div class="input-new-line">
-						<%= check_box_tag('type[1]', 'viceprez', poli_type.include?("viceprez")) %>
-						<%= label_tag('type[1]', "Vice President") %>
+						<%= check_box_tag(:type, 'viceprez', poli_type.include?("viceprez"), :id => 'type-1') %>
+						<%= label_tag('type-1', "Vice President") %>
 					</div>
 					<div class="input-new-line">
-						<%= check_box_tag('type[2]', 'sen', poli_type.include?("sen")) %>
-						<%= label_tag('type[2]', "Senator") %>
+						<%= check_box_tag(:type, 'sen', poli_type.include?("sen"), :id => 'type-2') %>
+						<%= label_tag('type-2', "Senator") %>
 					</div>
 					<div class="input-new-line">
-						<%= check_box_tag('type[3]', 'rep', poli_type.include?("rep")) %>
-						<%= label_tag('type[3]', "Representative") %>
+						<%= check_box_tag(:type, 'rep', poli_type.include?("rep"), :id => 'type-3') %>
+						<%= label_tag('type-3', "Representative") %>
 					</div>
 
 					<p class="gray-caps">Party</p>
 					<% poli_party = params[:party] ? params[:party].split(',') : [] %>
 					<div class="input-new-line">
-						<%= check_box_tag('party[0]', 'Democrat', poli_party.include?("Democrat")) %>
-						<%= label_tag('party[0]', "Democrat") %>
+						<%= check_box_tag(:party, 'Democrat', poli_party.include?("Democrat"), :id => 'party-0') %>
+						<%= label_tag('party-0', "Democrat") %>
 					</div>
 					<div class="input-new-line">
-						<%= check_box_tag('party[1]', 'Republican', poli_party.include?("Republican")) %>
-						<%= label_tag('party[1]', "Republican") %>
+						<%= check_box_tag(:party, 'Republican', poli_party.include?("Republican"), :id => 'party-1') %>
+						<%= label_tag('party-1', "Republican") %>
 					</div>
 					<div class="input-new-line">
-						<%= check_box_tag('party[2]', 'Independent', poli_party.include?("Independent")) %>
-						<%= label_tag('party[2]', "Independent") %>
+						<%= check_box_tag(:party, 'Independent', poli_party.include?("Independent"), :id => 'party-2') %>
+						<%= label_tag('party-2', "Independent") %>
 					</div>
 
 					<p class="gray-caps">Gender</p>
@@ -65,24 +63,24 @@
 					<p class="gray-caps">Religion</p>
 					<% poli_religion = params[:religion] ? params[:religion].split(',') : [] %>
 					<div class="input-new-line">
-						<%= check_box_tag('religion[0]', 'Christian', poli_religion.include?("Christian")) %>
-						<%= label_tag('religion[0]', "Christian") %>
+						<%= check_box_tag(:religion, 'Christian', poli_religion.include?("Christian"), :id => 'religion-0') %>
+						<%= label_tag('religion-0', "Christian") %>
 					</div>
 					<div class="input-new-line">
-						<%= check_box_tag('religion[1]', 'Muslim', poli_religion.include?("Muslim")) %>
-						<%= label_tag('religion[1]', "Muslim") %>
+						<%= check_box_tag(:religion, 'Muslim', poli_religion.include?("Muslim"), :id => 'religion-1') %>
+						<%= label_tag('religion-1', "Muslim") %>
 					</div>
 					<div class="input-new-line">
-						<%= check_box_tag('religion[2]', 'Jewish', poli_religion.include?("Jewish")) %>
-						<%= label_tag('religion[2]', "Jewish") %>
+						<%= check_box_tag(:religion, 'Jewish', poli_religion.include?("Jewish"), :id => 'religion-2') %>
+						<%= label_tag('religion-2', "Jewish") %>
 					</div>
 					<div class="input-new-line">
-						<%= check_box_tag('religion[3]', 'Buddhist', poli_religion.include?("Buddhist")) %>
-						<%= label_tag('religion[3]', "Buddhist") %>
+						<%= check_box_tag(:religion, 'Buddhist', poli_religion.include?("Buddhist"), :id => 'religion-3') %>
+						<%= label_tag('religion-3', "Buddhist") %>
 					</div>
 					<div class="input-new-line">
-						<%= check_box_tag('religion[4]', 'None/Other', poli_religion.include?("None/Other")) %>
-						<%= label_tag('religion[4]', "None/Other") %>
+						<%= check_box_tag(:religion, 'None/Other', poli_religion.include?("None/Other"), :id => 'religion-4') %>
+						<%= label_tag('religion-4', "None/Other") %>
 					</div>
 
 					<p class="gray-caps">Sort by</p>
@@ -120,3 +118,4 @@
 		<p class="gray-caps"></p>
 		<ol id="politician-search-list"></ol>
 	</div>
+</div>

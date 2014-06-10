@@ -278,6 +278,32 @@ else {
 		event.preventDefault();
 	});
 
+	var $map = $('#map');
+	var $politiciansList = $('#politician-search-list');
+	var $politiciansPagination = $('#politicians-list-pagination');
+
+	$politiciansList.after($('<div>')
+		.attr('id', 'politicians-list-pagination')
+		.append($('<a>')
+			.attr('href', '#')
+			.html('Load more politicians...')
+		)
+	);
+
+	$(document).on('click', $politiciansPagination.selector, function(event) {
+		event.preventDefault();
+
+		if(dataHold.length > resultsNum)
+			resultsNum += 5;
+		else {
+			resultsNum = 5;
+
+			$politiciansPagination.remove();
+		}
+
+		prepareData(dataHold);
+	});
+
 	var $allInputs = {
 		state: $searchForm.find('select[name=state]'),
 		type: $searchForm.find('input[name=type]'),
@@ -313,8 +339,9 @@ else {
 	$(inputListSelectors.join()).on('change', function() {
 		var queryString = gatherInputs();
 
-		// $.get('/congress/politicians?format=json', queryString, function(data) { prepareData(data) });
-		$.get('/sample.json', queryString, function(data) { prepareData(data) });
+		resultsNum = 5;
+
+		$.get('/congress/politicians?format=json', queryString, function(data) { prepareData(data) });
 	});
 
 	var getStates = convertState('each', 'name');
@@ -515,12 +542,9 @@ else {
 				return "That are " + finalString;
 		}
 
-		var $map = $('#map');
-
 		$map.siblings('h3').html(getHeading());
 		$map.siblings('.gray-caps').html(getSubheading());
 
-		var $politiciansList = $('#politician-search-list');
 		var $mainHeader = $('#content h1');
 		var resultsCounter = 0;
 
@@ -551,38 +575,41 @@ else {
 						)
 						.append($('<div>')
 							.addClass('politician-info')
-							.append($('<h5>')
-								.html(this.first_name + " " + this.last_name)
-							)
-							.append($('<p>')
-								.addClass('role')
-								.html(convertType(this.terms[0].term_type, "name"))
-							)
-							.append($('<p>')
-								.addClass('important')
-								.html(function() {
-									var congress = $allInputs.congress.val();
+							.append($('<a>')
+								.attr('href', '/congress/politicians/' + this.bioguide_id)
+								.append($('<h5>')
+									.html(this.first_name + " " + this.last_name)
+								)
+								.append($('<p>')
+									.addClass('role')
+									.html(convertType(this.terms[0].term_type, "name"))
+								)
+								.append($('<p>')
+									.addClass('important')
+									.html(function() {
+										var congress = $allInputs.congress.val();
 
-									if(congress == "all") {
-										if(sortVal == "total-desc" || sortVal == "total-asc")
-											return '<span>$' + commaSeparateNumber(poli.total) + '</span> in contributions';
-										else if(sortVal == "pac-desc" || sortVal == "pac-asc")
-											return '<span>$' + commaSeparateNumber(poli.pac_total) + '</span> in PAC contributions';
-										else if(sortVal == "industry-desc" || sortVal == "industry-asc")
-											return '<span>$' + commaSeparateNumber(poli.industry_total) + '</span> in industry contributions';
-									}
-									else {
-										if(sortVal == "total-desc" || sortVal == "total-asc")
-											return '<span>$' + commaSeparateNumber(poli.contributions[congress].pac + poli.contributions[congress].industry) + '</span> in contributions';
-										else if(sortVal == "pac-desc" || sortVal == "pac-asc")
-											return '<span>$' + commaSeparateNumber(poli.contributions[congress].pac) + '</span> in PAC contributions';
-										else if(sortVal == "industry-desc" || sortVal == "industry-asc")
-											return '<span>$' + commaSeparateNumber(poli.contributions[congress].industry) + '</span> in industry contributions';
-									}
+										if(congress == "all") {
+											if(sortVal == "total-desc" || sortVal == "total-asc")
+												return '<span>$' + commaSeparateNumber(poli.total) + '</span> in contributions';
+											else if(sortVal == "pac-desc" || sortVal == "pac-asc")
+												return '<span>$' + commaSeparateNumber(poli.pac_total) + '</span> in PAC contributions';
+											else if(sortVal == "industry-desc" || sortVal == "industry-asc")
+												return '<span>$' + commaSeparateNumber(poli.industry_total) + '</span> in industry contributions';
+										}
+										else {
+											if(sortVal == "total-desc" || sortVal == "total-asc")
+												return '<span>$' + commaSeparateNumber(poli.contributions[congress].pac + poli.contributions[congress].industry) + '</span> in contributions';
+											else if(sortVal == "pac-desc" || sortVal == "pac-asc")
+												return '<span>$' + commaSeparateNumber(poli.contributions[congress].pac) + '</span> in PAC contributions';
+											else if(sortVal == "industry-desc" || sortVal == "industry-asc")
+												return '<span>$' + commaSeparateNumber(poli.contributions[congress].industry) + '</span> in industry contributions';
+										}
 
-									if(sortVal == "age-desc" || sortVal == "age-asc")
-										return 'Older than <span>%' + parseInt(this.percent_age_difference) + '</span> of Congress';
-								})
+										if(sortVal == "age-desc" || sortVal == "age-asc")
+											return 'Older than <span>' + parseInt(poli.percent_age_difference) + '%</span> of Congress';
+									})
+								)
 							)
 						)
 					);

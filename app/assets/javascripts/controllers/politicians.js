@@ -612,7 +612,7 @@ else {
 										}
 
 										if(sortVal == "age-desc" || sortVal == "age-asc")
-											return 'Older than <span>' + parseInt(poli.percent_age_difference) + '%</span> of Congress';
+											return 'Older than <span>' + (100 - parseInt(poli.percent_age_difference)) + '%</span> of Congress';
 									})
 								)
 							)

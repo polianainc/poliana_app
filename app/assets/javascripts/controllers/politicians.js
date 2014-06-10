@@ -282,24 +282,13 @@ else {
 	var $politiciansList = $('#politician-search-list');
 	var $politiciansPagination = $('#politicians-list-pagination');
 
-	$politiciansList.after($('<div>')
-		.attr('id', 'politicians-list-pagination')
-		.append($('<a>')
-			.attr('href', '#')
-			.html('Load more politicians...')
-		)
-	);
-
 	$(document).on('click', $politiciansPagination.selector, function(event) {
 		event.preventDefault();
 
 		if(dataHold.length > resultsNum)
 			resultsNum += 5;
-		else {
+		else
 			resultsNum = 5;
-
-			$politiciansPagination.remove();
-		}
 
 		prepareData(dataHold);
 	});
@@ -441,23 +430,27 @@ else {
 
 		function getHeading() {
 			var string = "";
+			var number = resultsNum;
+
+			if(data.length < number)
+				number = data.length;
 
 			if(sortVal === "total-desc")
-				string += "Top " + resultsNum + " Highest Earning Politicians";
+				string += "Top " + number + " Highest Earning Politicians";
 			else if(sortVal === "total-asc")
-				string += "Top " + resultsNum + " Lowest Earning Politicians";
+				string += "Top " + number + " Lowest Earning Politicians";
 			else if(sortVal === "pac-desc")
-				string += "Top " + resultsNum + " Highest Earning Politicians from PACs";
+				string += "Top " + number + " Highest Earning Politicians from PACs";
 			else if(sortVal === "pac-asc")
-				string += "Top " + resultsNum + " Lowest Earning Politicians from PACs";
+				string += "Top " + number + " Lowest Earning Politicians from PACs";
 			else if(sortVal === "industry-desc")
-				string += "Top " + resultsNum + " Highest Earning Politicians from Industries";
+				string += "Top " + number + " Highest Earning Politicians from Industries";
 			else if(sortVal === "industry-asc")
-				string += "Top " + resultsNum + " Lowest Earning Politicians from Industries";
+				string += "Top " + number + " Lowest Earning Politicians from Industries";
 			else if(sortVal === "age-desc")
-				string += "Top " + resultsNum + " Oldest Politicians";
+				string += "Top " + number + " Oldest Politicians";
 			else if(sortVal === "age-asc")
-				string += "Top " + resultsNum + " Youngest Politicians";
+				string += "Top " + number + " Youngest Politicians";
 
 			return string;
 		}
@@ -619,6 +612,18 @@ else {
 
 				resultsCounter++;
 			});
+
+			$('#politicians-list-pagination').remove();
+
+			if(data.length - resultsNum > 0) {
+				$politiciansList.after($('<div>')
+					.attr('id', 'politicians-list-pagination')
+					.append($('<a>')
+						.attr('href', '#')
+						.html('Load more politicians...')
+					)
+				);
+			}
 		}
 		else {
 			$mainHeader.html("Search All Politicians");

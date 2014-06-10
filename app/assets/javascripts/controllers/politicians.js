@@ -387,6 +387,7 @@ else {
 
 		// Now sort all the rows
 		var sortVal = $sort.val();
+		var congressVal = $allInputs.congress.val();
 
 		$.each(data, function() {
 			var poli = this;
@@ -396,10 +397,16 @@ else {
 			poli.industryTotal = 0;
 			poli.total = 0;
 
-			$.each(contrib, function() {
-				poli.pacTotal += parseInt(this.pac);
-				poli.industryTotal += parseInt(this.industry);
-			});
+			if(congressVal == "all") {
+				$.each(contrib, function() {
+					poli.pacTotal += parseInt(this.pac);
+					poli.industryTotal += parseInt(this.industry);
+				});
+			}
+			else {
+				poli.pacTotal = parseInt(contrib[congressVal].pac);
+				poli.industryTotal = parseInt(contrib[congressVal].industry);
+			}
 
 			poli.total = poli.pacTotal + poli.industryTotal;
 		});
@@ -462,13 +469,13 @@ else {
 				function filterType(input, kind) {
 					if(kind == "type") {
 						if(input == "prez")
-							return "President";
+							return "Presidents";
 						else if(input == "viceprez")
-							return "Vice President";
+							return "Vice Presidents";
 						else if(input == "sen")
-							return "Senator";
+							return "Senators";
 						else
-							return "Represenative";
+							return "Represenatives";
 					}
 					else if(kind == "gender") {
 						if(input == "M")
@@ -544,6 +551,8 @@ else {
 		$politiciansList.html('');
 
 		if(data.length > 0) {
+			var congress = $allInputs.congress.val();
+
 			$mainHeader.html(data.length + " politicians found");
 
 			$.each(data, function() {
@@ -580,8 +589,6 @@ else {
 								.append($('<p>')
 									.addClass('important')
 									.html(function() {
-										var congress = $allInputs.congress.val();
-
 										if(congress == "all") {
 											if(sortVal == "total-desc" || sortVal == "total-asc")
 												return '<span>$' + commaSeparateNumber(poli.total) + '</span> in contributions';

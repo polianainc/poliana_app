@@ -60,7 +60,7 @@ class PoliticiansController < ApplicationController
     wiki = Wikipedia.find(@politician.first_name + " " + @politician.last_name)
     if wiki.templates.first != "Template:Category handler"
       wiki_noko = Nokogiri::HTML(wiki.sanitized_content)
-      @wikipedia_bio = wikiNoko.search('p').first
+      @wikipedia_bio = wiki_noko.search('p').first
     else
       @wikipedia_bio = nil
     end

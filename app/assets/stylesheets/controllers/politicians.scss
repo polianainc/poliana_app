@@ -137,6 +137,13 @@ $politician-height: $politician-dimensions + $politician-border-width;
 }
 
 #politician-search-list {
+	.politicians-default-logo {
+		opacity: 0.1;
+		height: 85px;
+		width: auto;
+		display: block;
+		margin: 60px 0px;
+	}
 	li {
 		position: relative;
 		height: 90px;

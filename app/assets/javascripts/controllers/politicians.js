@@ -281,14 +281,14 @@ else {
 	});
 
 	var $allInputs = {
+		query: $searchForm.find('input[name=query]'),
 		state: $searchForm.find('select[name=state]'),
 		type: $searchForm.find('input[name=type]'),
 		party: $searchForm.find('input[name=party]'),
 		gender: $searchForm.find('select[name=gender]'),
 		religion: $searchForm.find('input[name=religion]'),
-		congress: $searchForm.find('select[name=congress]'),
-		query: $searchForm.find('input[name=query]'),
-		sort: $searchForm.find('select[name=sort]')
+		sort: $searchForm.find('select[name=sort]'),
+		congress: $searchForm.find('select[name=congress]')
 	};
 
 	var getStates = convertState('each', 'name');
@@ -323,6 +323,9 @@ else {
 			});
 		});
 	});
+
+	// Trigger the first one
+	$allInputs.query.trigger('change');
 
 	// We need to load more politicians in, no call or anything needed
 	$(document).on('click', $politiciansPagination.selector, function(event) {
@@ -463,71 +466,76 @@ else {
 
 		function getSubheading() {
 			var string = [];
+			var info = gatherInputs();
 
-			$.each(gatherInputs(), function(key, value) {
-				function filterType(input, kind) {
-					if(kind == "type") {
-						if(input == "prez")
-							return "Presidents";
-						else if(input == "viceprez")
-							return "Vice Presidents";
-						else if(input == "sen")
-							return "Senators";
-						else
-							return "Represenatives";
-					}
-					else if(kind == "gender") {
-						if(input == "M")
-							return "Male"
-						else if(input == "F")
-							return "Female";
-					}
+			if(info.length > 0) {
+				$.each(info, function(key, value) {
+					if(key == "state")
+						string.push(" from " + convertState(value, 'name'));
+
+					if(key == "type")
+						string.push(multipleSentence(value, "type"));
+
+					if(key == "party")
+						string.push(multipleSentence(value, "party"));
+
+					if(key == "gender")
+						string.push(filterType(value, "gender"));
+
+					if(key == "religion")
+						string.push(multipleSentence(value, "religion"));
+
+					if(key == "congress")
+						string.push("in the " + parseInt(value).ordinate() + " congress");
+				});
+			}
+			else
+				return "";
+
+			function filterType(input, kind) {
+				if(kind == "type") {
+					if(input == "prez")
+						return "Presidents";
+					else if(input == "viceprez")
+						return "Vice Presidents";
+					else if(input == "sen")
+						return "Senators";
 					else
-						return input;
+						return "Represenatives";
 				}
-
-				function multipleSentence(value, kind) {
-					var allVals = value.split(',');
-
-					if(allVals.length == 1)
-						return filterType(allVals[0], kind);
-					else if(allVals.length == 2)
-						return filterType(allVals[0], kind) + " or " + filterType(allVals[1], kind);
-					else {
-						var longValue = "either ";
-						var i = 0;
-
-						$.each(allVals, function() {
-							if(allVals.length - 1 == i)
-								longValue += "or " + filterType(allVals[i], kind);
-							else
-								longValue += filterType(allVals[i], kind) + ", ";
-
-							i++;
-						});
-
-						return longValue;
-					}
+				else if(kind == "gender") {
+					if(input == "M")
+						return "Male"
+					else if(input == "F")
+						return "Female";
 				}
+				else
+					return input;
+			}
 
-				if(key == "state")
-					string.push(" from " + convertState(value, 'name'));
+			function multipleSentence(value, kind) {
+				var allVals = value.split(',');
 
-				if(key == "type")
-					string.push(multipleSentence(value, "type"));
+				if(allVals.length == 1)
+					return filterType(allVals[0], kind);
+				else if(allVals.length == 2)
+					return filterType(allVals[0], kind) + " or " + filterType(allVals[1], kind);
+				else {
+					var longValue = "either ";
+					var i = 0;
 
-				if(key == "party")
-					string.push(multipleSentence(value, "party"));
+					$.each(allVals, function() {
+						if(allVals.length - 1 == i)
+							longValue += "or " + filterType(allVals[i], kind);
+						else
+							longValue += filterType(allVals[i], kind) + ", ";
 
-				if(key == "gender")
-					string.push(filterType(value, "gender"));
+						i++;
+					});
 
-				if(key == "religion")
-					string.push(multipleSentence(value, "religion"));
-
-				if(key == "congress")
-					string.push("in the " + parseInt(value).ordinate() + " congress");
-			});
+					return longValue;
+				}
+			}
 
 			var finalLength = string.length;
 			var finalString = string.join(', ');

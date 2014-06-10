@@ -6,23 +6,22 @@
 		<h1 class="text-center">Search All Politicians</h1>
 	</div>
 </div>
-<div class="foldable">
-	<div class="foldable-header down">
-		<div class="row show-for-small">
-			<div class="small-12 columns">
-				<h3 class="title">Search Options</h3>
+<div class="row">
+	<div class="large-3 medium-4 small-12 columns">
+		<div class="foldable">
+			<div class="foldable-header down">
+				<div class="row show-for-small">
+					<div class="small-12 columns">
+						<h3 class="title">Search Options</h3>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="foldable-content">
-		<div class="row">
-			<div class="large-3 medium-4 small-12 columns">
+			<div class="foldable-content">
 				<form id="politician-search">
 					<input type="text" name="query" placeholder="Search by name...">
 					<p class="gray-caps">State</p>
 					<select name="state">
 						<option selected value="all">All states</option>
-
 					</select>
 					<p class="gray-caps">Politician Type</p>
 					<div class="input-new-line">
@@ -92,13 +91,12 @@
 					</select>
 				</form>
 			</div>
-			<div class="large-8 medium-8 small-12 large-offset-1 columns">
-				<div class="loader" style="display: none;"></div>
-				<div id="map"></div>
-				<h3></h3>
-				<p class="gray-caps"></p>
-				<ol id="politician-search-list"></ol>
-			</div>
 		</div>
 	</div>
-</div>
+	<div class="large-8 medium-7 small-12 large-offset-1 medium-offset-1 columns">
+		<div class="loader"></div>
+		<div id="map"></div>
+		<h3 class="small-only-text-center"></h3>
+		<p class="gray-caps"></p>
+		<ol id="politician-search-list"></ol>
+	</div>

@@ -270,27 +270,14 @@ if($key.length > 0) {
 	});
 }
 else {
-	var $searchForm = $('#politician-search');
 	var dataHold;
-	var resultsNum = 5;
-
-	$searchForm.on('submit', function(event) {
-		event.preventDefault();
-	});
-
+	var $searchForm = $('#politician-search');
 	var $map = $('#map');
 	var $politiciansList = $('#politician-search-list');
 	var $politiciansPagination = $('#politicians-list-pagination');
 
-	$(document).on('click', $politiciansPagination.selector, function(event) {
+	$searchForm.on('submit', function(event) {
 		event.preventDefault();
-
-		if(dataHold.length > resultsNum)
-			resultsNum += 5;
-		else
-			resultsNum = 5;
-
-		prepareData(dataHold);
 	});
 
 	var $allInputs = {
@@ -305,16 +292,24 @@ else {
 	$query = $searchForm.find('input[name=query]');
 	$sort = $searchForm.find('select[name=sort]');
 
+	var getStates = convertState('each', 'name');
+	var allStates = getStates.split(',');
+
+	for(var state in allStates)
+		$allInputs.state.append('<option value="' + convertState(allStates[state], 'abbrev') + '">' + allStates[state] + '</option>');
+
 	var inputListSelectors = [];
+	var querySortSelectors = [];
 
 	$.each($allInputs, function() {
 		inputListSelectors.push($(this).selector);
 	});
 
-	var querySortSelectors = [];
-
 	querySortSelectors.push($query.selector);
 	querySortSelectors.push($sort.selector);
+
+	// Default number of results to show
+	var resultsNum = 5;
 
 	// We don't need to make an AJAX call unless nothing has been set
 	$(querySortSelectors.join()).on('change', function() {
@@ -330,14 +325,28 @@ else {
 
 		resultsNum = 5;
 
-		$.get('/congress/politicians?format=json', queryString, function(data) { prepareData(data) });
+		$.get('/congress/politicians?format=json', queryString, function(data) {
+			$politiciansList.fadeOut(250, function() {
+				$politiciansPagination.hide();
+
+				$loader.fadeIn(250, function() {
+					prepareData(data);
+				});
+			});
+		});
 	});
 
-	var getStates = convertState('each', 'name');
-	var allStates = getStates.split(',');
+	// We need to load more politicians in, no call or anything needed
+	$(document).on('click', $politiciansPagination.selector, function(event) {
+		event.preventDefault();
 
-	for(var state in allStates)
-		$allInputs.state.append('<option value="' + convertState(allStates[state], 'abbrev') + '">' + allStates[state] + '</option>');
+		if(dataHold.length > resultsNum)
+			resultsNum += 5;
+		else
+			resultsNum = 5;
+
+		prepareData(dataHold);
+	});
 
 	function gatherInputs() {
 		// Prepare the query data
@@ -548,8 +557,6 @@ else {
 		var $mainHeader = $('#content h1');
 		var resultsCounter = 0;
 
-		$politiciansList.html('');
-
 		if(data.length > 0) {
 			var congress = $allInputs.congress.val();
 
@@ -618,6 +625,11 @@ else {
 					return false;
 
 				resultsCounter++;
+			});
+
+			$loader.fadeOut(250, function() {
+				$politiciansList.fadeIn(250);
+				$politiciansPagination.show();
 			});
 
 			$('#politicians-list-pagination').remove();

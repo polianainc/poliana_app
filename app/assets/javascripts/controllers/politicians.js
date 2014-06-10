@@ -286,11 +286,10 @@ else {
 		party: $searchForm.find('input[name=party]'),
 		gender: $searchForm.find('select[name=gender]'),
 		religion: $searchForm.find('input[name=religion]'),
-		congress: $searchForm.find('select[name=congress]')
+		congress: $searchForm.find('select[name=congress]'),
+		query: $searchForm.find('input[name=query]'),
+		sort: $searchForm.find('select[name=sort]')
 	};
-
-	$query = $searchForm.find('input[name=query]');
-	$sort = $searchForm.find('select[name=sort]');
 
 	var getStates = convertState('each', 'name');
 	var allStates = getStates.split(',');
@@ -305,19 +304,8 @@ else {
 		inputListSelectors.push($(this).selector);
 	});
 
-	querySortSelectors.push($query.selector);
-	querySortSelectors.push($sort.selector);
-
 	// Default number of results to show
 	var resultsNum = 5;
-
-	// We don't need to make an AJAX call unless nothing has been set
-	$(querySortSelectors.join()).on('change', function() {
-		if(typeof dataHold != "undefined")
-			prepareData(dataHold);
-		else
-			console.log("More information needed");
-	});
 
 	// We need to make an AJAX call
 	$(inputListSelectors.join()).on('change', function() {
@@ -381,7 +369,7 @@ else {
 		dataHold = data;
 
 		// Filter by query first
-		var queryVal = $query.val().toLowerCase();
+		var queryVal = $allInputs.query.val().toLowerCase();
 		var temp = [];
 
 		$.each(data, function() {
@@ -395,7 +383,7 @@ else {
 		data = temp;
 
 		// Now sort all the rows
-		var sortVal = $sort.val();
+		var sortVal = $allInputs.sort.val();
 		var congressVal = $allInputs.congress.val();
 
 		$.each(data, function() {
@@ -441,8 +429,10 @@ else {
 	}
 
 	function formatData(data) {
-		var sortVal = $sort.val();
-		var queryVal = $query.val();
+		var sortVal = $allInputs.sort.val();
+		var queryVal = $allInputs.query.val();
+
+		$politiciansList.html('');
 
 		function getHeading() {
 			var string = "";

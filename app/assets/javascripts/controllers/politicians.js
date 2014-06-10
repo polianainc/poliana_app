@@ -468,8 +468,6 @@ else {
 			var string = [];
 			var info = gatherInputs();
 
-			console.log(info);
-
 			if(Object.keys(info).length > 1) {
 				$.each(info, function(key, value) {
 					if(key == "state")
@@ -646,7 +644,16 @@ else {
 		}
 		else {
 			$mainHeader.html("Search All Politicians");
-			console.log("No politicians fit this query");
+
+			$map.siblings('h3').html("");
+			$map.siblings('.gray-caps').html("");
+
+			$politiciansList.html('<p>Sorry, no politicians fit that request!</p>');
+			$politiciansPagination.hide();
+
+			$loader.fadeOut(250, function() {
+				$politiciansList.fadeIn(250);
+			});
 		}
 	}
 }

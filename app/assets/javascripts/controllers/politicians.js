@@ -316,6 +316,7 @@ else {
 		$.get('/congress/politicians?format=json', queryString, function(data) {
 			$politiciansList.fadeOut(250, function() {
 				$politiciansPagination.hide();
+				scrollToPos(0);
 
 				$loader.fadeIn(250, function() {
 					prepareData(data);

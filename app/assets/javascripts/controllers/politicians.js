@@ -468,7 +468,9 @@ else {
 			var string = [];
 			var info = gatherInputs();
 
-			if(info.length > 0) {
+			console.log(info);
+
+			if(Object.keys(info).length > 1) {
 				$.each(info, function(key, value) {
 					if(key == "state")
 						string.push(" from " + convertState(value, 'name'));

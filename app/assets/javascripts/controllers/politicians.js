@@ -340,7 +340,7 @@ else {
 		prepareData(dataHold);
 	});
 
-	function gatherInputs() {
+	function gatherInputs() {		
 		// Prepare the query data
 		var queryString = {};
 

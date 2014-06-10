@@ -17,79 +17,99 @@
 				</div>
 			</div>
 			<div class="foldable-content">
-				<form id="politician-search">
-					<input type="text" name="query" placeholder="Search by name...">
+				<%= form_tag("/congress/politicians", :method => 'GET', :id => 'politician-search') do %>
+				  <%= text_field_tag(:query, params[:query], :placeholder => "Search by name...") %>
+
 					<p class="gray-caps">State</p>
-					<select name="state">
-						<option selected value="all">All states</option>
-					</select>
+					<%= select_tag(:state, options_for_select(@states.collect {|s| [ s['name'], s['abbrev'] ] }, params[:state]), prompt: "Select a state") %>
+
+					<!-- <input type="checkbox" id="party-0" name="party" value="Democrat"><label for="party-0">Democrat</label> -->
+
 					<p class="gray-caps">Politician Type</p>
+					<% poli_type = params[:type] ? params[:type].split(',') : [] %>
 					<div class="input-new-line">
-						<input type="checkbox" id="type-0" name="type" value="prez"><label for="type-0">President</label>
+						<%= check_box_tag('type[0]', 'prez', poli_type.include?("prez")) %>
+						<%= label_tag('type[0]', "President") %>
 					</div>
 					<div class="input-new-line">
-						<input type="checkbox" id="type-1" name="type" value="viceprez"><label for="type-1">Vice-President</label>
+						<%= check_box_tag('type[1]', 'viceprez', poli_type.include?("viceprez")) %>
+						<%= label_tag('type[1]', "Vice President") %>
 					</div>
 					<div class="input-new-line">
-						<input type="checkbox" id="type-2" name="type" value="sen"><label for="type-2">Senator</label>
+						<%= check_box_tag('type[2]', 'sen', poli_type.include?("sen")) %>
+						<%= label_tag('type[2]', "Senator") %>
 					</div>
 					<div class="input-new-line">
-						<input type="checkbox" id="type-3" name="type" value="rep"><label for="type-3">Representative</label>
+						<%= check_box_tag('type[3]', 'rep', poli_type.include?("rep")) %>
+						<%= label_tag('type[3]', "Representative") %>
 					</div>
+
 					<p class="gray-caps">Party</p>
+					<% poli_party = params[:party] ? params[:party].split(',') : [] %>
 					<div class="input-new-line">
-						<input type="checkbox" id="party-0" name="party" value="Democrat"><label for="party-0">Democrat</label>
+						<%= check_box_tag('party[0]', 'Democrat', poli_party.include?("Democrat")) %>
+						<%= label_tag('party[0]', "Democrat") %>
 					</div>
 					<div class="input-new-line">
-						<input type="checkbox" id="party-1" name="party" value="Republican"><label for="party-1">Republican</label>
+						<%= check_box_tag('party[1]', 'Republican', poli_party.include?("Republican")) %>
+						<%= label_tag('party[1]', "Republican") %>
 					</div>
 					<div class="input-new-line">
-						<input type="checkbox" id="party-2" name="party" value="Independent"><label for="party-2">Independent</label>
+						<%= check_box_tag('party[2]', 'Independent', poli_party.include?("Independent")) %>
+						<%= label_tag('party[2]', "Independent") %>
 					</div>
+
 					<p class="gray-caps">Gender</p>
-					<select name="gender">
-						<option selected value="all">All</option>
-						<option value="M">Male</option>
-						<option value="F">Female</option>
-					</select>
+					<%= select_tag(:gender, options_for_select({"Male" => "M", "Female" => "F"}, params[:gender]), prompt: "All") %>
+
 					<p class="gray-caps">Religion</p>
+					<% poli_religion = params[:religion] ? params[:religion].split(',') : [] %>
 					<div class="input-new-line">
-						<input type="checkbox" id="religion-0" name="religion" value="Christian"><label for="religion-0">Christian</label>
+						<%= check_box_tag('religion[0]', 'Christian', poli_religion.include?("Christian")) %>
+						<%= label_tag('religion[0]', "Christian") %>
 					</div>
 					<div class="input-new-line">
-						<input type="checkbox" id="religion-1" name="religion" value="Muslim"><label for="religion-1">Muslim</label>
+						<%= check_box_tag('religion[1]', 'Muslim', poli_religion.include?("Muslim")) %>
+						<%= label_tag('religion[1]', "Muslim") %>
 					</div>
 					<div class="input-new-line">
-						<input type="checkbox" id="religion-2" name="religion" value="Jewish"><label for="religion-2">Jewish</label>
+						<%= check_box_tag('religion[2]', 'Jewish', poli_religion.include?("Jewish")) %>
+						<%= label_tag('religion[2]', "Jewish") %>
 					</div>
 					<div class="input-new-line">
-						<input type="checkbox" id="religion-3" name="religion" value="Buddhist"><label for="religion-3">Buddhist</label>
+						<%= check_box_tag('religion[3]', 'Buddhist', poli_religion.include?("Buddhist")) %>
+						<%= label_tag('religion[3]', "Buddhist") %>
 					</div>
 					<div class="input-new-line">
-						<input type="checkbox" id="religion-4" name="religion" value="None/Other"><label for="religion-4">None/Other</label>
+						<%= check_box_tag('religion[4]', 'None/Other', poli_religion.include?("None/Other")) %>
+						<%= label_tag('religion[4]', "None/Other") %>
 					</div>
+
 					<p class="gray-caps">Sort by</p>
-					<select name="sort">
-						<option selected value="total-desc">Total Contributions &#x25BC;</option>
-						<option value="total-asc">Total Contributions &#x25B2;</option>
-						<option value="pac-desc">PAC Contributions &#x25BC;</option>
-						<option value="pac-asc">PAC Contributions &#x25B2;</option>
-						<option value="industry-desc">Industry Contributions &#x25BC;</option>
-						<option value="industry-asc">Industry Contributions &#x25B2;</option>
-						<option value="age-desc">Oldest</option>
-						<option value="age-asc">Youngest</option>
-					</select>
+					<%= select_tag(:sort, options_for_select({
+						"Total Contributions &#x25BC;".html_safe => "total-desc",
+						"Total Contributions &#x25B2;".html_safe => "total-asc",
+						"PAC Contributions &#x25BC;".html_safe => "pac-desc",
+						"PAC Contributions &#x25B2;".html_safe => "pac-asc",
+						"Industry Contributions &#x25BC;".html_safe => "industry-desc",
+						"Industry Contributions &#x25B2;".html_safe => "industry-asc",
+						"Oldest".html_safe => "age-desc",
+						"Youngest".html_safe => "age-asc",
+					}, params[:sort])) %>
+
 					<p class="gray-caps">Time</p>
-					<select name="congress">
-						<option selected value="all">All-time</option>
-						<option value="113">113th Congress</option>
-						<option value="112">112th Congress</option>
-						<option value="111">111th Congress</option>
-						<option value="110">110th Congress</option>
-						<option value="109">109th Congress</option>
-						<option value="108">108th Congress</option>
-					</select>
-				</form>
+					<%= select_tag(:congress, options_for_select({
+						"All-time" => "all",
+						"113th Congress" => "113",
+						"112th Congress" => "112",
+						"111th Congress" => "111",
+						"110th Congress" => "110",
+						"109th Congress" => "109",
+						"108th Congress" => "108"
+					}, params[:time])) %>
+
+					<%= hidden_field_tag(:format, "json") %>
+				<% end %>
 			</div>
 		</div>
 	</div>

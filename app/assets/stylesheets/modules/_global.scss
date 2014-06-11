@@ -224,7 +224,7 @@ small { font-size: 0.75em; }
 
 .foldable {
 	.foldable-header {
-		h3 {
+		.title {
 			position: relative;
 			cursor: pointer;
 			&:after {
@@ -239,7 +239,7 @@ small { font-size: 0.75em; }
 			}
 		}
 		&.down {
-			h3 {
+			.title {
 				&:after { content: "\25BC"; }
 			}
 		}

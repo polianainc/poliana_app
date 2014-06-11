@@ -1,7 +1,7 @@
 /*
  * jQuery throttle / debounce - v1.1 - 3/7/2010
  * http://benalman.com/projects/jquery-throttle-debounce-plugin/
- * 
+ *
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
@@ -12,16 +12,32 @@
 function trimByWord(sentence, count) {
 	var result = sentence;
 	var resultArray = result.split(' ');
-	
+
 	if(count == undefined)
 		count = 100;
-	
+
 	if(resultArray.length > count){
 		resultArray = resultArray.slice(0, count);
 		result = resultArray.join(' ') + '...';
 	}
-	
+
 	return result;
+}
+
+// Sort an object by a given field
+function dynamicSort(property) {
+	var sortOrder = 1;
+
+	if(property[0] === "-") {
+		sortOrder = -1;
+		property = property.substr(1);
+	}
+
+	return function (a,b) {
+		var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+
+		return result * sortOrder;
+	}
 }
 
 // Scroll to a section on a page in an optional amount of time
@@ -30,7 +46,7 @@ function scrollToPos(value, time) {
 		time = 500;
 	else
 		time = 0;
-		
+
 	$('html, body').animate({
 		scrollTop: value
 	}, time, 'swing');
@@ -51,8 +67,32 @@ function convertParty(party, to) {
 			return "Democrat";
 		else if(party == "R")
 			return "Republican";
-		else	
+		else
 			return "Independent";
+	}
+}
+
+// Helpful function to convert term types to and from their full names and respective abbreviations
+function convertType(type, to) {
+	if(to == "name") {
+		if(type == "prez")
+			return "President";
+		else if(type == "viceprez")
+			return "Vice President";
+		else if(type == "sen")
+			return "Senator";
+		else
+			return "Representative";
+	}
+	else {
+		if(type == "President")
+			return "prez";
+		else if(type == "Vice President")
+			return "viceprez";
+		else if(type == "Senator")
+			return "sen";
+		else
+			return "rep";
 	}
 }
 
@@ -76,9 +116,9 @@ function convertState(name, to) {
 		{'name':'Vermont', 'abbrev':'VT'},			{'name':'Virginia', 'abbrev':'VA'},			{'name':'Washington', 'abbrev':'WA'},
 		{'name':'West Virginia', 'abbrev':'WV'},	{'name':'Wisconsin', 'abbrev':'WI'},		{'name':'Wyoming', 'abbrev':'WY'}
 	);
-		
+
 	var returnthis = "";
-	
+
 	$.each(states, function(index, value) {
 		if(name == 'each') {
 			if(to == 'name')
@@ -101,10 +141,10 @@ function convertState(name, to) {
 			}
 		}
 	});
-	
+
 	if(name == 'each')
 		returnthis = returnthis.slice(1);
-	
+
 	return returnthis;
 }
 
@@ -151,6 +191,11 @@ function nearest(n, v) {
 	n = Math.ceil(n) * v;
 	return n;
 }
+
+// Splices things into a string, rather than an array
+String.prototype.splice = function(idx, rem, s) {
+	return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
+};
 
 // Return the ordinated value of a number
 Number.prototype.ordinate = function() {

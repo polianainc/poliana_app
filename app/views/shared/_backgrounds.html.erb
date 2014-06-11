@@ -31,7 +31,7 @@
 			"rally-3-large.jpg"
 		]
 	}
-	
+
 	# If the image variable isn't defined in the view OR if the image variable isn't a key in our list of backgrounds
 	if defined?(image).nil? || !backgrounds.has_key?(image)
 		image = backgrounds[backgrounds.keys.sample]
@@ -41,7 +41,7 @@
 	end
 %>
 
-<div class="full-background<%= " " + classes if !defined?(classes).nil? %>" data-stellar-background-ratio="0.5" data-small="<%= image[0] %>" data-medium="<%= image[1] %>" data-large="<%= image[2] %>">
+<div class="full-background<%= " " + classes if !defined?(classes).nil? %>" data-stellar-background-ratio="0.5" data-interchange="[/assets/backgrounds/<%= image[0] %>, (small)], [/assets/backgrounds/<%= image[1] %>, (medium)], [/assets/backgrounds/<%= image[2] %>, (large)]">
 	<div class="row">
 		<div class="large-12 columns">
 			<%= yield %>

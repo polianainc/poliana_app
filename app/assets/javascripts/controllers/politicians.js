@@ -401,8 +401,9 @@ else {
 		$.each(data, function() {
 			var fName = this.first_name.toLowerCase();
 			var lName = this.last_name.toLowerCase();
+			var fName = fName + " " + lName;
 
-			if(fName.indexOf(queryVal) != -1 || lName.indexOf(queryVal) != -1)
+			if(fName.indexOf(queryVal) != -1 || lName.indexOf(queryVal) != -1 || fName.indexOf(queryVal) != -1)
 				temp.push(this);
 		});
 

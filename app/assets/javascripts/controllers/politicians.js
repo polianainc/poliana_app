@@ -11,8 +11,8 @@ if($key.length > 0) {
 	var cont = ge.controller();
 
 	// Get all the PACS
-	var getPacs = $.get('http://poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: startDate, end: endDate, unit: 'congress' }, function(data) {
-	//var getPacs = $.get('/temp/pacs.json', function(data) {
+	//var getPacs = $.get('http://poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: startDate, end: endDate, unit: 'congress' }, function(data) {
+	var getPacs = $.get('/temp/pacs.json', function(data) {
 		var $barSelector = $('#pacs-bar');
 
 		var title = "Top 5 PAC Contributors";
@@ -98,8 +98,8 @@ if($key.length > 0) {
 	});
 
 	// Get all the industries
-	var getIndustries = $.get('http://poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: startDate, end: endDate, unit: 'congress' }, function(data) {
-	//var getIndustries = $.get('/temp/industries.json', function(data) {
+	//var getIndustries = $.get('http://poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: startDate, end: endDate, unit: 'congress' }, function(data) {
+	var getIndustries = $.get('/temp/industries.json', function(data) {
 		var $barSelector = $('#industries-bar');
 
 		var title = "Top 5 Industry Contributors";
@@ -270,57 +270,414 @@ if($key.length > 0) {
 	});
 }
 else {
-	$('input[name=politician_search_main], input[name=politician_search_small]').on('keyup', $.debounce(500, function(event) {
-		if($(this).attr('name') == "politician_search_main")
-			$('input[name=politician_search_small]').val($(this).val());
-		else
-			$('input[name=politician_search_main]').val($(this).val());
+	var dataHold;
+	var $searchForm = $('#politician-search');
+	var $map = $('#map');
+	var $politiciansList = $('#politician-search-list');
+	var $politiciansPagination = $('#politicians-list-pagination');
 
-		if($(this).val() != "" && $(this).val().length > 2) {
-			$allPoliticians.find('.lead').hide();
-			runPoliticianSearch($(this).val().toLowerCase());
-		}
-		else {
-			$allPoliticians.find('.politician').addClass('hide');
-			$allPoliticians.find('.lead').show();
-			$allPoliticiansCounter.hide();
-		}
-	}));
+	$searchForm.on('submit', function(event) {
+		event.preventDefault();
+	});
 
-	function runPoliticianSearch(value) {
-		var lookups = ['birthyear', 'birthmonth', 'firstname', 'lastname', 'fullname', 'gender', 'party', 'religion', 'generalreligion', 'state', 'congresses'];
+	var $allInputs = {
+		query: $searchForm.find('input[name=query]'),
+		state: $searchForm.find('select[name=state]'),
+		type: $searchForm.find('input[name=type]'),
+		party: $searchForm.find('input[name=party]'),
+		gender: $searchForm.find('select[name=gender]'),
+		religion: $searchForm.find('input[name=religion]'),
+		sort: $searchForm.find('select[name=sort]'),
+		congress: $searchForm.find('select[name=congress]')
+	};
 
-		$allPoliticians.find('.politician').each(function() {
-			var found = false;
-			var $elem = $(this);
+	var getStates = convertState('each', 'name');
+	var allStates = getStates.split(',');
 
-			$.each(lookups, function() {
-				if($elem.attr('data-' + this).toLowerCase().indexOf(value) != -1)
-					found = true;
-			});
+	for(var state in allStates)
+		$allInputs.state.append('<option value="' + convertState(allStates[state], 'abbrev') + '">' + allStates[state] + '</option>');
 
-			if(found) {
-				$(this).removeClass('hide');
-				count++;
+	var inputListSelectors = [];
+	var querySortSelectors = [];
+
+	$.each($allInputs, function() {
+		inputListSelectors.push($(this).selector);
+	});
+
+	// Default number of results to show
+	var resultsNum = 5;
+
+	$(window).bind('popstate', function(event) {
+		var newQueryString = window.history.state;
+
+		$.each($allInputs, function() {
+			if($(this).size() > 1) {
+				$(this).each(function() {
+					if(newQueryString[$(this).attr('name')].indexOf($(this).val()) != -1)
+						$(this).prop('checked', true);
+					else
+						$(this).prop('checked', false);
+				});
 			}
 			else
-				$(this).addClass('hide');
+				$(this).val(newQueryString[$(this).attr('name')]);
 		});
 
-		if(count <= 12)
-			$allPoliticians.addClass('less');
-		else
-			$allPoliticians.removeClass('less');
+		makeQuery(window.history.state);
+	});
 
-		if(count == 0)
-			count = "No results";
-		else if(count == 1)
-			count = "1 result";
-		else
-			count = count + " results";
+	// We need to make an AJAX call
+	$(inputListSelectors.join()).on('change', function() {
+		var queryString = gatherInputs();
 
-		$allPoliticiansCounter.find('.count').html(count);
-		$allPoliticiansCounter.find('.query').html(value);
-		$allPoliticiansCounter.show();
+		history.pushState(queryString, "", window.location.href.split('?')[0] + "?" + decodeURIComponent($.param(queryString)));
+		resultsNum = 5;
+
+		makeQuery(queryString);
+	});
+
+	function makeQuery(queryString) {
+		$.get('/congress/politicians?format=json', queryString, function(data) {
+			$politiciansList.fadeOut(250, function() {
+				$politiciansPagination.hide();
+				scrollToPos(0);
+
+				$loader.fadeIn(250, function() {
+					prepareData(data);
+				});
+			});
+		});
+	}
+
+	// Trigger the first one
+	$allInputs.query.trigger('change');
+
+	// We need to load more politicians in, no call or anything needed
+	$(document).on('click', $politiciansPagination.selector, function(event) {
+		event.preventDefault();
+
+		if(dataHold.length > resultsNum)
+			resultsNum += 5;
+		else
+			resultsNum = 5;
+
+		prepareData(dataHold);
+	});
+
+	function gatherInputs() {
+		// Prepare the query data
+		var queryString = {};
+
+		// Populate it
+		$.each($allInputs, function() {
+			if($(this).size() > 1) {
+				var checked = [];
+
+				$(this).each(function() {
+					if($(this).is(':checked'))
+						checked.push($(this).val());
+				});
+
+				checked = checked.join();
+
+				if(checked !== "")
+					queryString[$(this).attr('name')] = checked;
+			}
+			else if($(this).size() === 1 && $(this).val() != "" && $(this).val() != "all")
+				queryString[$(this).attr('name')] = $(this).val();
+		});
+
+		return queryString;
+	}
+
+	function prepareData(data) {
+		// Hold on to the information
+		dataHold = data;
+
+		// Filter by query first
+		var queryVal = $allInputs.query.val().toLowerCase();
+		var temp = [];
+
+		$.each(data, function() {
+			var fName = this.first_name.toLowerCase();
+			var lName = this.last_name.toLowerCase();
+			var fName = fName + " " + lName;
+
+			if(fName.indexOf(queryVal) != -1 || lName.indexOf(queryVal) != -1 || fName.indexOf(queryVal) != -1)
+				temp.push(this);
+		});
+
+		data = temp;
+
+		// Now sort all the rows
+		var sortVal = $allInputs.sort.val();
+		var congressVal = $allInputs.congress.val();
+
+		$.each(data, function() {
+			var poli = this;
+			var contrib = poli.contributions;
+
+			poli.pacTotal = 0;
+			poli.industryTotal = 0;
+			poli.total = 0;
+
+			if(congressVal == "all") {
+				$.each(contrib, function() {
+					poli.pacTotal += parseInt(this.pac);
+					poli.industryTotal += parseInt(this.industry);
+				});
+			}
+			else {
+				poli.pacTotal = parseInt(contrib[congressVal].pac);
+				poli.industryTotal = parseInt(contrib[congressVal].industry);
+			}
+
+			poli.total = poli.pacTotal + poli.industryTotal;
+		});
+
+		if(sortVal === "total-desc")
+			data.sort(dynamicSort("-total"));
+		else if(sortVal === "total-asc")
+			data.sort(dynamicSort("total"));
+		else if(sortVal === "pac-desc")
+			data.sort(dynamicSort("-pacTotal"));
+		else if(sortVal === "pac-asc")
+			data.sort(dynamicSort("pacTotal"));
+		else if(sortVal === "industry-desc")
+			data.sort(dynamicSort("-industryTotal"));
+		else if(sortVal === "industry-asc")
+			data.sort(dynamicSort("industryTotal"));
+		else if(sortVal === "age-desc")
+			data.sort(dynamicSort("percent_age_difference"));
+		else if(sortVal === "age-asc")
+			data.sort(dynamicSort("-percent_age_difference"));
+
+		formatData(data);
+	}
+
+	function formatData(data) {
+		var sortVal = $allInputs.sort.val();
+		var queryVal = $allInputs.query.val();
+
+		$politiciansList.html('');
+
+		function getHeading() {
+			var string = "";
+			var number = resultsNum;
+
+			if(data.length < number)
+				number = data.length;
+
+			if(sortVal === "total-desc")
+				string += "Top " + number + " Highest Earning Politicians";
+			else if(sortVal === "total-asc")
+				string += "Top " + number + " Lowest Earning Politicians";
+			else if(sortVal === "pac-desc")
+				string += "Top " + number + " Highest Earning Politicians from PACs";
+			else if(sortVal === "pac-asc")
+				string += "Top " + number + " Lowest Earning Politicians from PACs";
+			else if(sortVal === "industry-desc")
+				string += "Top " + number + " Highest Earning Politicians from Industries";
+			else if(sortVal === "industry-asc")
+				string += "Top " + number + " Lowest Earning Politicians from Industries";
+			else if(sortVal === "age-desc")
+				string += "Top " + number + " Oldest Politicians";
+			else if(sortVal === "age-asc")
+				string += "Top " + number + " Youngest Politicians";
+
+			return string;
+		}
+
+		function getSubheading() {
+			var string = [];
+			var info = gatherInputs();
+
+			if(Object.keys(info).length > 1) {
+				$.each(info, function(key, value) {
+					if(key == "state")
+						string.push(" from " + convertState(value, 'name'));
+
+					if(key == "type")
+						string.push(multipleSentence(value, "type"));
+
+					if(key == "party")
+						string.push(multipleSentence(value, "party"));
+
+					if(key == "gender")
+						string.push(filterType(value, "gender"));
+
+					if(key == "religion")
+						string.push(multipleSentence(value, "religion"));
+
+					if(key == "congress")
+						string.push("in the " + parseInt(value).ordinate() + " congress");
+				});
+			}
+			else
+				return "";
+
+			function filterType(input, kind) {
+				if(kind == "type") {
+					if(input == "prez")
+						return "Presidents";
+					else if(input == "viceprez")
+						return "Vice Presidents";
+					else if(input == "sen")
+						return "Senators";
+					else
+						return "Represenatives";
+				}
+				else if(kind == "gender") {
+					if(input == "M")
+						return "Male"
+					else if(input == "F")
+						return "Female";
+				}
+				else
+					return input;
+			}
+
+			function multipleSentence(value, kind) {
+				var allVals = value.split(',');
+
+				if(allVals.length == 1)
+					return filterType(allVals[0], kind);
+				else if(allVals.length == 2)
+					return filterType(allVals[0], kind) + " or " + filterType(allVals[1], kind);
+				else {
+					var longValue = "either ";
+					var i = 0;
+
+					$.each(allVals, function() {
+						if(allVals.length - 1 == i)
+							longValue += "or " + filterType(allVals[i], kind);
+						else
+							longValue += filterType(allVals[i], kind) + ", ";
+
+						i++;
+					});
+
+					return longValue;
+				}
+			}
+
+			var finalLength = string.length;
+			var finalString = string.join(', ');
+
+			if(finalLength > 1)
+				finalString = finalString.splice(finalString.lastIndexOf(', ') + 1, 0, " and");
+
+			if(queryVal != "")
+				return "Politicians named '" + queryVal + "' that are " + finalString;
+			else
+				return "That are " + finalString;
+		}
+
+		$map.siblings('h3').html(getHeading());
+		$map.siblings('.gray-caps').html(getSubheading());
+
+		var $mainHeader = $('#content h1');
+		var resultsCounter = 0;
+
+		if(data.length > 0) {
+			var congress = $allInputs.congress.val();
+
+			$mainHeader.html(data.length + " politicians found");
+
+			$.each(data, function() {
+				if(resultsCounter < resultsNum) {
+					var poli = this;
+
+					$politiciansList.append($('<li>')
+						.append($('<div>')
+							.addClass('picture')
+							.css('background-image', 'url(\'' + this.image_url + '\')')
+						)
+						.append($('<div>')
+							.append($('<ul>')
+								.addClass('politician-card ' + this.party.toLowerCase())
+								.append($('<li>')
+									.html(convertParty(this.party, "abbrev"))
+								)
+								.append($('<li>')
+									.html(this.state)
+								)
+							)
+						)
+						.append($('<div>')
+							.addClass('politician-info')
+							.append($('<a>')
+								.attr('href', '/congress/politicians/' + this.bioguide_id)
+								.append($('<h5>')
+									.html(this.first_name + " " + this.last_name)
+								)
+								.append($('<p>')
+									.addClass('role')
+									.html(convertType(this.terms[0].term_type, "name"))
+								)
+								.append($('<p>')
+									.addClass('important')
+									.html(function() {
+										if(congress == "all") {
+											if(sortVal == "total-desc" || sortVal == "total-asc")
+												return '<span>$' + commaSeparateNumber(poli.total) + '</span> in contributions';
+											else if(sortVal == "pac-desc" || sortVal == "pac-asc")
+												return '<span>$' + commaSeparateNumber(poli.pacTotal) + '</span> in PAC contributions';
+											else if(sortVal == "industry-desc" || sortVal == "industry-asc")
+												return '<span>$' + commaSeparateNumber(poli.industryTotal) + '</span> in industry contributions';
+										}
+										else {
+											if(sortVal == "total-desc" || sortVal == "total-asc")
+												return '<span>$' + commaSeparateNumber(poli.contributions[congress].pac + poli.contributions[congress].industry) + '</span> in contributions';
+											else if(sortVal == "pac-desc" || sortVal == "pac-asc")
+												return '<span>$' + commaSeparateNumber(poli.contributions[congress].pac) + '</span> in PAC contributions';
+											else if(sortVal == "industry-desc" || sortVal == "industry-asc")
+												return '<span>$' + commaSeparateNumber(poli.contributions[congress].industry) + '</span> in industry contributions';
+										}
+
+										if(sortVal == "age-desc" || sortVal == "age-asc")
+											return 'Older than <span>' + (100 - parseInt(poli.percent_age_difference)) + '%</span> of Congress';
+									})
+								)
+							)
+						)
+					);
+				}
+				else
+					return false;
+
+				resultsCounter++;
+			});
+
+			$loader.fadeOut(250, function() {
+				$politiciansList.fadeIn(250);
+				$politiciansPagination.show();
+			});
+
+			$('#politicians-list-pagination').remove();
+
+			if(data.length - resultsNum > 0) {
+				$politiciansList.after($('<div>')
+					.attr('id', 'politicians-list-pagination')
+					.append($('<a>')
+						.attr('href', '#')
+						.html('Load more politicians...')
+					)
+				);
+			}
+		}
+		else {
+			$mainHeader.html("Search All Politicians");
+
+			$map.siblings('h3').html("");
+			$map.siblings('.gray-caps').html("");
+
+			$politiciansList.html('<p>Sorry, no politicians fit that request!</p>');
+			$politiciansPagination.hide();
+
+			$loader.fadeOut(250, function() {
+				$politiciansList.fadeIn(250);
+			});
+		}
 	}
 }

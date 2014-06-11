@@ -9,9 +9,9 @@ development:
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-          - ds029117.mongolab.com:29117 
+          - ds029117.mongolab.com:29117
 
-      username: staging 
+      username: staging
       password: Ch0msky5!
 
       options:
@@ -79,12 +79,12 @@ stagingsmall:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: staging_cache 
+      database: staging_cache
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - ds029117.mongolab.com:29117 
-      username: staging 
+        - ds029117.mongolab.com:29117
+      username: staging
       password: Ch0msky5!
 
       options:
@@ -151,7 +151,7 @@ production:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: rails_cache 
+      database: rails_cache
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
@@ -244,4 +244,3 @@ test:
     # not have a field definition on the model. (default: true)
     # allow_dynamic_fields: true
     raise_not_found_error: false
-

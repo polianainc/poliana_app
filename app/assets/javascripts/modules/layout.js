@@ -5,10 +5,6 @@ $(document).ready(function() {
 	// Correctly position footer
 	footerPosition();
 
-	// Change all the full backgrounds
-	if($fullBackground.length > 0)
-		fullBackgrounds();
-
 	// Open the sharable modal dialog
 	$(document).on('click', '.sharable', function(event) {
 		event.preventDefault();
@@ -117,9 +113,6 @@ $(document).ready(function() {
 $(window).resize($.debounce(250, function() {
 	// THINGS TO DO JUST AFTER RESIZING
 
-	// Change all the full backgrounds
-	if($fullBackground.length > 0)
-		fullBackgrounds();
 })).resize(function() {
 	// THINGS TO DO WHILE RESIZING
 
@@ -174,14 +167,6 @@ function getMediaQuery() {
 		return "medium";
 	else
 		return "large";
-}
-
-// Responsive full background images
-function fullBackgrounds() {
-	var newImage = $fullBackground.attr('data-' + getMediaQuery());
-
-	if($fullBackground.css('background-image').indexOf(newImage) == -1 || $fullBackground.css('background-image') == "none")
-		$fullBackground.css('background-image', 'url(\'/assets/backgrounds/' + newImage + '\')');
 }
 
 // Correctly position footer

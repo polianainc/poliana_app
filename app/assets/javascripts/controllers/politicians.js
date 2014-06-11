@@ -307,12 +307,36 @@ else {
 	// Default number of results to show
 	var resultsNum = 5;
 
+	$(window).bind('popstate', function(event) {
+		var newQueryString = window.history.state;
+
+		$.each($allInputs, function() {
+			if($(this).size() > 1) {
+				$(this).each(function() {
+					if(newQueryString[$(this).attr('name')].indexOf($(this).val()) != -1)
+						$(this).prop('checked', true);
+					else
+						$(this).prop('checked', false);
+				});
+			}
+			else
+				$(this).val(newQueryString[$(this).attr('name')]);
+		});
+
+		makeQuery(window.history.state);
+	});
+
 	// We need to make an AJAX call
 	$(inputListSelectors.join()).on('change', function() {
 		var queryString = gatherInputs();
 
+		history.pushState(queryString, "", window.location.href.split('?')[0] + "?" + decodeURIComponent($.param(queryString)));
 		resultsNum = 5;
 
+		makeQuery(queryString);
+	});
+
+	function makeQuery(queryString) {
 		$.get('/congress/politicians?format=json', queryString, function(data) {
 			$politiciansList.fadeOut(250, function() {
 				$politiciansPagination.hide();
@@ -323,7 +347,7 @@ else {
 				});
 			});
 		});
-	});
+	}
 
 	// Trigger the first one
 	$allInputs.query.trigger('change');
@@ -346,8 +370,6 @@ else {
 
 		// Populate it
 		$.each($allInputs, function() {
-			var value;
-
 			if($(this).size() > 1) {
 				var checked = [];
 
@@ -599,9 +621,9 @@ else {
 											if(sortVal == "total-desc" || sortVal == "total-asc")
 												return '<span>$' + commaSeparateNumber(poli.total) + '</span> in contributions';
 											else if(sortVal == "pac-desc" || sortVal == "pac-asc")
-												return '<span>$' + commaSeparateNumber(poli.pac_total) + '</span> in PAC contributions';
+												return '<span>$' + commaSeparateNumber(poli.pacTotal) + '</span> in PAC contributions';
 											else if(sortVal == "industry-desc" || sortVal == "industry-asc")
-												return '<span>$' + commaSeparateNumber(poli.industry_total) + '</span> in industry contributions';
+												return '<span>$' + commaSeparateNumber(poli.industryTotal) + '</span> in industry contributions';
 										}
 										else {
 											if(sortVal == "total-desc" || sortVal == "total-asc")

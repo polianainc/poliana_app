@@ -127,3 +127,72 @@ $politician-height: $politician-dimensions + $politician-border-width;
 		}
 	}
 }
+
+#politician-search {
+	.gray-caps {
+		margin-top: 10px;
+		margin-bottom: 5px;
+	}
+	.input-new-line { display: block; }
+}
+
+#politician-search-list {
+	.politicians-default-logo {
+		opacity: 0.1;
+		height: 85px;
+		width: auto;
+		display: block;
+		margin: 60px 0px;
+	}
+	li {
+		position: relative;
+		height: 90px;
+		margin-bottom: 20px;
+		font-weight: 700;
+		.picture {
+			width: 64px;
+			height: 64px;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			@include background-size(cover);
+			& + div {
+				margin-top: 39px;
+				ul {
+					height: 32px;
+					@include border-radius(0px 0px 5px 5px);
+				}
+			}
+		}
+		.politician-info {
+			position: absolute;
+			top: 0px;
+			left: 80px;
+			a {
+				* {
+					color: $black;
+					&:hover { color: $black; }
+				}
+				h5 { margin-top: 15px; }
+				.role {
+					font-size: 0.9em;
+					font-style: italic;
+					margin-top: -10px;
+					margin-bottom: 5px;
+				}
+				.important {
+					font-size: 0.9em;
+					span { font-weight: 700; }
+				}
+			}
+		}
+	}
+}
+
+#politicians-list-pagination {
+	a {
+		display: block;
+		text-align: center;
+		font-weight: 700;
+	}
+}

@@ -1,14 +1,14 @@
 @start_date = Date.new(2003, 1, 1)
 
 def import_raw_legislators_to_mongo
-  
+
   json = File.read('lib/assets/legislators.json')
   legislators = JSON.parse(json)
 
   legislators.each_with_index do |pol, i|
 
     if pol["bioguide_id"] == nil
-      puts "bioguide nil: " + pol["first_name"] + " " + pol["last_name"] 
+      puts "bioguide nil: " + pol["first_name"] + " " + pol["last_name"]
       next
     end
 
@@ -46,7 +46,7 @@ def import_raw_legislators_to_mongo
 
     mpol.first_name ||= pol["first_name"]
     mpol.last_name ||= pol["last_name"]
-    
+
     mpol.party ||= pol["party"]
     mpol.district ||= pol["district"]
 
@@ -61,8 +61,9 @@ def import_raw_legislators_to_mongo
     term.term_type = term_type
     term.start = term_start
     term.end = term_end
-    
+
     mpol.terms << term if mpol.terms.where(:start => term.start).count == 0
+
 
     mpol.save()
   end
@@ -122,7 +123,7 @@ def add_senator_edge_cases(legislators)
 end
 
 def add_congresses
-  
+
   Politician.all.each do |pol|
 
     pol.terms.each do |term|
@@ -148,7 +149,7 @@ end
 def patch_cheney
   cheney = Politician.where(:bioguide_id => "C000344").first
   term = Term.new
-  term.start = @start_date + 2.days 
+  term.start = @start_date + 2.days
   term.end = DateTime.strptime("1106179200", '%s').to_date
   term.term_type = "viceprez"
   cheney.terms << term
@@ -189,7 +190,7 @@ end
 def add_image_urls
   Politician.each do |pol|
     uri = URI("https://s3.amazonaws.com/poliana.media/web/" + pol.bioguide_id + ".png")
-    
+
     request = Net::HTTP.new uri.host
     response = request.request_head(uri.path)
 

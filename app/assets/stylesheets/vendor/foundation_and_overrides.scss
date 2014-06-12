@@ -591,7 +591,7 @@ $magellan-padding: 15px;
 
 // Off-canvas
 
-$tabbar-bg: $white;
+$tabbar-bg: #fff;
 $tabbar-height: $header-height;
 // $tabbar-line-height: $tabbar-height;
 $tabbar-color: $black;
@@ -1081,7 +1081,7 @@ $tooltip-close-font-weight: $body-font-weight;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $white;
+$topbar-bg-color: #fff;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1095,7 +1095,7 @@ $topbar-title-weight: $body-font-weight;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: $white;
+$topbar-dropdown-bg: #fff;
 $topbar-dropdown-link-color: $black;
 $topbar-dropdown-link-bg: $white;
 // $topbar-dropdown-toggle-size: 5px;
@@ -1106,7 +1106,7 @@ $topbar-dropdown-toggle-color: $black;
 $topbar-link-color: $black;
 $topbar-link-color-hover: $black;
 // $topbar-link-color-active: $black;
-$topbar-link-weight: $body-font-weight;
+$topbar-link-weight: 700;
 // $topbar-link-font-size: rem-calc(16);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 $topbar-link-bg-hover: $white-alt;
@@ -1147,8 +1147,8 @@ $topbar-transition-speed: 250ms;
 
 .top-bar-section .dropdown li {
 	a {
-		font-weight: $body-font-weight !important;
-		background: $white !important;
+		font-weight: 700 !important;
+		background: #fff !important;
 		@include single-transition(all, 0.1s, linear);
 		&:hover { background: $white-alt !important; }
 	}

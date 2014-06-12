@@ -12,6 +12,7 @@
 		left: 0px;
 		width: 100%;
 		margin-bottom: 20px;
+		border-bottom: 1px solid $gray;
 		#logo-mobile {
 			margin-top: 3px;
 		}
@@ -74,36 +75,20 @@
 		top: 0px;
 		left: 0px;
 		width: 100%;
+		border-bottom: 1px solid $gray;
 		#logo-desktop {
 			margin-left: 20px;
 			margin-top: 10px;
 		}
-		.left {
+		.left { margin-left: 20px; }
+		.left, .right {
+			height: 59px;
 			li {
-				&.has-form {
-					position: relative;
-					input {
-						background: $white;
-						padding-right: 35px;
-						top: 14px;
-					}
-					a {
-						position: absolute;
-						top: 18px;
-						right: 30px;
-						border-bottom: none;
-						color: $black;
-						padding: 0px;
-						background: none;
-						&:hover { color: $primary-color; }
-					}
-				}
-			}
-		}
-		.right {
-			li {
+				&:not(.has-form) a:not(.button) { line-height: 59px; }
 				img { @include border-radius($global-radius); }
 				span {
+					text-transform: uppercase;
+					font-size: 0.9em !important;
 					&:first-of-type { padding-right: 10px; }
 				}
 				&.has-form {

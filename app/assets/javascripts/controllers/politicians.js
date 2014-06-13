@@ -11,7 +11,7 @@ if($key.length > 0) {
 	var cont = ge.controller();
 
 	// Get all the PACS
-	var getPacs = $.get('http://poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: startDate, end: endDate, unit: 'congress' }, function(data) {
+	var getPacs = $.get('http://poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/pacs', { start: startDate, end: endDate, unit: 'congress', apikey: apiKey }, function(data) {
 	//var getPacs = $.get('/temp/pacs.json', function(data) {
 		var $barSelector = $('#pacs-bar');
 
@@ -98,7 +98,7 @@ if($key.length > 0) {
 	});
 
 	// Get all the industries
-	var getIndustries = $.get('http://poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: startDate, end: endDate, unit: 'congress' }, function(data) {
+	var getIndustries = $.get('http://poliana-staging.elasticbeanstalk.com/politicians/' + bioguide + '/contributions/industries', { start: startDate, end: endDate, unit: 'congress', apikey: apiKey }, function(data) {
 	//var getIndustries = $.get('/temp/industries.json', function(data) {
 		var $barSelector = $('#industries-bar');
 

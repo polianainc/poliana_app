@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<meta name="description" content="Poliana is a web application that simpliﬁes the legislative system by analyzing and visualizing money’s inﬂuence in politics." />
+	<meta name="keywords" content="Poliana,poliana,politicians,politics,share,political,government,visualization,legislation,analyze,money,simplify,data,media,influence,facts,system,issues,open,social,sign" />
+
+	<meta property="og:title" content="Poliana | See Through Government" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://localhost:3000/" />
+	<meta property="og:image" content="//www.poliana.com/assets/logo-large.png" />
+	<meta property="og:site_name" content="Poliana" />
+	<meta property="og:locale" content="EN_US" />
+	<meta property="og:description" content="Poliana is a web application that simpliﬁes the legislative system by analyzing and visualizing money’s inﬂuence in politics." />
+
+	<title>Poliana | See Through Government</title>
+
+	<link href="/assets/application.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=610800162287043&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+	<meta content="authenticity_token" name="csrf-param" />
+<meta content="iVdIHO23xxT88uLi1yBensSlOmKAGklnnIo4E6DEJzM=" name="csrf-token" />
+
+	<!--[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body data-controller="static_pages" data-action="index">
+	
+	<div class="off-canvas-wrap">
+		<div class="inner-wrap">
+			<div id="container">
+				<header id="header">
+					<nav class="tab-bar hide-for-medium-up" id="mobile-nav">
+						<section class="left-small">
+							<a class="left-off-canvas-toggle menu-icon"><span></span></a>
+						</section>
+						<section class="middle tab-bar-section">
+							<a href="/"><img alt="Poliana" id="logo-mobile" src="/assets/logo-beta.png" /></a>
+						</section>
+					</nav>
+					<aside class="left-off-canvas-menu">
+						<ul class="off-canvas-list">
+							<li><label>General</label></li>
+							<li><a href="/signin"><span aria-hidden="true" class="icon-login"></span><span>Sign In</span></a></li>
+						</ul>
+					</aside>
+					<nav class="top-bar show-for-medium-up" id="desktop-nav" data-topbar>
+						<ul class="title-area">
+							<li class="name">
+								<a href="/"><img alt="Poliana" id="logo-desktop" src="/assets/logo-beta.png" /></a>
+							</li>
+							<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+						</ul>
+						<section class="top-bar-section">
+							<ul class="left">
+							</ul>
+							<ul class="right">
+								<li class="has-form"><a href="/signin" class="button radius">Sign Up!</a></li>
+							</ul>
+						</section>
+					</nav>
+				</header>
+				<section id="content" class="main-section">
+					<div class="page-specific"></div>
+<div class="background-video">
+	<video autoplay loop poster="/assets/poliana-poster.jpg">
+		<source src="//s3.amazonaws.com/poliana.media/video/backgrounds/poliana-backgrounds.webm" type="video/webm">
+		<source src="//s3.amazonaws.com/poliana.media/video/backgrounds/poliana-backgrounds.mp4" type="video/mp4">
+		<source src="//s3.amazonaws.com/poliana.media/video/backgrounds/poliana-backgrounds.ogv" type="video/ogg">
+	</video>
+	<div class="row hero">
+		<h1 class="text-center"><span class="colored-text blue">Poliana</span> visualizes political influence</h1>
+		<h3 class="text-center">Find the politicians and donors that are impacting your future</h3>
+		<div class="large-6 medium-6 small-12 large-centered medium-centered small-centered columns">
+			<form action="http://poliana.us7.list-manage1.com/subscribe/post?u=92d5bd31807677bfb3c47261b&amp;id=f21dcc0b54" method="post" class="mailchimp-form row">
+				<div class="large-8 medium-7 small-7 columns">
+					<input type="email" class="email" name="EMAIL" placeholder="Email Address">
+				</div>
+				<div class="large-4 medium-5 small-5 columns">
+					<input type="submit" class="button expand" value="Get Updates!">
+				</div>
+			</form>
+		</div>
+		<div class="text-center play-video">
+			<a href="https://vimeo.com/82250634" target="_blank"><span aria-hidden="true" class="icon-play large-icon text-pop"></span></a>
+			<div class="vimeo-player flex-video vimeo widescreen hide">
+				<iframe src="//player.vimeo.com/video/82250634?title=0&amp;byline=0&amp;portrait=0&amp;color=61d2d6&amp;autoplay=0&amp;" width="888" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="colored-background white extra-space">
+	<div class="row hero">
+		<div class="large-12 columns extra-space">
+			<h2 class="text-center wow fadeInDown">We give you just the facts about your politicians</h2>
+		</div>
+		<div class="large-4 medium-5 small-8 large-uncentered medium-uncentered small-centered columns">
+			<img alt="We give you just the facts about your politicians" class="wow flipInX" data-wow-delay="0.25s" src="/assets/speech.png" />
+		</div>
+		<div class="large-6 medium-6 small-12 columns">
+			<h4 class="wow fadeInDown">Poliana is 100% driven by open data!</h4>
+			<p class="wow fadeInDown">We bring together millions of data points on the political system: voting records, political donations, lobbyist spending, bill sponsorships, industry influence, and more.</p>
+			<p class="wow fadeInDown">Unlike traditional media, we’re not interested in feeding you a pre-made agenda. We make it our goal to provide you with raw, unaltered information on our government to let you draw your own conclusions.</p>
+			<p class="wow fadeInDown">Using a bi-partisan approach gives the American people a wholistic view on Washington, and that’s what we’re all about.</p>
+		</div>
+	</div>
+</div>
+<div class="colored-background blue extra-space">
+	<div class="row hero">
+		<div class="large-12 columns extra-space">
+			<h2 class="text-center wow fadeInDown">Learn about the issues that matter most to you</h2>
+		</div>
+		<div class="large-4 medium-5 small-8 large-push-8 medium-push-7 large-uncentered medium-uncentered small-centered columns">
+			<img alt="We give you just the facts about your politicians" class="wow flipInX" data-wow-delay="0.25s" src="/assets/magnify.png" />
+		</div>
+		<div class="large-6 medium-6 small-12 large-pull-6 medium-pull-6 columns">
+			<h4 class="wow fadeInDown">Gain a deeper insight into politicians!</h4>
+			<p class="wow fadeInDown">We help you find the politicians and donors that are having the greatest impact on the issues you care about. You can browse the big picture or search for something more specific.</p>
+			<p class="wow fadeInDown">Whether you lean liberal or conservative, we want to connect you to the politicians that most share your political views.</p>
+		</div>
+	</div>
+</div>
+<div class="colored-background white extra-space">
+	<div class="row hero">
+		<div class="large-12 columns extra-space">
+			<h2 class="text-center wow fadeInDown">We work with those dedicated to transparency</h2>
+		</div>
+		<div class="large-3 medium-3 small-6 columns vertAlignImage">
+			<a href="http://www.opensecrets.org" target="_blank"><img alt="Open Secrets" class="wow flipInX" src="/assets/open-secrets.png" /></a>
+		</div>
+		<div class="large-3 medium-3 small-6 columns vertAlignImage">
+			<a href="http://www.govtrack.us" target="_blank"><img alt="Govtrack" class="wow flipInX" data-wow-delay="0.25s" src="/assets/govtrack.png" /></a>
+		</div>
+		<div class="large-3 medium-3 small-6 columns vertAlignImage">
+			<a href="http://www.congress.gov" target="_blank"><img alt="Congress.gov" class="wow flipInX" data-wow-delay="0.5s" src="/assets/congress-gov.png" /></a>
+		</div>
+		<div class="large-3 medium-3 small-6 columns vertAlignImage">
+			<a href="http://www.sunlightfoundation.com" target="_blank"><img alt="Sunlight Foundation" class="wow flipInX" data-wow-delay="0.75s" src="/assets/sunlight-foundation.png" /></a>
+		</div>
+		<div class="large-12 columns">
+			<p class="text-center wow fadeInDown">Our data comes from a variety of political transparency initiatives. We allow only the best, most trusted sources of open-government data for use on Poliana. All information we use comes from those who really care about making a difference in our government.</p>
+		</div>
+	</div>
+</div>
+<div class="colored-background black extra-space last-pull-up">
+	<div class="row hero">
+		<div class="large-12 columns extra-space">
+			<h2 class="text-center wow fadeInDown">Share with your friends on social media</h2>
+		</div>
+		<div class="large-4 medium-5 small-8 large-uncentered medium-uncentered small-centered columns">
+			<img alt="We give you just the facts about your politicians" class="wow flipInX" data-wow-delay="0.25s" src="/assets/people-up.png" />
+		</div>
+		<div class="large-6 medium-6 small-12 columns">
+			<h4 class="wow fadeInDown">Start a conversation!</h4>
+			<p class="wow fadeInDown">We think Poliana is sure to spark a much needed conversation in our government, so we’ve made it easy to share the most interesting things you find on the site to social media.</p>
+			<p class="wow fadeInDown">The more you share, the more we can raise awareness about the issues that we face as a nation. That’s progress, not congress.</p>
+			<div class="wow fadeInDown">
+				<div class="fb-like" data-href="https://www.facebook.com/polianainc" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				<a href="https://twitter.com/poliana" class="twitter-follow-button" data-show-count="false">Follow @poliana</a>
+				<iframe src="http://ghbtns.com/github-btn.html?user=polianainc&type=follow&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="165" height="20"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+
+				</section>
+			</div>
+			<footer id="footer">
+				<div class="row">
+					<div class="large-4 medium-4 push-8 columns">
+						<h4 class="text-center">Want Updates?</h4>
+						<form action="http://poliana.us7.list-manage1.com/subscribe/post?u=92d5bd31807677bfb3c47261b&amp;id=f21dcc0b54" method="post" class="mailchimp-form">
+							<input type="email" class="email" name="EMAIL" placeholder="Email Address">
+							<input type="submit" class="button expand" value="Subscribe!">
+						</form>
+					</div>
+					<div class="large-8 medium-8 pull-4 columns">
+						<a href="/"><img alt="Poliana" id="logo-footer" src="/assets/logo-white.png" /></a>
+						<p>Poliana is a web application that visualizes political influence. We’re based out of Nashville, Tennessee and love it here. To get in touch please email us at <a href="mailto:contact@poliana.com">contact@poliana.com</a> or find us on social media!</p>
+						<ul class="social">
+							<li><a href="https://www.facebook.com/polianainc" target="_blank"><span aria-hidden="true" class="icon-facebook2"></span></a></li>
+							<li><a href="https://twitter.com/poliana" target="_blank"><span aria-hidden="true" class="icon-twitter2"></span></a></li>
+							<li><a href="https://github.com/polianainc/" target="_blank"><span aria-hidden="true" class="icon-github2"></span></a></li>
+							<li><a href="http://blog.poliana.com/" target="_blank"><span aria-hidden="true" class="icon-tumblr2"></span></a></li>
+							<li><a href="https://vimeo.com/82250634" target="_blank"><span aria-hidden="true" class="icon-vimeo2"></span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>Copyright &copy; 2014 Poliana, Inc.</li>
+							<li><a href="/terms">Terms of Service</a></li>
+							<li><a href="/policy">Privacy Policy</a></li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<div class="state-indicator"></div>
+	<div id="sharable" class="reveal-modal small" data-reveal style="display: none;">
+		<div class="row">
+			<div class="large-12 columns">
+				<h3 class="text-center">Find something interesting?</h3>
+			</div>
+			<div class="large-6 medium-12 small-12 columns">
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/" class="button small expand radius facebook" target="_blank"><span aria-hidden='true' class='icon-facebook'></span><span>Share on Facebook</span></a>
+			</div>
+			<div class="large-6 medium-12 small-12 columns">
+				<a href="https://twitter.com/home?status=http://localhost:3000/" class="button small expand radius twitter" target="_blank"><span aria-hidden='true' class='icon-twitter'></span><span>Share on Twitter</span></a>
+			</div>
+			<div class="large-6 medium-12 small-12 columns">
+				<a href="https://plus.google.com/share?url=http://localhost:3000/" class="button small expand radius google-plus" target="_blank"><span aria-hidden='true' class='icon-google-plus'></span><span>Share on Google</span></a>
+			</div>
+			<div class="large-6 medium-12 small-12 columns">
+				<a href="https://www.linkedin.com/shareArticle?&amp;url=http://localhost:3000/" class="button small expand radius linkedin" target="_blank"><span aria-hidden='true' class='icon-linkedin'></span><span>Share on LinkedIn</span></a>
+			</div>
+		</div>
+	</div>
+	<div id="other-modal" class="reveal-modal medium" data-reveal style="display: none;"></div>
+
+	<script src="/assets/vendor/ga.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/modernizr.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.abide.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.accordion.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.alert.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.clearing.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.dropdown.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.interchange.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.joyride.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.magellan.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.offcanvas.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.orbit.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.reveal.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.slider.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.tab.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.tooltip.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.topbar.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.equalizer.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation.js?body=1" type="text/javascript"></script>
+<script src="/assets/modules/variables.js?body=1" type="text/javascript"></script>
+<script src="/assets/modules/functions.js?body=1" type="text/javascript"></script>
+<script src="/assets/modules/layout.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/jquery.cookie.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/mailchimp.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/disqus.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/stupidtable.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/stellar.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/wow.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/d3.v3.js?body=1" type="text/javascript"></script>
+<script src="/assets/vendor/crossfilter.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+</body>
+</html>

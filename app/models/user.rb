@@ -5,14 +5,11 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :invitation_key, :login, :as => [:default, :admin]
-  attr_accessible :invitations_left, :as => :admin
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :login, :as => [:default, :admin]
 
   after_initialize :setup_user
 
-  before_create :add_invites
-
-  validates_presence_of :invitation_id, :username
+  validates_presence_of :username
 
   validates :username,
     :uniqueness => {
@@ -22,9 +19,6 @@ class User < ActiveRecord::Base
       message: "no spaces or dashes" }
 
   validate :token_must_be_present_for_social_sign_ins
-
-  has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
-  belongs_to :invitation
   
   #get those avatars
   def avatar_url
@@ -90,30 +84,12 @@ class User < ActiveRecord::Base
     end
   end
 
-   def remove_invite
-    self.invitations_left -= 1
-  end
-
-  #beta methods
-  def invitation_key
-    invitation.beta_key if invitation
-  end
-
-  def invitation_key=(key)
-    self.invitation = Invitation.find_by_beta_key(key)
-  end
-
   private
 
   #upon creation, users social sign ons should be set to false if they don't exist
   def setup_user
     self.has_facebook = false unless self.has_facebook
     self.has_twitter = false unless self.has_twitter
-  end
-
-  #upon creation, user gets 5 beta invites
-  def add_invites
-    self.invitations_left = 5
   end
 
   #validates that users have oauth token if signed in through social

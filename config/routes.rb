@@ -22,8 +22,6 @@ PolianaApp::Application.routes.draw do
 
   get "search", :to => "search#search"
 
-  get "invite", :to => "invitations#new"
-
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"
   get "/500", :to => "errors#internal_error"

@@ -12,8 +12,6 @@ describe User do
 					"secret"=>"EyaPXjTA07rjHh58BgjmREOHKGeEUbPiMFgLmglMc"
 			})
 		}
-		@invitation = FactoryGirl.create(:invitation)
-		@user.invitation_id = @invitation.id
 		@auth = OpenStruct.new(auth)
 	end
 
@@ -28,9 +26,6 @@ describe User do
 			@user.save
 		end
 
-		it "should have invitations left" do
-			@user.invitations_left.should_not be_nil
-		end
 	end
 
 	describe "if they have spaces in the username" do
@@ -52,7 +47,6 @@ describe User do
 	describe "when a social account" do
 		before do
 			@user = User.from_omniauth(@auth)
-			@user.invitation = @invitation
 		end
 
 		it "should not require email or password to be valid" do
@@ -74,7 +68,6 @@ describe User do
 	end
 
 	describe "when a user doesn't have an invitation" do
-		before { @user.invitation = nil; @user.invitation_id = nil }
-		it { should_not be_valid }
+		it { should be_valid }
 	end
 end

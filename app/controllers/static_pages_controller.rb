@@ -1,8 +1,4 @@
 class StaticPagesController < ApplicationController
-  caches_page :index
-  caches_page :policy
-  caches_page :terms
-
   def index
   end
 

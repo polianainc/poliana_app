@@ -291,12 +291,6 @@ else {
 		congress: $searchForm.find('select[name=congress]')
 	};
 
-	var getStates = convertState('each', 'name');
-	var allStates = getStates.split(',');
-
-	for(var state in allStates)
-		$allInputs.state.append('<option value="' + convertState(allStates[state], 'abbrev') + '">' + allStates[state] + '</option>');
-
 	var inputListSelectors = [];
 	var querySortSelectors = [];
 
@@ -313,14 +307,26 @@ else {
 		$.each($allInputs, function() {
 			if($(this).size() > 1) {
 				$(this).each(function() {
-					if(newQueryString[$(this).attr('name')].indexOf($(this).val()) != -1)
-						$(this).prop('checked', true);
-					else
-						$(this).prop('checked', false);
+					if(typeof newQueryString[$(this).attr('name')] != "undefined") {
+						if(newQueryString[$(this).attr('name')].indexOf($(this).val()) != -1)
+							$(this).prop('checked', true);
+						else
+							$(this).prop('checked', false);
+					}
 				});
 			}
-			else
-				$(this).val(newQueryString[$(this).attr('name')]);
+			else {
+				if($(this).is('select')) {
+					if(typeof newQueryString[$(this).attr('name')] != "undefined")
+						$(this).val(newQueryString[$(this).attr('name')]);
+					else
+						$(this).val($(this).find('option:first').val());
+				}
+				else {
+					if(typeof newQueryString[$(this).attr('name')] != "undefined")
+						$(this).val(newQueryString[$(this).attr('name')]);
+				}
+			}
 		});
 
 		makeQuery(window.history.state);
@@ -619,20 +625,54 @@ else {
 									.addClass('important')
 									.html(function() {
 										if(congress == "all") {
+											var total, pacTotal, industryTotal;
+
+											if(poli.total < 0)
+												total = "-$" + commaSeparateNumber(Math.abs(poli.total));
+											else
+												total = "$" + commaSeparateNumber(poli.total);
+
+											if(poli.pacTotal < 0)
+												pacTotal = "-$" + commaSeparateNumber(Math.abs(poli.pacTotal));
+											else
+												pacTotal = "$" + commaSeparateNumber(poli.pacTotal);
+
+											if(poli.industryTotal < 0)
+												industryTotal = "-$" + commaSeparateNumber(Math.abs(poli.industryTotal));
+											else
+												industryTotal = "$" + commaSeparateNumber(poli.industryTotal);
+
 											if(sortVal == "total-desc" || sortVal == "total-asc")
-												return '<span>$' + commaSeparateNumber(poli.total) + '</span> in contributions';
+												return '<span>' + total + '</span> in contributions';
 											else if(sortVal == "pac-desc" || sortVal == "pac-asc")
-												return '<span>$' + commaSeparateNumber(poli.pacTotal) + '</span> in PAC contributions';
+												return '<span>' + pacTotal + '</span> in PAC contributions';
 											else if(sortVal == "industry-desc" || sortVal == "industry-asc")
-												return '<span>$' + commaSeparateNumber(poli.industryTotal) + '</span> in industry contributions';
+												return '<span>' + industryTotal + '</span> in industry contributions';
 										}
 										else {
+											var total, pacTotal, industryTotal;
+
+											if(poli.contributions[congress].pac + poli.contributions[congress].industry < 0)
+												total = "-$" + commaSeparateNumber(Math.abs(poli.contributions[congress].pac + poli.contributions[congress].industry));
+											else
+												total = "$" + commaSeparateNumber(poli.contributions[congress].pac + poli.contributions[congress].industry);
+
+											if(poli.contributions[congress].pac < 0)
+												pacTotal = "-$" + commaSeparateNumber(Math.abs(poli.contributions[congress].pac));
+											else
+												pacTotal = "$" + commaSeparateNumber(poli.contributions[congress].pac);
+
+											if(poli.contributions[congress].industry < 0)
+												industryTotal = "-$" + commaSeparateNumber(Math.abs(poli.contributions[congress].industry));
+											else
+												industryTotal = "$" + commaSeparateNumber(poli.contributions[congress].industry);
+
 											if(sortVal == "total-desc" || sortVal == "total-asc")
-												return '<span>$' + commaSeparateNumber(poli.contributions[congress].pac + poli.contributions[congress].industry) + '</span> in contributions';
+												return '<span>' + total + '</span> in contributions';
 											else if(sortVal == "pac-desc" || sortVal == "pac-asc")
-												return '<span>$' + commaSeparateNumber(poli.contributions[congress].pac) + '</span> in PAC contributions';
+												return '<span>' + pacTotal + '</span> in PAC contributions';
 											else if(sortVal == "industry-desc" || sortVal == "industry-asc")
-												return '<span>$' + commaSeparateNumber(poli.contributions[congress].industry) + '</span> in industry contributions';
+												return '<span>' + industryTotal + '</span> in industry contributions';
 										}
 
 										if(sortVal == "age-desc" || sortVal == "age-asc")
@@ -673,7 +713,7 @@ else {
 			$map.siblings('.gray-caps').html("");
 
 			$politiciansList.html('<p>Sorry, no politicians fit that request!</p>');
-			$politiciansPagination.hide();
+			$('#politicians-list-pagination').remove();
 
 			$loader.fadeOut(250, function() {
 				$politiciansList.fadeIn(250);

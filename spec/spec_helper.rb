@@ -17,7 +17,7 @@ Spork.prefork do
 
   RSpec.configure do |config|
 
-     config.before do
+    config.before do
       Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
     end
 

@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Poliana is a web application that simpliﬁes the legislative system by analyzing and visualizing money’s inﬂuence in politics." %>" />
-	<meta name="keywords" content="Poliana,politics,government,influence,data,visualization,legislation,analyze,money,simplify,system,political" />
+	<meta name="keywords" content="Poliana,poliana,politicians,politics,share,political,government,visualization,legislation,analyze,money,simplify,data,media,influence,facts,system,issues,open,social,sign" />
 
 	<meta property="og:title" content="<%= content_for?(:title) ? yield(:title) + " | Poliana" : "Poliana | See Through Government" %>" />
 	<meta property="og:type" content="website" />
@@ -18,6 +18,17 @@
 	<title><%= content_for?(:title) ? yield(:title) + " | Poliana" : "Poliana | See Through Government" %></title>
 
 	<%= stylesheet_link_tag "application" %>
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=610800162287043&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 	<%= csrf_meta_tags %>
 
@@ -36,7 +47,7 @@
 							<a class="left-off-canvas-toggle menu-icon"><span></span></a>
 						</section>
 						<section class="middle tab-bar-section">
-							<%= link_to image_tag('logo.png', :id => "logo-mobile", :alt => "Poliana"), root_path %>
+							<%= link_to image_tag('logo-beta.png', :id => "logo-mobile", :alt => "Poliana"), root_path %>
 						</section>
 						<% if user_signed_in? %>
 						<section class="right-small">
@@ -48,7 +59,7 @@
 						<ul class="off-canvas-list">
 							<% if user_signed_in? %>
 							<li><label>Explore</label></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Find a Politician</span>'.html_safe(), congress_politicians_path %></li>
 							<% end %>
 							<% if !user_signed_in? %>
 							<li><label>General</label></li>
@@ -89,7 +100,7 @@
 					<nav class="top-bar show-for-medium-up" id="desktop-nav" data-topbar>
 						<ul class="title-area">
 							<li class="name">
-								<%= link_to image_tag('logo.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
+								<%= link_to image_tag('logo-beta.png', :id => "logo-desktop", :alt => "Poliana"), root_path %>
 							</li>
 							<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 						</ul>
@@ -108,9 +119,13 @@
 							<% end %>
 						<% end %>
 						<section class="top-bar-section">
+							<ul class="left">
+								<% if user_signed_in? %>
+								<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Find a Politician</span>'.html_safe(), congress_politicians_path %></li>
+								<% end %>
+							</ul>
 							<ul class="right">
 								<% if user_signed_in? %>
-								<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Politicians</span>'.html_safe(), congress_politicians_path %></li>
 								<li class="has-dropdown">
 									<a href="#"><%= image_tag current_user.avatar_url, :width => "24px" %></a>
 									<ul class="dropdown">
@@ -133,10 +148,10 @@
 			<footer id="footer">
 				<div class="row">
 					<div class="large-4 medium-4 push-8 columns">
-						<h4 class="text-center">Sign up for beta!</h4>
+						<h4 class="text-center">Want Updates?</h4>
 						<form action="http://poliana.us7.list-manage1.com/subscribe/post?u=92d5bd31807677bfb3c47261b&amp;id=f21dcc0b54" method="post" class="mailchimp-form">
 							<input type="email" class="email" name="EMAIL" placeholder="Email Address">
-							<input type="submit" class="button expand" value="Get early access">
+							<input type="submit" class="button expand" value="Subscribe!">
 						</form>
 					</div>
 					<div class="large-8 medium-8 pull-4 columns">
@@ -145,7 +160,7 @@
 						<ul class="social">
 							<li><%= link_to '<span aria-hidden="true" class="icon-facebook2"></span>'.html_safe(), 'https://www.facebook.com/polianainc', :target => '_blank' %></li>
 							<li><%= link_to '<span aria-hidden="true" class="icon-twitter2"></span>'.html_safe(), 'https://twitter.com/poliana', :target => '_blank' %></li>
-							<li><%= link_to '<span aria-hidden="true" class="icon-github2"></span>'.html_safe(), 'https://github.com/polianaco/', :target => '_blank' %></li>
+							<li><%= link_to '<span aria-hidden="true" class="icon-github2"></span>'.html_safe(), 'https://github.com/polianainc/', :target => '_blank' %></li>
 							<li><%= link_to '<span aria-hidden="true" class="icon-tumblr2"></span>'.html_safe(), 'http://blog.poliana.com/', :target => '_blank' %></li>
 							<li><%= link_to '<span aria-hidden="true" class="icon-vimeo2"></span>'.html_safe(), 'https://vimeo.com/82250634', :target => '_blank' %></li>
 						</ul>

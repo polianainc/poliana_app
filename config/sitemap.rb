@@ -5,10 +5,8 @@ require 'sitemap_generator'
 SitemapGenerator::Sitemap.default_host = "https://www.poliana.com"
 
 SitemapGenerator::Sitemap.create do
-  add '/', :changefreq => 'weekly', :priority => 0.9
-  add '/search', :changefreq => 'weekly', :priority => 0.8
+  add '/', :changefreq => 'weekly', :priority => 1.0
   add '/signin', :changefreq => 'weekly', :priority => 0.8
-  add '/about', :changefreq => 'weekly', :priority => 0.7
   add '/terms', :changefreq => 'monthly', :priority => 0.2
   add '/policy', :changefreq => 'monthly', :priority => 0.2
 end

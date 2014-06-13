@@ -1,66 +1,121 @@
 <% content_for :title, "Politicians" %>
 <div class="page-specific" data-controller="graph_explorer"></div>
 <div class="page-specific" data-controller="politicians"></div>
-<%= render layout: "shared/backgrounds", locals: { classes: "single" } do %>
-<div class="hide-for-small">
-	<h1 class="text-center">What’s your politician up to?</h1><br>
-	<input type="search" name="politician_search_main" placeholder="Start typing a name, party, state, religion, or anything!">
-</div>
-<div class="show-for-small">
-	<h1 class="text-center">Politicians</h1>
-</div>
-<% end %>
-<div class="row">
-	<div class="small-12 columns hide-for-medium-up">
-		<input type="search" name="politician_search_small" placeholder="Search for a politician...">
-	</div>
-</div>
 <div class="row">
 	<div class="large-12 columns">
-		<h2 class="text-center hide" id="politicians-counter"><span class="count"></span> for &quot;<span class="query"></span>&quot;</h2>
+		<h1 class="text-center">Search All Politicians</h1>
 	</div>
 </div>
-<div>
-<div class="row" id="politicians-result">
-	<div class="large-12 show-for-medium-up columns">
-		<p class="lead text-center">Learn more about any politician in the political system. Whether that be the President, a Senator, or a Congressperson, our goal is to get you informed on what they're up to and how they're running their term.</p>
-	</div>
-	<% @politicians.each do |p| %>
-		<% terms = p.terms.sort { |a, b| b.start <=> a.start } %>
-		
-		<% congresses = [] %>
-		<% p.terms.each do |t| %>
-			<% congresses.concat t.congresses %>
-		<% end %>
-		<% congresses.map! { |c| c.ordinalize } %>
-		
-		<div class="politician hide" data-birthyear="<%= p.birthday.year %>" data-birthmonth="<%= Date::MONTHNAMES[p.birthday.month] %>" data-firstname="<%= p.first_name %>" data-lastname="<%= p.last_name %>" data-fullname="<%= p.full_name %>" data-gender="<%= Politician.gender(p.gender) if !defined?(p.gender).nil? %>" data-party="<%= p.party if !defined?(p.party).nil? %>" data-religion="<%= p.religion if !defined?(p.religion).nil? %>" data-generalreligion="<%= p.general_religion if !defined?(p.religion).nil? %>" data-state="<%= Politician.state(p.state) if !defined?(p.state).nil? %>" data-congresses="<%= congresses.join(',') %>">
-			<div class="clearfix short large-4 medium-4 small-12 columns">
-				<a href="/congress/politicians/<%= p.bioguide_id %>">
-					<% if p.party and p.state %>
-					<ul class="politician-card sided left <%= p.party.downcase %>">
-						<li><%= Politician.party(p.party) %></li>
-						<li><%= p.state %></li>
-					</ul>
-					<% end %>
-					<h5 class="left"><%= p.full_name %></h5>
-				</a>
+<div class="row">
+	<div class="large-3 medium-4 small-12 columns">
+		<div class="foldable">
+			<div class="foldable-header down">
+				<div class="row show-for-small">
+					<div class="small-12 columns">
+						<h3 class="title">Search Options</h3>
+					</div>
+				</div>
 			</div>
-			<div class="long large-3 medium-4 small-6 columns">
-				<a href="/congress/politicians/<%= p.bioguide_id %>">
-					<div class="thumbnail" style="background-image: url(<%= p.image_url %>);"></div>
-					<h5 class="text-center"><%= p.full_name %></h5>
-					<% if !terms.first.term_type.nil? %>
-					<p class="text-center"><strong><%= Politician.role(terms.first.term_type) %></strong></p>
-					<% end %>
-					<% if p.party and p.state %>
-					<ul class="politician-card <%= p.party.downcase %>">
-						<li><%= Politician.party(p.party) %></li>
-						<li><%= p.state %></li>
-					</ul>
-					<% end %>
-				</a>
+			<div class="foldable-content">
+				<%= form_tag("/congress/politicians", :method => 'GET', :id => 'politician-search') do %>
+				  <%= text_field_tag(:query, params[:query], :placeholder => "Search by name...") %>
+
+					<p class="gray-caps">State</p>
+					<%= select_tag(:state, options_for_select(@states.collect {|s| [ s['name'], s['abbrev'] ] }, params[:state]), prompt: "Select a state") %>
+
+					<p class="gray-caps">Politician Type</p>
+					<% poli_type = params[:type] ? params[:type].split(',') : [] %>
+					<div class="input-new-line">
+						<%= check_box_tag(:type, 'prez', poli_type.include?("prez"), :id => 'type-0') %>
+						<%= label_tag('type-0', "President") %>
+					</div>
+					<div class="input-new-line">
+						<%= check_box_tag(:type, 'viceprez', poli_type.include?("viceprez"), :id => 'type-1') %>
+						<%= label_tag('type-1', "Vice President") %>
+					</div>
+					<div class="input-new-line">
+						<%= check_box_tag(:type, 'sen', poli_type.include?("sen"), :id => 'type-2') %>
+						<%= label_tag('type-2', "Senator") %>
+					</div>
+					<div class="input-new-line">
+						<%= check_box_tag(:type, 'rep', poli_type.include?("rep"), :id => 'type-3') %>
+						<%= label_tag('type-3', "Representative") %>
+					</div>
+
+					<p class="gray-caps">Party</p>
+					<% poli_party = params[:party] ? params[:party].split(',') : [] %>
+					<div class="input-new-line">
+						<%= check_box_tag(:party, 'Democrat', poli_party.include?("Democrat"), :id => 'party-0') %>
+						<%= label_tag('party-0', "Democrat") %>
+					</div>
+					<div class="input-new-line">
+						<%= check_box_tag(:party, 'Republican', poli_party.include?("Republican"), :id => 'party-1') %>
+						<%= label_tag('party-1', "Republican") %>
+					</div>
+					<div class="input-new-line">
+						<%= check_box_tag(:party, 'Independent', poli_party.include?("Independent"), :id => 'party-2') %>
+						<%= label_tag('party-2', "Independent") %>
+					</div>
+
+					<p class="gray-caps">Gender</p>
+					<%= select_tag(:gender, options_for_select({"Male" => "M", "Female" => "F"}, params[:gender]), prompt: "All") %>
+
+					<p class="gray-caps">Religion</p>
+					<% poli_religion = params[:religion] ? params[:religion].split(',') : [] %>
+					<div class="input-new-line">
+						<%= check_box_tag(:religion, 'Christian', poli_religion.include?("Christian"), :id => 'religion-0') %>
+						<%= label_tag('religion-0', "Christian") %>
+					</div>
+					<div class="input-new-line">
+						<%= check_box_tag(:religion, 'Muslim', poli_religion.include?("Muslim"), :id => 'religion-1') %>
+						<%= label_tag('religion-1', "Muslim") %>
+					</div>
+					<div class="input-new-line">
+						<%= check_box_tag(:religion, 'Jewish', poli_religion.include?("Jewish"), :id => 'religion-2') %>
+						<%= label_tag('religion-2', "Jewish") %>
+					</div>
+					<div class="input-new-line">
+						<%= check_box_tag(:religion, 'Buddhist', poli_religion.include?("Buddhist"), :id => 'religion-3') %>
+						<%= label_tag('religion-3', "Buddhist") %>
+					</div>
+					<div class="input-new-line">
+						<%= check_box_tag(:religion, 'None/Other', poli_religion.include?("None/Other"), :id => 'religion-4') %>
+						<%= label_tag('religion-4', "None/Other") %>
+					</div>
+
+					<p class="gray-caps">Sort by</p>
+					<%= select_tag(:sort, options_for_select({
+						"Total Contributions &#x25BC;".html_safe => "total-desc",
+						"Total Contributions &#x25B2;".html_safe => "total-asc",
+						"PAC Contributions &#x25BC;".html_safe => "pac-desc",
+						"PAC Contributions &#x25B2;".html_safe => "pac-asc",
+						"Industry Contributions &#x25BC;".html_safe => "industry-desc",
+						"Industry Contributions &#x25B2;".html_safe => "industry-asc",
+						"Oldest".html_safe => "age-desc",
+						"Youngest".html_safe => "age-asc",
+					}, params[:sort])) %>
+
+					<p class="gray-caps">Congress</p>
+					<%= select_tag(:congress, options_for_select({
+						"All-time" => "all",
+						"113th Congress" => "113",
+						"112th Congress" => "112",
+						"111th Congress" => "111",
+						"110th Congress" => "110",
+						"109th Congress" => "109",
+						"108th Congress" => "108"
+					}, params[:congress])) %>
+
+					<%= hidden_field_tag(:format, "json") %>
+				<% end %>
 			</div>
 		</div>
-	<% end %>
+	</div>
+	<div class="large-8 medium-7 small-12 large-offset-1 medium-offset-1 columns">
+		<div class="loader"></div>
+		<div id="map"></div>
+		<h3 class="small-only-text-center"></h3>
+		<p class="gray-caps"></p>
+		<ol id="politician-search-list"></ol>
+	</div>
 </div>

@@ -82,9 +82,11 @@
 		}
 		.left { margin-left: 20px; }
 		.left, .right {
-			height: 59px;
 			li {
-				&:not(.has-form) a:not(.button) { line-height: 59px; }
+				a:not(.button) {
+					height: 59px;
+					line-height: 59px;
+				}
 				img { @include border-radius($global-radius); }
 				span {
 					text-transform: uppercase;
@@ -92,6 +94,7 @@
 					&:first-of-type { padding-right: 10px; }
 				}
 				&.has-form {
+					height: 59px;
 					.button { margin-top: 6px; }
 				}
 			}

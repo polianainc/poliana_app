@@ -1,7 +1,6 @@
 class PoliticiansController < ApplicationController
 
   def index
-
     @states = states
 
     @politicians = Politician.all

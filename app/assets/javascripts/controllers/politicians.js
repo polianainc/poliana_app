@@ -416,8 +416,8 @@ else {
 		data = temp;
 
 		// Now sort all the rows
-		var sortVal = $allInputs.sort.val();
 		var congressVal = $allInputs.congress.val();
+		var sortVal = $allInputs.sort.val();
 
 		$.each(data, function() {
 			var poli = this;
@@ -458,7 +458,34 @@ else {
 		else if(sortVal === "age-asc")
 			data.sort(dynamicSort("-percent_age_difference"));
 
-		formatData(data);
+		var finalData = [];
+
+		// Remove politicians if congress is specified and term is wrong
+		if(congressVal != "all") {
+			var typeVal = [];
+			var typeSelector = $allInputs.type.selector;
+
+			$(typeSelector).each(function() {
+				if($(this).is(':checked'))
+					typeVal.push($(this).val());
+			});
+
+			$.each(data, function(index) {
+				var found = false;
+
+				$.each(this.terms, function() {
+					if(typeVal.indexOf(this.term_type) == -1 && this.congresses.indexOf(congressVal) == -1)
+						found = true;
+				});
+
+				if(!found)
+					finalData.push(this);
+			});
+		}
+		else
+			finalData = data;
+
+		formatData(finalData);
 	}
 
 	function formatData(data) {

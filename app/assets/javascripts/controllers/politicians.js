@@ -530,7 +530,7 @@ else {
 						return "Vice Presidents";
 					else if(input == "sen")
 						return "Senators";
-					else
+					else if(input == "rep")
 						return "Represenatives";
 				}
 				else if(kind == "gender") {
@@ -579,20 +579,41 @@ else {
 			return "That are " + finalString;
 		}
 
-		$map.siblings('h3').html(getHeading());
-		$map.siblings('.gray-caps').html(getSubheading());
+		var heading = getHeading();
+		var subHeading = getSubheading();
+
+		$map.siblings('h3').html(heading);
+		$map.siblings('.gray-caps').html(subHeading);
 
 		var $mainHeader = $('#content h1');
 		var resultsCounter = 0;
 
 		if(data.length > 0) {
 			var congress = $allInputs.congress.val();
+			var currentDate = new Date();
 
 			$mainHeader.html(data.length + " politicians found");
+
+			var typesRequested = {};
+
+			if(subHeading.indexOf('Presidents') != -1)
+				typesRequested.prez = [];
+
+			if(subHeading.indexOf('Vice Presidents') != -1)
+				typesRequested.viceprez = [];
+
+			if(subHeading.indexOf('Senators') != -1)
+				typesRequested.sen = [];
+
+			if(subHeading.indexOf('Represenatives') != -1)
+				typesRequested.rep = [];
 
 			$.each(data, function() {
 				if(resultsCounter < resultsNum) {
 					var poli = this;
+
+					// Sort their terms
+					poli.terms.sort(dynamicSort("-start"));
 
 					$politiciansList.append($('<li>')
 						.append($('<div>')
@@ -619,7 +640,37 @@ else {
 								)
 								.append($('<p>')
 									.addClass('role')
-									.html(convertType(this.terms[0].term_type, "name"))
+									.html(function() {
+										var roleString = "";
+										var currentTermEndDate = new Date(poli.terms[0].end);
+
+										console.log(poli.terms);
+
+										if(currentTermEndDate.getTime() - currentDate.getTime() >= 0)
+											roleString += "Currently " + convertType(poli.terms[0].term_type, "name");
+
+										var poliTypesRequested = {};
+
+										$.each(poli.terms, function() {
+											var termType = this.term_type;
+
+											if(typeof typesRequested[termType] != "undefined") {
+												if(typeof poliTypesRequested[termType] == "undefined")
+													poliTypesRequested[termType] = [];
+
+												$.each(this.congresses, function(index, value) { poliTypesRequested[termType].push(value.ordinate()); });
+											}
+										});
+
+										$.each(poliTypesRequested, function(key, value) {
+											if(roleString != "")
+												roleString += ", ";
+
+											roleString += convertType(key, "name") + " (" + value.join(', ') + ")";
+										});
+
+										return roleString;
+									})
 								)
 								.append($('<p>')
 									.addClass('important')

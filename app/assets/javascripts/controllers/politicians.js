@@ -671,30 +671,53 @@ else {
 										var roleString = "";
 										var currentTermEndDate = new Date(poli.terms[0].end);
 
-										console.log(poli.terms);
-
 										if(currentTermEndDate.getTime() - currentDate.getTime() >= 0)
 											roleString += "Currently " + convertType(poli.terms[0].term_type, "name");
 
-										var poliTypesRequested = {};
+										if(Object.keys(typesRequested).length > 0) {
+											var poliTypesRequested = {};
 
-										$.each(poli.terms, function() {
-											var termType = this.term_type;
+											$.each(poli.terms, function() {
+												var termType = this.term_type;
 
-											if(typeof typesRequested[termType] != "undefined") {
-												if(typeof poliTypesRequested[termType] == "undefined")
-													poliTypesRequested[termType] = [];
+												if(typeof typesRequested[termType] != "undefined") {
+													if(typeof poliTypesRequested[termType] == "undefined")
+														poliTypesRequested[termType] = [];
 
-												$.each(this.congresses, function(index, value) { poliTypesRequested[termType].push(value.ordinate()); });
+													$.each(this.congresses, function(index, value) { poliTypesRequested[termType].push(value.ordinate()); });
+												}
+											});
+
+											$.each(poliTypesRequested, function(key, value) {
+												if(roleString != "")
+													roleString += ", ";
+
+												roleString += convertType(key, "name") + " (" + value.join(', ') + ")";
+											});
+										}
+										else {
+											var termTypes = [];
+
+											if(roleString == "") {
+												$.each(poli.terms, function() {
+													if(termTypes.indexOf(convertType(this.term_type, "name")) == -1 && this.term_type != null)
+														termTypes.push(convertType(this.term_type, "name"));
+												});
 											}
-										});
+											else {
+												$.each(poli.terms, function() {
+													if(convertType(this.term_type, "name") != roleString.substring(roleString.indexOf(' ') + 1)) {
+														if(termTypes.indexOf(convertType(this.term_type, "name")) == -1 && this.term_type != null)
+															termTypes.push(convertType(this.term_type, "name"));
+													}
+												});
+											}
 
-										$.each(poliTypesRequested, function(key, value) {
 											if(roleString != "")
-												roleString += ", ";
+												roleString += ", formerly ";
 
-											roleString += convertType(key, "name") + " (" + value.join(', ') + ")";
-										});
+											roleString += termTypes.join(', ');
+										}
 
 										return roleString;
 									})

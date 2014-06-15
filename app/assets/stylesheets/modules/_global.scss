@@ -255,7 +255,7 @@ small { font-size: 0.75em; }
 	bottom: 0px;
 	right: 20px;
 	display: block;
-	background: $black;
+	background: $gray;
 	color: $white;
 	text-transform: uppercase;
 	font-size: 0.9em;
@@ -264,7 +264,7 @@ small { font-size: 0.75em; }
 	@include single-transition(all, 0.1s, linear);
 	@include border-radius($global-radius $global-radius 0px 0px);
 	&:hover {
-		background: $black-alt;
+		background: $gray-alt;
 		color: $white;
 	}
 }

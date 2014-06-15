@@ -307,6 +307,7 @@ else {
 		console.log(newQueryString);
 
 		$.each($allInputs, function() {
+			// Checkboxes
 			if($(this).size() > 1) {
 				$(this).each(function() {
 					if(typeof newQueryString[$(this).attr('name')] != "undefined") {
@@ -318,6 +319,7 @@ else {
 				});
 			}
 			else {
+				// Selects
 				if($(this).is('select')) {
 					if(typeof newQueryString[$(this).attr('name')] != "undefined")
 						$(this).val(newQueryString[$(this).attr('name')]);
@@ -325,8 +327,11 @@ else {
 						$(this).val($(this).find('option:first').val());
 				}
 				else {
+					// Text inputs
 					if(typeof newQueryString[$(this).attr('name')] != "undefined")
 						$(this).val(newQueryString[$(this).attr('name')]);
+					else
+						$(this).val('');
 				}
 			}
 		});

@@ -470,17 +470,21 @@ else {
 					typeVal.push($(this).val());
 			});
 
-			$.each(data, function(index) {
-				var found = false;
+			if(typeVal.length > 0) {
+				$.each(data, function(index) {
+					var found = false;
 
-				$.each(this.terms, function() {
-					if(typeVal.indexOf(this.term_type) == -1 && this.congresses.indexOf(congressVal) == -1)
-						found = true;
+					$.each(this.terms, function() {
+						if(typeVal.indexOf(this.term_type) == -1 && this.congresses.indexOf(congressVal) == -1)
+							found = true;
+					});
+
+					if(!found)
+						finalData.push(this);
 				});
-
-				if(!found)
-					finalData.push(this);
-			});
+			}
+			else
+				finalData = data;
 		}
 		else
 			finalData = data;
@@ -614,8 +618,6 @@ else {
 
 		var $mainHeader = $('#content h1');
 		var resultsCounter = 0;
-
-		console.log(data);
 
 		if(data.length > 0) {
 			var congress = $allInputs.congress.val();

@@ -272,7 +272,7 @@ if($key.length > 0) {
 else {
 	var dataHold;
 	var $searchForm = $('#politician-search');
-	var $map = $('#map');
+	var $map = $('#politician-index-map');
 	var $politiciansList = $('#politician-search-list');
 	var $politiciansPagination = $('#politicians-list-pagination');
 
@@ -303,6 +303,8 @@ else {
 
 	$(window).bind('popstate', function(event) {
 		var newQueryString = window.history.state;
+
+		console.log(newQueryString);
 
 		$.each($allInputs, function() {
 			if($(this).size() > 1) {

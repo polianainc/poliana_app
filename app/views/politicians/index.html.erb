@@ -18,6 +18,7 @@
 			</div>
 			<div class="foldable-content">
 				<%= form_tag("/congress/politicians", :method => 'GET', :id => 'politician-search') do %>
+					<p class="gray-caps">Name</p>
 				  <%= text_field_tag(:query, params[:query], :placeholder => "Search by name...") %>
 
 					<p class="gray-caps">State</p>

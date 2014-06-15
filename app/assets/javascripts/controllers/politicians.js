@@ -316,6 +316,8 @@ else {
 						else
 							$(this).prop('checked', false);
 					}
+					else
+						$(this).prop('checked', false);
 				});
 			}
 			else {

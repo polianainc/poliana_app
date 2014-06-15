@@ -615,6 +615,8 @@ else {
 		var $mainHeader = $('#content h1');
 		var resultsCounter = 0;
 
+		console.log(data);
+
 		if(data.length > 0) {
 			var congress = $allInputs.congress.val();
 			var currentDate = new Date();
@@ -640,7 +642,7 @@ else {
 					var poli = this;
 
 					// Sort their terms
-					poli.terms.sort(dynamicSort("-start"));
+					poli.terms.sort(dynamicSort("start"));
 
 					$politiciansList.append($('<li>')
 						.append($('<div>')
@@ -669,10 +671,10 @@ else {
 									.addClass('role')
 									.html(function() {
 										var roleString = "";
-										var currentTermEndDate = new Date(poli.terms[0].end);
+										var currentTermEndDate = new Date(poli.terms[poli.terms.length - 1].end);
 
 										if(currentTermEndDate.getTime() - currentDate.getTime() >= 0)
-											roleString += "Currently " + convertType(poli.terms[0].term_type, "name");
+											roleString += "Currently " + convertType(poli.terms[poli.terms.length - 1].term_type, "name");
 
 										if(Object.keys(typesRequested).length > 0) {
 											var poliTypesRequested = {};

@@ -86,6 +86,7 @@
 				a:not(.button) {
 					height: 59px;
 					line-height: 59px;
+					@include single-transition(background, 0.1s, linear);
 				}
 				img { @include border-radius($global-radius); }
 				span {

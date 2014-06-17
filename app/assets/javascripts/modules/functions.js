@@ -81,7 +81,7 @@ function convertType(type, to) {
 			return "Vice President";
 		else if(type == "sen")
 			return "Senator";
-		else
+		else if(type == "rep")
 			return "Representative";
 	}
 	else {
@@ -91,7 +91,7 @@ function convertType(type, to) {
 			return "viceprez";
 		else if(type == "Senator")
 			return "sen";
-		else
+		else if(type == "Representative")
 			return "rep";
 	}
 }

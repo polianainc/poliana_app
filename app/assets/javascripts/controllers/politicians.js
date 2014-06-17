@@ -272,7 +272,7 @@ if($key.length > 0) {
 else {
 	var dataHold;
 	var $searchForm = $('#politician-search');
-	var $map = $('#map');
+	var $map = $('#politician-index-map');
 	var $politiciansList = $('#politician-search-list');
 	var $politiciansPagination = $('#politicians-list-pagination');
 
@@ -304,7 +304,10 @@ else {
 	$(window).bind('popstate', function(event) {
 		var newQueryString = window.history.state;
 
+		console.log(newQueryString);
+
 		$.each($allInputs, function() {
+			// Checkboxes
 			if($(this).size() > 1) {
 				$(this).each(function() {
 					if(typeof newQueryString[$(this).attr('name')] != "undefined") {
@@ -313,9 +316,12 @@ else {
 						else
 							$(this).prop('checked', false);
 					}
+					else
+						$(this).prop('checked', false);
 				});
 			}
 			else {
+				// Selects
 				if($(this).is('select')) {
 					if(typeof newQueryString[$(this).attr('name')] != "undefined")
 						$(this).val(newQueryString[$(this).attr('name')]);
@@ -323,8 +329,11 @@ else {
 						$(this).val($(this).find('option:first').val());
 				}
 				else {
+					// Text inputs
 					if(typeof newQueryString[$(this).attr('name')] != "undefined")
 						$(this).val(newQueryString[$(this).attr('name')]);
+					else
+						$(this).val('');
 				}
 			}
 		});
@@ -416,8 +425,8 @@ else {
 		data = temp;
 
 		// Now sort all the rows
-		var sortVal = $allInputs.sort.val();
 		var congressVal = $allInputs.congress.val();
+		var sortVal = $allInputs.sort.val();
 
 		$.each(data, function() {
 			var poli = this;
@@ -458,7 +467,38 @@ else {
 		else if(sortVal === "age-asc")
 			data.sort(dynamicSort("-percent_age_difference"));
 
-		formatData(data);
+		var finalData = [];
+
+		// Remove politicians if congress is specified and term is wrong
+		if(congressVal != "all") {
+			var typeVal = [];
+			var typeSelector = $allInputs.type.selector;
+
+			$(typeSelector).each(function() {
+				if($(this).is(':checked'))
+					typeVal.push($(this).val());
+			});
+
+			if(typeVal.length > 0) {
+				$.each(data, function(index) {
+					var found = false;
+
+					$.each(this.terms, function() {
+						if(typeVal.indexOf(this.term_type) == -1 && this.congresses.indexOf(congressVal) == -1)
+							found = true;
+					});
+
+					if(!found)
+						finalData.push(this);
+				});
+			}
+			else
+				finalData = data;
+		}
+		else
+			finalData = data;
+
+		formatData(finalData);
 	}
 
 	function formatData(data) {
@@ -530,7 +570,7 @@ else {
 						return "Vice Presidents";
 					else if(input == "sen")
 						return "Senators";
-					else
+					else if(input == "rep")
 						return "Represenatives";
 				}
 				else if(kind == "gender") {
@@ -579,20 +619,41 @@ else {
 			return "That are " + finalString;
 		}
 
-		$map.siblings('h3').html(getHeading());
-		$map.siblings('.gray-caps').html(getSubheading());
+		var heading = getHeading();
+		var subHeading = getSubheading();
+
+		$map.siblings('h3').html(heading);
+		$map.siblings('.gray-caps').html(subHeading);
 
 		var $mainHeader = $('#content h1');
 		var resultsCounter = 0;
 
 		if(data.length > 0) {
 			var congress = $allInputs.congress.val();
+			var currentDate = new Date();
 
 			$mainHeader.html(data.length + " politicians found");
+
+			var typesRequested = {};
+
+			if(subHeading.indexOf('Presidents') != -1)
+				typesRequested.prez = [];
+
+			if(subHeading.indexOf('Vice Presidents') != -1)
+				typesRequested.viceprez = [];
+
+			if(subHeading.indexOf('Senators') != -1)
+				typesRequested.sen = [];
+
+			if(subHeading.indexOf('Represenatives') != -1)
+				typesRequested.rep = [];
 
 			$.each(data, function() {
 				if(resultsCounter < resultsNum) {
 					var poli = this;
+
+					// Sort their terms
+					poli.terms.sort(dynamicSort("start"));
 
 					$politiciansList.append($('<li>')
 						.append($('<div>')
@@ -619,7 +680,60 @@ else {
 								)
 								.append($('<p>')
 									.addClass('role')
-									.html(convertType(this.terms[0].term_type, "name"))
+									.html(function() {
+										var roleString = "";
+										var currentTermEndDate = new Date(poli.terms[poli.terms.length - 1].end);
+
+										if(currentTermEndDate.getTime() - currentDate.getTime() >= 0)
+											roleString += "Currently " + convertType(poli.terms[poli.terms.length - 1].term_type, "name");
+
+										if(Object.keys(typesRequested).length > 0) {
+											var poliTypesRequested = {};
+
+											$.each(poli.terms, function() {
+												var termType = this.term_type;
+
+												if(typeof typesRequested[termType] != "undefined") {
+													if(typeof poliTypesRequested[termType] == "undefined")
+														poliTypesRequested[termType] = [];
+
+													$.each(this.congresses, function(index, value) { poliTypesRequested[termType].push(value.ordinate()); });
+												}
+											});
+
+											$.each(poliTypesRequested, function(key, value) {
+												if(roleString != "")
+													roleString += ", ";
+
+												roleString += convertType(key, "name") + " (" + value.join(', ') + ")";
+											});
+										}
+										else {
+											var termTypes = [];
+
+											if(roleString == "") {
+												$.each(poli.terms, function() {
+													if(termTypes.indexOf(convertType(this.term_type, "name")) == -1 && this.term_type != null)
+														termTypes.push(convertType(this.term_type, "name"));
+												});
+											}
+											else {
+												$.each(poli.terms, function() {
+													if(convertType(this.term_type, "name") != roleString.substring(roleString.indexOf(' ') + 1)) {
+														if(termTypes.indexOf(convertType(this.term_type, "name")) == -1 && this.term_type != null)
+															termTypes.push(convertType(this.term_type, "name"));
+													}
+												});
+											}
+
+											if(roleString != "")
+												roleString += ", formerly ";
+
+											roleString += termTypes.join(', ');
+										}
+
+										return roleString;
+									})
 								)
 								.append($('<p>')
 									.addClass('important')

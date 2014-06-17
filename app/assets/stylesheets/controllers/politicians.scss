@@ -89,51 +89,16 @@ $politician-height: $politician-dimensions + $politician-border-width;
 	}
 }
 
-#politicians-result {
-	.short { display: block; }
-	.long { display: none; }
-	&.less {
-		.short { display: none; }
-		.long { display: block; }
-	}
-	.politician {
-		.short, .long {
-			margin-top: 10px;
-			float: left;
-		}
-		.short {
-			h5 { font-size: 1em; }
-		}
-		.long {
-			.thumbnail {
-				width: 140px;
-				height: 140px;
-				background-repeat: no-repeat;
-				@include background-size(contain);
-				background-position: 50% 0%;
-				display: block;
-				margin: 0px auto 10px auto;
-			}
-			h5 { margin-bottom: 0px; }
-			p {
-				margin-bottom: 0px;
-				color: $black;
-				&:hover { color: $black; }
-			}
-			ul {
-				display: block;
-				margin: 10px auto;
-			}
-		}
-	}
-}
-
 #politician-search {
 	.gray-caps {
 		margin-top: 10px;
 		margin-bottom: 5px;
 	}
 	.input-new-line { display: block; }
+}
+
+#politician-index-map {
+	& + h3 { margin-top: 20px; }
 }
 
 #politician-search-list {
@@ -173,9 +138,9 @@ $politician-height: $politician-dimensions + $politician-border-width;
 					color: $black;
 					&:hover { color: $black; }
 				}
-				h5 { margin-top: 15px; }
+				h5 { margin-top: 2px; }
 				.role {
-					font-size: 0.9em;
+					font-size: 0.8em;
 					font-style: italic;
 					margin-top: -10px;
 					margin-bottom: 5px;

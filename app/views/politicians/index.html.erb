@@ -3,7 +3,7 @@
 <div class="page-specific" data-controller="politicians"></div>
 <div class="row">
 	<div class="large-12 columns">
-		<h1 class="text-center">Search All Politicians</h1>
+		<h1 class="text-center">Find a Politician</h1>
 	</div>
 </div>
 <div class="row">
@@ -18,6 +18,7 @@
 			</div>
 			<div class="foldable-content">
 				<%= form_tag("/congress/politicians", :method => 'GET', :id => 'politician-search') do %>
+					<p class="gray-caps">Name</p>
 				  <%= text_field_tag(:query, params[:query], :placeholder => "Search by name...") %>
 
 					<p class="gray-caps">State</p>
@@ -113,7 +114,7 @@
 	</div>
 	<div class="large-8 medium-7 small-12 large-offset-1 medium-offset-1 columns">
 		<div class="loader"></div>
-		<div id="map"></div>
+		<div id="politician-index-map"></div>
 		<h3 class="small-only-text-center"></h3>
 		<p class="gray-caps"></p>
 		<ol id="politician-search-list"></ol>

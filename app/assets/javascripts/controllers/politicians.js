@@ -346,6 +346,18 @@ else {
 		var queryString = gatherInputs();
 
 		history.pushState(queryString, "", window.location.href.split('?')[0] + "?" + decodeURIComponent($.param(queryString)));
+
+		$sharable.find('span').each(function() {
+			if($(this).hasClass('icon-facebook'))
+				$(this).parent('a').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href));
+			if($(this).hasClass('icon-twitter'))
+				$(this).parent('a').attr('href', 'https://twitter.com/home?status=' + encodeURIComponent(window.location.href));
+			if($(this).hasClass('icon-googleplus'))
+				$(this).parent('a').attr('href', 'https://plus.google.com/share?url=' + encodeURIComponent(window.location.href));
+			if($(this).hasClass('icon-linkedin'))
+				$(this).parent('a').attr('href', 'https://www.linkedin.com/shareArticle?&url=' + encodeURIComponent(window.location.href));
+		});
+
 		resultsNum = 5;
 
 		makeQuery(queryString);

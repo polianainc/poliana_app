@@ -18,11 +18,19 @@
 				</div>
 			</form>
 		</div>
+		<% if false %>
 		<div class="text-center play-video">
 			<%= link_to '<span aria-hidden="true" class="icon-play large-icon text-pop"></span>'.html_safe(), 'https://vimeo.com/82250634', :target => '_blank' %>
 			<div class="vimeo-player flex-video vimeo widescreen hide">
 				<iframe src="//player.vimeo.com/video/82250634?title=0&amp;byline=0&amp;portrait=0&amp;color=61d2d6&amp;autoplay=0&amp;" width="888" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 			</div>
+		</div>
+		<% else %>
+		<div class="row">
+			<div class="large-3 medium-4 small-6 large-centered medium-centered small-centered columns">
+				<%= link_to "Try it out!", new_user_session_path, class: 'button expand radius' %>
+			</div>
+			<% end %>
 		</div>
 	</div>
 </div>

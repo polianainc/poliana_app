@@ -7,7 +7,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="large-3 medium-4 small-12 columns">
+	<div class="large-3 medium-4 small-12 columns" id="politicians-sort">
 		<div class="foldable">
 			<div class="foldable-header down">
 				<div class="row show-for-small">
@@ -112,11 +112,78 @@
 			</div>
 		</div>
 	</div>
-	<div class="large-8 medium-7 small-12 large-offset-1 medium-offset-1 columns">
+	<div class="large-8 medium-7 small-12 large-offset-1 medium-offset-1 columns" id="politicians-show">
 		<div class="loader"></div>
 		<div id="politician-index-map"></div>
 		<h3 class="small-only-text-center"></h3>
 		<p class="gray-caps"></p>
+		<div class="politicians-icons">
+			<ul class="icons">
+				<li><span aria-hidden="true" class="icon-help other-modal"></span></li>
+				<li><span aria-hidden="true" class="icon-share sharable"></span></li>
+			</ul>
+		</div>
 		<ol id="politician-search-list"></ol>
 	</div>
+</div>
+<ol class="joyride-list" data-cookie="politicians_index" data-joyride>
+	<li>
+		<div class="row hero">
+			<div class="large-12 columns">
+				<h4 class="text-center">Welcome to Poliana!</h4>
+				<p>Here you can find anything you want to know about your government. We've set up a brief tutorial to show you around. Shall we begin?</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-8 medium-10 small-10 large-centered medium-centered small-centered columns">
+				<div class="progress radius success">
+					<span class="meter" style="width: 33%">1/3</span>
+				</div>
+				<a href="#" class="small button radius expand joyride-next-tip">Awesome, let's go!</a>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="row hero">
+			<div class="large-12 columns">
+				<h4 class="text-center">Who do you want to see?</h4>
+				<p>Here you can filter through all politicians. Want to know all Female Christian Democrats? Go for it! Likewise, you can sort them over various ways like age or earnings through campaign contributions.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-8 medium-10 small-10 large-centered medium-centered small-centered columns">
+				<div class="progress radius success">
+					<span class="meter" style="width: 66%">2/3</span>
+				</div>
+				<a href="#" class="small button radius expand joyride-next-tip">Sweet, tell me more!</a>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="row hero">
+			<div class="large-12 columns">
+				<h4 class="text-center">See the results right before your eyes!</h4>
+				<p>Easy enough! We'll take a look through our system and crunch over 100 million rows of political data to give you back the right results. Feel free to click on a particular politician to see more information about them specifically.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-8 medium-10 small-10 large-centered medium-centered small-centered columns">
+				<div class="progress radius success">
+					<span class="meter" style="width: 100%">3/3</span>
+				</div>
+				<a href="#" class="small button radius expand joyride-next-tip">Let me play with it!</a>
+			</div>
+		</div>
+	</li>
+</ol>
+<div id="other-modal" class="reveal-modal medium" data-reveal style="display: none;">
+	<h3 class="text-center">How do you tabulate your numbers?</h3>
+	<p>Great question! We analyze well over 100 million rows of political data from our data partners all of which are driven to provide honest reporting of the happenings in Washington. For more information on our methodology, <a href="http://wiki.poliana.com/index.php/Data_Tabulation" target="_blank">go here</a>.</p>
+	<h4 class="text-center">Where do you get your data?</h4>
+	<ul class="data-partners">
+		<li><a href="http://www.opensecrets.org/" target="_blank"><img src="/assets/open-secrets.png"></a></li>
+		<li><a href="http://sunlightfoundation.com/" target="_blank"><img src="/assets/sunlight-foundation.png"></a></li>
+		<li><a href="http://congress.gov" target="_blank"><img src="/assets/congress-gov.png"></a></li>
+		<li><a href="https://www.govtrack.us/" target="_blank"><img src="/assets/govtrack.png"></a></li>
+	</ul>
 </div>

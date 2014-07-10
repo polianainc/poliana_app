@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def states
-    @states ||= 
+    @states ||=
     [
       {'name' => 'Alabama', 'abbrev' => 'AL'},
       {'name' => 'Alaska', 'abbrev' => 'AK'},

@@ -134,6 +134,7 @@ small { font-size: 0.75em; }
 		width: 100%;
 		z-index: 0;
 		background: $black;
+		&:-webkit-media-controls { display: none !important; }
 		@include background-size(cover);
 		@media #{$medium-up} { top: -40px; }
 		@media #{$large-up} { top: -100px; }

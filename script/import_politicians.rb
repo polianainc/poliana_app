@@ -73,6 +73,7 @@ def import_raw_legislators_to_mongo
   add_birthday_stats
   add_pre_election_terms
   add_congresses
+  patch_scott_brown
   add_image_urls
   add_contribution_totals
 end
@@ -155,6 +156,13 @@ def patch_cheney
   cheney.terms << term
 end
 
+#HACK patches Scott Brown. What a dick (jk).
+def patch_scott_brown
+  sb = Politician.where(:bioguide_id => "B001268").first
+  sb.terms.first.congresses = [110]
+  sb.save
+end
+
 def add_birthday_stats
   count = Politician.count.to_f
   Politician.order_by([:birthday, :asc]).each_with_index do |pol, i|
@@ -162,7 +170,7 @@ def add_birthday_stats
 
     calc = ((fi+1.0)/count)
     pol.percent_age_difference = (calc*100).to_i
-    pol.save()
+    pol.save
   end
 end
 
@@ -182,7 +190,7 @@ def add_pre_election_terms
       pre_election_term.end = pre_election_term_start + 2.years
 
       pol.terms << pre_election_term
-      pol.save()
+      pol.save
     end
   end
 end

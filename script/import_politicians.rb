@@ -243,4 +243,6 @@ def add_contribution_totals
 end
 
 # RUN THE CODE
-import_raw_legislators_to_mongo
+patch_scott_brown
+add_image_urls
+add_contribution_totals

@@ -146,6 +146,10 @@ small { font-size: 0.75em; }
 			color: $white;
 			text-align: center;
 		}
+		input:not([type=submit]) {
+			color: $black;
+			text-align: left;
+		}
 		h1 {
 			margin-top: 40px;
 			@include text-pop($black);

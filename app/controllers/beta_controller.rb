@@ -8,11 +8,9 @@ class BetaController < Devise::RegistrationsController
 
     def create
         build_resource(params[:user])
-
         if resource.save
-            set_flash_message :notice, :signed_up if is_navigational_format?
+            flash[:notice] = "Signed up! Welcome to Poliana."
             sign_up(resource_name, resource)
-            TracksEvents.track_sign_up(cookies)
             redirect_to root_url
         else
             clean_up_passwords(resource)

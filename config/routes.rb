@@ -4,17 +4,16 @@ PolianaApp::Application.routes.draw do
   resources :invitations
   resources :feedbackers
 
-  devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "120938102948019283" },
+  devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "123412341234" },
 			:controllers => { omniauth_callbacks: "auth_callbacks" }
 
   devise_scope :user do
-	  get "/signup/:key" => "beta#new", :as => :beta_signup
-	  post "beta/" => "beta#create", :as => :beta_registration
+	  get "/signup" => "beta#new", :as => :beta_signup
+	  post "/beta" => "beta#create", :as => :beta_registration
   end
 
   get "/login", :to => redirect('/signin')
   get "/logout", :to => redirect('/signout')
-  get "/signup", :to => redirect('/')
 
   get "policy", :to => "static_pages#policy"
   get "terms", :to => "static_pages#terms"

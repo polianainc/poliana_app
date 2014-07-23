@@ -19,7 +19,7 @@
 <% end -%>
 <div class="row">
 	<div class="large-6 medium-6 large-centered medium-centered columns">
-		<%= form_for(resource, :html => { :class => "custom", :autocomplete => "off", :data => { :abide => '' } }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+		<%= form_for(resource, :html => { :class => "custom", :autocomplete => "off", :data => { :abide => '' } }, :as => resource_name, :url => beta_registration_path) do |f| %>
 			<div class="row collapse pre-input<%= " error" if !resource.errors[:email].empty? %>">
 				<div class="small-2 columns">
 		            <span aria-hidden="true" class="prefix icon-mail"></span>

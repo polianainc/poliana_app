@@ -57,8 +57,6 @@
 				<%= throw_errors("Password confirmation", resource.errors[:password_confirmation]) %>
 			</div>
 
-			<%= f.hidden_field :invitation_key, :autocomplete => "off" %>
-
 			<%= f.submit "Let's Go", :class => "button expand radius" %>
 			<p class="text-center no-space"><small><%= link_to "Already signed up?", new_user_session_path %></small></p>
 			<p class="text-center no-space"><small><%= link_to "Forgot your password?", new_user_password_path %></small></p>

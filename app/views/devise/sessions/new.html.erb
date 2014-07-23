@@ -37,11 +37,12 @@
 		  			<%= f.password_field :password, :autocomplete => "off", :placeholder => "Password" %>
 				</div>
 				<%= throw_errors("Password", resource.errors[:password]) %>
+				<%= link_to "Sign Up", beta_signup_path %>
 			</div>
 			<% if devise_mapping.rememberable? -%>
 				<%= f.label :remember_me do |g| %><%= f.check_box :remember_me %> Remember Me?<% end %>
 			<% end -%>
-		  	<%= f.submit "Welcome back!", :class => "button expand radius" %>
+	  	<%= f.submit "Welcome back!", :class => "button expand radius" %>
 		<% end %>
 	</div>
 </div>

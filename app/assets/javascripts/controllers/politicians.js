@@ -276,6 +276,31 @@ else {
 	var $politiciansList = $('#politician-search-list');
 	var $politiciansPagination = $('#politicians-list-pagination');
 
+	$.xhrPool = [];
+
+	function abortAll(xhr) {
+		$.each($.xhrPool, function(idx, jqXHR) {
+			jqXHR.abort();
+		});
+
+		$.xhrPool = [];
+		$.xhrPool.push(xhr);
+	};
+
+	$.ajaxSetup({
+		beforeSend: function(jqXHR) {
+			abortAll(jqXHR);
+
+			$loader.fadeIn(250);
+		},
+		complete: function(jqXHR) {
+			var index = $.xhrPool.indexOf(jqXHR);
+
+			if(index > -1)
+				$.xhrPool.splice(index, 1);
+		}
+	});
+
 	$searchForm.on('submit', function(event) {
 		event.preventDefault();
 	});
@@ -364,14 +389,14 @@ else {
 	});
 
 	function makeQuery(queryString) {
-		$.get('/congress/politicians?format=json', queryString, function(data) {
+		$.ajax({
+			url: "/congress/politicians?format=json",
+			data: queryString
+		}).done(function(data) {
 			$politiciansList.fadeOut(250, function() {
 				$politiciansPagination.hide();
 				scrollToPos(0);
-
-				$loader.fadeIn(250, function() {
-					prepareData(data);
-				});
+				prepareData(data);
 			});
 		});
 	}

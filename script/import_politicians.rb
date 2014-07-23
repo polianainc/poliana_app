@@ -54,6 +54,7 @@ def import_raw_legislators_to_mongo
 
     mpol.gender =  pol["gender"] if pol["gender"]
     mpol.religion =  pol["religion"] if pol["religion"]
+    mpol.general_religion = pol.calculate_general_religion
 
     mpol.state ||= pol["term_state"]
 
@@ -159,7 +160,7 @@ end
 #HACK patches Scott Brown. What a dick (jk).
 def patch_scott_brown
   sb = Politician.where(:bioguide_id => "B001268").first
-  sb.terms.first.congresses = [110]
+  sb.terms.where(:term_type=>nil).congresses = [110]
   sb.save
 end
 

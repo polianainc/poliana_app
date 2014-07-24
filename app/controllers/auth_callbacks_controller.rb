@@ -5,7 +5,8 @@ class AuthCallbacksController < Devise::OmniauthCallbacksController
 
         if user.save
             flash[:notice] = "Success!"
-            sign_in_and_redirect user, notice: "Success!"
+            sign_in user
+            redirect_to root_url
         end
     end
 

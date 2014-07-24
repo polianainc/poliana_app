@@ -37,12 +37,12 @@
 		  			<%= f.password_field :password, :autocomplete => "off", :placeholder => "Password" %>
 				</div>
 				<%= throw_errors("Password", resource.errors[:password]) %>
-				<%= link_to "Sign Up", beta_signup_path %>
 			</div>
 			<% if devise_mapping.rememberable? -%>
 				<%= f.label :remember_me do |g| %><%= f.check_box :remember_me %> Remember Me?<% end %>
 			<% end -%>
 	  	<%= f.submit "Welcome back!", :class => "button expand radius" %>
+			<p class="text-center"><%= link_to "... or sign up for the beta!", beta_signup_path %></p>
 		<% end %>
 	</div>
 </div>
@@ -50,6 +50,5 @@
 	<div class="large-12 columns">
 		<p class="text-center no-space"><small><a href="#" class="slide-reveal button tiny radius secondary" data-id="1">Don't use social networks?</a></small></p>
 		<p class="text-center no-space"><small><%= link_to "Forgot your password?", new_user_password_path %></small></p>
-		<p class="text-center no-space"><small><%= link_to "Want an invitation?", root_path %></small></p>
 	</div>
 </div>

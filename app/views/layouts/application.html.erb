@@ -49,7 +49,7 @@
 						<section class="middle tab-bar-section">
 							<%= link_to image_tag('logo-beta.png', :id => "logo-mobile", :alt => "Poliana"), root_path %>
 						</section>
-						<% if user_signed_in? %>
+						<% if false %>
 						<section class="right-small">
 							<a class="right-off-canvas-toggle user-icon"><span aria-hidden="true" class="icon-user"></span></a>
 						</section>
@@ -57,28 +57,24 @@
 					</nav>
 					<aside class="left-off-canvas-menu">
 						<ul class="off-canvas-list">
-							<% if user_signed_in? %>
 							<li><label>Explore</label></li>
 							<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Find a Politician</span>'.html_safe(), congress_politicians_path %></li>
-							<% end %>
-							<% if !user_signed_in? %>
+							<% if false %>
 							<li><label>General</label></li>
 							<li><%= link_to '<span aria-hidden="true" class="icon-login"></span><span>Sign In</span>'.html_safe(), new_user_session_path %></li>
 							<% end %>
-							<% if user_signed_in? %>
-								<% if false %>
-								<li><label>Search</label></li>
-						  		<li class="has-form">
-									<form>
-						  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
-										<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
-									</form>
-						  		</li>
-								<% end %>
+							<% if false %>
+							<li><label>Search</label></li>
+					  		<li class="has-form">
+								<form>
+					  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
+									<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
+								</form>
+					  		</li>
 							<% end %>
 						</ul>
 					</aside>
-					<% if user_signed_in? %>
+					<% if false %>
 					<aside class="right-off-canvas-menu">
 						<ul class="off-canvas-list">
 							<li><label>Your Account</label></li>
@@ -104,28 +100,24 @@
 							</li>
 							<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 						</ul>
-						<% if user_signed_in? %>
-							<% if false %>
-							<section class="top-bar-section">
-								<ul class="left">
-									<li class="has-form">
-										<form>
-							  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
-											<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
-										</form>
-							  		</li>
-								</ul>
-							</section>
-							<% end %>
+						<% if false %>
+						<section class="top-bar-section">
+							<ul class="left">
+								<li class="has-form">
+									<form>
+						  				<input type="text" value="<%= params[:query] %>" class="menu-search<%= !request.env['PATH_INFO'].include?('search') ? " not-search" : '' %>" placeholder="Search">
+										<a href="#"><span aria-hidden="true" class="icon-search"></span></a>
+									</form>
+						  		</li>
+							</ul>
+						</section>
 						<% end %>
 						<section class="top-bar-section">
 							<ul class="left">
-								<% if user_signed_in? %>
 								<li><%= link_to '<span aria-hidden="true" class="icon-users"></span><span>Find a Politician</span>'.html_safe(), congress_politicians_path %></li>
-								<% end %>
 							</ul>
 							<ul class="right">
-								<% if user_signed_in? %>
+								<% if false %>
 								<li class="has-dropdown">
 									<a href="#"><%= image_tag current_user.avatar_url, :width => "24px" %></a>
 									<ul class="dropdown">
@@ -133,8 +125,6 @@
 										<li><%= link_to '<span aria-hidden="true" class="icon-logout"></span><span>Logout</span>'.html_safe(), destroy_user_session_path %></a></li>
 									</ul>
 								</li>
-								<% else %>
-								<li class="has-form"><%= link_to 'Sign Up!', new_user_session_path, :class => 'button radius' %></li>
 								<% end %>
 							</ul>
 						</section>

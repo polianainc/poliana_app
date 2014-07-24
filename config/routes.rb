@@ -28,9 +28,9 @@ PolianaApp::Application.routes.draw do
   get "/congress/politicians", :to => "politicians#index"
   get "/congress/politicians/:id", :to => "politicians#show"
 
-  authenticated :user do
-    root :to => "politicians#index"
-  end
+  #authenticated :user do
+    #root :to => "politicians#index"
+  #end
 
   root :to => "static_pages#index"
 end
